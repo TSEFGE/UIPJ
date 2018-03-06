@@ -1,0 +1,63 @@
+/*input[type="text"], textarea, select, option, input[type="password"], input[type="search"]{
+    text-transform: uppercase;
+}*/
+body{
+	padding-top: 50px;
+}
+
+header{
+	margin-bottom: 10px;
+}
+
+.navbar{
+	padding-top: 0px;
+	padding-bottom: 0px;
+	background-color: #222222;
+}
+
+.nav-tabs .nav-item > a{
+	color: #A5A5A5;
+}
+
+.nav-tabs .nav-item .active{
+	color: #000000;
+	background-color: #D6D6D6;
+	border-color: #ddd #ddd #ddd;
+}
+
+.logofge{
+	height: 40px;
+}
+
+.boxone{
+	background-color: #D6D6D6;
+	border: solid 1px #BFBFBF;
+	min-height: 520px;
+	padding: 0px;
+}
+
+.boxtwo{
+	background-color: #D6D6D6;
+	border: solid 1px #BFBFBF;
+	margin: 8px;
+	padding: 7px;
+}
+
+.barras{
+	width: 99%;
+	height: 500px; 
+	overflow: scroll;
+}
+
+textarea {
+	resize: none;
+}
+
+.boxcollapse{
+	background-color: #D6D6D6;
+}
+html{
+  	font-family: 'neosanspro-regular';
+  	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
