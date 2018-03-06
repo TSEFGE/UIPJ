@@ -63,9 +63,10 @@ Route::middleware(['auth'])->group(function () {
 	/*---------Rutas para los selects dinámicos-------------*/
 	Route::get('municipios/{id}', 'RegistroController@getMunicipios');
 	Route::get('localidades/{id}', 'RegistroController@getLocalidades');
-	Route::get('codigos/{id}', 'RegistroController@getCodigos');
 	Route::get('colonias/{cp}', 'RegistroController@getColonias');
 	Route::get('colonias2/{id}', 'RegistroController@getColonias2');
+	Route::get('codigos/{id}', 'RegistroController@getCodigos');
+	Route::get('codigos2/{id}', 'RegistroController@getCodigos2');
 	Route::get('submarcas/{id}', 'RegistroController@getSubmarcas');
 	Route::get('tipoVehiculos/{id}', 'RegistroController@getTipoVehiculos');
 	Route::get('armas/{id}', 'RegistroController@getArmas');

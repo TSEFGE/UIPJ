@@ -16,9 +16,6 @@ $("#idEstado").change(function(event){
 			for(i=0; i<response.length; i++){
 				$("#idMunicipio").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
 			}
-		});
-
-		$.get("../municipios/"+event.target.value+"", function(response, estado){
 			$("#idMunicipio3").empty();
 			$("#idMunicipio3").append("<option value=''>Seleccione un municipio</option>");
 			for(i=0; i<response.length; i++){
@@ -98,6 +95,12 @@ $("#cp").change(function(event){
 
 $("#idColonia").change(function(event){
 	if(event.target.value!=""){
+		$.get("../codigos2/"+event.target.value+"", function(response, colonia){
+			$("#cp").empty();
+			$("#cp").append("<option value='"+response[0].id+"'> "+response[0].codigoPostal+"</option>");
+			$("#cp3").empty();
+			$("#cp3").append("<option value='"+response[0].id+"'> "+response[0].codigoPostal+"</option>");
+		});
 		$('#idColonia3').val($('#idColonia').val()).trigger('change.select2');
 	}
 });
@@ -163,6 +166,15 @@ $("#cp2").change(function(event){
 	}
 });
 
+$("#idColonia2").change(function(event){
+	if(event.target.value!=""){
+		$.get("../codigos2/"+event.target.value+"", function(response, colonia){
+			$("#cp2").empty();
+			$("#cp2").append("<option value='"+response[0].id+"'> "+response[0].codigoPostal+"</option>");
+		});
+	}
+});
+
 $("#idEstado3").change(function(event){
 	if(event.target.value!=""){
 		$.get("../municipios/"+event.target.value+"", function(response, estado){
@@ -209,6 +221,15 @@ $("#cp3").change(function(event){
 			for(i=0; i<response.length; i++){
 				$("#idColonia3").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
 			}
+		});
+	}
+});
+
+$("#idColonia3").change(function(event){
+	if(event.target.value!=""){
+		$.get("../codigos2/"+event.target.value+"", function(response, colonia){
+			$("#cp3").empty();
+			$("#cp3").append("<option value='"+response[0].id+"'> "+response[0].codigoPostal+"</option>");
 		});
 	}
 });
@@ -331,6 +352,15 @@ $("#cpC").change(function(event){
 			for(i=0; i<response.length; i++){
 				$("#idColoniaC").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
 			}
+		});
+	}
+});
+
+$("#idColoniaC").change(function(event){
+	if(event.target.value!=""){
+		$.get("../codigos2/"+event.target.value+"", function(response, colonia){
+			$("#cpC").empty();
+			$("#cpC").append("<option value='"+response[0].id+"'> "+response[0].codigoPostal+"</option>");
 		});
 	}
 });
