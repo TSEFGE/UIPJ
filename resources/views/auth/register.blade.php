@@ -1,9 +1,5 @@
 @extends('template.main')
 
-@section('css')
-    <link rel="stylesheet" type="text/css" href="{{ asset('plugins/select2/select2.css') }}">
-@endsection
-
 @section('content')
 <div class="container">
     <div class="row justify-content-md-center">
@@ -120,17 +116,4 @@
         </div>
     </div>
 </div>
-@endsection
-
-@section('scripts')
-    <script src="{{ asset('plugins/select2/select2.min.js')}}" ></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $("input:text").keyup(function() {
-                $(this).val($(this).val().toUpperCase());
-            });
-
-            $('.select2').select2();
-        });
-    </script>
 @endsection
