@@ -87,7 +87,7 @@ $("#cp").change(function(event){
 				$("#idColonia3").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
 			}
 		});
-		$('#cp3').val($('#cp').val());
+		$('#cp3').val($('#cp').val()).trigger('change.select2');
 		$('#idColonia3').val($('#idColonia').val()).trigger('change.select2');
 	}
 });
