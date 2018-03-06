@@ -81,6 +81,13 @@ class RegistroController extends Controller
         }
     }
 
+    public function getColonias2(Request $request, $id){
+        if($request->ajax()){
+            $colonias = CatColonia::colonias2($id);
+            return response()->json($colonias);
+        }
+    }
+
     public function getSubmarcas(Request $request, $id){
         if($request->ajax()){
             $submarcas = CatSubmarca::submarcas($id);

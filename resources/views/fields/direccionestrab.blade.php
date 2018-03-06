@@ -19,14 +19,14 @@
 	</div>
 	<div class="col-2">
 		<div class="form-group">
-			{!! Form::label('cp2', 'Código Postal', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('cp2', ['' => 'Seleccione un código postal'], null, ['class' => 'form-control form-control-sm', 'required']) !!}
+			{!! Form::label('idColonia2', 'Colonia', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::select('idColonia2', ['' => 'Seleccione una colonia'], null, ['class' => 'form-control form-control-sm', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-2">
 		<div class="form-group">
-			{!! Form::label('idColonia2', 'Colonia', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idColonia2', ['' => 'Seleccione una colonia'], null, ['class' => 'form-control form-control-sm', 'required']) !!}
+			{!! Form::label('cp2', 'Código Postal', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::select('cp2', ['' => 'Seleccione un código postal'], null, ['class' => 'form-control form-control-sm', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-4">
