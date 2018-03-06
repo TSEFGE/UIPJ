@@ -10,6 +10,7 @@ use App\Models\Carpeta;
 use App\Models\CatDelito;
 use App\Models\CatPosibleCausa;
 use App\Models\CatEstado;
+use App\Models\CatMunicipio;
 use App\Models\CatLugar;
 use App\Models\CatMarca;
 use App\Models\CatModalidad;
@@ -28,6 +29,7 @@ class DelitoController extends Controller
             $delits = CatDelito::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $posiblescausas = CatPosibleCausa::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $estados = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+            $municipiosVer = CatMunicipio::select('id', 'nombre')->where('idEstado',30)->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $lugares = CatLugar::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $marcas = CatMarca::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $modalidades = CatModalidad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
@@ -38,6 +40,7 @@ class DelitoController extends Controller
                 ->with('delits', $delits)
                 ->with('posiblescausas', $posiblescausas)
                 ->with('estados', $estados)
+                ->with('municipiosVer', $municipiosVer)
                 ->with('lugares', $lugares)
                 ->with('marcas', $marcas)
                 ->with('modalidades', $modalidades)
