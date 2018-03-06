@@ -1,12 +1,4 @@
 $(document).ready(function(){
-    $("input:text").keyup(function() {
-        $(this).val($(this).val().toUpperCase());
-    });
-    $("textarea").keyup(function() {
-        $(this).val($(this).val().toUpperCase());
-    });
-    
-
     //Para el inicio de carpeta
     $("#conDetenido").prop("checked", false);
     $('#conDet1').css('display', 'none');

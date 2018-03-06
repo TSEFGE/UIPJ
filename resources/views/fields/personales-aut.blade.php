@@ -59,31 +59,31 @@
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('idNacionalidad', 'Nacionalidad', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idNacionalidad', $nacionalidades, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la nacionalidad', 'required']) !!}
+			{!! Form::select('idNacionalidad', $nacionalidades, '1', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la nacionalidad', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('idEtnia', 'Etnia', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idEtnia', $etnias, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la etnia', 'required']) !!}
+			{!! Form::select('idEtnia', $etnias, '1', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la etnia', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('idLengua', 'Lengua', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idLengua', $lenguas, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la lengua', 'required']) !!}
+			{!! Form::select('idLengua', $lenguas, '70', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la lengua', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('idEstadoOrigen', 'Entidad federativa de origen', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idEstadoOrigen', $estados, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa', 'required']) !!}
+			{!! Form::select('idEstadoOrigen', $estados, '30', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('idMunicipioOrigen', 'Municipio de origen', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idMunicipioOrigen', ['' => 'Seleccione un municipio'], null, ['class' => 'form-control form-control-sm', 'required']) !!}
+			{!! Form::select('idMunicipioOrigen',$municipiosVer,null, ['placeholder' => 'Seleccione un municipio', 'class' => 'form-control form-control-sm', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-3">

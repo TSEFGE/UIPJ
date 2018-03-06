@@ -9,6 +9,7 @@ use Alert;
 use App\Http\Requests\StoreDenunciante;
 use App\Models\CatEscolaridad;
 use App\Models\CatEstado;
+use App\Models\CatMunicipio;
 use App\Models\CatEstadoCivil;
 use App\Models\CatEtnia;
 use App\Models\CatLengua;
@@ -31,6 +32,7 @@ class DenuncianteController extends Controller
             $denunciantes = CarpetaController::getDenunciantes($idCarpeta);
             $escolaridades = CatEscolaridad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $estados = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+            $municipiosVer = CatMunicipio::select('id', 'nombre')->where('idEstado',30)->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $estadoscivil = CatEstadoCivil::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $etnias = CatEtnia::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $lenguas = CatLengua::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
@@ -41,6 +43,7 @@ class DenuncianteController extends Controller
                 ->with('denunciantes', $denunciantes)
                 ->with('escolaridades', $escolaridades)
                 ->with('estados', $estados)
+                ->with('municipiosVer', $municipiosVer)
                 ->with('estadoscivil', $estadoscivil)
                 ->with('etnias', $etnias)
                 ->with('lenguas', $lenguas)

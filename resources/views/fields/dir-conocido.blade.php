@@ -2,13 +2,13 @@
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('idEstadoC', 'Entidad federativa', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idEstadoC', $estados, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa', 'required']) !!}
+			{!! Form::select('idEstadoC', $estados, '30', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('idMunicipioC', 'Municipio', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idMunicipioC', [''=>'Seleccione un municipio'], null, ['class' => 'form-control form-control-sm', 'required']) !!}
+			{!! Form::select('idMunicipioC', $municipiosVer,null, ['placeholder' => 'Seleccione un municipio','class' => 'form-control form-control-sm', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-4">
@@ -19,14 +19,14 @@
 	</div>
 	<div class="col-2">
 		<div class="form-group">
-			{!! Form::label('cpC', 'Código Postal', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('cpC', ['' => 'Seleccione un código postal'], null, ['class' => 'form-control form-control-sm', 'required']) !!}
+			{!! Form::label('idColoniaC', 'Colonia', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::select('idColoniaC', ['' => 'Seleccione una colonia'], null, ['class' => 'form-control form-control-sm', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-2">
 		<div class="form-group">
-			{!! Form::label('idColoniaC', 'Colonia', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idColoniaC', ['' => 'Seleccione una colonia'], null, ['class' => 'form-control form-control-sm', 'required']) !!}
+			{!! Form::label('cpC', 'Código Postal', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::select('cpC', ['' => 'Seleccione un código postal'], null, ['class' => 'form-control form-control-sm', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-4">
