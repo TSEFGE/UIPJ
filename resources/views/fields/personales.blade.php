@@ -25,7 +25,7 @@
 					{!! Form::text('rfc', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.', 'required']) !!}
 				</div>
 			</div>
-	
+
 			@isset($puestos)
 		    <div class="col-3">
 				<div class="form-group">
@@ -63,7 +63,7 @@
 				</div>
 			</div>
 			@endisset
-				
+
 			<div class="col-2">
 				<div class="form-group">
 					{!! Form::label('sexo', 'Sexo', ['class' => 'col-form-label-sm']) !!}
@@ -79,25 +79,25 @@
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('idNacionalidad', 'Nacionalidad', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('idNacionalidad', $nacionalidades, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la nacionalidad']) !!}
+					{!! Form::select('idNacionalidad', $nacionalidades, '1', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la nacionalidad']) !!}
 				</div>
 			</div>
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('idEtnia', 'Etnia', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('idEtnia', $etnias, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la etnia']) !!}
+					{!! Form::select('idEtnia', $etnias, '1', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la etnia']) !!}
 				</div>
 			</div>
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('idLengua', 'Lengua', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('idLengua', $lenguas, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la lengua']) !!}
+					{!! Form::select('idLengua', $lenguas, '70', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la lengua']) !!}
 				</div>
 			</div>
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('idEstadoOrigen', 'Entidad federativa de origen', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('idEstadoOrigen', $estados, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa']) !!}
+					{!! Form::select('idEstadoOrigen', $estados, '30', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa']) !!}
 				</div>
 			</div>
 			<div class="col-3">
@@ -156,7 +156,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<div class="col-12" id="personaMoral">
 		<div class="row">
 			<div class="col-4">
