@@ -44,7 +44,7 @@
 	        $(this).val($(this).val().toUpperCase());
 	    });
         $(document).ready(function() {
-            $('.select2').select2();
+            $('select').select2();
         });
     </script>
 	{{--Por si no hay internet
