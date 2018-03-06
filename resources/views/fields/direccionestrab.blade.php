@@ -8,7 +8,7 @@
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('idMunicipio2', 'Municipio', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idMunicipio2',$municipiosVer, [''=>'Seleccione un municipio'], null, ['class' => 'form-control form-control-sm', 'required']) !!}
+			{!! Form::select('idMunicipio2',$municipiosVer, null,['placeholder' => 'Seleccione un municipio','class' => 'form-control form-control-sm', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-4">

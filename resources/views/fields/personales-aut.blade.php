@@ -83,7 +83,7 @@
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('idMunicipioOrigen', 'Municipio de origen', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idMunicipioOrigen',$municipiosVer, ['' => 'Seleccione un municipio'], null, ['class' => 'form-control form-control-sm', 'required']) !!}
+			{!! Form::select('idMunicipioOrigen',$municipiosVer,null, ['placeholder' => 'Seleccione un municipio', 'class' => 'form-control form-control-sm', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-3">
