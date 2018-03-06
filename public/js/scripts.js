@@ -590,10 +590,14 @@ $(document).ready(function(){
        });
     });
 
-    $(function () {
+    $(function () { //Datetimepicker a la zquierda y debajo para vizualizar mejor no se oculte en la nav
+        
         $('#horadelit').datetimepicker({
            format: 'LT',
-           maxDate: moment()
+     widgetPositioning: {
+            vertical: 'bottom',
+            horizontal: 'left'
+        }
        });
     });
 });

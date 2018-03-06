@@ -20,13 +20,10 @@
 		</div>
 	</div>
 	<div class="col-4">
-		<div class="form-group">
+		<div class="form-group" id="" >
 			{!! Form::label('hora', 'Hora', ['class' => 'col-form-label-sm']) !!}
 			<div class="input-group date" id="horadelit" data-target-input="nearest">
-				{!! Form::text('hora', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#horadelit', 'required', 'placeholder' => '00:00']) !!}
-				<span class="input-group-addon" data-target="#horadelit" data-toggle="datetimepicker">
-					<i class="fa fa-clock-o" aria-hidden="true"></i>
-				</span>
+				{!! Form::text('hora', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#horadelit', 'required', 'placeholder' => '00:00','data-toggle'=>"datetimepicker"]) !!}
 			</div>
 		</div>
 	</div>
