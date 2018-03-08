@@ -25,7 +25,6 @@
 					{!! Form::text('rfc', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.', 'required']) !!}
 				</div>
 			</div>
-
 			@isset($puestos)
 		    <div class="col-3">
 				<div class="form-group">
@@ -180,6 +179,9 @@
 		</div>
 	</div>
 </div>
+			@push('PilaScripts')
+			  <script src="{{ asset('js/rfcFisico.js') }}"></script>
+			@endpush
 
 {{--<div id="accordion" role="tablist">
 	<div class="card">
