@@ -2690,6 +2690,23 @@ class ColoniasTabascoSeeder extends Seeder
 ['idMunicipio' => 1974, 'nombre' => 'LA ESPERANZA', 'codigoPostal' => 86998],
 ['idMunicipio' => 1974, 'nombre' => 'EL PIEDRAL', 'codigoPostal' => 86998],
 ['idMunicipio' => 1974, 'nombre' => 'SANTA FE', 'codigoPostal' => 86998],
+['idMunicipio' => 1968, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0],
+['idMunicipio' => 1969, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0],
+['idMunicipio' => 1970, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0],
+['idMunicipio' => 1971, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0],
+['idMunicipio' => 1972, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0],
+['idMunicipio' => 1973, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0],
+['idMunicipio' => 1974, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0],
+['idMunicipio' => 1975, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0],
+['idMunicipio' => 1976, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0],
+['idMunicipio' => 1977, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0],
+['idMunicipio' => 1978, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0],
+['idMunicipio' => 1979, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0],
+['idMunicipio' => 1980, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0],
+['idMunicipio' => 1981, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0],
+['idMunicipio' => 1982, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0],
+['idMunicipio' => 1983, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0],
+['idMunicipio' => 1984, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0],
 ['idMunicipio' => 2490, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0]
         ]);
     }

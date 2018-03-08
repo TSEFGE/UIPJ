@@ -1698,6 +1698,21 @@ class ColoniasCDMXSeeder extends Seeder
 ['idMunicipio' => 283, 'nombre' => 'SAN FRANCISCO TLALNEPANTLA', 'codigoPostal' => 16900],
 ['idMunicipio' => 283, 'nombre' => 'CLUB MONTE SUR', 'codigoPostal' => 16909],
 ['idMunicipio' => 283, 'nombre' => 'PEDREGAL DE SAN FRANCISCO', 'codigoPostal' => 16910],
+['idMunicipio' => 272, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0],
+['idMunicipio' => 273, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0],
+['idMunicipio' => 274, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0],
+['idMunicipio' => 275, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0],
+['idMunicipio' => 276, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0],
+['idMunicipio' => 277, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0],
+['idMunicipio' => 278, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0],
+['idMunicipio' => 279, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0],
+['idMunicipio' => 280, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0],
+['idMunicipio' => 281, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0],
+['idMunicipio' => 282, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0],
+['idMunicipio' => 283, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0],
+['idMunicipio' => 284, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0],
+['idMunicipio' => 285, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0],
+['idMunicipio' => 286, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0],
 ['idMunicipio' => 2472, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0]
         ]);
     }
