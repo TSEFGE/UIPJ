@@ -67,6 +67,20 @@ class RegistroController extends Controller
         }
     }
 
+    public function getColonias(Request $request, $cp){
+        if($request->ajax()){
+            $colonias = CatColonia::colonias($cp);
+            return response()->json($colonias);
+        }
+    }
+
+    public function getColonias2(Request $request, $id){
+        if($request->ajax()){
+            $colonias = CatColonia::colonias2($id);
+            return response()->json($colonias);
+        }
+    }
+
     public function getCodigos(Request $request, $id){
         if($request->ajax()){
             $codigos = CatColonia::codigos($id);
@@ -74,10 +88,10 @@ class RegistroController extends Controller
         }
     }
 
-    public function getColonias(Request $request, $cp){
+    public function getCodigos2(Request $request, $id){
         if($request->ajax()){
-            $colonias = CatColonia::colonias($cp);
-            return response()->json($colonias);
+            $codigos = CatColonia::codigos2($id);
+            return response()->json($codigos);
         }
     }
 
