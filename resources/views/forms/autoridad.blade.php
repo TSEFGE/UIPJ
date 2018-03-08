@@ -77,3 +77,6 @@
 		@include('tables.autoridades')
 	</div>
 @endsection
+@push('PilaScripts')
+	<script src="{{ asset('js/rfcFisico.js') }}"></script>
+@endpush
