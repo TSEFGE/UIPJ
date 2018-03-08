@@ -39,7 +39,13 @@ class DatabaseSeeder extends Seeder
          $this->call(SubmarcaSeeder::class);
          $this->call(SubmarcaSeeder2::class);
 
-         $this->call(ColoniaSeeder::class);
+         //$this->call(ColoniaSeeder::class);
+         $this->call(ColoniasCDMXSeeder::class);
+         $this->call(ColoniasPueblaSeeder::class);
+         $this->call(ColoniasTabascoSeeder::class);
+         $this->call(ColoniasVeracruzSeeder::class);
+
+
          $this->call(LocalidadSeeder::class);
          $this->call(LocalidadSeeder2::class);
 
