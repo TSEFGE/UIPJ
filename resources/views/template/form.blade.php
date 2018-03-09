@@ -32,6 +32,15 @@
     <script src="{{ asset('plugins/select2/select2.min.js')}}" ></script>
     <script src="{{ asset('js/scripts.js') }}"></script>
     <script src="{{ asset('js/selects.js') }}"></script>
+    <script src="{{ asset('js/sisyphus.js')}}" ></script>
+    <script>
+        $(document).ready(function(){
+            $('form').sisyphus({
+                customKeyPrefix:'10000',
+            });
+        });
+       
+    </script>
     {{--<script src="{{ asset('js/selectsChoosen.js') }}"></script>--}}
     @stack('PilaScripts')
 @endsection
