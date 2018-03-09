@@ -373,10 +373,15 @@ class DenuncianteController extends Controller
     }
      public function rfcMoral(Request $request)
     {
+        $nombre= $request->nombre;
+        $dia= $request->dia;
+        $mes= $request->mes;
+        $ano= $request->ano;
+        
         $builder = new RfcBuilder();
         
-         $rfc = $builder->legalName('AUTOS PULLMAN, S.A. DE C.V.')
-         ->creationDate(30, 9, 1964)
+         $rfc = $builder->legalName($nombre)
+         ->creationDate($dia, $mes, $ano)
          ->build()
          ->toString();
    
