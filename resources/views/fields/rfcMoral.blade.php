@@ -3,6 +3,10 @@
   obtenerRFC();
 });
 
+$("#fechaAltaEmpresa").focusout(function() {
+  obtenerRFC();
+});
+
 $.ajaxSetup({
   headers: {
     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -10,33 +14,36 @@ $.ajaxSetup({
 });
 
 function obtenerRFC(){
+
 console.log('entra ajax');
-nombreInput = $("#nombres2").val().toUpperCase();
+
+nombre = $("#nombres2").val().toUpperCase();
+fecha = $("#fechaAltaEmpresa").val();
+	
+
+console.log(fecha);
+
+  dia = fecha.substr(8, 2);
+  mes = fecha.substr(5, 2);
+  ano = fecha.substr(2, 2);
 
 ruta="{{route('rfc.denunciante')}}";
 $.ajax({
       type: "POST",
       url:ruta,
-      data: {nombreInput},
+      data: {nombre,dia,mes,ano},
       dataType:"json",
      success: function(data){
+     	$("#rfc2").val(data.res);
          console.log(data);
    },error:function(data){
-    console.log(data);
+   // console.log(data);
    }
  });
-/*
-$.get("funcion.php",{ "nombre" :  ""+nombreInput+"" },function(data){
 
-             alert(data);
-
-
-});*/
-}
+ 
+	
+} 
 
 
-
-
-  
-  
 </script>
