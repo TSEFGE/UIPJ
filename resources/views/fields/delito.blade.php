@@ -11,19 +11,22 @@
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('fecha', 'Fecha', ['class' => 'col-form-label-sm']) !!}
-			<div class="input-group date" id="fechadelit" data-target-input="nearest">
-				{!! Form::text('fecha', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechadelit', 'required', 'placeholder' => 'DD/MM/AAAA']) !!}
-				<span class="input-group-addon" data-target="#fechadelit" data-toggle="datetimepicker">
-					<i class="fa fa-calendar" aria-hidden="true"></i>
-				</span>
-			</div>
-		</div>
+            <div class="input-group date" id="fechadelit" data-target-input="nearest">
+                {!! Form::text('fecha', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechadelit', 'data-toggle' => 'datetimepicker', 'required', 'placeholder' => 'DD/MM/AAAA']) !!}
+                <div class="input-group-append" data-target="#fechadelit" data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                </div>
+            </div>
+        </div>
 	</div>
 	<div class="col-4">
 		<div class="form-group" id="" >
 			{!! Form::label('hora', 'Hora', ['class' => 'col-form-label-sm']) !!}
 			<div class="input-group date" id="horadelit" data-target-input="nearest">
 				{!! Form::text('hora', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#horadelit', 'required', 'placeholder' => '00:00','data-toggle'=>"datetimepicker"]) !!}
+                <div class="input-group-append" data-target="#horadelit" data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="fa fa-clock-o"></i></div>
+                </div>
 			</div>
 		</div>
 	</div>
