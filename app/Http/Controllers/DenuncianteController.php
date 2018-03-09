@@ -22,6 +22,7 @@ use App\Models\VariablesPersona;
 use App\Models\ExtraDenunciante;
 use App\Models\Notificacion;
 use App\Models\Domicilio;
+use RFC\RfcBuilder;
 
 class DenuncianteController extends Controller
 {
@@ -369,5 +370,16 @@ class DenuncianteController extends Controller
     public function destroy($id)
     {
         //
+    }
+     public function rfcMoral(Request $request)
+    {
+        $builder = new RfcBuilder();
+        
+         $rfc = $builder->legalName('AUTOS PULLMAN, S.A. DE C.V.')
+         ->creationDate(30, 9, 1964)
+         ->build()
+         ->toString();
+   
+        return ['res'=>$rfc];
     }
 }

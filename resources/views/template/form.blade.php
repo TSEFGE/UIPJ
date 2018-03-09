@@ -33,4 +33,5 @@
     <script src="{{ asset('js/scripts.js') }}"></script>
     <script src="{{ asset('js/selects.js') }}"></script>
     {{--<script src="{{ asset('js/selectsChoosen.js') }}"></script>--}}
+    @stack('scripts')
 @endsection

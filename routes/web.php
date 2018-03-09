@@ -28,6 +28,8 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('agregar-denunciante/{idCarpeta}', 'DenuncianteController@showForm')->name('new.denunciante');
 	Route::post('storedenunciante', 'DenuncianteController@storeDenunciante')->name('store.denunciante');
 
+	Route::post('armarRfc', 'DenuncianteController@rfcMoral')->name('rfc.denunciante');
+
 	Route::get('agregar-denunciado/{idCarpeta}', 'DenunciadoController@showForm')->name('new.denunciado');
 	Route::post('storedenunciado', 'DenunciadoController@storeDenunciado')->name('store.denunciado');
 

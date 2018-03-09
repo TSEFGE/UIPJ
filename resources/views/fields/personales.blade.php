@@ -156,7 +156,7 @@
 			</div>
 		</div>
 	</div>
-
+                               <!--      DATOS DE PERSONA MORAL       -->
 	<div class="col-12" id="personaMoral">
 		<div class="row">
 			<div class="col-4">
@@ -165,21 +165,36 @@
 					{!! Form::text('nombres2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre']) !!}
 				</div>
 			</div>
-			<div class="col-4">
-				<div class="form-group">
-					{!! Form::label('rfc2', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('rfc2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.']) !!}
-				</div>
-			</div>
+	<div class="col-3">
+		<div class="form-group">
+			{!! Form::label('fechaAltaEmpresa', 'Fecha de alta de empresa', ['class' => 'col-form-label-sm']) !!}
+			<div class="input-group date" id="fechaAlta" data-target-input="nearest">
+                {!! Form::text('fechaAltaEmpresa', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaAlta', 'required', 'placeholder' => 'DD/MM/AAAA']) !!}
+                <span class="input-group-addon" data-target="#fechaAlta" data-toggle="datetimepicker">
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                </span>
+            </div>
+		</div>
+	</div>
 			<div class="col-4">
 				<div class="form-group">
 					{!! Form::label('representanteLegal', 'Representante legal', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::text('representanteLegal', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre del representante legal']) !!}
 				</div>
+				<div class="form-group">
+					{!! Form::label('rfc2', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::text('rfc2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.']) !!}
+				</div>
+
 			</div>
 		</div>
-	</div>
-</div>
+	</div> 
+</div> 
+
+@push('scripts')
+<script src="{{ asset('js./rfcMoral.js')}}"></script>
+@include('fields.rfcMoral');
+@endpush
 
 {{--<div id="accordion" role="tablist">
 	<div class="card">

@@ -526,6 +526,9 @@ $(document).ready(function(){
            defaultDate: moment()
        });
     });
+
+
+
     $(function () {
         $('#horaInter').datetimepicker({
            format: 'LT',
@@ -542,6 +545,13 @@ $(document).ready(function(){
         $('#fechadet').datetimepicker({
             format: 'YYYY-MM-DD',
             defaultDate: moment()
+        });
+    });
+   $(function () {
+        $('#fechaAlta').datetimepicker({
+            format: 'YYYY-MM-DD',
+            minDate: moment().subtract(150, 'years').format('YYYY-MM-DD'),
+            maxDate: moment().subtract(18, 'years').format('YYYY-MM-DD')
         });
     });
 
