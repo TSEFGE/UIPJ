@@ -38,7 +38,7 @@
 	<script src="{{asset ('js/sweetalert.min.js')}}"></script>
 	<script src="{{asset ('js/garlic.min.js')}}"></script>
 	<script src="{{ asset('plugins/select2/select2.min.js')}}" ></script>
-    <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support -->
+	<!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
 	<script type="text/javascript">
 		$("input:text").keyup(function() {
@@ -49,8 +49,7 @@
 	    });
         $(document).ready(function() {
 			$('select').select2();
-			$( 'form' ).garlic();
-        });
+	    });
 	</script>
 	
 	@yield('scripts')

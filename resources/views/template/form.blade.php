@@ -2,7 +2,6 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/tempusdominus-bootstrap-4.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('plugins/chosen/chosen.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('plugins/select2/select2.css') }}">
 @endsection
 
@@ -28,10 +27,18 @@
     <script src="{{ asset('js/moment.js') }}"></script>
     <script src="{{ asset('js/es.js') }}"></script>
     <script src="{{ asset('js/tempusdominus-bootstrap-4.js') }}"></script>
-    <script src="{{ asset('plugins/chosen/chosen.jquery.js')}}" ></script>
     <script src="{{ asset('plugins/select2/select2.min.js')}}" ></script>
     <script src="{{ asset('js/scripts.js') }}"></script>
     <script src="{{ asset('js/selects.js') }}"></script>
+    <script src="{{ asset('js/sisyphus.js')}}" ></script>
+    <script>
+        $(document).ready(function(){
+            $('form').sisyphus({
+                customKeyPrefix:'10000',
+            });
+        });
+       
+    </script>
     {{--<script src="{{ asset('js/selectsChoosen.js') }}"></script>--}}
     @stack('PilaScripts')
 @endsection
