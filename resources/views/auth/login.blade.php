@@ -8,7 +8,7 @@
                 <div class="card-header">Iniciar sesión</div>
 
                 <div class="card-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+                    <form class="form-horizontal" method="POST" action="{{ route('login') }}" data-destroy="false">
                         {{ csrf_field() }}
 
                         <div class="form-group row{{ $errors->has('email') ? ' has-error' : '' }}">
