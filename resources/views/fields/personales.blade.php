@@ -31,10 +31,10 @@
 				<div class="form-group">
 					{!! Form::label('fechaNacimiento', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
 					<div class="input-group date" id="fechanac2" data-target-input="nearest">
-		                {!! Form::text('fechaNacimiento', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac2', 'placeholder' => 'DD/MM/AAAA', 'required']) !!}
-		                <span class="input-group-addon" data-target="#fechanac2" data-toggle="datetimepicker">
-		                    <i class="fa fa-calendar" aria-hidden="true"></i>
-		                </span>
+		                {!! Form::text('fechaNacimiento', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac2', 'data-toggle' => 'datetimepicker', 'required', 'placeholder' => 'DD/MM/AAAA']) !!}
+		                <div class="input-group-append" data-target="#fechanac2" data-toggle="datetimepicker">
+		                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+		                </div>
 		            </div>
 				</div>
 			</div>
@@ -49,10 +49,10 @@
 				<div class="form-group">
 					{!! Form::label('fechaNacimiento', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
 					<div class="input-group date" id="fechanac" data-target-input="nearest">
-		                {!! Form::text('fechaNacimiento', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac', 'placeholder' => 'DD/MM/AAAA', 'required']) !!}
-		                <span class="input-group-addon" data-target="#fechanac" data-toggle="datetimepicker">
-		                    <i class="fa fa-calendar" aria-hidden="true"></i>
-		                </span>
+		                {!! Form::text('fechaNacimiento', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac', 'data-toggle' => 'datetimepicker', 'required', 'placeholder' => 'DD/MM/AAAA']) !!}
+		                <div class="input-group-append" data-target="#fechanac" data-toggle="datetimepicker">
+		                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+		                </div>
 		            </div>
 				</div>
 			</div>
@@ -159,33 +159,33 @@
                                <!--      DATOS DE PERSONA MORAL       -->
 	<div class="col-12" id="personaMoral">
 		<div class="row">
-			<div class="col-4">
+			<div class="col-6">
 				<div class="form-group">
 					{!! Form::label('nombres2', 'Nombre', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::text('nombres2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre']) !!}
 				</div>
 			</div>
-	<div class="col-3">
-		<div class="form-group">
-			{!! Form::label('fechaAltaEmpresa', 'Fecha de alta de empresa', ['class' => 'col-form-label-sm']) !!}
-			<div class="input-group date" id="fechaAlta" data-target-input="nearest">
-                {!! Form::text('fechaAltaEmpresa', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaAlta', 'required', 'placeholder' => 'DD/MM/AAAA']) !!}
-                <span class="input-group-addon" data-target="#fechaAlta" data-toggle="datetimepicker">
-                    <i class="fa fa-calendar" aria-hidden="true"></i>
-                </span>
-            </div>
-		</div>
-	</div>
-			<div class="col-4">
+			<div class="col-6">
+				<div class="form-group">
+					{!! Form::label('fechaAltaEmpresa', 'Fecha de alta de empresa', ['class' => 'col-form-label-sm']) !!}<div class="input-group date" id="fechaAlta" data-target-input="nearest">
+		                {!! Form::text('fechaAltaEmpresa', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaAlta', 'data-toggle' => 'datetimepicker', 'required', 'placeholder' => 'DD/MM/AAAA']) !!}
+		                <div class="input-group-append" data-target="#fechaAlta" data-toggle="datetimepicker">
+		                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+		                </div>
+		            </div>
+				</div>
+			</div>
+			<div class="col-6">
 				<div class="form-group">
 					{!! Form::label('representanteLegal', 'Representante legal', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::text('representanteLegal', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre del representante legal']) !!}
 				</div>
+			</div>
+			<div class="col-6">
 				<div class="form-group">
 					{!! Form::label('rfc2', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::text('rfc2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.']) !!}
 				</div>
-
 			</div>
 		</div>
 	</div>

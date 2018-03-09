@@ -1,7 +1,7 @@
 @extends('template.main')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/tempusdominus-bootstrap-4.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/tempusdominus-bootstrap-4.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('plugins/chosen/chosen.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('plugins/select2/select2.css') }}">
 @endsection
@@ -25,9 +25,9 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
-    <script src="{{ asset('js/moment.js') }}"></script>
+    <script src="{{ asset('js/moment.min.js') }}"></script>
     <script src="{{ asset('js/es.js') }}"></script>
-    <script src="{{ asset('js/tempusdominus-bootstrap-4.js') }}"></script>
+    <script src="{{ asset('js/tempusdominus-bootstrap-4.min.js') }}"></script>
     <script src="{{ asset('plugins/chosen/chosen.jquery.js')}}" ></script>
     <script src="{{ asset('plugins/select2/select2.min.js')}}" ></script>
     <script src="{{ asset('js/scripts.js') }}"></script>
