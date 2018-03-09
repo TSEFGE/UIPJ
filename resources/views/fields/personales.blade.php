@@ -188,13 +188,12 @@
 
 			</div>
 		</div>
-	</div> 
-</div> 
-
-@push('scripts')
-<script src="{{ asset('js./rfcMoral.js')}}"></script>
-@include('fields.rfcMoral');
-@endpush
+	</div>
+</div>
+			@push('PilaScripts')
+			  <script src="{{ asset('js/rfcFisico.js') }}"></script>
+				@include('fields.rfcMoral');
+			@endpush
 
 {{--<div id="accordion" role="tablist">
 	<div class="card">

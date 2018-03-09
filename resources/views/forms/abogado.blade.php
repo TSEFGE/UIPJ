@@ -62,3 +62,6 @@
 		@include('tables.abogados')
 	</div>
 @endsection
+@push('PilaScripts')
+	<script src="{{ asset('js/rfcFisico.js') }}"></script>
+@endpush

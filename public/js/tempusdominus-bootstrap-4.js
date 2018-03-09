@@ -130,8 +130,8 @@ var DateTimePicker = function ($) {
             showClose: false
         },
         widgetPositioning: {
-            horizontal: 'auto',
-            vertical: 'auto'
+            horizontal: 'left',
+            vertical: 'bottom'
         },
         widgetParent: null,
         ignoreReadonly: false,
