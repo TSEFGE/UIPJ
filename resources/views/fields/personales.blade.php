@@ -143,7 +143,7 @@
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('idEscolaridad', 'Escolaridad', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('idEscolaridad', $escolaridades, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la escoalridad']) !!}
+					{!! Form::select('idEscolaridad', $escolaridades, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la escolaridad']) !!}
 				</div>
 			</div>
 			<div class="col-3">
@@ -166,7 +166,10 @@
 			<div class="col-6">
 				<div class="form-group">
 					{!! Form::label('nombres2', 'Nombre', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('nombres2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre']) !!}
+					{!! Form::text('nombres2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre', 'required']) !!}
+					<div class="invalid-feedback" id="invalid-nombres2">
+						Este campo debe de contener más de 3 caracteres y menos de 200.
+					</div>
 				</div>
 			</div>
 			<div class="col-6">
@@ -181,14 +184,14 @@
 			</div>
 			<div class="col-6">
 				<div class="form-group">
-					{!! Form::label('representanteLegal', 'Representante legal', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('representanteLegal', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre del representante legal']) !!}
+					{!! Form::label('rfc2', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::text('rfc2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.']) !!}
 				</div>
 			</div>
 			<div class="col-6">
 				<div class="form-group">
-					{!! Form::label('rfc2', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('rfc2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.']) !!}
+					{!! Form::label('representanteLegal', 'Representante legal', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::text('representanteLegal', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre del representante legal']) !!}
 				</div>
 			</div>
 		</div>
