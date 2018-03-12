@@ -1,14 +1,18 @@
 $("#nombres").focusout(function() {
-  obtenerRFC();
+  console.log('RFC');
+  obtenerRFCFISICA();
 });
 $("#primerAp").focusout(function() {
-  obtenerRFC();
+    console.log('RFC');
+  obtenerRFCFISICA();
 });
 $("#segundoAp").focusout(function() {
-  obtenerRFC();
+    console.log('RFC');
+  obtenerRFCFISICA();
 });
 $("#fechaNacimiento").focusout(function() {
-  obtenerRFC();
+    console.log('RFC');
+  obtenerRFCFISICA();
 });
 
 function quitaArticulos(palabra, tipo) {
@@ -26,10 +30,11 @@ function esVocal(letra) {
     return false;
 }
 
-function obtenerRFC() {
+function obtenerRFCFISICA() {
+    console.log("I N I C I A  R F C ");
   var rfc = "";
   nombre = $("#nombres").val().toUpperCase();
-  console.log(nombre);
+  console.log("nombre:"+nombre);
   apellidoPaterno = $("#primerAp").val().toUpperCase();
   apellidoMaterno = $("#segundoAp").val().toUpperCase();
   fecha = $("#fechaNacimiento").val();
