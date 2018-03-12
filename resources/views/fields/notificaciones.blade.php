@@ -15,7 +15,7 @@
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('fax', 'Fax', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('fax', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el fax', 'required']) !!}
+			{!! Form::text('fax', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el fax']) !!}
 		</div>
 	</div>
 </div>

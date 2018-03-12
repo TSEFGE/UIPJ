@@ -58,6 +58,18 @@
 			{!! Form::select('idEstadoOrigen', $estados, '30', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa', 'required']) !!}
 		</div>
 	</div>
+<<<<<<< HEAD
+		<div class="col-3">
+			<div class="form-group">
+				{!! Form::label('curp', 'C.U.R.P.', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::text('curp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el C.U.R.P.', 'required']) !!}
+				<div id="validarRFCFisico" class="invalid-feedback">
+						El campo CURP debe contener al menos 17 caracteres.
+				</div>
+			</div>
+		</div>
+=======
+>>>>>>> ebde188bd4e12900180f20f81f2fdf9f6f4863cf
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('curp', 'C.U.R.P.', ['class' => 'col-form-label-sm']) !!}
@@ -122,17 +134,24 @@
 		</div>
 	</div>
 	<div class="col-3">
-		<div class="form-group">
-			{!! Form::label('docIdentificacion', 'Documento de identificación', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('docIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el docto. de identificacion', 'required']) !!}
-		</div>
-	</div>
-	<div class="col-3">
-		<div class="form-group">
-			{!! Form::label('numDocIdentificacion', 'Núm. de documento de identificación', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('numDocIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el núm. del docto. de identificación', 'required']) !!}
-		</div>
-	</div>
+				<div class="form-group">
+					{!! Form::label('docIdentificacion', 'Documento de identificación', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::text('docIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el docto. de identificacion']) !!}
+				</div>
+				<div id="documento" class="invalid-feedback">
+					Dato obligatorio.
+				</div>
+			</div>
+			<div class="col-3">
+				<div class="form-group">
+					{!! Form::label('numDocIdentificacion', 'Núm. de documento de identificación', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::text('numDocIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el núm. del docto. de identificación']) !!}
+				</div>
+				<div id="numDocumento" class="invalid-feedback">
+					Dato obligatorio.
+				</div>
+				
+			</div>
 </div>
 
 {{--<div id="accordion" role="tablist">

@@ -87,6 +87,9 @@
 				<div class="form-group">
 					{!! Form::label('narracionIph', 'Narración IPH', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::textarea('narracionIph', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la narración del IPH','rows' => '3', 'required']) !!}
+					<div id="ValidarNarracionIph" class="invalid-feedback">
+							El campo debe contener entre 5 y 2000 caracteres.
+					</div>
 				</div>
 			</div>
 		</div>
@@ -95,6 +98,9 @@
 		<div class="form-group">
 			{!! Form::label('descripcionHechos', 'Descripción de los hechos', ['class' => 'col-form-label-sm']) !!}
 			{!! Form::textarea('descripcionHechos', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la descripción de los hechos','rows' => '3', 'required']) !!}
+			<div id="ValidarNarracionHechos" class="invalid-feedback">
+					El campo debe contener entre 5 y 2000 caracteres.
+			</div>
 		</div>
 	</div>
 	{{--

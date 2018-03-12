@@ -101,15 +101,31 @@
 @push('PilaScripts')
 	<script type="text/javascript">
 		$(function() {
-			 maxVal = 18;
-			 $('#curp').focusout(function(){
-					var insertedVal = $(this).val();
-					if (insertedVal.length < maxVal){
+			 required = true;
+			 $('#docIdentificacion').focusout(function(){
+					var docVal = $(this).val();
+					if (docVal.length == 0){
 							$(this).css({"border-color":"red"});
-								$(".invalid-feedback").show();
+								$("#documento").show();
 					}else{
 							$(this).css({"border-color":"green"});
-							$(".invalid-feedback").hide();
+							$("#documento").hide();
+					}
+			 })
+		});
+
+
+
+		$(function() {
+			 required = true;
+			 $('#numDocIdentificacion').focusout(function(){
+					var numVal = $(this).val();
+					if (numVal.length == 0){
+							$(this).css({"border-color":"red"});
+								$("#numDocumento").show();
+					}else{
+							$(this).css({"border-color":"green"});
+							$("#numDocumento").hide();
 					}
 			 })
 		});
