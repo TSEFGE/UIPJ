@@ -22,7 +22,6 @@ use App\Models\VariablesPersona;
 use App\Models\ExtraDenunciante;
 use App\Models\Notificacion;
 use App\Models\Domicilio;
-use RFC\RfcBuilder;
 
 class DenuncianteController extends Controller
 {
@@ -370,21 +369,5 @@ class DenuncianteController extends Controller
     public function destroy($id)
     {
         //
-    }
-     public function rfcMoral(Request $request)
-    {
-        $nombre= $request->nombre;
-        $dia= $request->dia;
-        $mes= $request->mes;
-        $ano= $request->ano;
-        
-        $builder = new RfcBuilder();
-        
-         $rfc = $builder->legalName($nombre)
-         ->creationDate($dia, $mes, $ano)
-         ->build()
-         ->toString();
-   
-        return ['res'=>$rfc];
     }
 }

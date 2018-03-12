@@ -40,6 +40,8 @@
                         </tbody>
                     </table>
                 </div>
+
+
                 <div class="text-center">
                     {{ $carpetas->links() }}
                 </div>
