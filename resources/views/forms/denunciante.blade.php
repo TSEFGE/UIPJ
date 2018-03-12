@@ -98,3 +98,20 @@
 		@include('tables.denunciantes')
 	</div>
 @endsection
+@push('PilaScripts')
+	<script type="text/javascript">
+		$(function() {
+			 maxVal = 18;
+			 $('#curp').focusout(function(){
+					var insertedVal = $(this).val();
+					if (insertedVal.length < maxVal){
+							$(this).css({"border-color":"red"});
+								$(".invalid-feedback").show();
+					}else{
+							$(this).css({"border-color":"green"});
+							$(".invalid-feedback").hide();
+					}
+			 })
+		});
+	</script>
+@endpush

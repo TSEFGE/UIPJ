@@ -80,6 +80,9 @@
 				<div class="form-group">
 					{!! Form::label('curp', 'C.U.R.P.', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::text('curp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el C.U.R.P.']) !!}
+					<div class="invalid-feedback">
+							CURP debe contener 18 caracteres.
+					</div>
 				</div>
 			</div>
 			<div class="col-3">
