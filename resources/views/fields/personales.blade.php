@@ -21,11 +21,10 @@
 			</div>
 			<div class="col-3">
 				<div class="form-group">
-					{!! Form::label('rfc', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('rfc', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.', 'required']) !!}
+					{!! Form::label('sexo', 'Sexo', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('sexo', ['SIN INFORMACION' => 'SIN INFORMACION', 'HOMBRE' => 'HOMBRE', 'MUJER' => 'MUJER'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el sexo']) !!}
 				</div>
 			</div>
-
 			@isset($puestos)
 		    <div class="col-3">
 				<div class="form-group">
@@ -45,7 +44,7 @@
 				</div>
 			</div>
 			@else
-		    <div class="col-3">
+		    <div class="col-2">
 				<div class="form-group">
 					{!! Form::label('fechaNacimiento', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
 					<div class="input-group date" id="fechanac" data-target-input="nearest">
@@ -64,10 +63,17 @@
 			</div>
 			@endisset
 
-			<div class="col-2">
+
+			<div class="col-3">
 				<div class="form-group">
-					{!! Form::label('sexo', 'Sexo', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('sexo', ['SIN INFORMACION' => 'SIN INFORMACION', 'HOMBRE' => 'HOMBRE', 'MUJER' => 'MUJER'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el sexo']) !!}
+					{!! Form::label('idNacionalidad', 'Nacionalidad', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('idNacionalidad', $nacionalidades, '1', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la nacionalidad']) !!}
+				</div>
+			</div>
+			<div class="col-3">
+				<div class="form-group">
+					{!! Form::label('idEstadoOrigen', 'Entidad federativa de origen', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('idEstadoOrigen', $estados, '30', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa']) !!}
 				</div>
 			</div>
 			<div class="col-3">
@@ -78,8 +84,8 @@
 			</div>
 			<div class="col-3">
 				<div class="form-group">
-					{!! Form::label('idNacionalidad', 'Nacionalidad', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('idNacionalidad', $nacionalidades, '1', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la nacionalidad']) !!}
+					{!! Form::label('rfc', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::text('rfc', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.', 'required']) !!}
 				</div>
 			</div>
 			<div class="col-3">
@@ -94,12 +100,7 @@
 					{!! Form::select('idLengua', $lenguas, '70', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la lengua']) !!}
 				</div>
 			</div>
-			<div class="col-3">
-				<div class="form-group">
-					{!! Form::label('idEstadoOrigen', 'Entidad federativa de origen', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('idEstadoOrigen', $estados, '30', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa']) !!}
-				</div>
-			</div>
+
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('idMunicipioOrigen', 'Municipio de origen', ['class' => 'col-form-label-sm']) !!}
@@ -192,6 +193,7 @@
 </div>
 			@push('PilaScripts')
 			  <script src="{{ asset('js/rfcFisico.js') }}"></script>
+
 				@include('fields.rfcMoral');
 			@endpush
 

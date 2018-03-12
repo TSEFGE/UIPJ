@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    $("#motivoEstancia").val("SIN INFORMACION");
     //Para el inicio de carpeta
     $("#conDetenido").prop("checked", false);
     $('#conDet1').css('display', 'none');
