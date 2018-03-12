@@ -15,7 +15,7 @@ class LocalidadesOaxacaSeeder extends Seeder
 
          DB::table('cat_localidad')->insert([
 
-         	['idMunicipio'=>1004, 'nombre' => 'ABEJONES'],
+['idMunicipio'=>1004, 'nombre' => 'ABEJONES'],
 ['idMunicipio'=>1004, 'nombre' => 'COLONIA LINDA VISTA (TIERRA BLANCA)'],
 ['idMunicipio'=>1005, 'nombre' => 'ACATLAN DE PEREZ FIGUEROA'],
 ['idMunicipio'=>1005, 'nombre' => 'AGUA ESCONDIDA (JOYA HONDA)'],
