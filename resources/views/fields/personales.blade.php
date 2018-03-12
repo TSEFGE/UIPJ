@@ -80,8 +80,8 @@
 				<div class="form-group">
 					{!! Form::label('curp', 'C.U.R.P.', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::text('curp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el C.U.R.P.']) !!}
-					<div class="invalid-feedback">
-							CURP debe contener 18 caracteres.
+					<div id="validarRFCFisico" class="invalid-feedback">
+							El campo CURP debe contener al menos 17 caracteres.
 					</div>
 				</div>
 			</div>
@@ -119,7 +119,7 @@
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('motivoEstancia', 'Motivo de estancia', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('motivoEstancia', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el motivo de estancia']) !!}
+					{!! Form::text('motivoEstancia', "SIN INFORMACION", ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el motivo de estancia']) !!}
 				</div>
 			</div>
 			<div class="col-3">
