@@ -32,7 +32,7 @@
     <script>
         $(document).ready(function(){
             $('form').sisyphus({
-                customKeyPrefix:'10000',
+                excludeFields:[$('input[name="esEmpresa"]')],
             });
         });
        
