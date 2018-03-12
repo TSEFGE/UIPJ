@@ -15,11 +15,11 @@
 		<div class="form-group">
 			{!! Form::label('fechaInicio', 'Fecha de inicio de carpeta', ['class' => 'col-form-label-sm']) !!}
 			<div class="input-group date calendarioCompleto" id="fechaInicial" data-target-input="nearest">
-				{!! Form::text('fechaInicio', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaInicial', 'readonly', 'required', 'placeholder' => 'DD/MM/AAAA']) !!}
-				<span class="input-group-addon" data-target="#fechaInicial" data-toggle="datetimepicker">
-					<i class="fa fa-calendar" aria-hidden="true"></i>
-				</span>
-			</div>
+                {!! Form::text('fechaInicio', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaInicial', 'data-toggle' => 'datetimepicker', 'required', 'readonly', 'placeholder' => 'DD/MM/AAAA']) !!}
+                <div class="input-group-append" data-target="#fechaInicial" data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                </div>
+            </div>
 		</div>
 	</div>
 	<div class="col-3">
@@ -49,38 +49,38 @@
 	</div>
 	<div class="col-12" id="conDet1">
 		<div class="row">
-			<div class="col-4">
+			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('horaIntervencion', 'Hora de intervención', ['class' => 'col-form-label-sm']) !!}
 					<div class="input-group date" id="horaInter" data-target-input="nearest">
-						{!! Form::text('horaIntervencion', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#horaInter', 'placeholder' => '00:00', 'required']) !!}
-						<span class="input-group-addon" data-target="#horaInter" data-toggle="datetimepicker">
-							<i class="fa fa-clock-o" aria-hidden="true"></i>
-						</span>
+						{!! Form::text('horaIntervencion', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#horaInter', 'required', 'placeholder' => '00:00','data-toggle'=>"datetimepicker"]) !!}
+		                <div class="input-group-append" data-target="#horaInter" data-toggle="datetimepicker">
+		                    <div class="input-group-text"><i class="fa fa-clock-o"></i></div>
+		                </div>
 					</div>
 				</div>
 			</div>
-			<div class="col-4">
+			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('npd', 'Número de puesta a disposición', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::text('npd', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número del puesta a disposición', 'required']) !!}
 				</div>
 			</div>
-			<div class="col-2">
+			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('numIph', 'Número IPH', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::text('numIph', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número del IPH', 'required']) !!}
 				</div>
 			</div>
-			<div class="col-2">
+			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('fechaIph', 'Fecha IPH', ['class' => 'col-form-label-sm']) !!}
 					<div class="input-group date" id="fechaiph2" data-target-input="nearest">
-						{!! Form::text('fechaIph', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaiph2', 'placeholder' => 'DD/MM/AAAA', 'required']) !!}
-						<span class="input-group-addon" data-target="#fechaiph2" data-toggle="datetimepicker">
-							<i class="fa fa-calendar" aria-hidden="true"></i>
-						</span>
-					</div>
+		                {!! Form::text('fechaIph', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaiph2', 'data-toggle' => 'datetimepicker', 'required', 'placeholder' => 'DD/MM/AAAA']) !!}
+		                <div class="input-group-append" data-target="#fechaiph2" data-toggle="datetimepicker">
+		                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+		                </div>
+		            </div>
 				</div>
 			</div>
 			<div class="col-12">

@@ -8,7 +8,7 @@
                 <div class="card-header">Registrarse</div>
 
                 <div class="card-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
+                    <form  class="form-horizontal" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group row{{ $errors->has('idUnidad') ? ' has-error' : '' }}">
