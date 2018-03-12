@@ -1,4 +1,4 @@
-<div class="row">	
+<div class="row">
 	<div id="extra-fis">
 		<div class="col-12">
 			<div class="row">
@@ -65,7 +65,7 @@
 			</div>
 		</div>
 		</div>
-	</div>	
+	</div>
 	<div class="col-12">
 		<div class="form-group">
 			{!! Form::label('senasPartic', 'Señas particulares', ['class' => 'col-form-label-sm']) !!}
@@ -76,6 +76,9 @@
 		<div class="form-group">
 			{!! Form::label('narracion', 'Narración', ['class' => 'col-form-label-sm']) !!}
 			{!! Form::textarea('narracion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la narración de los hechos', 'rows' => '5', 'required']) !!}
+			<div id="ValidarNarracion" class="invalid-feedback">
+				El campo debe contener entre 5 y 2000 caracteres.
+			</div>
 		</div>
-	</div>	
+	</div>
 </div>

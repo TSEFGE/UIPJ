@@ -39,7 +39,57 @@
             $("#numInternoC").val("S/N");
             $("#fax").val("SIN INFORMACION");
         });
-       
+        		$(function() {
+        			 maxVal = 17;
+        			 $('#curp').focusout(function(){
+        					var insertedVal = $(this).val();
+        					if (insertedVal.length < maxVal){
+        							$(this).css({"border-color":"red"});
+        								$("#validarRFCFisico").show();
+        					}else{
+        							$(this).css({"border-color":"green"});
+        							$("#validarRFCFisico").hide();
+        					}
+        			 });
+               $('#narracion').focusout(function(){
+                 narraMax=5;
+                 var narraVal = $(this).val();
+                 if (narraVal.length < narraMax){
+                     $(this).css({"border-color":"red"});
+                       $("#ValidarNarracion").show();
+                 }else{
+                     $(this).css({"border-color":"green"});
+                     $("#ValidarNarracion").hide();
+                 }
+              });
+              des=false;
+              $('#narracionIph').focusout(function(){
+                narraMax=5;
+                var narraVal = $(this).val();
+                if (narraVal.length < narraMax){
+                    $(this).css({"border-color":"red"});
+                      $("#ValidarNarracionIph").show();
+                }else{
+                    $(this).css({"border-color":"green"});
+                    $("#ValidarNarracionIph").hide();
+                }
+             });
+             $('#descripcionHechos').focusout(function(){
+               narraMax=5;
+               var narraVal = $(this).val();
+               if (narraVal.length < narraMax){
+                 true
+                   $(this).css({"border-color":"red"});
+                     $("#ValidarNarracionHechos").show();
+               }else{
+                   $(this).css({"border-color":"green"});
+                   $("#ValidarNarracionHechos").hide();
+               }
+            });
+           });
+
+
+
     </script>
     {{--<script src="{{ asset('js/selectsChoosen.js') }}"></script>--}}
     @stack('PilaScripts')
