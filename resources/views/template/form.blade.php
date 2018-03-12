@@ -32,12 +32,12 @@
     <script>
         $(document).ready(function(){
             $('form').sisyphus({
-                excludeFields:[$('input[name="esEmpresa"]')],
             });
             $("#numInterno").val("S/N");
             $("#numInterno2").val("S/N");
             $("#numInterno3").val("S/N");
             $("#numInternoC").val("S/N");
+            $("#fax").val("SIN INFORMACION");
         });
        
     </script>
