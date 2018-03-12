@@ -6196,7 +6196,10 @@ class ColoniasHidalgoSeeder extends Seeder
 ['idMunicipio' => 524, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0000],
 ['idMunicipio' => 459, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0000],
 ['idMunicipio' => 473, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0000],
-['idMunicipio' => 513, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0000]
+['idMunicipio' => 513, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0000],
+['idMunicipio' => 2476, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0000]
+
+
    ]);
     }
 }

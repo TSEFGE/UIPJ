@@ -3253,7 +3253,8 @@ class ColoniasTamaulipasSeeder extends Seeder
   ['idMunicipio' => 1995, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0000],
   ['idMunicipio' => 2005, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0000],
   ['idMunicipio' => 1988, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0000],
-  ['idMunicipio' => 2012, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0000]
-          ]);
+  ['idMunicipio' => 2012, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0000],
+  ['idMunicipio' => 2491, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0000]
+  ]);
     }
 }
