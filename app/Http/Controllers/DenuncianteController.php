@@ -22,13 +22,14 @@ use App\Models\VariablesPersona;
 use App\Models\ExtraDenunciante;
 use App\Models\Notificacion;
 use App\Models\Domicilio;
+use RFC\RfcBuilder;
 
 class DenuncianteController extends Controller
 {
     public function showForm($idCarpeta)
     {
         $carpetaNueva = Carpeta::where('id', $idCarpeta)->where('idFiscal', Auth::user()->id)->get();
-        if(count($carpetaNueva)>0){ 
+        if(count($carpetaNueva)>0){
             $denunciantes = CarpetaController::getDenunciantes($idCarpeta);
             $escolaridades = CatEscolaridad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $estados = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
@@ -370,4 +371,20 @@ class DenuncianteController extends Controller
     {
         //
     }
+    public function rfcMoral(Request $request)
+{
+   $nombre= $request->nombre;
+   $dia= $request->dia;
+   $mes= $request->mes;
+   $ano= $request->ano;
+
+   $builder = new RfcBuilder();
+
+    $rfc = $builder->legalName($nombre)
+    ->creationDate($dia, $mes, $ano)
+    ->build()
+    ->toString();
+
+   return ['res'=>$rfc];
+}
 }

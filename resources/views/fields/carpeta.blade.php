@@ -14,7 +14,7 @@
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('fechaInicio', 'Fecha de inicio de carpeta', ['class' => 'col-form-label-sm']) !!}
-			<div class="input-group date calendarioCompleto" id="fechainicial" data-target-input="nearest">
+			<div class="input-group date calendarioCompleto" id="fechaInicial" data-target-input="nearest">
                 {!! Form::text('fechaInicio', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaInicial', 'data-toggle' => 'datetimepicker', 'required', 'readonly', 'placeholder' => 'DD/MM/AAAA']) !!}
                 <div class="input-group-append" data-target="#fechaInicial" data-toggle="datetimepicker">
                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
