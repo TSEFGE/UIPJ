@@ -33,7 +33,9 @@
     <script src="{{ asset('js/sisyphus.js')}}" ></script>
     <script>
         $(document).ready(function(){
-            $('form').sisyphus();
+            $('form').sisyphus({
+                excludeFields:[$('input[name="esEmpresa"]')],
+            });
         });
        
     </script>
