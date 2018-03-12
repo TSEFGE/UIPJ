@@ -35,9 +35,7 @@
     <script src="{{ asset('js/sisyphus.js')}}" ></script>
     <script>
         $(document).ready(function(){
-            $('form').sisyphus({
-                customKeyPrefix:'10000',
-            });
+            $('form').sisyphus();
         });
        
     </script>
