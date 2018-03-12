@@ -193,7 +193,7 @@
 </div>
 			@push('PilaScripts')
 			  <script src="{{ asset('js/rfcFisico.js') }}"></script>
-
+				<script src="{{ asset('js/curp.js') }}"></script>
 				@include('fields.rfcMoral');
 			@endpush
 
