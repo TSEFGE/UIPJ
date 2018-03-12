@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $("#motivoEstancia").val("SIN INFORMACION");
+    $("input[type=radio]").attr("checked", false);
     //Para el inicio de carpeta
     $("#conDetenido").prop("checked", false);
     $('#conDet1').css('display', 'none');
@@ -594,13 +594,14 @@ $(document).ready(function(){
     });
 
     $(function () { //Datetimepicker a la zquierda y debajo para vizualizar mejor no se oculte en la nav
-        
         $('#horadelit').datetimepicker({
-           format: 'LT',
-     widgetPositioning: {
-            vertical: 'bottom',
-            horizontal: 'left'
-        }
+            format: 'LT',
+            widgetPositioning: {
+                vertical: 'bottom',
+                horizontal: 'left'
+            }
        });
     });
+    $("#motivoEstancia").val("SIN INFORMACION");
+
 });

@@ -16,8 +16,8 @@
 	<link rel="stylesheet" href="{{asset ('css/sweetalert.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/select2/select2.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/cssfonts.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
     <link rel="stylesheet" href="{{ asset('css/pagination.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
     @yield('css')
 </head>
 
