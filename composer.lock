@@ -4,8 +4,50 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8f5a3db1416ed6a68a89a9a7e0cc97d8",
+    "content-hash": "f86af4c6bf52fa9e530f2c33625a3756",
     "packages": [
+        {
+            "name": "components/jquery",
+            "version": "3.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/components/jquery.git",
+                "reference": "459648cda77875519c5da3ae1dd0ed5d170aa649"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/components/jquery/zipball/459648cda77875519c5da3ae1dd0ed5d170aa649",
+                "reference": "459648cda77875519c5da3ae1dd0ed5d170aa649",
+                "shasum": ""
+            },
+            "type": "component",
+            "extra": {
+                "component": {
+                    "scripts": [
+                        "jquery.js"
+                    ],
+                    "files": [
+                        "jquery.min.js",
+                        "jquery.min.map",
+                        "jquery.slim.js",
+                        "jquery.slim.min.js",
+                        "jquery.slim.min.map"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "JS Foundation and other contributors"
+                }
+            ],
+            "description": "jQuery JavaScript Library",
+            "homepage": "http://jquery.com",
+            "time": "2018-03-04T13:23:48+00:00"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",
@@ -213,6 +255,48 @@
                 "parser"
             ],
             "time": "2014-09-09T13:34:57+00:00"
+        },
+        {
+            "name": "drmonty/garlicjs",
+            "version": "1.2.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mrohnstock/garlicjs.git",
+                "reference": "8d90b27dd4a12351d1a9b8774276481bfbc8f8a7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mrohnstock/garlicjs/zipball/8d90b27dd4a12351d1a9b8774276481bfbc8f8a7",
+                "reference": "8d90b27dd4a12351d1a9b8774276481bfbc8f8a7",
+                "shasum": ""
+            },
+            "require": {
+                "components/jquery": ">=1.8"
+            },
+            "type": "component",
+            "extra": {
+                "component": {
+                    "scripts": [
+                        "js/garlic.min.js"
+                    ],
+                    "files": [
+                        "js/garlic.min.js",
+                        "js/garlic-standalone.min.js"
+                    ],
+                    "shim": {
+                        "deps": [
+                            "jquery"
+                        ]
+                    }
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Automatically persist your forms' text and select field values locally, until the form is submitted.",
+            "homepage": "http://garlicjs.org/",
+            "time": "2015-06-19T05:58:22+00:00"
         },
         {
             "name": "egulias/email-validator",
