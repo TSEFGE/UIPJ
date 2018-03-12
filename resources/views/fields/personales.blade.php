@@ -19,14 +19,8 @@
 					{!! Form::text('segundoAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido']) !!}
 				</div>
 			</div>
-			<div class="col-3">
-				<div class="form-group">
-					{!! Form::label('sexo', 'Sexo', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('sexo', ['SIN INFORMACION' => 'SIN INFORMACION', 'HOMBRE' => 'HOMBRE', 'MUJER' => 'MUJER'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el sexo']) !!}
-				</div>
-			</div>
 			@isset($puestos)
-		    <div class="col-3">
+		    <div class="col-2">
 				<div class="form-group">
 					{!! Form::label('fechaNacimiento', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
 					<div class="input-group date" id="fechanac2" data-target-input="nearest">
@@ -63,6 +57,18 @@
 			</div>
 			@endisset
 
+			<div class="col-3">
+				<div class="form-group">
+					{!! Form::label('rfc', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::text('rfc', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.', 'required']) !!}
+				</div>
+			</div>
+			<div class="col-3">
+				<div class="form-group">
+					{!! Form::label('sexo', 'Sexo', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('sexo', ['SIN INFORMACION' => 'SIN INFORMACION', 'HOMBRE' => 'HOMBRE', 'MUJER' => 'MUJER'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el sexo']) !!}
+				</div>
+			</div>
 
 			<div class="col-3">
 				<div class="form-group">
@@ -83,12 +89,6 @@
 					<div class="invalid-feedback">
 							CURP debe contener 18 caracteres.
 					</div>
-				</div>
-			</div>
-			<div class="col-3">
-				<div class="form-group">
-					{!! Form::label('rfc', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('rfc', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.', 'required']) !!}
 				</div>
 			</div>
 			<div class="col-3">
