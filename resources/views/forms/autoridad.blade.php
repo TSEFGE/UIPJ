@@ -79,4 +79,37 @@
 @endsection
 @push('PilaScripts')
 	<script src="{{ asset('js/rfcFisico.js') }}"></script>
+	<script type="text/javascript">
+		
+		$(function() {
+			 required = true;
+			 $('#docIdentificacion').focusout(function(){
+					var docVal = $(this).val();
+					if (docVal.length == 0){
+							$(this).css({"border-color":"red"});
+								$("#documento").show();
+					}else{
+							$(this).css({"border-color":"green"});
+							$("#documento").hide();
+					}
+			 })
+		});
+
+
+
+		$(function() {
+			 required = true;
+			 $('#numDocIdentificacion').focusout(function(){
+					var numVal = $(this).val();
+					if (numVal.length == 0){
+							$(this).css({"border-color":"red"});
+								$("#numDocumento").show();
+					}else{
+							$(this).css({"border-color":"green"});
+							$("#numDocumento").hide();
+					}
+			 })
+		});
+	</script>
+
 @endpush

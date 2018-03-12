@@ -151,12 +151,19 @@
 					{!! Form::label('docIdentificacion', 'Documento de identificación', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::text('docIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el docto. de identificacion']) !!}
 				</div>
+				<div id="documento" class="invalid-feedback">
+					Dato obligatorio.
+				</div>
 			</div>
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('numDocIdentificacion', 'Núm. de documento de identificación', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::text('numDocIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el núm. del docto. de identificación']) !!}
 				</div>
+				<div id="numDocumento" class="invalid-feedback">
+					Dato obligatorio.
+				</div>
+				
 			</div>
 		</div>
 	</div>
