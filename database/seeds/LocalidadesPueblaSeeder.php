@@ -15,7 +15,6 @@ class LocalidadesPueblaSeeder extends Seeder
 
          DB::table('cat_localidad')->insert([
 
-
 ['idMunicipio'=>1574, 'nombre' => 'ACAJETE'],	
 ['idMunicipio'=>1574, 'nombre' => 'ACULTZINGO'],	
 ['idMunicipio'=>1574, 'nombre' => 'LA CARDENISTA (COLONIA LAZARO CARDENAS)'],	
