@@ -19,12 +19,6 @@
 	</div>
 	<div class="col-3">
 		<div class="form-group">
-			{!! Form::label('sexo', 'Sexo', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('sexo', ['SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'HOMBRE' => 'HOMBRE', 'MUJER' => 'MUJER'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el sexo', 'required']) !!}
-		</div>
-	</div>
-	<div class="col-3">
-		<div class="form-group">
 			{!! Form::label('fechaNacimiento', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
 			<div class="input-group date" id="fechanac" data-target-input="nearest">
 						{!! Form::text('fechaNacimiento', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac', 'data-toggle' => 'datetimepicker', 'required', 'placeholder' => 'DD/MM/AAAA']) !!}
@@ -36,14 +30,20 @@
 	</div>
 	<div class="col-3">
 		<div class="form-group">
-			{!! Form::label('idEstadoOrigen', 'Entidad federativa de origen', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idEstadoOrigen', $estados, '30', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa', 'required']) !!}
+			{!! Form::label('rfc', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::text('rfc', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-3">
 		<div class="form-group">
-			{!! Form::label('rfc', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('rfc', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.', 'required']) !!}
+			{!! Form::label('sexo', 'Sexo', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::select('sexo', ['SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'HOMBRE' => 'HOMBRE', 'MUJER' => 'MUJER'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el sexo', 'required']) !!}
+		</div>
+	</div>
+	<div class="col-3">
+		<div class="form-group">
+			{!! Form::label('idEstadoOrigen', 'Entidad federativa de origen', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::select('idEstadoOrigen', $estados, '30', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-3">
