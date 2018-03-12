@@ -40,10 +40,12 @@ class DatabaseSeeder extends Seeder
          $this->call(SubmarcaSeeder2::class);
 
          //$this->call(ColoniaSeeder::class);
+         $this->call(ColoniasChiapasSeeder::class);
          $this->call(ColoniasCDMXSeeder::class);
          $this->call(ColoniasHidalgoSeeder::class);
          $this->call(ColoniasOaxacaSeeder::class);
          $this->call(ColoniasPueblaSeeder::class);
+         $this->call(ColoniasSanLuisPotosiSeeder::class);
          $this->call(ColoniasTabascoSeeder::class);
          $this->call(ColoniasTamaulipasSeeder::class);
          $this->call(ColoniasVeracruzSeeder::class);
@@ -51,7 +53,16 @@ class DatabaseSeeder extends Seeder
 
          //$this->call(LocalidadSeeder::class);
          //$this->call(LocalidadSeeder2::class);
+         $this->call(LocalidadesChiapasSeeder::class);
+         $this->call(LocalidadesCDMXSeeder::class);
+         $this->call(LocalidadesHidalgoSeeder::class);
+         $this->call(LocalidadesOaxacaSeeder::class);
+         $this->call(LocalidadesPueblaSeeder::class);
+         $this->call(LocalidadesSanLuisPotosiSeeder::class);
+         $this->call(LocalidadesTabascoSeeder::class);
+         $this->call(LocalidadesTamaulipasSeeder::class);
          $this->call(LocalidadesVeracruzSeeder::class);
+
 
          $this->call(UnidadSeeder::class);
 
