@@ -98,3 +98,50 @@
 		@include('tables.denunciantes')
 	</div>
 @endsection
+@push('PilaScripts')
+	<script type="text/javascript">
+		$(function() {
+			 maxVal = 18;
+			 $('#curp').focusout(function(){
+					var insertedVal = $(this).val();
+					if (insertedVal.length < maxVal){
+							$(this).css({"border-color":"red"});
+								$(".invalid-feedback").show();
+					}else{
+							$(this).css({"border-color":"green"});
+							$(".invalid-feedback").hide();
+					}
+			 })
+		});
+
+		$(function() {
+			 required = true;
+			 $('#docIdentificacion').focusout(function(){
+					var docVal = $(this).val();
+					if (docVal.length == 0){
+							$(this).css({"border-color":"red"});
+								$("#documento").show();
+					}else{
+							$(this).css({"border-color":"green"});
+							$("#documento").hide();
+					}
+			 })
+		});
+
+
+
+		$(function() {
+			 required = true;
+			 $('#numDocIdentificacion').focusout(function(){
+					var numVal = $(this).val();
+					if (numVal.length == 0){
+							$(this).css({"border-color":"red"});
+								$("#numDocumento").show();
+					}else{
+							$(this).css({"border-color":"green"});
+							$("#numDocumento").hide();
+					}
+			 })
+		});
+	</script>
+@endpush

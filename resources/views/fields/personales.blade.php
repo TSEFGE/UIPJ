@@ -19,14 +19,8 @@
 					{!! Form::text('segundoAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido']) !!}
 				</div>
 			</div>
-			<div class="col-3">
-				<div class="form-group">
-					{!! Form::label('sexo', 'Sexo', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('sexo', ['SIN INFORMACION' => 'SIN INFORMACION', 'HOMBRE' => 'HOMBRE', 'MUJER' => 'MUJER'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el sexo']) !!}
-				</div>
-			</div>
 			@isset($puestos)
-		    <div class="col-3">
+		    <div class="col-2">
 				<div class="form-group">
 					{!! Form::label('fechaNacimiento', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
 					<div class="input-group date" id="fechanac2" data-target-input="nearest">
@@ -63,6 +57,18 @@
 			</div>
 			@endisset
 
+			<div class="col-3">
+				<div class="form-group">
+					{!! Form::label('rfc', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::text('rfc', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.', 'required']) !!}
+				</div>
+			</div>
+			<div class="col-3">
+				<div class="form-group">
+					{!! Form::label('sexo', 'Sexo', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('sexo', ['SIN INFORMACION' => 'SIN INFORMACION', 'HOMBRE' => 'HOMBRE', 'MUJER' => 'MUJER'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el sexo']) !!}
+				</div>
+			</div>
 
 			<div class="col-3">
 				<div class="form-group">
@@ -83,12 +89,6 @@
 					<div id="validarRFCFisico" class="invalid-feedback">
 							El campo CURP debe contener al menos 17 caracteres.
 					</div>
-				</div>
-			</div>
-			<div class="col-3">
-				<div class="form-group">
-					{!! Form::label('rfc', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('rfc', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.', 'required']) !!}
 				</div>
 			</div>
 			<div class="col-3">
@@ -151,12 +151,19 @@
 					{!! Form::label('docIdentificacion', 'Documento de identificación', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::text('docIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el docto. de identificacion']) !!}
 				</div>
+				<div id="documento" class="invalid-feedback">
+					Dato obligatorio.
+				</div>
 			</div>
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('numDocIdentificacion', 'Núm. de documento de identificación', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::text('numDocIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el núm. del docto. de identificación']) !!}
 				</div>
+				<div id="numDocumento" class="invalid-feedback">
+					Dato obligatorio.
+				</div>
+				
 			</div>
 		</div>
 	</div>

@@ -17,12 +17,6 @@
 			{!! Form::text('segundoAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido', 'required']) !!}
 		</div>
 	</div>
-	<div class="col-3">
-		<div class="form-group">
-			{!! Form::label('sexo', 'Sexo', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('sexo', ['SIN INFORMACION' => 'SIN INFORMACION', 'HOMBRE' => 'HOMBRE', 'MUJER' => 'MUJER'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el sexo', 'required']) !!}
-		</div>
-	</div>
 	<div class="col-2">
 		<div class="form-group">
 			{!! Form::label('fechaNacimiento', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
@@ -35,11 +29,22 @@
 		</div>
 	</div>
 	<div class="col-1">
-				<div class="form-group">
-					{!! Form::label('edad', 'Edad', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::number('edad', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la edad', 'min' => 0, 'max' => 150, 'required']) !!}
-				</div>
-
+		<div class="form-group">
+			{!! Form::label('edad', 'Edad', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::number('edad', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la edad', 'min' => 0, 'max' => 150, 'required']) !!}
+		</div>
+	</div>
+	<div class="col-3">
+		<div class="form-group">
+			{!! Form::label('rfc', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::text('rfc', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.', 'required']) !!}
+		</div>
+	</div>
+	<div class="col-3">
+		<div class="form-group">
+			{!! Form::label('sexo', 'Sexo', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::select('sexo', ['SIN INFORMACION' => 'SIN INFORMACION', 'HOMBRE' => 'HOMBRE', 'MUJER' => 'MUJER'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el sexo', 'required']) !!}
+		</div>
 	</div>
 	<div class="col-3">
 		<div class="form-group">
@@ -53,6 +58,7 @@
 			{!! Form::select('idEstadoOrigen', $estados, '30', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa', 'required']) !!}
 		</div>
 	</div>
+<<<<<<< HEAD
 		<div class="col-3">
 			<div class="form-group">
 				{!! Form::label('curp', 'C.U.R.P.', ['class' => 'col-form-label-sm']) !!}
@@ -62,10 +68,12 @@
 				</div>
 			</div>
 		</div>
+=======
+>>>>>>> ebde188bd4e12900180f20f81f2fdf9f6f4863cf
 	<div class="col-3">
 		<div class="form-group">
-			{!! Form::label('rfc', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('rfc', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.', 'required']) !!}
+			{!! Form::label('curp', 'C.U.R.P.', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::text('curp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el C.U.R.P.', 'required']) !!}
 		</div>
 	</div>
 
@@ -126,17 +134,24 @@
 		</div>
 	</div>
 	<div class="col-3">
-		<div class="form-group">
-			{!! Form::label('docIdentificacion', 'Documento de identificación', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('docIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el docto. de identificacion', 'required']) !!}
-		</div>
-	</div>
-	<div class="col-3">
-		<div class="form-group">
-			{!! Form::label('numDocIdentificacion', 'Núm. de documento de identificación', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('numDocIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el núm. del docto. de identificación', 'required']) !!}
-		</div>
-	</div>
+				<div class="form-group">
+					{!! Form::label('docIdentificacion', 'Documento de identificación', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::text('docIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el docto. de identificacion']) !!}
+				</div>
+				<div id="documento" class="invalid-feedback">
+					Dato obligatorio.
+				</div>
+			</div>
+			<div class="col-3">
+				<div class="form-group">
+					{!! Form::label('numDocIdentificacion', 'Núm. de documento de identificación', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::text('numDocIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el núm. del docto. de identificación']) !!}
+				</div>
+				<div id="numDocumento" class="invalid-feedback">
+					Dato obligatorio.
+				</div>
+				
+			</div>
 </div>
 
 {{--<div id="accordion" role="tablist">
