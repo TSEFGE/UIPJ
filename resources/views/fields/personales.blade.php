@@ -147,6 +147,10 @@
 				<div class="form-group">
 					{!! Form::label('motivoEstancia', 'Motivo de estancia', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::text('motivoEstancia', "SIN INFORMACION", ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el motivo de estancia']) !!}
+					<div id="validarEstancia" class="invalid-feedback">
+						El campo debe tener entre 5 y 200 caracteres.
+					</div>
+
 				</div>
 			</div>
 			<div class="col-3">
@@ -190,7 +194,7 @@
 				<div id="numDocumento" class="invalid-feedback">
 					Dato obligatorio.
 				</div>
-				
+
 			</div>
 		</div>
 	</div>

@@ -19,8 +19,14 @@ Route::get('/', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
 //Protección de rutas
 Route::middleware(['auth'])->group(function () {
+
+	Route::get('librogobierno', function () {
+    return view('forms.libroGobierno'); 
+});
+
 	Route::get('/iniciar-carpeta', 'CarpetaController@showForm')->name('inicio');
 	Route::post('storecarpeta', 'CarpetaController@storeCarpeta')->name('store.carpeta');
 	Route::get('/carpeta-inicial/{id}', 'CarpetaController@index')->name('carpeta');

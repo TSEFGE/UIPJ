@@ -87,6 +87,18 @@
                    $("#ValidarNarracionHechos").hide();
                }
             });
+            $('#motivoEstancia').focusout(function(){
+              narraMax=5;
+              var narraVal = $(this).val();
+              if (narraVal.length < narraMax){
+                true
+                  $(this).css({"border-color":"red"});
+                    $("#validarEstancia").show();
+              }else{
+                  $(this).css({"border-color":"green"});
+                  $("#validarEstancia").hide();
+              }
+           });
            });
 
 
