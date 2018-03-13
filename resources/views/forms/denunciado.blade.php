@@ -141,7 +141,7 @@
 	@endsection
 @push('PilaScripts')
 	<script type="text/javascript">
-		
+
 		$(function() {
 			 required = true;
 			 $('#docIdentificacion').focusout(function(){
@@ -172,4 +172,7 @@
 			 })
 		});
 	</script>
+
+			@include('fields.rfcFisico')
+
 @endpush

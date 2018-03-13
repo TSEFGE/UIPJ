@@ -24,7 +24,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::middleware(['auth'])->group(function () {
 
 	Route::get('librogobierno', function () {
-    return view('forms.libroGobierno'); 
+    return view('forms.libroGobierno');
 });
 
 	Route::get('/iniciar-carpeta', 'CarpetaController@showForm')->name('inicio');
@@ -35,6 +35,8 @@ Route::middleware(['auth'])->group(function () {
 	Route::post('storedenunciante', 'DenuncianteController@storeDenunciante')->name('store.denunciante');
 
 	Route::post('armarRfc', 'DenuncianteController@rfcMoral')->name('rfc.denunciante');
+
+	Route::post('armarRfcFIsico', 'DenuncianteController@rfcFisico')->name('rfcFisico.denunciante');
 
 	Route::get('agregar-denunciado/{idCarpeta}', 'DenunciadoController@showForm')->name('new.denunciado');
 	Route::post('storedenunciado', 'DenunciadoController@storeDenunciado')->name('store.denunciado');
@@ -59,7 +61,7 @@ Route::middleware(['auth'])->group(function () {
 
 	Route::get('agregar-vehiculo/{idCarpeta}', 'VehiculoController@showForm')->name('new.vehiculo');
 	Route::post('storevehiculo', 'VehiculoController@storeVehiculo')->name('store.vehiculo');
-	
+
 	Route::get('generar-colaboracion-pm/{idCarpeta}', 'ColaboracionController@showForm')->name('new.colaboracionpm');
 	Route::get('generar-colaboracion-sp/{idCarpeta}', 'ColaboracionController@showForm2')->name('new.colaboracionsp');
 
