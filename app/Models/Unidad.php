@@ -23,6 +23,7 @@ class Unidad extends Model
         'telefono',
         'distrito',
         'region',
+        'abrevMun',
         'nomCompleto',
         'consecutivo'
     ];

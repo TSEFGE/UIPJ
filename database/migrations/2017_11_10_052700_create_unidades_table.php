@@ -22,6 +22,7 @@ class CreateUnidadesTable extends Migration
             $table->string('telefono',15);
             $table->string('distrito',10);
             $table->string('region',50);
+            $table->string('abrevMun',50)->unique();
             $table->string('municipio',50);
             $table->string('nomCompleto',100);
             $table->integer('consecutivo');
