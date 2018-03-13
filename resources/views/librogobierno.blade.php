@@ -2,6 +2,10 @@
 
 @section('title', 'Libro de Gobierno')
 
+@section('css')
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/datatables.min.css') }}">
+@endsection
+
 @section('contenido')
 	<div class="boxtwo" align="center">
 		<h6 align="center">Consultar Libro de Gobierno</h6>
@@ -34,7 +38,7 @@
 		</div>
 		{{----}}
 		<div class="table">
-			<table class="table table-bordered table-striped">
+			<table id="libroTable" class="table table-bordered table-striped" width="100%">
 				<thead>
 					<tr>
 						<th>Fecha</th>
@@ -64,8 +68,9 @@
 	</div>
 	{!! Form::close() !!}
 @endsection
-@push('PilaScripts')
 
+@push('PilaScripts')
+<script src="{{ asset('js/datatables.min.js')}}" ></script>
 <script type="text/javascript">
 	$(function () {
 		$('#fechaLibroIni').datetimepicker({
@@ -84,6 +89,19 @@
 		$("#fechaLibroFin").on("change.datetimepicker", function (e) {
 			$('#fechaLibroIni').datetimepicker('maxDate', e.date);
 		});
+	});
+
+	var table = $('#libroTable').DataTable({
+		language: {
+			"url": "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+		},
+		processing: true,
+		serverSide: true,
+		ajax: "{{ route('api.libro') }}",
+		columns: [
+		{data: 'id', name: 'id'},
+		{data: 'nombre', name: 'nombre'}
+		]
 	});
 </script>
 

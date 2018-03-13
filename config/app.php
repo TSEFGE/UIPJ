@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'WebAppCarpetas'),
+    'name' => env('APP_NAME', 'UIPJ'),
 
     /*
     |--------------------------------------------------------------------------
@@ -181,6 +181,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Laraveles\Spanish\SpanishServiceProvider::class,
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
+        Yajra\DataTables\DataTablesServiceProvider::class,
 
     ],
 
