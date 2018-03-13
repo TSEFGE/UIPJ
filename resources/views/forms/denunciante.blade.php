@@ -3,15 +3,7 @@
 @section('title', 'Agregar Denunciante')
 
 @section('contenido')
-	@if ($errors->any())
-		<div class="alert alert-danger">
-	        <ul>
-	            @foreach ($errors->all() as $error)
-	                <li>{{ $error }}</li>
-	            @endforeach
-	        </ul>
-	    </div>
-	@endif
+	@include('forms.errores')
     {!! Form::open(['route' => 'store.denunciante', 'method' => 'POST'])  !!}
     <div class="boxtwo">
     	<div class="row">
@@ -130,4 +122,7 @@
 			 })
 		});
 	</script>
+		<script src="{{ asset('js/curp.js') }}"></script>
+		@include('fields.rfcMoral');
+		@include('fields.rfcFisico')
 @endpush

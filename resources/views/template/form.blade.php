@@ -29,6 +29,7 @@
     <script src="{{ asset('js/sisyphus.js')}}" ></script>
     <script src="{{ asset('js/selects.js') }}"></script>
     <script src="{{ asset('js/scripts.js') }}"></script>
+    <script src="{{ asset('js/validations.js') }}"></script>
     <script>
         $(document).ready(function(){
             $('form').sisyphus({
@@ -86,6 +87,18 @@
                    $("#ValidarNarracionHechos").hide();
                }
             });
+            $('#motivoEstancia').focusout(function(){
+              narraMax=5;
+              var narraVal = $(this).val();
+              if (narraVal.length < narraMax){
+                true
+                  $(this).css({"border-color":"red"});
+                    $("#validarEstancia").show();
+              }else{
+                  $(this).css({"border-color":"green"});
+                  $("#validarEstancia").hide();
+              }
+           });
            });
 
 

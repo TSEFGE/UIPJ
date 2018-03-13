@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCatDelitoTable extends Migration
+class CreateAgrupacionesDelito extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,14 @@ class CreateCatDelitoTable extends Migration
      */
     public function up()
     {
-        Schema::create('cat_delito', function (Blueprint $table) {
+        Schema::create('agrupacion_delito', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre',100)->unique();
-            //$table->boolean('snVeh')->default(false); se quito la columna por que le corresponde al sistema de vehiculos.
+            $table->integer('idDelito')->unsigned();  
+
+           $table->string('nombre',100);
+            
+            $table->foreign('idDelito')->references('id')->on('cat_delito')->onDelete('cascade');
+
             $table->timestamps();
             $table->softDeletes();
         });
@@ -29,6 +33,8 @@ class CreateCatDelitoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cat_delito');
+        Schema::dropIfExists('agrupacion_delito');
     }
 }
+
+

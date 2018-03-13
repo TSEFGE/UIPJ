@@ -3,15 +3,7 @@
 @section('title', 'Agregar Delito')
 
 @section('contenido')
-	@if ($errors->any())
-		<div class="alert alert-danger">
-	        <ul>
-	            @foreach ($errors->all() as $error)
-	                <li>{{ $error }}</li>
-	            @endforeach
-	        </ul>
-	    </div>
-	@endif
+	@include('forms.errores')
     {!! Form::open(['route' => 'store.delito', 'method' => 'POST'])  !!}
 	<div class="row no-gutters">
 		<div class="col-12">
