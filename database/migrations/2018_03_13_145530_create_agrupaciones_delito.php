@@ -14,7 +14,7 @@ class CreateAgrupacionesDelito extends Migration
     public function up()
     {
         Schema::create('agrupacion_delito', function (Blueprint $table) {
-            $table->increments('idAgrupacion');
+            $table->increments('id');
             $table->integer('idDelito')->unsigned();  
 
            $table->string('nombre',100);

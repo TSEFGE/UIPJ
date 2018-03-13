@@ -13,13 +13,13 @@ class AgrupacionDelito extends Model
 /**
      * The attributes that are mass assignable.
      *
-     * @var array..
+     * @var array
      */
     
     public $fillable = [
-        'idAgrupacion',
-        'idDelito',
-        'nombre'
+        'id',
+        'idDelito';
+        'nombre',
         
     ];
 
