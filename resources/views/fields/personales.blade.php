@@ -7,7 +7,7 @@
 					{!! Form::text('nombres', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre']) !!}
 					<div class="invalid-feedback" id="invalid-nombres">
 						Este campo debe de contener más de 3 caracteres y menos de 200.
-					</div>					
+					</div>
 				</div>
 			</div>
 			<div class="col-3">
@@ -111,7 +111,7 @@
 					{!! Form::label('curp', 'C.U.R.P.', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::text('curp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el C.U.R.P.']) !!}
 					<div id="validarRFCFisico" class="invalid-feedback">
-							El campo CURP debe contener al menos 17 caracteres.
+							El campo CURP debe contener al menos 18 caracteres.
 					</div>
 				</div>
 			</div>

@@ -63,7 +63,7 @@
 				{!! Form::label('curp', 'C.U.R.P.', ['class' => 'col-form-label-sm']) !!}
 				{!! Form::text('curp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el C.U.R.P.', 'required']) !!}
 				<div id="validarRFCFisico" class="invalid-feedback">
-						El campo CURP debe contener al menos 17 caracteres.
+						El campo CURP debe contener al menos 18 caracteres.
 				</div>
 			</div>
 		</div>
