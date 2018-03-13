@@ -30,16 +30,14 @@ class CarpetaController extends Controller
         //dd($request->all());
         $datos = DB::table('users')
             ->join('unidad', 'unidad.id', '=', 'users.idUnidad')
-            ->select('unidad.distrito','users.numFiscal', 'unidad.consecutivo')
-            //->select('unidad.distrito','users.numFiscal', 'unidad.consecutivo', 'unidad.abrevMun')
+            ->select('unidad.distrito','users.numFiscal', 'unidad.consecutivo', 'unidad.abrevMun')
             ->where('users.id', '=', Auth::user()->id)
             ->get();
-        //dd($request->all());
         $num = $datos[0]->consecutivo+1;
         $carpeta = new Carpeta();
         $carpeta->idUnidad = Auth::user()->idUnidad;
         $carpeta->idFiscal = Auth::user()->id;
-        $carpeta->numCarpeta = "UIPJ/D".$datos[0]->distrito."/".$datos[0]->numFiscal."/".$num."/".Carbon::now()->year;
+        $carpeta->numCarpeta = "UIPJ/D".$datos[0]->distrito."/".$datos[0]->abrevMun."/".$datos[0]->numFiscal."/".$num."/".Carbon::now()->year;
         $carpeta->fechaInicio = $request->fechaInicio;
         if (isset($request->conDetenido)) {
             $carpeta->conDetenido = $request->conDetenido;
