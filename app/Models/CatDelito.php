@@ -17,7 +17,7 @@ class CatDelito extends Model
     public $fillable = [
         'id',
         'nombre',
-        'snVeh'
+        //'snVeh' se quito la columna, le corresponde al sist. de vehiculos
     ];
 
     public function tipifDelitos(){
