@@ -10,6 +10,18 @@
 	</div>
 	<div class="col-4">
 		<div class="form-group">
+			{!! Form::label('idAgrupacion', ' Primera Desagregación', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::select('idAgrupacion', $delits, null, ['class' => 'form-control form-control-sm select2', 'placeholder' => 'Seleccione desagregacion', 'required']) !!}
+		</div>
+	</div>
+	<div class="col-4">
+		<div class="form-group">
+			{!! Form::label('idAgrupacionDos', ' Segunda Desagregación', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::select('idAgrupacionDos', $delits, null, ['class' => 'form-control form-control-sm select2', 'placeholder' => 'Seleccione desagregacion', 'required']) !!}
+		</div>
+	</div>	
+	<div class="col-6">
+		<div class="form-group">
 			{!! Form::label('fecha', 'Fecha', ['class' => 'col-form-label-sm']) !!}
             <div class="input-group date" id="fechadelit" data-target-input="nearest">
                 {!! Form::text('fecha', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechadelit', 'data-toggle' => 'datetimepicker', 'required', 'placeholder' => 'DD/MM/AAAA']) !!}
@@ -19,7 +31,7 @@
             </div>
         </div>
 	</div>
-	<div class="col-4">
+	<div class="col-6">
 		<div class="form-group" id="" >
 			{!! Form::label('hora', 'Hora', ['class' => 'col-form-label-sm']) !!}
 			<div class="input-group date" id="horadelit" data-target-input="nearest">
