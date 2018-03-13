@@ -5,18 +5,27 @@
 				<div class="form-group">
 					{!! Form::label('nombres', 'Nombre', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::text('nombres', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre']) !!}
+					<div class="invalid-feedback" id="invalid-nombres">
+						Este campo debe de contener más de 3 caracteres y menos de 200.
+					</div>					
 				</div>
 			</div>
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('primerAp', 'Primer apellido', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::text('primerAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el primer apellido']) !!}
+					<div class="invalid-feedback" id="invalid-primerAp">
+						Este campo debe de contener más de 3 caracteres y menos de 50.
+					</div>
 				</div>
 			</div>
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('segundoAp', 'Segundo apellido', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::text('segundoAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido']) !!}
+					<div class="invalid-feedback" id="invalid-segundoAp">
+						Este campo debe de contener más de 3 caracteres y menos de 50.
+					</div>
 				</div>
 			</div>
 			@isset($puestos)
@@ -29,12 +38,18 @@
 		                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
 		                </div>
 		            </div>
+		            <div class="invalid-feedback" id="invalid-fechaNacimiento">
+						Ingrese una fecha válida.
+					</div>
 				</div>
 			</div>
 			<div class="col-1">
 				<div class="form-group">
 					{!! Form::label('edad', 'Edad', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::number('edad', null, ['class' => 'form-control form-control-sm edad2', 'placeholder' => 'Ingrese la edad', 'min' => 0, 'max' => 150, 'required']) !!}
+					<div class="invalid-feedback" id="invalid-nombres2">
+						Ingrese una edad de entre 0 y 150 años.
+					</div>
 				</div>
 			</div>
 			@else
@@ -47,12 +62,18 @@
 		                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
 		                </div>
 		            </div>
+		            <div class="invalid-feedback" id="invalid-fechaNacimiento">
+						Ingrese una fecha válida.
+					</div>
 				</div>
 			</div>
 			<div class="col-1">
 				<div class="form-group">
 					{!! Form::label('edad', 'Edad', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::number('edad', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la edad', 'min' => 18, 'max' => 150, 'required']) !!}
+					<div class="invalid-feedback" id="invalid-edad">
+						Ingrese una edad de entre 18 y 150 años.
+					</div>
 				</div>
 			</div>
 			@endisset
@@ -61,6 +82,9 @@
 				<div class="form-group">
 					{!! Form::label('rfc', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::text('rfc', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.', 'required']) !!}
+					<div class="invalid-feedback" id="invalid-rfc">
+						Ingrese un RFC válido.
+					</div>
 				</div>
 			</div>
 			<div class="col-3">
@@ -114,6 +138,9 @@
 				<div class="form-group">
 					{!! Form::label('telefono', 'Teléfono', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::text('telefono', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono', 'required']) !!}
+					<div class="invalid-feedback" id="invalid-telefono">
+						Este campo debe de contener de 7 a 15 caracteres.
+					</div>
 				</div>
 			</div>
 			<div class="col-3">
@@ -193,6 +220,9 @@
 				<div class="form-group">
 					{!! Form::label('rfc2', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::text('rfc2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.']) !!}
+					<div class="invalid-feedback" id="invalid-rfc2">
+						Ingrese un RFC válido.
+					</div>
 				</div>
 			</div>
 			<div class="col-6">
