@@ -3,15 +3,7 @@
 @section('title', 'Iniciar nueva Carpeta de Investigación')
 
 @section('contenido')
-	@if ($errors->any())
-		<div class="alert alert-danger">
-	        <ul>
-	            @foreach ($errors->all() as $error)
-	                <li>{{ $error }}</li>
-	            @endforeach
-	        </ul>
-	    </div>
-	@endif
+	@include('forms.errores')
     {!! Form::open(['route' => 'store.carpeta', 'method' => 'POST'])  !!}
 	<div class="boxtwo">
 		<h6>Datos generales de la carpeta de investigación</h6>

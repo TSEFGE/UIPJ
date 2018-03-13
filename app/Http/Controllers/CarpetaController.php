@@ -31,8 +31,10 @@ class CarpetaController extends Controller
         $datos = DB::table('users')
             ->join('unidad', 'unidad.id', '=', 'users.idUnidad')
             ->select('unidad.distrito','users.numFiscal', 'unidad.consecutivo')
+            //->select('unidad.distrito','users.numFiscal', 'unidad.consecutivo', 'unidad.abrevMun')
             ->where('users.id', '=', Auth::user()->id)
             ->get();
+        //dd($request->all());
         $num = $datos[0]->consecutivo+1;
         $carpeta = new Carpeta();
         $carpeta->idUnidad = Auth::user()->idUnidad;

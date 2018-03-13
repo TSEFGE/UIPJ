@@ -2,15 +2,7 @@
 
 @section('title', 'Agregar Abogado')
 @section('contenido')
-	@if ($errors->any())
-		<div class="alert alert-danger">
-	        <ul>
-	            @foreach ($errors->all() as $error)
-	                <li>{{ $error }}</li>
-	            @endforeach
-	        </ul>
-	    </div>
-	@endif
+	@include('forms.errores')
     {!! Form::open(['route' => 'store.abogado', 'method' => 'POST'])  !!}
 	<div class="card">
 		<div class="card-header">
