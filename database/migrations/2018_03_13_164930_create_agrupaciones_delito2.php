@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAgrupacionesDelito extends Migration
+class CreateAgrupacionesDelito2 extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,15 @@ class CreateAgrupacionesDelito extends Migration
      */
     public function up()
     {
-        Schema::create('agrupacion_delito', function (Blueprint $table) {
-            $table->increments('idAgrupacion');
-            $table->integer('idDelito')->unsigned();  
+        Schema::create('agrupacion_delito2', function (Blueprint $table) {
+            
+            $table->increments('idAgrupacion2');
+
+            $table->integer('idAgrupacion')->unsigned();  
 
            $table->string('nombre',100);
             
-            $table->foreign('idDelito')->references('id')->on('cat_delito')->onDelete('cascade');
+            $table->foreign('idAgrupacion2')->references('idAgrupacion')->on('agrupacion_delito')->onDelete('cascade');
 
             $table->timestamps();
             $table->softDeletes();
@@ -33,8 +35,6 @@ class CreateAgrupacionesDelito extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('agrupacion_delito');
+        Schema::dropIfExists('agrupacion_delito2');
     }
 }
-
-
