@@ -19,10 +19,13 @@
 						    <a class="nav-link" href="#">Iniciando carpeta: {{ $carpetaNueva[0]->numCarpeta }}</a>
 						</li>
 					@else
-					<li class="nav-item">
-						<a class="nav-link" href="{{ url('/iniciar-carpeta') }}">Registrar nueva Carpeta</a>
-					</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{{ url('/iniciar-carpeta') }}">Registrar nueva Carpeta</a>
+						</li>
 					@endisset
+					<li class="nav-item">
+						<a class="nav-link" href="{{ route('libro.gobierno') }}">Libro de gobierno</a>
+					</li>
 				@endauth
 			</ul>
 
