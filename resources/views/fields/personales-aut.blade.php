@@ -58,7 +58,6 @@
 			{!! Form::select('idEstadoOrigen', $estados, '30', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa', 'required']) !!}
 		</div>
 	</div>
-<<<<<<< HEAD
 		<div class="col-3">
 			<div class="form-group">
 				{!! Form::label('curp', 'C.U.R.P.', ['class' => 'col-form-label-sm']) !!}
@@ -68,16 +67,6 @@
 				</div>
 			</div>
 		</div>
-=======
->>>>>>> ebde188bd4e12900180f20f81f2fdf9f6f4863cf
-	<div class="col-3">
-		<div class="form-group">
-			{!! Form::label('curp', 'C.U.R.P.', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('curp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el C.U.R.P.', 'required']) !!}
-		</div>
-	</div>
-
-
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('idEtnia', 'Etnia', ['class' => 'col-form-label-sm']) !!}
@@ -107,6 +96,9 @@
 		<div class="form-group">
 			{!! Form::label('motivoEstancia', 'Motivo de estancia', ['class' => 'col-form-label-sm']) !!}
 			{!! Form::text('motivoEstancia', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el motivo de estancia', 'required']) !!}
+			<div id="validarEstancia" class="invalid-feedback">
+				El campo debe tener entre 5 y 200 caracteres.
+			</div>
 		</div>
 	</div>
 	<div class="col-3">
@@ -150,7 +142,7 @@
 				<div id="numDocumento" class="invalid-feedback">
 					Dato obligatorio.
 				</div>
-				
+
 			</div>
 </div>
 
