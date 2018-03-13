@@ -64,12 +64,18 @@
 				<div class="form-group">
 					{!! Form::label('npd', 'Número de puesta a disposición', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::text('npd', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número del puesta a disposición', 'required']) !!}
+					<div class="invalid-feedback" id="invalid-npd">
+						Ingrese el número de puesta a disposición.
+					</div>
 				</div>
 			</div>
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('numIph', 'Número IPH', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::text('numIph', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número del IPH', 'required']) !!}
+					<div class="invalid-feedback" id="invalid-numIph">
+						Ingrese el número del IPH.
+					</div>
 				</div>
 			</div>
 			<div class="col-3">

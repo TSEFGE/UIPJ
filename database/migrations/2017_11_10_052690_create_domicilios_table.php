@@ -15,9 +15,9 @@ class CreateDomiciliosTable extends Migration
     {
         Schema::create('domicilio', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('idMunicipio')->unsigned()->default(2497);
-            $table->integer('idLocalidad')->unsigned()->default(27592);
-            $table->integer('idColonia')->unsigned()->default(8982);
+            $table->integer('idMunicipio')->unsigned()->default(2496);
+            $table->integer('idLocalidad')->unsigned()->default(108971);
+            $table->integer('idColonia')->unsigned()->default(58351);
             $table->string('calle', 100)->default("SIN INFORMACION");
             $table->string('numExterno', 10)->default('S/N');
             $table->string('numInterno', 10)->default('S/N');

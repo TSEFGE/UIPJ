@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\StoreCarpeta;
 use DB;
 use Alert;
 use Carbon\Carbon;
@@ -25,7 +26,7 @@ class CarpetaController extends Controller
         return view('forms.inicio')->with('nombreUnidad', $nombreUnidad)->with('tiposdet', $tiposdet);
     }
 
-    public function storeCarpeta(Request $request){
+    public function storeCarpeta(StoreCarpeta $request){
         //dd($request->all());
         $datos = DB::table('users')
             ->join('unidad', 'unidad.id', '=', 'users.idUnidad')
