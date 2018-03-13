@@ -63,5 +63,5 @@
 	</div>
 @endsection
 @push('PilaScripts')
-	<script src="{{ asset('js/rfcFisico.js') }}"></script>
+		@include('fields.rfcFisico')
 @endpush

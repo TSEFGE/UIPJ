@@ -78,12 +78,8 @@
 	</div>
 @endsection
 @push('PilaScripts')
-	<script src="{{ asset('js/rfcFisico.js') }}"></script>
-<<<<<<< HEAD
 	<script src="{{ asset('js/curp.js') }}"></script>
-=======
 	<script type="text/javascript">
-		
 		$(function() {
 			 required = true;
 			 $('#docIdentificacion').focusout(function(){
@@ -97,8 +93,6 @@
 					}
 			 })
 		});
-
-
 
 		$(function() {
 			 required = true;
@@ -114,6 +108,5 @@
 			 })
 		});
 	</script>
-
->>>>>>> ebde188bd4e12900180f20f81f2fdf9f6f4863cf
+			@include('fields.rfcFisico')
 @endpush
