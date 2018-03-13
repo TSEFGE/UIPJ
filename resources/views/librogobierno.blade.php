@@ -99,9 +99,13 @@
 		serverSide: true,
 		ajax: "{{ route('api.libro') }}",
 		columns: [
-		{data: 'id', name: 'id'},
-		{data: 'nombre', name: 'nombre'}
-		]
+			{data: 'id', name: 'id'},
+			{data: 'nombre', name: 'nombre'}
+		],
+		dom: 'Bfrtip',
+        buttons: [
+            'csv', 'excel', 'pdf', 'pageLength',
+        ]
 	});
 </script>
 
