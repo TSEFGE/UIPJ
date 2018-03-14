@@ -28,11 +28,11 @@ class Agrupacion1Seeder extends Seeder
 				['nombre' => 'EN GRADO DE TENTATIVA', 'idCatDelito' =>2],
 				['nombre' => 'OTROS ASALTOS', 'idCatDelito' => 2],
 				['nombre' => 'FISICA', 'idCatDelito' =>3],
-				['nombre' => 'PSICOLOGICA', 'idCatDelito' =>3]
+				['nombre' => 'PSICOLOGICA', 'idCatDelito' =>3],
 				['nombre' => 'ECONOMICA O PATRIMONIAL', 'idCatDelito' => 3],
 				['nombre' => 'OBSTETRICA', 'idCatDelito' =>3],
 				['nombre' => 'INSTITUCIONAL', 'idCatDelito' =>3],
-				['nombre' => 'LABORAL', 'idCatDelito' => 3],
+				['nombre' => 'LABORAL', 'idCatDelito' => 3], 
 				['nombre' => 'EN EL AMBITO', 'idCatDelito' => 3],
 				['nombre' => 'TERRENO AGRICOLA O GANADERO', 'idCatDelito' =>4],
 				['nombre' => 'DE LOS SERVIDORES PUBLICOS ART. 8', 'idCatDelito' =>5],
@@ -41,7 +41,7 @@ class Agrupacion1Seeder extends Seeder
 				['nombre' => 'COMETIDOS POR', 'idCatDelito' =>5],
 				['nombre' => 'DE ABOGADOS, DEFENSORES Y LITIGANTES', 'idCatDelito' => 5],
 				['nombre' => 'INFORMATICOS', 'idCatDelito' =>5],
-				['nombre' => 'ELECTORALES', 'idCatDelito' => 5],
+				['nombre' => 'ELECTORALES', 'idCatDelito' => 5], 
 				['nombre' => 'NO CONSTITUTIVOS DE DELITO', 'idCatDelito' => 6],
 				['nombre' => 'DELICTUOSOS NO ESPECIFICADOS', 'idCatDelito' => 6],
 				['nombre' => 'OTROS', 'idCatDelito' => 9],
@@ -50,19 +50,19 @@ class Agrupacion1Seeder extends Seeder
 				['nombre' => 'CASA HABITACION', 'idCatDelito' => 9],
 				['nombre' => 'NEGOCIACIONES', 'idCatDelito' => 9],
 				['nombre' => 'TRANSEUNTE', 'idCatDelito' => 9],
-				['nombre' => 'TRANSEUNTES', 'idCatDelito' => 9],
-				['nombre' => 'FRUTOS', 'idCatDelito' => 9],
+				['nombre' => 'TRANSEUNTES', 'idCatDelito' => 9], 
+				['nombre' => 'FRUTOS', 'idCatDelito' => 9], 
 				['nombre' => 'VEHICULO', 'idCatDelito' => 9],
 				['nombre' => 'GRADO DE TENTATIVA', 'idCatDelito' =>9],
 				['nombre' => 'DE OBJETOS', 'idCatDelito' =>9],
 				['nombre' => 'CALIFICADO', 'idCatDelito' => 9],
 				['nombre' => 'FLUIDO', 'idCatDelito' => 9],
-				['nombre' => 'AGRAVADO', 'idCatDelito' =>9],])
+				['nombre' => 'AGRAVADO', 'idCatDelito' =>9],
 				['nombre' => 'ESPECIFICO', 'idCatDelito' => 9],
 				['nombre' => 'GENERICO', 'idCatDelito' => 9],
-				['nombre' => 'MAQUINARIA', 'idCatDelito' =>9],
+				['nombre' => 'MAQUINARIA', 'idCatDelito' =>9], 
 				['nombre' => 'VEHICULO AUTOMOTOR', 'idCatDelito' => 9],
-				['nombre' => 'TRANSPORTISTAS', 'idCatDelito' => 9],
+				['nombre' => 'TRANSPORTISTAS', 'idCatDelito' => 9],  
 				['nombre' => 'AUTOPARTES', 'idCatDelito' =>9],
 				['nombre' => 'DE FAMILIARES', 'idCatDelito' => 10],
 				['nombre' => 'EN GRADO DE TENTATIVA', 'idCatDelito' => 11],
@@ -105,7 +105,7 @@ class Agrupacion1Seeder extends Seeder
 				['nombre' => 'DE LA LIBERTAD', 'idCatDelito' =>56],
 				['nombre' => 'A COMETER UN DELITO APOLOGIA DE ESTE O DE ALGUN VICIO', 'idCatDelito' =>57],
 				['nombre' => 'DE LA SANCION DE PRIVACION, SUSPENSION O INHABILITACION DE DERECHOS', 'idCatDelito' =>58],
-				['nombre' =>'DE SELLOS', 'idCatDelito' =>58],
+				['nombre' => 'DE SELLOS', 'idCatDelito' =>58],
 				['nombre' => 'DE SECRETOS', 'idCatDelito' =>60],
 				['nombre' => 'DE INFORMACION RESERVADA', 'idCatDelito' =>60],
 				['nombre' => 'EN GRADO DE TENTATIVA', 'idCatDelito' =>62],
@@ -135,7 +135,7 @@ class Agrupacion1Seeder extends Seeder
 				['nombre' => 'EN GRADO DE TENTATIVA', 'idCatDelito' =>84],
 				['nombre' => '2do PARRAFO', 'idCatDelito' =>84],
 				['nombre' => 'EN GRADO DE TENTATIVA', 'idCatDelito' =>86]
-				]);
-				}
-				}
+			]);
+		}
+}
 

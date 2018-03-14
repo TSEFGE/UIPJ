@@ -74,5 +74,6 @@ class DatabaseSeeder extends Seeder
          $this->call(PosibleCausaSeeder::class);
 
         $this->call(Agrupacion1Seeder::class);
+         $this->call(Agrupacion2Seeder::class);
     }
 }
