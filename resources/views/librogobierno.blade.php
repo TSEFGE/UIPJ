@@ -5,6 +5,7 @@
 @section('css')
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/datatables.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/tempusdominus-bootstrap-4.min.css') }}">
+	
 @endsection
 
 @section('content')
@@ -98,7 +99,7 @@
 			$('#fechaLibroIni').datetimepicker('maxDate', e.date);
 		});
 	});
-
+	
 	var table = $('#libroTable').DataTable({
 		language: {
 			"url": "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
@@ -114,7 +115,25 @@
 		],
 		dom: 'Bfrtip',
         buttons: [
-            'csv', 'excel', 'pdf', 'pageLength',
+			'csv', 'excel',
+			{
+			extend: 'pdfHtml5',
+			orientation: 'landscape',
+			tittle:'Carpetas generadas',
+			pageSize: 'letter',
+			/*customize: function ( doc ) {
+				doc.content.splice( 0, 0, {
+				  alignment: 'left',
+					margin: [ 0, 0, 0, 0 ],
+					image: imagen,
+					width: 750
+					} );
+                }*/ 
+			},
+			{
+				extend: 'pageLength',
+				text: 'Cantidad de registros'
+			}           
         ]
 	});
 
@@ -143,7 +162,8 @@
         }else{
             swal("Atención", 'Seleccione un rango de fechas.', 'warning');
         }
-    });
+	});
+	
 </script>
 
 @endsection
