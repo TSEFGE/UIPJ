@@ -5,6 +5,7 @@
 @section('contenido')
 	@include('forms.errores')
     {!! Form::open(['route' => 'store.vehiculo', 'method' => 'POST'])  !!}
+    {{ csrf_field() }}
 	<div class="row no-gutters">
 		<div class="col-12">
 			<div class="boxtwo">

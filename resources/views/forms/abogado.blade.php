@@ -4,6 +4,7 @@
 @section('contenido')
 	@include('forms.errores')
     {!! Form::open(['route' => 'store.abogado', 'method' => 'POST'])  !!}
+    {{ csrf_field() }}
 	<div class="card">
 		<div class="card-header">
 			<h5 class="mb-0 text-center">

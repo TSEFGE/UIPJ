@@ -3,6 +3,7 @@
 @section('title', 'Generar documento de colaboración con Servicios Periciales')
 @section('contenido')
     {!! Form::open(['route' => 'colaboracion.sp', 'method' => 'POST'])  !!}
+    {{ csrf_field() }}
 	@include('forms.idcarpeta')
 	<div class="row no-gutters">
 		<div class="col-12">
