@@ -75,7 +75,7 @@
 		<div class="card-header">
 			<h5 class="mb-0 text-center">
 				<a data-toggle="collapse" href="#collapseDenun" aria-expanded="false" aria-controls="collapseDenun">
-					Información sobre el denunciante
+					Información sobre el Denunciante o Imputado
 				</a>
 			</h5>
 		</div>
