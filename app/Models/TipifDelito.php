@@ -31,8 +31,13 @@ class TipifDelito extends Model
         'entreCalle',
         'yCalle',
         'calleTrasera',
-        'puntoReferencia'
+        'puntoReferencia',
+        'idAgrupacion1',
+        'idAgrupacion2',
+       
     ];
+
+        
 
     public function carpeta()
     {

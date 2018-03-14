@@ -23,4 +23,12 @@ class CatDelito extends Model
     public function tipifDelitos(){
         return $this->hasMany('App\Models\TipifDelito');
     }
+
+     public function agrupaciones(){
+        return $this->hasMany('App\Models\AgrupacionDelito');
+    }
+
+  
+
+
 }
