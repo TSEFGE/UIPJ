@@ -5,6 +5,7 @@
 @section('contenido')
 	@include('forms.errores')
     {!! Form::open(['route' => 'store.carpeta', 'method' => 'POST'])  !!}
+    {{ csrf_field() }}
 	<div class="boxtwo">
 		<h6>Datos generales de la carpeta de investigación</h6>
 		@include('fields.carpeta')

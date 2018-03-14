@@ -5,6 +5,7 @@
 @section('contenido')
 	@include('forms.errores')
     {!! Form::open(['route' => 'store.denunciado', 'method' => 'POST'])  !!}
+    {{ csrf_field() }}
 	<div class="boxtwo">
 		<div class="row">
 			<div class="col-6">

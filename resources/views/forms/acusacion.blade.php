@@ -3,6 +3,7 @@
 @section('title', 'Agregar Acusación')
 @section('contenido')
     {!! Form::open(['route' => 'store.acusacion', 'method' => 'POST'])  !!}
+    {{ csrf_field() }}
 	<div class="row no-gutters">
 		<div class="col-12">
 			<div class="boxtwo">

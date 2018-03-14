@@ -3,6 +3,7 @@
 @section('title', 'Agregar Defensa')
 @section('contenido')
     {!! Form::open(['route' => 'store.defensa', 'method' => 'POST'])  !!}
+    {{ csrf_field() }}
 	@include('forms.idcarpeta')
 	<div class="row no-gutters">
 		<div class="col-12">

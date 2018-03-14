@@ -3,6 +3,7 @@
 @section('title', 'Generar documento de colaboración con Policia Ministerial')
 @section('contenido')
     {!! Form::open(['route' => 'colaboracion.pm', 'method' => 'POST'])  !!}
+    {{ csrf_field() }}
 	@include('forms.idcarpeta')
 	<div class="row no-gutters">
 		<div class="col-12">
