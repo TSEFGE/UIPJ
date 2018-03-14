@@ -99,6 +99,7 @@ Route::middleware(['auth'])->group(function () {
 
 	Route::get('libro-gobierno', 'LibroGobiernoController@index')->name('libro.gobierno');
 	Route::get('api/libro', 'LibroGobiernoController@apiLibro')->name('api.libro');
+	Route::get('api/rango', 'LibroGobiernoController@apiLibroRango')->name('api.rango');
 });
 
 
