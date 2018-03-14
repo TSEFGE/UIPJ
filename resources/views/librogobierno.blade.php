@@ -80,6 +80,7 @@
 			format: 'YYYY-MM-DD',
 			maxDate: moment(),
 			useCurrent: false
+
 		});
 		$('#fechaLibroFin').datetimepicker({
 			format: 'YYYY-MM-DD',
@@ -98,8 +99,6 @@
 		language: {
 			"url": "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
 		},
-		processing: true,
-		serverSide: true,
 		ajax: "{{ route('api.libro') }}",
 		columns: [
 			{data: 'Fecha', name: 'Fecha'},
@@ -129,10 +128,8 @@
                 data:{fechaInicial:fechaIni, fechaFinal: fechaFin},
                 dataType:'json',
                 success: function(data){
-                    // var table = $('#libroTable').DataTable();
                     table.clear().draw();
-                    //var json_str =  JSON.stringify(data);//Convierte el json a string
-                    //alert(json_str);
+                	alert("Exito");
                     table.rows.add( data ).draw();
                 },
                 error:function(e){
