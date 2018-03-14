@@ -8,6 +8,12 @@
 @endsection
 
 @section('content')
+<div class="row">
+    <div class="col-md-12">
+    <div class="card">
+    <div class="card-header">Libro de gobierno</div>
+    <div class="card-body boxone">
+
 	<div class="boxtwo" align="center">
 		<h6 align="center">Consultar Libro de Gobierno</h6>
 		{!! Form::open() !!}
@@ -71,6 +77,10 @@
 			</div>
 		</div>
 	</div>
+    </div>
+    </div>
+    </div>
+    </div>
 @endsection
 
 @section('scripts')
@@ -133,7 +143,6 @@
                 dataType:'json',
                 success: function(data){
                     table.clear().draw();
-                	alert("Exito");
                     table.rows.add( data ).draw();
                 },
                 error:function(e){

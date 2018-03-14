@@ -23,6 +23,9 @@
 						<a class="nav-link" href="{{ url('/iniciar-carpeta') }}">Registrar nueva Carpeta</a>
 					</li>
 					@endisset
+					<li class="nav-item">
+						<a class="nav-link" href="{{ route('libro.gobierno') }}">Libro de gobierno</a>
+					</li>
 				@endauth
 			</ul>
 
