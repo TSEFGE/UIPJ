@@ -86,6 +86,7 @@ class Agrupacion2Seeder extends Seeder
    ['nombre' => 'AGRAVADA','idAgrupacion1' => 112],
    ['nombre' => 'AGRAVADA','idAgrupacion1' => 113],
    ['nombre' => 'EN GRADO DE TENTATIVA','idAgrupacion1' => 115]
+   
     ]);
   }
 }
