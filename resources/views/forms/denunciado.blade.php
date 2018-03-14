@@ -19,7 +19,7 @@
 					</div>
 					<div class="form-check form-check-inline">
 						<label class="form-check-label col-form-label col-form-label-sm">
-							<input class="form-check-input" type="radio" id="tipoDenunciado2" name="tipoDenunciado" value="2" required> Conoce al denunciado
+							<input class="form-check-input" type="radio" id="tipoDenunciado2" name="tipoDenunciado" value="2" required> Conoce al Denunciado o Imputado
 						</label>
 					</div>
 					<div class="form-check form-check-inline">
