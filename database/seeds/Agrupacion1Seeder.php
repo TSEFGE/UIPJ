@@ -12,12 +12,10 @@ class Agrupacion1Seeder extends Seeder
 	{
 
 		   DB::table('cat_agrupacion1')->insert([
-
-				
-				['nombre' => 'CULPOSAS', 'idCatDelito' => 1], 
+				['nombre' => 'CULPOSAS', 'idCatDelito' => 1],
 				['nombre' => 'DOLOSAS', 'idCatDelito' => 1],
 				['nombre' => 'EN GRADO DE TENTATIVA', 'idCatDelito' => 2],
-				['nombre' => 'A PIPA', 'idCatDelito' => 2], 
+				['nombre' => 'A PIPA', 'idCatDelito' => 2],
 				['nombre' => 'A TRAILER', 'idCatDelito' => 2],
 				['nombre' => 'A TAXI', 'idCatDelito' => 2],
 				['nombre' => 'A PARTICULAR', 'idCatDelito' => 2],
@@ -28,16 +26,16 @@ class Agrupacion1Seeder extends Seeder
 				['nombre' => 'EN GRADO DE TENTATIVA', 'idCatDelito' =>2],
 				['nombre' => 'OTROS ASALTOS', 'idCatDelito' => 2],
 				['nombre' => 'FISICA', 'idCatDelito' =>3],
-				['nombre' => 'PSICOLOGICA', 'idCatDelito' =>3]
-				['nombre' => 'ECONOMICA O PATRIMONIAL', 'idCatDelito' => 3],
+				['nombre' => 'PSICOLOGICA', 'idCatDelito' =>3],
 				['nombre' => 'OBSTETRICA', 'idCatDelito' =>3],
+				['nombre' => 'ECONOMICA O PATRIMONIAL', 'idCatDelito'=>3],
 				['nombre' => 'INSTITUCIONAL', 'idCatDelito' =>3],
 				['nombre' => 'LABORAL', 'idCatDelito' => 3],
 				['nombre' => 'EN EL AMBITO', 'idCatDelito' => 3],
 				['nombre' => 'TERRENO AGRICOLA O GANADERO', 'idCatDelito' =>4],
 				['nombre' => 'DE LOS SERVIDORES PUBLICOS ART. 8', 'idCatDelito' =>5],
 				['nombre' => 'CONTRA', 'idCatDelito' =>5],
-				['nombre' => 'AMBIENTALES', 'idCatDelito' => 5],   
+				['nombre' => 'AMBIENTALES', 'idCatDelito' => 5],
 				['nombre' => 'COMETIDOS POR', 'idCatDelito' =>5],
 				['nombre' => 'DE ABOGADOS, DEFENSORES Y LITIGANTES', 'idCatDelito' => 5],
 				['nombre' => 'INFORMATICOS', 'idCatDelito' =>5],
@@ -57,7 +55,7 @@ class Agrupacion1Seeder extends Seeder
 				['nombre' => 'DE OBJETOS', 'idCatDelito' =>9],
 				['nombre' => 'CALIFICADO', 'idCatDelito' => 9],
 				['nombre' => 'FLUIDO', 'idCatDelito' => 9],
-				['nombre' => 'AGRAVADO', 'idCatDelito' =>9],])
+				['nombre' => 'AGRAVADO', 'idCatDelito' =>9],
 				['nombre' => 'ESPECIFICO', 'idCatDelito' => 9],
 				['nombre' => 'GENERICO', 'idCatDelito' => 9],
 				['nombre' => 'MAQUINARIA', 'idCatDelito' =>9],
@@ -138,4 +136,3 @@ class Agrupacion1Seeder extends Seeder
 				]);
 				}
 				}
-
