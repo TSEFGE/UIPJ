@@ -119,17 +119,17 @@
         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
     });
     $('#consultar').on('click',function(e){
-        var route="{{route('api.libro.rango')}}";
+        var route="{{route('api.rango')}}";
         var fechaIni=$("#fechaIni").val();
         var fechaFin=$("#fechaFin").val();
         if(fechaIni!="" || fechaFin!=""){
             $.ajax({
-                type: 'POST',
+                type: 'get',
                 url:route,
                 data:{fechaInicial:fechaIni, fechaFinal: fechaFin},
                 dataType:'json',
                 success: function(data){
-                    var table = $('#libroTable').DataTable();
+                    // var table = $('#libroTable').DataTable();
                     table.clear().draw();
                     //var json_str =  JSON.stringify(data);//Convierte el json a string
                     //alert(json_str);

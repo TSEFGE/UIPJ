@@ -27,7 +27,7 @@ class LibroGobiernoController extends Controller
             ->get();
       return Datatables::of($libro)->make(true);
     }
-    
+
     public function apiLibroRango(Request $request){
       $libro = DB::table('carpeta')
             ->join('users','users.id','=','carpeta.idFiscal')
@@ -41,7 +41,9 @@ class LibroGobiernoController extends Controller
             ->whereDate('carpeta.created_at', '>=',$request->fechaInicial)
             ->whereDate('carpeta.created_at', '<=',$request->fechaFinal)
             ->get();
-      return Datatables::of($libro)->make(true);
+
+
+      return $libro->toJson();
     }
 
 }
