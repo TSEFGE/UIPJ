@@ -1,12 +1,13 @@
-@extends('template.form')
+@extends('template.main')
 
 @section('title', 'Libro de Gobierno')
 
 @section('css')
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/datatables.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/tempusdominus-bootstrap-4.min.css') }}">
 @endsection
 
-@section('contenido')
+@section('content')
 	<div class="boxtwo" align="center">
 		<h6 align="center">Consultar Libro de Gobierno</h6>
 		{!! Form::open() !!}
@@ -72,8 +73,11 @@
 	</div>
 @endsection
 
-@push('PilaScripts')
+@section('scripts')
 <script src="{{ asset('js/datatables.min.js')}}" ></script>
+<script src="{{ asset('js/moment.min.js') }}"></script>
+<script src="{{ asset('js/es.js') }}"></script>
+<script src="{{ asset('js/tempusdominus-bootstrap-4.min.js') }}"></script>
 <script type="text/javascript">
 	$(function () {
 		$('#fechaLibroIni').datetimepicker({
@@ -142,4 +146,4 @@
     });
 </script>
 
-@endpush
+@endsection
