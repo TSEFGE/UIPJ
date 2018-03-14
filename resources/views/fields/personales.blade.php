@@ -214,7 +214,7 @@
 			</div>
 			<div class="col-6">
 				<div class="form-group">
-					{!! Form::label('fechaAltaEmpresa', 'Fecha de alta de empresa', ['class' => 'col-form-label-sm']) !!}<div class="input-group date" id="fechaAlta" data-target-input="nearest">
+					{!! Form::label('fechaAltaEmpresa', 'Fecha de alta de Persona Moral', ['class' => 'col-form-label-sm']) !!}<div class="input-group date" id="fechaAlta" data-target-input="nearest">
 		                {!! Form::text('fechaAltaEmpresa', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaAlta', 'data-toggle' => 'datetimepicker', 'placeholder' => 'DD/MM/AAAA']) !!}
 		                <div class="input-group-append" data-target="#fechaAlta" data-toggle="datetimepicker">
 		                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
