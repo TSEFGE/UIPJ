@@ -34,12 +34,7 @@
 			{!! Form::number('edad', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la edad', 'min' => 0, 'max' => 150, 'required']) !!}
 		</div>
 	</div>
-	<div class="col-3">
-		<div class="form-group">
-			{!! Form::label('rfc', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('rfc', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.', 'required']) !!}
-		</div>
-	</div>
+	
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('sexo', 'Sexo', ['class' => 'col-form-label-sm']) !!}
@@ -56,6 +51,12 @@
 		<div class="form-group">
 			{!! Form::label('idEstadoOrigen', 'Entidad federativa de origen', ['class' => 'col-form-label-sm']) !!}
 			{!! Form::select('idEstadoOrigen', $estados, '30', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa', 'required']) !!}
+		</div>
+	</div>
+	<div class="col-3">
+		<div class="form-group">
+			{!! Form::label('rfc', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::text('rfc', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.', 'required']) !!}
 		</div>
 	</div>
 		<div class="col-3">
