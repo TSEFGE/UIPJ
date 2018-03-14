@@ -80,15 +80,6 @@
 
 			<div class="col-3">
 				<div class="form-group">
-					{!! Form::label('rfc', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('rfc', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.', 'required']) !!}
-					<div class="invalid-feedback" id="invalid-rfc">
-						Ingrese un RFC válido.
-					</div>
-				</div>
-			</div>
-			<div class="col-3">
-				<div class="form-group">
 					{!! Form::label('sexo', 'Sexo', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::select('sexo', ['SIN INFORMACION' => 'SIN INFORMACION', 'HOMBRE' => 'HOMBRE', 'MUJER' => 'MUJER'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el sexo']) !!}
 				</div>
@@ -106,6 +97,17 @@
 					{!! Form::select('idEstadoOrigen', $estados, '30', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa']) !!}
 				</div>
 			</div>
+
+		<div class="col-3">
+				<div class="form-group">
+					{!! Form::label('rfc', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::text('rfc', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.', 'required']) !!}
+					<div class="invalid-feedback" id="invalid-rfc">
+						Ingrese un RFC válido.
+					</div>
+				</div>
+			</div>
+
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('curp', 'C.U.R.P.', ['class' => 'col-form-label-sm']) !!}
