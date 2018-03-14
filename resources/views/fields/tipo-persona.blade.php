@@ -1,6 +1,6 @@
 <div class="col-12">
 	<div class="form-group">
-		<label class="col-form-label col-form-label-sm" for="formGroupExampleInput">¿Es empresa?</label>
+		<label class="col-form-label col-form-label-sm" for="formGroupExampleInput">¿Es Persona Moral?</label>
 		<div class="clearfix"></div>
 		<div class="form-check form-check-inline">
 			<label class="form-check-label col-form-label col-form-label-sm">
