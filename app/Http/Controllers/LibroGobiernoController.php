@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
+use App\Models\Unidad;
 use DB;
 use App\Models\Unidad;
 use App\Models\Carpeta;
@@ -15,8 +17,11 @@ use Illuminate\Support\Facades\Auth;
 
 class LibroGobiernoController extends Controller
 {
-    public function index()
-    {
+    public function index(){
+    	return view('librogobierno');
+    }
+
+    public function apiLibro(){
       $libro = DB::table('carpeta')
             ->join('users','users.id','=','carpeta.idFiscal')
             ->join('unidad','unidad.id','=','users.idUnidad')
@@ -27,6 +32,6 @@ class LibroGobiernoController extends Controller
             ->groupBy('carpeta.id')
             ->where('unidad.id','=', Auth::user()->idUnidad)
             ->get();
-      return $libro;
+      return Datatables::of($libro)->make(true);
     }
 }
