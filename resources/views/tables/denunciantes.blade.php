@@ -1,4 +1,4 @@
-<h6>Denunciantes</h6>
+<h6>Denunciantes o Agraviado</h6>
 <div class="table">
     <table class="table table-striped">
         <thead>
