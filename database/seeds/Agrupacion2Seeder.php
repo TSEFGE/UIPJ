@@ -1,0 +1,92 @@
+<?php
+
+use Illuminate\Database\Seeder;
+
+class Agrupacion2Seeder extends Seeder
+{
+  
+    public function run()
+    {
+        
+         DB::table('cat_agrupacion2')->insert([
+
+   ['nombre' => 'ARMA BLANCA','idAgrupacion1' => 2],
+   ['nombre' => 'ARMA DE FUEGO','idAgrupacion1' =>2],
+   ['nombre' => 'OTROS','idAgrupacion1' => 2],
+   ['nombre' => 'VECINAL A VEHICULO','idAgrupacion1' =>9],
+   ['nombre' => 'VECINAL A CAMION REPARTIDOR','idAgrupacion1'=> 9],
+   ['nombre' => 'VECINAL A TRANSEUNTE','idAgrupacion1' => 9],
+   ['nombre' => 'DE PASAJEROS','idAgrupacion1' => 10],
+   ['nombre' => 'A CAMION REPARTIDOR','idAgrupacion1' =>11],
+   ['nombre' => 'A TRANSEUNTE','idAgrupacion1' => 11],
+   ['nombre' => 'A VEHICULO','idAgrupacion1' =>11],
+   ['nombre' => 'EDUCATIVO','idAgrupacion1' =>20],
+   ['nombre' => 'FAMILIAR','idAgrupacion1' => 20],
+   ['nombre' => 'LA PRESERVACION DEL LUGAR DE LOS HECHOS','idAgrupacion1' =>23],
+   ['nombre' => 'LA SALUD','idAgrupacion1' => 23],
+   ['nombre' => 'EL ESTADO CIVIL','idAgrupacion1' => 23],
+   ['nombre' => 'EL RESPETO A LOS MUERTOS','idAgrupacion1' => 23],
+   ['nombre' => 'LA FILIACION','idAgrupacion1' =>23],
+   ['nombre' => 'LA SEGURIDAD DEL TRANSITO DE VEHICULOS','idAgrupacion1' =>23],
+   ['nombre' => 'LA SEGURIDAD VIAL Y LOS MEDIOS DE TRANSPORTE','idAgrupacion1' =>23],
+   ['nombre' => 'ACTOS DE MALTRATO O CRUELDAD EN CONTRA DE LOS ANIMALES','idAgrupacion1' => 25],
+   ['nombre' => 'MEDICOS, AUXILIARES Y OTROS RELACIONADOS CON LA PRACTICA DE LA MEDICINA','idAgrupacion1' => 25],
+   ['nombre' => 'OTROS PROFESIONALES Y TECNICOS','idAgrupacion1' =>25],
+   ['nombre' => 'CON VIOLENCIA','idAgrupacion1' => 32],
+   ['nombre' => 'SIN VIOLENCIA','idAgrupacion1' => 32],
+   ['nombre' => 'CON VIOLENCIA CAMINO VECINAL','idAgrupacion1' => 33],
+   ['nombre' => 'CON VIOLENCIA CARRETERA','idAgrupacion1' => 33],
+   ['nombre' => 'CON VIOLENCIA ZONA URBANA','idAgrupacion1' => 33],
+   ['nombre' => 'SIN VIOLENCIA CAMINO VECINAL','idAgrupacion1' => 33],
+   ['nombre' => 'SIN VIOLENCIA CARRETERA','idAgrupacion1' => 33],
+   ['nombre' => 'SIN VIOLENCIA ZONA URBANA','idAgrupacion1' => 33],
+   ['nombre' => 'CON VIOLENCIA','idAgrupacion1' => 34],
+   ['nombre' => 'CON VIOLENCIA','idAgrupacion1' => 35],
+   ['nombre' => 'SIN VIOLENCIA','idAgrupacion1' => 35],
+   ['nombre' => 'CON VIOLENCIA CAMINO VECINAL','idAgrupacion1' => 36],
+   ['nombre' => 'CON VIOLENCIA CARRETERA','idAgrupacion1' => 36],
+   ['nombre' => 'SIN VIOLENCIA CAMINO VECINAL','idAgrupacion1' => 36],
+   ['nombre' => 'SIN VIOLENCIA CARRETERA','idAgrupacion1' => 36],
+   ['nombre' => 'EN ESPACIO ABIERTO AL PUBLICO CON VIOLENCIA','idAgrupacion1' => 36],
+   ['nombre' => 'EN ESPACIO ABIERTO AL PUBLICO SIN VIOLENCIA','idAgrupacion1' => 36],
+   ['nombre' => 'CON VIOLENCIA ZONA URBANA','idAgrupacion1' => 37],
+   ['nombre' => 'SIN VIOLENCIA ZONA URBANA','idAgrupacion1' => 37],
+   ['nombre' => 'CON VIOLENCIA','idAgrupacion1' => 38],
+   ['nombre' => 'SIN VIOLENCIA','idAgrupacion1' => 38],
+   ['nombre' => 'CON VIOLENCIA CAMINO VECINAL','idAgrupacion1' => 39],
+   ['nombre' => 'CON VIOLENCIA CARRETERA','idAgrupacion1' => 39],
+   ['nombre' => 'CON VIOLENCIA ZONA URBANA','idAgrupacion1' => 39],
+   ['nombre' => 'SIN VIOLENCIA CAMINO VECINAL','idAgrupacion1' => 39],
+   ['nombre' => 'SIN VIOLENCIA CARRETERA','idAgrupacion1' => 39],
+   ['nombre' => 'SIN VIOLENCIA ZONA URBANA','idAgrupacion1' => 39],
+   ['nombre' => 'A INTERIOR DE VEHICULO CON VIOLENCIA','idAgrupacion1' => 41],
+   ['nombre' => 'A INTERIOR DE VEHICULO SIN VIOLENCIA','idAgrupacion1' => 41],
+   ['nombre' => '(CABLES, TUBOS y OTROS OBJETOS DESTINADOS AL SERVICIO PUBLICO) SIN VIOLENCIA','idAgrupacion1' => 47],
+   ['nombre' => '(CABLES, TUBOS y OTROS OBJETOS DESTINADOS AL SERVICIO PUBLICO) CON VIOLENCIA','idAgrupacion1' => 47],
+   ['nombre' => '(TRACTORES) SIN VIOLENCIA','idAgrupacion1' => 47],
+   ['nombre' => '(TRACTORES) CON VIOLENCIA','idAgrupacion1' => 47],
+   ['nombre' => '(HERRAMIENTA INDUSTRIAL O AGRICOLA) SIN VIOLENCIA','idAgrupacion1' => 47],
+   ['nombre' => '(HERRAMIENTA INDUSTRIAL O AGRICOLA) CON VIOLENCIA','idAgrupacion1' => 47],
+   ['nombre' => '(EMBARCACIONES PEQUEÑAS Y GRANDES) SIN VIOLENCIA','idAgrupacion1' => 48],
+   ['nombre' => '(EMBARCACIONES PEQUEÑAS Y GRANDES) CON VIOLENCIA','idAgrupacion1' => 48],
+   ['nombre' => '(MOTOCICLETA) SIN VIOLENCIA','idAgrupacion1' => 48],
+   ['nombre' => '(MOTOCICLETA) CON VIOLENCIA','idAgrupacion1' => 48],
+   ['nombre' => 'CON VIOLENCIA','idAgrupacion1' => 49],
+   ['nombre' => 'SIN VIOLENCIA','idAgrupacion1' => 49],
+   ['nombre' => 'CON VIOLENCIA','idAgrupacion1' => 50],
+   ['nombre' => 'SIN VIOLENCIA','idAgrupacion1' => 50],
+   ['nombre' => 'ARMA BLANCA','idAgrupacion1' => 76],
+   ['nombre' => 'ARMA DE FUEGO','idAgrupacion1' => 76],
+   ['nombre' => 'OTROS','idAgrupacion1' => 76],
+   ['nombre' => 'AL SUICIDIO EN GRADO DE TENTATIVA','idAgrupacion1' => 84],
+   ['nombre' => 'A ATROPELLADOS','idAgrupacion1' =>87],
+   ['nombre' => 'FISICA','idAgrupacion1' => 89],
+   ['nombre' => 'EN GRADO DE TENTATIVA','idAgrupacion1' => 89],
+   ['nombre' => 'EN GRADO DE TENTATIVA','idAgrupacion1' => 96],
+   ['nombre' => 'AGRAVADA','idAgrupacion1' => 112],
+   ['nombre' => 'AGRAVADA','idAgrupacion1' => 113],
+   ['nombre' => 'EN GRADO DE TENTATIVA','idAgrupacion1' => 115]
+   
+    ]);
+  }
+}

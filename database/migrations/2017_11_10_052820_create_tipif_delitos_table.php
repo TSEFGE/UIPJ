@@ -17,6 +17,9 @@ class CreateTipifDelitosTable extends Migration
             $table->increments('id');
             $table->integer('idCarpeta')->unsigned();
             $table->integer('idDelito')->unsigned();
+            $table->integer('idAgrupacion1')->unsigned();
+            $table->integer('idAgrupacion2')->unsigned();
+
             $table->boolean('conViolencia')->default(false);
             $table->integer('idArma')->unsigned()->default(1);//Default sin información
             $table->integer('idPosibleCausa')->unsigned()->default(1);
@@ -37,6 +40,10 @@ class CreateTipifDelitosTable extends Migration
 
             $table->foreign('idCarpeta')->references('id')->on('carpeta')->onDelete('cascade');
             $table->foreign('idDelito')->references('id')->on('cat_delito')->onDelete('cascade');
+           
+            $table->foreign('idAgrupacion1')->references('id')->on('cat_agrupacion1')->onDelete('cascade');  
+            $table->foreign('idAgrupacion2')->references('id')->on('cat_agrupacion2')->onDelete('cascade');
+            
             $table->foreign('idArma')->references('id')->on('cat_arma')->onDelete('cascade');
             $table->foreign('idPosibleCausa')->references('id')->on('cat_posible_causa')->onDelete('cascade');
             $table->foreign('idModalidad')->references('id')->on('cat_modalidad')->onDelete('cascade');
