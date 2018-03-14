@@ -10,7 +10,7 @@
 	<div class="boxtwo" align="center">
 		<h6 align="center">Consultar Libro de Gobierno</h6>
 		<div class="form-group" align="center">
-			<div class="row">  
+			<div class="row">
 				<div class="col-6" align="center">
 					<div class="form-group">
 						{!! Form::label('fechaLibroIni', 'De Fecha:', ['class' => 'col-form-label-sm']) !!}
@@ -46,7 +46,7 @@
 						<th>Unidad</th>
 						<th>Fiscal</th>
 						<th>Denunciante(s)</th>
-						<th>Delito(s)</th>
+						<th>Nota</th>
 					</tr>
 				</thead>
 			</table>
@@ -59,7 +59,7 @@
 					<a href="{{ route('home') }}" class="btn btn-dark text-center">Volver atrás</a>
 				</div>
 			</div>
-			<div class="col">	
+			<div class="col">
 				<div class="text-center">
 					{!! Form::submit('Consultar', ['class' => 'btn btn-dark', 'id' => 'btn-submit']) !!}
 				</div>
@@ -99,8 +99,12 @@
 		serverSide: true,
 		ajax: "{{ route('api.libro') }}",
 		columns: [
-			{data: 'id', name: 'id'},
-			{data: 'nombre', name: 'nombre'}
+			{data: 'Fecha', name: 'Fecha'},
+			{data: 'numCarpeta', name: 'numCarpeta'},
+			{data: 'Unidad', name: 'Unidad'},
+			{data: 'Fiscal', name: 'Fiscal'},
+			{data: 'Denunciante', name: 'Denunciante'},
+			{data: 'Nota', name: 'Nota'},
 		],
 		dom: 'Bfrtip',
         buttons: [

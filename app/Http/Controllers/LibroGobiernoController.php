@@ -4,14 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
-use App\Models\Unidad;
 use DB;
-use App\Models\Unidad;
-use App\Models\Carpeta;
-use App\Models\Users;
-use App\Models\Acusacion;
-use App\Models\ExtraDenunciante;
-use App\Models\ExtraDenunciado;
 use Illuminate\Support\Facades\Auth;
 
 
