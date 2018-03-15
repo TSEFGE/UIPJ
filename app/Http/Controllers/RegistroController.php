@@ -119,15 +119,18 @@ class RegistroController extends Controller
     }
 
  public function getAgrupaciones1(Request $request, $id){
+
         if($request->ajax()){
-            $agrupaciones1 = CatAgrupaciones1::agrupaciones1($id);
+
+            $agrupaciones1 = CatAgrupacion1::agrupaciones1($id);
+            dd($agrupaciones1);
             return response()->json($agrupaciones1);
         }
     }
 
  public function getAgrupaciones2(Request $request, $id){
         if($request->ajax()){
-            $agrupaciones2 = CatAgrupaciones2::agrupaciones2($id);
+            $agrupaciones2 = CatAgrupacion2::agrupaciones2($id);
             return response()->json($agrupaciones2);
         }
     }

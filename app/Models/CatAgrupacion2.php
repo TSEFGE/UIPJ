@@ -8,7 +8,7 @@ class CatAgrupacion2 extends Model
 {
  public $table = 'cat_agrupacion2';
 
-  
+
     public $fillable = [
         'id',
         'nombre',

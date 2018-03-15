@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -29,8 +29,9 @@ class CatAgrupacion1 extends Model
 		}
 
 
-    public static function getAgrupaciones1($id){
+    public static function agrupaciones1($id){
         return CatAgrupacion1::select('id', 'nombre')->where('idCatDelito', '=', $id)->orderBy('nombre', 'ASC')->get();
+
     }
 
 }
