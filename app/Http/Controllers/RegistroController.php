@@ -116,6 +116,20 @@ class RegistroController extends Controller
         }
     }
 
+ public function getAgrupaciones1(Request $request, $id){
+        if($request->ajax()){
+            $agrupaciones1 = CatAgrupaciones1::agrupaciones1($id);
+            return response()->json($agrupaciones1);
+        }
+    }
+
+ public function getAgrupaciones2(Request $request, $id){
+        if($request->ajax()){
+            $agrupaciones2 = CatAgrupaciones2::agrupaciones2($id);
+            return response()->json($agrupaciones2);
+        }
+    }
+
     /*public function getDenunciantes(Request $request, $idCarpeta){
         if($request->ajax()){
             $denunciantes = DB::table('extra_denunciante')
