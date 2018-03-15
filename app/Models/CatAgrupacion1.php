@@ -16,10 +16,10 @@ class CatAgrupacion1 extends Model
      ];
 
 
- public function catDelito(){
+ public function catDelitos(){
         return $this->belongsTo('App\Models\CatDelito');
     }
-      public function agrupacion2(){
+      public function agrupaciones2(){
     	return $this->hasMany('App\Models\CatAgrupacion2');
     }
 

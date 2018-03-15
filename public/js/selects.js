@@ -364,14 +364,70 @@ $("#idColoniaC").change(function(event){
 		});
 	}
 });
+//-------------------Desagregaciones Delitos-------------------------//
 
-/*
-$("#idEstado").change(event =>{
-	$.get(`municipios/${event.target.value}`, function(res, estado){
-		$("idMunicipio").empty();
-		res.forEach(element => {
-			$("#idMunicipio").append(`<option value=${element.id}> ${element.nombre} </option`);
+$("#idEstado").change(function(event){
+	if(event.target.value!=""){
+		$.get("../municipios/"+event.target.value+"", function(response, estado){
+			$("#idMunicipio").empty();
+			$("#idMunicipio").append("<option value=''>Seleccione un municipio</option>");
+			for(i=0; i<response.length; i++){
+				$("#idMunicipio").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
+			}
+			$("#idMunicipio3").empty();
+			$("#idMunicipio3").append("<option value=''>Seleccione un municipio</option>");
+			for(i=0; i<response.length; i++){
+				$("#idMunicipio3").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
+			}
 		});
-	});
+		$('#idEstado3').val($('#idEstado').val()).trigger('change.select2');
+	}
 });
-*/
+
+$("#idMunicipio").change(function(event){
+	if(event.target.value!=""){
+		$.get("../localidades/"+event.target.value+"", function(response, municipio){
+			$("#idLocalidad").empty();
+			$("#idLocalidad").append("<option value=''>Seleccione una localidad</option>");
+			for(i=0; i<response.length; i++){
+				$("#idLocalidad").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
+			}
+			$("#idLocalidad3").empty();
+			$("#idLocalidad3").append("<option value=''>Seleccione una localidad</option>");
+			for(i=0; i<response.length; i++){
+				$("#idLocalidad3").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
+			}
+		});
+		$.get("../colonias2/"+event.target.value+"", function(response, municipio){
+			$("#idColonia").empty();
+			$("#idColonia").append("<option value=''>Seleccione una colonia</option>");
+			for(i=0; i<response.length; i++){
+				$("#idColonia").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
+			}
+			$("#idColonia3").empty();
+			$("#idColonia3").append("<option value=''>Seleccione una colonia</option>");
+			for(i=0; i<response.length; i++){
+				$("#idColonia3").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
+			}
+		});
+		$.get("../codigos/"+event.target.value+"", function(response, municipio){
+			$("#cp").empty();
+			$("#cp").append("<option value=''>Seleccione un código postal</option>");
+			for(i=0; i<response.length; i++){
+				$("#cp").append("<option value='"+response[i].id+"'> "+response[i].codigoPostal+"</option>");
+			}
+			$("#cp3").empty();
+			$("#cp3").append("<option value=''>Seleccione un código postal</option>");
+			for(i=0; i<response.length; i++){
+				$("#cp3").append("<option value='"+response[i].id+"'> "+response[i].codigoPostal+"</option>");
+			}
+		});
+		$('#idMunicipio3').val($('#idMunicipio').val()).trigger('change.select2');
+	}
+});
+
+$("#idLocalidad").change(function(event){
+	if(event.target.value!=""){
+		$('#idLocalidad3').val($('#idLocalidad').val()).trigger('change.select2');
+	}
+});
