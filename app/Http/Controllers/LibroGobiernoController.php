@@ -23,8 +23,7 @@ class LibroGobiernoController extends Controller
             ->join('persona','persona.id','=','variables_persona.idPersona')
             ->select('carpeta.fechaInicio as Fecha','carpeta.numCarpeta','unidad.nombre as Unidad',DB::raw('CONCAT(users.nombres, " ", users.primerAp," ", ifnull(users.segundoAp,"")) AS Fiscal'),DB::raw('group_concat(persona.nombres," ",ifnull(persona.primerAp,"")," ",ifnull(persona.segundoAp,"")) as Denunciante'),'carpeta.descripcionHechos as Nota')
             ->groupBy('carpeta.id')
-            ->where('unidad.id','=', Auth::user()->idUnidad)
-            ->get();
+            ->where('unidad.id','=', Auth::user()->idUnidad);
       return Datatables::of($libro)->make(true);
     }
 
