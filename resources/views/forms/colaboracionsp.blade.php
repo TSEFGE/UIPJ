@@ -4,7 +4,6 @@
 @section('contenido')
     {!! Form::open(['route' => 'colaboracion.sp', 'method' => 'POST'])  !!}
     {{ csrf_field() }}
-	@include('forms.idcarpeta')
 	<div class="row no-gutters">
 		<div class="col-12">
 			<div class="boxtwo">
@@ -50,7 +49,7 @@
 					@endforeach
 				</div>
 			</div>
-
+			@include('forms.idcarpeta')
 			<div class="boxtwo">
 				<div class="row">
 					<div class="col">
