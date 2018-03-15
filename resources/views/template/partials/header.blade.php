@@ -11,21 +11,23 @@
 					<li class="nav-item active">
 						<a class="nav-link" href="{{ url('/home') }}">Inicio <span class="sr-only">(current)</span></a>
 					</li>
-					{{--<li class="nav-item">
-						<a class="nav-link" href="{{ url('/registrar-carpeta') }}">Registrar nueva Carpeta</a>
-					</li>--}}
-					@if(isset($carpetaNueva))
-						<li class="nav-item">
-						    <a class="nav-link" href="#">Iniciando carpeta: {{ $carpetaNueva[0]->numCarpeta }}</a>
-						</li>
-					@else
-					<li class="nav-item">
-						<a class="nav-link" href="{{ url('/iniciar-carpeta') }}">Registrar nueva Carpeta</a>
-					</li>
-					@endisset
 					<li class="nav-item">
 						<a class="nav-link" href="{{ route('libro.gobierno') }}">Libro de gobierno</a>
 					</li>
+					{{--<li class="nav-item">
+						<a class="nav-link" href="{{ url('/registrar-carpeta') }}">Registrar nueva Carpeta</a>
+					</li>--}}
+					@if(!isset($carpetas))
+						@if(isset($carpetaNueva))
+							<li class="nav-item">
+							    <a class="nav-link" href="#">Iniciando carpeta: {{ $carpetaNueva[0]->numCarpeta }}</a>
+							</li>
+						@endif
+					@else
+						<li class="nav-item">
+							<a class="nav-link" href="{{ url('/iniciar-carpeta') }}">Registrar nueva Carpeta</a>
+						</li>
+					@endif
 				@endauth
 			</ul>
 
