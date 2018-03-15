@@ -306,6 +306,7 @@ $("#idEstadoOrigen").change(function() {
 });
 
 function obtenerCURP() {
+
   nombre = $("#nombres").val().toUpperCase();
   apellidoPaterno = $("#primerAp").val().toUpperCase();
   apellidoMaterno = $("#segundoAp").val().toUpperCase();
@@ -316,6 +317,9 @@ function obtenerCURP() {
   } else {
     sexo = "M";
   }
+  if(nombre!=""&& apellidoPaterno!=""&&apellidoMaterno!=""&&fecha!=""&&sexo!=""){
+
+
   var abreviacion = ["AS", "BC", "BS", "CC", "CS", "CH", "CL", "CM", "CX", "DF", "DG", "GT", "GR", "HG", "JC", "MC", "MN", "MS", "NT", "NL", "OC", "PL", "QT", "QR", "SP", "SL", "SR", "TC", "TS", "TL", "VZ", "YN", "ZS"];
   estado = abreviacion[($("#idEstadoOrigen").val())];
   console.log(fecha);
@@ -333,4 +337,7 @@ function obtenerCURP() {
     fecha_nacimiento: [dia, mes, año]
   });
   $("#curp").val(curp);
+}else{
+  
+}
 }

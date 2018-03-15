@@ -55,6 +55,3 @@
 		@include('tables.abogados')
 	</div>
 @endsection
-@push('PilaScripts')
-		@include('fields.rfcFisico')
-@endpush

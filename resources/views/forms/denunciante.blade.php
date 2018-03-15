@@ -123,7 +123,4 @@
 			 })
 		});
 	</script>
-		<script src="{{ asset('js/curp.js') }}"></script>
-		@include('fields.rfcMoral');
-		@include('fields.rfcFisico')
 @endpush

@@ -174,6 +174,5 @@
 		});
 	</script>
 
-			@include('fields.rfcFisico')
 
 @endpush

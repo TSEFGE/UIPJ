@@ -104,6 +104,11 @@
 
 
     </script>
+    	<script src="{{ asset('js/curp.js') }}"></script>
+      @include('fields.rfcMoral');
+      @include('fields.rfcFisico')
     {{--<script src="{{ asset('js/selectsChoosen.js') }}"></script>--}}
     @stack('PilaScripts')
+
+
 @endsection
