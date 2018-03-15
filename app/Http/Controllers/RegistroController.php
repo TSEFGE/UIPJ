@@ -48,6 +48,8 @@ use App\Models\ExtraAbogado;
 use App\Models\TipifDelito;
 use App\Models\Vehiculo;
 use App\Models\Acusacion;
+use App\Models\CatAgrupacion1;
+use App\Models\CatAgrupacion2;
 use DB;
 
 class RegistroController extends Controller
@@ -1016,5 +1018,5 @@ class RegistroController extends Controller
     {
         //
     }
-    
+
 }

@@ -8,7 +8,7 @@ class CatAgrupacion1 extends Model
 {
      public $table = 'cat_agrupacion1';
 
-  
+
     public $fillable = [
         'id',
         'nombre',
@@ -23,7 +23,7 @@ class CatAgrupacion1 extends Model
     	return $this->hasMany('App\Models\CatAgrupacion2');
     }
 
-    public static function agrupaciones1($id){
+    public static function getAgrupaciones1($id){
         return CatAgrupacion1::select('id', 'nombre')->where('idCatDelito', '=', $id)->orderBy('nombre', 'ASC')->get();
     }
 

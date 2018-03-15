@@ -439,5 +439,6 @@ $("#idDelito").change(function(event){
 			for(i=0; i<response.length; i++){
 				$("#idAgrupacion1").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
 			}
-	}
+	});
+}
 });
