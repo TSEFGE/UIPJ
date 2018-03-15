@@ -14,7 +14,7 @@
 					{{--<li class="nav-item">
 						<a class="nav-link" href="{{ url('/registrar-carpeta') }}">Registrar nueva Carpeta</a>
 					</li>--}}
-					@isset ($carpetaNueva)
+					@if(isset($carpetaNueva))
 						<li class="nav-item">
 						    <a class="nav-link" href="#">Iniciando carpeta: {{ $carpetaNueva[0]->numCarpeta }}</a>
 						</li>
