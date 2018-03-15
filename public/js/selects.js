@@ -431,3 +431,13 @@ $("#idLocalidad").change(function(event){
 		$('#idLocalidad3').val($('#idLocalidad').val()).trigger('change.select2');
 	}
 });
+$("#idDelito").change(function(event){
+	if(event.target.value!=""){
+		$.get("../agrupaciones1/"+event.target.value+"", function(response, delito){
+			$("#idAgrupacion1").empty();
+			$("#idAgrupacion1").append("<option value=''>Seleccione una localidad</option>");
+			for(i=0; i<response.length; i++){
+				$("#idAgrupacion1").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
+			}
+	}
+});

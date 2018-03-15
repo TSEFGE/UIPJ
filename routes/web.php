@@ -78,7 +78,8 @@ Route::middleware(['auth'])->group(function () {
 	/*Route::get('denunciantes/{idCarpeta}', 'RegistroController@getDenunciantes');
 	Route::get('denunciados/{idCarpeta}', 'RegistroController@getDenunciados');*/
 	Route::get('involucrados/{idCarpeta}/{idAbogado}', 'RegistroController@getInvolucrados');
-
+  Route::get('agrupaciones1/{id}','RegistroController@getAgrupaciones1');
+  Route::get('agrupaciones2/{id}','RegistroController@getAgrupaciones2');
 	/*---------Rutas para generación de documentos-------------*/
 	Route::get('constancia-hechos/{idDenunciante}', [
 		'as'=>'constancia.hechos',
