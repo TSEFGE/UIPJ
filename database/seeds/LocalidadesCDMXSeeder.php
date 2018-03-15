@@ -700,7 +700,11 @@ class LocalidadesCDMXSeeder extends Seeder
 ['idMunicipio'=>284, 'nombre' => 'SIN INFORMACION'],
 ['idMunicipio'=>285, 'nombre' => 'SIN INFORMACION'],
 ['idMunicipio'=>286, 'nombre' => 'SIN INFORMACION'],
-['idMunicipio'=>2472, 'nombre' => 'SIN INFORMACION']
+['idMunicipio'=>2472, 'nombre' => 'SIN INFORMACION'],
+
+['idMunicipio'=>2496, 'nombre' => 'SIN INFORMACION']
+
+
 
 ]);
 
