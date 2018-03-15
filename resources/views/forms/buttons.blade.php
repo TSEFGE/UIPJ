@@ -1,3 +1,4 @@
+@include('forms.idCarpeta')
 <div class="boxtwo">
 	<div class="row">
 		<div class="col">
