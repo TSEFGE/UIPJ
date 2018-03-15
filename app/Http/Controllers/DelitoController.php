@@ -24,7 +24,7 @@ class DelitoController extends Controller
     public function showForm($idCarpeta)
     {
         $carpetaNueva = Carpeta::where('id', $idCarpeta)->where('idFiscal', Auth::user()->id)->get();
-        if(count($carpetaNueva)>0){ 
+        if(count($carpetaNueva)>0){
             $delitos = CarpetaController::getDelitos($idCarpeta);
             $delits = CatDelito::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $posiblescausas = CatPosibleCausa::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
@@ -66,6 +66,8 @@ class DelitoController extends Controller
         $tipifDelito = new TipifDelito();
         $tipifDelito->idCarpeta = $request->idCarpeta;
         $tipifDelito->idDelito = $request->idDelito;
+        $tipifDelito->idAgrupacion1 = $request->idAgrupacion1;
+        $tipifDelito->idAgrupacion2 = $request->idAgrupacion2;
         if ($request->conViolencia==="1"){
             $tipifDelito->conViolencia = 1;
             $tipifDelito->idArma = $request->idArma;

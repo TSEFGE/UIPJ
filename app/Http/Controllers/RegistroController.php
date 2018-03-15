@@ -48,6 +48,8 @@ use App\Models\ExtraAbogado;
 use App\Models\TipifDelito;
 use App\Models\Vehiculo;
 use App\Models\Acusacion;
+use App\Models\CatAgrupacion1;
+use App\Models\CatAgrupacion2;
 use DB;
 
 class RegistroController extends Controller
@@ -113,6 +115,20 @@ class RegistroController extends Controller
         if($request->ajax()){
             $armas = CatArma::armas($id);
             return response()->json($armas);
+        }
+    }
+
+ public function getAgrupaciones1(Request $request, $id){
+        if($request->ajax()){
+            $agrupaciones1 = CatAgrupaciones1::agrupaciones1($id);
+            return response()->json($agrupaciones1);
+        }
+    }
+
+ public function getAgrupaciones2(Request $request, $id){
+        if($request->ajax()){
+            $agrupaciones2 = CatAgrupaciones2::agrupaciones2($id);
+            return response()->json($agrupaciones2);
         }
     }
 
@@ -1002,5 +1018,5 @@ class RegistroController extends Controller
     {
         //
     }
-    
+
 }
