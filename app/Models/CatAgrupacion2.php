@@ -20,6 +20,10 @@ class CatAgrupacion2 extends Model
         return $this->belongsTo('App\Models\CatAgrupacion1');
     }
 
+    public function tipifDelitos(){
+        return $this->hasMany('App\Models\TipifDelito');
+    }
+
     public static function agrupaciones2($id){
         return CatAgrupacion2::select('id', 'nombre')->where('idAgrupacion1', '=', $id)->orderBy('nombre', 'ASC')->get();
     }
