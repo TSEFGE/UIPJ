@@ -123,7 +123,6 @@ class RegistroController extends Controller
         if($request->ajax()){
 
             $agrupaciones1 = CatAgrupacion1::agrupaciones1($id);
-            dd($agrupaciones1);
             return response()->json($agrupaciones1);
         }
     }
