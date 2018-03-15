@@ -28,9 +28,9 @@ class StoreDenunciado extends FormRequest
 
             'nombresC' => 'nombre|min:3|max:200',
             'primerApC' => 'nombre|min:3|max:50',
-            'aliasC' => 'alias|min:1|max:50',
-            'calleC' => 'string|min:3|max:100',
-            'numExternoC' => 'alfanumdiag|min:1|max:10',
+           // 'aliasC' => 'alias|min:1|max:50',
+           // 'calleC' => 'string|min:3|max:100',
+            //'numExternoC' => 'alfanumdiag|min:1|max:10',
             'numInternoC' => 'alfanumdiag|min:1|max:10',
             'narracionC' => 'string|min:5|max:2000',
             
