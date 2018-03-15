@@ -26,44 +26,43 @@ Route::middleware(['auth'])->group(function () {
 	Route::post('storecarpeta', 'CarpetaController@storeCarpeta')->name('store.carpeta');
 	Route::get('/carpeta-inicial/{id}', 'CarpetaController@index')->name('carpeta');
 
-	Route::get('agregar-denunciante/{idCarpeta}', 'DenuncianteController@showForm')->name('new.denunciante');
+	Route::get('carpeta/{idCarpeta}/agregar-denunciante', 'DenuncianteController@showForm')->name('new.denunciante');
 	Route::post('storedenunciante', 'DenuncianteController@storeDenunciante')->name('store.denunciante');
 
-	Route::post('armarRfc', 'DenuncianteController@rfcMoral')->name('rfc.denunciante');
-
-	Route::post('armarRfcFIsico', 'DenuncianteController@rfcFisico')->name('rfcFisico.denunciante');
-
-	Route::get('agregar-denunciado/{idCarpeta}', 'DenunciadoController@showForm')->name('new.denunciado');
+	Route::get('carpeta/{idCarpeta}/agregar-denunciado', 'DenunciadoController@showForm')->name('new.denunciado');
 	Route::post('storedenunciado', 'DenunciadoController@storeDenunciado')->name('store.denunciado');
 
-	Route::get('agregar-abogado/{idCarpeta}', 'AbogadoController@showForm')->name('new.abogado');
+	Route::get('carpeta/{idCarpeta}/agregar-abogado', 'AbogadoController@showForm')->name('new.abogado');
 	Route::post('storeabogado', 'AbogadoController@storeAbogado')->name('store.abogado');
 
-	Route::get('agregar-defensa/{idCarpeta}', 'AbogadoController@showForm2')->name('new.defensa');
+	Route::get('carpeta/{idCarpeta}/agregar-defensa', 'AbogadoController@showForm2')->name('new.defensa');
 	Route::post('storedefensa', 'AbogadoController@storeDefensa')->name('store.defensa');
 
-	Route::get('agregar-autoridad/{idCarpeta}', 'AutoridadController@showForm')->name('new.autoridad');
+	Route::get('carpeta/{idCarpeta}/agregar-autoridad', 'AutoridadController@showForm')->name('new.autoridad');
 	Route::post('storeautoridad', 'AutoridadController@storeAutoridad')->name('store.autoridad');
 
-	Route::get('agregar-familiar/{idCarpeta}', 'FamiliarController@showForm')->name('new.familiar');
+	Route::get('carpeta/{idCarpeta}/agregar-familiar', 'FamiliarController@showForm')->name('new.familiar');
 	Route::post('storefamiliar', 'FamiliarController@storeFamiliar')->name('store.familiar');
 
-	Route::get('agregar-delito/{idCarpeta}', 'DelitoController@showForm')->name('new.delito');
+	Route::get('carpeta/{idCarpeta}/agregar-delito', 'DelitoController@showForm')->name('new.delito');
 	Route::post('storedelito', 'DelitoController@storeDelito')->name('store.delito');
 
-	Route::get('agregar-acusacion/{idCarpeta}', 'AcusacionController@showForm')->name('new.acusacion');
+	Route::get('carpeta/{idCarpeta}/agregar-acusacion', 'AcusacionController@showForm')->name('new.acusacion');
 	Route::post('storeacusacion', 'AcusacionController@storeAcusacion')->name('store.acusacion');
 
-	Route::get('agregar-vehiculo/{idCarpeta}', 'VehiculoController@showForm')->name('new.vehiculo');
+	Route::get('carpeta/{idCarpeta}/agregar-vehiculo', 'VehiculoController@showForm')->name('new.vehiculo');
 	Route::post('storevehiculo', 'VehiculoController@storeVehiculo')->name('store.vehiculo');
 
-	Route::get('generar-colaboracion-pm/{idCarpeta}', 'ColaboracionController@showForm')->name('new.colaboracionpm');
-	Route::get('generar-colaboracion-sp/{idCarpeta}', 'ColaboracionController@showForm2')->name('new.colaboracionsp');
+	Route::get('carpeta/{idCarpeta}/generar-colaboracion-pm', 'ColaboracionController@showForm')->name('new.colaboracionpm');
+	Route::get('carpeta/{idCarpeta}/generar-colaboracion-sp', 'ColaboracionController@showForm2')->name('new.colaboracionsp');
 
 	Route::get('carpeta/{id}', [
 		'uses' => 'CarpetaController@verDetalle',
 		'as' => 'view.carpeta'
 	]);
+
+	Route::post('armarRfc', 'DenuncianteController@rfcMoral')->name('rfc.denunciante');
+	Route::post('armarRfcFIsico', 'DenuncianteController@rfcFisico')->name('rfcFisico.denunciante');
 
 	/*---------Rutas para los selects dinámicos-------------*/
 	Route::get('municipios/{id}', 'RegistroController@getMunicipios');
@@ -78,8 +77,9 @@ Route::middleware(['auth'])->group(function () {
 	/*Route::get('denunciantes/{idCarpeta}', 'RegistroController@getDenunciantes');
 	Route::get('denunciados/{idCarpeta}', 'RegistroController@getDenunciados');*/
 	Route::get('involucrados/{idCarpeta}/{idAbogado}', 'RegistroController@getInvolucrados');
-  Route::get('agrupaciones1/{id}','RegistroController@getAgrupaciones1');
-  Route::get('agrupaciones2/{id}','RegistroController@getAgrupaciones2');
+  	Route::get('agrupaciones1/{id}','RegistroController@getAgrupaciones1');
+  	Route::get('agrupaciones2/{id}','RegistroController@getAgrupaciones2');
+
 	/*---------Rutas para generación de documentos-------------*/
 	Route::get('constancia-hechos/{idDenunciante}', [
 		'as'=>'constancia.hechos',
@@ -98,6 +98,7 @@ Route::middleware(['auth'])->group(function () {
 		'uses'=>'DocxMakerController@getFormatoColaboracionSp'
 	]);
 
+	/*---------Rutas para el libro de gobierno-------------*/
 	Route::get('libro-gobierno', 'LibroGobiernoController@index')->name('libro.gobierno');
 	Route::get('api/libro', 'LibroGobiernoController@apiLibro')->name('api.libro');
 	Route::get('api/rango', 'LibroGobiernoController@apiLibroRango')->name('api.rango');
