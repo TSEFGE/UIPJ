@@ -66,6 +66,8 @@ class DelitoController extends Controller
         $tipifDelito = new TipifDelito();
         $tipifDelito->idCarpeta = $request->idCarpeta;
         $tipifDelito->idDelito = $request->idDelito;
+        $tipifDelito->idAgrupacion1 = $request->idAgrupacion1;
+        $tipifDelito->idAgrupacion2 = $request->idAgrupacion2;
         if ($request->conViolencia==="1"){
             $tipifDelito->conViolencia = 1;
             $tipifDelito->idArma = $request->idArma;
