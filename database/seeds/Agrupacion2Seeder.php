@@ -24,6 +24,7 @@ class Agrupacion2Seeder extends Seeder
                                ['nombre' => 'VECINAL A CAMION REPARTIDOR','idAgrupacion1'=> 9],
                                ['nombre' => 'VECINAL A TRANSEUNTE','idAgrupacion1' => 9],
                                ['nombre' => 'DE PASAJEROS','idAgrupacion1' => 10],
+                                 ['nombre' => 'DE PASAJEROS','idAgrupacion1' => 10],
                                ['nombre' => 'A CAMION REPARTIDOR','idAgrupacion1' =>11],
                                ['nombre' => 'A TRANSEUNTE','idAgrupacion1' => 11],
                                ['nombre' => 'A VEHICULO','idAgrupacion1' =>11],
