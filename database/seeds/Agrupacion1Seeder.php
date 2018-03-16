@@ -180,7 +180,17 @@ class Agrupacion1Seeder extends Seeder
 				['nombre' => 'EN GRADO DE TENTATIVA', 'idCatDelito' =>84],
 				['nombre' => '2do PARRAFO', 'idCatDelito' =>84],
 				['nombre' => 'SIN AGRUPACION','idCatDelito'=> 85],
-				['nombre' => 'EN GRADO DE TENTATIVA', 'idCatDelito' =>86]
+				['nombre' => 'EN GRADO DE TENTATIVA', 'idCatDelito' =>86],
+				['nombre' => 'SIN AGRUPACION', 'idCatDelito' => 87],				
+				['nombre' => 'SIN AGRUPACION', 'idCatDelito' => 88],
+				['nombre' => 'SIN AGRUPACION', 'idCatDelito' => 89],				
+				['nombre' => 'SIN AGRUPACION', 'idCatDelito' => 90],				
+				['nombre' => 'SIN AGRUPACION', 'idCatDelito' => 91],				
+				['nombre' => 'SIN AGRUPACION', 'idCatDelito' => 92],				
+				['nombre' => 'SIN AGRUPACION', 'idCatDelito' => 93],				
+				['nombre' => 'SIN AGRUPACION', 'idCatDelito' => 94],				
+				['nombre' => 'SIN AGRUPACION', 'idCatDelito' => 95],				
+				['nombre' => 'SIN AGRUPACION', 'idCatDelito' => 96]
 			]);
 		}
 }
