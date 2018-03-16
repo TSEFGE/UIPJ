@@ -35,7 +35,7 @@ class StoreDenunciado extends FormRequest
             'narracionC' => 'string|min:5|max:2000',
             
             'nombres2' => 'min:3|max:50',
-            'rfc2' => 'rfc|min:10|max:13',
+            'rfc2' => 'min:10|max:13',
             'representanteLegal' => 'nombre|min:4|max:100',
             'calle' => 'string|min:4|max:100',
           //'numExterno' => 'alfanumdiag|min:1|max:10',
@@ -45,7 +45,7 @@ class StoreDenunciado extends FormRequest
           //  'numInterno3' => 'alfanumdiag|min:1|max:10',
             'correo' => 'email',
             'telefonoN' => 'numtel|min:7|max:15',
-            'senasPartic' => 'string|min:1|max:150',
+            //'senasPartic' => 'string|min:1|max:150',
             'narracion' => 'string|min:5|max:2000',
 
             'nombres' => 'nombre|min:3|max:50',
