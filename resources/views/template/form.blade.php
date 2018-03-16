@@ -38,71 +38,18 @@
             $("#numInterno2").val("S/N");
             $("#numInterno3").val("S/N");
             $("#numInternoC").val("S/N");
+            $("#numExterno").val("S/N");
+            $("#numExterno2").val("S/N");
+            $("#numExterno3").val("S/N");
+            $("#numExternoC").val("S/N");
             $("#fax").val("SIN INFORMACION");
+            $("#correo").val("sin@informacion.com");
         });
-        		$(function() {
-        			 maxVal = 17;
-        			 $('#curp').focusout(function(){
-        					var insertedVal = $(this).val();
-        					if (insertedVal.length < maxVal){
-        							$(this).css({"border-color":"red"});
-        								$("#validarRFCFisico").show();
-        					}else{
-        							$(this).css({"border-color":"green"});
-        							$("#validarRFCFisico").hide();
-        					}
-        			 });
-               $('#narracion').focusout(function(){
-                 narraMax=5;
-                 var narraVal = $(this).val();
-                 if (narraVal.length < narraMax){
-                     $(this).css({"border-color":"red"});
-                       $("#ValidarNarracion").show();
-                 }else{
-                     $(this).css({"border-color":"green"});
-                     $("#ValidarNarracion").hide();
-                 }
-              });
-              des=false;
-              $('#narracionIph').focusout(function(){
-                narraMax=5;
-                var narraVal = $(this).val();
-                if (narraVal.length < narraMax){
-                    $(this).css({"border-color":"red"});
-                      $("#ValidarNarracionIph").show();
-                }else{
-                    $(this).css({"border-color":"green"});
-                    $("#ValidarNarracionIph").hide();
-                }
-             });
-             $('#descripcionHechos').focusout(function(){
-               narraMax=5;
-               var narraVal = $(this).val();
-               if (narraVal.length < narraMax){
-                 true
-                   $(this).css({"border-color":"red"});
-                     $("#ValidarNarracionHechos").show();
-               }else{
-                   $(this).css({"border-color":"green"});
-                   $("#ValidarNarracionHechos").hide();
-               }
-            });
-            $('#motivoEstancia').focusout(function(){
-              narraMax=5;
-              var narraVal = $(this).val();
-              if (narraVal.length < narraMax){
-                true
-                  $(this).css({"border-color":"red"});
-                    $("#validarEstancia").show();
-              }else{
-                  $(this).css({"border-color":"green"});
-                  $("#validarEstancia").hide();
-              }
-           });
-           });
-
-
-
+        $(document).on('focus', '.select2', function (e) {
+            if (e.originalEvent) {
+              $(this).siblings('select').select2('open');
+            }
+          });
     </script>
     	<script src="{{ asset('js/curp.js') }}"></script>
       @include('fields.rfcMoral');
