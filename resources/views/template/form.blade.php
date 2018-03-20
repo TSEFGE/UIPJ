@@ -33,6 +33,7 @@
     <script>
         $(document).ready(function(){
             $('form').sisyphus({
+                excludeFields: $( 'input[name=_token]' )
             });
             $("#numInterno").val("S/N");
             $("#numInterno2").val("S/N");
