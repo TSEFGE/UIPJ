@@ -23,13 +23,14 @@
                     </div>
                 </div>
                 
-
+                @if(($carpetaNueva[0]->conDetenido)==1)
                 <div class="boxtwo">
                     @include('tables.autoridades')
                     <div class="text-right"> 
                         <a href="{{ route('new.autoridad', $carpetaNueva[0]->id) }}" class="btn btn-secondary">Agregar Autoridad</a><hr>
                     </div>
                 </div>
+                @endif
 
                 <div class="boxtwo">
                     @include('tables.abogados')

@@ -26,15 +26,15 @@ class StoreDenunciante extends FormRequest
         return [
 
             'nombres2' => 'min:3|max:200',
-            'rfc2' => 'rfc|min:10|max:13',
+            'rfc2' => 'min:10|max:13',
             'representanteLegal' => 'nombre|min:4|max:100',
             'calle' => 'string|min:3|max:100',
-            'numExterno' => 'alfanumdiag|min:1|max:10',
-            'numInterno' => 'alfanumdiag|min:1|max:10',
+          // 'numExterno' => 'alfanumdiag|min:1|max:10',
+          //  'numInterno' => 'alfanumdiag|min:1|max:10',
             'calle3' => 'string|min:3|max:100',
-            'numExterno3' => 'alfanumdiag|min:1|max:10',
-            'numInterno3' => 'alfanumdiag|min:1|max:10',
-            'correo' => 'email',
+          //'numExterno3' => 'alfanumdiag|min:1|max:10',
+          //  'numInterno3' => 'alfanumdiag|min:1|max:10',
+          //'correo' => 'email',
             'telefonoN' => 'numtel|min:7|max:15',
             'narracion' => 'string|min:5|max:2000',
 
@@ -50,8 +50,8 @@ class StoreDenunciante extends FormRequest
             'lugarTrabajo' => 'string',
             'telefonoTrabajo' => 'numtel|min:7|max:15',
             'calle2' => 'string|min:3|max:100',
-            'numExterno2' => 'alfanumdiag|min:1|max:10',
-            'numInterno2' => 'alfanumdiag|min:1|max:10',
+           //'numExterno2' => 'alfanumdiag|min:1|max:10',
+          //  'numInterno2' => 'alfanumdiag|min:1|max:10',
             
         ];
     }

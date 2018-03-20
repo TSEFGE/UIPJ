@@ -23,7 +23,7 @@
 			{!! Form::label('narracion', 'Narración', ['class' => 'col-form-label-sm']) !!}
 			{!! Form::textarea('narracion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la narración de los hechos', 'rows' => '5', 'required']) !!}
 			<div id="ValidarNarracion" class="invalid-feedback">
-				El campo narración debe contener al menos 5 caracteresEl campo debe contener entre 5 y 2000 caracteres.
+				El campo debe contener entre 5 y 2000 caracteres.
 			</div>
 		</div>
 	</div>

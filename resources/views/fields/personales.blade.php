@@ -207,7 +207,7 @@
 					{!! Form::text('numDocIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el núm. del docto. de identificación']) !!}
 				</div>
 				<div id="numDocumento" class="invalid-feedback">
-					Dato obligatorio.
+					El campo debe contener al menos 3 caracteres.
 				</div>
 
 			</div>
@@ -235,30 +235,34 @@
 		            </div>
 				</div>
 			</div>
+
 			<div class="col-6">	
 				<div class="row no-gutters">
 					<div class="col-7">
-								{!! Form::label('rfc2', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
-								{!! Form::text('rfc2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.', 'required']) !!}
-								<div class="invalid-feedback" id="invalid-rfc">
-									Ingrese un RFC válido.
-								</div>
-						  </div>
+						{!! Form::label('rfc2', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
+						{!! Form::text('rfc2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.', 'required']) !!}
+						<div class="invalid-feedback" id="invalid-rfc">
+							Ingrese un RFC válido.
+						</div>
+					</div>
 
-						  <div class="col-5">
-								{!! Form::label('homo2', 'Homoclave', ['class' => 'col-form-label-sm']) !!}
-								{!! Form::text('homo2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Homoclave', 'required']) !!}
-								<div class="invalid-feedback" id="invalid-homo">
-									Ingrese un Homoclave válido.
-								</div>
-						 </div>	
-					</div>	 
-						 
-				</div>
+					<div class="col-5">
+						{!! Form::label('homo2', 'Homoclave', ['class' => 'col-form-label-sm']) !!}
+						{!! Form::text('homo2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Homoclave', 'required']) !!}
+						<div class="invalid-feedback" id="invalid-homo">
+							Ingrese un Homoclave válido.
+						</div>
+					</div>	
+				</div>	 
+
+			</div>
 			<div class="col-6">
 				<div class="form-group">
 					{!! Form::label('representanteLegal', 'Representante legal', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('representanteLegal', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre del representante legal']) !!}
+					{!! Form::text('representanteLegal', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre del representante legal','required']) !!}
+					<div class="invalid-feedback" id="invalidRepresentante">
+						Este campo debe contener más de 3 caracteres y menos de 200
+					</div>
 				</div>
 			</div>
 		</div>

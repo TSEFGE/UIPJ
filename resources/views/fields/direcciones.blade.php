@@ -33,6 +33,9 @@
 		<div class="form-group">
 			{!! Form::label('calle', 'Calle', ['class' => 'col-form-label-sm']) !!}
 			{!! Form::text('calle', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la calle', 'required']) !!}
+			<div class="invalid-feedback" id="invalidCalle">
+				Este campo debe de contener mas de 5 caracteres
+			</div>
 		</div>
 	</div>
 	<div class="col-2">
@@ -44,7 +47,7 @@
 	<div class="col-2">
 		<div class="form-group">
 			{!! Form::label('numInterno', 'Número interior', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('numInterno', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número interior', 'required']) !!}
+			{!! Form::text('numInterno', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número interior']) !!}
 		</div>
 	</div>
 </div>
