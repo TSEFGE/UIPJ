@@ -418,6 +418,10 @@ $('#representanteLegal').focusout(function(){
 					$(this).css({"border-color":"yellow"})
 		
 	});
+	$('#senasPartic').focusout(function(){
+		$(this).css({"border-color":"yellow"})
+
+	});	
 	$('#lugarTrabajo').focusout(function(){
 		trabMax=7;
 		var trabVal = $(this).val();
