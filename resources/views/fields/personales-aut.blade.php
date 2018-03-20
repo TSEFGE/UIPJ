@@ -53,12 +53,26 @@
 			{!! Form::select('idEstadoOrigen', $estados, '30', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa', 'required']) !!}
 		</div>
 	</div>
-	<div class="col-3">
-		<div class="form-group">
-			{!! Form::label('rfc', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('rfc', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.', 'required']) !!}
-		</div>
-	</div>
+	<div class="col-3">	
+				<div class="row no-gutters">
+					<div class="col-7">
+								{!! Form::label('rfc4', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
+								{!! Form::text('rfc4', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.', 'required']) !!}
+								<div class="invalid-feedback" id="invalid-rfc">
+									Ingrese un RFC válido.
+								</div>
+						  </div>
+
+						  <div class="col-5">
+								{!! Form::label('homo4', 'Homoclave', ['class' => 'col-form-label-sm']) !!}
+								{!! Form::text('homo4', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Homoclave', 'required']) !!}
+								<div class="invalid-feedback" id="invalid-homo">
+									Ingrese un Homoclave válido.
+								</div>
+						 </div>	
+					</div>	 
+						 
+				</div>
 		<div class="col-3">
 			<div class="form-group">
 				{!! Form::label('curp', 'C.U.R.P.', ['class' => 'col-form-label-sm']) !!}
