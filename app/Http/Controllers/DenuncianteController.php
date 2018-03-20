@@ -65,7 +65,7 @@ class DenuncianteController extends Controller
             $persona->primerAp = $request->primerAp;
             $persona->segundoAp = $request->segundoAp;
             $persona->fechaNacimiento = $request->fechaNacimiento;
-            $persona->rfc = $request->rfc;
+            $persona->rfc = $request->rfc.$request->homo;
             $persona->curp = $request->curp;
             if (!is_null($request->sexo)) {
                 $persona->sexo = $request->sexo;
@@ -211,7 +211,7 @@ class DenuncianteController extends Controller
         } elseif ($request->esEmpresa==1) {
             $persona = new Persona();
             $persona->nombres = $request->nombres2;
-            $persona->rfc = $request->rfc2;
+            $persona->rfc = $request->rfc2.$request->homo2;
             $persona->esEmpresa = 1;
             $persona->save();
             $idPersona = $persona->id;
