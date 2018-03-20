@@ -15,6 +15,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/font-awesome/css/font-awesome.css') }}">
 	<link rel="stylesheet" href="{{asset ('css/sweetalert.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/select2/select2.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/cssfonts.css') }}">
     <link rel="stylesheet" href="{{ asset('css/pagination.css') }}">
     <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
@@ -37,6 +38,7 @@
 	<script src="{{ asset('js/bootstrap.min.js')}}" ></script>
 	<script src="{{asset ('js/sweetalert.min.js')}}"></script>
 	<script src="{{ asset('plugins/select2/select2.min.js')}}" ></script>
+	<script src="{{ asset('js/toastr.min.js')}}" ></script>
 	<!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
 	<script type="text/javascript">
@@ -48,6 +50,23 @@
 	    });
         $(document).ready(function() {
 			$('select').select2();
+			toastr.options = {
+				"closeButton": true,
+				"debug": false,
+				"newestOnTop": true,
+				"progressBar": true,
+				"positionClass": "toast-bottom-right",
+				"preventDuplicates": true,
+				"onclick": null,
+				"showDuration": "300",
+				"hideDuration": "1000",
+				"timeOut": "5000",
+				"extendedTimeOut": "1000",
+				"showEasing": "swing",
+				"hideEasing": "linear",
+				"showMethod": "fadeIn",
+				"hideMethod": "fadeOut"
+			}
 	    });
 	</script>
 	

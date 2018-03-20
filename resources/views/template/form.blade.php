@@ -47,15 +47,12 @@
         });
         $(document).on('focus', '.select2', function (e) {
             if (e.originalEvent) {
-              $(this).siblings('select').select2('open');
+                $(this).siblings('select').select2('open');
             }
-          });
+        });
     </script>
-    	<script src="{{ asset('js/curp.js') }}"></script>
-      @include('fields.rfcMoral');
-      @include('fields.rfcFisico')
-    {{--<script src="{{ asset('js/selectsChoosen.js') }}"></script>--}}
+    <script src="{{ asset('js/curp.js') }}"></script>
+    @include('fields.rfcMoral');
+    @include('fields.rfcFisico')
     @stack('PilaScripts')
-
-
 @endsection
