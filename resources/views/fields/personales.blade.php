@@ -33,7 +33,7 @@
 				<div class="form-group">
 					{!! Form::label('fechaNacimiento', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
 					<div class="input-group date" id="fechanac2" data-target-input="nearest">
-		                {!! Form::text('fechaNacimiento', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac2', 'data-toggle' => 'datetimepicker', 'required', 'placeholder' => 'DD/MM/AAAA']) !!}
+		                {!! Form::text('fechaNacimiento', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac2', 'data-toggle' => 'datetimepicker', 'required', 'placeholder' => 'AAAA-MM-DD']) !!}
 		                <div class="input-group-append" data-target="#fechanac2" data-toggle="datetimepicker">
 		                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
 		                </div>
@@ -57,7 +57,7 @@
 				<div class="form-group">
 					{!! Form::label('fechaNacimiento', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
 					<div class="input-group date" id="fechanac" data-target-input="nearest">
-		                {!! Form::text('fechaNacimiento', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac', 'data-toggle' => 'datetimepicker', 'required', 'placeholder' => 'DD/MM/AAAA']) !!}
+		                {!! Form::text('fechaNacimiento', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac', 'data-toggle' => 'datetimepicker', 'required', 'placeholder' => 'AAAA-MM-DD']) !!}
 		                <div class="input-group-append" data-target="#fechanac" data-toggle="datetimepicker">
 		                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
 		                </div>
@@ -101,25 +101,22 @@
 			<div class="col-3">	
 				<div class="row no-gutters">
 					<div class="col-7">
-								{!! Form::label('rfc', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
-								{!! Form::text('rfc', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.', 'required']) !!}
-								<div class="invalid-feedback" id="invalid-rfc">
-									Ingrese un RFC válido.
-								</div>
-						  </div>
+						{!! Form::label('rfc', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
+						{!! Form::text('rfc', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.', 'required']) !!}
+						<div class="invalid-feedback" id="invalid-rfc">
+							Ingrese un RFC válido.
+						</div>
+					</div>
 
-						  <div class="col-5">
-								{!! Form::label('homo', 'Homoclave', ['class' => 'col-form-label-sm']) !!}
-								{!! Form::text('homo', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Homoclave', 'required']) !!}
-								<div class="invalid-feedback" id="invalid-homo">
-									Ingrese un Homoclave válido.
-								</div>
-						 </div>	
-					</div>	 
-						 
+					<div class="col-5">
+						{!! Form::label('homo', 'Homoclave', ['class' => 'col-form-label-sm']) !!}
+						{!! Form::text('homo', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Homoclave', 'required']) !!}
+						<div class="invalid-feedback" id="invalid-homo">
+							Ingrese un Homoclave válido.
+						</div>
+					</div>	
 				</div>
-					
-							
+			</div>		
 
 			<div class="col-3">
 				<div class="form-group">
@@ -228,7 +225,7 @@
 			<div class="col-6">
 				<div class="form-group">
 					{!! Form::label('fechaAltaEmpresa', 'Fecha de alta de Persona Moral', ['class' => 'col-form-label-sm']) !!}<div class="input-group date" id="fechaAlta" data-target-input="nearest">
-		                {!! Form::text('fechaAltaEmpresa', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaAlta', 'data-toggle' => 'datetimepicker', 'placeholder' => 'DD/MM/AAAA']) !!}
+		                {!! Form::text('fechaAltaEmpresa', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaAlta', 'data-toggle' => 'datetimepicker', 'placeholder' => 'AAAA-MM-DD']) !!}
 		                <div class="input-group-append" data-target="#fechaAlta" data-toggle="datetimepicker">
 		                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
 		                </div>

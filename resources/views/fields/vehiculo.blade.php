@@ -1,4 +1,3 @@
-
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('idTipifDelito', 'Delito', ['class' => 'col-form-label-sm']) !!}

@@ -21,7 +21,7 @@
 		<div class="form-group">
 			{!! Form::label('fechaNacimiento', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
 			<div class="input-group date" id="fechanac" data-target-input="nearest">
-						{!! Form::text('fechaNacimiento', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac', 'data-toggle' => 'datetimepicker', 'required', 'placeholder' => 'DD/MM/AAAA']) !!}
+						{!! Form::text('fechaNacimiento', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac', 'data-toggle' => 'datetimepicker', 'required', 'placeholder' => 'AAAA-MM-DD']) !!}
 						<div class="input-group-append" data-target="#fechanac" data-toggle="datetimepicker">
 								<div class="input-group-text"><i class="fa fa-calendar"></i></div>
 						</div>
@@ -58,8 +58,7 @@
 					Ingrese un Homoclave válido.
 				</div>
 			</div>	
-		</div>	 
-		
+		</div>
 	</div>
 	
 	<div class="col-3">

@@ -21,7 +21,7 @@
 		<div class="form-group">
 			{!! Form::label('fechaNacimiento', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
 			<div class="input-group date" id="fechanac" data-target-input="nearest">
-						{!! Form::text('fechaNacimiento', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac', 'data-toggle' => 'datetimepicker', 'required', 'placeholder' => 'DD/MM/AAAA']) !!}
+						{!! Form::text('fechaNacimiento', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac', 'data-toggle' => 'datetimepicker', 'required', 'placeholder' => 'AAAA-MM-DD']) !!}
 						<div class="input-group-append" data-target="#fechanac" data-toggle="datetimepicker">
 								<div class="input-group-text"><i class="fa fa-calendar"></i></div>
 						</div>
@@ -141,24 +141,24 @@
 		</div>
 	</div>
 	<div class="col-3">
-				<div class="form-group">
-					{!! Form::label('docIdentificacion', 'Documento de identificación', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('docIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el docto. de identificacion']) !!}
-				</div>
-				<div id="documento" class="invalid-feedback">
-					Dato obligatorio.
-				</div>
-			</div>
-			<div class="col-3">
-				<div class="form-group">
-					{!! Form::label('numDocIdentificacion', 'Núm. de documento de identificación', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('numDocIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el núm. del docto. de identificación']) !!}
-				</div>
-				<div id="numDocumento" class="invalid-feedback">
-					Dato obligatorio.
-				</div>
+		<div class="form-group">
+			{!! Form::label('docIdentificacion', 'Documento de identificación', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::text('docIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el docto. de identificacion']) !!}
+		</div>
+		<div id="documento" class="invalid-feedback">
+			Dato obligatorio.
+		</div>
+	</div>
+	<div class="col-3">
+		<div class="form-group">
+			{!! Form::label('numDocIdentificacion', 'Núm. de documento de identificación', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::text('numDocIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el núm. del docto. de identificación']) !!}
+		</div>
+		<div id="numDocumento" class="invalid-feedback">
+			Dato obligatorio.
+		</div>
 
-			</div>
+	</div>
 </div>
 
 {{--<div id="accordion" role="tablist">

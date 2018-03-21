@@ -15,7 +15,7 @@
 		<div class="form-group">
 			{!! Form::label('fechaInicio', 'Fecha de inicio de carpeta', ['class' => 'col-form-label-sm']) !!}
 			<div class="input-group date calendarioCompleto" id="fechaInicial" data-target-input="nearest">
-                {!! Form::text('fechaInicio', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaInicial', 'data-toggle' => 'datetimepicker', 'required', 'readonly', 'placeholder' => 'DD/MM/AAAA']) !!}
+                {!! Form::text('fechaInicio', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaInicial', 'data-toggle' => 'datetimepicker', 'required', 'readonly', 'placeholder' => 'AAAA-MM-DD']) !!}
                 <div class="input-group-append" data-target="#fechaInicial" data-toggle="datetimepicker">
                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                 </div>
@@ -82,7 +82,7 @@
 				<div class="form-group">
 					{!! Form::label('fechaIph', 'Fecha IPH', ['class' => 'col-form-label-sm']) !!}
 					<div class="input-group date" id="fechaiph2" data-target-input="nearest">
-		                {!! Form::text('fechaIph', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaiph2', 'data-toggle' => 'datetimepicker', 'required', 'placeholder' => 'DD/MM/AAAA']) !!}
+		                {!! Form::text('fechaIph', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaiph2', 'data-toggle' => 'datetimepicker', 'required', 'placeholder' => 'AAAA-MM-DD']) !!}
 		                <div class="input-group-append" data-target="#fechaiph2" data-toggle="datetimepicker">
 		                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
 		                </div>
