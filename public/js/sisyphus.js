@@ -1,7 +1,7 @@
 /**
  * Plugin developed to save html forms data to LocalStorage to restore them after browser crashes, tabs closings
- * and other disasters. 
- * 
+ * and other disasters.
+ *
  * https://github.com/simsalabim/sisyphus
  *
  * @author Alexander Kaupanin <kaupanin@gmail.com>
@@ -368,7 +368,7 @@
 						}*/
 					} else if ( name === undefined || name.indexOf( "[" ) === -1 ) {
 						// If we aren't named by name (e.g. id) or we aren't in a multiple element field
-						field.val( resque );
+						field.val( resque ).trigger('change');
 					} else {
 						resque = resque.split( "," );
 						field.val( resque );
@@ -416,7 +416,7 @@
 				 */
 				saveToBrowserStorage: function( key, value, fireCallback ) {
 					var self = this;
-					
+
 					var callback_result = self.options.onBeforeSave.call( self );
 					if ( callback_result !== undefined && callback_result === false ) {
 						return;
