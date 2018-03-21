@@ -44,15 +44,32 @@
       },
       dataType: "json",
       success: function(data) {
-        $("#rfc").val(data.res);
-        console.log(data);
+
+        rfc=data.res;
+        var array= rfc.split("");
+        var rfcSH=[];
+        var homoC=[];
+
+        array.forEach( function(valor, indice, array) { 
+
+          if(indice<10){
+            rfcSH.push(valor);
+          } if(indice>=10){
+            homoC.push(valor); 
+          } 
+        });
+
+        rfc=rfcSH.join("");;
+        homo=homoC.join("");
+
+        $("#rfc").val(rfc);
+
+        $("#homo").val(homo);
+
       },
       error: function(data) {
         // console.log(data);
       }
     });
-
-
-
   }
 </script>

@@ -34,16 +34,29 @@ $.ajax({
       data: {nombre,dia,mes,ano},
       dataType:"json",
      success: function(data){
-     	$("#rfc2").val(data.res);
-         console.log(data);
+        
+        rfc=data.res;
+        var array= rfc.split("");
+        var rfcSH=[];
+        var homoC=[];
+
+        array.forEach( function(valor, indice, array) { 
+
+          if(indice<9){
+            rfcSH.push(valor);
+          } if(indice>=9){
+            homoC.push(valor); 
+          } 
+        });
+
+        rfc=rfcSH.join("");
+        homo=homoC.join("");
+
+        $("#rfc2").val(rfc);
+        $("#homo2").val(homo);
    },error:function(data){
    // console.log(data);
    }
  });
-
- 
-	
 } 
-
-
 </script>
