@@ -335,8 +335,8 @@ function obtenerCURP() {
 			fecha_nacimiento: [dia, mes, año]
 		});
 		$("#curp").val(curp);
+		toastr.info('Se ha modificado el CURP', '¡Atención!');
 	}else{
 	
 	}
-	toastr.info('Se ha modificado el CURP', '¡Atención!');
 }
