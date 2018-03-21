@@ -35,7 +35,7 @@ class StoreDenunciado extends FormRequest
             'narracionC' => 'string|min:5|max:2000',
             
             'nombres2' => 'min:3|max:50',
-            'rfc2' => 'min:10|max:13',
+            'rfc2' => 'min:9|max:13',
             'representanteLegal' => 'nombre|min:4|max:100',
             'calle' => 'string|min:4|max:100',
           //'numExterno' => 'alfanumdiag|min:1|max:10',
