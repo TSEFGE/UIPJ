@@ -26,7 +26,7 @@ class StoreDenunciante extends FormRequest
         return [
 
             'nombres2' => 'min:3|max:200',
-            'rfc2' => 'min:10|max:13',
+            'rfc2' => 'min:9|max:13',
             'representanteLegal' => 'nombre|min:4|max:100',
             'calle' => 'string|min:3|max:100',
           // 'numExterno' => 'alfanumdiag|min:1|max:10',
