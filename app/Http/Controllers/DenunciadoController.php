@@ -59,6 +59,7 @@ class DenunciadoController extends Controller
 
     public function storeDenunciado(StoreDenunciado $request){
         //dd($request->all());
+        //QRR
         if ($request->tipoDenunciado==1){
             $persona = new Persona();
             $persona->nombres = $request->nombresQ;
@@ -95,6 +96,7 @@ class DenunciadoController extends Controller
             $ExtraDenunciado->idNotificacion = $idNotificacion;
             $ExtraDenunciado->save();
         }
+        //Denunciado conocido
         elseif ($request->tipoDenunciado==2){
             $persona = new Persona();
             $persona->nombres = $request->nombresC;
@@ -141,183 +143,191 @@ class DenunciadoController extends Controller
             $ExtraDenunciado->senasPartic = $request->senasParticC;
             $ExtraDenunciado->save();
         }
+        //Por comparecencia
         elseif ($request->tipoDenunciado==3){
+            //Persona física
             if ($request->esEmpresa==0){
-                $persona = new Persona();
-                $persona->nombres = $request->nombres;
-                $persona->primerAp = $request->primerAp;
-                $persona->segundoAp = $request->segundoAp;
-                $persona->fechaNacimiento = $request->fechaNacimiento;
-                $persona->rfc = $request->rfc.$request->homo;
-                $persona->curp = $request->curp;
-                if (!is_null($request->sexo)){
-                    $persona->sexo = $request->sexo;
-                }
-                if (!is_null($request->idNacionalidad)){
-                    $persona->idNacionalidad = $request->idNacionalidad;
-                }
-                if (!is_null($request->idEtnia)){
-                    $persona->idEtnia = $request->idEtnia;
-                }
-                if (!is_null($request->idLengua)){
-                    $persona->idLengua = $request->idLengua;
-                }
-                if (!is_null($request->idMunicipioOrigen)){
-                    $persona->idMunicipioOrigen = $request->idMunicipioOrigen;
-                }
-                $persona->esEmpresa = 0;
-                $persona->save();
-                $idPersona = $persona->id;
+                $persona = Persona::where('curp', $request->curp)->get();
+                if ($persona->isNotEmpty()){
+                    Alert::error('Ya existe una persona registrada con ese CURP.', 'Error')->persistent("Aceptar");
+                    return back()->withInput();
+                }else{
+                    $persona = new Persona();
+                    $persona->nombres = $request->nombres;
+                    $persona->primerAp = $request->primerAp;
+                    $persona->segundoAp = $request->segundoAp;
+                    $persona->fechaNacimiento = $request->fechaNacimiento;
+                    $persona->rfc = $request->rfc.$request->homo;
+                    $persona->curp = $request->curp;
+                    if (!is_null($request->sexo)){
+                        $persona->sexo = $request->sexo;
+                    }
+                    if (!is_null($request->idNacionalidad)){
+                        $persona->idNacionalidad = $request->idNacionalidad;
+                    }
+                    if (!is_null($request->idEtnia)){
+                        $persona->idEtnia = $request->idEtnia;
+                    }
+                    if (!is_null($request->idLengua)){
+                        $persona->idLengua = $request->idLengua;
+                    }
+                    if (!is_null($request->idMunicipioOrigen)){
+                        $persona->idMunicipioOrigen = $request->idMunicipioOrigen;
+                    }
+                    $persona->esEmpresa = 0;
+                    $persona->save();
+                    $idPersona = $persona->id;
 
-                $domicilio = new Domicilio();
-                if (!is_null($request->idMunicipio)){
-                    $domicilio->idMunicipio = $request->idMunicipio;
-                }
-                if (!is_null($request->idLocalidad)){
-                    $domicilio->idLocalidad = $request->idLocalidad;
-                }
-                if (!is_null($request->idColonia)){
-                    $domicilio->idColonia = $request->idColonia;
-                }
-                if (!is_null($request->calle)){
-                    $domicilio->calle = $request->calle;
-                }
-                if (!is_null($request->numExterno)){
-                    $domicilio->numExterno = $request->numExterno;
-                }
-                if (!is_null($request->numInterno)){
-                    $domicilio->numInterno = $request->numInterno;
-                }
-                $domicilio->save();
-                $idD1 = $domicilio->id;
+                    $domicilio = new Domicilio();
+                    if (!is_null($request->idMunicipio)){
+                        $domicilio->idMunicipio = $request->idMunicipio;
+                    }
+                    if (!is_null($request->idLocalidad)){
+                        $domicilio->idLocalidad = $request->idLocalidad;
+                    }
+                    if (!is_null($request->idColonia)){
+                        $domicilio->idColonia = $request->idColonia;
+                    }
+                    if (!is_null($request->calle)){
+                        $domicilio->calle = $request->calle;
+                    }
+                    if (!is_null($request->numExterno)){
+                        $domicilio->numExterno = $request->numExterno;
+                    }
+                    if (!is_null($request->numInterno)){
+                        $domicilio->numInterno = $request->numInterno;
+                    }
+                    $domicilio->save();
+                    $idD1 = $domicilio->id;
 
-                $domicilio2 = new Domicilio();
-                if (!is_null($request->idMunicipio2)){
-                    $domicilio2->idMunicipio = $request->idMunicipio2;
-                }
-                if (!is_null($request->idLocalidad2)){
-                    $domicilio2->idLocalidad = $request->idLocalidad2;
-                }
-                if (!is_null($request->idColonia2)){
-                    $domicilio2->idColonia = $request->idColonia2;
-                }
-                if (!is_null($request->calle2)){
-                    $domicilio2->calle = $request->calle2;
-                }
-                if (!is_null($request->numExterno2)){
-                    $domicilio2->numExterno = $request->numExterno2;
-                }
-                if (!is_null($request->numInterno2)){
-                    $domicilio2->numInterno = $request->numInterno2;
-                }
-                $domicilio2->save();
-                $idD2 = $domicilio2->id;
+                    $domicilio2 = new Domicilio();
+                    if (!is_null($request->idMunicipio2)){
+                        $domicilio2->idMunicipio = $request->idMunicipio2;
+                    }
+                    if (!is_null($request->idLocalidad2)){
+                        $domicilio2->idLocalidad = $request->idLocalidad2;
+                    }
+                    if (!is_null($request->idColonia2)){
+                        $domicilio2->idColonia = $request->idColonia2;
+                    }
+                    if (!is_null($request->calle2)){
+                        $domicilio2->calle = $request->calle2;
+                    }
+                    if (!is_null($request->numExterno2)){
+                        $domicilio2->numExterno = $request->numExterno2;
+                    }
+                    if (!is_null($request->numInterno2)){
+                        $domicilio2->numInterno = $request->numInterno2;
+                    }
+                    $domicilio2->save();
+                    $idD2 = $domicilio2->id;
 
-                $domicilio3 = new Domicilio();
-                if (!is_null($request->idMunicipio3)){
-                    $domicilio3->idMunicipio = $request->idMunicipio3;
-                }
-                if (!is_null($request->idLocalidad3)){
-                    $domicilio3->idLocalidad = $request->idLocalidad3;
-                }
-                if (!is_null($request->idColonia3)){
-                    $domicilio3->idColonia = $request->idColonia3;
-                }
-                if (!is_null($request->calle3)){
-                    $domicilio3->calle = $request->calle3;
-                }
-                if (!is_null($request->numExterno3)){
-                    $domicilio3->numExterno = $request->numExterno3;
-                }
-                if (!is_null($request->numInterno3)){
-                    $domicilio3->numInterno = $request->numInterno3;
-                }
-                $domicilio3->save();
-                $idD3 = $domicilio3->id;
+                    $domicilio3 = new Domicilio();
+                    if (!is_null($request->idMunicipio3)){
+                        $domicilio3->idMunicipio = $request->idMunicipio3;
+                    }
+                    if (!is_null($request->idLocalidad3)){
+                        $domicilio3->idLocalidad = $request->idLocalidad3;
+                    }
+                    if (!is_null($request->idColonia3)){
+                        $domicilio3->idColonia = $request->idColonia3;
+                    }
+                    if (!is_null($request->calle3)){
+                        $domicilio3->calle = $request->calle3;
+                    }
+                    if (!is_null($request->numExterno3)){
+                        $domicilio3->numExterno = $request->numExterno3;
+                    }
+                    if (!is_null($request->numInterno3)){
+                        $domicilio3->numInterno = $request->numInterno3;
+                    }
+                    $domicilio3->save();
+                    $idD3 = $domicilio3->id;
 
-                $notificacion = new Notificacion();
-                $notificacion->idDomicilio = $idD3;
-                $notificacion->correo = $request->correo;
-                $notificacion->telefono = $request->telefono;
-                $notificacion->fax = $request->fax;
-                $notificacion->save();
-                $idNotificacion = $notificacion->id;
+                    $notificacion = new Notificacion();
+                    $notificacion->idDomicilio = $idD3;
+                    $notificacion->correo = $request->correo;
+                    $notificacion->telefono = $request->telefono;
+                    $notificacion->fax = $request->fax;
+                    $notificacion->save();
+                    $idNotificacion = $notificacion->id;
 
-                $VariablesPersona = new VariablesPersona();
-                $VariablesPersona->idCarpeta = $request->idCarpeta;
-                $VariablesPersona->idPersona = $idPersona;
-                $VariablesPersona->edad = $request->edad;
-                if (!is_null($request->telefono)){
-                    $VariablesPersona->telefono = $request->telefono;
-                }
-                if (!is_null($request->motivoEstancia)){
-                    $VariablesPersona->motivoEstancia = $request->motivoEstancia;
-                }
-                if (!is_null($request->idOcupacion)){
-                    $VariablesPersona->idOcupacion = $request->idOcupacion;
-                }
-                if (!is_null($request->idEstadoCivil)){
-                    $VariablesPersona->idEstadoCivil = $request->idEstadoCivil;
-                }
-                if (!is_null($request->idEscolaridad)){
-                    $VariablesPersona->idEscolaridad = $request->idEscolaridad;
-                }
-                if (!is_null($request->idReligion)){
-                    $VariablesPersona->idReligion = $request->idReligion;
-                }
-                $VariablesPersona->idDomicilio = $idD1;
-                if (!is_null($request->docIdentificacion)){
-                    $VariablesPersona->docIdentificacion = $request->docIdentificacion;
-                }
-                if (!is_null($request->numDocIdentificacion)){
-                    $VariablesPersona->numDocIdentificacion = $request->numDocIdentificacion;
-                }
-                if (!is_null($request->lugarTrabajo)){
-                    $VariablesPersona->lugarTrabajo = $request->lugarTrabajo;
-                }
-                $VariablesPersona->idDomicilioTrabajo = $idD2;
-                if (!is_null($request->telefonoTrabajo)){
-                    $VariablesPersona->telefonoTrabajo = $request->telefonoTrabajo;
-                }
-                $VariablesPersona->representanteLegal = "NO APLICA";
-                $VariablesPersona->save();
-                $idVariablesPersona = $VariablesPersona->id;
+                    $VariablesPersona = new VariablesPersona();
+                    $VariablesPersona->idCarpeta = $request->idCarpeta;
+                    $VariablesPersona->idPersona = $idPersona;
+                    $VariablesPersona->edad = $request->edad;
+                    if (!is_null($request->telefono)){
+                        $VariablesPersona->telefono = $request->telefono;
+                    }
+                    if (!is_null($request->motivoEstancia)){
+                        $VariablesPersona->motivoEstancia = $request->motivoEstancia;
+                    }
+                    if (!is_null($request->idOcupacion)){
+                        $VariablesPersona->idOcupacion = $request->idOcupacion;
+                    }
+                    if (!is_null($request->idEstadoCivil)){
+                        $VariablesPersona->idEstadoCivil = $request->idEstadoCivil;
+                    }
+                    if (!is_null($request->idEscolaridad)){
+                        $VariablesPersona->idEscolaridad = $request->idEscolaridad;
+                    }
+                    if (!is_null($request->idReligion)){
+                        $VariablesPersona->idReligion = $request->idReligion;
+                    }
+                    $VariablesPersona->idDomicilio = $idD1;
+                    if (!is_null($request->docIdentificacion)){
+                        $VariablesPersona->docIdentificacion = $request->docIdentificacion;
+                    }
+                    if (!is_null($request->numDocIdentificacion)){
+                        $VariablesPersona->numDocIdentificacion = $request->numDocIdentificacion;
+                    }
+                    if (!is_null($request->lugarTrabajo)){
+                        $VariablesPersona->lugarTrabajo = $request->lugarTrabajo;
+                    }
+                    $VariablesPersona->idDomicilioTrabajo = $idD2;
+                    if (!is_null($request->telefonoTrabajo)){
+                        $VariablesPersona->telefonoTrabajo = $request->telefonoTrabajo;
+                    }
+                    $VariablesPersona->representanteLegal = "NO APLICA";
+                    $VariablesPersona->save();
+                    $idVariablesPersona = $VariablesPersona->id;
 
-                $ExtraDenunciado = new ExtraDenunciado();
-                $ExtraDenunciado->idVariablesPersona = $idVariablesPersona;
-                $ExtraDenunciado->idNotificacion = $idNotificacion;
-                if (!is_null($request->idPuesto)){
-                    $ExtraDenunciado->idPuesto = $request->idPuesto;
+                    $ExtraDenunciado = new ExtraDenunciado();
+                    $ExtraDenunciado->idVariablesPersona = $idVariablesPersona;
+                    $ExtraDenunciado->idNotificacion = $idNotificacion;
+                    if (!is_null($request->idPuesto)){
+                        $ExtraDenunciado->idPuesto = $request->idPuesto;
+                    }
+                    if (!is_null($request->alias)){
+                        $ExtraDenunciado->alias = $request->alias;
+                    }
+                    if (!is_null($request->senasPartic)){
+                        $ExtraDenunciado->senasPartic = $request->senasPartic;
+                    }
+                    if (!is_null($request->ingreso)){
+                        $ExtraDenunciado->ingreso = $request->ingreso;
+                    }
+                    if (!is_null($request->periodoIngreso)){
+                        $ExtraDenunciado->periodoIngreso = $request->periodoIngreso;
+                    }
+                    if (!is_null($request->residenciaAnterior)){
+                        $ExtraDenunciado->residenciaAnterior = $request->residenciaAnterior;
+                    }
+                    $ExtraDenunciado->idAbogado = null;
+                    if (!is_null($request->personasBajoSuGuarda)){
+                        $ExtraDenunciado->personasBajoSuGuarda = $request->personasBajoSuGuarda;
+                    }
+                    if ($request->esperseguidoPenalmente==1){
+                        $ExtraDenunciado->perseguidoPenalmente = 1;
+                    }
+                    if (!is_null($request->vestimenta)){
+                        $ExtraDenunciado->vestimenta = $request->vestimenta;
+                    }
+                    if (!is_null($request->narracion)){
+                        $ExtraDenunciado->narracion = $request->narracion;
+                    }
+                    $ExtraDenunciado->save();
                 }
-                if (!is_null($request->alias)){
-                    $ExtraDenunciado->alias = $request->alias;
-                }
-                if (!is_null($request->senasPartic)){
-                    $ExtraDenunciado->senasPartic = $request->senasPartic;
-                }
-                if (!is_null($request->ingreso)){
-                    $ExtraDenunciado->ingreso = $request->ingreso;
-                }
-                if (!is_null($request->periodoIngreso)){
-                    $ExtraDenunciado->periodoIngreso = $request->periodoIngreso;
-                }
-                if (!is_null($request->residenciaAnterior)){
-                    $ExtraDenunciado->residenciaAnterior = $request->residenciaAnterior;
-                }
-                $ExtraDenunciado->idAbogado = null;
-                if (!is_null($request->personasBajoSuGuarda)){
-                    $ExtraDenunciado->personasBajoSuGuarda = $request->personasBajoSuGuarda;
-                }
-                if ($request->esperseguidoPenalmente==1){
-                    $ExtraDenunciado->perseguidoPenalmente = 1;
-                }
-                if (!is_null($request->vestimenta)){
-                    $ExtraDenunciado->vestimenta = $request->vestimenta;
-                }
-                if (!is_null($request->narracion)){
-                    $ExtraDenunciado->narracion = $request->narracion;
-                }
-                $ExtraDenunciado->save();
             }elseif($request->esEmpresa==1){
                 $persona = new Persona();
                 $persona->nombres = $request->nombres2;
