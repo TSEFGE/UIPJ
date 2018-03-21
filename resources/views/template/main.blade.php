@@ -19,6 +19,7 @@
 	<link rel="stylesheet" href="{{ asset('css/cssfonts.css') }}">
     <link rel="stylesheet" href="{{ asset('css/pagination.css') }}">
     <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
+		<link rel="stylesheet" href="{{ asset('css/theme-jquery-validation.min.css') }}">
     @yield('css')
 </head>
 
@@ -39,6 +40,7 @@
 	<script src="{{asset ('js/sweetalert.min.js')}}"></script>
 	<script src="{{ asset('plugins/select2/select2.min.js')}}" ></script>
 	<script src="{{ asset('js/toastr.min.js')}}" ></script>
+	<script src="{{ asset('js/jquery.form-validator.min.js')}}" ></script>
 	<!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
 	<script type="text/javascript">
@@ -69,7 +71,7 @@
 			}
 	    });
 	</script>
-	
+
 	@yield('scripts')
     @include('sweet::alert')
 </body>
