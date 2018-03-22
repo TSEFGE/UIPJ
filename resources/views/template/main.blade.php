@@ -70,6 +70,7 @@
 				"hideMethod": "fadeOut"
 			}
 	    });
+			$.validate();
 	</script>
 
 	@yield('scripts')
