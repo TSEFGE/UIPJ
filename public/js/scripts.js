@@ -64,6 +64,7 @@ $(document).ready(function(){
             //Datos personales no requeridos de Persona Moral o Empresa
             $('#nombres2').prop('disabled', true);
             $('#rfc2').prop('disabled', true);
+            $('#homo2').prop('disabled', true);
             $('#representanteLegal').prop('disabled', true);
             $('#idEstado').prop('disabled', true);
             $('#idMunicipio').prop('disabled', true);
@@ -74,52 +75,54 @@ $(document).ready(function(){
             $('#numExterno').prop('disabled', true);
             $('#numInterno').prop('disabled', true);
 
+
             //Datos personales no requeridos de Persona Física
-            $("#nombres").prop('disabled', true);   
-            $("#primerAp").prop('disabled', true);   
-            $("#segundoAp").prop('disabled', true);   
-            $("#rfc").prop('disabled', true);   
-            $("#fechaNacimiento").prop('disabled', true);   
-            $("#edad").prop('disabled', true);   
-            $("#sexo").prop('disabled', true);   
-            $("#curp").prop('disabled', true);   
-            $("#idNacionalidad").prop('disabled', true);   
-            $("#idEtnia").prop('disabled', true);   
-            $("#idLengua").prop('disabled', true);   
-            $("#idEstadoOrigen").prop('disabled', true);   
-            $("#idMunicipioOrigen").prop('disabled', true);   
-            $("#telefono").prop('disabled', true);   
-            $("#motivoEstancia").prop('disabled', true);   
-            $("#idOcupacion").prop('disabled', true);   
-            $("#idEstadoCivil").prop('disabled', true);   
-            $("#idReligion").prop('disabled', true);   
-            $("#idEscolaridad").prop('disabled', true);   
-            $("#docIdentificacion").prop('disabled', true);   
-            $("#numDocIdentificacion").prop('disabled', true);  
+            $("#nombres").prop('disabled', true);
+            $("#primerAp").prop('disabled', true);
+            $("#segundoAp").prop('disabled', true);
+            $("#rfc").prop('disabled', true);
+            $("#homo").prop('disabled', true);
+            $("#fechaNacimiento").prop('disabled', true);
+            $("#edad").prop('disabled', true);
+            $("#sexo").prop('disabled', true);
+            $("#curp").prop('disabled', true);
+            $("#idNacionalidad").prop('disabled', true);
+            $("#idEtnia").prop('disabled', true);
+            $("#idLengua").prop('disabled', true);
+            $("#idEstadoOrigen").prop('disabled', true);
+            $("#idMunicipioOrigen").prop('disabled', true);
+            $("#telefono").prop('disabled', true);
+            $("#motivoEstancia").prop('disabled', true);
+            $("#idOcupacion").prop('disabled', true);
+            $("#idEstadoCivil").prop('disabled', true);
+            $("#idReligion").prop('disabled', true);
+            $("#idEscolaridad").prop('disabled', true);
+            $("#docIdentificacion").prop('disabled', true);
+            $("#numDocIdentificacion").prop('disabled', true);
 
             //Datos del trabajo no requeridos de Persona Física
-            $("#lugarTrabajo").prop('disabled', true);   
-            $("#telefonoTrabajo").prop('disabled', true);   
-            $("#idEstado2").prop('disabled', true);   
-            $("#idMunicipio2").prop('disabled', true);   
-            $("#idLocalidad2").prop('disabled', true);   
-            $("#cp2").prop('disabled', true);   
-            $("#idColonia2").prop('disabled', true);   
-            $("#calle2").prop('disabled', true);   
-            $("#numExterno2").prop('disabled', true);   
-            $("#numInterno2").prop('disabled', true);  
+            $("#lugarTrabajo").prop('disabled', true);
+            $("#telefonoTrabajo").prop('disabled', true);
+            $("#idEstado2").prop('disabled', true);
+            $("#idMunicipio2").prop('disabled', true);
+            $("#idLocalidad2").prop('disabled', true);
+            $("#cp2").prop('disabled', true);
+            $("#idColonia2").prop('disabled', true);
+            $("#calle2").prop('disabled', true);
+            $("#numExterno2").prop('disabled', true);
+            $("#numInterno2").prop('disabled', true);
 
-            //Datos no requeridos de direccion para notificaciones  
-            $("#idEstado3").prop('disabled', true);   
-            $("#idMunicipio3").prop('disabled', true);   
-            $("#idLocalidad3").prop('disabled', true);   
-            $("#cp3").prop('disabled', true);   
-            $("#idColonia3").prop('disabled', true);   
-            $("#calle3").prop('disabled', true);   
-            $("#numExterno3").prop('disabled', true);   
-            $("#numInterno3").prop('disabled', true);   
-            $("#correo").prop('disabled', true);   
-            $("#telefonoN").prop('disabled', true);  
+            //Datos no requeridos de direccion para notificaciones
+            $("#idEstado3").prop('disabled', true);
+            $("#idMunicipio3").prop('disabled', true);
+            $("#idLocalidad3").prop('disabled', true);
+            $("#cp3").prop('disabled', true);
+            $("#idColonia3").prop('disabled', true);
+            $("#calle3").prop('disabled', true);
+            $("#numExterno3").prop('disabled', true);
+            $("#numInterno3").prop('disabled', true);
+            $("#correo").prop('disabled', true);
+            $("#telefonoN").prop('disabled', true);
             $("#fax").prop('disabled', true);
 
             //Datos no requeridos de extra denunciado
@@ -168,6 +171,7 @@ $(document).ready(function(){
             //Datos personales no requeridos de Persona Moral o Empresa
             $('#nombres2').prop('disabled', true);
             $('#rfc2').prop('disabled', true);
+            $('#homo2').prop('disabled', true);
             $('#representanteLegal').prop('disabled', true);
             $('#idEstado').prop('disabled', true);
             $('#idMunicipio').prop('disabled', true);
@@ -179,51 +183,52 @@ $(document).ready(function(){
             $('#numInterno').prop('disabled', true);
 
             //Datos personales no requeridos de Persona Física
-            $("#nombres").prop('disabled', true);   
-            $("#primerAp").prop('disabled', true);   
-            $("#segundoAp").prop('disabled', true);   
-            $("#rfc").prop('disabled', true);   
-            $("#fechaNacimiento").prop('disabled', true);   
-            $("#edad").prop('disabled', true);   
-            $("#sexo").prop('disabled', true);   
-            $("#curp").prop('disabled', true);   
-            $("#idNacionalidad").prop('disabled', true);   
-            $("#idEtnia").prop('disabled', true);   
-            $("#idLengua").prop('disabled', true);   
-            $("#idEstadoOrigen").prop('disabled', true);   
-            $("#idMunicipioOrigen").prop('disabled', true);   
-            $("#telefono").prop('disabled', true);   
-            $("#motivoEstancia").prop('disabled', true);   
-            $("#idOcupacion").prop('disabled', true);   
-            $("#idEstadoCivil").prop('disabled', true);   
-            $("#idReligion").prop('disabled', true);   
-            $("#idEscolaridad").prop('disabled', true);   
-            $("#docIdentificacion").prop('disabled', true);   
-            $("#numDocIdentificacion").prop('disabled', true);  
+            $("#nombres").prop('disabled', true);
+            $("#primerAp").prop('disabled', true);
+            $("#segundoAp").prop('disabled', true);
+            $("#rfc").prop('disabled', true);
+            $("#homo").prop('disabled', true);
+            $("#fechaNacimiento").prop('disabled', true);
+            $("#edad").prop('disabled', true);
+            $("#sexo").prop('disabled', true);
+            $("#curp").prop('disabled', true);
+            $("#idNacionalidad").prop('disabled', true);
+            $("#idEtnia").prop('disabled', true);
+            $("#idLengua").prop('disabled', true);
+            $("#idEstadoOrigen").prop('disabled', true);
+            $("#idMunicipioOrigen").prop('disabled', true);
+            $("#telefono").prop('disabled', true);
+            $("#motivoEstancia").prop('disabled', true);
+            $("#idOcupacion").prop('disabled', true);
+            $("#idEstadoCivil").prop('disabled', true);
+            $("#idReligion").prop('disabled', true);
+            $("#idEscolaridad").prop('disabled', true);
+            $("#docIdentificacion").prop('disabled', true);
+            $("#numDocIdentificacion").prop('disabled', true);
 
             //Datos del trabajo no requeridos de Persona Física
-            $("#lugarTrabajo").prop('disabled', true);   
-            $("#telefonoTrabajo").prop('disabled', true);   
-            $("#idEstado2").prop('disabled', true);   
-            $("#idMunicipio2").prop('disabled', true);   
-            $("#idLocalidad2").prop('disabled', true);   
-            $("#cp2").prop('disabled', true);   
-            $("#idColonia2").prop('disabled', true);   
-            $("#calle2").prop('disabled', true);   
-            $("#numExterno2").prop('disabled', true);   
-            $("#numInterno2").prop('disabled', true);  
+            $("#lugarTrabajo").prop('disabled', true);
+            $("#telefonoTrabajo").prop('disabled', true);
+            $("#idEstado2").prop('disabled', true);
+            $("#idMunicipio2").prop('disabled', true);
+            $("#idLocalidad2").prop('disabled', true);
+            $("#cp2").prop('disabled', true);
+            $("#idColonia2").prop('disabled', true);
+            $("#calle2").prop('disabled', true);
+            $("#numExterno2").prop('disabled', true);
+            $("#numInterno2").prop('disabled', true);
 
-            //Datos no requeridos de direccion para notificaciones  
-            $("#idEstado3").prop('disabled', true);   
-            $("#idMunicipio3").prop('disabled', true);   
-            $("#idLocalidad3").prop('disabled', true);   
-            $("#cp3").prop('disabled', true);   
-            $("#idColonia3").prop('disabled', true);   
-            $("#calle3").prop('disabled', true);   
-            $("#numExterno3").prop('disabled', true);   
-            $("#numInterno3").prop('disabled', true);   
-            $("#correo").prop('disabled', true);   
-            $("#telefonoN").prop('disabled', true);  
+            //Datos no requeridos de direccion para notificaciones
+            $("#idEstado3").prop('disabled', true);
+            $("#idMunicipio3").prop('disabled', true);
+            $("#idLocalidad3").prop('disabled', true);
+            $("#cp3").prop('disabled', true);
+            $("#idColonia3").prop('disabled', true);
+            $("#calle3").prop('disabled', true);
+            $("#numExterno3").prop('disabled', true);
+            $("#numInterno3").prop('disabled', true);
+            $("#correo").prop('disabled', true);
+            $("#telefonoN").prop('disabled', true);
             $("#fax").prop('disabled', true);
 
             //Datos no requeridos de extra denunciado
@@ -273,6 +278,7 @@ $(document).ready(function(){
             //Datos personales no requeridos de Persona Moral o Empresa
             $('#nombres2').prop('disabled', false);
             $('#rfc2').prop('disabled', false);
+            $('#homo2').prop('disabled', false);
             $('#representanteLegal').prop('disabled', false);
             $('#idEstado').prop('disabled', false);
             $('#idMunicipio').prop('disabled', false);
@@ -284,51 +290,52 @@ $(document).ready(function(){
             $('#numInterno').prop('disabled', false);
 
             //Datos personales no requeridos de Persona Física
-            $("#nombres").prop('disabled', false);   
-            $("#primerAp").prop('disabled', false);   
-            $("#segundoAp").prop('disabled', false);   
-            $("#rfc").prop('disabled', false);   
-            $("#fechaNacimiento").prop('disabled', false);   
-            $("#edad").prop('disabled', false);   
-            $("#sexo").prop('disabled', false);   
-            $("#curp").prop('disabled', false);   
-            $("#idNacionalidad").prop('disabled', false);   
-            $("#idEtnia").prop('disabled', false);   
-            $("#idLengua").prop('disabled', false);   
-            $("#idEstadoOrigen").prop('disabled', false);   
-            $("#idMunicipioOrigen").prop('disabled', false);   
-            $("#telefono").prop('disabled', false);   
-            $("#motivoEstancia").prop('disabled', false);   
-            $("#idOcupacion").prop('disabled', false);   
-            $("#idEstadoCivil").prop('disabled', false);   
-            $("#idReligion").prop('disabled', false);   
-            $("#idEscolaridad").prop('disabled', false);   
-            $("#docIdentificacion").prop('disabled', false);   
-            $("#numDocIdentificacion").prop('disabled', false);  
+            $("#nombres").prop('disabled', false);
+            $("#primerAp").prop('disabled', false);
+            $("#segundoAp").prop('disabled', false);
+            $("#rfc").prop('disabled', false);
+            $("#homo").prop('disabled', false);
+            $("#fechaNacimiento").prop('disabled', false);
+            $("#edad").prop('disabled', false);
+            $("#sexo").prop('disabled', false);
+            $("#curp").prop('disabled', false);
+            $("#idNacionalidad").prop('disabled', false);
+            $("#idEtnia").prop('disabled', false);
+            $("#idLengua").prop('disabled', false);
+            $("#idEstadoOrigen").prop('disabled', false);
+            $("#idMunicipioOrigen").prop('disabled', false);
+            $("#telefono").prop('disabled', false);
+            $("#motivoEstancia").prop('disabled', false);
+            $("#idOcupacion").prop('disabled', false);
+            $("#idEstadoCivil").prop('disabled', false);
+            $("#idReligion").prop('disabled', false);
+            $("#idEscolaridad").prop('disabled', false);
+            $("#docIdentificacion").prop('disabled', false);
+            $("#numDocIdentificacion").prop('disabled', false);
 
             //Datos del trabajo no requeridos de Persona Física
-            $("#lugarTrabajo").prop('disabled', false);   
-            $("#telefonoTrabajo").prop('disabled', false);   
-            $("#idEstado2").prop('disabled', false);   
-            $("#idMunicipio2").prop('disabled', false);   
-            $("#idLocalidad2").prop('disabled', false);   
-            $("#cp2").prop('disabled', false);   
-            $("#idColonia2").prop('disabled', false);   
-            $("#calle2").prop('disabled', false);   
-            $("#numExterno2").prop('disabled', false);   
-            $("#numInterno2").prop('disabled', false);  
+            $("#lugarTrabajo").prop('disabled', false);
+            $("#telefonoTrabajo").prop('disabled', false);
+            $("#idEstado2").prop('disabled', false);
+            $("#idMunicipio2").prop('disabled', false);
+            $("#idLocalidad2").prop('disabled', false);
+            $("#cp2").prop('disabled', false);
+            $("#idColonia2").prop('disabled', false);
+            $("#calle2").prop('disabled', false);
+            $("#numExterno2").prop('disabled', false);
+            $("#numInterno2").prop('disabled', false);
 
-            //Datos no requeridos de direccion para notificaciones  
-            $("#idEstado3").prop('disabled', false);   
-            $("#idMunicipio3").prop('disabled', false);   
-            $("#idLocalidad3").prop('disabled', false);   
-            $("#cp3").prop('disabled', false);   
-            $("#idColonia3").prop('disabled', false);   
-            $("#calle3").prop('disabled', false);   
-            $("#numExterno3").prop('disabled', false);   
-            $("#numInterno3").prop('disabled', false);   
-            $("#correo").prop('disabled', false);   
-            $("#telefonoN").prop('disabled', false);  
+            //Datos no requeridos de direccion para notificaciones
+            $("#idEstado3").prop('disabled', false);
+            $("#idMunicipio3").prop('disabled', false);
+            $("#idLocalidad3").prop('disabled', false);
+            $("#cp3").prop('disabled', false);
+            $("#idColonia3").prop('disabled', false);
+            $("#calle3").prop('disabled', false);
+            $("#numExterno3").prop('disabled', false);
+            $("#numInterno3").prop('disabled', false);
+            $("#correo").prop('disabled', false);
+            $("#telefonoN").prop('disabled', false);
             $("#fax").prop('disabled', false);
 
             //Datos requeridos de extra denunciado
@@ -373,43 +380,45 @@ $(document).ready(function(){
             //Datos personales requeridos de Persona Moral o Empresa
             $('#nombres2').prop('disabled', false);
             $('#rfc2').prop('disabled', false);
+            $('#homo2').prop('disabled', false);
             $('#representanteLegal').prop('disabled', false);
             $("#senasPartic").prop('disabled', false);
             $("#narracion").prop('disabled', false);
-            
+
             //Datos personales no requeridos de Persona Física
-            $("#nombres").prop('disabled', true);   
-            $("#primerAp").prop('disabled', true);   
-            $("#segundoAp").prop('disabled', true);   
-            $("#rfc").prop('disabled', true);   
-            $("#fechaNacimiento").prop('disabled', true);   
-            $("#edad").prop('disabled', true);   
-            $("#sexo").prop('disabled', true);   
-            $("#curp").prop('disabled', true);   
-            $("#idNacionalidad").prop('disabled', true);   
-            $("#idEtnia").prop('disabled', true);   
-            $("#idLengua").prop('disabled', true);   
-            $("#idEstadoOrigen").prop('disabled', true);   
-            $("#idMunicipioOrigen").prop('disabled', true);   
-            $("#telefono").prop('disabled', true);   
-            $("#motivoEstancia").prop('disabled', true);   
-            $("#idOcupacion").prop('disabled', true);   
-            $("#idEstadoCivil").prop('disabled', true);   
-            $("#idReligion").prop('disabled', true);   
-            $("#idEscolaridad").prop('disabled', true);   
-            $("#docIdentificacion").prop('disabled', true);   
-            $("#numDocIdentificacion").prop('disabled', true);   
-            
+            $("#nombres").prop('disabled', true);
+            $("#primerAp").prop('disabled', true);
+            $("#segundoAp").prop('disabled', true);
+            $("#rfc").prop('disabled', true);
+            $("#homo").prop('disabled', true);
+            $("#fechaNacimiento").prop('disabled', true);
+            $("#edad").prop('disabled', true);
+            $("#sexo").prop('disabled', true);
+            $("#curp").prop('disabled', true);
+            $("#idNacionalidad").prop('disabled', true);
+            $("#idEtnia").prop('disabled', true);
+            $("#idLengua").prop('disabled', true);
+            $("#idEstadoOrigen").prop('disabled', true);
+            $("#idMunicipioOrigen").prop('disabled', true);
+            $("#telefono").prop('disabled', true);
+            $("#motivoEstancia").prop('disabled', true);
+            $("#idOcupacion").prop('disabled', true);
+            $("#idEstadoCivil").prop('disabled', true);
+            $("#idReligion").prop('disabled', true);
+            $("#idEscolaridad").prop('disabled', true);
+            $("#docIdentificacion").prop('disabled', true);
+            $("#numDocIdentificacion").prop('disabled', true);
+
             //Datos del trabajo no requeridos de Persona Física
-            $("#lugarTrabajo").prop('disabled', true);   
-            $("#telefonoTrabajo").prop('disabled', true);   
-            $("#idEstado2").prop('disabled', true);   
-            $("#idMunicipio2").prop('disabled', true);   
-            $("#idLocalidad2").prop('disabled', true);   
-            $("#cp2").prop('disabled', true);   
-            $("#idColonia2").prop('disabled', true);   
-            $("#calle2").prop('disabled', true);   
-            $("#numExterno2").prop('disabled', true);   
+            $("#lugarTrabajo").prop('disabled', true);
+            $("#telefonoTrabajo").prop('disabled', true);
+            $("#idEstado2").prop('disabled', true);
+            $("#idMunicipio2").prop('disabled', true);
+            $("#idLocalidad2").prop('disabled', true);
+            $("#cp2").prop('disabled', true);
+            $("#idColonia2").prop('disabled', true);
+            $("#calle2").prop('disabled', true);
+            $("#numExterno2").prop('disabled', true);
             $("#numInterno2").prop('disabled', true);
 
             //Datos no requeridos de extra denunciado
@@ -440,41 +449,43 @@ $(document).ready(function(){
             //Datos personales no requeridos de Persona Moral o Empresa
             $('#nombres2').prop('disabled', true);
             $('#rfc2').prop('disabled', true);
+            $('#homo2').prop('disabled', true);
             $('#representanteLegal').prop('disabled', true);
-            
+
             //Datos personales requeridos de Persona Física
-            $("#nombres").prop('disabled', false);   
-            $("#primerAp").prop('disabled', false);   
-            $("#segundoAp").prop('disabled', false);   
-            $("#rfc").prop('disabled', false);   
-            $("#fechaNacimiento").prop('disabled', false);   
-            $("#edad").prop('disabled', false);   
-            $("#sexo").prop('disabled', false);   
-            $("#curp").prop('disabled', false);   
-            $("#idNacionalidad").prop('disabled', false);   
-            $("#idEtnia").prop('disabled', false);   
-            $("#idLengua").prop('disabled', false);   
-            $("#idEstadoOrigen").prop('disabled', false);   
-            $("#idMunicipioOrigen").prop('disabled', false);   
-            $("#telefono").prop('disabled', false);   
-            $("#motivoEstancia").prop('disabled', false);   
-            $("#idOcupacion").prop('disabled', false);   
-            $("#idEstadoCivil").prop('disabled', false);   
-            $("#idReligion").prop('disabled', false);   
-            $("#idEscolaridad").prop('disabled', false);   
-            $("#docIdentificacion").prop('disabled', false);   
-            $("#numDocIdentificacion").prop('disabled', false);   
-            
+            $("#nombres").prop('disabled', false);
+            $("#primerAp").prop('disabled', false);
+            $("#segundoAp").prop('disabled', false);
+            $("#rfc").prop('disabled', false);
+            $("#homo").prop('disabled', false);
+            $("#fechaNacimiento").prop('disabled', false);
+            $("#edad").prop('disabled', false);
+            $("#sexo").prop('disabled', false);
+            $("#curp").prop('disabled', false);
+            $("#idNacionalidad").prop('disabled', false);
+            $("#idEtnia").prop('disabled', false);
+            $("#idLengua").prop('disabled', false);
+            $("#idEstadoOrigen").prop('disabled', false);
+            $("#idMunicipioOrigen").prop('disabled', false);
+            $("#telefono").prop('disabled', false);
+            $("#motivoEstancia").prop('disabled', false);
+            $("#idOcupacion").prop('disabled', false);
+            $("#idEstadoCivil").prop('disabled', false);
+            $("#idReligion").prop('disabled', false);
+            $("#idEscolaridad").prop('disabled', false);
+            $("#docIdentificacion").prop('disabled', false);
+            $("#numDocIdentificacion").prop('disabled', false);
+
             //Datos del trabajo requeridos de Persona Física
-            $("#lugarTrabajo").prop('disabled', false);   
-            $("#telefonoTrabajo").prop('disabled', false);   
-            $("#idEstado2").prop('disabled', false);   
-            $("#idMunicipio2").prop('disabled', false);   
-            $("#idLocalidad2").prop('disabled', false);   
-            $("#cp2").prop('disabled', false);   
-            $("#idColonia2").prop('disabled', false);   
-            $("#calle2").prop('disabled', false);   
-            $("#numExterno2").prop('disabled', false);   
+            $("#lugarTrabajo").prop('disabled', false);
+            $("#telefonoTrabajo").prop('disabled', false);
+            $("#idEstado2").prop('disabled', false);
+            $("#idMunicipio2").prop('disabled', false);
+            $("#idLocalidad2").prop('disabled', false);
+            $("#cp2").prop('disabled', false);
+            $("#idColonia2").prop('disabled', false);
+            $("#calle2").prop('disabled', false);
+            $("#numExterno2").prop('disabled', false);
             $("#numInterno2").prop('disabled', false);
 
             //Datos requeridos de extra denunciado
@@ -519,7 +530,7 @@ $(document).ready(function(){
 
 
 
-    $('[data-toggle="tooltip"]').tooltip();  
+    $('[data-toggle="tooltip"]').tooltip();
 
     $(function () {
         $('#fechaInicial').datetimepicker({

@@ -32,9 +32,7 @@
     <script src="{{ asset('js/validations.js') }}"></script>
     <script>
         $(document).ready(function(){
-            $('form').sisyphus({
-                excludeFields: $( 'input[name=_token]' )
-            });
+            
             $("#numInterno").val("S/N");
             $("#numInterno2").val("S/N");
             $("#numInterno3").val("S/N");
