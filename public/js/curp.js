@@ -314,18 +314,16 @@ function obtenerCURP() {
 	sexo = $("#sexo").val();
 	if (sexo == 'HOMBRE') {
 		sexo = "H";
-	} else {
+	} else if(sexo == 'MUJER'){
 		sexo = "M";
 	}
-	if(nombre!=""&& apellidoPaterno!=""&&apellidoMaterno!=""&&fecha!=""&&sexo!=""){
+	if(nombre!=""&& apellidoPaterno!=""&&sexo!=""){
 		var abreviacion = ["AS", "BC", "BS", "CC", "CS", "CH", "CL", "CM", "CX", "DF", "DG", "GT", "GR", "HG", "JC", "MC", "MN", "MS", "NT", "NL", "OC", "PL", "QT", "QR", "SP", "SL", "SR", "TC", "TS", "TL", "VZ", "YN", "ZS"];
 		estado = abreviacion[($("#idEstadoOrigen").val())];
 		console.log(fecha);
 		año = fecha.substr(0, 4);
 		mes = fecha.substr(5, 2);
 		dia = fecha.substr(8, 2);
-		console.log(año+"/"+mes+"/"+dia);
-
 		var curp = generaCurp({
 			nombre: nombre,
 			apellido_paterno: apellidoPaterno,
@@ -336,7 +334,5 @@ function obtenerCURP() {
 		});
 		$("#curp").val(curp);
 		toastr.info('Se ha modificado el CURP', '¡Atención!');
-	}else{
-	
 	}
 }
