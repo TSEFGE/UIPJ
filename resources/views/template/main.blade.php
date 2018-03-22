@@ -70,7 +70,9 @@
 				"hideMethod": "fadeOut"
 			}
 	    });
-			$.validate();
+			$.validate({
+				 lang : 'es'
+			});
 	</script>
 
 	@yield('scripts')
