@@ -50,7 +50,7 @@
 				<div class="row">
 					<div class="col">
 						<div class="text-left">
-							<a href="{{ route('carpeta', $idCarpeta) }}" class="btn btn-dark text-center">Volver atrás</a>
+							<a href="{{ route('carpeta', $idCarpeta) }}" class="btn btn-dark text-center">Regresar</a>
 						</div>
 					</div>
 					<div class="col">	
