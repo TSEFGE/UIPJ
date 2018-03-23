@@ -35,4 +35,12 @@ class Persona extends Model
     public function variablesPersonas(){
     	return $this->hasMany('App\Models\VariablesPersona');
     }
+    public static function buscarCURP($curp){
+      $curps=Persona::where('curp','=',$curp)->get();
+      if($curps->isNotEmpty()){
+        return ['res'=>true];
+      }else{
+        return ['res'=>false];
+      }
+    }
 }

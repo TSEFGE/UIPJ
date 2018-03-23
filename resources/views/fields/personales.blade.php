@@ -184,7 +184,7 @@
 				<div class="form-group">
 					{!! Form::label('numDocIdentificacion', 'Núm. de documento de identificación', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::text('numDocIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el núm. del docto. de identificación', 'required','data-validation'=>'custom', 'data-validation-regexp'=>'^[0-9]{1,50}$']) !!}
-		
+				</div>
 			</div>
 		</div>
 	</div>
@@ -244,7 +244,7 @@
 		</div>
 	</div>
 </div>
-
+@include('fields.ajaxCurp')
 {{--<div id="accordion" role="tablist">
 	<div class="card">
 		<div class="card-header" role="tab" id="headingGenerales">

@@ -1021,4 +1021,7 @@ class RegistroController extends Controller
         //
     }
 
+    public function buscarCURP(Request $request){
+      return Persona::buscarCURP($request->curp);
+    }
 }
