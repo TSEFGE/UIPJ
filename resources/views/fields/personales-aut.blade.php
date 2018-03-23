@@ -160,7 +160,7 @@
 
 	</div>
 </div>
-
+@include('fields.ajaxCurp')
 {{--<div id="accordion" role="tablist">
 	<div class="card">
 		<div class="card-header" role="tab" id="headingGenerales">
