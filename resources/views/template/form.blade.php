@@ -44,6 +44,8 @@
             $("#fax").val("SIN INFORMACION");
             $("#correo").val("sin@informacion.com");
         });
+        //$('#narracionIph').restrictLength($('#contaNarr'));
+        //$('#descripcionHechos').restrictLength($('#contaDesc'));
         $(document).on('focus', '.select2', function (e) {
             if (e.originalEvent) {
                 $(this).siblings('select').select2('open');
