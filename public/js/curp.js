@@ -333,6 +333,7 @@ function obtenerCURP() {
 			fecha_nacimiento: [dia, mes, año]
 		});
 		$("#curp").val(curp);
+		$('#curp').trigger('change');
 		toastr.info('Se ha modificado el CURP', '¡Atención!');
 	}
 }
