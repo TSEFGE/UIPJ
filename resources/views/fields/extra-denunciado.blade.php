@@ -14,7 +14,7 @@
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('alias', 'Alias', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('alias', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el alias', 'required']) !!}
+					{!! Form::text('alias', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el alias','data-validation'=>'length', 'data-validation-length'=>'5-100']) !!}
 				</div>
 			</div>
 			<div class="col-3">
@@ -26,7 +26,7 @@
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('ingreso', 'Ingreso', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('ingreso', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el ingreso', 'required']) !!}
+					{!! Form::text('ingreso', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el ingreso', 'data-validation'=>'custom', 'data-validation-regexp'=>'^[0-9]{1,15}$']) !!}
 				</div>
 			</div>
 			<div class="col-3">
@@ -38,7 +38,7 @@
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('residenciaAnterior', 'Residencia anterior', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('residenciaAnterior', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la  residencia anterior', 'required']) !!}
+					{!! Form::text('residenciaAnterior', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la  residencia anterior','data-validation'=>'length', 'data-validation-length'=>'5-200']) !!}
 				</div>
 			</div>
 			<div class="col-3">
@@ -60,7 +60,7 @@
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('vestimenta', 'Vestimenta', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('vestimenta', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la vestimenta', 'required']) !!}
+					{!! Form::text('vestimenta', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la vestimenta','data-validation'=>'length', 'data-validation-length'=>'5-150']) !!}
 				</div>
 			</div>
 		</div>
@@ -69,16 +69,14 @@
 	<div class="col-12">
 		<div class="form-group">
 			{!! Form::label('senasPartic', 'Señas particulares', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::textarea('senasPartic', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese las señas particulares','rows' => '3', 'required']) !!}
+			{!! Form::textarea('senasPartic', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese las señas particulares','rows' => '3','data-validation'=>'length', 'data-validation-length'=>'5-500']) !!}
 		</div>
 	</div>
 	<div class="col-12">
 		<div class="form-group">
 			{!! Form::label('narracion', 'Narración', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::textarea('narracion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la narración de los hechos', 'rows' => '5', 'required']) !!}
-			<div id="ValidarNarracion" class="invalid-feedback">
-				El campo debe contener entre 5 y 2000 caracteres.
-			</div>
+			{!! Form::textarea('narracion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la narración de los hechos', 'rows' => '5','data-validation'=>'length', 'data-validation-length'=>'5-2000']) !!}
+			
 		</div>
 	</div>
 </div>

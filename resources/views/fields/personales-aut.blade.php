@@ -2,26 +2,25 @@
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('nombres', 'Nombre', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('nombres', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre', 'required']) !!}
-		</div>
+			{!! Form::text('nombres', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÍÓÚ]+[\s]*)+$']) !!}						</div>
 	</div>
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('primerAp', 'Primer apellido', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('primerAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el primer apellido', 'required']) !!}
+			{!! Form::text('primerAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el primer apellido','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÍÓÚ]+[\s]*)+$']) !!}
 		</div>
 	</div>
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('segundoAp', 'Segundo apellido', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('segundoAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido', 'required']) !!}
+			{!! Form::text('segundoAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÍÓÚ]+[\s]*)*$']) !!}
 		</div>
 	</div>
 	<div class="col-2">
 		<div class="form-group">
 			{!! Form::label('fechaNacimiento', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
 			<div class="input-group date" id="fechanac" data-target-input="nearest">
-						{!! Form::text('fechaNacimiento', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac', 'data-toggle' => 'datetimepicker', 'required', 'placeholder' => 'AAAA-MM-DD']) !!}
+						{!! Form::text('fechaNacimiento', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac', 'data-toggle' => 'datetimepicker', 'required', 'placeholder' => 'AAAA-MM-DD','data-validation'=>'date', 'data-validation-format'=>'yyyy-mm-dd']) !!}
 						<div class="input-group-append" data-target="#fechanac" data-toggle="datetimepicker">
 								<div class="input-group-text"><i class="fa fa-calendar"></i></div>
 						</div>
@@ -57,18 +56,14 @@
 		<div class="row no-gutters">
 			<div class="col-7">
 				{!! Form::label('rfc', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::text('rfc', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.', 'required']) !!}
-				<div class="invalid-feedback" id="invalid-rfc">
-					Ingrese un RFC válido.
-				</div>
+				{!! Form::text('rfc', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-Z,Ñ,&]{4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))$']) !!}
+				
 			</div>
 
 			<div class="col-5">
 				{!! Form::label('homo', 'Homoclave', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::text('homo', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Homoclave', 'required']) !!}
-				<div class="invalid-feedback" id="invalid-homo">
-					Ingrese un Homoclave válido.
-				</div>
+				{!! Form::text('homo', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Homoclave','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-Z\d]{2}([A\d]))$']) !!}
+				
 			</div>	
 		</div>	 
 		
@@ -76,10 +71,7 @@
 		<div class="col-3">
 			<div class="form-group">
 				{!! Form::label('curp', 'C.U.R.P.', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::text('curp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el C.U.R.P.', 'required']) !!}
-				<div id="validarRFCFisico" class="invalid-feedback">
-						El campo CURP debe contener al menos 18 caracteres.
-				</div>
+					{!! Form::text('curp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el C.U.R.P.','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$']) !!}
 			</div>
 		</div>
 	<div class="col-3">
@@ -104,16 +96,15 @@
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('telefono', 'Teléfono', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('telefono', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono', 'required', 'required']) !!}
+			
+					{!! Form::text('telefono', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono', 'data-validation'=>'custom', 'data-validation-regexp'=>'^([0-9]{10,15}|(SIN NUMERO))$']) !!}
 		</div>
 	</div>
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('motivoEstancia', 'Motivo de estancia', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('motivoEstancia', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el motivo de estancia', 'required']) !!}
-			<div id="validarEstancia" class="invalid-feedback">
-				El campo debe tener entre 5 y 200 caracteres.
-			</div>
+			{!! Form::text('motivoEstancia', "SIN INFORMACION", ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el motivo de estancia','data-validation'=>'length', 'data-validation-length'=>'5-200']) !!}
+			
 		</div>
 	</div>
 	<div class="col-3">
@@ -143,24 +134,20 @@
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('docIdentificacion', 'Documento de identificación', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('docIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el docto. de identificacion']) !!}
+			{!! Form::text('docIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el docto. de identificacion','data-validation'=>'length', 'data-validation-length'=>'3-50']) !!}
 		</div>
-		<div id="documento" class="invalid-feedback">
-			Dato obligatorio.
-		</div>
+		
 	</div>
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('numDocIdentificacion', 'Núm. de documento de identificación', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('numDocIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el núm. del docto. de identificación']) !!}
+			{!! Form::text('numDocIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el núm. del docto. de identificación','data-validation'=>'custom', 'data-validation-regexp'=>'^[0-9]{1,50}$']) !!}
 		</div>
-		<div id="numDocumento" class="invalid-feedback">
-			Dato obligatorio.
-		</div>
+		
 
 	</div>
 </div>
-
+@include('fields.ajaxCurp')
 {{--<div id="accordion" role="tablist">
 	<div class="card">
 		<div class="card-header" role="tab" id="headingGenerales">

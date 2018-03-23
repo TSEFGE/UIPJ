@@ -12,13 +12,15 @@
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('status', 'Status', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('status', ['INVOLUCRADO' => 'INVOLUCRADO', 'ROBADO' => 'ROBADO'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un status', 'required']) !!}
+			{!! Form::select('status', ['INVOLUCRADO' => 'INVOLUCRADO', 'ROBADO' => 'ROBADO'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un status']) !!}
 		</div>
 	</div>
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('placas', 'Placas', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('placas', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese las placas', 'required']) !!}
+			{!! Form::text('placas', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese las placas' ,'data-validation'=>'custom' ,'data-validation-regexp'=>'^((([A-ZÁÉÍÓÚ]|[\d])+[-]*)+){5,11}$']) !!}	
+
+			
 		</div>
 	</div>
 	<div class="col-4">
@@ -54,25 +56,27 @@
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('nrpv', 'NRPV', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('nrpv', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el NRPV', 'required']) !!}
+			{!! Form::text('nrpv', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el NRPV', 'data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-Z]|[\d]){17}$']) !!}
+					
 		</div>
 	</div>
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('numSerie', 'Núm. Serie', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('numSerie', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número de serie', 'required']) !!}
+			{!! Form::text('numSerie', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número de serie', 'data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-Z]|[\d]){17}$']) !!}
 		</div>
 	</div>
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('numMotor', 'Núm. Motor', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('numMotor', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número de motor', 'required']) !!}
-		</div>
+			{!! Form::text('numMotor', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número de motor', 'data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-Z]|[\d]){1,20}$']) !!}
 	</div>
+	</div>
+
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('permiso', 'Permiso', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('permiso', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el permiso', 'required']) !!}
+			{!! Form::text('permiso', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el permiso', 'data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-Z]|[\d]){1,20}$']) !!}
 		</div>
 	</div>
 	<div class="col-4">
@@ -108,6 +112,6 @@
 	<div class="col-12">
 		<div class="form-group">
 			{!! Form::label('senasPartic', 'Señas particulares', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::textarea('senasPartic', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese las señas particulares','rows' => '3', 'required']) !!}
+			{!! Form::textarea('senasPartic', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese las señas particulares','rows' => '3', 'required','data-validation'=>'custom' ,'data-validation-regexp'=>'^(([A-Z]|[\d]|[,|.]){1,500}$']) !!}
 		</div>
 	</div>

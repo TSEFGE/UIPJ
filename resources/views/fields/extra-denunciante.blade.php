@@ -21,10 +21,8 @@
 	<div class="col-12">
 		<div class="form-group">
 			{!! Form::label('narracion', 'Narración', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::textarea('narracion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la narración de los hechos', 'rows' => '5', 'required']) !!}
-			<div id="ValidarNarracion" class="invalid-feedback">
-				El campo debe contener entre 5 y 2000 caracteres.
-			</div>
+			{!! Form::textarea('narracion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la narración de los hechos', 'rows' => '5','data-validation'=>'length', 'data-validation-length'=>'5-2000']) !!}
+			
 		</div>
 	</div>
 </div>
