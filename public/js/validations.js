@@ -433,4 +433,6 @@ $('#representanteLegal').focusout(function(){
 		 $("#invalidTrabajo").hide();
 		}
 	});
+
+	
 	

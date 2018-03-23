@@ -32,20 +32,20 @@
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('calleC', 'Calle', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('calleC',"SIN INFORMACION", ['class' => 'form-control form-control-sm']) !!}
+			{!! Form::text('calleC',"SIN INFORMACION", ['class' => 'form-control form-control-sm','data-validation'=>'length', 'data-validation-length'=>'5-100']) !!}
 		</div>
 	</div>
 	<div class="col-2">
 		<div class="form-group">
 			{!! Form::label('numExternoC', 'Número exterior', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('numExternoC',"S/N", ['class' => 'form-control form-control-sm']) !!}
+			{!! Form::text('numExternoC',"S/N", ['class' => 'form-control form-control-sm','data-validation'=>'alphanumeric', 'data-validation-allowing'=>'-/']) !!}
 		</div>
 		
 	</div>
 	<div class="col-2">
 		<div class="form-group">
 			{!! Form::label('numInternoC', 'Número interior', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('numInternoC', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número interior']) !!}
+			{!! Form::text('numInternoC', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número interior','data-validation'=>'alphanumeric', 'data-validation-allowing'=>'-/']) !!}
 		</div>
 	</div>
 </div>
