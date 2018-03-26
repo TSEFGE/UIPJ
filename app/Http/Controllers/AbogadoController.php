@@ -52,7 +52,7 @@ class AbogadoController extends Controller
         $persona->sexo = $request->sexo;
         $persona->idNacionalidad = 1;
         $persona->idMunicipioOrigen = $request->idMunicipioOrigen;
-        //$persona->curp = "SIN INFORMACION";
+        $persona->curp = $request->curp;
         $persona->save();
         $idPersona = $persona->id;
 

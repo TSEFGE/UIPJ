@@ -34,7 +34,7 @@ class StoreAbogado extends FormRequest
        'calle2' => 'string|min:5|max:100',
        'telefono' => array('regex:/^([0-9]{10,15}|(SIN NUMERO))/u'),
        'cedulaProf' => array('regex:/^([0-9]+)/u'),
-       'correo' => 'correo|email',
+//'correo' => 'correo|email',
 
        
 
