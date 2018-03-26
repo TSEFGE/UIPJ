@@ -4,26 +4,24 @@
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('nombres', 'Nombre', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('nombres', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÍÓÚ]+[\s]*)+$']) !!}					
-
+					{!! Form::text('nombres', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÑÍÓÚ][\s]*){1,100}$']) !!}	
 				</div>
 			</div>
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('primerAp', 'Primer apellido', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('primerAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el primer apellido','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÍÓÚ]+[\s]*)+$']) !!}
-					
+					{!! Form::text('primerAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el primer apellido','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÑÍÓÚ][\s]*){1,50}$']) !!}
 				</div>
 			</div>
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('segundoAp', 'Segundo apellido', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('segundoAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÍÓÚ]+[\s]*)*$']) !!}
+					{!! Form::text('segundoAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido','data-validation'=>'custom' ,'data-validation-regexp'=>'^(([A-ZÁÉÑÍÓÚ][\s]*)?){1,50}$']) !!}
 
 				</div>
 			</div>
 			@isset($puestos)
-<div class="col-2">
+			<div class="col-2">
 				<div class="form-group">
 					{!! Form::label('fechaNacimiento', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
 					<div class="input-group date" id="fechanac2" data-target-input="nearest">
@@ -187,8 +185,7 @@
 			<div class="col-6">
 				<div class="form-group">
 					{!! Form::label('nombres2', 'Nombre', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('nombres2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre', 'required','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÍÓÚ]+[.]*[,]*[\s]*)+$']) !!}
-					
+					{!! Form::text('nombres2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre', 'required','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÑÍÓÚ][.]*[,]*[\s]*){1,100}$']) !!}
 				</div>
 			</div>
 			<div class="col-6">
@@ -220,7 +217,7 @@
 			<div class="col-6">
 				<div class="form-group">
 					{!! Form::label('representanteLegal', 'Representante legal', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('representanteLegal', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre del representante legal','required','data-validation'=>'custom' ,'data-validation-regexp'=>'^(([A-ZÁÉÍÓÚ]+[\s]*)+){3,200}$']) !!}
+					{!! Form::text('representanteLegal', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre del representante legal','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÑÍÓÚ]|[\s]|[.]){1,300}$']) !!}
 					
 				</div>
 			</div>

@@ -1,20 +1,22 @@
 <div class="row">
 	<div class="col-3">
 		<div class="form-group">
-			{!! Form::label('nombres', 'Nombre', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('nombres', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÍÓÚ]+[\s]*)+$']) !!}						</div>
-	</div>
-	<div class="col-3">
-		<div class="form-group">
-			{!! Form::label('primerAp', 'Primer apellido', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('primerAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el primer apellido','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÍÓÚ]+[\s]*)+$']) !!}
+					{!! Form::label('nombres', 'Nombre', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::text('nombres', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÑÍÓÚ][\s]*){1,100}$']) !!}	
 		</div>
 	</div>
 	<div class="col-3">
+			<div class="form-group">
+					{!! Form::label('primerAp', 'Primer apellido', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::text('primerAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el primer apellido','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÑÍÓÚ][\s]*){1,50}$']) !!}
+			</div>
+	</div>
+	<div class="col-3">
 		<div class="form-group">
-			{!! Form::label('segundoAp', 'Segundo apellido', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('segundoAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÍÓÚ]+[\s]*)*$']) !!}
-		</div>
+					{!! Form::label('segundoAp', 'Segundo apellido', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::text('segundoAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido','data-validation'=>'custom' ,'data-validation-regexp'=>'^(([A-ZÁÉÑÍÓÚ][\s]*)?){1,50}$']) !!}
+
+				</div>
 	</div>
 	<div class="col-2">
 		<div class="form-group">

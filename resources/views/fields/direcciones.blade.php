@@ -38,13 +38,13 @@
 	<div class="col-2">
 		<div class="form-group">
 			{!! Form::label('numExterno', 'Número exterior', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('numExterno', null, ['class' => 'form-control form-control-sm','data-validation'=>'alphanumeric', 'data-validation-allowing'=>'-/']) !!}
+			{!! Form::text('numExterno', null, ['class' => 'form-control form-control-sm','data-validation'=>'custom', 'data-validation-regexp'=>'^([A-Z]|[-]|[\d]){1,10}$']) !!}
 		</div>
 	</div>
 	<div class="col-2">
 		<div class="form-group">
 			{!! Form::label('numInterno', 'Número interior', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('numInterno', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número interior','data-validation'=>'alphanumeric', 'data-validation-allowing'=>'-/']) !!}
+			{!! Form::text('numInterno', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número interior','data-validation'=>'custom', 'data-validation-regexp'=>'^([A-Z]|[-]|[\d]){1,10}$']) !!}
 		</div>
 	</div>
 </div>

@@ -28,6 +28,8 @@ class StoreCarpeta extends FormRequest
             'numIph' => 'min:3|max:50',
             'narracionIph' => 'min:3|max:2000',
             'descripcionHechos' => 'min:3|max:500',
+
+            
         ];
     }
 }
