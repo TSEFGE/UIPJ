@@ -1,29 +1,29 @@
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 	<script type="text/javascript">
-	document.cookie = "randomCookie=true;";
-	Cookies.set('isLive', Math.floor((Math.random() * 10000) + 1));
-		console.log('sesion');
-		if (typeof sessionStorage.getItem('isLive') == "undefined" || sessionStorage.getItem('isLive') == null && localStorage.getItem('isLiveLocal')!=null ) {
-			 sessionStorage.setItem('isLive', Math.floor((Math.random() * 10000) + 1));
-			 var s = sessionStorage.getItem('isLive');
-			 var sLocal = localStorage.getItem('isLiveLocal');
-			 if(s!=sLocal){
-				 console.log('dife');
-				 window.location.href = "http://127.0.0.1:8000/DONTALLLOWED";
-			 }
-		}else if (typeof sessionStorage.getItem('isLive') == "undefined" || sessionStorage.getItem('isLive') == null) {
-				sessionStorage.setItem('isLive', Math.floor((Math.random() * 10000) + 1));
-				var s = sessionStorage.getItem('isLive');
-				localStorage.setItem('isLiveLocal',s);
-		}else {
-			var s = sessionStorage.getItem('isLive');
-			var sLocal = localStorage.getItem('isLiveLocal');
-			if(s!=sLocal){
-				console.log('dife');
-				window.location.href = "http://127.0.0.1:8000/DONTALLLOWED";
-			}
-			console.log(s);
-		}
+	// document.cookie = "randomCookie=true;";
+	// Cookies.set('isLive', Math.floor((Math.random() * 10000) + 1));
+	// 	console.log('sesion');
+	// 	if (typeof sessionStorage.getItem('isLive') == "undefined" || sessionStorage.getItem('isLive') == null && localStorage.getItem('isLiveLocal')!=null ) {
+	// 		 sessionStorage.setItem('isLive', Math.floor((Math.random() * 10000) + 1));
+	// 		 var s = sessionStorage.getItem('isLive');
+	// 		 var sLocal = localStorage.getItem('isLiveLocal');
+	// 		 if(s!=sLocal){
+	// 			 console.log('dife');
+	// 			 window.location.href = "http://127.0.0.1:8000/DONTALLLOWED";
+	// 		 }
+	// 	}else if (typeof sessionStorage.getItem('isLive') == "undefined" || sessionStorage.getItem('isLive') == null) {
+	// 			sessionStorage.setItem('isLive', Math.floor((Math.random() * 10000) + 1));
+	// 			var s = sessionStorage.getItem('isLive');
+	// 			localStorage.setItem('isLiveLocal',s);
+	// 	}else {
+	// 		var s = sessionStorage.getItem('isLive');
+	// 		var sLocal = localStorage.getItem('isLiveLocal');
+	// 		if(s!=sLocal){
+	// 			console.log('dife');
+	// 			window.location.href = "http://127.0.0.1:8000/DONTALLLOWED";
+	// 		}
+	// 		console.log(s);
+	// 	}
  </script>
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
