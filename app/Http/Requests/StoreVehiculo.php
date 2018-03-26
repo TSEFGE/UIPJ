@@ -24,6 +24,7 @@ class StoreVehiculo extends FormRequest
     public function rules()
     {
         return [
+            
             'placas' => 'min:4|max:9',
             'nrpv' => 'alpha_num|min:10|max:50',
             'numSerie' => 'alpha_num|min:17|max:17',

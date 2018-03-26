@@ -25,25 +25,23 @@ class StoreAutoridad extends FormRequest
     {
         return [
                 
-            'nombres' => 'nombre|min:3|max:50',
-            'primerAp' => 'nombre|min:3|max:50',
-            'primerAp' => 'nombre|min:3|max:50',
+           'nombres' => array('regex:/^(([A-ZÁÉÑÍÓÚ][\s]*){1,100})/u'),
+           'primerAp' => array('regex:/^(([A-ZÁÉÑÍÓÚ][\s]*){1,50})/u'),
+        //   'segundoAp' => array('regex:/^((([A-ZÁÉÑÍÓÚ][\s]*)?){1,50})/u'),
             'rfc' => 'rfc|min:10|max:13',
             'curp' => 'string|min:18|max:18',
-            'telefono' => 'numtel|min:7|max:15',
-            'motivoEstancia' => 'string|min:4|max:200',
+            'telefono' => array('regex:/^([0-9]{10,15}|(SIN NUMERO))/u'),
+            'motivoEstancia' => 'string|min:5|max:200',
             'docIdentificacion' => 'string|min:3|max:50',
-            'numDocIdentificacion' => 'string|min:3|max:50',
-            'calle' => 'string|min:3|max:100',
-          //'numExterno' => 'alfanumdiag|min:1|max:10',
-          //  'numInterno' => 'alfanumdiag|min:1|max:10',
-            'lugarTrabajo' => 'string',
-            'telefonoTrabajo' => 'numtel|min:7|max:15',
-            'calle2' => 'string|min:3|max:100',
-          //'numExterno2' => 'alfanumdiag|min:1|max:10',
-           // 'numInterno2' => 'alfanumdiag|min:1|max:10',
-            'horarioLaboral' => 'string',
-            'narracion' => 'string|min:5|max:2000',
+            'numDocIdentificacion' => array('regex:/^([0-9]{1,50})/u'),
+            'calle' => 'string|min:5|max:100',
+            'lugarTrabajo' => 'string|min:5|max:50',
+            'telefonoTrabajo' => 'numtel|min:10|max:15',
+            'calle2' => 'string|min:5|max:100',
+            'horarioLaboral' => 'string|min:3|max:15',
+            'narracion' => 'string|min:1|max:2000',
+
+           
         ];
     }
 

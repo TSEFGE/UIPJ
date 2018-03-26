@@ -24,10 +24,10 @@ class StoreFamiliar extends FormRequest
     public function rules()
     {
         return [
-            'nombres' => 'nombre|min:3|max:200',
-            'primerAp' => 'nombre|min:3|max:50',
-            'segundoAp' => 'nombre|min:3|max:50',
-            
+           'nombres' => array('regex:/^(([A-ZÁÉÑÍÓÚ][\s]*){1,100})/u'),
+           'primerAp' => array('regex:/^(([A-ZÁÉÑÍÓÚ][\s]*){1,50})/u'),
+          // 'segundoAp' => array('regex:/^((([A-ZÁÉÑÍÓÚ][\s]*)?){1,50})/u'),
+           
         ];
     }
 

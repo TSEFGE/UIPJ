@@ -8,11 +8,9 @@
 	</div>
 	<div class="col-4">
 		<div class="form-group">
-			{!! Form::label('telefonoN', 'Teléfono', ['class' => 'col-form-label-sm']) !!}
-			
+					{!! Form::label('telefonoN', 'Teléfono', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::text('telefonoN', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono', 'data-validation'=>'custom', 'data-validation-regexp'=>'^([0-9]{10,15}|(SIN NUMERO))$']) !!}
-			
-		</div>
+				</div>
 	</div>
 	<div class="col-4">
 		<div class="form-group">
@@ -21,3 +19,5 @@
 				</div>
 	</div>
 </div>
+
+               
