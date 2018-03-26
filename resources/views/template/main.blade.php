@@ -1,6 +1,29 @@
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 	<script type="text/javascript">
+	document.cookie = "randomCookie=true;";
 	Cookies.set('isLive', Math.floor((Math.random() * 10000) + 1));
+		console.log('sesion');
+		if (typeof sessionStorage.getItem('isLive') == "undefined" || sessionStorage.getItem('isLive') == null && localStorage.getItem('isLiveLocal')!=null ) {
+			 sessionStorage.setItem('isLive', Math.floor((Math.random() * 10000) + 1));
+			 var s = sessionStorage.getItem('isLive');
+			 var sLocal = localStorage.getItem('isLiveLocal');
+			 if(s!=sLocal){
+				 console.log('dife');
+				 window.location.href = "http://127.0.0.1:8000/DONTALLLOWED";
+			 }
+		}else if (typeof sessionStorage.getItem('isLive') == "undefined" || sessionStorage.getItem('isLive') == null) {
+				sessionStorage.setItem('isLive', Math.floor((Math.random() * 10000) + 1));
+				var s = sessionStorage.getItem('isLive');
+				localStorage.setItem('isLiveLocal',s);
+		}else {
+			var s = sessionStorage.getItem('isLive');
+			var sLocal = localStorage.getItem('isLiveLocal');
+			if(s!=sLocal){
+				console.log('dife');
+				window.location.href = "http://127.0.0.1:8000/DONTALLLOWED";
+			}
+			console.log(s);
+		}
  </script>
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
@@ -45,9 +68,15 @@
 	<script src="{{ asset('plugins/select2/select2.min.js')}}" ></script>
 	<script src="{{ asset('js/toastr.min.js')}}" ></script>
 	<script src="{{ asset('js/jquery.form-validator.min.js')}}" ></script>
+	<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 	<!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
 	<script type="text/javascript">
+	$(window).on("unload", function(e) {
+
+	  console.log('saliendio');
+	});
+
 		$("input:text").keyup(function() {
         $(this).val($(this).val().toUpperCase());
 	    });
