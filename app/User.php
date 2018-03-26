@@ -38,4 +38,11 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Models\Unidad');
     }
+    public function bitacoras()
+    {
+
+    return $this-> hasMany('App\Models\Bitacora');
+    }
+
+
 }
