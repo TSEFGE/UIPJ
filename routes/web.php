@@ -80,6 +80,7 @@ Route::middleware(['auth'])->group(function () {
   	Route::get('carpeta/agrupaciones1/{id}','RegistroController@getAgrupaciones1');
   	Route::get('carpeta/agrupaciones2/{id}','RegistroController@getAgrupaciones2');
     Route::get('persona/curp/{curp}','RegistroController@buscarCURP');
+    Route::get('contador','RegistroController@contador');
 
 	/*---------Rutas para generación de documentos-------------*/
 	Route::get('constancia-hechos/{idDenunciante}', [

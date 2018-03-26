@@ -50,6 +50,7 @@ use App\Models\Vehiculo;
 use App\Models\Acusacion;
 use App\Models\CatAgrupacion1;
 use App\Models\CatAgrupacion2;
+use App\Models\Contador;
 use DB;
 
 class RegistroController extends Controller
@@ -1024,4 +1025,11 @@ class RegistroController extends Controller
     public function buscarCURP(Request $request){
       return Persona::buscarCURP($request->curp);
     }
+
+    public function contador(){
+      $contador = Contador::whereRaw('id = (select max(`id`) from contador)')->get();
+      dd($contador);
+      return $contador;
+    }
+
 }

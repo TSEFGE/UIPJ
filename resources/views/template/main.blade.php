@@ -1,29 +1,81 @@
-<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 	<script type="text/javascript">
-	// document.cookie = "randomCookie=true;";
-	// Cookies.set('isLive', Math.floor((Math.random() * 10000) + 1));
-	// 	console.log('sesion');
-	// 	if (typeof sessionStorage.getItem('isLive') == "undefined" || sessionStorage.getItem('isLive') == null && localStorage.getItem('isLiveLocal')!=null ) {
-	// 		 sessionStorage.setItem('isLive', Math.floor((Math.random() * 10000) + 1));
-	// 		 var s = sessionStorage.getItem('isLive');
-	// 		 var sLocal = localStorage.getItem('isLiveLocal');
-	// 		 if(s!=sLocal){
-	// 			 console.log('dife');
-	// 			 window.location.href = "http://127.0.0.1:8000/DONTALLLOWED";
-	// 		 }
-	// 	}else if (typeof sessionStorage.getItem('isLive') == "undefined" || sessionStorage.getItem('isLive') == null) {
-	// 			sessionStorage.setItem('isLive', Math.floor((Math.random() * 10000) + 1));
-	// 			var s = sessionStorage.getItem('isLive');
-	// 			localStorage.setItem('isLiveLocal',s);
-	// 	}else {
-	// 		var s = sessionStorage.getItem('isLive');
-	// 		var sLocal = localStorage.getItem('isLiveLocal');
-	// 		if(s!=sLocal){
-	// 			console.log('dife');
-	// 			window.location.href = "http://127.0.0.1:8000/DONTALLLOWED";
-	// 		}
-	// 		console.log(s);
-	// 	}
+		var is=Cookies.get('isLiveC');
+		var result = window.history.length;
+		console.log('hisorial:'+result);
+		console.log('is:'+is);
+	if (typeof sessionStorage.getItem('isLive') == "undefined" || sessionStorage.getItem('isLive') == null && localStorage.getItem('isLiveLocal')==null&&is!="undefined" ) {
+		console.log('entra1');
+		r= Math.floor((Math.random() * 10000) + 1);
+		Cookies.set('isLiveC',r);
+		sessionStorage.setItem('isLive',r);
+		localStorage.setItem('isLiveLocal',r);
+	}else if(localStorage.getItem('isLiveLocal')==null && is!="undefined"){
+					console.log('entra2');
+					var is=Cookies.get('isLiveC');
+					sessionStorage.setItem('isLive',is);
+		}else if(localStorage.getItem('isLiveLocal')!=null && is!="undefined" && result>=2){
+			console.log('entra5');
+			var is=Cookies.get('isLiveC');
+			sessionStorage.setItem('isLive',is);
+		}else if(localStorage.getItem('isLiveLocal')!=null && is=="undefined" && result<2){
+			r= Math.floor((Math.random() * 10000) + 1);
+			Cookies.set('isLiveC',r);
+			sessionStorage.setItem('isLive',r);
+			localStorage.setItem('isLiveLocal',r);
+		 }else if(localStorage.getItem('isLiveLocal')!=null && is!="undefined" &&sessionStorage.getItem('isLive') == null){
+				console.log('entra4');
+			sessionStorage.setItem('isLive', Math.floor((Math.random() * 10000) + 1));
+		}
+		var s = sessionStorage.getItem('isLive');
+		var sLocal = localStorage.getItem('isLiveLocal');
+		if(s!=sLocal){
+			console.log('dife');
+			window.location.href = "http://127.0.0.1:8000/DONTALLLOWED";
+		}else{
+
+		}
+		console.log('entra3');
+
+		// var is=Cookies.get('isLiveC');
+		// if(is!=null || is!=""){
+		// 	r= Math.floor((Math.random() * 10000) + 1);
+		// 	Cookies.set('isLiveC',r);
+		// 	sessionStorage.setItem('isLive',r);
+		// 	localStorage.setItem('isLiveLocal',r);
+		// }else{
+		// 	sessionStorage.setItem('isLive',is);
+		// }
+		//
+		// var s = sessionStorage.getItem('isLive');
+		// var sLocal = localStorage.getItem('isLiveLocal');
+		// if(s!=sLocal){
+		// 	console.log('dife');
+		// 	window.location.href = "http://127.0.0.1:8000/DONTALLLOWED";
+		// }
+
+		// console.log('sesion');
+		// if (typeof sessionStorage.getItem('isLive') == "undefined" || sessionStorage.getItem('isLive') == null && localStorage.getItem('isLiveLocal')!=null ) {
+		// 	 sessionStorage.setItem('isLive', Math.floor((Math.random() * 10000) + 1));
+		// 	 var s = sessionStorage.getItem('isLive');
+		// 	 var sLocal = localStorage.getItem('isLiveLocal');
+		// 	 if(s!=sLocal){
+		// 		 console.log('dife');
+		// 		 window.location.href = "http://127.0.0.1:8000/DONTALLLOWED";
+		// 	 }
+		// }else if (typeof sessionStorage.getItem('isLive') == "undefined" || sessionStorage.getItem('isLive') == null) {
+		// 		sessionStorage.setItem('isLive', Math.floor((Math.random() * 10000) + 1));
+		// 		var s = sessionStorage.getItem('isLive');
+		// 		localStorage.setItem('isLiveLocal',s);
+		// }else {
+		// 	var s = sessionStorage.getItem('isLive');
+		// 	var sLocal = localStorage.getItem('isLiveLocal');
+		// 	if(s!=sLocal){
+		// 		console.log('dife');
+		// 		window.location.href = "http://127.0.0.1:8000/DONTALLLOWED";
+		// 	}
+		// 	console.log(s);
+		//}
  </script>
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
@@ -71,6 +123,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 	<!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+
 	<script type="text/javascript">
 	$(window).on("unload", function(e) {
 
@@ -84,6 +137,35 @@
 	        $(this).val($(this).val().toUpperCase());
 	    });
         $(document).ready(function() {
+					// var r="";
+					// var num="";
+					// $.get("../contador", function(response, estado){
+					// 	num=response;
+					// });
+					// Cookies.set('numero',num);
+					//
+					//
+					// if (typeof sessionStorage.getItem('isLive') == "undefined" || sessionStorage.getItem('isLive') == null && localStorage.getItem('isLiveLocal')!=null){
+					// 		$.get("../contador", function(response, estado){
+					// 			var valor=Cookies.get('name');
+					// 			r= Math.floor((Math.random() * 100000) + 1);
+					// 			sessionStorage.setItem('isLive',r);
+					// 			localStorage.setItem('isLiveLocal',r);
+					// 			Cookies.set('isLive'+response,r);
+					//
+					// 		});
+					// }else if(typeof sessionStorage.getItem('isLive') == "undefined" || sessionStorage.getItem('isLive') == null){
+					// 	$.get("../contador", function(response, estado){
+					// 		r= Math.floor((Math.random() * 100000) + 1);
+					// 		sessionStorage.setItem('isLive',r);
+					// 		Cookies.set('isLive'+response,r);
+					// 	});
+					// }
+					// 	var s = sessionStorage.getItem('isLive');
+					// 	var sLocal = localStorage.getItem('isLiveLocal');
+					// 	if(s!=sLocal){
+					// 		window.location.href = "http://127.0.0.1:8000/DONTALLLOWED";
+					// 	}
 			$('select').select2();
 			toastr.options = {
 				"closeButton": true,
