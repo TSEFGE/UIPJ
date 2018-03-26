@@ -50,12 +50,14 @@ function obtenerRFC(){
 			rfc=rfcSH.join("");
 			homo=homoC.join("");
 
-			$("#rfc2").val(rfc);
-			$("#homo2").val(homo);
+			if($("#rfc2").val() != rfc || $("#homo2").val() != homo){
+				$("#rfc2").val(rfc);
+				$("#homo2").val(homo);
+				toastr.info('Se ha modificado el RFC', '¡Atención!');
+			}
 	 	},error:function(data){
 	 		// console.log(data);
 	 	}
  	});
-	toastr.info('Se ha modificado el RFC', '¡Atención!');
 } 
 </script>
