@@ -1,3 +1,7 @@
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+	<script type="text/javascript">
+	Cookies.set('isLive', Math.floor((Math.random() * 10000) + 1));
+ </script>
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
