@@ -77,14 +77,12 @@
                 </div>
                 @endif
 
-                @if($delits==true)
                 <div class="boxtwo">
                     @include('tables.vehiculos')
                     <div class="text-right"> 
                         <a href="{{ route('new.vehiculo', $carpetaNueva[0]->id) }}" class="btn btn-secondary">Agregar Vehículo</a><hr>
                     </div>
                 </div>
-                @endif
 
             </div>
         </div>

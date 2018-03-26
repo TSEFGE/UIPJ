@@ -8,7 +8,7 @@
 		</div>
 		<div class="col">	
 			<div class="text-right">
-				{!! Form::reset('Limpiar Campos', ['class' => 'btn btn-dark', 'id' => 'btn-reset']) !!}
+				{!! Form::button('Limpiar Campos', ['class' => 'btn btn-dark', 'id' => 'btn-reset']) !!}
 				{!! Form::submit('Guardar', ['class' => 'btn btn-dark', 'id' => 'btn-submit']) !!}
 			</div>
 		</div>

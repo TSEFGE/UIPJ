@@ -27,23 +27,10 @@
     <script src="{{ asset('js/es.js') }}"></script>
     <script src="{{ asset('js/tempusdominus-bootstrap-4.min.js') }}"></script>
     <script src="{{ asset('js/sisyphus.js')}}" ></script>
+    <script src="{{ asset('js/validations.js') }}"></script>
     <script src="{{ asset('js/selects.js') }}"></script>
     <script src="{{ asset('js/scripts.js') }}"></script>
-    <script src="{{ asset('js/validations.js') }}"></script>
     <script>
-        $(document).ready(function(){
-            
-            $("#numInterno").val("S/N");
-            $("#numInterno2").val("S/N");
-            $("#numInterno3").val("S/N");
-            $("#numInternoC").val("S/N");
-            $("#numExterno").val("S/N");
-            $("#numExterno2").val("S/N");
-            $("#numExterno3").val("S/N");
-            $("#numExternoC").val("S/N");
-            $("#fax").val("SIN INFORMACION");
-            $("#correo").val("sin@informacion.com");
-        });
         //$('#narracionIph').restrictLength($('#contaNarr'));
         //$('#descripcionHechos').restrictLength($('#contaDesc'));
         $(document).on('focus', '.select2', function (e) {
@@ -51,6 +38,7 @@
                 $(this).siblings('select').select2('open');
             }
         });
+           
     </script>
     <script src="{{ asset('js/curp.js') }}"></script>
     @include('fields.rfcMoral');

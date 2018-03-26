@@ -90,7 +90,7 @@ class CarpetaController extends Controller
             $delitos = CarpetaController::getDelitos($id);
             $acusaciones = CarpetaController::getAcusaciones($id);
             $vehiculos = CarpetaController::getVehiculos($id);
-            $delits = CarpetaController::hayDelitosVeh($id);
+            //$delits = CarpetaController::hayDelitosVeh($id);
             //dd($vehiculos);
             return view('carpeta')->with('carpetaNueva', $carpetaNueva)
                 ->with('denunciantes', $denunciantes)
@@ -101,8 +101,7 @@ class CarpetaController extends Controller
                 ->with('familiares', $familiares)
                 ->with('delitos', $delitos)
                 ->with('acusaciones', $acusaciones)
-                ->with('vehiculos', $vehiculos)
-                ->with('delits', $delits);
+                ->with('vehiculos', $vehiculos);
         }else{
             return redirect()->route('home');
         }
@@ -120,7 +119,7 @@ class CarpetaController extends Controller
             $delitos = CarpetaController::getDelitos($id);
             $acusaciones = CarpetaController::getAcusaciones($id);
             $vehiculos = CarpetaController::getVehiculos($id);
-            $delits = CarpetaController::hayDelitosVeh($id);
+            //$delits = CarpetaController::hayDelitosVeh($id);
             //dd($vehiculos);
             return view('detalle')->with('carpetaNueva', $carpetaNueva)
                 ->with('denunciantes', $denunciantes)
@@ -131,8 +130,7 @@ class CarpetaController extends Controller
                 ->with('familiares', $familiares)
                 ->with('delitos', $delitos)
                 ->with('acusaciones', $acusaciones)
-                ->with('vehiculos', $vehiculos)
-                ->with('delits', $delits);
+                ->with('vehiculos', $vehiculos);
         }else{
             return redirect()->route('home');
         }
