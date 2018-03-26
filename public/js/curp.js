@@ -332,8 +332,10 @@ function obtenerCURP() {
 			estado: estado,
 			fecha_nacimiento: [dia, mes, año]
 		});
-		$("#curp").val(curp);
-		$('#curp').trigger('change');
-		toastr.info('Se ha modificado el CURP', '¡Atención!');
+		if($("#curp").val() != curp){
+			$("#curp").val(curp);
+			$('#curp').trigger('change');
+			toastr.info('Se ha modificado el CURP', '¡Atención!');
+		}
 	}
 }

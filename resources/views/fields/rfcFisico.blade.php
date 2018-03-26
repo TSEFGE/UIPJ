@@ -62,15 +62,15 @@
 				rfc=rfcSH.join("");;
 				homo=homoC.join("");
 
-				$("#rfc").val(rfc);
-
-				$("#homo").val(homo);
-
+				if($("#rfc").val() != rfc || $("#homo").val() != homo){
+					$("#rfc").val(rfc);
+					$("#homo").val(homo);
+					toastr.info('Se ha modificado el RFC', '¡Atención!');
+				}
 			},
 			error: function(data) {
 				// console.log(data);
 			}
 		});
-		toastr.info('Se ha modificado el RFC', '¡Atención!');
 	}
 </script>
