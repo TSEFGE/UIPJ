@@ -614,5 +614,38 @@ $(document).ready(function(){
        });
     });
     $("#motivoEstancia").val("SIN INFORMACION");
-
+    $("#numInterno").val("S/N");
+    $("#numInterno2").val("S/N");
+    $("#numInterno3").val("S/N");
+    $("#numInternoC").val("S/N");
+    $("#numExterno").val("S/N");
+    $("#numExterno2").val("S/N");
+    $("#numExterno3").val("S/N");
+    $("#numExternoC").val("S/N");
+    $("#fax").val("SIN INFORMACION");
+    $("#correo").val("sin@informacion.com");
+   
 });
+$("#btn-reset").on("click",function(){
+    swal({
+        title: "¿Estas seguro?",
+        text: "Deseas borrar el contenido del formulario y del almacenamiento local",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonClass: "btn-danger",
+        confirmButtonText: "Aceptar",
+        cancelButtonText: "Cancelar",
+        closeOnConfirm: false,
+        closeOnCancel: false
+      },
+      function(isConfirm) {
+        if (isConfirm) {
+            //e.preventDefault();
+            $('form').trigger("reset");                      
+           swal("Borrado", "Ya puedes llenar tu formulario con normalidad", "success");
+        } else {
+          swal("Cancelado", "Tus datos siguen ahí", "error");
+        }
+      });
+});
+
