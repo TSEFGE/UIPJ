@@ -624,7 +624,7 @@ $(document).ready(function(){
     $("#numExternoC").val("S/N");
     $("#fax").val("SIN INFORMACION");
     $("#correo").val("sin@informacion.com");
-   
+
 });
 $("#btn-reset").on("click",function(){
     swal({
@@ -641,11 +641,11 @@ $("#btn-reset").on("click",function(){
       function(isConfirm) {
         if (isConfirm) {
             //e.preventDefault();
-            $('form').trigger("reset");                      
+            $('form').trigger("reset");
+            $('select').trigger('change');                      
            swal("Borrado", "Ya puedes llenar tu formulario con normalidad", "success");
         } else {
           swal("Cancelado", "Tus datos siguen ahí", "error");
         }
       });
 });
-
