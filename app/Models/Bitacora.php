@@ -21,9 +21,7 @@ public $table = 'bitacora';
         'tabla',
         'accion',
         'descripcion',
-        'idFilaAccion',
-        'created_at'
-        
+        'idFilaAccion'
     ];
 
 
