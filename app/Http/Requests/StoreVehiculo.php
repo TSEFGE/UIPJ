@@ -25,7 +25,7 @@ class StoreVehiculo extends FormRequest
     {
         return [
             
-            'placas' => 'min:4|max:9',
+            'placas' => 'min:5|max:11',
             'nrpv' => 'alpha_num|min:10|max:50',
             'numSerie' => 'alpha_num|min:17|max:17',
             'numMotor' => 'alpha_num|min:4|max:50',

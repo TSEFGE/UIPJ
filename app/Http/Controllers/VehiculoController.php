@@ -29,9 +29,9 @@ class VehiculoController extends Controller
             $tipifdelitos = DB::table('tipif_delito')
                 ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
                 ->select('tipif_delito.id', 'cat_delito.id as idDelito', 'cat_delito.nombre as delito')
-                ->where('tipif_delito.idCarpeta', '=', $idCarpeta)
-                ->whereIn('idDelito', [130, 131, 132, 133, 134, 135, 242, 243, 244, 245, 227])
-                ->get();
+                ->where('tipif_delito.idCarpeta', '=', $idCarpeta)->get();
+                //->whereIn('idDelito', [130, 131, 132, 133, 134, 135, 242, 243, 244, 245, 227])
+              
             $aseguradoras = CatAseguradora::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $clasesveh = CatClaseVehiculo::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $colores = CatColor::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
@@ -58,7 +58,7 @@ class VehiculoController extends Controller
         //dd($request->all());
         $vehiculo = new Vehiculo();
         $vehiculo->idTipifDelito = $request->idTipifDelito;
-        $vehiculo->status = $request->status;
+      
         $vehiculo->placas = $request->placas;
         $vehiculo->idEstado = $request->idEstado;
         $vehiculo->idSubmarca = $request->idSubmarca;
