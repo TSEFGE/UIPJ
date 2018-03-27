@@ -20,7 +20,7 @@ class CreateBitacoraTable extends Migration
             $table->string('accion',20);
             $table->string('descripcion',200);
             $table->integer('idFilaAccion');
-            $table->timestamp('created_at');
+            $table->timestamps();
 
             $table->foreign('idUsuario')->references('id')->on('users')->onDelete('cascade');
         });

@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use App\Models\Carpeta;
 use App\Models\Unidad;
 use App\Models\CatTipoDeterminacion;
+use App\Models\Bitacora;
 
 class CarpetaController extends Controller
 {
@@ -60,6 +61,7 @@ class CarpetaController extends Controller
         }
         $carpeta->fechaDeterminacion = $request->fechaDeterminacion;
         $carpeta->save();
+        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'carpeta', 'accion' => 'insert', 'descripcion' => 'Se ha registrado una nueva carpeta.', 'idFilaAccion' => $carpeta->id]);
         $idCarpeta = $carpeta->id;
         //dd($idCarpeta);
         DB::table('unidad')->where('id', Auth::user()->idUnidad)->update(['consecutivo' => $num]);
