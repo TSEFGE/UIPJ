@@ -72,11 +72,8 @@ class AutoridadController extends Controller
         $persona->idLengua = $request->idLengua;
         $persona->idMunicipioOrigen = $request->idMunicipioOrigen;
         $persona->save();
-
-
-//Agregar a bitacora
+        //Agregar a bitacora
         Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se han registrado Datos Personales de una nueva Autoridad', 'idFilaAccion' => $persona->id]);
-
 
         $idPersona = $persona->id;
 
@@ -88,13 +85,8 @@ class AutoridadController extends Controller
         $domicilio->numExterno = $request->numExterno;
         $domicilio->numInterno = $request->numInterno;
         $domicilio->save();
-
-
-           //Agregar a bitacora
+        //Agregar a bitacora
         Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'insert', 'descripcion' => 'Se ha registrado la Direccion de Autoridad', 'idFilaAccion' => $domicilio->id]);
-
-
-
 
         $idD1 = $domicilio->id;
 
@@ -106,10 +98,8 @@ class AutoridadController extends Controller
         $domicilio2->numExterno = $request->numExterno2;
         $domicilio2->numInterno = $request->numInterno2;
         $domicilio2->save();
-
-    //Agregar a bitacora
+        //Agregar a bitacora
         Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'variables_persona,domicilio', 'accion' => 'insert', 'descripcion' => 'Se han registrado Datos del Trabajo de Autoridad', 'idFilaAccion' => $domicilio2->id]);
-
 
         $idD2 = $domicilio2->id;
 
@@ -131,11 +121,8 @@ class AutoridadController extends Controller
         $VariablesPersona->telefonoTrabajo = $request->telefonoTrabajo;
         $VariablesPersona->representanteLegal = "NO APLICA";
         $VariablesPersona->save();
-
-
         //Agregar a bitacora
         Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'variables_persona', 'accion' => 'insert', 'descripcion' => 'Se han registrado Variables Persona de Autoridad', 'idFilaAccion' => $VariablesPersona->id]);
-
         $idVariablesPersona = $VariablesPersona->id;
 
         $ExtraAutoridad = new ExtraAutoridad();
@@ -145,8 +132,7 @@ class AutoridadController extends Controller
         $ExtraAutoridad->horarioLaboral = $request->horarioLaboral;
         $ExtraAutoridad->narracion = $request->narracion;
         $ExtraAutoridad->save();
-
-//Agregar a bitacora
+        //Agregar a bitacora
         Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_autoridad', 'accion' => 'insert', 'descripcion' => 'Se ha registrado Informacion extra de Autoridad', 'idFilaAccion' => $ExtraAutoridad->id]);
 
         /*
