@@ -112,7 +112,7 @@
 	
 	var table = $('#libroTable').DataTable({
 		language: {
-			"url": "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+			"url": "{{ asset('json/Spanish.json') }}"
 		},
 		ajax: "{{ route('api.libro') }}",
 		columns: [
@@ -146,6 +146,10 @@
 			}           
         ]
 	});
+
+	setInterval( function () {
+	    table.ajax.reload();
+	}, 20000 );
 
 	$.ajaxSetup({
         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}

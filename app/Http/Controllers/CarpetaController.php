@@ -65,6 +65,7 @@ class CarpetaController extends Controller
         $idCarpeta = $carpeta->id;
         //dd($idCarpeta);
         DB::table('unidad')->where('id', Auth::user()->idUnidad)->update(['consecutivo' => $num]);
+        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'unidad', 'accion' => 'update', 'descripcion' => 'Se ha actualizado el campo consecutivo al haber registrado una nueva carpeta.', 'idFilaAccion' => Auth::user()->idUnidad]);
         /*
         Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
         //Para mostrar modal

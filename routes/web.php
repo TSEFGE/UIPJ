@@ -104,6 +104,10 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('libro-gobierno', 'LibroGobiernoController@index')->name('libro.gobierno');
 	Route::get('api/libro', 'LibroGobiernoController@apiLibro')->name('api.libro');
 	Route::get('api/rango', 'LibroGobiernoController@apiLibroRango')->name('api.rango');
+
+	/*---------Rutas para la bitácora-------------*/
+	Route::get('bitacora', 'BitacoraController@index')->name('bitacora');
+	Route::get('api/bitacora', 'BitacoraController@apiBitacora')->name('api.bitacora');
 });
 
 

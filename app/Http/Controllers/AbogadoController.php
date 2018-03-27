@@ -42,7 +42,11 @@ class AbogadoController extends Controller
 
     public function storeAbogado(StoreAbogado $request)
     {
-        
+      $persona = Persona::where('curp', $request->curp)->get();
+      if ($persona->isNotEmpty()){
+          Alert::error('Ya existe una persona registrada con ese CURP.', 'Error')->persistent("Aceptar");
+          return back()->withInput();
+      }else{
         //dd($request->all());
         $persona = new Persona();
         $persona->nombres = $request->nombres;
@@ -111,6 +115,7 @@ class AbogadoController extends Controller
         Alert::success('Abogado registrado con éxito', 'Hecho')->persistent("Aceptar");
         //return redirect()->route('carpeta', $request->idCarpeta);
         return redirect()->route('new.abogado', $request->idCarpeta);
+       }
     }
 
     public function showForm2($idCarpeta)
