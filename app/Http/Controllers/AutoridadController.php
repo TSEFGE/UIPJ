@@ -58,76 +58,82 @@ class AutoridadController extends Controller
 
     public function storeAutoridad(StoreAutoridad $request){
         //dd($request->all());
-        $persona = new Persona();
-        $persona->nombres = $request->nombres;
-        $persona->primerAp = $request->primerAp;
-        $persona->segundoAp = $request->segundoAp;
-        $persona->fechaNacimiento = $request->fechaNacimiento;
-        $persona->rfc = $request->rfc.$request->homo;
-        $persona->curp = $request->curp;
-        $persona->sexo = $request->sexo;
-        $persona->idNacionalidad = $request->idNacionalidad;
-        $persona->idEtnia = $request->idEtnia;
-        $persona->idLengua = $request->idLengua;
-        $persona->idMunicipioOrigen = $request->idMunicipioOrigen;
-        $persona->save();
-        $idPersona = $persona->id;
+        $persona = Persona::where('curp', $request->curp)->get();
+        if ($persona->isNotEmpty()){
+            Alert::error('Ya existe una persona registrada con ese CURP.', 'Error')->persistent("Aceptar");
+            return back()->withInput();
+        }else{
+            $persona = new Persona();
+            $persona->nombres = $request->nombres;
+            $persona->primerAp = $request->primerAp;
+            $persona->segundoAp = $request->segundoAp;
+            $persona->fechaNacimiento = $request->fechaNacimiento;
+            $persona->rfc = $request->rfc.$request->homo;
+            $persona->curp = $request->curp;
+            $persona->sexo = $request->sexo;
+            $persona->idNacionalidad = $request->idNacionalidad;
+            $persona->idEtnia = $request->idEtnia;
+            $persona->idLengua = $request->idLengua;
+            $persona->idMunicipioOrigen = $request->idMunicipioOrigen;
+            $persona->save();
+            $idPersona = $persona->id;
 
-        $domicilio = new Domicilio();
-        $domicilio->idMunicipio = $request->idMunicipio;
-        $domicilio->idLocalidad = $request->idLocalidad;
-        $domicilio->idColonia = $request->idColonia;
-        $domicilio->calle = $request->calle;
-        $domicilio->numExterno = $request->numExterno;
-        $domicilio->numInterno = $request->numInterno;
-        $domicilio->save();
-        $idD1 = $domicilio->id;
+            $domicilio = new Domicilio();
+            $domicilio->idMunicipio = $request->idMunicipio;
+            $domicilio->idLocalidad = $request->idLocalidad;
+            $domicilio->idColonia = $request->idColonia;
+            $domicilio->calle = $request->calle;
+            $domicilio->numExterno = $request->numExterno;
+            $domicilio->numInterno = $request->numInterno;
+            $domicilio->save();
+            $idD1 = $domicilio->id;
 
-        $domicilio2 = new Domicilio();
-        $domicilio2->idMunicipio = $request->idMunicipio2;
-        $domicilio2->idLocalidad = $request->idLocalidad2;
-        $domicilio2->idColonia = $request->idColonia2;
-        $domicilio2->calle = $request->calle2;
-        $domicilio2->numExterno = $request->numExterno2;
-        $domicilio2->numInterno = $request->numInterno2;
-        $domicilio2->save();
-        $idD2 = $domicilio2->id;
+            $domicilio2 = new Domicilio();
+            $domicilio2->idMunicipio = $request->idMunicipio2;
+            $domicilio2->idLocalidad = $request->idLocalidad2;
+            $domicilio2->idColonia = $request->idColonia2;
+            $domicilio2->calle = $request->calle2;
+            $domicilio2->numExterno = $request->numExterno2;
+            $domicilio2->numInterno = $request->numInterno2;
+            $domicilio2->save();
+            $idD2 = $domicilio2->id;
 
-        $VariablesPersona = new VariablesPersona();
-        $VariablesPersona->idCarpeta = $request->idCarpeta;
-        $VariablesPersona->idPersona = $idPersona;
-        $VariablesPersona->edad = $request->edad;
-        $VariablesPersona->telefono = $request->telefono;
-        $VariablesPersona->motivoEstancia = $request->motivoEstancia;
-        $VariablesPersona->idOcupacion = $request->idOcupacion;
-        $VariablesPersona->idEstadoCivil = $request->idEstadoCivil;
-        $VariablesPersona->idEscolaridad = $request->idEscolaridad;
-        $VariablesPersona->idReligion = $request->idReligion;
-        $VariablesPersona->idDomicilio = $idD1;
-        $VariablesPersona->docIdentificacion = $request->docIdentificacion;
-        $VariablesPersona->numDocIdentificacion = $request->numDocIdentificacion;
-        $VariablesPersona->lugarTrabajo = $request->lugarTrabajo;
-        $VariablesPersona->idDomicilioTrabajo = $idD2;
-        $VariablesPersona->telefonoTrabajo = $request->telefonoTrabajo;
-        $VariablesPersona->representanteLegal = "NO APLICA";
-        $VariablesPersona->save();
-        $idVariablesPersona = $VariablesPersona->id;
+            $VariablesPersona = new VariablesPersona();
+            $VariablesPersona->idCarpeta = $request->idCarpeta;
+            $VariablesPersona->idPersona = $idPersona;
+            $VariablesPersona->edad = $request->edad;
+            $VariablesPersona->telefono = $request->telefono;
+            $VariablesPersona->motivoEstancia = $request->motivoEstancia;
+            $VariablesPersona->idOcupacion = $request->idOcupacion;
+            $VariablesPersona->idEstadoCivil = $request->idEstadoCivil;
+            $VariablesPersona->idEscolaridad = $request->idEscolaridad;
+            $VariablesPersona->idReligion = $request->idReligion;
+            $VariablesPersona->idDomicilio = $idD1;
+            $VariablesPersona->docIdentificacion = $request->docIdentificacion;
+            $VariablesPersona->numDocIdentificacion = $request->numDocIdentificacion;
+            $VariablesPersona->lugarTrabajo = $request->lugarTrabajo;
+            $VariablesPersona->idDomicilioTrabajo = $idD2;
+            $VariablesPersona->telefonoTrabajo = $request->telefonoTrabajo;
+            $VariablesPersona->representanteLegal = "NO APLICA";
+            $VariablesPersona->save();
+            $idVariablesPersona = $VariablesPersona->id;
 
-        $ExtraAutoridad = new ExtraAutoridad();
-        $ExtraAutoridad->idVariablesPersona = $idVariablesPersona;
-        $ExtraAutoridad->antiguedad = $request->antiguedad;
-        $ExtraAutoridad->rango = $request->rango;
-        $ExtraAutoridad->horarioLaboral = $request->horarioLaboral;
-        $ExtraAutoridad->narracion = $request->narracion;
-        $ExtraAutoridad->save();
-        /*
-        Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
-        //Para mostrar modal
-        //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
-        */
-        Alert::success('Autoridad registrada con éxito', 'Hecho')->persistent("Aceptar");
-        //return redirect()->route('carpeta', $request->idCarpeta);
-        return redirect()->route('new.autoridad', $request->idCarpeta);
+            $ExtraAutoridad = new ExtraAutoridad();
+            $ExtraAutoridad->idVariablesPersona = $idVariablesPersona;
+            $ExtraAutoridad->antiguedad = $request->antiguedad;
+            $ExtraAutoridad->rango = $request->rango;
+            $ExtraAutoridad->horarioLaboral = $request->horarioLaboral;
+            $ExtraAutoridad->narracion = $request->narracion;
+            $ExtraAutoridad->save();
+            /*
+            Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
+            //Para mostrar modal
+            //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
+            */
+            Alert::success('Autoridad registrada con éxito', 'Hecho')->persistent("Aceptar");
+            //return redirect()->route('carpeta', $request->idCarpeta);
+            return redirect()->route('new.autoridad', $request->idCarpeta);
+        }
     }
 
     /**
