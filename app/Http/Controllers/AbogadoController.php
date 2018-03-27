@@ -18,11 +18,12 @@ use App\Models\Persona;
 use App\Models\VariablesPersona;
 use App\Models\ExtraAbogado;
 use App\Models\Domicilio;
+use App\Models\Bitacora;
 
 class AbogadoController extends Controller
 {
     public function showForm($idCarpeta)
-    {   
+    {
         $carpetaNueva = Carpeta::where('id', $idCarpeta)->where('idFiscal', Auth::user()->id)->get();
         if(count($carpetaNueva)>0){
             $abogados = CarpetaController::getAbogados($idCarpeta);
@@ -56,6 +57,8 @@ class AbogadoController extends Controller
         $persona->save();
         $idPersona = $persona->id;
 
+        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se ha registrado una nueva persona física de tipo abogado.', 'idFilaAccion' => $idPersona]);
+
         $domicilio2 = new Domicilio();
         $domicilio2->idMunicipio = $request->idMunicipio2;
         $domicilio2->idLocalidad = $request->idLocalidad2;
@@ -65,6 +68,8 @@ class AbogadoController extends Controller
         $domicilio2->numInterno = $request->numInterno2;
         $domicilio2->save();
         $idD2 = $domicilio2->id;
+
+        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un nuevo domicilio de persona física de tipo abogado.', 'idFilaAccion' => $idD2]);
 
         $VariablesPersona = new VariablesPersona();
         $VariablesPersona->idCarpeta = $request->idCarpeta;
@@ -85,6 +90,8 @@ class AbogadoController extends Controller
         $VariablesPersona->save();
         $idVariablesPersona = $VariablesPersona->id;
 
+        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'variables_persona', 'accion' => 'insert', 'descripcion' => 'Se han registrado nuevas variables de persona física de tipo abogado.', 'idFilaAccion' => $idVariablesPersona]);
+
         $ExtraAbogado = new ExtraAbogado();
         $ExtraAbogado->idVariablesPersona = $idVariablesPersona;
         $ExtraAbogado->cedulaProf = $request->cedulaProf;
@@ -93,6 +100,9 @@ class AbogadoController extends Controller
         $ExtraAbogado->tipo = $request->tipo;
         $ExtraAbogado->save();
         $idAbogado = $ExtraAbogado->id;
+
+        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_abogado', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un nuevo extra abogado de persona física de tipo abogado.', 'idFilaAccion' => $idVariablesPersona]);
+
         /*
         Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
         //Para mostrar modal
@@ -106,7 +116,7 @@ class AbogadoController extends Controller
     public function showForm2($idCarpeta)
     {
         $carpetaNueva = Carpeta::where('id', $idCarpeta)->where('idFiscal', Auth::user()->id)->get();
-        if(count($carpetaNueva)>0){ 
+        if(count($carpetaNueva)>0){
             $defensas = CarpetaController::getDefensas($idCarpeta);
             $abogados = DB::table('extra_abogado')
                 ->join('variables_persona', 'variables_persona.id', '=', 'extra_abogado.idVariablesPersona')
@@ -130,12 +140,17 @@ class AbogadoController extends Controller
         $tipo = $request->tipo;
         $idInvolucrado = $request->idInvolucrado;
         $xd = DB::table('extra_denunciante')->select('id')->where('idVariablesPersona', $idInvolucrado)->get();
-        //dd(count($xd));
         if(count($xd)>0){
             DB::table('extra_denunciante')->where('idVariablesPersona', $idInvolucrado)->update(['idAbogado' => $idAbogado]);
+            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_denunciante', 'accion' => 'update', 'descripcion' => 'Se ha asignado un abogado a un denunciante.', 'idFilaAccion' => $xd[0]->id]);
         }else{
             DB::table('extra_denunciado')->where('idVariablesPersona', $idInvolucrado)->update(['idAbogado' => $idAbogado]);
+            $idExtraDenunciado=ExtraDenunciado::where('idVariablesPersona','=',$idInvolucrado)->first();
+            //dd($idExtraDenunciado);
+            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_denunciado', 'accion' => 'update', 'descripcion' => 'Se ha asignado un abogado a un denunciado.', 'idFilaAccion' => $idExtraDenunciado->id]);
+
         }
+
         /*
         Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
         //Para mostrar modal
