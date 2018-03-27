@@ -11,6 +11,7 @@ use App\Models\CatAseguradora;
 use App\Models\CatClaseVehiculo;
 use App\Models\CatColor;
 use App\Models\CatEstado;
+use App\Models\CatDelito;
 use App\Models\CatMarca;
 use App\Models\CatProcedencia;
 use App\Models\CatTipoUso;

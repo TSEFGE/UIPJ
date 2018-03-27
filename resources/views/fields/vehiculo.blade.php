@@ -9,12 +9,7 @@
 			</select>
 		</div>
 	</div>
-	<div class="col-4">
-		<div class="form-group">
-			{!! Form::label('status', 'Status', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('status', ['INVOLUCRADO' => 'INVOLUCRADO', 'ROBADO' => 'ROBADO'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un status']) !!}
-		</div>
-	</div>
+	
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('placas', 'Placas', ['class' => 'col-form-label-sm']) !!}

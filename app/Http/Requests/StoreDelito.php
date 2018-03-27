@@ -25,8 +25,8 @@ class StoreDelito extends FormRequest
     {
         return [
             'calle' => 'string|min:3|max:100',
-            'numExterno' => 'alfanumdiag|min:1|max:10',
-            'numInterno' => 'alfanumdiag|min:1|max:10',
+            'numExterno' => array('regex:/^((([A-Z]|[-]|[\d])|(S/N)|(SIN NUMERO)){1,10})/u'),
+             'numInterno' => array('regex:/^((([A-Z]|[-]|[\d])|(S/N)|(SIN NUMERO)){1,10})/u'),
             'entreCalle' => 'string|min:3|max:100',
             'yCalle' => 'string|min:3|max:100',
             'calleTrasera' => 'string|min:3|max:100',

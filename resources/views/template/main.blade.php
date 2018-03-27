@@ -1,4 +1,4 @@
-	<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+	{{-- <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 	<script type="text/javascript">
 		var is=Cookies.get('isLiveC');
 		var result = window.history.length;
@@ -37,46 +37,7 @@
 		}
 		console.log('entra3');
 
-		// var is=Cookies.get('isLiveC');
-		// if(is!=null || is!=""){
-		// 	r= Math.floor((Math.random() * 10000) + 1);
-		// 	Cookies.set('isLiveC',r);
-		// 	sessionStorage.setItem('isLive',r);
-		// 	localStorage.setItem('isLiveLocal',r);
-		// }else{
-		// 	sessionStorage.setItem('isLive',is);
-		// }
-		//
-		// var s = sessionStorage.getItem('isLive');
-		// var sLocal = localStorage.getItem('isLiveLocal');
-		// if(s!=sLocal){
-		// 	console.log('dife');
-		// 	window.location.href = "http://127.0.0.1:8000/DONTALLLOWED";
-		// }
-
-		// console.log('sesion');
-		// if (typeof sessionStorage.getItem('isLive') == "undefined" || sessionStorage.getItem('isLive') == null && localStorage.getItem('isLiveLocal')!=null ) {
-		// 	 sessionStorage.setItem('isLive', Math.floor((Math.random() * 10000) + 1));
-		// 	 var s = sessionStorage.getItem('isLive');
-		// 	 var sLocal = localStorage.getItem('isLiveLocal');
-		// 	 if(s!=sLocal){
-		// 		 console.log('dife');
-		// 		 window.location.href = "http://127.0.0.1:8000/DONTALLLOWED";
-		// 	 }
-		// }else if (typeof sessionStorage.getItem('isLive') == "undefined" || sessionStorage.getItem('isLive') == null) {
-		// 		sessionStorage.setItem('isLive', Math.floor((Math.random() * 10000) + 1));
-		// 		var s = sessionStorage.getItem('isLive');
-		// 		localStorage.setItem('isLiveLocal',s);
-		// }else {
-		// 	var s = sessionStorage.getItem('isLive');
-		// 	var sLocal = localStorage.getItem('isLiveLocal');
-		// 	if(s!=sLocal){
-		// 		console.log('dife');
-		// 		window.location.href = "http://127.0.0.1:8000/DONTALLLOWED";
-		// 	}
-		// 	console.log(s);
-		//}
- </script>
+ </script> --}}
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
