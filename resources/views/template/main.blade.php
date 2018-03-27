@@ -1,4 +1,4 @@
-	{{-- <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 	<script type="text/javascript">
 		var is=Cookies.get('isLiveC');
 		var result = window.history.length;
@@ -37,7 +37,7 @@
 		}
 		console.log('entra3');
 
- </script> --}}
+ </script>
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>

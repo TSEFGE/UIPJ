@@ -1,9 +1,10 @@
 {{-- @extends('template.main') --}}
-{{-- <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 <script type="text/javascript">
 Cookies.remove('isLiveC');
 localStorage.clear();
-</script> --}}
+sessionStorage.removeItem('isLive');
+</script>
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
@@ -87,7 +88,7 @@ localStorage.clear();
                         <div class="form-group row">
                             <div class="col-md-4"></div>
                             <div class="col-md-8">
-                                <button type="submit" class="btn btn-secondary">
+                                <button type="submit" class="btn btn-secondary" onclick="borrarlsc()">
                                     Iniciar sesión
                                 </button>
                                 {{--<a class="btn btn-link" href="{{ route('password.request') }}">
@@ -120,11 +121,11 @@ localStorage.clear();
   <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
 
 <script type="text/javascript">
-$(window).on("unload", function(e) {
-
-  console.log('saliendio');
-});
-
+	function borrarlsc(){
+		Cookies.remove('isLiveC');
+		localStorage.clear();
+		sessionStorage.removeItem('isLive');
+	}
   $("input:text").keyup(function() {
       $(this).val($(this).val().toUpperCase());
     });
