@@ -35,9 +35,9 @@
 		}else{
 
 		}
-		console.log('entra3'); --}}
+		console.log('entra3');
 
- </script>
+ </script> --}}
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>

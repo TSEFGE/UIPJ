@@ -1,9 +1,9 @@
 {{-- @extends('template.main') --}}
-<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+{{-- <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 <script type="text/javascript">
 Cookies.remove('isLiveC');
 localStorage.clear();
-</script>
+</script> --}}
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
