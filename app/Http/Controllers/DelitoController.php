@@ -62,12 +62,8 @@ class DelitoController extends Controller
         $domicilio->numExterno = $request->numExterno;
         $domicilio->numInterno = $request->numInterno;
         $domicilio->save();
-
-//Agregar a Bitacora
+        //Agregar a Bitacora
         Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'insert', 'descripcion' => 'Se ha registrado Información sobre el lugar del Delito', 'idFilaAccion' => $domicilio->id]);
-
-
-
 
         $idD1 = $domicilio->id;
 
@@ -94,13 +90,8 @@ class DelitoController extends Controller
         $tipifDelito->calleTrasera = $request->calleTrasera;
         $tipifDelito->puntoReferencia = $request->puntoReferencia;
         $tipifDelito->save();
-
-
-
-  //guarda en Bitacora
-   Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'tipif_delito', 'accion' => 'insert', 'descripcion' => 'Se ha registrado Información sobre la comisión del delito', 'idFilaAccion' => $tipifDelito->id]);     
-
-
+          //guarda en Bitacora
+        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'tipif_delito', 'accion' => 'insert', 'descripcion' => 'Se ha registrado Información sobre la comisión del delito', 'idFilaAccion' => $tipifDelito->id]);     
         /*
         Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
         //Para mostrar modal
