@@ -14,7 +14,7 @@
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('aliasC', 'Alias', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('aliasC', "SIN INFORMACION", ['class' => 'form-control form-control-sm','data-validation'=>'length', 'data-validation-length'=>'3-50']) !!}
+			{!! Form::text('aliasC', "SIN INFORMACION", ['class' => 'form-control form-control-sm','data-validation'=>'length', 'data-validation-length'=>'1-50']) !!}
 		</div>
 	</div>
 </div>

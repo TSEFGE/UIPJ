@@ -38,7 +38,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Validator::extend('alfanumdiag', function ($attribute, $value) {
-            return preg_match('/^([A-ZÁÉÍÓÚ0-9\x2F]+[\s]*)+$/', $value); 
+            return preg_match('/^([A-ZÁÉÍÓÚ0-9\x2F]+[\s])+$/', $value); 
         });
 
         Validator::extend('numtel', function ($attribute, $value) {

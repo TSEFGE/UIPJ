@@ -28,8 +28,8 @@ class StoreDenunciante extends FormRequest
         'nombres2' => array('regex:/^(([A-ZÁÉÑÍÓÚ][.]*[,]*[\s]*){1,100})/u'),
         'rfc2' => 'min:9|max:12',
         'representanteLegal' => array('regex:/^(([A-ZÁÉÑÍÓÚ][.]*[,]*[\s]*){1,300})/u'),
-        'calle' => 'string|min:5|max:100',
-        'calle3' => 'string|min:5|max:100',
+        'calle' => 'string|min:3|max:100',
+        'calle3' => 'string|min:3|max:100',
         'telefonoN' => array('regex:/^([0-9]{10,15}|(SIN NUMERO))/u'),
         'narracion' => 'string|min:5|max:2000',
         'nombres' => array('regex:/^(([A-ZÁÉÑÍÓÚ][\s]*){1,100})/u'),
@@ -43,7 +43,7 @@ class StoreDenunciante extends FormRequest
         'numDocIdentificacion' => array('regex:/^([0-9]{1,50})/u'),
         'lugarTrabajo' => 'string|min:5|max:50',
         'telefonoTrabajo'  => array('regex:/^([0-9]{10,15}|(SIN NUMERO))/u'),
-        'calle2' => 'string|min:5|max:100',
+        'calle2' => 'string|min:3|max:100',
          
 
          ];

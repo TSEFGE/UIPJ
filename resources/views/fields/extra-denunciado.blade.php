@@ -20,7 +20,7 @@
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('personasBajoSuGuarda', 'Dependientes Económicos', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::number('personasBajoSuGuarda', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número de Dependientes Económicos', 'min' => 0, 'required']) !!}
+					{!! Form::number('personasBajoSuGuarda', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número de Dependientes Económicos', 'min' => 0, 'required', 'data-validation'=>'custom' ,'data-validation-regexp'=>'^([0-9]){1,11}$']) !!}
 				</div>
 			</div>
 			<div class="col-3">
@@ -38,7 +38,7 @@
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('residenciaAnterior', 'Residencia anterior', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('residenciaAnterior', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la  residencia anterior','data-validation'=>'length', 'data-validation-length'=>'5-200']) !!}
+					{!! Form::text('residenciaAnterior', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la  residencia anterior','data-validation'=>'length', 'data-validation-length'=>'1-100']) !!}
 				</div>
 			</div>
 			<div class="col-3">
@@ -60,7 +60,7 @@
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('vestimenta', 'Vestimenta', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('vestimenta', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la vestimenta','data-validation'=>'length', 'data-validation-length'=>'5-150']) !!}
+					{!! Form::text('vestimenta', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la vestimenta','data-validation'=>'length', 'data-validation-length'=>'1-150']) !!}
 				</div>
 			</div>
 		</div>
