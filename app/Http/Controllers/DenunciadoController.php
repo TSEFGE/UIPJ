@@ -22,13 +22,14 @@ use App\Models\VariablesPersona;
 use App\Models\ExtraDenunciado;
 use App\Models\Notificacion;
 use App\Models\Domicilio;
+use App\Models\Bitacora;
 
 class DenunciadoController extends Controller
 {
     public function showForm($idCarpeta)
     {
         $carpetaNueva = Carpeta::where('id', $idCarpeta)->where('idFiscal', Auth::user()->id)->get();
-        if(count($carpetaNueva)>0){ 
+        if(count($carpetaNueva)>0){
             $denunciados = CarpetaController::getDenunciados($idCarpeta);
             $escolaridades = CatEscolaridad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $estados = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
@@ -66,17 +67,26 @@ class DenunciadoController extends Controller
             $persona->save();
             $idPersona = $persona->id;
 
+            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se ha registrado una nueva persona física de tipo denunciado QRR.', 'idFilaAccion' => $idPersona]);
+
             $domicilio = new Domicilio();
             $domicilio->save();
             $idD1 = $domicilio->id;
+
+            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un nuevo domicilio de persona física de tipo denunciado QRR.', 'idFilaAccion' => $idD1]);
+
 
             $domicilio2 = new Domicilio();
             $domicilio2->save();
             $idD2 = $domicilio2->id;
 
+            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un nuevo domicilio de persona física de tipo denunciado QRR.', 'idFilaAccion' => $idD2]);
+
             $domicilio3 = new Domicilio();
             $domicilio3->save();
             $idD3 = $domicilio3->id;
+
+            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un nuevo domicilio de persona física de tipo denunciado QRR.', 'idFilaAccion' => $idD3]);
 
             $VariablesPersona = new VariablesPersona();
             $VariablesPersona->idCarpeta = $request->idCarpeta;
@@ -86,15 +96,23 @@ class DenunciadoController extends Controller
             $VariablesPersona->save();
             $idVariablesPersona = $VariablesPersona->id;
 
+            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'variables_persona', 'accion' => 'insert', 'descripcion' => 'Se han registrado nuevas variables de persona física de tipo denunciado QRR.', 'idFilaAccion' => $idVariablesPersona]);
+
             $notificacion = new Notificacion();
             $notificacion->idDomicilio = $idD3;
             $notificacion->save();
             $idNotificacion = $notificacion->id;
 
+            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'notificacion', 'accion' => 'insert', 'descripcion' => 'Se ha registrado una nueva notificación de persona física de tipo denunciado QRR.', 'idFilaAccion' => $idNotificacion]);
+
             $ExtraDenunciado = new ExtraDenunciado();
             $ExtraDenunciado->idVariablesPersona = $idVariablesPersona;
             $ExtraDenunciado->idNotificacion = $idNotificacion;
             $ExtraDenunciado->save();
+            $idExtraDenunciado=$ExtraDenunciado->id;
+
+            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_denunciado', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un nuevo extra denunciado de persona fisica de tipo denunciado QRR.', 'idFilaAccion' => $idExtraDenunciado]);
+
         }
         //Denunciado conocido
         elseif ($request->tipoDenunciado==2){
@@ -104,6 +122,8 @@ class DenunciadoController extends Controller
             $persona->rfc = "SIN INFORMACION";
             $persona->save();
             $idPersona = $persona->id;
+
+            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se ha registrado una nueva persona fisica de tipo denunciado conocido.', 'idFilaAccion' => $idPersona]);
 
             $domicilio = new Domicilio();
             $domicilio->idMunicipio = $request->idMunicipioC;
@@ -115,13 +135,19 @@ class DenunciadoController extends Controller
             $domicilio->save();
             $idD1 = $domicilio->id;
 
+            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un nuevo domicilio de persona física de tipo denunciado conocido.', 'idFilaAccion' => $idD1]);
+
             $domicilio2 = new Domicilio();
             $domicilio2->save();
             $idD2 = $domicilio2->id;
 
+            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un nuevo domicilio de persona física de tipo denunciado conocido.', 'idFilaAccion' => $idD2]);
+
             $domicilio3 = new Domicilio();
             $domicilio3->save();
             $idD3 = $domicilio3->id;
+
+            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un nuevo domicilio de persona física de tipo denunciado conocido.', 'idFilaAccion' => $idD3]);
 
             $VariablesPersona = new VariablesPersona();
             $VariablesPersona->idCarpeta = $request->idCarpeta;
@@ -131,10 +157,14 @@ class DenunciadoController extends Controller
             $VariablesPersona->save();
             $idVariablesPersona = $VariablesPersona->id;
 
+            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'variables_persona', 'accion' => 'insert', 'descripcion' => 'Se han registrado nuevas variables de persona física de tipo denunciado conocido.', 'idFilaAccion' => $idVariablesPersona]);
+
             $notificacion = new Notificacion();
             $notificacion->idDomicilio = $idD3;
             $notificacion->save();
             $idNotificacion = $notificacion->id;
+
+            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'notificacion', 'accion' => 'insert', 'descripcion' => 'Se ha registrado una nueva notificación de persona física de tipo denunciado conocido.', 'idFilaAccion' => $idNotificacion]);
 
             $ExtraDenunciado = new ExtraDenunciado();
             $ExtraDenunciado->idVariablesPersona = $idVariablesPersona;
@@ -142,6 +172,9 @@ class DenunciadoController extends Controller
             $ExtraDenunciado->alias = $request->aliasC;
             $ExtraDenunciado->senasPartic = $request->senasParticC;
             $ExtraDenunciado->save();
+            $idExtraDenunciado=$ExtraDenunciado->id;
+
+            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_denunciado', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un nuevo extra denunciado de persona física de tipo denunciado conocido.', 'idFilaAccion' => $idExtraDenunciado]);
         }
         //Por comparecencia
         elseif ($request->tipoDenunciado==3){
@@ -178,6 +211,8 @@ class DenunciadoController extends Controller
                     $persona->save();
                     $idPersona = $persona->id;
 
+                    Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se ha registrado una nueva persona física de tipo denunciado por comparecencia.', 'idFilaAccion' => $idPersona]);
+
                     $domicilio = new Domicilio();
                     if (!is_null($request->idMunicipio)){
                         $domicilio->idMunicipio = $request->idMunicipio;
@@ -199,6 +234,8 @@ class DenunciadoController extends Controller
                     }
                     $domicilio->save();
                     $idD1 = $domicilio->id;
+
+                    Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un nuevo domicilio de persona física de tipo denunciado por comparecencia.', 'idFilaAccion' => $idD1]);
 
                     $domicilio2 = new Domicilio();
                     if (!is_null($request->idMunicipio2)){
@@ -222,6 +259,8 @@ class DenunciadoController extends Controller
                     $domicilio2->save();
                     $idD2 = $domicilio2->id;
 
+                    Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un nuevo domicilio de persona física de tipo denunciado por comparecencia.', 'idFilaAccion' => $idD2]);
+
                     $domicilio3 = new Domicilio();
                     if (!is_null($request->idMunicipio3)){
                         $domicilio3->idMunicipio = $request->idMunicipio3;
@@ -244,6 +283,8 @@ class DenunciadoController extends Controller
                     $domicilio3->save();
                     $idD3 = $domicilio3->id;
 
+                    Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'insert', 'descripcion' =>'SSe ha registrado un nuevo domicilio de persona física de tipo denunciado por comparecencia.', 'idFilaAccion' => $idD3]);
+
                     $notificacion = new Notificacion();
                     $notificacion->idDomicilio = $idD3;
                     $notificacion->correo = $request->correo;
@@ -251,6 +292,8 @@ class DenunciadoController extends Controller
                     $notificacion->fax = $request->fax;
                     $notificacion->save();
                     $idNotificacion = $notificacion->id;
+
+                    Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'notificacion', 'accion' => 'insert', 'descripcion' => 'Se ha registrado notificación de persona física de tipo denunciado por comparecencia.', 'idFilaAccion' => $idNotificacion]);
 
                     $VariablesPersona = new VariablesPersona();
                     $VariablesPersona->idCarpeta = $request->idCarpeta;
@@ -292,6 +335,8 @@ class DenunciadoController extends Controller
                     $VariablesPersona->save();
                     $idVariablesPersona = $VariablesPersona->id;
 
+                    Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'variables_persona', 'accion' => 'insert', 'descripcion' => 'Se han registrado nuevas variables de persona física de tipo denunciado por comparecencia.', 'idFilaAccion' => $idVariablesPersona]);
+
                     $ExtraDenunciado = new ExtraDenunciado();
                     $ExtraDenunciado->idVariablesPersona = $idVariablesPersona;
                     $ExtraDenunciado->idNotificacion = $idNotificacion;
@@ -327,6 +372,10 @@ class DenunciadoController extends Controller
                         $ExtraDenunciado->narracion = $request->narracion;
                     }
                     $ExtraDenunciado->save();
+                    $idExtraDenunciado=$ExtraDenunciado->id;
+
+                    Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_denunciado', 'accion' => 'insert', 'descripcion' => 'Se ha registradoun nuevo extra denunciado de persona física de tipo denunciado por comparecencia.', 'idFilaAccion' => $idExtraDenunciado]);
+
                 }
             }elseif($request->esEmpresa==1){
                 $persona = new Persona();
@@ -335,6 +384,8 @@ class DenunciadoController extends Controller
                 $persona->esEmpresa = 1;
                 $persona->save();
                 $idPersona = $persona->id;
+
+                Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se ha registrado una nueva persona moral de tipo denunciado por comparecencia.', 'idFilaAccion' => $idPersona]);
 
                 $domicilio = new Domicilio();
                 if (!is_null($request->idMunicipio)){
@@ -358,6 +409,8 @@ class DenunciadoController extends Controller
                 $domicilio->save();
                 $idD1 = $domicilio->id;
 
+                Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un nuevo domicilio de persona física de tipo denunciado por comparecencia.', 'idFilaAccion' => $idD1]);
+
                 $domicilio3 = new Domicilio();
                 if (!is_null($request->idMunicipio3)){
                     $domicilio3->idMunicipio = $request->idMunicipio3;
@@ -380,6 +433,8 @@ class DenunciadoController extends Controller
                 $domicilio3->save();
                 $idD3 = $domicilio3->id;
 
+                Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un nuevo domicilio de persona moral de tipo denunciado por comparecencia.', 'idFilaAccion' => $idD3]);
+
                 $notificacion = new Notificacion();
                 $notificacion->idDomicilio = $idD3;
                 $notificacion->correo = $request->correo;
@@ -387,6 +442,8 @@ class DenunciadoController extends Controller
                 $notificacion->fax = $request->fax;
                 $notificacion->save();
                 $idNotificacion = $notificacion->id;
+
+                Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'notificacion', 'accion' => 'insert', 'descripcion' => 'Se ha registrado una nueva notificación de persona moral de tipo denunciado por comparecencia.', 'idFilaAccion' => $idNotificacion]);
 
                 $VariablesPersona = new VariablesPersona();
                 $VariablesPersona->idCarpeta = $request->idCarpeta;
@@ -397,13 +454,19 @@ class DenunciadoController extends Controller
                 $VariablesPersona->save();
                 $idVariablesPersona = $VariablesPersona->id;
 
+                Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'variables_persona', 'accion' => 'insert', 'descripcion' => 'Se han registrado nuevas variables de persona moral de tipo denunciado por comparecencia.', 'idFilaAccion' => $idVariablesPersona]);
+
                 $ExtraDenunciado = new ExtraDenunciado();
                 $ExtraDenunciado->idVariablesPersona = $idVariablesPersona;
                 $ExtraDenunciado->idNotificacion = $idNotificacion;
                 $ExtraDenunciado->senasPartic = $request->senasPartic;
                 $ExtraDenunciado->narracion = $request->narracion;
                 $ExtraDenunciado->save();
-            }      
+                $idExtraDenunciado=$ExtraDenunciado->id;
+
+                Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_denunciado', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un nuevo extra denunciado de persona moral de tipo denunciado por comparecencia.', 'idFilaAccion' => $idExtraDenunciado]);
+
+            }
         }
         /*
         Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
