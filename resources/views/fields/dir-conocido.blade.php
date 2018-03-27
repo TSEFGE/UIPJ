@@ -32,7 +32,7 @@
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('calleC', 'Calle', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('calleC',"SIN INFORMACION", ['class' => 'form-control form-control-sm','data-validation'=>'length', 'data-validation-length'=>'5-100']) !!}
+			{!! Form::text('calleC',"SIN INFORMACION", ['class' => 'form-control form-control-sm','data-validation'=>'length', 'data-validation-length'=>'3-100']) !!}
 		</div>
 	</div>
 	<div class="col-2">

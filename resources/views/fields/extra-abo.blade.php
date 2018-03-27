@@ -17,7 +17,7 @@
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('cedulaProf', 'Cédula profesional', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('cedulaProf', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Num. de Cedula','data-validation'=>'custom' ,'data-validation-regexp'=>'^[0-9]+$']) !!}
+			{!! Form::text('cedulaProf', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Num. de Cedula','data-validation'=>'custom' ,'data-validation-regexp'=>'^[0-9]{1,50}$']) !!}
 		</div>
 	</div>
 	<div class="col-3">

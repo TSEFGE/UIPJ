@@ -185,13 +185,13 @@
 			<div class="col-6">
 				<div class="form-group">
 					{!! Form::label('nombres2', 'Nombre', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('nombres2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre', 'required','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÑÍÓÚ][.]*[,]*[\s]*){1,100}$']) !!}
+					{!! Form::text('nombres2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre', 'required','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÑÍÓÚ]*[.]*[,]*[\s]*[0-9]*){1,100}$']) !!}
 				</div>
 			</div>
 			<div class="col-6">
 				<div class="form-group">
 					{!! Form::label('fechaAltaEmpresa', 'Fecha de alta de Persona Moral', ['class' => 'col-form-label-sm']) !!}<div class="input-group date" id="fechaAlta" data-target-input="nearest">
-		                {!! Form::text('fechaAltaEmpresa', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaAlta', 'data-toggle' => 'datetimepicker', 'placeholder' => 'AAAA-MM-DD']) !!}
+		                {!! Form::text('fechaAltaEmpresa', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaAlta', 'data-toggle' => 'datetimepicker', 'placeholder' => 'AAAA-MM-DD','data-validation'=>'date', 'data-validation-format'=>'yyyy-mm-dd']) !!}
 		                <div class="input-group-append" data-target="#fechaAlta" data-toggle="datetimepicker">
 		                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
 		                </div>
