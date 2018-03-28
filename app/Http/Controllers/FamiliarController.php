@@ -11,8 +11,7 @@ use App\Models\Carpeta;
 use App\Models\CatOcupacion;
 use App\Models\Familiar;
 use App\Models\Bitacora;
-use App\Models\VariablesPersona;
-use App\Models\ExtraDenunciante;
+
 
 
 class FamiliarController extends Controller
