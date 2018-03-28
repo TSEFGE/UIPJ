@@ -148,7 +148,7 @@
 	});
 
 	setInterval( function () {
-	    table.ajax.reload();
+	    table.ajax.reload( null, false );
 	}, 20000 );
 
 	$.ajaxSetup({

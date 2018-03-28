@@ -63,13 +63,13 @@
 			<div class="col-sm-3">
 				<div class="form-group">
 					{!! Form::label('npd', 'Número de puesta a disposición', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('npd', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número del puesta a disposición','data-validation'=>'length', 'data-validation-length'=>'1-50', 'required']) !!}
+					{!! Form::text('npd', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número del puesta a disposición','data-validation'=>'length', 'data-validation-length'=>'3-50', 'required']) !!}
 				</div>
 			</div>
 			<div class="col-sm-3">
 				<div class="form-group">
 					{!! Form::label('numIph', 'Número IPH', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('numIph', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número del IPH','data-validation'=>'length', 'data-validation-length'=>'1-50', 'required']) !!}
+					{!! Form::text('numIph', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número del IPH','data-validation'=>'length', 'data-validation-length'=>'3-50', 'required']) !!}
 				</div>
 			</div>
 			<div class="col-sm-3">
