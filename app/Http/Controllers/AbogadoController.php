@@ -59,14 +59,14 @@ class AbogadoController extends Controller
         $persona->idMunicipioOrigen = $request->idMunicipioOrigen;
         $persona->curp = $request->curp;
         $persona->save();
-        $rfcOriginal=$request->rfcOriginal;
-        $idPersona = $persona->id;
 
-        if($rfcOriginal!=$persona->rfc){
-            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un rfc diferente al generado por el sistema para una nueva persona física de tipo abogado.', 'idFilaAccion' => $idPersona]);
+        if($request->rfcAux!=$request->rfc.$request->homo){
+          Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un RFC diferente al generado por el sistema para una persona física de tipo Abogado.', 'idFilaAccion' => $persona->id]);
         }
-
+        $idPersona = $persona->id;
         Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se ha registrado una nueva persona física de tipo abogado.', 'idFilaAccion' => $idPersona]);
+
+        
 
         $domicilio2 = new Domicilio();
         $domicilio2->idMunicipio = $request->idMunicipio2;

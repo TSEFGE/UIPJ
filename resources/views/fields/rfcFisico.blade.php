@@ -46,6 +46,7 @@
 			success: function(data) {
 
 				rfc=data.res;
+				rfcOriginal=rfc;
 				var array= rfc.split("");
 				var rfcSH=[];
 				var homoC=[];
@@ -65,9 +66,11 @@
 				if($("#rfc").val() != rfc || $("#homo").val() != homo){
 					$("#rfc").val(rfc);
 					$("#homo").val(homo);
-					toastr.info('Se ha modificado el RFC', '¡Atención!');
-					var rfcOriginal=rfc+homo;
+				    $('#rfcAux').val(rfcOriginal);
+				    toastr.info('Se ha modificado el RFC', '¡Atención!');
 				}
+
+
 			},
 			error: function(data) {
 				// console.log(data);
