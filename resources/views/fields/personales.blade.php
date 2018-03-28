@@ -4,7 +4,7 @@
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('nombres', 'Nombre', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('nombres', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÑÍÓÚ][\s]*){1,100}$']) !!}	
+					{!! Form::text('nombres', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÑÍÓÚ][\s]*){1,100}$']) !!}
 				</div>
 			</div>
 			<div class="col-3">
@@ -82,27 +82,27 @@
 				</div>
 			</div>
 
-		<div class="col-3">	
+		<div class="col-3">
 				<div class="row no-gutters">
 					<div class="col-7">
 						{!! Form::label('rfc', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
 						{!! Form::text('rfc', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.', 'required','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-Z,Ñ,&]{4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))$']) !!}
-						
+						<input type="hidden" name="rfcAux" id="rfcAux">
 					</div>
 
 					<div class="col-5">
 						{!! Form::label('homo', 'Homoclave', ['class' => 'col-form-label-sm']) !!}
 						{!! Form::text('homo', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Homoclave', 'required','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-Z\d]{2}([A\d]))$']) !!}
-						
-					</div>	
+
+					</div>
 				</div>
-			</div>		
+			</div>
 
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('curp', 'C.U.R.P.', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::text('curp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el C.U.R.P.','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$']) !!}
-					
+
 				</div>
 			</div>
 			<div class="col-3">
@@ -199,26 +199,26 @@
 				</div>
 			</div>
 
-			<div class="col-6">	
+			<div class="col-6">
 				<div class="row no-gutters">
 					<div class="col-7">
 						{!! Form::label('rfc2', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
-						{!! Form::text('rfc2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.', 'required','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-Z,Ñ,&]{3}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))$']) !!}						
+						{!! Form::text('rfc2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.', 'required','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-Z,Ñ,&]{3}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))$']) !!}
 					</div>
 
 					<div class="col-5">
 						{!! Form::label('homo2', 'Homoclave', ['class' => 'col-form-label-sm']) !!}
 						{!! Form::text('homo2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Homoclave', 'required','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-Z\d]{2}([A\d]))$']) !!}
-						
-					</div>	
-				</div>	 
+
+					</div>
+				</div>
 
 			</div>
 			<div class="col-6">
 				<div class="form-group">
 					{!! Form::label('representanteLegal', 'Representante legal', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::text('representanteLegal', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre del representante legal','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÑÍÓÚ]|[\s]|[.]){1,300}$']) !!}
-					
+
 				</div>
 			</div>
 		</div>

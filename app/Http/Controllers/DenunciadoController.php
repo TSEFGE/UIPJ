@@ -210,7 +210,9 @@ class DenunciadoController extends Controller
                     $persona->esEmpresa = 0;
                     $persona->save();
                     $idPersona = $persona->id;
-
+                    if($request->rfcAux!= $request->rfc.$request->homo){
+                      Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un RFC diferente al generado por el sistema para una persona fisica de tipo denunciado por comparecencia.', 'idFilaAccion' => $persona->id]);
+                    }
                     Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se ha registrado una nueva persona física de tipo denunciado por comparecencia.', 'idFilaAccion' => $idPersona]);
 
                     $domicilio = new Domicilio();
@@ -384,7 +386,9 @@ class DenunciadoController extends Controller
                 $persona->esEmpresa = 1;
                 $persona->save();
                 $idPersona = $persona->id;
-
+                if($request->rfcAux!= $request->rfc2.$request->homo2){
+                  Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un RFC diferente al generado por el sistema para una persona moral de tipo denunciado por comparecencia.', 'idFilaAccion' => $persona->id]);
+                }
                 Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se ha registrado una nueva persona moral de tipo denunciado por comparecencia.', 'idFilaAccion' => $idPersona]);
 
                 $domicilio = new Domicilio();

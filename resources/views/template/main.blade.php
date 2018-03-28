@@ -31,7 +31,7 @@
 		var sLocal = localStorage.getItem('isLiveLocal');
 		if(s!=sLocal){
 			console.log('dife');
-			window.location.href = "http://127.0.0.1:8000/DONTALLLOWED";
+			window.location.href = "http://127.0.0.1:8000/NOTALLLOWED";
 		}else{
 
 		}

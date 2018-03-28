@@ -33,18 +33,19 @@ function obtenerRFC(){
 		data: {nombre,dia,mes,ano},
 		dataType:"json",
 		success: function(data){
-				
+
 			rfc=data.res;
+			rfcOriginal=rfc;
 			var array= rfc.split("");
 			var rfcSH=[];
 			var homoC=[];
 
-			array.forEach( function(valor, indice, array) { 
+			array.forEach( function(valor, indice, array) {
 				if(indice<9){
 					rfcSH.push(valor);
 				} if(indice>=9){
-					homoC.push(valor); 
-				} 
+					homoC.push(valor);
+				}
 			});
 
 			rfc=rfcSH.join("");
@@ -53,11 +54,12 @@ function obtenerRFC(){
 			if($("#rfc2").val() != rfc || $("#homo2").val() != homo){
 				$("#rfc2").val(rfc);
 				$("#homo2").val(homo);
+				$('#rfcAux').val(rfcOriginal);
 				toastr.info('Se ha modificado el RFC', '¡Atención!');
 			}
 	 	},error:function(data){
 	 		// console.log(data);
 	 	}
  	});
-} 
+}
 </script>
