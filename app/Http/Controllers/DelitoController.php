@@ -62,9 +62,7 @@ class DelitoController extends Controller
         $domicilio->numExterno = $request->numExterno;
         $domicilio->numInterno = $request->numInterno;
         $domicilio->save();
-        //Agregar a Bitacora
-        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'insert', 'descripcion' => 'Se ha registrado Información sobre el lugar del Delito', 'idFilaAccion' => $domicilio->id]);
-
+      
         $idD1 = $domicilio->id;
 
         $tipifDelito = new TipifDelito();
@@ -91,7 +89,16 @@ class DelitoController extends Controller
         $tipifDelito->puntoReferencia = $request->puntoReferencia;
         $tipifDelito->save();
           //guarda en Bitacora
-        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'tipif_delito', 'accion' => 'insert', 'descripcion' => 'Se ha registrado Información sobre la comisión del delito', 'idFilaAccion' => $tipifDelito->id]);     
+         if ($request->conViolencia==="1")
+        {
+            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'tipif_delito', 'accion' => 'insert', 'descripcion' => 'Se ha registrado Información de un Delito con Violencia', 'idFilaAccion' => $tipifDelito->id]);  
+           Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'insert', 'descripcion' => 'Se ha registrado Información sobre el lugar de un Delito con Violencia', 'idFilaAccion' => $domicilio->id]); 
+        }
+        else
+        {
+            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'tipif_delito', 'accion' => 'insert', 'descripcion' => 'Se ha registrado Información de un Delito sin Violencia', 'idFilaAccion' => $tipifDelito->id]); 
+            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'insert', 'descripcion' => 'Se ha registrado Información sobre el lugar de un Delito sin Violencia', 'idFilaAccion' => $domicilio->id]);   
+            } 
         /*
         Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
         //Para mostrar modal

@@ -8,6 +8,8 @@ use DB;
 use Alert;
 use App\Models\Carpeta;
 use App\Models\Acusacion;
+use App\Models\Bitacora;
+
 
 class AcusacionController extends Controller
 {
@@ -54,6 +56,8 @@ class AcusacionController extends Controller
         $acusacion->idTipifDelito = $request->idTipifDelito;
         $acusacion->idDenunciado = $request->idDenunciado;
         $acusacion->save();
+        //Agregar a Bitacora
+        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'acusacion', 'accion' => 'insert', 'descripcion' => 'Se han registrado nueva Acusación.', 'idFilaAccion' => $acusacion->id]);
         /*
         Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
         //Para mostrar modal
