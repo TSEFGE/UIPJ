@@ -66,6 +66,7 @@
 					$("#rfc").val(rfc);
 					$("#homo").val(homo);
 					toastr.info('Se ha modificado el RFC', '¡Atención!');
+					var rfcOriginal=rfc+homo;
 				}
 			},
 			error: function(data) {
