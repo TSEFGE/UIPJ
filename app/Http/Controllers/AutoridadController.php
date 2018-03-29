@@ -75,6 +75,10 @@ class AutoridadController extends Controller
         //Agregar a bitacora
         Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se han registrado Datos Personales de una nueva Autoridad', 'idFilaAccion' => $persona->id]);
 
+        if($request->rfcAux!=$request->rfc.$request->homo){
+          Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un RFC diferente al generado por el sistema para una persona física de tipo Autoridad.', 'idFilaAccion' => $persona->id]);
+        }
+
         $idPersona = $persona->id;
 
         $domicilio = new Domicilio();

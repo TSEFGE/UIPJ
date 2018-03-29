@@ -59,6 +59,8 @@
 			<div class="col-7">
 				{!! Form::label('rfc', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
 				{!! Form::text('rfc', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-Z,Ñ,&]{4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))$']) !!}
+									<input type="hidden" name="rfcAux" id="rfcAux">
+
 				
 			</div>
 
