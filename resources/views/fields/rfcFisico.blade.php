@@ -63,11 +63,24 @@
 				rfc=rfcSH.join("");;
 				homo=homoC.join("");
 
-				if($("#rfc").val() != rfc || $("#homo").val() != homo){
+				if($("#rfc").val() == "" || $("#homo").val() == ""){
 					$("#rfc").val(rfc);
 					$("#homo").val(homo);
-				    $('#rfcAux').val(rfcOriginal);
-				    toastr.info('Se ha modificado el RFC', '¡Atención!');
+					$('#rfcAux').val(rfcOriginal);
+					toastr.success('Se ha modificado el RFC', '¡Atención!');
+				}else{
+					if($("#rfc").val() != rfc || $("#homo").val() != homo){
+						toastr.options ={
+							"closeButton": true,
+							"newestOnTop": true,
+							"preventDuplicates": true,
+							"timeOut": 0,
+		  					"extendedTimeOut": 10000,
+		  					"positionClass": "toast-bottom-right",
+						}
+						toastr.info('Se ha detectado un cambio ¿Desea actualizar el RFC?<br /><button type="button" id="btn-ok" class="btn btn-light" onclick="actualizarFisico(rfcOriginal, rfc, homo)">Sí</button>');
+					}
+					
 				}
 
 
@@ -77,4 +90,27 @@
 			}
 		});
 	}
+	function actualizarFisico(rfcOriginal, rfc, homo){
+    	$("#rfc").val(rfc);
+    	$("#homo").val(homo);
+    	$('#rfcAux').val(rfcOriginal);
+    	toastr.options = {
+    		"closeButton": true,
+    		"debug": false,
+    		"newestOnTop": true,
+    		"progressBar": true,
+    		"positionClass": "toast-bottom-right",
+    		"preventDuplicates": true,
+    		"onclick": null,
+    		"showDuration": "300",
+    		"hideDuration": "1000",
+    		"timeOut": "3000",
+    		"extendedTimeOut": "1000",
+    		"showEasing": "swing",
+    		"hideEasing": "linear",
+    		"showMethod": "fadeIn",
+    		"hideMethod": "fadeOut"
+    	}
+    	toastr.success('Se ha modificado el RFC', '¡Atención!');
+    }
 </script>

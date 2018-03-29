@@ -332,10 +332,47 @@ function obtenerCURP() {
 			estado: estado,
 			fecha_nacimiento: [dia, mes, año]
 		});
-		if($("#curp").val() != curp){
+		curp2=curp;
+		if($("#curp").val() == ""){
 			$("#curp").val(curp);
 			$('#curp').trigger('change');
-			toastr.info('Se ha modificado el CURP', '¡Atención!');
+			toastr.success('Se ha modificado el CURP', '¡Atención!');
+		}else{
+			if($("#curp").val() != curp2){
+				toastr.options ={
+					"closeButton": true,
+					"newestOnTop": true,
+					"preventDuplicates": true,
+					"timeOut": 0,
+  					"extendedTimeOut": 10000,
+  					"positionClass": "toast-bottom-right",
+				}
+				toastr.info('Se ha detectado un cambio ¿Desea actualizar el CURP?<br /><button type="button" class="btn btn-light" onclick="actualizarCurp(\''+curp2+'\')">Sí</button>');
+			}
+			
 		}
 	}
+}
+
+function actualizarCurp(curp){
+	$("#curp").val(curp);
+	$('#curp').trigger('change');
+	toastr.options = {
+		"closeButton": true,
+		"debug": false,
+		"newestOnTop": true,
+		"progressBar": true,
+		"positionClass": "toast-bottom-right",
+		"preventDuplicates": true,
+		"onclick": null,
+		"showDuration": "300",
+		"hideDuration": "1000",
+		"timeOut": "3000",
+		"extendedTimeOut": "1000",
+		"showEasing": "swing",
+		"hideEasing": "linear",
+		"showMethod": "fadeIn",
+		"hideMethod": "fadeOut"
+	}
+	toastr.success('Se ha modificado el CURP', '¡Atención!');
 }
