@@ -108,6 +108,12 @@ Route::middleware(['auth'])->group(function () {
 	/*---------Rutas para la bitácora-------------*/
 	Route::get('bitacora', 'BitacoraController@index')->name('bitacora');
 	Route::get('api/bitacora', 'BitacoraController@apiBitacora')->name('api.bitacora');
+
+
+  /*---------Rutas para NOTALLLOWED ------------*/
+  Route::get('/notAllowed',function(){
+        return view('forms.notAllowed');
+  });
 });
 
 

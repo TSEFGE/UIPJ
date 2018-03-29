@@ -91,26 +91,38 @@ class DenuncianteController extends Controller
                 $persona->save();
                 if($request->rfcAux!=$request->rfc.$request->homo){
                   Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un RFC diferente al generado por el sistema para una persona física de tipo denunciante.', 'idFilaAccion' => $persona->id]);
-                }
-                Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se ha registrado una nueva persona física de tipo denunciante.', 'idFilaAccion' => $persona->id]);
-                $idPersona = $persona->id;
+              }
+              Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se ha registrado una nueva persona física de tipo denunciante.', 'idFilaAccion' => $persona->id]);
 
-                $domicilio = new Domicilio();
-                if (!is_null($request->idMunicipio)) {
-                    $domicilio->idMunicipio = $request->idMunicipio;
-                }
-                if (!is_null($request->idLocalidad)) {
-                    $domicilio->idLocalidad = $request->idLocalidad;
-                }
-                if (!is_null($request->idColonia)) {
-                    $domicilio->idColonia = $request->idColonia;
-                }
-                if (!is_null($request->calle)) {
-                    $domicilio->calle = $request->calle;
-                }
-                if (!is_null($request->numExterno)) {
-                    $domicilio->numExterno = $request->numExterno;
-                }
+
+              if($request->esVictima==0){
+
+                Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un Denunciante de tipo NO victima.', 'idFilaAccion' => $persona->id]);
+           }else{
+
+            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un denunciante de tipo Victima.', 'idFilaAccion' => $persona->id]);
+
+        }
+
+
+        $idPersona = $persona->id;
+
+        $domicilio = new Domicilio();
+        if (!is_null($request->idMunicipio)) {
+            $domicilio->idMunicipio = $request->idMunicipio;
+        }
+        if (!is_null($request->idLocalidad)) {
+            $domicilio->idLocalidad = $request->idLocalidad;
+        }
+        if (!is_null($request->idColonia)) {
+            $domicilio->idColonia = $request->idColonia;
+        }
+        if (!is_null($request->calle)) {
+            $domicilio->calle = $request->calle;
+        }
+        if (!is_null($request->numExterno)) {
+            $domicilio->numExterno = $request->numExterno;
+        }
                 if (!is_null($request->numInterno)) {
                     $domicilio->numInterno = $request->numInterno;
                 }
@@ -138,7 +150,7 @@ class DenuncianteController extends Controller
                     $domicilio2->numInterno = $request->numInterno2;
                 }
                 $domicilio2->save();
-                Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un nuevo domicilio de trabajo para persona física de yipo denunciante.', 'idFilaAccion' => $domicilio2->id]);
+                Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un nuevo domicilio de trabajo para persona física de tipo denunciante.', 'idFilaAccion' => $domicilio2->id]);
                 $idD2 = $domicilio2->id;
 
                 $domicilio3 = new Domicilio();
