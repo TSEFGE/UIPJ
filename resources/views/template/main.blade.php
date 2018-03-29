@@ -40,8 +40,6 @@
 		if(s!=sLocal){
 			console.log('dife');
 			window.location.href = "./notAllowed";
-		}else{
-
 		}
 		console.log('entra3');
 
