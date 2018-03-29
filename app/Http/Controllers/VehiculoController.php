@@ -75,8 +75,10 @@ class VehiculoController extends Controller
         $vehiculo->idProcedencia = $request->idProcedencia;
         $vehiculo->idAseguradora = $request->idAseguradora;
         $vehiculo->save();
+
+
         //Agregar a Bitacora
-        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'vehiculo', 'accion' => 'insert', 'descripcion' => 'Se han registrado datos generales del Vehículo.', 'idFilaAccion' => $vehiculo->id]);
+        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'vehiculo', 'accion' => 'insert', 'descripcion' => 'Se han registrado datos generales de un Vehículo del delito: '.$request->idTipifDelito.' con Placas: '.$request->placas.' Del estado: '.$request->idEstado, 'idFilaAccion' => $vehiculo->id]);
         /*
         Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
         //Para mostrar modal

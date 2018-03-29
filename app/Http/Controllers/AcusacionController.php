@@ -9,6 +9,7 @@ use Alert;
 use App\Models\Carpeta;
 use App\Models\Acusacion;
 use App\Models\Bitacora;
+use App\Models\Persona;
 
 
 class AcusacionController extends Controller
@@ -49,15 +50,18 @@ class AcusacionController extends Controller
     }
 
     public function storeAcusacion(Request $request){
-        //dd($request->all());
+//        dd($request->all());
         $acusacion = new Acusacion();
         $acusacion->idCarpeta = $request->idCarpeta;
         $acusacion->idDenunciante = $request->idDenunciante;
         $acusacion->idTipifDelito = $request->idTipifDelito;
         $acusacion->idDenunciado = $request->idDenunciado;
         $acusacion->save();
+
+       
+       
         //Agregar a Bitacora
-        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'acusacion', 'accion' => 'insert', 'descripcion' => 'Se han registrado nueva Acusación.', 'idFilaAccion' => $acusacion->id]);
+        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'acusacion', 'accion' => 'insert', 'descripcion' => 'Se han registrado nueva Acusación del Denunciante '.$request->idDenunciante.' por el Delito de '.$request->idTipifDelito.' al Denunciado: '. $request->idDenunciado, 'idFilaAccion' => $acusacion->id]);
         /*
         Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
         //Para mostrar modal
