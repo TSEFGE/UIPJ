@@ -4,34 +4,42 @@
 		var result = window.history.length;
 		console.log('hisorial:'+result);
 		console.log('is:'+is);
-	if (typeof sessionStorage.getItem('isLive') == "undefined" || sessionStorage.getItem('isLive') == null && localStorage.getItem('isLiveLocal')==null&&is!="undefined" ) {
+	if (sessionStorage.getItem('isLive') == null && localStorage.getItem('isLiveLocal')==null &&  is==null ) {
 		console.log('entra1');
 		r= Math.floor((Math.random() * 10000) + 1);
 		Cookies.set('isLiveC',r);
 		sessionStorage.setItem('isLive',r);
 		localStorage.setItem('isLiveLocal',r);
-	}else if(localStorage.getItem('isLiveLocal')==null && is!="undefined"){
+	}else if(localStorage.getItem('isLiveLocal')==null && is!=null){
 					console.log('entra2');
 					var is=Cookies.get('isLiveC');
 					sessionStorage.setItem('isLive',is);
-		}else if(localStorage.getItem('isLiveLocal')!=null && is!="undefined" && result>=2){
-			console.log('entra5');
-			var is=Cookies.get('isLiveC');
-			sessionStorage.setItem('isLive',is);
-		}else if(localStorage.getItem('isLiveLocal')!=null && is=="undefined" && result<2){
+					localStorage.setItem('isLiveLocal',is);
+		}
+		// else if(localStorage.getItem('isLiveLocal')!=null && is!="undefined" && result>=2){
+		// 	console.log('entra5');
+		// 	var is=Cookies.get('isLiveC');
+		// 	sessionStorage.setItem('isLive',is);
+		// }
+		else if(localStorage.getItem('isLiveLocal')!=null && is==null && result<2){
+			console.log('entra6');
 			r= Math.floor((Math.random() * 10000) + 1);
 			Cookies.set('isLiveC',r);
 			sessionStorage.setItem('isLive',r);
 			localStorage.setItem('isLiveLocal',r);
-		 }else if(localStorage.getItem('isLiveLocal')!=null && is!="undefined" &&sessionStorage.getItem('isLive') == null){
+		}else if(localStorage.getItem('isLiveLocal')!=null && is!=null &&sessionStorage.getItem('isLive') == null){
 				console.log('entra4');
 			sessionStorage.setItem('isLive', Math.floor((Math.random() * 10000) + 1));
+		}else if (localStorage.getItem('isLiveLocal')==null && is!=null){
+			console.log('entra7');
+			var is=Cookies.get('isLiveC');
+			sessionStorage.setItem('isLive',is);
 		}
 		var s = sessionStorage.getItem('isLive');
 		var sLocal = localStorage.getItem('isLiveLocal');
 		if(s!=sLocal){
 			console.log('dife');
-			window.location.href = "http://127.0.0.1:8000/NOTALLLOWED";
+			window.location.href = "./notAllowed";
 		}else{
 
 		}
@@ -87,7 +95,7 @@
 
 	<script type="text/javascript">
 	$(window).on("unload", function(e) {
-
+   localStorage.clear();
 	  console.log('saliendio');
 	});
 
