@@ -107,7 +107,13 @@ $('#fechaNacimiento').focusout(function(){
 
 $('#edad').focusout(function(){
 	var campo = $(this).val();
-	if (campo < 18 || campo > 150){
+	var edadMin;
+	 if ($('#esVictima').is(':checked') ) {
+		edadMin=0;
+	}else{
+		edadMin=16
+	}
+	if (campo < edadMin || campo > 150){
 		$(this).css({"border-color":"red"});
 		$("#invalid-edad").show();
 	}else{
@@ -200,7 +206,7 @@ $('#senasParticC').focusout(function(){
 			 });
 		});
 
-	
+
 
    $(function() {
 	maxVal = 17;
@@ -264,7 +270,7 @@ $('#numInterno').focusout(function(){
 	var campo = $(this).val();
 	if (campo.length < 1 || campo.length > 10){
 		$(this).css({"border-color":"red"});
-	
+
 	}else{
 		$(this).css({"border-color":"yellow"})
 	}
@@ -274,7 +280,7 @@ $('#numInterno2').focusout(function(){
 	var campo = $(this).val();
 	if (campo.length < 1 || campo.length > 10){
 		$(this).css({"border-color":"red"});
-	
+
 	}else{
 		$(this).css({"border-color":"yellow"})
 	}
@@ -284,7 +290,7 @@ $('#numInterno3').focusout(function(){
 	var campo = $(this).val();
 	if (campo.length < 1 || campo.length > 10){
 		$(this).css({"border-color":"red"});
-	
+
 	}else{
 		$(this).css({"border-color":"yellow"})
 	}
@@ -294,7 +300,7 @@ $('#numInternoC').focusout(function(){
 	var campo = $(this).val();
 	if (campo.length < 1 || campo.length > 10){
 		$(this).css({"border-color":"red"});
-	
+
 	}else{
 		$(this).css({"border-color":"yellow"})
 	}
@@ -304,7 +310,7 @@ $('#fax').focusout(function(){
 	/*var campo = $(this).val();
 	if (campo.length < 1 ){
 		$(this).css({"border-color":"red"});
-	
+
 	}else{*/
 		$(this).css({"border-color":"yellow"})
 	//}
@@ -313,7 +319,7 @@ $('#numExterno').focusout(function(){
 	var campo = $(this).val();
 	if (campo.length < 1 || campo.length > 10){
 		$(this).css({"border-color":"red"});
-	
+
 	}else{
 		$(this).css({"border-color":"yellow"})
 	}
@@ -322,7 +328,7 @@ $('#numExterno2').focusout(function(){
 	var campo = $(this).val();
 	if (campo.length < 1 || campo.length > 10){
 		$(this).css({"border-color":"red"});
-	
+
 	}else{
 		$(this).css({"border-color":"yellow"})
 	}
@@ -331,7 +337,7 @@ $('#numExterno3').focusout(function(){
 	var campo = $(this).val();
 	if (campo.length < 1 || campo.length > 10){
 		$(this).css({"border-color":"red"});
-	
+
 	}else{
 		$(this).css({"border-color":"yellow"})
 	}
@@ -341,7 +347,7 @@ $('#numExternoc').focusout(function(){
 	var campo = $(this).val();
 	if (campo.length < 1 || campo.length > 10){
 		$(this).css({"border-color":"red"});
-	
+
 	}else{
 		$(this).css({"border-color":"yellow"})
 	}
@@ -416,12 +422,12 @@ $('#representanteLegal').focusout(function(){
 	});
 	$('#correo').focusout(function(){
 					$(this).css({"border-color":"yellow"})
-		
+
 	});
 	$('#senasPartic').focusout(function(){
 		$(this).css({"border-color":"yellow"})
 
-	});	
+	});
 	$('#lugarTrabajo').focusout(function(){
 		trabMax=7;
 		var trabVal = $(this).val();
@@ -433,6 +439,3 @@ $('#representanteLegal').focusout(function(){
 		 $("#invalidTrabajo").hide();
 		}
 	});
-
-	
-	
