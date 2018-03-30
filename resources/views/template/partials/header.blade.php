@@ -14,6 +14,9 @@
 					<li class="nav-item">
 						<a class="nav-link" href="{{ route('libro.gobierno') }}">Libro de gobierno</a>
 					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ route('bitacora') }}">Bitácora</a>
+					</li>
 					{{--<li class="nav-item">
 						<a class="nav-link" href="{{ url('/registrar-carpeta') }}">Registrar nueva Carpeta</a>
 					</li>--}}
