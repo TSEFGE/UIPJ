@@ -10,6 +10,7 @@ class ExtraDenunciado extends Model
 
     protected $fillable = [
         'id', 'idVariablesPersona', 'idNotificacion', 'idPuesto', 'alias', 'senasPartic', 'ingreso', 'periodoIngreso', 'residenciaAnterior', 'idAbogado', 'personasBajoSuGuarda', 'perseguidoPenalmente', 'vestimenta', 'narracion',
+        'complemento'
     ];
     
     public function acusaciones()

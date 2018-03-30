@@ -373,6 +373,7 @@ class DenunciadoController extends Controller
                     if (!is_null($request->narracion)){
                         $ExtraDenunciado->narracion = $request->narracion;
                     }
+                    $ExtraDenunciado->complemento = $request->complemento;
                     $ExtraDenunciado->save();
                     $idExtraDenunciado=$ExtraDenunciado->id;
 
@@ -465,6 +466,7 @@ class DenunciadoController extends Controller
                 $ExtraDenunciado->idNotificacion = $idNotificacion;
                 $ExtraDenunciado->senasPartic = $request->senasPartic;
                 $ExtraDenunciado->narracion = $request->narracion;
+                $ExtraDenunciado->complemento = $request->complemento;
                 $ExtraDenunciado->save();
                 $idExtraDenunciado=$ExtraDenunciado->id;
 
