@@ -332,8 +332,15 @@ class DenuncianteController extends Controller
 
     public function showComplement($idDenunciante){
         $denunciante = ExtraDenunciante::find($idDenunciante);
-        dd($denunciante);
-        return view('forms.complement')
+        //dd($denunciante);
+        return view('forms.complement')->with('denunciante', $denunciante);
+    }
+
+    public function storeComplement(Request $request){
+        dd($request->all());
+        $denunciante = ExtraDenunciante::find($idDenunciante);
+        $denunciante->fill($request->all());
+        $denunciante->save();
     }
 
     /**
