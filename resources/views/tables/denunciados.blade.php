@@ -26,7 +26,7 @@
                         @else
                             <td  align="center">NO</td>
                         @endif 
-                          <td align="center"><a href="{{ route('complement.denunciado', $denunciado->id) }}"><i class="fa fa-plus-square" style="font-size:24px"></i></td></a>
+                          <td align="center"><a href="{{ route('complement.denunciado', $denunciado->id) }}"><i class="fa fa-plus-square" style="font-size:24px;color:grey"></i></td></a>
                 @endforeach
             @endif
         </tbody>
