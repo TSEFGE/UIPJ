@@ -26,7 +26,11 @@
                         @else
                         <td  align="center">NO</td>
                         @endif 
-                        <td align="center"><a href="{{ route('complement.denunciado', ['idDenunciado'=>$denunciado->id, 'idCarpeta'=>$carpetaNueva[0]->id])}}"> <i class="fa fa-plus-square" style="font-size:24px;color:grey"></i></td></a>
+                        @if(isset($carpetaNueva))
+                        <td align="center"><a href="{{ route('complement.denunciado', ['idDenunciado'=>$denunciado->id, 'idCarpeta'=>$carpetaNueva[0]->id])}}"> <i class="fa fa-plus-square" style="font-size:24px;color:grey"></i></a></td>
+                        @else
+                        <td align="center"><a href="{{ route('complement.denunciado', ['idDenunciado'=>$denunciado->id, 'idCarpeta'=>$idCarpeta])}}"> <i class="fa fa-plus-square" style="font-size:24px;color:grey"></i></a></td>
+                        @endif
                         @endforeach
                         @endif
                     </tbody>
