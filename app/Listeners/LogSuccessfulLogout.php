@@ -28,6 +28,7 @@ class LogSuccessfulLogout
      */
     public function handle(Logout $event)
     {
-         Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'users', 'accion' => 'Logout', 'descripcion' => 'Cierre de sesión.', 'idFilaAccion' => 0]);
+        $id = Auth::id();
+         Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'users', 'accion' => 'Logout', 'descripcion' => 'Cierre de sesión.', 'idFilaAccion' => $id]);
     }
 }

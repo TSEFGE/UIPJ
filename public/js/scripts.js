@@ -570,14 +570,32 @@ $(document).ready(function(){
             maxDate: moment()
         });
     });
+    $('#esVictima').on('click',function(e) {
+          $('#fechanac').datetimepicker("destroy");
+      if ($('#esVictima').is(':checked') ) {
 
-    $(function () {
         $('#fechanac').datetimepicker({
             format: 'YYYY-MM-DD',
             minDate: moment().subtract(150, 'years').format('YYYY-MM-DD'),
-            maxDate: moment().subtract(18, 'years').format('YYYY-MM-DD')
+            maxDate: moment().subtract(0, 'years').format('YYYY-MM-DD')
         });
+        $('#edad').attr({'min':0});
+      }else{
+        $('#edad').attr({'min':16});
+        $('#fechanac').datetimepicker({
+            format: 'YYYY-MM-DD',
+            minDate: moment().subtract(150, 'years').format('YYYY-MM-DD'),
+            maxDate: moment().subtract(16, 'years').format('YYYY-MM-DD')
+        });
+      }
+
     });
+    $('#fechanac').datetimepicker({
+        format: 'YYYY-MM-DD',
+        minDate: moment().subtract(150, 'years').format('YYYY-MM-DD'),
+        maxDate: moment().subtract(16, 'years').format('YYYY-MM-DD')
+    });
+      $('#edad').attr({'min':16});
     $("#fechanac").on("change.datetimepicker", function (e) {
         $('#edad').val(moment().diff(e.date,'years'));
     });

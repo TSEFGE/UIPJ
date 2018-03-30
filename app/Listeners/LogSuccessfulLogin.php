@@ -28,6 +28,8 @@ class LogSuccessfulLogin
      */
     public function handle(Login $event)
     {
-        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'users', 'accion' => 'Login', 'descripcion' => 'Inicio de sesión.', 'idFilaAccion' => 0]);
+      $id = Auth::id();
+      
+        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'users', 'accion' => 'Login', 'descripcion' => 'Inicio de sesión.', 'idFilaAccion' =>$id]);
     }
 }
