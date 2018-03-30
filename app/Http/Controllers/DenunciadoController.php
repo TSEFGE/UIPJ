@@ -498,7 +498,7 @@ class DenunciadoController extends Controller
         $denunciado->save();
         Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_denunciado', 'accion' => 'update', 'descripcion' => 'Se ha modificado el campo complemento de la narración en extra denunciado.', 'idFilaAccion' => $denunciado->id]);
         Alert::success('Complemento agregado con éxito', 'Hecho')->persistent("Aceptar");
-        return route('carpeta', $request->idCarpeta);
+        return redirect()->route('carpeta', $request->idCarpeta);
     }
 
     /**
