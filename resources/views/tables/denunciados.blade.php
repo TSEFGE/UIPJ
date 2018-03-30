@@ -12,7 +12,7 @@
         </thead>
         <tbody>
             @if(count($denunciados)==0)
-                <tr><td colspan="6" class="text-center">Sin registros</td></tr>
+                <tr><td colspan="7" class="text-center">Sin registros</td></tr>
             @else
                 @foreach($denunciados as $denunciado)
                     <tr>
