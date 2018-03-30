@@ -26,7 +26,7 @@
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('ingreso', 'Ingreso', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('ingreso', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el ingreso', 'data-validation'=>'custom', 'data-validation-regexp'=>'^[0-9]{1,15}$']) !!}
+					{!! Form::text('ingreso', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el sueldo', 'data-validation'=>'custom', 'data-validation-regexp'=>'^[0-9]{1,15}$']) !!}
 				</div>
 			</div>
 			<div class="col-3">
