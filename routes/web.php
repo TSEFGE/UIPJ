@@ -62,8 +62,11 @@ Route::middleware(['auth'])->group(function () {
 	]);
 
 	Route::get('carpeta/{idCarpeta}/denunciante/{idDenunciante}/complemento', 'DenuncianteController@showComplement')->name('complement.denunciante');
+
 	Route::post('denunciante/storecomplemento', 'DenuncianteController@storeComplement')->name('store.complement1');
+
 	Route::get('carpeta/{idCarpeta}/denunciado/{idDenunciado}/complemento', 'DenunciadoController@showComplement')->name('complement.denunciado');
+	
 	Route::post('denunciado/storecomplemento', 'DenunciadoController@storeComplement')->name('store.complement2');
 
 	Route::post('armarRfc', 'DenuncianteController@rfcMoral')->name('rfc.denunciante');

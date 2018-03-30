@@ -22,13 +22,13 @@
                         <td  align="center">{{ $denunciado->sexo }}</td>
                         <td  align="center">{{ $denunciado->telefono }}</td>
                         @if($denunciado->esEmpresa==1)
-                            <td  align="center">SI</td>
+                        <td  align="center">SI</td>
                         @else
-                            <td  align="center">NO</td>
+                        <td  align="center">NO</td>
                         @endif 
-                          <td align="center"><a href="{{ route('complement.denunciado', $denunciado->id) }}"><i class="fa fa-plus-square" style="font-size:24px;color:grey"></i></td></a>
-                @endforeach
-            @endif
-        </tbody>
+                        <td align="center"><a href="{{ route('complement.denunciado', ['idDenunciado'=>$denunciado->id, 'idCarpeta'=>$carpetaNueva[0]->id])}}"> <i class="fa fa-plus-square" style="font-size:24px;color:grey"></i></td></a>
+                        @endforeach
+                        @endif
+                    </tbody>
     </table>
 </div>
