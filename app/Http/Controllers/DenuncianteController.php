@@ -222,13 +222,16 @@ class DenuncianteController extends Controller
                     $ExtraDenunciante->conoceAlDenunciado = 1;
                 }
                 $ExtraDenunciante->narracion = $request->narracion;
+                 $ExtraDenunciante->esVictima=$request->esVictima; 
                 $ExtraDenunciante->complemento = $request->complemento;
                 $ExtraDenunciante->save();
 
-            /*    if($request->esVictima==1){
+                if($ExtraDenunciante->esVictima==1){
+                         Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_denunciado', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un denunciante de tipo Victima.', 'idFilaAccion' => $ExtraDenunciante->id]);
+                } else{
+                    Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_denunciado', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un denunciante de tipo No Victima.', 'idFilaAccion' => $ExtraDenunciante->id]);
+                }
 
-                    Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un denunciante de tipo Victima.', 'idFilaAccion' => $persona->id]);
-                    }*/
                 Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_denunciante', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un nuevo extra denunciante de persona física.', 'idFilaAccion' => $ExtraDenunciante->id]);
             }
         } elseif ($request->esEmpresa==1) {
