@@ -89,33 +89,28 @@ class DenuncianteController extends Controller
                     $persona->idMunicipioOrigen = $request->idMunicipioOrigen;
                 }
                 $persona->save();
-                if($request->rfcAux!=$request->rfc.$request->homo){
-                  Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un RFC diferente al generado por el sistema para una persona física de tipo denunciante.', 'idFilaAccion' => $persona->id]);
-              }
-              Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se ha registrado una nueva persona física de tipo denunciante.', 'idFilaAccion' => $persona->id]);
+                if($request->rfcAux != $request->rfc.$request->homo){
+                    Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un RFC diferente al generado por el sistema para una persona física de tipo denunciante.', 'idFilaAccion' => $persona->id]);
+                }
+                Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se ha registrado una nueva persona física de tipo denunciante.', 'idFilaAccion' => $persona->id]);
+                $idPersona = $persona->id;
 
-
-             
-
-
-        $idPersona = $persona->id;
-
-        $domicilio = new Domicilio();
-        if (!is_null($request->idMunicipio)) {
-            $domicilio->idMunicipio = $request->idMunicipio;
-        }
-        if (!is_null($request->idLocalidad)) {
-            $domicilio->idLocalidad = $request->idLocalidad;
-        }
-        if (!is_null($request->idColonia)) {
-            $domicilio->idColonia = $request->idColonia;
-        }
-        if (!is_null($request->calle)) {
-            $domicilio->calle = $request->calle;
-        }
-        if (!is_null($request->numExterno)) {
-            $domicilio->numExterno = $request->numExterno;
-        }
+                $domicilio = new Domicilio();
+                if (!is_null($request->idMunicipio)) {
+                    $domicilio->idMunicipio = $request->idMunicipio;
+                }
+                if (!is_null($request->idLocalidad)) {
+                    $domicilio->idLocalidad = $request->idLocalidad;
+                }
+                if (!is_null($request->idColonia)) {
+                    $domicilio->idColonia = $request->idColonia;
+                }
+                if (!is_null($request->calle)) {
+                    $domicilio->calle = $request->calle;
+                }
+                if (!is_null($request->numExterno)) {
+                    $domicilio->numExterno = $request->numExterno;
+                }
                 if (!is_null($request->numInterno)) {
                     $domicilio->numInterno = $request->numInterno;
                 }
@@ -243,8 +238,8 @@ class DenuncianteController extends Controller
             $persona->esEmpresa = 1;
             $persona->save();
             $idPersona = $persona->id;
-            if($request->rfcAux!=$request->rfc2.$request->homo2){
-              Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un RFC diferente al generado por el sistema para una persona moral de tipo denunciante.', 'idFilaAccion' => $persona->id]);
+            if($request->rfcAux != $request->rfc2.$request->homo2){
+                Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un RFC diferente al generado por el sistema para una persona moral de tipo denunciante.', 'idFilaAccion' => $persona->id]);
             }
             Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se ha registrado una nueva persona moral de tipo denunciante.', 'idFilaAccion' => $persona->id]);
 
@@ -335,6 +330,12 @@ class DenuncianteController extends Controller
         return redirect()->route('new.denunciante', $request->idCarpeta);
     }
 
+    public function showComplement($idDenunciante){
+        $denunciante = ExtraDenunciante::find($idDenunciante);
+        dd($denunciante);
+        return view('forms.complement')
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -410,6 +411,7 @@ class DenuncianteController extends Controller
     {
         //
     }
+
     public function rfcMoral(Request $request)
     {
         $nombre= $request->nombre;
@@ -420,22 +422,21 @@ class DenuncianteController extends Controller
         $builder = new RfcBuilder();
 
         $rfc = $builder->legalName($nombre)
-    ->creationDate($dia, $mes, $ano)
-    ->build()
-    ->toString();
-
+            ->creationDate($dia, $mes, $ano)
+            ->build()
+            ->toString();
         return ['res'=>$rfc];
     }
 
     public function rfcFisico(Request $request)
-    {  $builder = new RfcBuilder();
+    {  
+        $builder = new RfcBuilder();
         $rfc = $builder->name($request->nombre)
             ->firstLastName($request->apPaterno)
             ->secondLastName($request->apMaterno)
             ->birthday($request->dia, $request->mes, $request->año)
             ->build()
             ->toString();
-
 
         return ['res'=>$rfc];
     }

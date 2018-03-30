@@ -120,9 +120,7 @@ class RegistroController extends Controller
     }
 
  public function getAgrupaciones1(Request $request, $id){
-
         if($request->ajax()){
-
             $agrupaciones1 = CatAgrupacion1::agrupaciones1($id);
             return response()->json($agrupaciones1);
         }
