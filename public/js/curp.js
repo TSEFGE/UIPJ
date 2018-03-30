@@ -316,6 +316,8 @@ function obtenerCURP() {
 		sexo = "H";
 	} else if(sexo == 'MUJER'){
 		sexo = "M";
+	}else{
+		sexo="";
 	}
 	if(nombre!=""&& apellidoPaterno!=""&&sexo!=""){
 		var abreviacion = ["AS", "BC", "BS", "CC", "CS", "CH", "CL", "CM", "CX", "DF", "DG", "GT", "GR", "HG", "JC", "MC", "MN", "MS", "NT", "NL", "OC", "PL", "QT", "QR", "SP", "SL", "SR", "TC", "TS", "TL", "VZ", "YN", "ZS"];

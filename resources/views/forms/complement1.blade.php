@@ -2,7 +2,7 @@
 
 @section('title', 'Modificar complemento')
 @section('contenido')
-    {!! Form::open(['route' => 'store.acusacion', 'method' => 'POST'])  !!}
+    {!! Form::open(['route' => 'store.complement1', 'method' => 'POST'])  !!}
     {{ csrf_field() }}
 	<div class="row no-gutters">
 		<div class="col-12">
