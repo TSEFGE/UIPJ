@@ -365,6 +365,7 @@ $(document).ready(function(){
     $('#datosNotif').hide();
     $('#datosExtra').hide();
     $('#extra-fis').hide();
+    $('#Victima').hide();
     //Si es empresa
     $("#esEmpresa1").change(function(event){
         if ($('#esEmpresa1').is(':checked') ) {
@@ -376,6 +377,7 @@ $(document).ready(function(){
             $('#datosNotif').show();
             $('#datosExtra').show();
             $('#extra-fis').hide();
+            $('#Victima').hide();
 
             //Datos personales requeridos de Persona Moral o Empresa
             $('#nombres2').prop('disabled', false);
@@ -445,6 +447,8 @@ $(document).ready(function(){
             $('#datosNotif').show();
             $('#datosExtra').show();
             $('#extra-fis').show();
+            $('#Victima').show();
+            $('#esVictima').prop('checked',false);
 
             //Datos personales no requeridos de Persona Moral o Empresa
             $('#nombres2').prop('disabled', true);
@@ -642,7 +646,7 @@ $("#btn-reset").on("click",function(){
         if (isConfirm) {
             //e.preventDefault();
             $('form').trigger("reset");
-            $('select').trigger('change');                      
+            $('select').trigger('change');
            swal("Borrado", "Ya puedes llenar tu formulario con normalidad", "success");
         } else {
           swal("Cancelado", "Tus datos siguen ahí", "error");
