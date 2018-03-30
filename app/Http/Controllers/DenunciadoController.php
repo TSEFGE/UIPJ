@@ -484,6 +484,23 @@ class DenunciadoController extends Controller
         return redirect()->route('new.denunciado', $request->idCarpeta);
     }
 
+    public function showComplement($idDenunciado, $idCarpeta){
+        $denunciado = ExtraDenunciado::find($idDenunciado);
+        //dd($denunciante);
+        return view('forms.complement2')->with('extra', $denunciado)->with('idCarpeta', $idCarpeta);
+    }
+
+    public function storeComplement(Request $request){
+        //dd($request->all());
+        $denunciado = ExtraDenunciado::find($request->idExtra);
+        //$denunciante->fill($request->all());
+        $denunciado->complemento = $request->complemento;
+        $denunciado->save();
+        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_denunciado', 'accion' => 'update', 'descripcion' => 'Se ha modificado el campo complemento de la narración en extra denunciado.', 'idFilaAccion' => $denunciado->id]);
+        Alert::success('Complemento agregado con éxito', 'Hecho')->persistent("Aceptar");
+        return route('carpeta', $request->idCarpeta);
+    }
+
     /**
      * Display a listing of the resource.
      *

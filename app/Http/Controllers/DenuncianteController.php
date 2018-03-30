@@ -333,17 +333,21 @@ class DenuncianteController extends Controller
         return redirect()->route('new.denunciante', $request->idCarpeta);
     }
 
-    public function showComplement($idDenunciante){
+    public function showComplement($idDenunciante, $idCarpeta){
         $denunciante = ExtraDenunciante::find($idDenunciante);
         //dd($denunciante);
-        return view('forms.complement')->with('denunciante', $denunciante);
+        return view('forms.complement1')->with('extra', $denunciante)->with('idCarpeta', $idCarpeta);
     }
 
     public function storeComplement(Request $request){
-        dd($request->all());
-        $denunciante = ExtraDenunciante::find($idDenunciante);
-        $denunciante->fill($request->all());
+        //dd($request->all());
+        $denunciante = ExtraDenunciante::find($request->idExtra);
+        //$denunciante->fill($request->all());
+        $denunciante->complemento = $request->complemento;
         $denunciante->save();
+        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_denunciante', 'accion' => 'update', 'descripcion' => 'Se ha modificado el campo complemento de la narración en extra denunciante.', 'idFilaAccion' => $denunciante->id]);
+        Alert::success('Complemento agregado con éxito', 'Hecho')->persistent("Aceptar");
+        return route('carpeta', $request->idCarpeta);
     }
 
     /**
