@@ -8,7 +8,9 @@
             <th>Sexo</th>
             <th>Teléfono</th>
             <th>Persona moral</th>
-            <th>Opciones</th>
+            <th>Constancia de hechos</th>
+            <th>Agregar Complemento</th>
+
         </thead>
         <tbody>
             @if(count($denunciantes)==0)
@@ -17,16 +19,20 @@
                 @foreach($denunciantes as $denunciante)
                     <tr>
                         <td>{{ $denunciante->nombres." ".$denunciante->primerAp." ".$denunciante->segundoAp }}</td>
-                        <td>{{ $denunciante->rfc }}</td>
-                        <td>{{ $denunciante->edad }}</td>
-                        <td>{{ $denunciante->sexo }}</td>
-                        <td>{{ $denunciante->telefono }}</td>
+                        <td  align="center">{{ $denunciante->rfc }}</td>
+                        <td  align="center">{{ $denunciante->edad }}</td>
+                        <td  align="center">{{ $denunciante->sexo }}</td>
+                        <td  align="center">{{ $denunciante->telefono }}</td>
                         @if($denunciante->esEmpresa==1)
-                            <td>SI</td>
+                            <td  align="center">SI</td>
                         @else
-                            <td>NO</td>
+                            <td  align="center">NO</td>
                         @endif
-                        <td><a href="{{ route('constancia.hechos', $denunciante->id) }}" class="btn btn-secondary text-right">Descargar constancia de hechos</a></td>
+                        <td align="center"><a href="{{ route('constancia.hechos', $denunciante->id) }}"> <i class="fa fa-cloud-download" style="font-size:24px"></i></td> </a>                       
+                         <td align="center"><a href="{{ route('complement.denunciante', $denunciante->id) }}"> <i class="fa fa-plus-square" style="font-size:24px"></i></td></a>
+
+                         
+
                     </tr>
                 @endforeach
             @endif

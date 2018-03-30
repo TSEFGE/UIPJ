@@ -8,6 +8,7 @@
             <th>Sexo</th>
             <th>Teléfono</th>
             <th>Persona moral</th>
+            <th>Agregar Complemento</th>
         </thead>
         <tbody>
             @if(count($denunciados)==0)
@@ -16,16 +17,16 @@
                 @foreach($denunciados as $denunciado)
                     <tr>
                         <td>{{ $denunciado->nombres." ".$denunciado->primerAp." ".$denunciado->segundoAp }}</td>
-                        <td>{{ $denunciado->rfc }}</td>
-                        <td>{{ $denunciado->edad }}</td>
-                        <td>{{ $denunciado->sexo }}</td>
-                        <td>{{ $denunciado->telefono }}</td>
+                        <td  align="center">{{ $denunciado->rfc }}</td>
+                        <td  align="center">{{ $denunciado->edad }}</td>
+                        <td  align="center">{{ $denunciado->sexo }}</td>
+                        <td  align="center">{{ $denunciado->telefono }}</td>
                         @if($denunciado->esEmpresa==1)
-                            <td>SI</td>
+                            <td  align="center">SI</td>
                         @else
-                            <td>NO</td>
-                        @endif
-                    </tr>
+                            <td  align="center">NO</td>
+                        @endif 
+                          <td align="center"><a href="{{ route('complement.denunciado', $denunciado->id) }}"><i class="fa fa-plus-square" style="font-size:24px"></i></td></a>
                 @endforeach
             @endif
         </tbody>
