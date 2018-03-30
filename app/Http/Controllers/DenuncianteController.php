@@ -95,14 +95,7 @@ class DenuncianteController extends Controller
               Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se ha registrado una nueva persona física de tipo denunciante.', 'idFilaAccion' => $persona->id]);
 
 
-              if($request->esVictima==0){
-
-                Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un Denunciante de tipo NO victima.', 'idFilaAccion' => $persona->id]);
-           }else{
-
-            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un denunciante de tipo Victima.', 'idFilaAccion' => $persona->id]);
-
-        }
+             
 
 
         $idPersona = $persona->id;
@@ -234,7 +227,13 @@ class DenuncianteController extends Controller
                     $ExtraDenunciante->conoceAlDenunciado = 1;
                 }
                 $ExtraDenunciante->narracion = $request->narracion;
+                $ExtraDenunciante->complemento = $request->complemento;
                 $ExtraDenunciante->save();
+
+            /*    if($request->esVictima==1){
+
+                    Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un denunciante de tipo Victima.', 'idFilaAccion' => $persona->id]);
+                    }*/
                 Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_denunciante', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un nuevo extra denunciante de persona física.', 'idFilaAccion' => $ExtraDenunciante->id]);
             }
         } elseif ($request->esEmpresa==1) {
@@ -322,6 +321,7 @@ class DenuncianteController extends Controller
                 $ExtraDenunciante->conoceAlDenunciado = 1;
             }
             $ExtraDenunciante->narracion = $request->narracion;
+             $ExtraDenunciante->complemento = $request->complemento;
             $ExtraDenunciante->save();
             Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_denunciante', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un nuevo extra denunciante de persona moral.', 'idFilaAccion' => $ExtraDenunciante->id]);
         }
