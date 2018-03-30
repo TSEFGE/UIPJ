@@ -61,10 +61,10 @@ Route::middleware(['auth'])->group(function () {
 		'as' => 'view.carpeta'
 	]);
 
-	Route::get('denunciante/{idDenunciante}/complemento', 'DenuncianteController@showComplement')->name('complement.denunciante');
-	//Route::post('denunciante/storecomplemento', 'DenuncianteController@storeComplement')->name('store.complement1');
-	Route::get('denunciado/{id}/complemento', 'DenunciadoController@showComplement')->name('complement.denunciado');
-	//Route::post('denunciado/storecomplemento', 'DenunciadoController@storeComplement')->name('store.complement2');
+	Route::get('carpeta/{idCarpeta}/denunciante/{idDenunciante}/complemento', 'DenuncianteController@showComplement')->name('complement.denunciante');
+	Route::post('denunciante/storecomplemento', 'DenuncianteController@storeComplement')->name('store.complement1');
+	Route::get('carpeta/{idCarpeta}/denunciado/{idDenunciado}/complemento', 'DenunciadoController@showComplement')->name('complement.denunciado');
+	Route::post('denunciado/storecomplemento', 'DenunciadoController@storeComplement')->name('store.complement2');
 
 	Route::post('armarRfc', 'DenuncianteController@rfcMoral')->name('rfc.denunciante');
 	Route::post('armarRfcFIsico', 'DenuncianteController@rfcFisico')->name('rfcFisico.denunciante');
