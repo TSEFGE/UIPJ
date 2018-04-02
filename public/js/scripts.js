@@ -596,6 +596,7 @@ $(document).ready(function(){
         maxDate: moment().subtract(16, 'years').format('YYYY-MM-DD')
     });
       $('#edad').attr({'min':16});
+
     $("#fechanac").on("change.datetimepicker", function (e) {
         $('#edad').val(moment().diff(e.date,'years'));
     });
@@ -603,7 +604,7 @@ $(document).ready(function(){
         var anios = $('#edad').val();
         $('#fechanac').datetimepicker('date', moment().subtract(anios, 'years').format('YYYY-MM-DD'));
     });
-
+      $('#fechanac').trigger('change');
     $(function () {
         $('#fechanac2').datetimepicker({
             format: 'YYYY-MM-DD',
