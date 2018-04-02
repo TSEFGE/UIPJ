@@ -185,7 +185,7 @@
 			<div class="col-6">
 				<div class="form-group">
 					{!! Form::label('nombres2', 'Nombre', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('nombres2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre', 'required','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÑÍÓÚ]*[.]*[,]*[\s]*[0-9]*){1,100}$']) !!}
+	{!! Form::text('nombres2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre', 'required','data-validation'=>'custom' ,'data-validation-regexp'=>'^(([A-ZÁÉÑÍÓÚ]|[0-9])(-|,|.|\s)*){1,100}$']) !!}
 				</div>
 			</div>
 			<div class="col-6">
