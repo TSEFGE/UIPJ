@@ -50,7 +50,8 @@
 	<script type="text/javascript">
 
 	$(window).on("unload", function(e) {
-   localStorage.clear();
+   //localStorage.clear();
+	 localStorage.removeItem('isLiveLocal');
 	  console.log('saliendio');
 	});
 

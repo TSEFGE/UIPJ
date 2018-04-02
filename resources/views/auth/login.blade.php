@@ -2,7 +2,8 @@
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 <script type="text/javascript">
 Cookies.remove('isLiveC');
-localStorage.clear();
+//localStorage.clear();
+localStorage.removeItem('isLiveLocal');
 sessionStorage.removeItem('isLive');
 </script>
 <!DOCTYPE html>
