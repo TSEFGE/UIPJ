@@ -222,7 +222,9 @@ class DenuncianteController extends Controller
                     $ExtraDenunciante->conoceAlDenunciado = 1;
                 }
                 $ExtraDenunciante->narracion = $request->narracion;
-                 $ExtraDenunciante->esVictima=$request->esVictima; 
+                if($request->esVictima!=null){
+                  $ExtraDenunciante->esVictima=1;
+                }
                 $ExtraDenunciante->complemento = $request->complemento;
                 $ExtraDenunciante->save();
 
@@ -443,7 +445,7 @@ class DenuncianteController extends Controller
     }
 
     public function rfcFisico(Request $request)
-    {  
+    {
         $builder = new RfcBuilder();
         $rfc = $builder->name($request->nombre)
             ->firstLastName($request->apPaterno)

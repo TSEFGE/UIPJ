@@ -66,7 +66,7 @@ Route::middleware(['auth'])->group(function () {
 	Route::post('denunciante/storecomplemento', 'DenuncianteController@storeComplement')->name('store.complement1');
 
 	Route::get('carpeta/{idCarpeta}/denunciado/{idDenunciado}/complemento', 'DenunciadoController@showComplement')->name('complement.denunciado');
-	
+
 	Route::post('denunciado/storecomplemento', 'DenunciadoController@storeComplement')->name('store.complement2');
 
 	Route::post('armarRfc', 'DenuncianteController@rfcMoral')->name('rfc.denunciante');
@@ -121,7 +121,7 @@ Route::middleware(['auth'])->group(function () {
   	/*---------Rutas para NOTALLLOWED ------------*/
   	Route::get('/notAllowed',function(){
         return view('forms.notAllowed');
-  	});
+  	})->name('notAllowed');
 });
 
 

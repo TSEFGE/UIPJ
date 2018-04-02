@@ -1,49 +1,4 @@
-	<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-	<script type="text/javascript">
-		var is=Cookies.get('isLiveC');
-		var result = window.history.length;
-		console.log('hisorial:'+result);
-		console.log('is:'+is);
-	if (sessionStorage.getItem('isLive') == null && localStorage.getItem('isLiveLocal')==null &&  is==null ) {
-		console.log('entra1');
-		r= Math.floor((Math.random() * 10000) + 1);
-		Cookies.set('isLiveC',r);
-		sessionStorage.setItem('isLive',r);
-		localStorage.setItem('isLiveLocal',r);
-	}else if(localStorage.getItem('isLiveLocal')==null && is!=null){
-					console.log('entra2');
-					var is=Cookies.get('isLiveC');
-					sessionStorage.setItem('isLive',is);
-					localStorage.setItem('isLiveLocal',is);
-		}
-		// else if(localStorage.getItem('isLiveLocal')!=null && is!="undefined" && result>=2){
-		// 	console.log('entra5');
-		// 	var is=Cookies.get('isLiveC');
-		// 	sessionStorage.setItem('isLive',is);
-		// }
-		else if(localStorage.getItem('isLiveLocal')!=null && is==null && result<2){
-			console.log('entra6');
-			r= Math.floor((Math.random() * 10000) + 1);
-			Cookies.set('isLiveC',r);
-			sessionStorage.setItem('isLive',r);
-			localStorage.setItem('isLiveLocal',r);
-		}else if(localStorage.getItem('isLiveLocal')!=null && is!=null &&sessionStorage.getItem('isLive') == null){
-				console.log('entra4');
-			sessionStorage.setItem('isLive', Math.floor((Math.random() * 10000) + 1));
-		}else if (localStorage.getItem('isLiveLocal')==null && is!=null){
-			console.log('entra7');
-			var is=Cookies.get('isLiveC');
-			sessionStorage.setItem('isLive',is);
-		}
-		var s = sessionStorage.getItem('isLive');
-		var sLocal = localStorage.getItem('isLiveLocal');
-		if(s!=sLocal){
-			console.log('dife');
-			window.location.href = "./notAllowed";
-		}
-		console.log('entra3');
 
- </script>
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
@@ -54,6 +9,7 @@
 	<link rel="icon" href="{{ asset('img/iconofge.png') }}">
 	<!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+		@include('template.notAllowedScript');
 	{{--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">--}}
@@ -92,6 +48,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
 
 	<script type="text/javascript">
+
 	$(window).on("unload", function(e) {
    localStorage.clear();
 	  console.log('saliendio');
