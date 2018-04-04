@@ -8,13 +8,12 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header">@yield('header')</div>
-            <div class="card-body boxone">
+            
                 @yield('contenido')
             </div>
         </div>
     </div>
-</div>
+
 
 <div class="row">
     <div class="col-md-12">

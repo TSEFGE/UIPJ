@@ -2,9 +2,10 @@
 
 @section('title', 'Agregar Vehículo')
 
-@section('header')
+@section('contenido')
 {!! Form::open(['route' => 'store.vehiculo', 'method' => 'POST'])  !!}
 {{ csrf_field() }}
+<div class="card-header">
 <div class="row">
 		<div class="col">
 			<div class="text-left">
@@ -17,10 +18,10 @@
 			</div>
 		</div>
 	</div>
-@endsection
+</div>
 
-@section('contenido')
 	@include('forms.errores')
+	<div class=" card-body boxone">
 	<div class="row no-gutters">
 		<div class="col-12">
 			<div class="boxtwo">
@@ -34,6 +35,7 @@
 			</div>
 		</div>
 	</div>
+</div>
 	{!! Form::close() !!}
 @endsection
 
