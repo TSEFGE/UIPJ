@@ -1,9 +1,11 @@
 @extends('template.form')
 
 @section('title', 'Generar documento de colaboración con policia ministerial')
-@section('header')
+
+@section('contenido')
 {!! Form::open(['route' => 'colaboracion.pm', 'method' => 'POST'])  !!}
 {{ csrf_field() }}
+<div class="card-header">
 <div class="row">
 	<div class="col">
 		<div class="text-left">
@@ -19,9 +21,9 @@
 		</div>
 	</div>
 </div>
-@endsection
+</div>
 
-@section('contenido')
+
 @include('forms.errores')
 <div class="row no-gutters">
 	<div class="col-12">
