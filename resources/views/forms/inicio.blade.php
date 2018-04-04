@@ -13,8 +13,9 @@
 			</div>
 			<div class="col">
 				<div class="text-right">
-					<a href="{{ route('home') }}" class="btn btn-dark text-center">Volver atrás</a>
 					{!! Form::submit('Iniciar', ['class' => 'btn btn-dark', 'id' => 'btn-submit']) !!}
+					<a href="{{ route('home') }}" class="btn btn-dark text-center"><i class="fa fa-folder-open"></i></a>
+
 				</div>
 			</div>
 		</div>
