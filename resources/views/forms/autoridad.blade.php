@@ -1,72 +1,86 @@
 @extends('template.form')
 
-@section('title', 'Agregar Autoridad')
+@section('title', 'Agregar autoridad')
+@section('header')
+
+ {!! Form::open(['route' => 'store.autoridad', 'method' => 'POST'])  !!}
+ {{ csrf_field() }}
+
+<div class="row">
+		<div class="col">
+			<div class="text-left">
+				{{--Aqui van radios, etc --}}
+			</div>
+		</div>
+		<div class="col">	
+			<div class="text-right">
+				@include('forms.buttons')
+			</div>
+		</div>
+	</div>
+@endsection
+
 @section('contenido')
 	@include('forms.errores')
-    {!! Form::open(['route' => 'store.autoridad', 'method' => 'POST'])  !!}
-    {{ csrf_field() }}
-	<div class="card">
-		<div class="card-header">
-			<h5 class="mb-0 text-center">
-				<a data-toggle="collapse" href="#collapsePersonales3" aria-expanded="false" aria-controls="collapsePersonales3">
-					Datos personales
-				</a>
-			</h5>
-		</div>
-		<div id="collapsePersonales3" class="collapse show boxcollapse">
-			<div class="boxtwo">
-				@include('fields.personales-aut')
-			</div>
-		</div>
-	</div>
 
-	<div class="card">
-		<div class="card-header">
-			<h5 class="mb-0 text-center">
-				<a data-toggle="collapse" href="#collapseDir3" aria-expanded="false" aria-controls="collapseDir3">
-					Dirección
-				</a>
-			</h5>
-		</div>
-		<div id="collapseDir3" class="collapse boxcollapse">
+	<div class="row no-gutters">
+		<div class="col-12">
 			<div class="boxtwo">
-				@include('fields.direcciones')
-			</div>
-		</div>
+		
+				<div class="row">
+					@if(!empty($idCarpeta))
+						{!! Form::hidden('idCarpeta', $idCarpeta) !!}
+					@endif
+	<!-- Pestañas -->
+<div id="tautoridad">
+	<ul class="nav nav-tabs">
+ 		<li class="nav-item">
+    		<a class="nav-link active" data-toggle="tab" href="#collapsePersonales3">Datos personales</a>
+  		</li>
+  		<li class="nav-item">
+    		<a class="nav-link" data-toggle="tab" href="#collapseDir3">Dirección</a>
+  		</li>
+  		<li class="nav-item" id="tabfisica">
+    		<a class="nav-link" data-toggle="tab" href="#collapseTrab3">Datos del trabajo</a>
+  		</li>  		
+   		<li class="nav-item">
+    		<a class="nav-link" data-toggle="tab" href="#collapseAutoridad">Información sobre la autoridad</a>
+  		</li>
+	</ul>
+</div>
+<div class="tab-content" id="ctautoridad">
+	<div class="tab-pane active container" id="collapsePersonales3">  		
+		@include('fields.personales-aut')		
 	</div>
+	<div class="tab-pane container" id="collapseDir3">  		
+		@include('fields.direcciones')		
+	</div>
+	<div class="tab-pane container" id="collapseTrab3">  		
+		@include('fields.lugartrabajo')		
+	</div>
+	<div class="tab-pane container" id="collapseAutoridad">  		
+		@include('fields.extra-aut')		
+	</div>
+</div>
 
-	<div class="card">
-		<div class="card-header">
-			<h5 class="mb-0 text-center">
-				<a data-toggle="collapse" href="#collapseTrab3" aria-expanded="false" aria-controls="collapseTrab3">
-					Datos del trabajo
-				</a>
-			</h5>
-		</div>
-		<div id="collapseTrab3" class="collapse boxcollapse">
-			<div class="boxtwo">
-				@include('fields.lugartrabajo')
+<!-- Fin pestañas -->
+				</div>
 			</div>
 		</div>
 	</div>
-
-	<div class="card">
-		<div class="card-header">
-			<h5 class="mb-0 text-center">
-				<a data-toggle="collapse" href="#collapseAutoridad" aria-expanded="false" aria-controls="collapseAutoridad">
-					Información sobre la autoridad
-				</a>
-			</h5>
-		</div>
-		<div id="collapseAutoridad" class="collapse boxcollapse">
-			<div class="boxtwo">
-				@include('fields.extra-aut')
-			</div>
-		</div>
-	</div>
-	@include('forms.buttons')
 	{!! Form::close() !!}
+@endsection
+
+@section('tabla')
 	<div class="boxtwo">
+		@section('titulo-tabla', 'Autoridades registradas')
 		@include('tables.autoridades')
 	</div>
 @endsection
+
+
+
+
+
+
+	
