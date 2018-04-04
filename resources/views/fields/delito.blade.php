@@ -10,13 +10,13 @@
 	</div>
 	<div class="col-sm-4">
 		<div class="form-group">
-			{!! Form::label('idAgrupacion1', ' Primera Desagregación', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::label('idAgrupacion1', ' Primera desagregación', ['class' => 'col-form-label-sm']) !!}
 			{!! Form::select('idAgrupacion1', ['placeholder'=>'Seleccione una desagregación'], null, ['class' => 'form-control form-control-sm select2', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-sm-4">
 		<div class="form-group">
-			{!! Form::label('idAgrupacion2', ' Segunda Desagregación', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::label('idAgrupacion2', ' Segunda desagregación', ['class' => 'col-form-label-sm']) !!}
 			{!! Form::select('idAgrupacion2', ['placeholder'=>'Seleccione una desagregación'], null, ['class' => 'form-control form-control-sm select2', 'required']) !!}
 		</div>
 	</div>
