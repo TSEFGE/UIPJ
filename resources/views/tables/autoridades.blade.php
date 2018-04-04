@@ -1,4 +1,3 @@
-<h6>Autoridades</h6>
 <div class="table">
     <table class="table table-striped">
         <thead>
