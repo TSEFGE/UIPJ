@@ -1,9 +1,10 @@
-@extends('template.main')
+@extends('template.form')
 
-@section('css')
-@endsection
+@section('title', 'Agregar Vehículo')
 
-@section('content')
+@section('contenido')
+
+<div class="card-header">
 <div class="row">
     <div class="col-md-12">
         <div class="card">
@@ -76,6 +77,8 @@
                     </div>
                 </div>
                 @endif
+</div>
+
 
                 <div class="boxtwo">
                     @include('tables.vehiculos')
