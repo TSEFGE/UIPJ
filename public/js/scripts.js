@@ -604,7 +604,7 @@ $(document).ready(function(){
         var anios = $('#edad').val();
         $('#fechanac').datetimepicker('date', moment().subtract(anios, 'years').format('YYYY-MM-DD'));
     });
-      $('#fechanac').trigger('change');
+
     $(function () {
         $('#fechanac2').datetimepicker({
             format: 'YYYY-MM-DD',
@@ -649,6 +649,8 @@ $(document).ready(function(){
     $("#correo").val("sin@informacion.com");
 
 });
+      $('#fechanac').trigger('change');
+      $('#edad').val('16');
 $("#btn-reset").on("click",function(){
     swal({
         title: "¿Estas seguro?",
