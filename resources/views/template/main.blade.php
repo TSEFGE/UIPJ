@@ -15,6 +15,10 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">--}}
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/font-awesome/css/font-awesome.css') }}">
+	<!-- Theme style -->
+	<link rel="stylesheet" href="{{ asset('admin/dist/css/adminlte.min.css') }}">
+	<!-- Google Font: Source Sans Pro -->
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 	<link rel="stylesheet" href="{{asset ('css/sweetalert.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/select2/select2.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
@@ -25,11 +29,56 @@
     @yield('css')
 </head>
 
-<body>
-	<div class="container">
-		@include('template.partials.header')
+<body class="hold-transition sidebar-mini">
+	<div class="wrapper">
+		
+	<!-- Navbar -->
+	@include('template.partials.navbar')
+	<!-- /.navbar -->
 
-		@yield('content')
+	<!-- Main Sidebar Container -->
+	@include('template.partials.sidebar')
+
+	<div class="content-wrapper">
+		<!-- Content Header (Page header) -->
+		<div class="content-header">
+			<div class="container-fluid">
+				<div class="row mb-2">
+					<div class="col-sm-6">
+						<h1 class="m-0 text-dark">@yield('title')</h1>
+					</div><!-- /.col -->
+					<div class="col-sm-6">
+						<ol class="breadcrumb float-sm-right">
+							@isset($idCarpeta)
+								<li class="breadcrumb-item"><a href="#">{{ $idCarpeta }}</a></li>
+							@else
+
+								<li class="breadcrumb-item"><a href="#">Home</a></li>
+							@endif
+							<li class="breadcrumb-item active">@yield('title')</li>
+						</ol>
+					</div><!-- /.col -->
+				</div><!-- /.row -->
+			</div><!-- /.container-fluid -->
+		</div>
+		<!-- /.content-header -->
+
+		<!-- Main content -->
+		<section class="content">
+			<div class="container-fluid">
+				@yield('content')
+			</div>
+		</section>
+
+	</div>
+
+
+	<!-- Control Sidebar (a secondary optional sidebar) -->
+	@include('template.partials.sidebar2')
+	<!-- /.control-sidebar -->
+
+	<!-- Main Footer -->
+	@include('template.partials.footer')
 	</div>
 
 	{{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -46,6 +95,28 @@
 	<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 	<!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+    <!-- REQUIRED SCRIPTS -->
+	<!-- Bootstrap -->
+	<script src="{{ asset('admin/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+	<!-- AdminLTE App -->
+	<script src="{{ asset('admin/dist/js/adminlte.js') }}"></script>
+
+	<!-- OPTIONAL SCRIPTS -->
+	<script src="{{ asset('admin/dist/js/demo.js') }}"></script>
+
+	<!-- PAGE PLUGINS -->
+	<!-- SparkLine -->
+	<script src="{{ asset('admin/plugins/sparkline/jquery.sparkline.min.js') }}"></script>
+	<!-- jVectorMap -->
+	<script src="{{ asset('admin/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
+	<script src="{{ asset('admin/plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
+	<!-- SlimScroll 1.3.0 -->
+	<script src="{{ asset('admin/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
+	<!-- ChartJS 1.0.1 -->
+	<script src="{{ asset('admin/plugins/chartjs/Chart.min.js') }}"></script>
+
+	<!-- PAGE SCRIPTS -->
+	<script src="{{ asset('admin/dist/js/pages/dashboard2.js') }}"></script>
 
 	<script type="text/javascript">
 

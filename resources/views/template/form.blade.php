@@ -8,10 +8,21 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header">@yield('title')</div>
+            <div class="card-header">@yield('header')</div>
             <div class="card-body boxone">
                 @yield('contenido')
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title text-center">@yield('titulo-tabla')</h5>
+            </div>
+            @yield('tabla')
         </div>
     </div>
 </div>
