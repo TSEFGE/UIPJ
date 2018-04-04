@@ -25,10 +25,29 @@ header{
 	background-color: #D6D6D6;
 	border-color: #ddd #ddd #ddd;
 }*/
-
+.navbar {
+	background-color: #424242;
+}
+.navbar-expand .navbar-nav .nav-link {
+	color: #ffffff;
+}
+.navbar-expand .navbar-nav .nav-link:hover {
+	color: #ffffffbd;
+}
 .logofge{
 	height: 40px;
 }
+.main-sidebar{
+	background-color: #1b1b1b;
+}
+
+a {
+	color: #ffffff;
+}
+a:hover {
+	color: #ffffffbd;
+}
+
 
 .boxone{
 	background-color: #D6D6D6;

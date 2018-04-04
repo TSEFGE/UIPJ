@@ -1,9 +1,9 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar  elevation-4">
 	<!-- Brand Logo -->
 	<a href="index3.html" class="brand-link">
-		<img src="{{ asset('admin/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+		<img src="https://rawcdn.githack.com/Romaincks/assets/master/img/logo-150px-FGE.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
 		style="opacity: .8">
-		<span class="brand-text font-weight-light">AdminLTE 3</span>
+		<span class="brand-text font-weight-light">FGE Veracruz</span>
 	</a>
 
 	<!-- Sidebar -->
@@ -14,7 +14,9 @@
 				<img src="{{ asset('admin/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
 			</div>
 			<div class="info">
-				<a href="#" class="d-block">{{ Auth::user()->nombres." ".Auth::user()->primerAp }}</a>
+				<a href="#" class="d-block">{{ Auth::user()->nombres."". Auth::user()->nombres." ".Auth::user()->primerAp }}</a>
+				{{--<a href="#" class="d-block">{{ Auth::user()->nombres." ".Auth::user()->primerAp }}</a>--}}
+				<a href="#" class="d-block"> <small>Numero de fiscal </small><b> {{ Auth::user()->numFiscal}}</b></a>
 			</div>
 		</div>
 
@@ -23,6 +25,12 @@
 			<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 					<!-- Add icons to the links using the .nav-icon class
 						with font-awesome or any other icon font library -->
+						<li class="{{ Request::is( 'home') ? 'active' : '' }} nav-item"><a href="{{ url('/home') }}" class="nav-link"><i class=" nav-icon fa fa-home"></i> <p> Inicio</p> <span></span></a></li>
+						<li class="{{ Request::is( 'libro-gobierno') ? 'active' : '' }} nav-item"><a href="{{ route('libro.gobierno') }}" class="nav-link"><i class=" nav-icon fa fa-book"></i> <p> Libro de gobierno</p><span></span></a></li>
+						@if(isset($idCarpeta))
+						<li class="{{ Request::is( 'carpeta') ? 'active' : '' }} nav-item" ><a href="{{ route('view.carpeta', $idCarpeta) }}" class="nav-link"><i class="nav-icon fa fa-folder-open"></i><p>Carpeta Abierta</p> <span></span></a></li>
+						@endif
+						<li class="{{ Request::is( 'iniciar-carpeta') ? 'active' : '' }} nav-item"><a href="{{ url('/iniciar-carpeta') }}" class="nav-link"><i class="nav-icon fa fa-folder"></i><p>Registra nueva carpeta</p> <span></span></a></li>
 						<li class="nav-item">
 							<a href="pages/widgets.html" class="nav-link">
 								<i class="nav-icon fa fa-th"></i>
@@ -69,9 +77,16 @@
 								<p>Documentation</p>
 							</a>
 						</li>
-					</ul>
-				</nav>
-				<!-- /.sidebar-menu -->
-			</div>
-			<!-- /.sidebar -->
+						<li class="nav-item bottom" ><a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+							document.getElementById('logout-form').submit();"><i class=" nav-icon fa fa-power-off" ></i><p> Cerrar sesión</p></a>
+							<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+								{{ csrf_field() }}
+							</form>
+						</li>
+			</ul>
+					
+		</nav>
+		<!-- /.sidebar-menu -->
+		</div>
+		<!-- /.sidebar -->
 		</aside>
