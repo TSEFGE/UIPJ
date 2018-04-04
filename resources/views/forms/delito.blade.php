@@ -1,10 +1,10 @@
 @extends('template.form')
 
 @section('title', 'Agregar Delito')
-
-@section('header')
+@section('contenido')
 {!! Form::open(['route' => 'store.delito', 'method' => 'POST'])  !!}
 {{ csrf_field() }}
+<div class="card-header">
 <div class="row">
 		<div class="col">
 			<div class="text-left">
@@ -17,43 +17,44 @@
 			</div>
 		</div>
 	</div>
-@endsection
+</div>
 
-@section('contenido')
-	@include('forms.errores')
+@include('forms.errores')
+<div class=" card-body boxone">
 	<div class="row no-gutters">
 		<div class="col-12">
-			<div class="boxtwo">
-			
+			<div class="boxtwo">			
 				<div class="row">
 					@if(!empty($idCarpeta))
 						{!! Form::hidden('idCarpeta', $idCarpeta) !!}
 					@endif
-
-					<div id="delitotabs">
-						<ul class="nav nav-tabs">
- 							<li class="nav-item">
-    							<a class="nav-link active" data-toggle="tab" href="#infodelito">Información sobre la comisión del delito</a>
-  							</li>
-  							<li class="nav-item">
-    							<a class="nav-link" data-toggle="tab" href="#lugardelito">Información sobre el lugar de los hechos</a>
-  							</li>  		
-						</ul>	
-					</div>
-					<div class="tab-content" id="ctdelito">
-						<div class="tab-pane active container" id="infodelito">  		
-							@include('fields.delito')		
-						</div>
-						<div class="tab-pane container" id="lugardelito">  		
-							@include('fields.direcciones')	
-							@include('fields.lugar-hechos')		
-						</div>
-					</div>
-					
 				</div>
-			</div>
-		  </div>
+
+<div id="delitotabs">
+	<ul class="nav nav-tabs">
+		<li class="nav-item">
+			<a class="nav-link active" data-toggle="tab" href="#infodelito">Información sobre la comisión del delito</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" data-toggle="tab" href="#lugardelito">Información sobre el lugar de los hechos</a>
+		</li>  		
+	</ul>	
+</div>
+<div class="tab-content" id="ctdelito">
+	<div class="tab-pane active container" id="infodelito">  		
+			@include('fields.delito')		
 	</div>
+    <div class="tab-pane container" id="lugardelito">  		
+			@include('fields.direcciones')	
+			@include('fields.lugar-hechos')		
+    </div>
+</div>
+
+			</div>
+		  </div>	
+	</div>
+</div>
+
 	{!! Form::close() !!}
 @endsection
 @section('tabla')

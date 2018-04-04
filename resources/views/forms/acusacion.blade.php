@@ -2,9 +2,10 @@
 
 @section('title', 'Agregar Acusación')
 
-@section('header')
+@section('contenido')
 {!! Form::open(['route' => 'store.acusacion', 'method' => 'POST'])  !!}
 {{ csrf_field() }}
+<div class="card-header">
 <div class="row">
 		<div class="col">
 			<div class="text-left">
@@ -17,9 +18,9 @@
 			</div>
 		</div>
 	</div>
-@endsection
 
-@section('contenido')
+</div>
+
 @include('forms.errores')   
 	<div class="row no-gutters">
 		<div class="col-12">
