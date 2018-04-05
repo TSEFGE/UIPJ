@@ -6,6 +6,7 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
+        "adldap2/adldap2-laravel": "^4.0",
         "drmonty/garlicjs": "^1.2",
         "fideloper/proxy": "~3.3",
         "juanjoc333/rfc-facil-php": "^1.0",
