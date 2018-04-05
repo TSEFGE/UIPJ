@@ -25,6 +25,10 @@ header{
 	background-color: #D6D6D6;
 	border-color: #ddd #ddd #ddd;
 }*/
+body{
+	background-color: #efefef;
+}
+
 .navbar {
 	background-color: #424242;
 }
@@ -77,6 +81,11 @@ header{
 	width: 99%;
 	height: 500px; 
 	overflow: scroll;
+}
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+    color: #6d6d6d;
+    background-color: #E1E2E1;
+    border-color: #efefef #efefef #E1E2E1;
 }
 
 textarea {
