@@ -3,7 +3,17 @@
 @section('title', 'Generar documento de colaboración con Servicios Periciales')
 @section('contenido')
     {!! Form::open(['route' => 'colaboracion.sp', 'method' => 'POST'])  !!}
-    {{ csrf_field() }}
+	{{ csrf_field() }}
+	<div class="card-header">
+			<div class="row">
+						<div class="col">	
+							<div class="text-right">
+								{!! Form::submit('Generar documento', ['class' => 'btn btn-dark', 'id' => 'btn-submit']) !!}
+								<a href="{{ route('carpeta', $idCarpeta) }}" class="btn btn-dark text-center"><i class="fa fa-folder-open"></i></a>
+							</div>
+						</div>
+				</div>
+			</div>
 	<div class="row no-gutters">
 		<div class="col-12">
 			<div class="boxtwo">
@@ -37,7 +47,6 @@
 					{!! Form::select('termino', ['8' => '8 horas', '12' => '12 horas', '24' => '24 horas'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el termino', 'required']) !!}
 				</div>
 			</div>
-
 			<div class="boxtwo barras">
 				<div class="form-group">
 					@foreach($servicios as $servicio)
@@ -50,20 +59,6 @@
 				</div>
 			</div>
 			@include('forms.idcarpeta')
-			<div class="boxtwo">
-				<div class="row">
-					<div class="col">
-						<div class="text-left">
-							<a href="{{ route('carpeta', $idCarpeta) }}" class="btn btn-dark text-center">Regresar</a>
-						</div>
-					</div>
-					<div class="col">	
-						<div class="text-right">
-							{!! Form::submit('Generar documento', ['class' => 'btn btn-dark', 'id' => 'btn-submit']) !!}
-						</div>
-					</div>
-				</div>
-			</div>
 		</div>
 	</div>
 	{!! Form::close() !!}

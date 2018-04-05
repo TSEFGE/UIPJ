@@ -1,4 +1,4 @@
-<aside class="main-sidebar  elevation-4">
+<aside class="main-sidebar  elevation-4 barra-izquierda">
 	<!-- Brand Logo -->
 	<a href="index3.html" class="brand-link">
 		<img src="https://rawcdn.githack.com/Romaincks/assets/master/img/logo-150px-FGE.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
@@ -7,7 +7,7 @@
 	</a>
 
 	<!-- Sidebar -->
-	<div class="sidebar font-weight-light">
+	<div  class="sidebar font-weight-light">
 		<!-- Sidebar user panel (optional) -->
 		<div class="user-panel mt-3 pb-3 mb-3 d-flex">
 			<div class="image">
@@ -25,12 +25,12 @@
 			<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 					<!-- Add icons to the links using the .nav-icon class
 						with font-awesome or any other icon font library -->
-						<li class="{{ Request::is( 'home') ? 'active' : '' }} nav-item"><a href="{{ url('/home') }}" class="nav-link"><i class=" nav-icon fa fa-home"></i> <p> Inicio</p> <span></span></a></li>
-						<li class="{{ Request::is( 'libro-gobierno') ? 'active' : '' }} nav-item"><a href="{{ route('libro.gobierno') }}" class="nav-link"><i class=" nav-icon fa fa-book"></i> <p> Libro de gobierno</p><span></span></a></li>
+						<li class="nav-item"><a href="{{ url('/home') }}" class=" {{ Request::is( 'home') ? 'active' : '' }} nav-link"><i class=" nav-icon fa fa-home"></i> <p> Inicio</p> <span></span></a></li>
+						<li class="nav-item"><a href="{{ route('libro.gobierno') }}" class=" {{ Request::is( 'libro-gobierno') ? 'active' : '' }} nav-link"><i class=" nav-icon fa fa-book"></i> <p> Libro de gobierno</p><span></span></a></li>
 						@if(isset($idCarpeta))
-						<li class="{{ Request::is( 'carpeta') ? 'active' : '' }} nav-item" ><a href="{{ route('view.carpeta', $idCarpeta) }}" class="nav-link"><i class="nav-icon fa fa-folder-open"></i><p>Carpeta Abierta</p> <span></span></a></li>
+						<li class="nav-item" ><a href="{{ route('view.carpeta', $idCarpeta) }}" class="active nav-link"><i class="nav-icon fa fa-folder-open"></i><p>Carpeta Abierta</p> <span></span></a></li>
 						@endif
-						<li class="{{ Request::is( 'iniciar-carpeta') ? 'active' : '' }} nav-item"><a href="{{ url('/iniciar-carpeta') }}" class="nav-link"><i class="nav-icon fa fa-folder"></i><p>Registra nueva carpeta</p> <span></span></a></li>
+						<li class="nav-item"><a href="{{ url('/iniciar-carpeta') }}" class="{{ Request::is( 'iniciar-carpeta') ? 'active' : '' }} nav-link"><i class="nav-icon fa fa-folder"></i><p>Registra nueva carpeta</p> <span></span></a></li>
 						<li class="nav-item">
 							<a href="pages/widgets.html" class="nav-link">
 								<i class="nav-icon fa fa-th"></i>

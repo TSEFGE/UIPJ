@@ -41,10 +41,20 @@ header{
 	background-color: #1b1b1b;
 }
 
-a {
+.barra-izquierda >a {
 	color: #ffffff;
 }
-a:hover {
+.barra-izquierda div >a {
+	color: #ffffff;
+}
+.barra-izquierda li >a {
+	color: #ffffff;
+}
+.barra-izquierda .nav-link.active {
+	background-color: #424242;
+	/*box-shadow: 2px 2px 4px #bdbdbd;*/
+}
+.barra-izquierda a:hover {
 	color: #ffffffbd;
 }
 
