@@ -28,7 +28,7 @@
 				        </thead>
 				        <tbody>
 				            @if(count($acusaciones)==0)
-				                <tr><td colspan="3" class="text-center">Sin registros</td></tr>
+				                <tr><td colspan="4" class="text-center">Sin registros</td></tr>
 				            @else
 				                @foreach($acusaciones as $acusacion)
 				                    <tr>
