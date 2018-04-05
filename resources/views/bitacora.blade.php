@@ -28,7 +28,7 @@
 	<div class="row no-gutters">
 		<div class="col-12">
 			<div class="boxtwo">			
-				<h6 align="center">Bitacora de actividades</h6>
+				
 
 				<div class="table">
 					<div class="text-center">		
