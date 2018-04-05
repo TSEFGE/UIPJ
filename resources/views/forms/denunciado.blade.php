@@ -11,7 +11,7 @@
 <div class="row">
 	<div class="col">
 		<div class="text-left">
-			<div class="col-6">
+			<div class="col-md-6">
 				<div class="form-group">
 					<label class="col-form-label col-form-label-sm" for="formGroupExampleInput">Selecciona una opción</label>
 					<div class="clearfix"></div>
@@ -33,11 +33,11 @@
 				</div>
 			</div>
 			<div class="col-6 comparecencia">
-				<div class="row">
+				
 					@include('fields.tipo-persona')
 				</div>
 			</div>
-			<div class="col">	
+			<div class="col-md-auto">	
 				<div class="text-right">
 					@include('forms.buttons')
 				</div>
