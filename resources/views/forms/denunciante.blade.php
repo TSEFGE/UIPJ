@@ -3,92 +3,101 @@
 @section('title', 'Agregar Denunciante')
 
 @section('contenido')
-	@include('forms.errores')
-    {!! Form::open(['route' => 'store.denunciante', 'method' => 'POST'])  !!}
-    {{ csrf_field() }}
-    <div class="boxtwo">
-    	<div class="row">
-    		@include('fields.tipo-persona')
-    	</div>
-    </div>
-	<div class="card" id="datosPer">
-		<div class="card-header">
-			<h5 class="mb-0 text-center">
-				<a data-toggle="collapse" href="#collapsePersonales1" aria-expanded="false" aria-controls="collapsePersonales1">
-					Datos personales
-				</a>
-			</h5>
-		</div>
-		<div id="collapsePersonales1" class="collapse show boxcollapse">
-			<div class="boxtwo">
-				@include('fields.personales')
-			</div>
-		</div>
-	</div>
+@include('forms.errores')
+{!! Form::open(['route' => 'store.denunciante', 'method' => 'POST'])  !!}
+{{ csrf_field() }}
 
-	<div class="card" id="datosDir">
-		<div class="card-header">
-			<h5 class="mb-0 text-center">
-				<a data-toggle="collapse" href="#collapseDir1" aria-expanded="false" aria-controls="collapseDir1">
-					Dirección
-				</a>
-			</h5>
-		</div>
-		<div id="collapseDir1" class="collapse boxcollapse">
-			<div class="boxtwo">
-				@include('fields.direcciones')
-			</div>
-		</div>
-	</div>
+<div class="card-header">
+	<div class="row">
+		<div class="col">
+			<div class="text-left">				
+				
+					<div class="row">
+						@include('fields.tipo-persona')
+					</div>				
 
-	<div class="card" id="datosTrab">
-		<div class="card-header">
-			<h5 class="mb-0 text-center">
-				<a data-toggle="collapse" href="#collapseTrab1" aria-expanded="false" aria-controls="collapseTrab1">
-					Datos del trabajo
-				</a>
-			</h5>
-		</div>
-		<div id="collapseTrab1" class="collapse boxcollapse">
-			<div class="boxtwo">
-				@include('fields.lugartrabajo')
-			</div>
+				<div class="col">	
+					<div class="text-right">
+						@include('forms.buttons')
+					</div>
+				</div>
+		
+		  </div>
 		</div>
 	</div>
+</div>
 
-	<div class="card" id="datosNotif">
-		<div class="card-header">
-			<h5 class="mb-0 text-center">
-				<a data-toggle="collapse" href="#collapseNotifs1" aria-expanded="false" aria-controls="collapseNotifs1">
-					Dirección para notificaciones
-				</a>
-			</h5>
-		</div>
-		<div id="collapseNotifs1" class="collapse boxcollapse">
-			<div class="boxtwo">
-				@include('fields.notificaciones')
-			</div>
-		</div>
-	</div>
 
-	<div class="card" id="datosExtra">
-		<div class="card-header">
-			<h5 class="mb-0 text-center">
-				<a data-toggle="collapse" href="#collapseDenun" aria-expanded="false" aria-controls="collapseDenun">
-					Información sobre el Denunciante o Agraviado
-				</a>
-			</h5>
-		</div>
-		<div id="collapseDenun" class="collapse boxcollapse">
+@include('forms.errores')
+<div class=" card-body boxone">
+	<div class="row no-gutters">
+		<div class="col-12">
 			<div class="boxtwo">
-				@include('fields.extra-denunciante')
+
+				<div class="row">
+					@if(!empty($idCarpeta))
+					{!! Form::hidden('idCarpeta', $idCarpeta) !!}
+					@endif	
+				</div>
+
+				<div class="card" id="datosPer">
+
+					<div id="denunciante">
+
+					<ul class="nav nav-tabs">
+						<li class="nav-item" id="datosPer">
+							<a class="nav-link active" data-toggle="tab" href="#collapsePersonales1">Datos personales</a>
+						</li>
+						<li class="nav-item" id="datosDir" >
+							<a class="nav-link" data-toggle="tab" href="#collapseDir1">Dirección</a>
+						</li>
+						<li class="nav-item" id="datosTrab">
+							<a class="nav-link" data-toggle="tab" href="#collapseTrab1">Datos del trabajo</a>
+						</li> 
+						<li class="nav-item" id="datosNotif">
+							<a class="nav-link" data-toggle="tab" href="#collapseNotifs1">Dirección para notificaciones</a>
+						</li> 
+						<li class="nav-item"  id="datosExtra">
+							<a class="nav-link" data-toggle="tab" href="#collapseDenun1">Información sobre el Denunciante o Agraviado</a>
+						</li> 		
+
+					</ul>
+				</div>
+
+					<div class="tab-content" id="ctdenunciante">
+					<div class="tab-pane active container" id="collapsePersonales1">  		
+						@include('fields.personales')
+
+					</div>
+					<div class="tab-pane container" id="collapseDir1">  		
+						@include('fields.direcciones')		
+					</div>
+					<div class="tab-pane container" id="collapseTrab1">  		
+						@include('fields.lugartrabajo')		
+					</div>
+					<div class="tab-pane container" id="collapseNotifs1">  		
+						@include('fields.notificaciones')		
+					</div>
+					<div class="tab-pane container" id="collapseDenun1">  		
+						@include('fields.extra-denunciante')
+
+					</div>
+				</div>
+				<!-- Fin pestañas -->
 			</div>
 		</div>
+
 	</div>
-	@include('forms.buttons')
-	{!! Form::close() !!}
-	<div class="boxtwo">
-		@include('tables.denunciantes')
-	</div>
+</div>
+</div>
+
+
+{!! Form::close() !!}
 @endsection
 
+@section('tabla')
+<div class="boxtwo">
+@section('titulo-tabla', 'Denunciantes registrados')
+@include('tables.denunciantes')
+</div>
+@endsection
