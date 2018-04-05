@@ -9,16 +9,18 @@
 	<!-- Sidebar -->
 	<div  class="sidebar font-weight-light">
 		<!-- Sidebar user panel (optional) -->
+		@auth
 		<div class="user-panel mt-3 pb-3 mb-3 d-flex">
 			<div class="image">
 				<img src="{{ asset('admin/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
 			</div>
 			<div class="info">
-				<a href="#" class="d-block">{{ Auth::user()->nombres."". Auth::user()->nombres." ".Auth::user()->primerAp }}</a>
+				<a href="#" class="d-block">{{ Auth::user()->nombres." ". Auth::user()->primerAp." ".Auth::user()->segundoAp }}</a>
 				{{--<a href="#" class="d-block">{{ Auth::user()->nombres." ".Auth::user()->primerAp }}</a>--}}
 				<a href="#" class="d-block"> <small>Numero de fiscal </small><b> {{ Auth::user()->numFiscal}}</b></a>
 			</div>
 		</div>
+		@endauth
 
 		<!-- Sidebar Menu -->
 		<nav class="mt-2">
