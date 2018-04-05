@@ -64,16 +64,15 @@ body{
 
 
 .boxone{
-	background-color: #D6D6D6;
-	border: solid 1px #BFBFBF;
+	background-color: #f8f8f8;
+	/*border: solid 1px #BFBFBF;
 	/*min-height: 520px;*/
-	padding: 0px;
+	padding: .5rem 0rem 0rem 0rem;
 }
 
 .boxtwo{
-	background-color: #D6D6D6;
-	border: solid 1px #BFBFBF;
-	margin: 8px;
+	background-color: #ffffff;
+	/*border: solid 1px #BFBFBF;*/	
 	padding: 7px;
 }
 
@@ -82,10 +81,16 @@ body{
 	height: 500px; 
 	overflow: scroll;
 }
+/* Pestañas colores*/
 .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
     color: #6d6d6d;
-    background-color: #E1E2E1;
-    border-color: #efefef #efefef #E1E2E1;
+    background-color: rgb(255, 255, 255);
+    
+}
+
+.card-header{
+background-color: rgba(0, 0, 0, 0.03);
+border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 textarea {
@@ -99,5 +104,14 @@ html{
   	font-family: 'neosanspro-regular';
   	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #424242;
+    border-color: #424242;
+}
+.btn-primary:hover {
+    background-color: #1b1b1b;
+    border-color: #1b1b1b;
 }
 
