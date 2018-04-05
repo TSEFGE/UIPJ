@@ -50,3 +50,12 @@
     </div>
 </div>
 @endsection
+@section ('scripts')
+    <script src="{{ asset('js/moment.min.js') }}"></script>
+    <script src="{{ asset('js/es.js') }}"></script>
+    <script src="{{ asset('js/tempusdominus-bootstrap-4.min.js') }}"></script>
+    script src="{{ asset('js/sisyphus.js')}}" ></script>
+    <script src="{{ asset('js/validations.js') }}"></script>
+    <script src="{{ asset('js/selects.js') }}"></script>
+    <script src="{{ asset('js/scripts.js') }}"></script>
+@endsection
