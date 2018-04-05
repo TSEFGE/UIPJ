@@ -28,7 +28,7 @@ class HomeController extends Controller
         $carpetas = DB::table('carpeta')
             ->join('users', 'users.id', '=', 'carpeta.idFiscal')
             ->join('unidad', 'unidad.id', '=', 'carpeta.idUnidad')
-            ->select('carpeta.id','unidad.nombre', 'users.nombres', 'users.primerAp', 'users.segundoAp', 'carpeta.numCarpeta', 'carpeta.fechaInicio', 'carpeta.estadoCarpeta')
+            ->select('carpeta.id','unidad.nombre', 'users.nombres', 'users.apellidos', 'carpeta.numCarpeta', 'carpeta.fechaInicio', 'carpeta.estadoCarpeta')
             ->where('carpeta.idFiscal', '=', Auth::user()->id)
             ->orderBy('id','DESC')
             ->paginate(10);

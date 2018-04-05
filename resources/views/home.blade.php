@@ -30,7 +30,7 @@
                                 <tr>
                                     <td>{{ $carpeta->numCarpeta }}</td>
                                     <td>{{ $carpeta->nombre }}</td>
-                                    <td>{{ $carpeta->nombres." ".$carpeta->primerAp." ".$carpeta->segundoAp }}</td>
+                                    <td>{{ $carpeta->nombres." ".$carpeta->apellidos }}</td>
                                     <td>{{ $carpeta->fechaInicio }}</td>
                                     <td>{{ $carpeta->estadoCarpeta }}</td>
                                     <td><a href="{{ route('view.carpeta', $carpeta->id) }}" class="btn btn-secondary"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Ver</a></td>
