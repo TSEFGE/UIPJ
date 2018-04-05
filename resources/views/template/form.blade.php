@@ -7,7 +7,7 @@
 @section('content')
 <div class="row">
     <div class="col-md-12">
-        <div class="card">            
+        <div class="card">
                 @yield('contenido')
             </div>
         </div>
@@ -15,6 +15,7 @@
 
 @if(isset($acusaciones))
 @else
+@isset($idCarpeta)
 <div class="row">
     <div class="col-md-12">
         <div class="card">
@@ -25,6 +26,7 @@
         </div>
     </div>
 </div>
+@endif
 @endif
 @endsection
 
@@ -49,7 +51,7 @@
                 $(this).siblings('select').select2('open');
             }
         });
-           
+
     </script>
     <script src="{{ asset('js/curp.js') }}"></script>
     @include('fields.rfcMoral');

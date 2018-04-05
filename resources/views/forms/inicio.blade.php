@@ -2,15 +2,12 @@
 
 @section('title', 'Iniciar nueva Carpeta de Investigación')
 
-@section('header')
+
+@section('contenido')
 	{!! Form::open(['route' => 'store.carpeta', 'method' => 'POST'])  !!}
 	{{ csrf_field() }}
+	<div class="card-header">
 	<div class="row">
-			<div class="col">
-				<div class="text-left">
-					{{--Aqui van radios, etc --}}
-				</div>
-			</div>
 			<div class="col">
 				<div class="text-right">
 					{!! Form::submit('Iniciar', ['class' => 'btn btn-dark', 'id' => 'btn-submit']) !!}
@@ -19,9 +16,7 @@
 				</div>
 			</div>
 		</div>
-@endsection
-
-@section('contenido')
+	</div>
 	@include('forms.errores')
 	<div class="boxtwo">
 		<h6>Datos generales de la carpeta de investigación</h6>
