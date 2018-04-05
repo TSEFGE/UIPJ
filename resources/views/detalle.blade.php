@@ -9,10 +9,10 @@
 <div id="tabscarpeta">
     <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href="#tdenunciante">Denunciante o Agraviado</a>
+            <a class="nav-link active" data-toggle="tab" href="#tdenunciante">Denunciante o agraviado</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#tdenunciado">Denunciado o Imputado</a>
+            <a class="nav-link" data-toggle="tab" href="#tdenunciado">Denunciado o imputado</a>
         </li>
         <li class="nav-item" id="tabfisica">
             <a class="nav-link" data-toggle="tab" href="#tabogado">Abogados</a>
@@ -69,7 +69,7 @@
                 <div class="boxtwo">
                 @include('tables.autoridades')
                     <div class="text-right"> 
-                        <a href="{{ route('new.autoridad', $carpetaNueva[0]->id) }}" class="btn btn-primary">Agregar Autoridad</a><hr>
+                        <a href="{{ route('new.autoridad', $carpetaNueva[0]->id) }}" class="btn btn-primary">Agregar autoridad</a><hr>
                     </div>
                 </div>
                 @endif
@@ -121,7 +121,7 @@
                             <a href="{{ route('new.colaboracionpm', $carpetaNueva[0]->id) }}" class="btn btn-secondary">Colaboración PM</a>
                             <a href="{{ route('new.colaboracionsp', $carpetaNueva[0]->id) }}" class="btn btn-secondary">Colaboración SP</a>
                         @endif
-                        <a href="{{ route('new.acusacion', $carpetaNueva[0]->id) }}" class="btn btn-secondary">Agregar Acusación</a><hr>
+                        <a href="{{ route('new.acusacion', $carpetaNueva[0]->id) }}" class="btn btn-secondary">Agregar acusación</a><hr>
                     </div>
                 </div>
                           
@@ -130,7 +130,7 @@
       <div class="boxtwo">
                     @include('tables.vehiculos')
                     <div class="text-right"> 
-                        <a href="{{ route('new.vehiculo', $carpetaNueva[0]->id) }}" class="btn btn-secondary">Agregar Vehículo</a><hr>
+                        <a href="{{ route('new.vehiculo', $carpetaNueva[0]->id) }}" class="btn btn-secondary">Agregar vehículo</a><hr>
                     </div>
                 </div>           
  </div>

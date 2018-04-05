@@ -1,6 +1,6 @@
 @extends('template.form')
 
-@section('title', 'Agregar Vehículo')
+@section('title', 'Agregar vehículo')
 
 @section('contenido')
 {!! Form::open(['route' => 'store.vehiculo', 'method' => 'POST'])  !!}

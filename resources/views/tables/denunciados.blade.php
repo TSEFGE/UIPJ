@@ -7,7 +7,7 @@
             <th>Sexo</th>
             <th>Teléfono</th>
             <th>Persona moral</th>
-            <th>Agregar Complemento</th>
+            <th>Agregar complemento</th>
         </thead>
         <tbody>
             @if(count($denunciados)==0)

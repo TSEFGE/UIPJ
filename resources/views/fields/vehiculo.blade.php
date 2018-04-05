@@ -57,13 +57,13 @@
 	</div>
 	<div class="col-4">
 		<div class="form-group">
-			{!! Form::label('numSerie', 'Núm. Serie', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::label('numSerie', 'Núm. serie', ['class' => 'col-form-label-sm']) !!}
 			{!! Form::text('numSerie', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número de serie', 'data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-Z]|[\d]){17}$']) !!}
 		</div>
 	</div>
 	<div class="col-4">
 		<div class="form-group">
-			{!! Form::label('numMotor', 'Núm. Motor', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::label('numMotor', 'Núm. motor', ['class' => 'col-form-label-sm']) !!}
 			{!! Form::text('numMotor', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número de motor', 'data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-Z]|[\d]){1,20}$']) !!}
 	</div>
 	</div>
@@ -76,7 +76,7 @@
 	</div>
 	<div class="col-4">
 		<div class="form-group">
-			{!! Form::label('idClaseVehiculo', 'Clase de Vehículo', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::label('idClaseVehiculo', 'Clase de vehículo', ['class' => 'col-form-label-sm']) !!}
 			{!! Form::select('idClaseVehiculo', $clasesveh, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una clase de vehículo', 'required']) !!}
 		</div>
 	</div>

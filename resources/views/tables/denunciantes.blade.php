@@ -8,7 +8,7 @@
             <th>Teléfono</th>
             <th>Persona moral</th>
             <th>Constancia de hechos</th>
-            <th>Agregar Complemento</th>
+            <th>Agregar complemento</th>
 
         </thead>
         <tbody>
