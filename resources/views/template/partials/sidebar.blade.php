@@ -16,7 +16,6 @@
 			</div>
 			<div class="info">
 				<a href="#" class="d-block">{{ Auth::user()->nombres." ". Auth::user()->apellidos }}</a>
-				{{--<a href="#" class="d-block">{{ Auth::user()->nombres." ".Auth::user()->primerAp }}</a>--}}
 				<a href="#" class="d-block"> <small>Numero de fiscal </small><b> {{ Auth::user()->numFiscal}}</b></a>
 			</div>
 		</div>
@@ -86,7 +85,7 @@
 							</form>
 						</li>
 			</ul>
-					
+
 		</nav>
 		<!-- /.sidebar-menu -->
 		</div>
