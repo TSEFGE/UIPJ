@@ -1,4 +1,3 @@
-<h6>Abogados</h6>
 <div class="table">
     <table class="table table-striped">
         <thead>

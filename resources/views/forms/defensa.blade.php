@@ -2,24 +2,23 @@
 
 @section('title', 'Agregar defensa')
 
-@section('header')
-{!! Form::open(['route' => 'store.defensa', 'method' => 'POST'])  !!}
-{{ csrf_field() }}
-<div class="row">
-		<div class="col">
-			<div class="text-left">
-				{{--Aqui van radios, etc --}}
+@section('contenido')
+	{!! Form::open(['route' => 'store.defensa', 'method' => 'POST'])  !!}
+	{{ csrf_field() }}
+	<div class="card-header">
+		<div class="row">
+			<div class="col">
+				<div class="text-left">
+					{{--Aqui van radios, etc --}}
+				</div>
 			</div>
-		</div>
-		<div class="col">	
-			<div class="text-right">
-				@include('forms.buttons')
+			<div class="col">	
+				<div class="text-right">
+					@include('forms.buttons')
+				</div>
 			</div>
 		</div>
 	</div>
-@endsection
-
-@section('contenido')
 	@include('forms.errores')
 	<div class="row no-gutters">
 		<div class="col-12">

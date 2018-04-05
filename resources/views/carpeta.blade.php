@@ -9,10 +9,10 @@
 <div id="tabscarpeta">
     <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href="#tdenunciante">Denunciante o Agraviado</a>
+            <a class="nav-link active" data-toggle="tab" href="#tdenunciante">Denunciante o agraviado</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#tdenunciado">Denunciado o Imputado</a>
+            <a class="nav-link" data-toggle="tab" href="#tdenunciado">Denunciado o imputado</a>
         </li>
         <li class="nav-item" id="tabfisica">
             <a class="nav-link" data-toggle="tab" href="#tabogado">Abogados</a>

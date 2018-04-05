@@ -1,26 +1,39 @@
-@extends('template.main')
+@extends('template.form')
 
-@section('title', 'Libro de Gobierno')
+@section('title', 'Libro de gobierno')
+@section('contenido')
 
-@section('css')
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/datatables.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/tempusdominus-bootstrap-4.min.css') }}">
-	
-@endsection
 
-@section('content')
+
+
+<div class="card-header">
 <div class="row">
-    <div class="col-md-12">
-    <div class="card">
-    <div class="card-header">Libro de gobierno</div>
-    <div class="card-body boxone">
+		<div class="col">
+			<div class="text-left">
+				{{--Aqui van radios, etc --}}
+			</div>
+		</div>
+		<div class="col">	
+			<div class="text-right">
+				<button type="button" class="btn btn-dark" id="consultar">Consultar</button>
+			</div>
+		</div>
+	</div>
+</div>
 
-	<div class="boxtwo" align="center">
-		<h6 align="center">Consultar Libro de Gobierno</h6>
-		{!! Form::open() !!}
+@include('forms.errores')
+<div class=" card-body boxone">
+	<div class="row no-gutters">
+		<div class="col-12">
+			<div class="boxtwo">			
+				<h6 align="center">Consultar libro de gobierno</h6>
+
+				{!! Form::open() !!}
 		<div class="form-group" align="center">
-			<div class="row">
-				<div class="col-5" align="center">
+			<div class="row" align="center">
+				<div class="col-6" align="center">
 					<div class="form-group">
 						{!! Form::label('fechaIni', 'De Fecha:', ['class' => 'col-form-label-sm']) !!}
 						<div class="input-group date" id="fechaLibroIni" data-target-input="nearest">
@@ -32,7 +45,7 @@
 					</div>
 				</div>
 
-				<div class="col-5" align="center" >
+				<div class="col-6" align="center" >
 					<div class="form-group">
 						{!! Form::label('fechaFin', 'A Fecha:', ['class' => 'col-form-label-sm']) !!}
 						<div class="input-group date" id="fechaLibroFin" data-target-input="nearest">
@@ -47,13 +60,13 @@
 				<div class="col-2">
 					<div class="form-group">
 						<br>
-						<button type="button" class="btn btn-dark" id="consultar">Consultar</button>
+						
 					</div>
 				</div>
 			</div>
 		</div>
 		{!! Form::close() !!}
-		{{----}}
+
 		<div class="table">
 			<table id="libroTable" class="table table-bordered table-striped" width="100%">
 				<thead>
@@ -68,21 +81,7 @@
 				</thead>
 			</table>
 		</div>
-	</div>
-	<div class="boxtwo">
-		<div class="row">
-			<div class="col">
-				<div class="text-center">
-					<a href="{{ route('home') }}" class="btn btn-dark text-center">Volver atrás</a>
-				</div>
-			</div>
-		</div>
-	</div>
-    </div>
-    </div>
-    </div>
-    </div>
-@endsection
+
 
 @section('scripts')
 <script src="{{ asset('js/datatables.min.js')}}" ></script>
@@ -180,3 +179,11 @@
 </script>
 
 @endsection
+
+			</div>
+		</div>
+	</div>
+</div>
+
+@endsection
+

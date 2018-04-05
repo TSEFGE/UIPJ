@@ -1,4 +1,3 @@
-<h6>Denunciante o Agraviado</h6>
 <div class="table">
     <table class="table table-striped">
         <thead>
@@ -9,7 +8,7 @@
             <th>Teléfono</th>
             <th>Persona moral</th>
             <th>Constancia de hechos</th>
-            <th>Agregar Complemento</th>
+            <th>Agregar complemento</th>
 
         </thead>
         <tbody>
