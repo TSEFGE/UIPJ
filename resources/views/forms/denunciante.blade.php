@@ -1,6 +1,6 @@
 @extends('template.form')
 
-@section('title', 'Agregar Denunciante')
+@section('title', 'Agregar denunciante')
 
 @section('contenido')
 @include('forms.errores')
@@ -58,7 +58,7 @@
 							<a class="nav-link" data-toggle="tab" href="#collapseNotifs1">Dirección para notificaciones</a>
 						</li> 
 						<li class="nav-item"  id="datosExtra">
-							<a class="nav-link" data-toggle="tab" href="#collapseDenun1">Información sobre el Denunciante o Agraviado</a>
+							<a class="nav-link" data-toggle="tab" href="#collapseDenun1">Información sobre el denunciante o agraviado</a>
 						</li> 		
 
 					</ul>

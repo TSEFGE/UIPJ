@@ -1,6 +1,6 @@
 @extends('template.form')
 
-@section('title', 'Agregar Denunciado')
+@section('title', 'Agregar denunciado')
 
 @section('contenido')
 @include('forms.errores')
@@ -22,7 +22,7 @@
 					</div>
 					<div class="form-check form-check-inline">
 						<label class="form-check-label col-form-label col-form-label-sm">
-							<input class="form-check-input" type="radio" id="tipoDenunciado2" name="tipoDenunciado" value="2" required> Conoce al Denunciado o Imputado
+							<input class="form-check-input" type="radio" id="tipoDenunciado2" name="tipoDenunciado" value="2" required> Conoce al denunciado o imputado
 						</label>
 					</div>
 					<div class="form-check form-check-inline">
