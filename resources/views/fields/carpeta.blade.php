@@ -8,7 +8,7 @@
 	<div class="col-sm-3">
 		<div class="form-group">
 			{!! Form::label('idFiscal', 'Fiscal', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('idFiscal', Auth::user()->nombres." ".Auth::user()->primerAp." ".Auth::user()->segundoAp, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un fiscal', 'readonly', 'required']) !!}
+			{!! Form::text('idFiscal', Auth::user()->nombres." ".Auth::user()->apellidos, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un fiscal', 'readonly', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-sm-3">
