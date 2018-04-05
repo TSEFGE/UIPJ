@@ -21,7 +21,7 @@ class DocxMakerController extends Controller
 			->join('carpeta', 'carpeta.id', '=', 'variables_persona.idCarpeta' )
             ->join('unidad', 'unidad.id', '=', 'carpeta.idUnidad')
             ->join('users', 'users.id', '=', 'carpeta.idFiscal')
-            ->select('extra_denunciante.narracion', 'persona.nombres as nombresD', 'persona.primerAp as primerApD', 'persona.segundoAp as segundoApD', 'carpeta.id', 'carpeta.numCarpeta', 'carpeta.fechaInicio', 'unidad.direccion', 'unidad.telefono', 'unidad.distrito', 'unidad.municipio', 'users.nombres', 'users.primerAp', 'users.segundoAp', 'users.numFiscal')
+            ->select('extra_denunciante.narracion', 'persona.nombres as nombresD', 'persona.primerAp as primerApD', 'persona.segundoAp as segundoApD', 'carpeta.id', 'carpeta.numCarpeta', 'carpeta.fechaInicio', 'unidad.direccion', 'unidad.telefono', 'unidad.distrito', 'unidad.municipio', 'users.nombres', 'users.apellidos', 'users.numFiscal')
             ->where('extra_denunciante.id', '=', $idDenunciante)
             ->get();
         //dd($info);
@@ -32,7 +32,7 @@ class DocxMakerController extends Controller
 		$fechaHoy = new Carbon();
 		$mesLetra = DocxMakerController::getMesLetra($fechaHoy->month);
 		$fechaCompleta = mb_strtoupper($fechaHoy->day." DE ".$mesLetra." DE ".$fechaHoy->year);
-		$nombreFiscal = mb_strtoupper($info->nombres." ".$info->primerAp." ".$info->segundoAp);
+		$nombreFiscal = mb_strtoupper($info->nombres." ".$info->apellidos);
 		$diaLetra = mb_strtolower(DocxMakerController::getDiaLetra($fechaHoy->day));
 		$mesLetra = mb_strtolower($mesLetra);
 
@@ -67,7 +67,7 @@ class DocxMakerController extends Controller
 			->join('carpeta', 'carpeta.id', '=', 'acusacion.idCarpeta')
 			->join('users', 'users.id', '=', 'carpeta.idFiscal')
 			->join('unidad', 'unidad.id', '=', 'users.idUnidad')
-			->select('carpeta.numCarpeta', 'carpeta.fechaInicio', 'carpeta.conDetenido', 'users.nombres', 'users.primerAp', 'users.segundoAp', 'users.numFiscal', 'unidad.direccion', 'unidad.telefono', 'unidad.distrito', 'unidad.municipio')
+			->select('carpeta.numCarpeta', 'carpeta.fechaInicio', 'carpeta.conDetenido', 'users.nombres', 'users.apellidos', 'users.numFiscal', 'unidad.direccion', 'unidad.telefono', 'unidad.distrito', 'unidad.municipio')
 			->where('acusacion.id', '=', $idAcusacion)
 			->get();
 
@@ -164,7 +164,7 @@ class DocxMakerController extends Controller
 
 		$templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('templates/FormatoDenuncia.docx');
 		
-		$templateProcessor->setValue('nombreFiscal', mb_strtoupper($carpeta->nombres." ".$carpeta->primerAp." ".$carpeta->segundoAp));
+		$templateProcessor->setValue('nombreFiscal', mb_strtoupper($carpeta->nombres." ".$carpeta->apellidos));
 		$templateProcessor->setValue('distrito', $carpeta->distrito);
 		$templateProcessor->setValue('distritoLetra', $distritoLetra);
 		$templateProcessor->setValue('municipioUnidadM', mb_strtoupper($carpeta->municipio));
@@ -230,7 +230,7 @@ class DocxMakerController extends Controller
 			->join('carpeta', 'carpeta.id', '=', 'acusacion.idCarpeta')
 			->join('users', 'users.id', '=', 'carpeta.idFiscal')
 			->join('unidad', 'unidad.id', '=', 'users.idUnidad')
-			->select('carpeta.numCarpeta', 'carpeta.fechaInicio', 'carpeta.conDetenido', 'users.nombres', 'users.primerAp', 'users.segundoAp', 'users.numFiscal', 'unidad.direccion', 'unidad.telefono', 'unidad.distrito', 'unidad.municipio')
+			->select('carpeta.numCarpeta', 'carpeta.fechaInicio', 'carpeta.conDetenido', 'users.nombres', 'users.apellidos', 'users.numFiscal', 'unidad.direccion', 'unidad.telefono', 'unidad.distrito', 'unidad.municipio')
 			->where('acusacion.id', '=', $request->radioAcusacion)
 			->get();
 		$acusacion = DB::table('acusacion')
@@ -265,7 +265,7 @@ class DocxMakerController extends Controller
 
 		$templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('templates/InvestigaciónPolicíaMinisterial.docx');
 		
-		$templateProcessor->setValue('nombreFiscal', strtoupper($carpeta->nombres." ".$carpeta->primerAp." ".$carpeta->segundoAp));
+		$templateProcessor->setValue('nombreFiscal', strtoupper($carpeta->nombres." ".$carpeta->apellidos));
 		$templateProcessor->setValue('distrito', $carpeta->distrito);
 		$templateProcessor->setValue('distritoLetra', $distritoLetra);
 		$templateProcessor->setValue('municipioUnidadM', mb_strtoupper($carpeta->municipio));
@@ -300,7 +300,7 @@ class DocxMakerController extends Controller
 			->join('carpeta', 'carpeta.id', '=', 'acusacion.idCarpeta')
 			->join('users', 'users.id', '=', 'carpeta.idFiscal')
 			->join('unidad', 'unidad.id', '=', 'users.idUnidad')
-			->select('carpeta.numCarpeta', 'carpeta.fechaInicio', 'carpeta.conDetenido', 'users.nombres', 'users.primerAp', 'users.segundoAp', 'users.numFiscal', 'unidad.direccion', 'unidad.telefono', 'unidad.distrito', 'unidad.municipio')
+			->select('carpeta.numCarpeta', 'carpeta.fechaInicio', 'carpeta.conDetenido', 'users.nombres', 'users.apellidos', 'users.numFiscal', 'unidad.direccion', 'unidad.telefono', 'unidad.distrito', 'unidad.municipio')
 			->where('acusacion.id', '=', $request->radioAcusacion)
 			->get();
 		$acusacion = DB::table('acusacion')
@@ -335,7 +335,7 @@ class DocxMakerController extends Controller
 
 		$templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('templates/InvestigaciónServiciosPericiales.docx');
 		
-		$templateProcessor->setValue('nombreFiscal', mb_strtoupper($carpeta->nombres." ".$carpeta->primerAp." ".$carpeta->segundoAp));
+		$templateProcessor->setValue('nombreFiscal', mb_strtoupper($carpeta->nombres." ".$carpeta->apellidos));
 		$templateProcessor->setValue('distrito', $carpeta->distrito);
 		$templateProcessor->setValue('distritoLetra', $distritoLetra);
 		$templateProcessor->setValue('municipioUnidadM', mb_strtoupper($carpeta->municipio));
@@ -459,7 +459,7 @@ class DocxMakerController extends Controller
 	public static function getDiaLetra($numDia){
 		switch ($numDia) {
         	case '1':
-        		$diaLetra = "Primero";
+        		$diaLetra = "Primer";
         		break;
         	case '1':
         		$diaLetra = "Dos";
