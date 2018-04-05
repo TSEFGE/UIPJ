@@ -4,7 +4,7 @@
 
 @section('contenido')
 
-<div class="card-header">
+<div id="detallehead" class="card-header ">
 
 <div id="tabscarpeta">
     <ul class="nav nav-tabs">
@@ -43,7 +43,7 @@
 </div>
 
 <!-- Contenido en Pestañas -->
-<div class="card">
+
 <div class="tab-content" id="contenidotabs">
     <div class="tab-pane active container" id="tdenunciante">
                    <div class="boxtwo">
@@ -79,7 +79,7 @@
       <div class="boxtwo">
                     @include('tables.abogados')
                     <div class="text-right"> 
-                        <a href="{{ route('new.abogado', $carpetaNueva[0]->id) }}" class="btn btn-secondary">Agregar persona</a><hr>
+                        <a href="{{ route('new.abogado', $carpetaNueva[0]->id) }}" class="btn btn-primary">Agregar persona</a><hr>
                     </div>
                 </div>          
  </div>
@@ -137,8 +137,6 @@
 
   
         </div>
-
-</div>
 
 
 @endsection

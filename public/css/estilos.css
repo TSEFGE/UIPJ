@@ -27,6 +27,9 @@ header{
 }*/
 body{
 	background-color: #efefef;
+	font-family: 'neosanspro-regular';
+  	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 .navbar {
@@ -73,7 +76,7 @@ body{
 .boxtwo{
 	background-color: #ffffff;
 	/*border: solid 1px #BFBFBF;*/	
-	padding: 7px;
+	padding: 9px;
 }
 
 .barras{
@@ -83,14 +86,25 @@ body{
 }
 /* Pestañas colores*/
 .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
-    color: #6d6d6d;
+	color: #1b1b1b;
+	font-weight: bolder;
     background-color: rgb(255, 255, 255);
-    
+}
+
+.nav-tabs .nav-link {
+	color: #424242;
+    border: 1px solid transparent;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
 }
 
 .card-header{
-background-color: rgba(0, 0, 0, 0.03);
+background-color: rgba(0, 0, 0, 0.100);
 border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+#detallehead {
+	padding: 0rem 0rem 0rem 0rem;
+	border-bottom: 0;
 }
 
 textarea {
