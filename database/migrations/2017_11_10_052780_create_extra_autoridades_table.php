@@ -19,7 +19,7 @@ class CreateExtraAutoridadesTable extends Migration
             $table->string('antiguedad', 50);
             $table->string('rango', 50);
             $table->string('horarioLaboral', 50);
-            $table->string('narracion',2000);
+     
 
             $table->foreign('idVariablesPersona')->references('id')->on('variables_persona')->onDelete('cascade');
 

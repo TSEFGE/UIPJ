@@ -9,7 +9,7 @@ class ExtraAutoridad extends Model
     protected $table = 'extra_autoridad';
 
     protected $fillable = [
-        'id', 'idVariablesPersona', 'antiguedad', 'rango', 'horarioLaboral', 'narracion',
+        'id', 'idVariablesPersona', 'antiguedad', 'rango', 'horarioLaboral', 
     ];
 
     public function variablesPersona()
