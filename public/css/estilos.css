@@ -214,3 +214,17 @@ form .form-control:focus {
 	box-shadow: 0 0 5px rgb(165, 165, 165) !important;
 }
 
+#regresocarpeta {
+	/*transform-style: preserve-3d;*/
+	transition: width 4s;
+    -webkit-transition: width 4s;
+ }
+ #regresocarpeta:after {
+		
+}
+#regresocarpeta:hover {
+	content: 'Regresar a Carpeta';
+	color: #ffffff;
+	width:200px;
+   }
+   

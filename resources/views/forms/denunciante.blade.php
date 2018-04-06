@@ -48,16 +48,12 @@
 <div class=" card-body boxone">
 	<div class="row no-gutters">
 		<div class="col-12">
-			<div class="boxtwo">
-
 				<div class="row">
 					@if(!empty($idCarpeta))
 					{!! Form::hidden('idCarpeta', $idCarpeta) !!}
 					@endif	
 				</div>
-
-				<div class="card" id="datosPer">
-
+				<div class="" id="datosPer">
 					<div id="denunciante">
 
 						<ul class="nav nav-tabs">
@@ -79,7 +75,8 @@
 
 						</ul>
 					</div>
-
+				</div>
+				<div class="boxtwo">
 					<div class="tab-content" id="ctdenunciante">
 						<div class="tab-pane active container" id="collapsePersonales1">  		
 							@include('fields.personales')
@@ -99,9 +96,9 @@
 
 						</div>
 					</div>
-					<!-- Fin pestañas -->
 				</div>
-			</div>
+					<!-- Fin pestañas -->
+				
 
 		</div>
 	</div>

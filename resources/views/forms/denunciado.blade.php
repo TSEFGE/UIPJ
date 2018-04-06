@@ -10,10 +10,9 @@
 <div class="card-header">
 <div class="row">
 	<div class="col">
-		<div class="text-left">
+		<div class="">
 		<div class="row">
-
-			<div class="col-6">
+			<div class="col-9 text-left">
 				<div class="form-group">
 					<label class="col-form-label col-form-label-sm" for="formGroupExampleInput">Selecciona una opción</label>
 					<div class="clearfix"></div>
@@ -34,61 +33,31 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-6 comparecencia">
-				
+			<div class="col-3 comparecencia text-right">				
 					@include('fields.tipo-persona')
 				</div>
 			</div>
-			<div class="col-md-auto">	
+		</div>
+	</div>
+			<div class="col-4">	
 				<div class="text-right">
 					@include('forms.buttons')
 				</div>
 			</div>
 		</div>
-		</div>
 	</div>
-</div>
-
-
-
 
 @include('forms.errores')
 <div class=" card-body boxone">
 <div class="row no-gutters">
 	<div class="col-12">
-		<div class="boxtwo">
-
 			<div class="row">
 				@if(!empty($idCarpeta))
 				{!! Form::hidden('idCarpeta', $idCarpeta) !!}
 				@endif	
 			</div>
-
-			<div id="qrr">
-				<div class="boxtwo">
-					<div class="row">
-						<div class="col-12">
-							<div class="form-group">
-								{!! Form::label('nombresQ', 'Nombre', ['class' => 'col-form-label-sm']) !!}
-								{!! Form::text('nombresQ', "QUIEN RESULTE RESPONSABLE", ['class' => 'form-control form-control-sm', 'readonly']) !!}
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div id="conocido">
-				<div class="boxtwo">
-					@include('fields.det-conocido')
-				</div>
-			</div>
-
-
-
 			<div class="comparecencia">
-
 				<div id="denunciado">
-
 					<ul class="nav nav-tabs">
 						<li class="nav-item" id="datosPer">
 							<a class="nav-link active" data-toggle="tab" href="#collapsePersonales2">Datos personales</a>
@@ -108,8 +77,28 @@
 
 					</ul>
 				</div>
+			</div>
 
-				
+			<div id="qrr">
+				<div class="boxtwo">
+					<div class="row">
+						<div class="col-12">
+							<div class="form-group">
+								{!! Form::label('nombresQ', 'Nombre', ['class' => 'col-form-label-sm']) !!}
+								{!! Form::text('nombresQ', "QUIEN RESULTE RESPONSABLE", ['class' => 'form-control form-control-sm', 'readonly']) !!}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="conocido">
+				<div class="boxtwo">
+					@include('fields.det-conocido')
+				</div>
+			</div>	
+
+			<div class="boxtwo">	
 				<div class="tab-content" id="ctdenunciado">
 					<div class="tab-pane active container" id="collapsePersonales2">  		
 						@include('fields.personales')
@@ -129,15 +118,12 @@
 
 					</div>
 				</div>
+			</div>
 				<!-- Fin pestañas -->
 			</div>
 		</div>
 
 	</div>
-</div>
-</div>
-
-
 {!! Form::close() !!}
 @endsection
 

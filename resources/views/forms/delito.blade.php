@@ -22,8 +22,7 @@
 @include('forms.errores')
 <div class=" card-body boxone">
 	<div class="row no-gutters">
-		<div class="col-12">
-			<div class="boxtwo">			
+		<div class="col-12">			
 				<div class="row">
 					@if(!empty($idCarpeta))
 						{!! Form::hidden('idCarpeta', $idCarpeta) !!}
@@ -40,6 +39,7 @@
 		</li>  		
 	</ul>	
 </div>
+<div class="boxtwo">	
 <div class="tab-content" id="ctdelito">
 	<div class="tab-pane active container" id="infodelito">  		
 			@include('fields.delito')		
