@@ -38,6 +38,11 @@ class Carpeta extends Model
        return $this->hasMany('app/Models/Acusacion');
     }
 
+     public function narraciones()
+    {
+       return $this->hasMany('app/Models/Narracion');
+    }
+
     public function acumulaciones()
     {
        return $this->hasMany('app/Models/Acumulacion');

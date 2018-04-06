@@ -69,6 +69,7 @@ Route::middleware(['auth'])->group(function () {
 
 	Route::post('denunciado/storecomplemento', 'DenunciadoController@storeComplement')->name('store.complement2');
 
+
 	Route::post('armarRfc', 'DenuncianteController@rfcMoral')->name('rfc.denunciante');
 	Route::post('armarRfcFIsico', 'DenuncianteController@rfcFisico')->name('rfcFisico.denunciante');
 
@@ -123,6 +124,11 @@ Route::middleware(['auth'])->group(function () {
         return view('forms.notAllowed');
   	})->name('notAllowed');
 });
+
+/*-------------- RUTA PARA NARRACIONES---------------------*/
+
+Route::get('narracion/{idCarpeta}/{idInvolucrado}/index', 'NarracionController@index')->name('narracion.index');
+Route::post('narracion/create', 'NarracionController@store')->name('store.narracion');
 
 
 /*

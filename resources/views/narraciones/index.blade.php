@@ -1,0 +1,78 @@
+@extends('template.form')
+
+@section('title', 'Agregar narración')
+@section('contenido')
+<div class="card-header">
+	<div class="row">
+		<div class="col-sm-1">
+			<div class="text-left">		
+				{!! Form::open(['route' => 'store.narracion', 'method' => 'POST'])  !!}
+				{!! Form::hidden('idInvolucrado', $idInvolucrado) !!}
+				{!! Form::button('<i class="fa fa-plus" aria-hidden="true"></i> Nueva', ['class' => 'form-control btn btn-dark']) !!}
+			</div>
+		</div>
+		<div class="col">	
+			<div class="text-right">
+				@include('forms.buttons')
+			</div>
+		</div>
+
+		@isset($idCarpeta)
+		{!! Form::hidden('idCarpeta', $idCarpeta) !!}
+		@endisset
+
+	</div>
+</div>
+
+@include('forms.errores')
+<div class=" card-body boxone">	
+	<div class="col-12">
+		<div class="boxtwo">
+			<div class="row">	
+				
+				<div class="col-sm-2" >
+					
+					{!! Form::label('narracion', 'Narraciones Registradas', ['class' => 'col-form-label-sm']) !!}
+					<div class="table" style="width: 200px; height: 250px; overflow-y: scroll;">
+						<table class="table table-striped">
+							<thead>
+							
+
+							</thead>
+							<tbody>
+								@foreach($narraciones as $narracion)
+								<tr>
+									
+									<td>{{ $narracion->created_at }}</td>
+								</tr>
+								@endforeach
+								
+							</tbody>
+						</table>
+					</div>
+
+				</div> 
+				<div class="col-lg-10">
+
+					{!! Form::label('narracion', 'Narración', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::textarea('narracion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la narración']) !!}
+					
+
+
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text">Subir archivo</span>
+						</div>
+						<div class="custom-file">
+							<input type="file" class="custom-file-input" id="inputGroupFile01" name="file">
+							<label class="custom-file-label" for="inputGroupFile01" value={{'input[type =>file]'}}></label>
+						</div>
+					</div>  
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{!! Form::close() !!}
+
+@endsection
