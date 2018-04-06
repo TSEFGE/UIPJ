@@ -8,12 +8,12 @@
             <th>Teléfono</th>
             <th>Persona moral</th>
             <th>Constancia de hechos</th>
-            <th>Agregar complemento</th>
+         
 
         </thead>
         <tbody>
             @if(count($denunciantes)==0)
-                <tr><td colspan="8" class="text-center">Sin registros</td></tr>
+                <tr><td colspan="7" class="text-center">Sin registros</td></tr>
             @else
                 @foreach($denunciantes as $denunciante)
                     <tr>
@@ -30,11 +30,7 @@
 
 
                         <td align="center"><a href="{{ route('constancia.hechos',$denunciante->id) }}"> <i class="fa fa-cloud-download" style="font-size:24px;color:grey"></i></td> </a> 
-                        @if(isset($carpetaNueva))
-                        <td align="center"><a href="{{ route('complement.denunciante', ['idDenunciante'=>$denunciante->id, 'idCarpeta'=>$carpetaNueva[0]->id])}}"> <i class="fa fa-plus-square" style="font-size:24px;color:grey"></i></a></td>
-                        @else
-                        <td align="center"><a href="{{ route('complement.denunciante', ['idDenunciante'=>$denunciante->id, 'idCarpeta'=>$idCarpeta])}}"> <i class="fa fa-plus-square" style="font-size:24px;color:grey"></i></a></td>
-                        @endif
+                       
                          
 
                     </tr>

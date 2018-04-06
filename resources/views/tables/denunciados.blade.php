@@ -1,17 +1,17 @@
 <div class="table">
     <table class="table table-striped">
-        <thead>
+        <thead align="center">
             <th>Nombre</th>
             <th>RFC</th>
             <th>Edad</th>
             <th>Sexo</th>
             <th>Teléfono</th>
             <th>Persona moral</th>
-            <th>Agregar complemento</th>
+       
         </thead>
         <tbody>
             @if(count($denunciados)==0)
-                <tr><td colspan="7" class="text-center">Sin registros</td></tr>
+                <tr><td colspan="6" class="text-center">Sin registros</td></tr>
             @else
                 @foreach($denunciados as $denunciado)
                     <tr>
@@ -24,12 +24,8 @@
                         <td  align="center">SI</td>
                         @else
                         <td  align="center">NO</td>
-                        @endif 
-                        @if(isset($carpetaNueva))
-                        <td align="center"><a href="{{ route('complement.denunciado', ['idDenunciado'=>$denunciado->id, 'idCarpeta'=>$carpetaNueva[0]->id])}}"> <i class="fa fa-plus-square" style="font-size:24px;color:grey"></i></a></td>
-                        @else
-                        <td align="center"><a href="{{ route('complement.denunciado', ['idDenunciado'=>$denunciado->id, 'idCarpeta'=>$idCarpeta])}}"> <i class="fa fa-plus-square" style="font-size:24px;color:grey"></i></a></td>
-                        @endif
+                       
+                         @endif
                         @endforeach
                         @endif
                     </tbody>

@@ -1687,9 +1687,9 @@ pre code {
 .form-control:focus {
   color: #495057;
   background-color: #ffffff;
-  border-color: #80bdff;
+  border-color: #6b6b6b;
   outline: 0;
-  box-shadow: none, 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  box-shadow: none, 0 0 0 0.2rem rgba(94, 94, 94, 0.25);
 }
 
 .form-control::placeholder {
@@ -3264,7 +3264,7 @@ tbody.collapse.show {
 }
 
 .custom-control-input:focus ~ .custom-control-label::before {
-  box-shadow: 0 0 0 1px #ffffff, 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  /*box-shadow: 0 0 0 1px #ffffff, 0 0 0 0.2rem rgba(0, 123, 255, 0.25);*/
 }
 
 .custom-control-input:active ~ .custom-control-label::before {
