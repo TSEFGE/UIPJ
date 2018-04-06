@@ -370,10 +370,8 @@ class DenunciadoController extends Controller
                     if (!is_null($request->vestimenta)){
                         $ExtraDenunciado->vestimenta = $request->vestimenta;
                     }
-                    if (!is_null($request->narracion)){
-                        $ExtraDenunciado->narracion = $request->narracion;
-                    }
-                    $ExtraDenunciado->complemento = $request->complemento;
+                   
+                   
                     $ExtraDenunciado->save();
                     $idExtraDenunciado=$ExtraDenunciado->id;
 
@@ -465,8 +463,8 @@ class DenunciadoController extends Controller
                 $ExtraDenunciado->idVariablesPersona = $idVariablesPersona;
                 $ExtraDenunciado->idNotificacion = $idNotificacion;
                 $ExtraDenunciado->senasPartic = $request->senasPartic;
-                $ExtraDenunciado->narracion = $request->narracion;
-                $ExtraDenunciado->complemento = $request->complemento;
+             
+              
                 $ExtraDenunciado->save();
                 $idExtraDenunciado=$ExtraDenunciado->id;
 
@@ -494,7 +492,7 @@ class DenunciadoController extends Controller
         //dd($request->all());
         $denunciado = ExtraDenunciado::find($request->idExtra);
         //$denunciante->fill($request->all());
-        $denunciado->complemento = $request->complemento;
+       
         $denunciado->save();
         Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_denunciado', 'accion' => 'update', 'descripcion' => 'Se ha modificado el campo complemento de la narración en extra denunciado.', 'idFilaAccion' => $denunciado->id]);
         Alert::success('Complemento agregado con éxito', 'Hecho')->persistent("Aceptar");

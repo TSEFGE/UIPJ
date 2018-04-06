@@ -20,9 +20,9 @@ class ExtraDenunciante extends Model
         'idNotificaciones',
         'idAbogado',
         'conoceAlDenunciado',
-        'narracion',
+   
         'esVictima',
-        'complemento'
+     
     ];
     
     public function variablesPersona()

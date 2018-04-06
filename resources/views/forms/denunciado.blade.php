@@ -11,7 +11,9 @@
 <div class="row">
 	<div class="col">
 		<div class="text-left">
-			<div class="col-md-6">
+		<div class="row">
+
+			<div class="col-6">
 				<div class="form-group">
 					<label class="col-form-label col-form-label-sm" for="formGroupExampleInput">Selecciona una opción</label>
 					<div class="clearfix"></div>
@@ -43,10 +45,12 @@
 				</div>
 			</div>
 		</div>
+		</div>
 	</div>
 </div>
 
-</div>
+
+
 
 @include('forms.errores')
 <div class=" card-body boxone">

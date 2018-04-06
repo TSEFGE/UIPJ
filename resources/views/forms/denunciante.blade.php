@@ -7,21 +7,37 @@
 {!! Form::open(['route' => 'store.denunciante', 'method' => 'POST'])  !!}
 {{ csrf_field() }}
 
+
 <div class="card-header">
 	<div class="row">
 		<div class="col">
-			<div class="text-left">				
-				
+			<div class="text-left">		
 				<div class="row">
-					@include('fields.tipo-persona')
-				</div>				
-
-				<div class="col">	
-					<div class="text-right">
-						@include('forms.buttons')
+					<div class="col-6">
+						@include('fields.tipo-persona')
+					</div>
+					<div class="col-6">
+						<div class="form-group" id='Victima' style="display: none;">
+							<label class="col-form-label col-form-label-sm" for="formGroupExampleInput">¿Es víctima?</label>
+							<div class="clearfix"></div>
+							<div class="form-check form-check-inline">
+								<label class="form-check-label col-form-label col-form-label-sm">
+									<input class="form-check-input" type="radio" id="esVictima1" name="esVictima" value="1" required> Sí
+								</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<label class="form-check-label col-form-label col-form-label-sm">
+									<input class="form-check-input" type="radio" id="esVictima2" name="esVictima" value="0" required> No
+								</label>
+							</div>
+						</div>
 					</div>
 				</div>
-				
+			</div>
+		</div>
+		<div class="col">	
+			<div class="text-right">
+				@include('forms.buttons')
 			</div>
 		</div>
 	</div>
