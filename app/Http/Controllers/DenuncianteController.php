@@ -221,11 +221,11 @@ class DenuncianteController extends Controller
                 if ($request->conoceAlDenunciado===1) {
                     $ExtraDenunciante->conoceAlDenunciado = 1;
                 }
-               
+
                 if($request->esVictima!=null){
                   $ExtraDenunciante->esVictima=1;
                 }
-              
+
                 $ExtraDenunciante->save();
 
                 if($ExtraDenunciante->esVictima==1){
@@ -320,8 +320,8 @@ class DenuncianteController extends Controller
             if ($request->conoceAlDenunciado==1) {
                 $ExtraDenunciante->conoceAlDenunciado = 1;
             }
-           
-         
+           $ExtraDenunciante->esVictima=$request->esVictima;
+
             $ExtraDenunciante->save();
             Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_denunciante', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un nuevo extra denunciante de persona moral.', 'idFilaAccion' => $ExtraDenunciante->id]);
         }
