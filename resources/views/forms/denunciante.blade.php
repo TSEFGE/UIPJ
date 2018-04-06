@@ -1,4 +1,4 @@
-@extends('template.form') @section('title', 'Agregar denunciante') @section('contenido') @include('forms.errores') {!! Form::open(['route' => 'store.denunciante', 'method' => 'POST']) !!} {{ csrf_field() }}
+@extends('template.form') @section('title', 'Agregar denunciante') @section('contenido') {!! Form::open(['route' => 'store.denunciante', 'method' => 'POST']) !!} {{ csrf_field() }}
 
 
 <div class="card-header">
@@ -90,7 +90,7 @@
 					</div>
 				</div>
 					<!-- Fin pestañas -->
-				
+
 
 		</div>
 	</div>
