@@ -14,7 +14,7 @@
 Auth::routes();
 
 Route::get('/', function () {
-    return view('auth.login');
+    return redirect()->route('login');
 })->middleware('guest');
 
 Route::get('/home', 'HomeController@index')->name('home');
