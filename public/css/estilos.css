@@ -181,7 +181,8 @@ html{
 .btn-primary {
     color: #fff;
     background-color: #424242;
-    border-color: #424242;
+	border-color: #424242;
+		
 }
 .btn-primary:hover {
     background-color: #1b1b1b;
@@ -214,17 +215,32 @@ form .form-control:focus {
 	box-shadow: 0 0 5px rgb(165, 165, 165) !important;
 }
 
-#regresocarpeta {
-	/*transform-style: preserve-3d;*/
-	transition: width 4s;
-    -webkit-transition: width 4s;
- }
- #regresocarpeta:after {
-		
+#regresocarpeta:before {
+	font-family: FontAwesome;
+	content: "\f07c";
+	transition: all 2s ease;
+	
 }
-#regresocarpeta:hover {
-	content: 'Regresar a Carpeta';
-	color: #ffffff;
+#regresocarpeta:hover:before {
+	font-family:'neosanspro-regular';
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale; 
+	content: "Regresar a carpeta";
 	width:200px;
-   }
+  }
+#btn-reset:before {
+	font-family: FontAwesome;
+	content: "\f12d";
+	transition: all 2s ease-in-out;	
+	
+}
+#btn-reset:hover:before {
+	font-family:'neosanspro-regular';
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale; 
+	content: "Limpiar campos";
+	width:200px;
+  }
+
+
    
