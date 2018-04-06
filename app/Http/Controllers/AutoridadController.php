@@ -134,7 +134,7 @@ class AutoridadController extends Controller
         $ExtraAutoridad->antiguedad = $request->antiguedad;
         $ExtraAutoridad->rango = $request->rango;
         $ExtraAutoridad->horarioLaboral = $request->horarioLaboral;
-        $ExtraAutoridad->narracion = $request->narracion;
+      
         $ExtraAutoridad->save();
         //Agregar a bitacora
         Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_autoridad', 'accion' => 'insert', 'descripcion' => 'Se ha registrado Informacion extra de Autoridad', 'idFilaAccion' => $ExtraAutoridad->id]);
