@@ -7,6 +7,7 @@
 {!! Form::open(['route' => 'store.denunciante', 'method' => 'POST'])  !!}
 {{ csrf_field() }}
 
+
 <div class="card-header">
 	<div class="row">
 		<div class="col">
