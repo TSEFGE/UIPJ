@@ -21,7 +21,7 @@ class CreateExtraDenunciantesTable extends Migration
             $table->boolean('conoceAlDenunciado')->default(false);
          
             $table->boolean('esVictima')->default(false);
-            $table->string('complemento',2000)->nullable();
+           
 
 
             $table->timestamps();

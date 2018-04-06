@@ -22,7 +22,7 @@ class ExtraDenunciante extends Model
         'conoceAlDenunciado',
    
         'esVictima',
-        'complemento'
+     
     ];
     
     public function variablesPersona()
