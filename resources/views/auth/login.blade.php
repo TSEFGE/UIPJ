@@ -20,67 +20,63 @@ sessionStorage.removeItem('isLive');
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">--}}
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/font-awesome/css/font-awesome.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('plugins/font-awesome/css/font-awesome.css') }}">
+    <link rel="stylesheet" type="text/css"  href="{{asset ('admin/dist/css/adminlte.css')}}">
 	<link rel="stylesheet" href="{{ asset('css/cssfonts.css') }}">
     <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
 </head>
 
-<body>
-	<div class="container">
-		@include('template.partials.header')
-
-<div class="container">
-    <div class="row justify-content-md-center">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="card">
-                <div class="card-header">Iniciar sesión</div>
-
-                <div class="card-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+<body class="hold-transition login-page">
+        <div class="login-box rounded">
+                <div class="card-body arriba rounded-top">
+                  <a id="login-logo" ><img src="{{ asset('img/logo-fge-svg.svg') }}" alt=""></a>
+                </div>
+                <!-- /.login-logo -->                
+                  <div class="card-body login-card-body abajo rounded-bottom">                                
+                    <form method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
-
                         <input type="hidden" id="email" name="email" value="">
-
-                        <div class="form-group row{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 col-form-label text-right">Nombre de usuario</label>
-                            <div class="col-md-6">
-                                <input id="name" type="texto" class="form-control" name="name" value="{{ old('email') }}" required autofocus>
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
+                        <div id="usuario" class="form-row align-items-center">
+                            <div class="col form-group has-feedback row{{ $errors->has('password') ? ' has-error' : '' }} inputrow">
+                              <input type="text" class="form-control mb-2" id="name" name="name" placeholder="Usuario">
+                              <label class="fa fa-user fa-lg" for="name"></label> 
                             </div>
-                        </div>
-
-                        <div class="form-group row{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 col-form-label text-right">Contraseña</label>
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-                                @if ($errors->has('password'))
+                            <div class="col form-group has-feedback">
+                              <label class="sr-only" for="inlineFormInputGroup" style="white">Username</label>
+                              <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                  <div id="dominio" class="input-group-text rounded">@fiscaliaveracruz.gob.mx</div>
+                                </div>
+                                </div>
+                            </div>
+                            @if ($errors->has('email'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('email') }}</strong>
+                            </span>
+                        @endif           
+                      </div>
+                      <div class="form-group has-feedback row{{ $errors->has('password') ? ' has-error' : '' }} inputrow">
+                        <input id="password" type="password" class="form-control" name="password"  placeholder="Contraseña">
+                        <label class="fa fa-lock fa-lg" for="password" ></label>
+                        @if ($errors->has('password'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                                 @endif
-                            </div>
+                      </div>                      
+                      <div class="row">
+                        <!-- /.col -->
+                        <div class="col-12 ">
+                          <button id="iniciar" type="submit" class="btn btn-primary btn-block btn-flat rounded">Sign In</button>
                         </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-4"></div>
-                            <div class="col-md-8">
-                                <button type="submit" class="btn btn-secondary" onclick="borrarlsc()">
-                                    Iniciar sesión
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-
+                        <!-- /.col -->
+                      </div>
+                    </form>           
+                  </div>
+                  <!-- /.login-card-body -->
+                
+              </div>            
+	
 <script src="{{ asset('js/jquery-3.2.1.min.js')}}" ></script>
 <script src="{{ asset('js/popper.min.js')}}" ></script>
 <script src="{{ asset('js/bootstrap.min.js')}}" ></script>
@@ -98,6 +94,9 @@ sessionStorage.removeItem('isLive');
     $(document).ready(function() {
         $("#name").focusout(function() {
             $("#email").val($(this).val()+"@fiscaliaveracruz.gob.mx".toLowerCase());
+        });
+        $('input:text').focus(function(){
+            $(this).css( "color","#6b6b6b");
         });
     });
 </script>
