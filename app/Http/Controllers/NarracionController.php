@@ -15,7 +15,7 @@ class NarracionController extends Controller
      */
     public function index($idCarpeta, $idInvolucrado,$tipoInvolucrado)
     {
-        $narraciones= Narracion::where('idInvolucrado',$idInvolucrado)->where('idCarpeta',$idCarpeta)->get();
+        $narraciones= Narracion::where('idInvolucrado',$idInvolucrado)->where('idCarpeta',$idCarpeta)->orderby('created_at','DESC')->get();
       
         if($narraciones->isNotEmpty()){
 
