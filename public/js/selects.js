@@ -395,7 +395,7 @@ $("#idAgrupacion1").change(function(event){
 $(".ver-Narracion").on('click',function(e){
 	var id=this.id;
 	$.get("../../"+id+"/ver",function(response){
-		$('#narracionText').val(response);
+		$('#narracion').val(response);
 	});
 console.log('hola:'+id);
 });
