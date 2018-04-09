@@ -68,7 +68,7 @@
 						</ul>
 					</div>
 				</div>
-				<div class="boxtwo">
+				<div id="cajados" class="boxtwo">
 					<div class="tab-content" id="ctdenunciante">
 						<div class="tab-pane active container" id="collapsePersonales1">
 							@include('fields.personales')
