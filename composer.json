@@ -14,6 +14,7 @@
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4.0",
         "laraveles/spanish": "^1.0",
+        "maddhatter/laravel-fullcalendar": "^1.3",
         "nesbot/carbon": "1.23",
         "phpoffice/phpword": "^0.13.0",
         "phpspec/phpspec": "^3.0.0",
