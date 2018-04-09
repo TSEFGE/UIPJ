@@ -55,7 +55,7 @@
 				<div class="col-lg-10">
 
 					{!! Form::label('narracion', 'Narración', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::textarea('narracionText', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la narración','id' => 'narracionText', 'disabled']) !!}
+					{!! Form::textarea('narracion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la narración','id' => 'narracionText']) !!}
 					
 
 
