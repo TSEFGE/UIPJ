@@ -19,8 +19,8 @@ class CreateNarracionTable extends Migration
            $table->integer('idInvolucrado')->unsigned(); 
            $table->integer('idCarpeta')->unsigned(); 
            $table->string('narracion',2000);
-           $table->integer('tipo')->unsigned();
-           $table->string('fiel',200);
+           $table->integer('tipoInvolucrado')->unsigned();
+           $table->string('archivo',200)->nullable();
 
       
 

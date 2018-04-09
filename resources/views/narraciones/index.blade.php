@@ -6,7 +6,7 @@
 	<div class="row">
 		<div class="col-sm-1">
 			<div class="text-left">
-				{!! Form::open(['route' => 'store.narracion', 'method' => 'POST'])  !!}
+				{!! Form::open(['route' => 'store.narracion', 'method' => 'POST', 'enctype'=>'multipart/form-data'])  !!}
 				{!! Form::hidden('idInvolucrado', $idInvolucrado) !!}
 				{!! Form::button('Nueva', ['class' => 'btn btn-primary', 'id' => 'btn-narracion']) !!}
 			</div>
@@ -60,13 +60,17 @@
 					{!! Form::textarea('narracion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la narración','id' => 'narracionText']) !!}
 					
 
-
+					<div  class="form-group">
+					{!! Form::label('archivo', 'Seleccione archivo', ['class' => 'col-form-label-sm']) !!}
+			     	<input type="file"  id="archivo" name="archivo">
+			 			
+					</div>
 					<div class="input-group mb-3">
 						<div class="input-group-prepend">
 							<span class="input-group-text">Subir archivo</span>
 						</div>
 						<div class="custom-file">
-							<input type="file" class="custom-file-input" id="inputGroupFile01" name="file">
+							<input type="file" clas id="inputGroupFile01" name="archivo">
 							<label class="custom-file-label" for="inputGroupFile01" value={{'input[type =>file]'}}></label>
 						</div>
 					</div>

@@ -24,10 +24,6 @@ class NarracionController extends Controller
 
     }
 
-    public function ver($id){
-      $narracion= Narracion::select('narracion')->Where('id',$id)->get()->first();
-      return $narracion->narracion;
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -47,12 +43,22 @@ class NarracionController extends Controller
      */
     public function store(Request $request)
     {
-        
+    
+     if($request->file('archivo')){
+        $file = $request->file('archivo');
+        $name = 'archivo_adjunto_'.time().'.'.$file->getClientOriginalExtension();
+        $path = public_path().'\storage\adjuntoNarracion\\';
+        $file->move($path, $name);
+     }else{
+        $name="";
+     }
+
      $narracion= new Narracion($request->all());
-    // $narracion->narracion= $request->narracion;
+     $narracion->archivo=$name;
+     
+    // dd($request->all());
 
      $narracion->save();
-     dd($narracion);
      $idCarpeta=$request->idCarpeta;
      $idInvolucrado=$request->idInvolucrado;
      Alert::success('Narración registrada con éxito', 'Hecho')->persistent("Aceptar");
