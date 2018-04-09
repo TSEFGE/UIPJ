@@ -589,15 +589,15 @@ $(document).ready(function(){
                 vertical: 'bottom',
                 horizontal: 'left'
             }
-        }); 
+        });
         $('#fechaAltaEmpresa').focus(function(){
             $('#cajados').css("padding-bottom", '160px');
         });
         $('#fechaAltaEmpresa').focusout(function(){
             $('#cajados').css("padding-bottom", '20px');
-        });           
+        });
     });
-    
+
     $('#esVictima').on('click',function(e) {
           $('#fechanac').datetimepicker("destroy");
       if ($('#esVictima').is(':checked') ) {
@@ -678,7 +678,7 @@ $(document).ready(function(){
         });
         $('#fecha').focusout(function(){
             $('#cajados').css("padding-bottom", '10px');
-        });      
+        });
     });
 
     $(function () { //Datetimepicker a la zquierda y debajo para vizualizar mejor no se oculte en la nav
@@ -702,57 +702,93 @@ $(document).ready(function(){
     $("#fax").val("SIN INFORMACION");
     $("#correo").val("sin@informacion.com");
 
-    $("#archivo").fileinput({
-        language:'es',
-        theme: 'fa',
-        browseClass: 'btn btn-info btn-block',
-        showCaption: true,
-        showRemove: true,
-        showUpload: false,
-        allowedFileExtensions: ['jpg','jpeg','png','gif','pdf']
+
+    //--- N A  R   R   A   C    I   O  N   E   S
+    function crearFileInput(){
+      $("#archivo").fileinput('destroy');
+      $("#archivo").fileinput({
+          language:'es',
+          theme: 'fa',
+          browseClass: 'btn btn-info btn-block',
+          showCaption: true,
+          showRemove: true,
+          showUpload: false,
+          allowedFileExtensions: ['jpg','jpeg','png','gif','pdf']
+      });
+    }
+
+    $(".ver-Narracion").on('click',function(e){
+      var id=this.id;
+      $('#btn-submit').prop("disabled", true );
+      $("#narracion").prop( "disabled", true );
+      $.get("../../"+id+"/ver",'async:true',function(response){
+       $('#narracion').val(response.narracion);
+       if(response.archivo!=""){
+         $("#subirArchivo").show();
+         console.log('entra');
+         //ruta=window.location.host+"/"+$.url('1')+("/public/storage/adjuntoNarracion/"+response.archivo);
+         ruta=("../../../storage/adjuntoNarracion/"+response.archivo);
+         console.log(ruta);
+          $("#archivo").fileinput('destroy');
+         $("#archivo").fileinput({
+           language:'es',
+           theme:'fa',
+           browseClass:'btn btn-info btn-block',
+           showCaption:false,
+           showUpload:false,
+           showRemove:false,
+           allowedFileExtensions:['jpg','jpeg','png','pdf'],
+           previewFileIcon:'<i class="glyphicon glyphicon-king"></i>',
+           overwriteInitial:false,
+           initialPreviewAsData:true,
+           initialPreview:[ruta]
+           });
+       }else{
+        $("#subirArchivo").hide();
+        $("#archivo").fileinput('destroy');
+       }
+     });
     });
-});
+     $("#subirArchivo").hide();
+    $("#btn-narracion").on("click",function(){
+      $("#narracion").attr("placeholder", "Ingrese Narración");
+      $('#btn-submit').prop("disabled", false );
+       crearFileInput();
+       $("#subirArchivo").show();
+       $("#narracion").prop("disabled", false );
+
+
+    });
+    });
+
+
       $('#fechanac').trigger('change');
       $('#edad').val('16');
-$("#btn-reset").on("click",function(){
-    swal({
-        title: "¿Estas seguro?",
-        text: "Deseas borrar el contenido del formulario y del almacenamiento local",
-        type: "warning",
-        showCancelButton: true,
-        confirmButtonClass: "btn-danger",
-        confirmButtonText: "Aceptar",
-        cancelButtonText: "Cancelar",
-        closeOnConfirm: false,
-        closeOnCancel: false
-      },
-      function(isConfirm) {
-        if (isConfirm) {
-            //e.preventDefault();
-            $('form').trigger("reset");
-            $('select').trigger('change');
-           swal("Borrado", "Ya puedes llenar tu formulario con normalidad", "success");
-        } else {
-          swal("Cancelado", "Tus datos siguen ahí", "error");
-        }
-      });
+      $("#btn-reset").on("click",function(){
+        swal({
+            title: "¿Estas seguro?",
+            text: "Deseas borrar el contenido del formulario y del almacenamiento local",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonClass: "btn-danger",
+            confirmButtonText: "Aceptar",
+            cancelButtonText: "Cancelar",
+            closeOnConfirm: false,
+            closeOnCancel: false
+          },
+          function(isConfirm) {
+            if (isConfirm) {
+                //e.preventDefault();
+                $('form').trigger("reset");
+                $('select').trigger('change');
+               swal("Borrado", "Ya puedes llenar tu formulario con normalidad", "success");
+            } else {
+              swal("Cancelado", "Tus datos siguen ahí", "error");
+            }
+          });
 
-    
-    
-});
+          });
 
 
-
-$("#narracionText").prop( "disabled", true );
-
-$("#btn-narracion").on("click",function(){
-   console.log("funciona on click");
- $("#narracionText").prop( "disabled", false );
-  
-
-});
-
-
-
-
-
+$('#btn-submit').prop("disabled", true );
+$("#narracion").prop( "disabled", true );

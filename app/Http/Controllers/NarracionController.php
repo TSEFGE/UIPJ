@@ -24,6 +24,11 @@ class NarracionController extends Controller
 
     }
 
+    public function ver($id){
+      $narracion= Narracion::Where('id',$id)->get()->first();
+      //dd($narracion->archivo,$narracion);
+      return ['narracion'=>$narracion->narracion,'archivo'=>$narracion->archivo];
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -43,7 +48,7 @@ class NarracionController extends Controller
      */
     public function store(Request $request)
     {
-    
+
      //dd($request);
      if($request->file('archivo')){
         $file = $request->file('archivo');
@@ -56,7 +61,7 @@ class NarracionController extends Controller
 
      $narracion= new Narracion($request->all());
      $narracion->archivo=$name;
-     
+
 
      $narracion->save();
      $idCarpeta=$request->idCarpeta;
