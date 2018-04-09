@@ -16,9 +16,17 @@ class NarracionController extends Controller
     public function index($idCarpeta, $idInvolucrado,$tipoInvolucrado)
     {
         $narraciones= Narracion::where('idInvolucrado',$idInvolucrado)->where('idCarpeta',$idCarpeta)->get();
+      
+        if($narraciones->isNotEmpty()){
 
+            return view('narraciones.index')->with('narraciones',$narraciones)->with('idCarpeta',$idCarpeta)->with('idInvolucrado',$idInvolucrado)->with('tipoInvolucrado',$tipoInvolucrado);
+           
+        }else{
+        Alert::error('No se puede agregar narración a una persona o carpeta que no existe.', 'Error')->persistent("Aceptar");
+              return redirect()->route('carpeta', $idCarpeta);
+        }
 
-        return view('narraciones.index')->with('narraciones',$narraciones)->with('idCarpeta',$idCarpeta)->with('idInvolucrado',$idInvolucrado)->with('tipoInvolucrado',$tipoInvolucrado);
+        
       //  return view('narraciones.index');
 
 
