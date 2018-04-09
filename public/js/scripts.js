@@ -648,6 +648,15 @@ $(document).ready(function(){
     $("#fax").val("SIN INFORMACION");
     $("#correo").val("sin@informacion.com");
 
+    $("#archivo").fileinput({
+        language:'es',
+        theme: 'fa',
+        browseClass: 'btn btn-info btn-block',
+        showCaption: true,
+        showRemove: true,
+        showUpload: false,
+        allowedFileExtensions: ['jpg','jpeg','png','gif','pdf']
+    });
 });
       $('#fechanac').trigger('change');
       $('#edad').val('16');
@@ -673,6 +682,9 @@ $("#btn-reset").on("click",function(){
           swal("Cancelado", "Tus datos siguen ahí", "error");
         }
       });
+
+    
+    
 });
 
 
@@ -685,6 +697,8 @@ $("#btn-narracion").on("click",function(){
   
 
 });
+
+
 
 
 

@@ -127,7 +127,7 @@ Route::middleware(['auth'])->group(function () {
 
     /*-------------- RUTA PARA NARRACIONES---------------------*/
     Route::get('narracion/{id}/ver','NarracionController@ver')->name('ver.narracion');
-    Route::get('narracion/{idCarpeta}/{idInvolucrado}/index', 'NarracionController@index')->name('narracion.index');
+    Route::get('narracion/{idCarpeta}/{idInvolucrado}/{tipoInvolucrado}', 'NarracionController@index')->name('narracion.index');
     Route::post('narracion/create', 'NarracionController@store')->name('store.narracion');
 });
 

@@ -19,7 +19,7 @@ class Narracion extends Model
         'idInvolucrado',
         'idCarpeta',
         'narracion',
-        'tipo',
+        'tipoInvolucrado',
         'archivo',
 
        

@@ -13,12 +13,12 @@ class NarracionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($idCarpeta, $idInvolucrado)
+    public function index($idCarpeta, $idInvolucrado,$tipoInvolucrado)
     {
         $narraciones= Narracion::where('idInvolucrado',$idInvolucrado)->where('idCarpeta',$idCarpeta)->get();
 
 
-        return view('narraciones.index')->with('narraciones',$narraciones)->with('idCarpeta',$idCarpeta)->with('idInvolucrado',$idInvolucrado);
+        return view('narraciones.index')->with('narraciones',$narraciones)->with('idCarpeta',$idCarpeta)->with('idInvolucrado',$idInvolucrado)->with('tipoInvolucrado',$tipoInvolucrado);
       //  return view('narraciones.index');
 
 
@@ -44,6 +44,7 @@ class NarracionController extends Controller
     public function store(Request $request)
     {
     
+     //dd($request);
      if($request->file('archivo')){
         $file = $request->file('archivo');
         $name = 'archivo_adjunto_'.time().'.'.$file->getClientOriginalExtension();
@@ -56,14 +57,14 @@ class NarracionController extends Controller
      $narracion= new Narracion($request->all());
      $narracion->archivo=$name;
      
-    // dd($request->all());
 
      $narracion->save();
      $idCarpeta=$request->idCarpeta;
      $idInvolucrado=$request->idInvolucrado;
+       $tipoInvolucrado=$request->tipoInvolucrado;
      Alert::success('Narración registrada con éxito', 'Hecho')->persistent("Aceptar");
 
-     return redirect()->route('narracion.index',['idCarpeta'=>$idCarpeta,'idInvolucrado'=>$idInvolucrado]);
+     return redirect()->route('narracion.index',['idCarpeta'=>$idCarpeta,'idInvolucrado'=>$idInvolucrado,'tipoInvolucrado'=>$tipoInvolucrado]);
 
 
  }
