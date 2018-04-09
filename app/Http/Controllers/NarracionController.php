@@ -43,10 +43,12 @@ class NarracionController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request);
+        
      $narracion= new Narracion($request->all());
+    // $narracion->narracion= $request->narracion;
 
      $narracion->save();
+     dd($narracion);
      $idCarpeta=$request->idCarpeta;
      $idInvolucrado=$request->idInvolucrado;
      Alert::success('Narración registrada con éxito', 'Hecho')->persistent("Aceptar");

@@ -20,6 +20,8 @@ class Narracion extends Model
         'idCarpeta',
         'narracion',
         'tipo',
+        'fiel',
+
        
     ];
 

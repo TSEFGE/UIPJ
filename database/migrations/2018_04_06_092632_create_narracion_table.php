@@ -20,6 +20,9 @@ class CreateNarracionTable extends Migration
            $table->integer('idCarpeta')->unsigned(); 
            $table->string('narracion',2000);
            $table->integer('tipo')->unsigned();
+           $table->string('fiel',200);
+
+      
 
             $table->foreign('idCarpeta')->references('id')->on('carpeta')->onDelete('cascade');
             
