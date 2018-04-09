@@ -123,12 +123,16 @@ Route::middleware(['auth'])->group(function () {
   	Route::get('/notAllowed',function(){
         return view('forms.notAllowed');
   	})->name('notAllowed');
+
+
+    /*-------------- RUTA PARA NARRACIONES---------------------*/
+    Route::get('narracion/{id}/ver','NarracionController@ver')->name('ver.narracion');
+    Route::get('narracion/{idCarpeta}/{idInvolucrado}/index', 'NarracionController@index')->name('narracion.index');
+    Route::post('narracion/create', 'NarracionController@store')->name('store.narracion');
 });
 
-/*-------------- RUTA PARA NARRACIONES---------------------*/
 
-Route::get('narracion/{idCarpeta}/{idInvolucrado}/index', 'NarracionController@index')->name('narracion.index');
-Route::post('narracion/create', 'NarracionController@store')->name('store.narracion');
+
 
 
 /*
