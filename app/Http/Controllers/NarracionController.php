@@ -24,6 +24,10 @@ class NarracionController extends Controller
 
     }
 
+    public function ver($id){
+      $narracion= Narracion::select('narracion')->Where('id',$id)->get()->first();
+      return $narracion->narracion;
+    }
 
     /**
      * Show the form for creating a new resource.
