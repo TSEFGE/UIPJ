@@ -8,7 +8,7 @@
 			<div class="text-left">		
 				{!! Form::open(['route' => 'store.narracion', 'method' => 'POST'])  !!}
 				{!! Form::hidden('idInvolucrado', $idInvolucrado) !!}
-				{!! Form::button('<i class="fa fa-plus" aria-hidden="true"></i> Nueva', ['class' => 'form-control btn btn-dark']) !!}
+				{!! Form::submit('Nueva', ['class' => 'btn btn-primary', 'id' => 'btn-narracion']) !!}
 			</div>
 		</div>
 		<div class="col">	
@@ -32,7 +32,7 @@
 				
 				<div class="col-sm-2" >
 					
-					{!! Form::label('narracion', 'Narraciones Registradas', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::label('narracionEti', 'Narraciones Registradas', ['class' => 'col-form-label-sm']) !!}
 					<div class="table" style="width: 200px; height: 250px; overflow-y: scroll;">
 						<table class="table table-striped">
 							<thead>
@@ -55,7 +55,7 @@
 				<div class="col-lg-10">
 
 					{!! Form::label('narracion', 'Narración', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::textarea('narracion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la narración']) !!}
+					{!! Form::textarea('narracionText', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la narración','id' => 'narracionText', 'disabled']) !!}
 					
 
 
