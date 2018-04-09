@@ -674,3 +674,14 @@ $("#btn-reset").on("click",function(){
         }
       });
 });
+
+
+$("#btn-narracion").on("click",function(){
+   console.log("funciona on click");
+ $("#narracionText").prop( "disabled", false );
+  
+
+});
+
+
+
