@@ -2,6 +2,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/tempusdominus-bootstrap-4.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('plugins/fileinput/css/fileinput.min.css') }}">
 @endsection
 
 @section('content')
@@ -40,9 +41,15 @@
     <script src="{{ asset('js/es.js') }}"></script>
     <script src="{{ asset('js/tempusdominus-bootstrap-4.min.js') }}"></script>
     <script src="{{ asset('js/sisyphus.js')}}" ></script>
+    <script src="{{ asset('plugins/fileinput/js/fileinput.min.js')}}" ></script>
+    <script src="{{ asset('plugins/fileinput/js/locales/es.js')}}" ></script>
+    <script src="{{ asset('plugins/fileinput/themes/fa/theme.min.js')}}" ></script>
     <script src="{{ asset('js/validations.js') }}"></script>
     <script src="{{ asset('js/selects.js') }}"></script>
-    <script src="{{ asset('js/scripts.js') }}"></script>
+    <script src="{{ asset('js/scripts.js') }}"></script> 
+
+
+
     <script>
         //$('#narracionIph').restrictLength($('#contaNarr'));
         //$('#descripcionHechos').restrictLength($('#contaDesc'));

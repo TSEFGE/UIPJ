@@ -43,8 +43,20 @@ class NarracionController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request);
+    
+     if($request->file('archivo')){
+        $file = $request->file('archivo');
+        $name = 'archivo_adjunto_'.time().'.'.$file->getClientOriginalExtension();
+        $path = public_path().'\storage\adjuntoNarracion\\';
+        $file->move($path, $name);
+     }else{
+        $name="";
+     }
+
      $narracion= new Narracion($request->all());
+     $narracion->archivo=$name;
+     
+    // dd($request->all());
 
      $narracion->save();
      $idCarpeta=$request->idCarpeta;

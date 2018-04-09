@@ -730,6 +730,9 @@ $("#btn-reset").on("click",function(){
 });
 
 
+
+$("#narracionText").prop( "disabled", true );
+
 $("#btn-narracion").on("click",function(){
    console.log("funciona on click");
  $("#narracionText").prop( "disabled", false );
