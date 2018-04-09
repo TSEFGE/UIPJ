@@ -39,7 +39,7 @@
 		</li>  		
 	</ul>	
 </div>
-<div class="boxtwo">	
+<div id="cajados" class="boxtwo">	
 <div class="tab-content" id="ctdelito">
 	<div class="tab-pane active container" id="infodelito">  		
 			@include('fields.delito')		

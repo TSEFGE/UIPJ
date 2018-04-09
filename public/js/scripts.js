@@ -539,7 +539,11 @@ $(document).ready(function(){
     $(function () {
         $('#fechaInicial').datetimepicker({
            format: 'YYYY-MM-DD',
-           defaultDate: moment()
+           defaultDate: moment(),
+           widgetPositioning: {
+            vertical: 'bottom',
+            horizontal: 'left'
+        }
        });
     });
 
@@ -548,28 +552,52 @@ $(document).ready(function(){
     $(function () {
         $('#horaInter').datetimepicker({
            format: 'LT',
-           maxDate: moment()
+           maxDate: moment(),
+           widgetPositioning: {
+            vertical: 'bottom',
+            horizontal: 'left'
+        }
        });
     });
     $(function () {
         $('#fechaiph2').datetimepicker({
            format: 'YYYY-MM-DD',
-           maxDate: moment()
+           maxDate: moment(),
+           widgetPositioning: {
+            vertical: 'bottom',
+            horizontal: 'left'
+        }
        });
     });
     $(function () {
         $('#fechadet').datetimepicker({
             format: 'YYYY-MM-DD',
-            defaultDate: moment()
+            defaultDate: moment(),
+            widgetPositioning: {
+                vertical: 'bottom',
+                horizontal: 'left'
+            }
         });
     });
    $(function () {
         $('#fechaAlta').datetimepicker({
             format: 'YYYY-MM-DD',
+            keepOpen:true,
             minDate: moment().subtract(1500, 'years').format('YYYY-MM-DD'),
-            maxDate: moment()
+            maxDate: moment(),
+            widgetPositioning: {
+                vertical: 'bottom',
+                horizontal: 'left'
+            }
+        }); 
+        $('#fechaAltaEmpresa').focus(function(){
+            $('#cajados').css("padding-bottom", '160px');
         });
+        $('#fechaAltaEmpresa').focusout(function(){
+            $('#cajados').css("padding-bottom", '20px');
+        });           
     });
+    
     $('#esVictima').on('click',function(e) {
           $('#fechanac').datetimepicker("destroy");
       if ($('#esVictima').is(':checked') ) {
@@ -577,7 +605,11 @@ $(document).ready(function(){
         $('#fechanac').datetimepicker({
             format: 'YYYY-MM-DD',
             minDate: moment().subtract(150, 'years').format('YYYY-MM-DD'),
-            maxDate: moment().subtract(0, 'years').format('YYYY-MM-DD')
+            maxDate: moment().subtract(0, 'years').format('YYYY-MM-DD'),
+            widgetPositioning: {
+                vertical: 'bottom',
+                horizontal: 'left'
+            }
         });
         $('#edad').attr({'min':0});
       }else{
@@ -585,7 +617,11 @@ $(document).ready(function(){
         $('#fechanac').datetimepicker({
             format: 'YYYY-MM-DD',
             minDate: moment().subtract(150, 'years').format('YYYY-MM-DD'),
-            maxDate: moment().subtract(16, 'years').format('YYYY-MM-DD')
+            maxDate: moment().subtract(16, 'years').format('YYYY-MM-DD'),
+            widgetPositioning: {
+                vertical: 'bottom',
+                horizontal: 'left'
+            }
         });
       }
 
@@ -593,7 +629,11 @@ $(document).ready(function(){
     $('#fechanac').datetimepicker({
         format: 'YYYY-MM-DD',
         minDate: moment().subtract(150, 'years').format('YYYY-MM-DD'),
-        maxDate: moment().subtract(16, 'years').format('YYYY-MM-DD')
+        maxDate: moment().subtract(16, 'years').format('YYYY-MM-DD'),
+        widgetPositioning: {
+            vertical: 'bottom',
+            horizontal: 'left'
+        }
     });
       $('#edad').attr({'min':16});
 
@@ -609,7 +649,11 @@ $(document).ready(function(){
         $('#fechanac2').datetimepicker({
             format: 'YYYY-MM-DD',
             minDate: moment().subtract(150, 'years').format('YYYY-MM-DD'),
-            maxDate: moment()
+            maxDate: moment(),
+            widgetPositioning: {
+                vertical: 'bottom',
+                horizontal: 'left'
+            }
         });
     });
     $("#fechanac2").on("change.datetimepicker", function (e) {
@@ -623,8 +667,18 @@ $(document).ready(function(){
     $(function () {
         $('#fechadelit').datetimepicker({
            format: 'YYYY-MM-DD',
-           maxDate: moment()
+           maxDate: moment(),
+           widgetPositioning: {
+            vertical: 'bottom',
+            horizontal: 'left'
+        }
        });
+        $('#fecha').focus(function(){
+            $('#cajados').css("padding-bottom", '80px');
+        });
+        $('#fecha').focusout(function(){
+            $('#cajados').css("padding-bottom", '10px');
+        });      
     });
 
     $(function () { //Datetimepicker a la zquierda y debajo para vizualizar mejor no se oculte en la nav
