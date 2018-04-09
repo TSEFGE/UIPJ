@@ -12,7 +12,8 @@
 			confirmButtonText: "Continuar con la sesión",
 			cancelButtonText: "Cerrar sesión",
 			closeOnConfirm: false,
-			closeOnCancel: false
+			closeOnCancel: false,
+			allowEscapeKey: false
 		},
 		function(isConfirm){
 			if (isConfirm) {
