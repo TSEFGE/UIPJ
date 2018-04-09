@@ -188,12 +188,34 @@ html{
     background-color: #1b1b1b;
     border-color: #1b1b1b;
 }
-.btn-primary:active, .btn-primary:focus {
+.btn-primary:active {
 	background-color: #1b1b1b;
 	border-color: #6b6b6b !important;
 	box-shadow: 3 3 6px rgba(112, 112, 112, 0.938) !important;
 }
-
+.btn-primary:focus{
+	background-color: #1b1b1b;
+	border-color: #6b6b6b !important;
+	box-shadow: 3 3 6px rgba(112, 112, 112, 0.938) !important;
+}
+.btn-primary:after{
+	background-color: #1b1b1b;
+	border-color: #6b6b6b !important;
+	box-shadow: 3 3 6px rgba(112, 112, 112, 0.938) !important;
+}
+.btn-primary.disabled, .btn-primary:disabled {
+	color: #ffffff;
+	background-color: #1b1b1b;
+	border-color: #6b6b6b !important;
+	box-shadow: 3 3 6px rgba(112, 112, 112, 0.938) !important;
+  }
+  .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+  color: #ffffff;
+  background-color: #1b1b1b;
+  border-color: #6b6b6b !important;
+  box-shadow: 3 3 6px rgba(112, 112, 112, 0.938) !important;
+}
 .main-footer{
 	padding: 15px 15px 25px;
     color: #42424246;
