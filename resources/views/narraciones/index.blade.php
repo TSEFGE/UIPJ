@@ -8,7 +8,7 @@
 			<div class="text-left">		
 				{!! Form::open(['route' => 'store.narracion', 'method' => 'POST'])  !!}
 				{!! Form::hidden('idInvolucrado', $idInvolucrado) !!}
-				{!! Form::button('<i class="fa fa-plus" aria-hidden="true"></i> Nueva', ['class' => 'form-control btn btn-dark','id' => 'btn-narracion']) !!}
+				{!! Form::submit('Nueva', ['class' => 'btn btn-primary', 'id' => 'btn-narracion']) !!}
 			</div>
 		</div>
 		<div class="col">	
