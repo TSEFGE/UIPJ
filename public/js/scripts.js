@@ -798,8 +798,7 @@ $("#btn-reset").on("click",function(){
 
 
     });
-    });
-
+    
 
       $('#fechanac').trigger('change');
       $('#edad').val('16');

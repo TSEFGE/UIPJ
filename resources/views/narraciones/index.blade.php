@@ -9,12 +9,13 @@
 			<div class="text-left">
 				{!! Form::hidden('idInvolucrado', $idInvolucrado) !!}
 				{!! Form::hidden('tipoInvolucrado', $tipoInvolucrado) !!}
+				
 				{!! Form::button('Nueva', ['class' => 'btn btn-primary', 'id' => 'btn-narracion']) !!}
 			</div>
 		</div>
 		<div class="col">
 			<div class="text-right">
-				@include('forms.buttons') 
+				@include('forms.buttons')
 			</div>
 		</div>
 
@@ -33,7 +34,7 @@
 
 				<div class="col-sm-2" >
 
-					{!! Form::label('narracionEti', 'Narraciones registradas', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::label('narracionEti', 'Narraciones Registradas', ['class' => 'col-form-label-sm']) !!}
 					<div class="table" style="width: 200px; height: 550px; overflow-y: scroll;">
 						<style media="screen">
 							.table tr {
