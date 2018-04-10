@@ -1,6 +1,6 @@
 @extends('template.form')
 
-@section('title', 'Generar documento de colaboración con Servicios Periciales')
+@section('title', 'Generar documento de colaboración con servicios periciales')
 @section('contenido')
     {!! Form::open(['route' => 'colaboracion.sp', 'method' => 'POST'])  !!}
 	{{ csrf_field() }}
@@ -13,7 +13,7 @@
 							</div>
 						</div>
 				</div>
-			</div>
+			</div> 
 	<div class="row no-gutters">
 		<div class="col-12">
 			<div class="boxtwo">

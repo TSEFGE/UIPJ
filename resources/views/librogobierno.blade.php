@@ -21,7 +21,7 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div> 
 
 @include('forms.errores')
 <div class=" card-body boxone">
@@ -35,7 +35,7 @@
 			<div class="row" align="center">
 				<div class="col-6" align="center">
 					<div class="form-group">
-						{!! Form::label('fechaIni', 'De Fecha:', ['class' => 'col-form-label-sm']) !!}
+						{!! Form::label('fechaIni', 'De fecha:', ['class' => 'col-form-label-sm']) !!}
 						<div class="input-group date" id="fechaLibroIni" data-target-input="nearest">
 							{!! Form::text('fechaIni', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaLibroIni', 'data-toggle' => 'datetimepicker', 'required', 'placeholder' => 'DD/MM/AAAA']) !!}
 							<div class="input-group-append" data-target="#fechaLibroIni" data-toggle="datetimepicker">
@@ -47,7 +47,7 @@
 
 				<div class="col-6" align="center" >
 					<div class="form-group">
-						{!! Form::label('fechaFin', 'A Fecha:', ['class' => 'col-form-label-sm']) !!}
+						{!! Form::label('fechaFin', 'A fecha:', ['class' => 'col-form-label-sm']) !!}
 						<div class="input-group date" id="fechaLibroFin" data-target-input="nearest">
 							{!! Form::text('fechaFin', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaLibroFin', 'data-toggle' => 'datetimepicker', 'required', 'placeholder' => 'DD/MM/AAAA']) !!}
 							<div class="input-group-append" data-target="#fechaLibroFin" data-toggle="datetimepicker">

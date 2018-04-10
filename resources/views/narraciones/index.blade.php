@@ -9,6 +9,7 @@
 			<div class="text-left">
 				{!! Form::hidden('idInvolucrado', $idInvolucrado) !!}
 				{!! Form::hidden('tipoInvolucrado', $tipoInvolucrado) !!}
+				
 				{!! Form::button('Nueva', ['class' => 'btn btn-primary', 'id' => 'btn-narracion']) !!}
 			</div>
 		</div>
@@ -58,13 +59,13 @@
 				<div class="col-lg-10">
 
 					{!! Form::label('narracion', 'Narración', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::textarea('narracion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la narración','id' => 'narracion']) !!}
-					
+					{!! Form::textarea('narracion', null, ['class' => 'form-control form-control-sm','id' => 'narracion']) !!}
 
-					<div  class="form-group">
+
+					<div  class="form-group" id="subirArchivo">
 					{!! Form::label('archivo', 'Seleccione archivo', ['class' => 'col-form-label-sm']) !!}
 			     	<input type="file"  id="archivo" name="archivo">
-			 			
+
 					</div>
 				</div>
 			</div>

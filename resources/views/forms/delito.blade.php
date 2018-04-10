@@ -18,7 +18,7 @@
 		</div>
 	</div>
 </div>
-
+ 
 @include('forms.errores')
 <div class=" card-body boxone">
 	<div class="row no-gutters">

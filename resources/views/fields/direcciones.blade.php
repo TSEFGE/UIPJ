@@ -12,7 +12,7 @@
 		</div>
 	</div>
 	<div class="col-4">
-		<div class="form-group">
+ 		<div class="form-group">
 			{!! Form::label('idLocalidad', 'Localidad', ['class' => 'col-form-label-sm']) !!}
 			{!! Form::select('idLocalidad', [ '' => 'Seleccione una localidad'], null, ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
 		</div>

@@ -1,6 +1,6 @@
 @extends('template.form')
 
-@section('title', 'Iniciar nueva Carpeta de Investigación')
+@section('title', 'Iniciar nueva carpeta de investigación')
 
 
 @section('contenido')
@@ -24,3 +24,4 @@
 	</div>
 	{!! Form::close() !!}
 @endsection
+ 

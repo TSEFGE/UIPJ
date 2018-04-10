@@ -589,15 +589,15 @@ $(document).ready(function(){
                 vertical: 'bottom',
                 horizontal: 'left'
             }
-        });
+        }); 
         $('#fechaAltaEmpresa').focus(function(){
             $('#cajados').css("padding-bottom", '160px');
         });
         $('#fechaAltaEmpresa').focusout(function(){
             $('#cajados').css("padding-bottom", '20px');
-        });
+        });           
     });
-
+    
     $('#esVictima').on('click',function(e) {
           $('#fechanac').datetimepicker("destroy");
       if ($('#esVictima').is(':checked') ) {
@@ -678,7 +678,7 @@ $(document).ready(function(){
         });
         $('#fecha').focusout(function(){
             $('#cajados').css("padding-bottom", '10px');
-        });
+        });      
     });
 
     $(function () { //Datetimepicker a la zquierda y debajo para vizualizar mejor no se oculte en la nav
@@ -737,7 +737,7 @@ $("#btn-reset").on("click",function(){
         }
       });
 
-    $("#btn-reset").html('<i class="fa fa-eraser" aria-hidden="true"></i>');
+    
     
 });
 
@@ -798,7 +798,8 @@ $("#btn-reset").on("click",function(){
 
 
     });
-    
+    });
+
 
       $('#fechanac').trigger('change');
       $('#edad').val('16');
@@ -830,11 +831,3 @@ $("#btn-reset").on("click",function(){
 
 $('#btn-submit').prop("disabled", true );
 $("#narracion").prop( "disabled", true );
-
-$("#narracionText").prop( "disabled", true );
-
-$("#btn-narracion").on("click",function(){
-   console.log("funciona on click");
- $("#narracionText").prop( "disabled", false );
-  
-});

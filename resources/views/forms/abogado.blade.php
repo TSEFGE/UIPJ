@@ -1,6 +1,6 @@
 @extends('template.form')
 
-@section('title', 'Agregar Abogado')
+@section('title', 'Agregar abogado')
 @section('contenido')	
 {!! Form::open(['route' => 'store.abogado', 'method' => 'POST'])  !!}
 {{ csrf_field() }}
@@ -17,7 +17,7 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div> 
 @include('forms.errores')
 <div class=" card-body boxone">
 		<div id="tabogado">

@@ -1,4 +1,4 @@
-@extends('template.main')
+ @extends('template.main')
 
 @section('content')
 <div class="row">
@@ -19,7 +19,7 @@
                             <th>Unidad</th>
                             <th>Fiscal</th>
                             <th>Fecha inicio</th>
-                            <th>Estado Carpeta</th>
+                            <th>Estado carpeta</th>
                             <th>Opciones</th>
                         </thead>
                         <tbody>
