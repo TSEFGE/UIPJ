@@ -24,7 +24,7 @@
 	</div>
 	<div class="col-sm-3">
 		<div class="form-group">
-			{!! Form::label('estadoCarpeta', 'Estado de la Carpeta', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::label('estadoCarpeta', 'Estado de la carpeta', ['class' => 'col-form-label-sm']) !!}
 			{!! Form::text('estadoCarpeta', "INICIO", ['class' => 'form-control form-control-sm select2', 'placeholder' => 'Seleccione un estado', 'readonly', 'required']) !!}
 		</div>
 	</div>
@@ -42,7 +42,7 @@
 			</div>
 			<div class="form-check form-check-inline">
 				<label class="form-check-label col-form-label col-form-label-sm">
-					<input class="form-check-input" type="checkbox" id="esRelevante" name="esRelevante" value="1"> Es Relevante
+					<input class="form-check-input" type="checkbox" id="esRelevante" name="esRelevante" value="1"> Es relevante
 				</label>
 			</div>
 		</div>

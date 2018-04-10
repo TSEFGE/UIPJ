@@ -25,7 +25,7 @@
 	</div>
 	<div class="col-2">
 		<div class="form-group">
-			{!! Form::label('cpC', 'Código Postal', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::label('cpC', 'Código postal', ['class' => 'col-form-label-sm']) !!}
 			{!! Form::select('cpC', ['' => 'Seleccione un código postal'], null, ['class' => 'form-control form-control-sm']) !!}
 		</div>
 	</div>

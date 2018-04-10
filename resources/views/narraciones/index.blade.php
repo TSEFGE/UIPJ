@@ -33,7 +33,7 @@
 
 				<div class="col-sm-2" >
 
-					{!! Form::label('narracionEti', 'Narraciones Registradas', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::label('narracionEti', 'Narraciones registradas', ['class' => 'col-form-label-sm']) !!}
 					<div class="table" style="width: 200px; height: 550px; overflow-y: scroll;">
 						<style media="screen">
 							.table tr {

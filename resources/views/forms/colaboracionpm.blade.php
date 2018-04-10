@@ -14,7 +14,7 @@
 	</div>
 	<div class="col">	
 		<div class="text-right">
-			{!! Form::button('Limpiar Campos', ['class' => 'btn btn-dark', 'id' => 'btn-reset']) !!}
+			{!! Form::button('Limpiar campos', ['class' => 'btn btn-dark', 'id' => 'btn-reset']) !!}
 			{!! Form::submit('Generar documento', ['class' => 'btn btn-dark', 'id' => 'btn-submit']) !!}
 			<a href="{{ route('carpeta', $idCarpeta) }}" class="btn btn-dark text-center"><i class="fa fa-folder-open"></i></a>
 			

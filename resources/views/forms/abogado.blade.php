@@ -1,6 +1,6 @@
 @extends('template.form')
 
-@section('title', 'Agregar Abogado')
+@section('title', 'Agregar abogado')
 @section('contenido')	
 {!! Form::open(['route' => 'store.abogado', 'method' => 'POST'])  !!}
 {{ csrf_field() }}

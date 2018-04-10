@@ -67,7 +67,7 @@ sessionStorage.removeItem('isLive');
                       <div class="row">
                         <!-- /.col -->
                         <div class="col-12 ">
-                          <button id="iniciar" type="submit" class="btn btn-primary btn-block btn-flat rounded">Sign In</button>
+                          <button id="iniciar" type="submit" class="btn btn-primary btn-block btn-flat rounded">Entrar</button>
                         </div>
                         <!-- /.col -->
                       </div>
