@@ -737,8 +737,8 @@ $("#btn-reset").on("click",function(){
         }
       });
 
-    
-    
+
+
 });
 
 
@@ -798,7 +798,7 @@ $("#btn-reset").on("click",function(){
 
 
     });
-    
+
 
       $('#fechanac').trigger('change');
       $('#edad').val('16');
@@ -828,5 +828,5 @@ $("#btn-reset").on("click",function(){
           });
 
 
-$('#btn-submit').prop("disabled", true );
+//$('#btn-submit').prop("disabled", true );
 $("#narracion").prop( "disabled", true );
