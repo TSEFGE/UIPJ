@@ -589,15 +589,15 @@ $(document).ready(function(){
                 vertical: 'bottom',
                 horizontal: 'left'
             }
-        });
+        }); 
         $('#fechaAltaEmpresa').focus(function(){
             $('#cajados').css("padding-bottom", '160px');
         });
         $('#fechaAltaEmpresa').focusout(function(){
             $('#cajados').css("padding-bottom", '20px');
-        });
+        });           
     });
-
+    
     $('#esVictima').on('click',function(e) {
           $('#fechanac').datetimepicker("destroy");
       if ($('#esVictima').is(':checked') ) {
@@ -678,7 +678,7 @@ $(document).ready(function(){
         });
         $('#fecha').focusout(function(){
             $('#cajados').css("padding-bottom", '10px');
-        });
+        });      
     });
 
     $(function () { //Datetimepicker a la zquierda y debajo para vizualizar mejor no se oculte en la nav

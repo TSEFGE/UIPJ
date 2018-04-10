@@ -391,14 +391,7 @@ $("#idAgrupacion1").change(function(event){
 	});
 }
 });
-//--- N A  R   R   A   C    I   O  N   E   S
-$(".ver-Narracion").on('click',function(e){
-	var id=this.id;
-	$.get("../../"+id+"/ver",function(response){
-		$('#narracion').val(response);
-	});
-console.log('hola:'+id);
-});
+
 //-----------------------
 $('form').sisyphus({
 		excludeFields: $( 'input[name=_token]' )
