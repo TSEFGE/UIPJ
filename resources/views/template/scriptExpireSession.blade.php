@@ -1,7 +1,7 @@
 {{--@if(Request::path() != 'login' )--}}
 @auth
 <script>
-	$( document ).idleTimer( 60000 );
+	$( document ).idleTimer( 360000 );
 	$( document ).on( "idle.idleTimer", function(event, elem, obj){
 		swal({
 			title: "¿Desea continuar con su sesión?",
@@ -13,7 +13,8 @@
 			cancelButtonText: "Cerrar sesión",
 			closeOnConfirm: false,
 			closeOnCancel: false,
-			allowEscapeKey: false
+			allowEscapeKey: false,
+			timer: 5000
 		},
 		function(isConfirm){
 			if (isConfirm) {
