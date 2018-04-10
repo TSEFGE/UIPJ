@@ -737,7 +737,7 @@ $("#btn-reset").on("click",function(){
         }
       });
 
-
+    $("#btn-reset").html('<i class="fa fa-eraser" aria-hidden="true"></i>');
 
 });
 
@@ -830,3 +830,11 @@ $("#btn-reset").on("click",function(){
 
 //$('#btn-submit').prop("disabled", true );
 $("#narracion").prop( "disabled", true );
+
+$("#narracionText").prop( "disabled", true );
+
+$("#btn-narracion").on("click",function(){
+   console.log("funciona on click");
+ $("#narracionText").prop( "disabled", false );
+
+});

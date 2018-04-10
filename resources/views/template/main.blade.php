@@ -25,7 +25,8 @@
 	<link rel="stylesheet" href="{{ asset('css/cssfonts.css') }}">
     <link rel="stylesheet" href="{{ asset('css/pagination.css') }}">
     <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
-		<link rel="stylesheet" href="{{ asset('css/theme-jquery-validation.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/theme-jquery-validation.min.css') }}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     @yield('css')
 </head>
 
@@ -116,7 +117,8 @@
 	<script src="{{ asset('admin/plugins/chartjs/Chart.min.js') }}"></script>
 
 	<!-- PAGE SCRIPTS -->
-	<script src="{{ asset('admin/dist/js/pages/dashboard2.js') }}"></script>
+	
+	{{--<script src="{{ asset('admin/dist/js/pages/dashboard2.js') }}"></script>--}}
 
 	<script type="text/javascript" src="{{ asset('js/idle-timer.min.js') }}"></script>
 	@include('template.scriptExpireSession')
