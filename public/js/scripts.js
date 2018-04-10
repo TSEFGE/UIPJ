@@ -737,7 +737,7 @@ $("#btn-reset").on("click",function(){
         }
       });
 
-    
+    $("#btn-reset").html('<i class="fa fa-eraser" aria-hidden="true"></i>');
     
 });
 
@@ -749,8 +749,20 @@ $("#btn-narracion").on("click",function(){
    console.log("funciona on click");
  $("#narracionText").prop( "disabled", false );
   
-
 });
+var delay =10, setTimeoutConst;
+$( "#btn-reset" ).mouseover(function() {
+    $(this).html( "Limpiar campos" );    
+  })
+  .mouseout(function() {
+    $(this).html('<i class="fa fa-eraser" aria-hidden="true"></i>');
+  });
+  $( "#regresocarpeta" ).mouseover(function() {        
+         $(this).html( "Regresar a carpeta" ).fadeIn(300).css();    
+  })
+  .mouseout(function() {
+    $(this).html('<i class="fa fa-folder-open" aria-hidden="true"></i>');
+  });
 
 
 
