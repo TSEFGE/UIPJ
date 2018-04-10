@@ -8,7 +8,7 @@
 <div class="card-header">
 <div class="row">
 	<div class="col">
-		<div class="text-left">
+		<div class="text-left"> 
 			{{--Aqui van radios, etc --}}
 		</div>
 	</div>

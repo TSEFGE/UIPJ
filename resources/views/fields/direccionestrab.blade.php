@@ -10,7 +10,7 @@
 			{!! Form::label('idMunicipio2', 'Municipio', ['class' => 'col-form-label-sm']) !!}
 			{!! Form::select('idMunicipio2',$municipiosVer, null,['placeholder' => 'Seleccione un municipio','class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
 		</div>
-	</div>
+	</div> 
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('idLocalidad2', 'Localidad', ['class' => 'col-form-label-sm']) !!}

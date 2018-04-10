@@ -11,7 +11,7 @@
 			{!! Form::select('idMunicipioC', $municipiosVer,null, ['placeholder' => 'Seleccione un municipio','class' => 'form-control form-control-sm', 'required']) !!}
 		</div>
 	</div>
-	<div class="col-4">
+	<div class="col-4"> 
 		<div class="form-group">
 			{!! Form::label('idLocalidadC', 'Localidad', ['class' => 'col-form-label-sm']) !!}
 			{!! Form::select('idLocalidadC', [ '' => 'Seleccione una localidad'], null, ['class' => 'form-control form-control-sm', 'required']) !!}

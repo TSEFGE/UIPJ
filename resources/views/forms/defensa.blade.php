@@ -17,7 +17,7 @@
 					@include('forms.buttons')
 				</div>
 			</div>
-		</div>
+		</div> 
 	</div>
 	@include('forms.errores')
 	<div class="row no-gutters">

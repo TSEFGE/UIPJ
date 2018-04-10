@@ -2,7 +2,7 @@
 
 @section('title', 'Detalle de carpeta')
 
-@section('contenido')
+@section('contenido') 
 
 <div id="detallehead" class="card-header ">
     <div id="tabscarpeta">

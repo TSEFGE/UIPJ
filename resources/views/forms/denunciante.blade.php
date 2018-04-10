@@ -19,7 +19,7 @@
 							<div class="form-check form-check-inline">
 								<label class="form-check-label col-form-label col-form-label-sm">
 									<input class="form-check-input" type="radio" id="esVictima2" name="esVictima" value="0" required> No
-								</label>
+								</label> 
 							</div>
 						</div>
 					</div>

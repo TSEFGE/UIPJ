@@ -14,7 +14,7 @@
 		</div>
 		<div class="col">
 			<div class="text-right">
-				@include('forms.buttons')
+				@include('forms.buttons') 
 			</div>
 		</div>
 

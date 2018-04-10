@@ -5,7 +5,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('plugins/chosen/chosen.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('plugins/select2/select2.css') }}">
 @endsection
-
+ 
 @section('content')
 <ul class="nav nav-tabs" id="myTab" role="tablist">
 	<li class="nav-item">
