@@ -248,7 +248,52 @@ form .form-control:focus {
 .pestaña:hover {		
 	width: 200px;	
   }
+  .xvacio{
+	position: absolute;
+	/*right: 1rem;   */
+	left: 1.8rem;
+    top: 1px;
+	display: inline-block;
+    padding: .25em .4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;;
+  }
 
+  .error{
+	position: absolute;
+	/*right: 1rem;   */
+	left: 2.2rem;
+    top: 1px;
+	display: inline-block;
+    padding: .25em .4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;;
+  }
+  .bien{
+	position: absolute;
+	/*right: 1rem;   */
+	left: 2.6rem;
+    top: 1px;
+	display: inline-block;
+    padding: .25em .4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;;
+  }
 /* Ejemplo para animacion
 #btn-reset{
   -webkit-transition: background-color 2s ease-out, width 1s ease;
