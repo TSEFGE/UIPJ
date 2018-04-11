@@ -12,11 +12,11 @@ class CitatorioController extends Controller
      *
 Citatorio     * @return \Illuminate\Http\Response
      */
-    public function index($idAcusacion)
+    public function index($idCitado)
     {
             
           //$citatorios= Citatorio::where('idAcusacion',$idAcusacion)->get();
-          return view('citatorio')->with('idAcusacion',$idAcusacion);
+          return view('citatorio')->with('idCitado',$idCitado);
     }
 
     /**
