@@ -7,6 +7,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Bitacora;
+use App\User;
 
 class LogSuccessfulLogout
 {
@@ -29,6 +30,8 @@ class LogSuccessfulLogout
     public function handle(Logout $event)
     {
         $id = Auth::id();
+        $user=User::find($id);
+        session()->getHandler()->destroy($user->tokenSession);
          Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'users', 'accion' => 'Logout', 'descripcion' => 'Cierre de sesión.', 'idFilaAccion' => $id]);
     }
 }
