@@ -7,12 +7,12 @@
             <th>Sexo</th>
             <th>Teléfono</th>
             <th>Persona moral</th>
-               <th>Narración</th>
-       
+             <th>Narración</th>
+             <th>Agregar citatorio</th>
         </thead>
         <tbody>
             @if(count($denunciados)==0)
-                <tr><td colspan="7" class="text-center">Sin registros</td></tr>
+                <tr><td colspan="8" class="text-center">Sin registros</td></tr>
             @else
                 @foreach($denunciados as $denunciado)
                     <tr>
@@ -33,6 +33,8 @@
                        @else
                        <td align="center"><a href="{{ route('narracion.index', ['idDenunciado'=>$denunciado->id, 'idCarpeta'=>$idCarpeta, 'tipoInvolucrado'=>2])}}"> <i class="fa fa-plus-square" style="font-size:24px;color:grey"></i></a></td>
                        @endif
+
+                         <td align="center"><a href="{{ route('citatorio',['idCitado'=>$denunciado->id])}}"> <i class="fa fa-plus-square" style="font-size:24px;color:grey"></i></a></td>
                         @endforeach
                         @endif
                     </tbody>
