@@ -66,7 +66,7 @@
 
 {!! Form::close() !!} @endsection @section('tabla')
 <div class="boxtwo">
-	@section('titulo-tabla', 'Denunciantes registrados') @include('tables.testigos')
+	@section('titulo-tabla', 'Testigos registrados') @include('tables.testigos')
 </div>
 @endsection
 @push('PilaScripts')

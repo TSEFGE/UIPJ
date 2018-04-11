@@ -15,15 +15,17 @@ class CreateCitatorioTable extends Migration
     {
         Schema::create('citatorio', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('idAcusacion')->unsigned();
-            $table->string('tipo',50); 
-            $table->integer('status');
-            $table->integer('intento');
+            //$table->integer('idAcusacion')->unsigned();
+            $table->integer('tipo');//testigo=2, investigado=1
+            $table->string('motivo', 500);
+            $table->dateTime('fecha');
+            $table->integer('status');//1=pendiente
+            $table->integer('intento');//1=primera
             $table->string('documento');
 
             $table->timestamps();
 
-            $table->foreign('idAcusacion')->references('id')->on('acusacion')->onDelete('cascade');
+            //$table->foreign('idAcusacion')->references('id')->on('acusacion')->onDelete('cascade');
         });
     }
 
