@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Narracion;
 use Alert;
+use DB;
 
 class NarracionController extends Controller
 {
@@ -15,21 +16,52 @@ class NarracionController extends Controller
      */
     public function index($idCarpeta, $idInvolucrado,$tipoInvolucrado)
     {
-     
-     $narraciones= Narracion::where('idInvolucrado',$idInvolucrado)->where('idCarpeta',$idCarpeta)->orderby('created_at','DESC')->get();
 
+       $narraciones= Narracion::where('idInvolucrado',$idInvolucrado)->where('idCarpeta',$idCarpeta)->orderby('created_at','DESC')->get();
 
+       if($tipoInvolucrado==1){
+         $registro = DB::table('extra_denunciante')
+         ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+         ->select('extra_denunciante.id')
+         ->where('variables_persona.idCarpeta', '=', $idCarpeta)->where('extra_denunciante.id', '=', $idInvolucrado)
+         ->get();
+
+     }if($tipoInvolucrado==2){
+
+        $registro = DB::table('extra_denunciado')
+        ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
+        ->select('extra_denunciado.id')
+        ->where('variables_persona.idCarpeta', '=', $idCarpeta)->where('extra_denunciado.id', '=', $idInvolucrado)
+        ->get();
+
+    }if($tipoInvolucrado==3){
+
+        $registro = DB::table('extra_autoridad')
+        ->join('variables_persona', 'variables_persona.id', '=', 'extra_autoridad.idVariablesPersona')
+        ->select('extra_autoridad.id')
+        ->where('variables_persona.idCarpeta', '=', $idCarpeta)->where('variables_persona.idCarpeta', '=', $idCarpeta)->where('extra_autoridad.id', '=', $idInvolucrado)
+        ->get();
+
+    }
+
+    
+    if($registro->isNotEmpty()){
+    
      return view('narraciones.index')->with('narraciones',$narraciones)->with('idCarpeta',$idCarpeta)->with('idInvolucrado',$idInvolucrado)->with('tipoInvolucrado',$tipoInvolucrado);
-      //  return view('narraciones.index');
+    
+      }else{
 
+     Alert::error('No se puede agregar narración a una persona o carpeta que no existe.', 'Error')->persistent("Aceptar");
+     return redirect()->route('carpeta', $idCarpeta);     
+ }
 
-    }
+}
 
-    public function ver($id){
-      $narracion= Narracion::Where('id',$id)->get()->first();
+public function ver($id){
+  $narracion= Narracion::Where('id',$id)->get()->first();
       //dd($narracion->archivo,$narracion);
-      return ['narracion'=>$narracion->narracion,'archivo'=>$narracion->archivo];
-    }
+  return ['narracion'=>$narracion->narracion,'archivo'=>$narracion->archivo];
+}
 
     /**
      * Show the form for creating a new resource.
@@ -51,29 +83,29 @@ class NarracionController extends Controller
     {
 
      //dd($request);
-     if($request->file('archivo')){
+       if($request->file('archivo')){
         $file = $request->file('archivo');
         $name = 'archivo_adjunto_'.time().'.'.$file->getClientOriginalExtension();
         $path = public_path().'\storage\adjuntoNarracion\\';
         $file->move($path, $name);
-     }else{
+    }else{
         $name="";
-     }
+    }
 
-     $narracion= new Narracion($request->all());
-     $narracion->archivo=$name;
-
-
-     $narracion->save();
-     $idCarpeta=$request->idCarpeta;
-     $idInvolucrado=$request->idInvolucrado;
-       $tipoInvolucrado=$request->tipoInvolucrado;
-     Alert::success('Narración registrada con éxito', 'Hecho')->persistent("Aceptar");
-
-     return redirect()->route('narracion.index',['idCarpeta'=>$idCarpeta,'idInvolucrado'=>$idInvolucrado,'tipoInvolucrado'=>$tipoInvolucrado]);
+    $narracion= new Narracion($request->all());
+    $narracion->archivo=$name;
 
 
- }
+    $narracion->save();
+    $idCarpeta=$request->idCarpeta;
+    $idInvolucrado=$request->idInvolucrado;
+    $tipoInvolucrado=$request->tipoInvolucrado;
+    Alert::success('Narración registrada con éxito', 'Hecho')->persistent("Aceptar");
+
+    return redirect()->route('narracion.index',['idCarpeta'=>$idCarpeta,'idInvolucrado'=>$idInvolucrado,'tipoInvolucrado'=>$tipoInvolucrado]);
+
+
+}
 
     /**
      * Display the specified resource.
