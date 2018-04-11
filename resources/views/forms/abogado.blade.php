@@ -23,13 +23,13 @@
 		<div id="tabogado">
 				<ul class="nav nav-tabs">
 					 <li class="nav-item">
-						<a class="nav-link active" data-toggle="tab" href="#collapsePersonales3">Datos personales</a>
+						<a class="nav-link active" data-toggle="tab" id="personal" href="#collapsePersonales3"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
 					  </li>
 					  <li class="nav-item">
-						<a class="nav-link" data-toggle="tab" href="#collapseTrab3">Datos del trabajo</a>
+						<a class="nav-link" data-toggle="tab" id="dtrabajo" href="#collapseTrab3"><i class="fa fa-industry" aria-hidden="true"></i></a>
 					  </li>  		
 					   <li class="nav-item">
-						<a class="nav-link" data-toggle="tab" href="#collapseAutoridad">Información sobre la autoridad</a>
+						<a class="nav-link" data-toggle="tab" id="autoridad" href="#collapseAutoridad"><i class="fa fa-shield" aria-hidden="true"></i></a>
 					  </li>
 				</ul>
 		</div>
