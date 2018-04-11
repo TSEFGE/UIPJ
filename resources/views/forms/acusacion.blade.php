@@ -17,7 +17,7 @@
 		<div class="col">	
 			<div class="text-right">
 				@include('forms.buttons') 
-				{!! Form::Button('Generar Citatorio', ['class' => 'btn btn-primary', 'id' => 'btn-submit']) !!}
+			
 				 
 			
 			</div>
