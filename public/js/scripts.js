@@ -839,8 +839,8 @@ $("#btn-narracion").on("click",function(){
  $("#narracionText").prop( "disabled", false );
 
 });
-// ---- Transiciones BOTONES---//
-
+// ---- Transiciones BOTONES y pestañas---//
+   
 $( "#btn-reset" ).hover(function() {    
     $(this).html( "Limpiar campos" );    
   },function(){    
@@ -868,9 +868,24 @@ $( "#regresocarpeta" ).hover(function() {
   }, function(){
     $(this).html('<i class="fa fa-industry" aria-hidden="true"></i>')
   });
-
+  /* condicion para Tab acive mantenga html en letras//
+  $ ("#personal").click(function (){ 
+    if($(this).hasClass("active")){
+    $(this).html( "Datos personales" ); 
+ }
+});*/
   $( "#dnotificaciones" ).hover(function() {
     $(this).html( "Dirección para notificaciones" );        
   }, function(){
     $(this).html('<i class="fa fa-bell" aria-hidden="true"></i>')
+  });
+  $( "#dextra" ).hover(function() {
+    $(this).html( "Otros datos" );        
+  }, function(){
+    $(this).html('<i class="fa fa-asterisk" aria-hidden="true"></i>')
+  });
+  $( "#autoridad" ).hover(function() {
+    $(this).html( "Información sobre la autoridad" );        
+  }, function(){
+    $(this).html('<i class="fa fa-shield" aria-hidden="true"></i>')
   });
