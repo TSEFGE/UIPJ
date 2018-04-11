@@ -29,6 +29,9 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('carpeta/{idCarpeta}/agregar-denunciante', 'DenuncianteController@showForm')->name('new.denunciante');
 	Route::post('storedenunciante', 'DenuncianteController@storeDenunciante')->name('store.denunciante');
 
+	Route::get('carpeta/{idCarpeta}/agregar-testigo', 'TestigoControllerController@showForm')->name('new.testigo');
+	Route::post('storetestigo', 'TestigoController@storeTestigo')->name('store.testigo');
+
 	Route::get('carpeta/{idCarpeta}/agregar-denunciado', 'DenunciadoController@showForm')->name('new.denunciado');
 	Route::post('storedenunciado', 'DenunciadoController@storeDenunciado')->name('store.denunciado');
 
