@@ -149,6 +149,16 @@ class CarpetaController extends Controller
         return $denunciantes;
     }
 
+    public static function getTestigos($id){
+        $testigos = DB::table('extra_testigo')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_testigo.idVariablesPersona')
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+            ->select('extra_testigo.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.rfc', 'persona.esEmpresa', 'variables_persona.edad', 'persona.sexo', 'variables_persona.telefono')
+            ->where('variables_persona.idCarpeta', '=', $id)
+            ->get();
+        return $testigos;
+    }
+
     public static function getDenunciados($id){
         $denunciados = DB::table('extra_denunciado')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
