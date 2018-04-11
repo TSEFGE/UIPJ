@@ -1,33 +1,14 @@
-@extends('template.form') @section('title', 'Agregar denunciante') @section('contenido') {!! Form::open(['route' => 'store.denunciante', 'method' => 'POST']) !!} {{ csrf_field() }}
+@extends('template.form')
 
+@section('title', 'Agregar testigo')
+
+@section('contenido')
+{!! Form::open(['route' => 'store.denunciante', 'method' => 'POST']) !!}
+{{ csrf_field() }}
 
 <div class="card-header">
 	<div class="row">
 		<div class="col">
-			<div class="text-left">
-				<div class="row">
-
-					<div class="col-6">
-						<div class="form-group">
-							<label class="col-form-label col-form-label-sm" for="formGroupExampleInput">¿Es víctima?</label>
-							<div class="clearfix"></div>
-							<div class="form-check form-check-inline">
-								<label class="form-check-label col-form-label col-form-label-sm">
-									<input class="form-check-input" type="radio" id="esVictima1" name="esVictima" value="1" required> Sí
-								</label>
-							</div>
-							<div class="form-check form-check-inline">
-								<label class="form-check-label col-form-label col-form-label-sm">
-									<input class="form-check-input" type="radio" id="esVictima2" name="esVictima" value="0" required> No
-								</label> 
-							</div>
-						</div>
-					</div>
-					<div  id="tipop" class="col-6" >
-						@include('fields.tipo-persona')
-					</div>
-				</div>
-			</div>
 		</div>
 		<div class="col">
 			<div class="text-right">
@@ -37,7 +18,6 @@
 	</div>
 </div>
 
-
 @include('forms.errores')
 <div class=" card-body boxone">
 	<div class="row no-gutters">
@@ -46,8 +26,7 @@
 					@if(!empty($idCarpeta)) {!! Form::hidden('idCarpeta', $idCarpeta) !!} @endif
 				</div>
 				<div class="" id="datosPer">
-					<div id="denunciante">
-
+					<div id="testigo">
 						<ul class="nav nav-tabs">
 							<li class="nav-item" id="datosPer">
 								<a class="nav-link active pestaña" id="personal" data-toggle="tab" href="#collapsePersonales1"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
@@ -61,16 +40,13 @@
 							<li class="nav-item" id="datosNotif">
 								<a class="nav-link" data-toggle="tab" id="dnotificaciones" href="#collapseNotifs1"><i class="fa fa-bell" aria-hidden="true"></i></a>
 							</li>
-
 						</ul>
 					</div>
 				</div>
 				<div id="cajados" class="boxtwo">
-					<div class="tab-content" id="ctdenunciante">
+					<div class="tab-content" id="cttestigo">
 						<div class="tab-pane active container" id="collapsePersonales1">
 							@include('fields.personales')
-							@include('fields.extra-denunciante')
-
 						</div>
 						<div class="tab-pane container" id="collapseDir1">
 							@include('fields.direcciones')
@@ -80,33 +56,31 @@
 						</div>
 						<div class="tab-pane container" id="collapseNotifs1">
 							@include('fields.notificaciones')
-						</div>						
+						</div>
 					</div>
 				</div>
 					<!-- Fin pestañas -->
-
-
 		</div>
 	</div>
 </div>
 
-
 {!! Form::close() !!} @endsection @section('tabla')
 <div class="boxtwo">
-	@section('titulo-tabla', 'Denunciantes registrados') @include('tables.denunciantes')
+	@section('titulo-tabla', 'Testigos registrados') @include('tables.testigos')
 </div>
-@endsection @push('PilaScripts')
-<script type="text/javascript">
-	$(document).ready(function() {
-					$('#tipop').hide();
-	});
-	$('input[type=radio][name=esVictima]').change(function() {
-		if (this.value == 0) {
-			swal("Atención", "Ha seleccionado registrar un denunciante como ofendido .", "warning")
-		} else if (this.value == 1) {
-			swal("Atención", "Ha seleccionado registrar un denunciante como victima.", "warning")
-		}
-			$('#tipop').show();
-	});
+@endsection
+@push('PilaScripts')
+<script>
+	$(document).ready(function(){
+		$('#datosPer').show();
+        $('#personaFisica').show();
+        $('#personaMoral').hide();
+        $('#datosDir').show();
+        $('#datosTrab').show();
+        $('#datosNotif').show();
+        $('#datosExtra').show();
+        $('#extra-fis').show();
+        $('#Victima').show();
+    });
 </script>
 @endpush

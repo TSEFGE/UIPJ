@@ -29,6 +29,9 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('carpeta/{idCarpeta}/agregar-denunciante', 'DenuncianteController@showForm')->name('new.denunciante');
 	Route::post('storedenunciante', 'DenuncianteController@storeDenunciante')->name('store.denunciante');
 
+	Route::get('carpeta/{idCarpeta}/agregar-testigo', 'TestigoController@showForm')->name('new.testigo');
+	Route::post('storetestigo', 'TestigoController@storeTestigo')->name('store.testigo');
+
 	Route::get('carpeta/{idCarpeta}/agregar-denunciado', 'DenunciadoController@showForm')->name('new.denunciado');
 	Route::post('storedenunciado', 'DenunciadoController@storeDenunciado')->name('store.denunciado');
 
@@ -129,6 +132,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('narracion/{id}/ver','NarracionController@ver')->name('ver.narracion');
     Route::get('narracion/{idCarpeta}/{idInvolucrado}/{tipoInvolucrado}', 'NarracionController@index')->name('narracion.index');
     Route::post('narracion/create', 'NarracionController@store')->name('store.narracion');
+
+  /*-------------- RUTA PARA CITATORIOS---------------------*/
+     Route::get('citatorio/{idAcusacion}', 'CitatorioController@index')->name('citatorio');
+    Route::post('citatorio/create', 'CitatorioController@store')->name('store.citatorio');
 });
 
 

@@ -16,7 +16,10 @@
 		</div>
 		<div class="col">	
 			<div class="text-right">
-				@include('forms.buttons')
+				@include('forms.buttons') 
+			
+				 
+			
 			</div>
 		</div>
 	</div>
@@ -43,10 +46,9 @@
 	
 {!! Form::close() !!}
 @endsection
-
 @section('tabla')
 	<div class="boxtwo">
-		@section('titulo-tabla','Acusaciones registradas')
+		@section('titulo-tabla', 'Acusaciones registradas')
 		@include('tables.acusaciones')
 	</div>
 @endsection

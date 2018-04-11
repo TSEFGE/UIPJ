@@ -60,19 +60,19 @@
 				<div id="denunciado">
 					<ul class="nav nav-tabs">
 						<li class="nav-item" id="datosPer">
-							<a class="nav-link active" data-toggle="tab" href="#collapsePersonales2">Datos personales</a>
+							<a class="nav-link active" data-toggle="tab" id="personal" href="#collapsePersonales2"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
 						</li>
 						<li class="nav-item" id="datosDir" >
-							<a class="nav-link" data-toggle="tab" href="#collapseDir2">Dirección</a>
+							<a class="nav-link" data-toggle="tab" id="direccion" href="#collapseDir2"><i class="fa fa-address-card" aria-hidden="true"></i></a>
 						</li>
 						<li class="nav-item" id="datosTrab">
-							<a class="nav-link" data-toggle="tab" href="#collapseTrab2">Datos del trabajo</a>
+							<a class="nav-link" data-toggle="tab" id="dtrabajo" href="#collapseTrab2"><i class="fa fa-industry" aria-hidden="true"></i></a>
 						</li> 
 						<li class="nav-item" id="datosNotif">
-							<a class="nav-link" data-toggle="tab" href="#collapseNotifs2">Dirección para notificaciones</a>
+							<a class="nav-link" data-toggle="tab" id="dnotificaciones" href="#collapseNotifs2"><i class="fa fa-bell" aria-hidden="true"></i></a>
 						</li> 
 						<li class="nav-item"  id="datosExtra">
-							<a class="nav-link" data-toggle="tab" href="#collapseDenun2">Otros datos</a>
+							<a class="nav-link" data-toggle="tab" id="dextra"  href="#collapseDenun2"><i class="fa fa-asterisk" aria-hidden="true"></i></a>
 						</li> 		
 
 					</ul>
@@ -99,7 +99,7 @@
 			</div>	
 
 			<div id="cajados" class="boxtwo">	
-				<div class="tab-content" id="ctdenunciado">
+				<div class="tab-content comparecencia" id="ctdenunciado">
 					<div class="tab-pane active container" id="collapsePersonales2">  		
 						@include('fields.personales')
 

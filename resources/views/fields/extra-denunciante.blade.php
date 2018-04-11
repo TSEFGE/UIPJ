@@ -1,5 +1,5 @@
-<div class="row">
-	<div class="col-6">
+<div id=""class="row">
+	<div class="col-6" id="datosExtra">
 		@if(!empty($idCarpeta))
 		{!! Form::hidden('idCarpeta', $idCarpeta) !!}
 		@endif
