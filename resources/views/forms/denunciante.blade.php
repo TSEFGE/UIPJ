@@ -50,7 +50,7 @@
 
 						<ul class="nav nav-tabs">
 							<li class="nav-item" id="datosPer">
-								<a class="nav-link active" data-toggle="tab" href="#collapsePersonales1">Datos personales							
+								<a class="nav-link active pestaña" id="personal" data-toggle="tab" href="#collapsePersonales1"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
 								<span id="tab1" class="xvacio"></span>
 								<span id="txtTab1" class="error"></span>
 								<span id="t1" class="bien"></span>
@@ -58,7 +58,7 @@
 								</a>
 							</li>
 							<li class="nav-item" id="datosDir">
-								<a class="nav-link" data-toggle="tab" href="#collapseDir1">Dirección
+								<a class="nav-link" data-toggle="tab" id="direccion" href="#collapseDir1"><i class="fa fa-address-card" aria-hidden="true"></i></a>
 								<span id="tab2"></span>
 								<span id="txtTab2" class="error"></span>
 								<span id="t2" class="bien"></span>
@@ -66,7 +66,7 @@
 								</a>
 							</li>
 							<li class="nav-item" id="datosTrab">
-								<a class="nav-link" data-toggle="tab" href="#collapseTrab1">Datos del trabajo
+								<a class="nav-link" data-toggle="tab" id="dtrabajo" href="#collapseTrab1"><i class="fa fa-industry" aria-hidden="true"></i></a>
 								<span id="tab3"></span>
 								<span id="txtTab3" class="error"></span>
 								<span id="t3" class="bien"></span>
@@ -74,16 +74,10 @@
 								</a>
 							</li>
 							<li class="nav-item" id="datosNotif">
-								<a class="nav-link" data-toggle="tab" href="#collapseNotifs1">Dirección para notificaciones
+								<a class="nav-link" data-toggle="tab" id="dnotificaciones" href="#collapseNotifs1"><i class="fa fa-bell" aria-hidden="true"></i></a>
 									<span id="tab4"></span>
 									<span id="txtTab4" class="error"></span>
 									<span id="t4" class="bien"></span>
-								</a>
-							</li>
-							<li class="nav-item" id="datosExtra">
-								<a class="nav-link" data-toggle="tab" href="#collapseDenun1">Información sobre el denunciante o agraviado
-									
-									
 								</a>
 							</li>
 						</ul>
@@ -93,6 +87,7 @@
 					<div class="tab-content" id="ctdenunciante">
 						<div class="tab-pane active container" id="collapsePersonales1">
 							@include('fields.personales')
+							@include('fields.extra-denunciante')
 
 						</div>
 						<div class="tab-pane container" id="collapseDir1">
@@ -103,10 +98,6 @@
 						</div>
 						<div class="tab-pane container" id="collapseNotifs1">
 							@include('fields.notificaciones')
-						</div>
-						<div class="tab-pane container" id="collapseDenun1">
-							@include('fields.extra-denunciante')
-
 						</div>
 					</div>
 				</div>
