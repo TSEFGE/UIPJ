@@ -93,6 +93,7 @@
 	<script src="{{ asset('plugins/select2/select2.min.js')}}" ></script>
 	<script src="{{ asset('js/toastr.min.js')}}" ></script>
 	<script src="{{ asset('js/jquery.form-validator.min.js')}}" ></script>
+	<script src="{{ asset('js/validations.js')}}" ></script>
 	<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 	<!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
