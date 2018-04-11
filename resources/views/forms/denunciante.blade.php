@@ -61,9 +61,6 @@
 							<li class="nav-item" id="datosNotif">
 								<a class="nav-link" data-toggle="tab" id="dnotificaciones" href="#collapseNotifs1"><i class="fa fa-bell" aria-hidden="true"></i></a>
 							</li>
-							<li class="nav-item" id="datosExtra">
-								<a class="nav-link" data-toggle="tab" href="#collapseDenun1">Información sobre el denunciante o agraviado</a>
-							</li>
 
 						</ul>
 					</div>
@@ -72,6 +69,7 @@
 					<div class="tab-content" id="ctdenunciante">
 						<div class="tab-pane active container" id="collapsePersonales1">
 							@include('fields.personales')
+							@include('fields.extra-denunciante')
 
 						</div>
 						<div class="tab-pane container" id="collapseDir1">
@@ -82,11 +80,7 @@
 						</div>
 						<div class="tab-pane container" id="collapseNotifs1">
 							@include('fields.notificaciones')
-						</div>
-						<div class="tab-pane container" id="collapseDenun1">
-							@include('fields.extra-denunciante')
-
-						</div>
+						</div>						
 					</div>
 				</div>
 					<!-- Fin pestañas -->
