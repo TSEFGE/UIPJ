@@ -61,7 +61,6 @@
 							<li class="nav-item" id="datosNotif">
 								<a class="nav-link" data-toggle="tab" id="dnotificaciones" href="#collapseNotifs1"><i class="fa fa-bell" aria-hidden="true"></i></a>
 							</li>
-
 						</ul>
 					</div>
 				</div>
