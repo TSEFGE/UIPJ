@@ -50,16 +50,16 @@
 
 						<ul class="nav nav-tabs">
 							<li class="nav-item" id="datosPer">
-								<a class="nav-link active" data-toggle="tab" href="#collapsePersonales1">Datos personales</a>
+								<a class="nav-link active pestaña" id="personal" data-toggle="tab" href="#collapsePersonales1"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
 							</li>
 							<li class="nav-item" id="datosDir">
-								<a class="nav-link" data-toggle="tab" href="#collapseDir1">Dirección</a>
+								<a class="nav-link" data-toggle="tab" id="direccion" href="#collapseDir1"><i class="fa fa-address-card" aria-hidden="true"></i></a>
 							</li>
 							<li class="nav-item" id="datosTrab">
-								<a class="nav-link" data-toggle="tab" href="#collapseTrab1">Datos del trabajo</a>
+								<a class="nav-link" data-toggle="tab" id="dtrabajo" href="#collapseTrab1"><i class="fa fa-industry" aria-hidden="true"></i></a>
 							</li>
 							<li class="nav-item" id="datosNotif">
-								<a class="nav-link" data-toggle="tab" href="#collapseNotifs1">Dirección para notificaciones</a>
+								<a class="nav-link" data-toggle="tab" id="dnotificaciones" href="#collapseNotifs1"><i class="fa fa-bell" aria-hidden="true"></i></a>
 							</li>
 							<li class="nav-item" id="datosExtra">
 								<a class="nav-link" data-toggle="tab" href="#collapseDenun1">Información sobre el denunciante o agraviado</a>

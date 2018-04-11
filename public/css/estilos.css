@@ -241,24 +241,23 @@ form .form-control:focus {
 .borrar {	
 	width: 40px;	 
 }
+.borrar:hover{
+	width: 150px;
+}
 
-.borrar:hover {		
-	width: 150px;	
+.pestaña:hover {		
+	width: 200px;	
   }
+
+/* Ejemplo para animacion
 #btn-reset{
   -webkit-transition: background-color 2s ease-out, width 1s ease;
   -moz-transition:background-color 2s ease-out, width 1s ease;
   -o-transition: background-color 2s ease-out, width 1s ease;
   -ms-transition:background-color 2s ease-out, width 1s ease;
   transition: background-color 2s ease-out, width 1s ease;
-}
-#regresocarpeta{
-  -webkit-transition: background-color 2s ease-out, width 1s ease;
-  -moz-transition:background-color 2s ease-out, width 1s ease;
-  -o-transition: background-color 2s ease-out, width 1s ease;
-  -ms-transition:background-color 2s ease-out, width 1s ease;
-  transition: background-color 2s ease-out, width 1s ease;
-}
+}*/
+
 body::-webkit-scrollbar {
     width: 1em;
 }

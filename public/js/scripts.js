@@ -711,6 +711,7 @@ $(document).ready(function(){
         showUpload: false,
         allowedFileExtensions: ['jpg','jpeg','png','gif','pdf']
     });
+    var tiempoDelay;
 });
       $('#fechanac').trigger('change');
       $('#edad').val('16');
@@ -838,3 +839,38 @@ $("#btn-narracion").on("click",function(){
  $("#narracionText").prop( "disabled", false );
   
 });
+// ---- Transiciones BOTONES---//
+
+$( "#btn-reset" ).hover(function() {    
+    $(this).html( "Limpiar campos" );    
+  },function(){    
+    $(this).html('<i class="fa fa-eraser" aria-hidden="true"></i>')
+});  
+$( "#regresocarpeta" ).hover(function() {    
+    $(this).html( "Regresar a carpeta" );    
+  },function(){    
+    $(this).html('<i class="fa fa-folder-open" aria-hidden="true"></i>')
+});  
+    
+  $( "#personal" ).hover(function() {    
+        $(this).html( "Datos personales" )       
+  }, function(){
+    $(this).html('<i class="fa fa-user-circle-o" aria-hidden="true"></i>')
+  });
+  $( "#direccion" ).hover(function() {
+      $(this).html( "Dirección" );       
+  }, function(){
+    $(this).html('<i class="fa fa-address-card" aria-hidden="true"></i>')
+  });
+
+  $( "#dtrabajo" ).hover(function() {
+    $(this).html( "Datos del trabajo" );          
+  }, function(){
+    $(this).html('<i class="fa fa-industry" aria-hidden="true"></i>')
+  });
+
+  $( "#dnotificaciones" ).hover(function() {
+    $(this).html( "Dirección para notificaciones" );        
+  }, function(){
+    $(this).html('<i class="fa fa-bell" aria-hidden="true"></i>')
+  });
