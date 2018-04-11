@@ -44,18 +44,19 @@ class NarracionController extends Controller
 
     }
 
-    
+
     if($registro->isNotEmpty()){
     
      return view('narraciones.index')->with('narraciones',$narraciones)->with('idCarpeta',$idCarpeta)->with('idInvolucrado',$idInvolucrado)->with('tipoInvolucrado',$tipoInvolucrado);
     
       }else{
+       
+         Alert::error('No se puede agregar narración a una persona o carpeta que no existe.', 'Error')->persistent("Aceptar");
+        return back()->withInput();  
+      }
 
-     Alert::error('No se puede agregar narración a una persona o carpeta que no existe.', 'Error')->persistent("Aceptar");
-     return redirect()->route('carpeta', $idCarpeta);     
+    
  }
-
-}
 
 public function ver($id){
   $narracion= Narracion::Where('id',$id)->get()->first();
