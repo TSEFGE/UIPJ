@@ -3,9 +3,7 @@
 @section('title', 'Agregar testigo')
 
 @section('contenido')
-{{--
 {!! Form::open(['route' => 'store.denunciante', 'method' => 'POST']) !!}
---}}
 {{ csrf_field() }}
 
 <div class="card-header">
@@ -49,7 +47,6 @@
 					<div class="tab-content" id="cttestigo">
 						<div class="tab-pane active container" id="collapsePersonales1">
 							@include('fields.personales')
-
 						</div>
 						<div class="tab-pane container" id="collapseDir1">
 							@include('fields.direcciones')
@@ -67,12 +64,23 @@
 	</div>
 </div>
 
-{{--
 {!! Form::close() !!} @endsection @section('tabla')
---}}
 <div class="boxtwo">
-	{{--@section('titulo-tabla', 'Denunciantes registrados') @include('tables.denunciantes')--}}
+	@section('titulo-tabla', 'Denunciantes registrados') @include('tables.testigos')
 </div>
 @endsection
 @push('PilaScripts')
+<script>
+	$(document).ready(function(){
+		$('#datosPer').show();
+        $('#personaFisica').show();
+        $('#personaMoral').hide();
+        $('#datosDir').show();
+        $('#datosTrab').show();
+        $('#datosNotif').show();
+        $('#datosExtra').show();
+        $('#extra-fis').show();
+        $('#Victima').show();
+    });
+</script>
 @endpush
