@@ -45,7 +45,7 @@
 						<div class="form-group">
 							{!! Form::label('fecha', 'Fecha', ['class' => 'col-form-label-sm']) !!}
 							<div class="input-group date" id="fechaCit" data-target-input="nearest">
-								{!! Form::text('fecha', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaCit', 'data-toggle' => 'datetimepicker', 'required', 'placeholder' => 'AAAA-MM-DD']) !!}
+								{!! Form::text('fecha', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaCit', 'data-toggle' => 'datetimepicker', 'required', 'placeholder' => 'AAAA-MM-DD', 'data-validation'=>'length','data-validation-length'=>'16']) !!}
 								<div class="input-group-append" data-target="#fechaCit" data-toggle="datetimepicker">
 									<div class="input-group-text"><i class="fa fa-calendar"></i></div>
 								</div>
@@ -54,10 +54,12 @@
 					</div>	
 				</div>	
 
+
+
 				<div class="col-12">
 					<div class="form-group">
 						{!! Form::label('motivo', 'Motivo de la Cita', ['class' => 'col-form-label-sm']) !!}
-						{!! Form::textarea('motivo', null, ['class' => 'form-control form-control-sm','id' => 'motivoCita', 'required']) !!}
+						{!! Form::textarea('motivo', null, ['class' => 'form-control form-control-sm','id' => 'motivoCita', 'required','data-validation'=>'length','data-validation-length'=>'5-500']) !!}
 					</div>
 				</div>
 			</div>   
