@@ -247,6 +247,9 @@ form .form-control:focus {
 .pestaña{
 	margin-bottom: 0px;
 }
+#p-personal:active {
+	content: 'Datos personales';
+}
 
 .pestaña:hover {		
 	width: auto;
