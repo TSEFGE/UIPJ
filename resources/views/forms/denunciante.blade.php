@@ -57,7 +57,7 @@
 								</a>
 							</li>
 							<li class="nav-item" id="datosDir">
-								<a class="nav-link" data-toggle="tab"  href="#collapseDir1"><p id="direccion" class="pestaña"><i class="fa fa-address-card" aria-hidden="true"></i></p>
+								<a class="nav-link" data-toggle="tab" id="p-direccion" href="#collapseDir1"><p id="direccion" class="pestaña"><i class="fa fa-address-card" aria-hidden="true"></i></p>
 								<div id="espacio-notif1"><span id="tab2" class="xvacio"></span>
 									<span id="txtTab2" class="xerror"></span>
 									<span id="t2" class="bien"></span></div>								
