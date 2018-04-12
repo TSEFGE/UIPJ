@@ -231,3 +231,61 @@ $('#tabsdelito.nav-tabs a').on('hidden.bs.tab', function(event){
 
 
                           });
+
+
+
+$('#tabstestigo.nav-tabs a').on('hidden.bs.tab', function(event){
+
+  var index= $($(this).attr('href')).index();
+                                switch(index) {
+                                 case 0:
+
+                                var count = $('#collapsePersonalesTestigo .error').length; 
+                                $("#error").html(count);
+                                var correctos = $('#collapsePersonalesTestigo .valid').length; 
+                                $("#bien").html(correctos);
+                                var countvacio = $('#collapsePersonalesTestigo .vacio').length; 
+                                countvacio= countvacio-count-correctos;
+                                $("#vacio").html(countvacio);                                 
+                                break;
+                                
+                                case 1:
+                               var count = $('#collapseDirTestigo .error').length;                                
+                               $("#error").html(count); 
+                               var correctos = $('#collapseDirTestigo .valid').length;                                
+                               $("#bien").html(correctos); 
+                               var countvacio = $('#collapseDirTestigo .vacio').length; 
+                               countvacio= countvacio-count-correctos;
+                               $("#vacio").html(countvacio);
+                               break;
+
+                               case 2:
+                               var count = $('#collapseTrabTestigo .error').length;                                
+                               $("#error").html(count); 
+                               var correctos = $('#collapseTrabTestigo .valid').length;                                
+                               $("#bien").html(correctos); 
+                               var countvacio = $('#collapseTrabTestigo .vacio').length; 
+                               countvacio= countvacio-count-correctos;
+                               $("#vacio").html(countvacio);
+                               break;
+
+                               case 3:
+                               var count = $('#collapseNotifsTestigo .error').length;                                
+                               $("#error").html(count); 
+                               var correctos = $('#collapseNotifsTestigo .valid').length;                                
+                               $("#bien").html(correctos); 
+                               var countvacio = $('#collapseNotifsTestigo .vacio').length; 
+                               countvacio= countvacio-count-correctos;
+                               $("#vacio").html(countvacio);
+                               break;
+
+
+                                default:
+                                break;
+
+
+                               }
+
+
+
+                          });
