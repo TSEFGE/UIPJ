@@ -30,12 +30,19 @@
 				</div>
 
 <div id="delitotabs">
-	<ul class="nav nav-tabs">
+	<ul id="tabsdelito" class="nav nav-tabs">
 		<li class="nav-item">
 			<a class="nav-link active" data-toggle="tab" href="#infodelito">Información sobre la comisión del delito</a>
+								<span id="vacioad" class="xvacio"></span>
+								<span id="errorad" class="xerror"></span>
+								<span id="bienad" class="bien"></span>	
+
 		</li>
 		<li class="nav-item">
 			<a class="nav-link" data-toggle="tab" href="#lugardelito">Información sobre el lugar de los hechos</a>
+			<span id="vacioad2" class="xvacio"></span>
+			<span id="errorad2" class="xerror"></span>
+			<span id="bienad2" class="bien"></span>	
 		</li>  		
 	</ul>	
 </div>
@@ -63,5 +70,21 @@
 		@include('tables.delitos')
 	</div>
 @endsection
+@push('PilaScripts')
+<script type="text/javascript">
+$(document).ready(function() {
 
-	
+$("#fecha").addClass("vacio");
+$("#hora").addClass("vacio");	
+
+$("#calle").addClass("vacio");
+$("#numExterno").addClass("vacio");	
+$("#numInterno").addClass("vacio");	
+$("#entreCalle").addClass("vacio");
+$("#yCalle").addClass("vacio");
+$("#calleTrasera").addClass("vacio");
+$("#puntoReferencia").addClass("vacio");
+
+});
+</script>
+@endpush
