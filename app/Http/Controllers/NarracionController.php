@@ -42,6 +42,14 @@ class NarracionController extends Controller
         ->where('variables_persona.idCarpeta', '=', $idCarpeta)->where('variables_persona.idCarpeta', '=', $idCarpeta)->where('extra_autoridad.id', '=', $idInvolucrado)
         ->get();
 
+    }if($tipoInvolucrado==4){
+
+        $registro = DB::table('extra_testigo')
+        ->join('variables_persona', 'variables_persona.id', '=', 'extra_testigo.idVariablesPersona')
+        ->select('extra_testigo.id')
+        ->where('variables_persona.idCarpeta', '=', $idCarpeta)->where('variables_persona.idCarpeta', '=', $idCarpeta)->where('extra_testigo.id', '=', $idInvolucrado)
+        ->get();
+
     }
 
 
