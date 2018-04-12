@@ -244,55 +244,41 @@ form .form-control:focus {
 .borrar:hover{
 	width: 150px;
 }
+.pestaña{
+	margin-bottom: 0px;
+}
 
 .pestaña:hover {		
-	width: 200px;	
+	width: auto;
+	bottom: 0;	
   }
+  
   .xvacio{
 	position: absolute;
-	/*right: 1rem;   */
-	left: 1.8rem;
-    top: 1px;
+	font-size: 0.7rem;
+	color: yellow;
+	top: 0;
 	display: inline-block;
-    padding: .25em .4em;
-    font-size: 75%;
-    font-weight: 700;
-    line-height: 1;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: baseline;
-    border-radius: .25rem;;
+		
   }
 
-  .error{
+  .xerror{
 	position: absolute;
-	/*right: 1rem;   */
-	left: 2.2rem;
-    top: 1px;
+	font-size: 0.7rem;
+	color: red;
+	top: 0;
 	display: inline-block;
-    padding: .25em .4em;
-    font-size: 75%;
-    font-weight: 700;
-    line-height: 1;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: baseline;
-    border-radius: .25rem;;
+	padding-left: 15px;
+	    
   }
   .bien{
 	position: absolute;
-	/*right: 1rem;   */
-	left: 2.6rem;
-    top: 1px;
+	font-size: 0.7rem;
+	color: green;
+	top:0;
 	display: inline-block;
-    padding: .25em .4em;
-    font-size: 75%;
-    font-weight: 700;
-    line-height: 1;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: baseline;
-    border-radius: .25rem;;
+	padding-left: 30px;	
+    
   }
 /* Ejemplo para animacion
 #btn-reset{
