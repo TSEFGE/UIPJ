@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use DB;
 use Alert;
-use App\Http\Requests\StoreDenunciante;
+use App\Http\Requests\StoreTestigo;
 use App\Models\CatEscolaridad;
 use App\Models\CatEstado;
 use App\Models\CatMunicipio;
@@ -24,6 +24,7 @@ use App\Models\Notificacion;
 use App\Models\Domicilio;
 use RFC\RfcBuilder;
 use App\Models\Bitacora;
+use App\Models\Testigo;
 
 class TestigoController extends Controller
 {
@@ -57,7 +58,7 @@ class TestigoController extends Controller
         }
     }
 
-        public function storeTestigo(storeTestigo $request)
+        public function storeTestigo(StoreTestigo $request)
         {
           $persona = Persona::where('curp', $request->curp)->get();
           if ($persona->isNotEmpty()){

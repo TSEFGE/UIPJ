@@ -3,7 +3,7 @@
 @section('title', 'Agregar testigo')
 
 @section('contenido')
-{!! Form::open(['route' => 'store.denunciante', 'method' => 'POST']) !!}
+{!! Form::open(['route' => 'store.testigo', 'method' => 'POST']) !!}
 {{ csrf_field() }}
 
 <div class="card-header">
@@ -12,6 +12,8 @@
 		</div>
 		<div class="col">
 			<div class="text-right">
+
+				<input type="radio" id="esEmpresa2" name="esEmpresa2" hidden>
 				@include('forms.buttons')
 			</div>
 		</div>
@@ -72,6 +74,7 @@
 @push('PilaScripts')
 <script>
 	$(document).ready(function(){
+		$('#esEmpresa2').trigger('click');
 		$('#datosPer').show();
         $('#personaFisica').show();
         $('#personaMoral').hide();
