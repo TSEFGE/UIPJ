@@ -17,10 +17,9 @@ class CitatorioController extends Controller
      *
 Citatorio     * @return \Illuminate\Http\Response
      */
-    public function index($idCarpeta,$idCitado,$tipoInvolucrado)
+    public function index()
     {
-        $citatorios= Citatorio::where('idCarpeta',$idCarpeta)->where('idCitado',$idCitado)->where('tipo',$tipoInvolucrado)->get();
-        return view('forms.citatorio')->with('idCarpeta',$idCarpeta)->with('idCitado',$idCitado)->with('tipoInvolucrado',$tipoInvolucrado)->with('citatorios', $citatorios);
+        
     }
 
     /**
@@ -28,9 +27,10 @@ Citatorio     * @return \Illuminate\Http\Response
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($idCarpeta,$idCitado,$tipoInvolucrado)
     {
-        //
+        $citatorios= Citatorio::where('idCarpeta',$idCarpeta)->where('idCitado',$idCitado)->where('tipo',$tipoInvolucrado)->get();
+        return view('forms.citatorio')->with('idCarpeta',$idCarpeta)->with('idCitado',$idCitado)->with('tipoInvolucrado',$tipoInvolucrado)->with('citatorios', $citatorios);
     }
 
     /**
