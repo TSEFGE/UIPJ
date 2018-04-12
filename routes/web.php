@@ -133,8 +133,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('narracion/{idCarpeta}/{idInvolucrado}/{tipoInvolucrado}', 'NarracionController@index')->name('narracion.index');
     Route::post('narracion/create', 'NarracionController@store')->name('store.narracion');
 
-  /*-------------- RUTA PARA CITATORIOS---------------------*/
-     Route::get('citatorio/{idCitado}', 'CitatorioController@index')->name('citatorio');
+  	/*-------------- RUTA PARA CITATORIOS---------------------*/
+    Route::get('citatorio/{idCitado}', 'CitatorioController@index')->name('citatorio');
     Route::post('citatorio/create', 'CitatorioController@store')->name('store.citatorio');
 });
 
