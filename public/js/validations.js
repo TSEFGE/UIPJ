@@ -77,9 +77,7 @@ var contador=0;
                                   $("#tab2").show();                             
                                   $("#tab2").html(countvacio); 
                                 }
-                                 if (totales == correctos){
-                                   tablista=1;
-                                 }
+                                 
                                 break;
 
                                 case 2:
@@ -97,7 +95,7 @@ var contador=0;
                                 } 
                                 else if( correctos ==totales){
                                   $("#t3").show();
-                                  $("#t3").html('<i class="fa fa-check" aria-hidden="true"></i>');  ;                                  
+                                  $("#t3").html('<i class="fa fa-check" aria-hidden="true"></i>');                                    
                                 }
                                 else{  
                                   $("#t3").show();                             
@@ -112,9 +110,7 @@ var contador=0;
                                    $("#tab3").show();                            
                                    $("#tab3").html(countvacio); 
                                  }
-                                 if (totales == correctos){
-                                  tablista=1;
-                                }
+                                
                                 break;
 
                                 case 3:
@@ -132,8 +128,8 @@ var contador=0;
                                 } 
                                 else if( correctos ==totales){
                                   $("#t4").show();
-                                  $("#t4").html('<i class="fa fa-check" aria-hidden="true"></i>');  ;                                  
-                                }
+                                  $("#t4").html('<i class="fa fa-check" aria-hidden="true"></i>');                                                                
+                                }                                
                                 else{  
                                   $("#t4").show();                             
                                   $("#t4").html(count); 
@@ -147,10 +143,9 @@ var contador=0;
                                   $("#tab4").show();                            
                                   $("#tab4").html(countvacio); 
                                 }
-                                if (totales == correctos){
-                                 tablista=1;
-                               }                                
                                 
+                               console.log ("correctos",correctos);                               
+                               console.log (totales);  
                                 break;
 
                                 case 4:
