@@ -17,17 +17,15 @@ class Citatorio extends Model
     public $fillable = [
 
 		'id',
-		'idAcusacion',
 		'tipo',
+    'motivo',
+    'fecha',
 		'status',
 		'intento',
 		'documento'
 
    ];
 
-   public function Acusaciones()
-    {
-       return $this->belongsTo('app/Models/Acusacion');
-    }
+   
 
 }
