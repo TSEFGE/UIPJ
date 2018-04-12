@@ -8,7 +8,8 @@
             <th>Teléfono</th>
             <th>Persona moral</th>
             {{-- <th>Constancia de hechos</th> --}}
-            <th>Narración</th>
+             <th>Narración</th>
+             <th>Agregar citatorio</th>
 
 
         </thead>
@@ -32,6 +33,7 @@
                        @else
                        <td align="center"><a href="{{ route('narracion.index', ['idTestigo'=>$testigo->id, 'idCarpeta'=>$idCarpeta, 'tipoInvolucrado'=>4])}}"> <i class="fa fa-plus-square" style="font-size:24px;color:grey"></i></a></td>
                        @endif
+                        <td align="center"><a href="{{ route('citatorio',['idCitado'=>$testigo->id, 'tipoInvolucrado'=>2])}}"> <i class="fa fa-plus-square" style="font-size:24px;color:grey"></i></a></td>
 
                     </tr>
                 @endforeach

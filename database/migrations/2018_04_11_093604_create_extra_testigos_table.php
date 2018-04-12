@@ -19,8 +19,6 @@ class CreateExtraTestigosTable extends Migration
             $table->integer('idNotificacion')->unsigned()->index()->nullable();
             $table->boolean('conoceAlDenunciado')->default(false);
 
-
-
             $table->timestamps();
             $table->softDeletes();
 

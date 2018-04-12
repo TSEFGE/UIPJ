@@ -12,11 +12,11 @@ class CitatorioController extends Controller
      *
 Citatorio     * @return \Illuminate\Http\Response
      */
-    public function index($idCitado)
+    public function index($idCitado,$tipoInvolucrado)
     {
             
           //$citatorios= Citatorio::where('idAcusacion',$idAcusacion)->get();
-          return view('citatorio')->with('idCitado',$idCitado);
+          return view('citatorio')->with('idCitado',$idCitado)->with('tipoInvolucrado',$tipoInvolucrado);
     }
 
     /**
@@ -37,6 +37,13 @@ Citatorio     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
+        //if($request->tipoInvolucrado=="")
+        //Generar documento
+        $citatorio = new Citatorio($request->all());
+        $citatorio->intento = 1;
+        $citatorio->documento = "xd.jpg";
+        $citatorio->save();
+        //Retornar documento
     
     }
 
