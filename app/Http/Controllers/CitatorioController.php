@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Alert;
+use Carbon\Carbon;
 use App\Models\Citatorio;
 
 class CitatorioController extends Controller
@@ -14,9 +16,8 @@ Citatorio     * @return \Illuminate\Http\Response
      */
     public function index($idCarpeta,$idCitado,$tipoInvolucrado)
     {
-            
-          //$citatorios= Citatorio::where('idAcusacion',$idAcusacion)->get();
-          return view('forms.citatorio')->with('idCarpeta',$idCarpeta)->with('idCitado',$idCitado)->with('tipoInvolucrado',$tipoInvolucrado);
+        $citatorios= Citatorio::where('idCarpeta',$idCarpeta)->where('idCitado',$idCitado)->where('tipo',$tipoInvolucrado)->get();
+        return view('forms.citatorio')->with('idCarpeta',$idCarpeta)->with('idCitado',$idCitado)->with('tipoInvolucrado',$tipoInvolucrado)->with('citatorios', $citatorios);
     }
 
     /**
@@ -37,13 +38,19 @@ Citatorio     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
+        //dd($request->all());
+        $fecha = Carbon::parse($request->fecha)->format("Y-d-m H:i:00");
         //if($request->tipoInvolucrado=="")
         //Generar documento
         $citatorio = new Citatorio($request->all());
+        $citatorio->fecha = $fecha;
         $citatorio->intento = 1;
         $citatorio->documento = "xd.jpg";
         $citatorio->save();
         //Retornar documento
+        Alert::success('Citatorio registrado con éxito', 'Hecho')->persistent("Aceptar");
+        //return redirect()->route('carpeta', $request->idCarpeta);
+        return redirect()->route('citatorio', ['idCarpeta'=>$request->idCarpeta,'idCitado'=>$request->idCitado, 'tipoInvolucrado'=>$request->tipo]);
     
     }
 

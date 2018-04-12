@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -17,14 +17,21 @@ class Citatorio extends Model
     public $fillable = [
 
 		'id',
+        'idCarpeta',
+        'idCitado',
 		'tipo',
-    'motivo',
-    'fecha',
+        'motivo',
+        'fecha',
 		'status',
 		'intento',
 		'documento'
 
    ];
+
+   public function carpeta()
+    {
+        return $this->belongsTo('app/Models/Carpeta');
+    }
 
    
 

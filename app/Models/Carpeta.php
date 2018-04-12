@@ -72,4 +72,9 @@ class Carpeta extends Model
     {
         return $this->belongsTo('app/Models/CatTipoDeterminacion');
     }
+
+    public function citatorios()
+    {
+        return $this->hasMany('App\Models\Citatorio');
+    }
 }

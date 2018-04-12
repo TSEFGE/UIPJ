@@ -954,37 +954,14 @@ $( "#regresocarpeta" ).hover(function() {
     $(this).html( "Regresar a carpeta" );    
   },function(){    
     $(this).html('<i class="fa fa-folder-open" aria-hidden="true"></i>')
-}); 
-$("#p-personal").hasClass('')
-$("#personal").html( "Datos personales" );
-$("#espacio-notif").css("margin-left","90px");
-$("#p-personal").click(function(){
-    if ($(this).hasClass('show')){
-        $("#personal").html( "Datos personales" );
-        $("#espacio-notif").css("margin-left","90px");
-    }else{}
-        
-});/*
-$( "#personal" ).on({
-    focus: function() {
-        $(this).html( "Datos personales" );
-        $("#espacio-notif").css("margin-left","90px");
-    }, mouseenter: function() {
-        $(this).html( "Datos personales" );
-        $("#espacio-notif").css("margin-left","90px");
-    }, mouseleave: function() {
-        $(this).html('<i class="fa fa-user-circle-o" aria-hidden="true"></i>')
-        $("#espacio-notif").css("margin-left","0px"); 
-    }
-  }); /*
-    
+});     
   $( "#personal" ).hover(function() {    
         $(this).html( "Datos personales" );
         $("#espacio-notif").css("margin-left","90px");     
   }, function(){
     $(this).html('<i class="fa fa-user-circle-o" aria-hidden="true"></i>')
     $("#espacio-notif").css("margin-left","0px"); 
-  });*/
+  });
   $( "#direccion" ).hover(function() {
       $(this).html( "Dirección" ); 
       $("#espacio-notif1").css("margin-left","35px");      
