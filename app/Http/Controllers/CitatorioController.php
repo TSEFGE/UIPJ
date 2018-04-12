@@ -14,9 +14,8 @@ Citatorio     * @return \Illuminate\Http\Response
      */
     public function index($idCarpeta,$idCitado,$tipoInvolucrado)
     {
-            
-          //$citatorios= Citatorio::where('idAcusacion',$idAcusacion)->get();
-          return view('forms.citatorio')->with('idCarpeta',$idCarpeta)->with('idCitado',$idCitado)->with('tipoInvolucrado',$tipoInvolucrado);
+        $citatorios= Citatorio::where('idCarpeta',$idCarpeta)->where('idCitado',$idCitado)->where('tipoInvolucrado',$tipoInvolucrado)->get();
+        return view('forms.citatorio')->with('idCarpeta',$idCarpeta)->with('idCitado',$idCitado)->with('tipoInvolucrado',$tipoInvolucrado)->with('citatorios', $citatorios);
     }
 
     /**
