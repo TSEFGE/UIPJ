@@ -17,16 +17,18 @@ class DocxMakerController extends Controller
 	{
 		$info = DB::table('extra_denunciante')
 			->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+			->join('narracion','narracion.idInvolucrado','=','extra_denunciante.id')
 			->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
 			->join('carpeta', 'carpeta.id', '=', 'variables_persona.idCarpeta' )
             ->join('unidad', 'unidad.id', '=', 'carpeta.idUnidad')
             ->join('users', 'users.id', '=', 'carpeta.idFiscal')
-            ->select('extra_denunciante.narracion', 'persona.nombres as nombresD', 'persona.primerAp as primerApD', 'persona.segundoAp as segundoApD', 'carpeta.id', 'carpeta.numCarpeta', 'carpeta.fechaInicio', 'unidad.direccion', 'unidad.telefono', 'unidad.distrito', 'unidad.municipio', 'users.nombres', 'users.apellidos', 'users.numFiscal')
+            ->select('narracion.narracion', 'persona.nombres as nombresD', 'persona.primerAp as primerApD', 'persona.segundoAp as segundoApD', 'carpeta.id', 'carpeta.numCarpeta', 'carpeta.fechaInicio', 'unidad.direccion', 'unidad.telefono', 'unidad.distrito', 'unidad.municipio', 'users.nombres', 'users.apellidos', 'users.numFiscal')
             ->where('extra_denunciante.id', '=', $idDenunciante)
+						->limit(1)
             ->get();
         //dd($info);
-        $info=$info[0];
-
+      //  $info=$info[0];
+dd($info->fechaInicio);
 		$fechaInicio = new Carbon($info->fechaInicio);
         $distritoLetra = DocxMakerController::getDistritoLetra($info->distrito);
 		$fechaHoy = new Carbon();
@@ -131,7 +133,7 @@ class DocxMakerController extends Controller
 		$delito = $delito[0];
 		$denunciante = $denunciante[0];
 		$denunciado = $denunciado[0];
-        
+
         $distritoLetra = DocxMakerController::getDistritoLetra($carpeta->distrito);
 		$fechaInicio = new Carbon($carpeta->fechaInicio);
 		$fechaNacimiento = new Carbon($denunciante->fechaNacimiento);
@@ -163,7 +165,7 @@ class DocxMakerController extends Controller
 		}
 
 		$templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('templates/FormatoDenuncia.docx');
-		
+
 		$templateProcessor->setValue('nombreFiscal', mb_strtoupper($carpeta->nombres." ".$carpeta->apellidos));
 		$templateProcessor->setValue('distrito', $carpeta->distrito);
 		$templateProcessor->setValue('distritoLetra', $distritoLetra);
@@ -264,7 +266,7 @@ class DocxMakerController extends Controller
 		$fechaCompleta = $fechaHoy->day." de ".$mesLetra." de ".$fechaHoy->year;
 
 		$templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('templates/InvestigaciónPolicíaMinisterial.docx');
-		
+
 		$templateProcessor->setValue('nombreFiscal', strtoupper($carpeta->nombres." ".$carpeta->apellidos));
 		$templateProcessor->setValue('distrito', $carpeta->distrito);
 		$templateProcessor->setValue('distritoLetra', $distritoLetra);
@@ -334,7 +336,7 @@ class DocxMakerController extends Controller
 		$fechaCompleta = $fechaHoy->day." de ".$mesLetra." de ".$fechaHoy->year;
 
 		$templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('templates/InvestigaciónServiciosPericiales.docx');
-		
+
 		$templateProcessor->setValue('nombreFiscal', mb_strtoupper($carpeta->nombres." ".$carpeta->apellidos));
 		$templateProcessor->setValue('distrito', $carpeta->distrito);
 		$templateProcessor->setValue('distritoLetra', $distritoLetra);
@@ -551,7 +553,7 @@ class DocxMakerController extends Controller
         	case '31':
         		$diaLetra = "Treinta y un";
         		break;
-        	
+
         	default:
         		$diaLetra = "Primero";
         		break;
@@ -559,5 +561,5 @@ class DocxMakerController extends Controller
         return $diaLetra;
 	}
 
-	
+
 }
