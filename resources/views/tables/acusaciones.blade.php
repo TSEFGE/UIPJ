@@ -20,9 +20,6 @@
                       
 
                         <td align="center"><a href="{{route('formato.denuncia', $acusacion->id)}}"> <i class="fa fa-cloud-download" style="font-size:24px;color:grey"></i></a></td> 
-                     
-                                                    
-                       
                     </tr>
                 @endforeach
             @endif
