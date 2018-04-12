@@ -27,7 +27,7 @@
                             @endif
                         @endif
                         <td>PRIMERA</td>
-                        <td align="center"><a href="{{ asset('../storage/expedientes/'.$citatorio->documento) }}" class="btn btn-info" target="_blank">Ver documento</a></td>
+                        <td align="center"><a href="{{ asset('../storage/citatorios/'.$citatorio->documento) }}" class="btn btn-info" target="_blank">Ver documento</a></td>
                     </tr>
                 @endforeach
             @endif

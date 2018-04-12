@@ -227,5 +227,5 @@ class TestigoController extends Controller
             //return redirect()->route('carpeta', $request->idCarpeta);
             return redirect()->route('new.testigo', $request->idCarpeta);
         }
-
+}
 }
