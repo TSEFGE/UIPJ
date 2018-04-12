@@ -1,7 +1,7 @@
 {{--@if(Request::path() != 'login' )--}}
 @auth
 <script>
-	$( document ).idleTimer( 360000 );
+	$( document ).idleTimer( 3600000 );
 	$( document ).on( "idle.idleTimer", function(event, elem, obj){
 		swal({
 			title: "¿Desea continuar con su sesión?",
