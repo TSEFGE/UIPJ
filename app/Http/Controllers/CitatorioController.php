@@ -43,21 +43,37 @@ Citatorio     * @return \Illuminate\Http\Response
     {
         //dd($request->all());
         $fecha = Carbon::parse($request->fecha)->format("Y-d-m H:i:00");
-        //if($request->tipoInvolucrado==1)
-        $info = DB::table('extra_denunciado')
-            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
-            ->join('domicilio', 'domicilio.id', '=', 'variables_persona.idDomicilio')
-            ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
-            ->join('cat_estado', 'cat_estado.id', '=', 'cat_municipio.idEstado')
-            ->join('cat_localidad', 'cat_localidad.id', '=', 'domicilio.idLocalidad')
-            ->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
-            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->join('carpeta', 'carpeta.id', '=', 'variables_persona.idCarpeta' )
-            ->join('unidad', 'unidad.id', '=', 'carpeta.idUnidad')
-            ->join('users', 'users.id', '=', 'carpeta.idFiscal')
-            ->select('persona.nombres as nombresD', 'persona.primerAp as primerApD', 'persona.segundoAp as segundoApD', 'carpeta.id', 'carpeta.numCarpeta', 'carpeta.fechaInicio', 'unidad.direccion', 'unidad.telefono', 'unidad.distrito', 'unidad.municipio', 'users.nombres', 'users.apellidos', 'users.numFiscal', 'domicilio.calle', 'domicilio.numExterno', 'domicilio.numInterno',  'cat_municipio.nombre as municipio2', 'cat_estado.nombre as estado', 'cat_localidad.nombre as localidad', 'cat_colonia.nombre as colonia', 'cat_colonia.codigoPostal as cp')
-            ->where('extra_denunciado.id', '=', $request->idCitado)
-            ->get();
+        if($request->tipo==1){//Investigado
+            $info = DB::table('extra_denunciado')
+                ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
+                ->join('domicilio', 'domicilio.id', '=', 'variables_persona.idDomicilio')
+                ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
+                ->join('cat_estado', 'cat_estado.id', '=', 'cat_municipio.idEstado')
+                ->join('cat_localidad', 'cat_localidad.id', '=', 'domicilio.idLocalidad')
+                ->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
+                ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+                ->join('carpeta', 'carpeta.id', '=', 'variables_persona.idCarpeta' )
+                ->join('unidad', 'unidad.id', '=', 'carpeta.idUnidad')
+                ->join('users', 'users.id', '=', 'carpeta.idFiscal')
+                ->select('persona.nombres as nombresD', 'persona.primerAp as primerApD', 'persona.segundoAp as segundoApD', 'carpeta.id', 'carpeta.numCarpeta', 'carpeta.fechaInicio', 'unidad.direccion', 'unidad.telefono', 'unidad.distrito', 'unidad.municipio', 'users.nombres', 'users.apellidos', 'users.numFiscal', 'domicilio.calle', 'domicilio.numExterno', 'domicilio.numInterno',  'cat_municipio.nombre as municipio2', 'cat_estado.nombre as estado', 'cat_localidad.nombre as localidad', 'cat_colonia.nombre as colonia', 'cat_colonia.codigoPostal as cp')
+                ->where('extra_denunciado.id', '=', $request->idCitado)
+                ->get();
+        }elseif($request->tipo==2){
+            $info = DB::table('extra_testigo')
+                ->join('variables_persona', 'variables_persona.id', '=', 'extra_testigo.idVariablesPersona')
+                ->join('domicilio', 'domicilio.id', '=', 'variables_persona.idDomicilio')
+                ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
+                ->join('cat_estado', 'cat_estado.id', '=', 'cat_municipio.idEstado')
+                ->join('cat_localidad', 'cat_localidad.id', '=', 'domicilio.idLocalidad')
+                ->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
+                ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+                ->join('carpeta', 'carpeta.id', '=', 'variables_persona.idCarpeta' )
+                ->join('unidad', 'unidad.id', '=', 'carpeta.idUnidad')
+                ->join('users', 'users.id', '=', 'carpeta.idFiscal')
+                ->select('persona.nombres as nombresD', 'persona.primerAp as primerApD', 'persona.segundoAp as segundoApD', 'carpeta.id', 'carpeta.numCarpeta', 'carpeta.fechaInicio', 'unidad.direccion', 'unidad.telefono', 'unidad.distrito', 'unidad.municipio', 'users.nombres', 'users.apellidos', 'users.numFiscal', 'domicilio.calle', 'domicilio.numExterno', 'domicilio.numInterno',  'cat_municipio.nombre as municipio2', 'cat_estado.nombre as estado', 'cat_localidad.nombre as localidad', 'cat_colonia.nombre as colonia', 'cat_colonia.codigoPostal as cp')
+                ->where('extra_testigo.id', '=', $request->idCitado)
+                ->get();
+        }
         //dd($info);
         $info=$info[0];
 
@@ -75,7 +91,13 @@ Citatorio     * @return \Illuminate\Http\Response
         $fechaCompletaCit = mb_strtoupper($diaCit." DE ".$mesLetraCit." DE ".$yearCit);
         $horaCit = Carbon::parse($request->fecha)->format("H:i");
 
-        $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('templates/CitaInvestigado.docx');
+        //Generar documento
+        if($request->tipo==1){//Investigado
+            $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('templates/CitaInvestigado.docx');
+        }elseif($request->tipo==2){//Testigo
+            $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('templates/CitaTestigo.docx');
+        }
+        
         $templateProcessor->setValue('distritoLetra', $distritoLetra);
         $templateProcessor->setValue('municipioUnidadM', mb_strtoupper($info->municipio));
         $templateProcessor->setValue('motivoCita', $request->motivo);
@@ -100,7 +122,6 @@ Citatorio     * @return \Illuminate\Http\Response
         $templateProcessor->saveAs(public_path().'\storage\citatorios\\'.$name);
         //$templateProcessor->saveAs('../storage/oficios/ConstanciaDeHechos'.$info->id.'.docx');
 
-        //Generar documento
         $citatorio = new Citatorio($request->all());
         $citatorio->fecha = $fecha;
         $citatorio->intento = 1;
