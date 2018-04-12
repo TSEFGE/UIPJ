@@ -760,7 +760,7 @@ $("#fax").addClass("vacio");
     });
 
      $('#fechaCit').datetimepicker({
-       
+          format: 'YYYY-MM-DD HH:mm',
            maxDate: moment(),
            widgetPositioning: {
             vertical: 'bottom',
