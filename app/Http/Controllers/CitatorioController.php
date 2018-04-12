@@ -77,6 +77,10 @@ Citatorio     * @return \Illuminate\Http\Response
         //dd($info);
         $info=$info[0];
 
+        $citatorios = Citatorio::where('idCarpeta',$request->idCarpeta)->where('idCitado',$request->idCitado)->where('tipo',$request->tipo)->get();
+        $numCitatorio = count($citatorios)+1;
+        $intentoLetra = CitatorioController::getIntentoLetra($numCitatorio);
+
         $distritoLetra = DocxMakerController::getDistritoLetra($info->distrito);
         $fechaHoy = new Carbon();
         $mesLetra = DocxMakerController::getMesLetra($fechaHoy->month);
@@ -102,7 +106,7 @@ Citatorio     * @return \Illuminate\Http\Response
         $templateProcessor->setValue('municipioUnidadM', mb_strtoupper($info->municipio));
         $templateProcessor->setValue('motivoCita', $request->motivo);
         $templateProcessor->setValue('numCarpeta', $info->numCarpeta);
-        $templateProcessor->setValue('numCitatorio', 0);//numCitatorio
+        $templateProcessor->setValue('numCitatorio', $intentoLetra);//numCitatorio
         $templateProcessor->setValue('fechaCompleta', $fechaCompleta);
         $templateProcessor->setValue('distrito', $info->distrito);
         $templateProcessor->setValue('numFiscal', $info->numFiscal);
@@ -124,12 +128,12 @@ Citatorio     * @return \Illuminate\Http\Response
 
         $citatorio = new Citatorio($request->all());
         $citatorio->fecha = $fecha;
-        $citatorio->intento = 1;
+        $citatorio->intento = $numCitatorio;
         $citatorio->documento = $name;
         $citatorio->save();
         //Retornar documento
         Alert::success('Citatorio registrado con éxito', 'Hecho')->persistent("Aceptar");
-        return response()->download(public_path().'\storage\citatorios\\'.$name);
+        //return response()->download(public_path().'\storage\citatorios\\'.$name);
         //return redirect()->route('carpeta', $request->idCarpeta);
         return redirect()->route('citatorio', ['idCarpeta'=>$request->idCarpeta,'idCitado'=>$request->idCitado, 'tipoInvolucrado'=>$request->tipo]);
     
@@ -178,5 +182,50 @@ Citatorio     * @return \Illuminate\Http\Response
     public function destroy($id)
     {
         //
+    }
+
+    public static function getIntentoLetra($numIntento){
+        switch ($numIntento) {
+            case '1':
+                $intentoLetra = "PRIMERA";
+                break;
+            case '2':
+                $intentoLetra = "SEGUNDA";
+                break;
+            case '3':
+                $intentoLetra = "TERCERA";
+                break;
+            case '4':
+                $intentoLetra = "CUARTA";
+                break;
+            case '5':
+                $intentoLetra = "QUINTA";
+                break;
+            case '6':
+                $intentoLetra = "SEXTA";
+                break;
+            case '7':
+                $intentoLetra = "SEPTIMA";
+                break;
+            case '8':
+                $intentoLetra = "OCTAVA";
+                break;
+            case '9':
+                $intentoLetra = "NOVENA";
+                break;
+            case '10':
+                $intentoLetra = "DECIMA";
+                break;
+            case '11':
+                $intentoLetra = "DECIMOPRIMERA";
+                break;
+            case '12':
+                $intentoLetra = "DECIMOSEGUNDA";
+                break;
+            default:
+                $intentoLetra = "PRIMERA";
+                break;
+        }
+        return $intentoLetra;
     }
 }
