@@ -851,7 +851,7 @@ $("#btn-narracion").on("click",function(){
 
 });
 // ---- Transiciones BOTONES y pestañas---//
-  
+
 $( "#btn-reset" ).hover(function() {    
     $(this).html( "Limpiar campos" );    
   },function(){    
@@ -861,7 +861,7 @@ $( "#regresocarpeta" ).hover(function() {
     $(this).html( "Regresar a carpeta" );    
   },function(){    
     $(this).html('<i class="fa fa-folder-open" aria-hidden="true"></i>')
-});     
+});  
   $( "#personal" ).hover(function() {    
         $(this).html( "Datos personales" );
         $("#espacio-notif").css("margin-left","90px");     
@@ -884,12 +884,7 @@ $( "#regresocarpeta" ).hover(function() {
     $(this).html('<i class="fa fa-industry" aria-hidden="true"></i>')
     $("#espacio-notif2").css("margin-left","0px"); 
   });
-  /* condicion para Tab acive mantenga html en letras//
-  $ ("#personal").click(function (){ 
-    if($(this).hasClass("active")){
-    $(this).html( "Datos personales" ); 
- }
-});*/
+  
   $( "#dnotificaciones" ).hover(function() {
     $(this).html( "Dirección para notificaciones" ); 
     $("#espacio-notif3").css("margin-left","170px");             
