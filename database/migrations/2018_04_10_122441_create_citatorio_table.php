@@ -28,6 +28,7 @@ class CreateCitatorioTable extends Migration
             $table->timestamps();
 
             //$table->foreign('idAcusacion')->references('id')->on('acusacion')->onDelete('cascade');
+            $table->foreign('idCarpeta')->references('id')->on('carpeta')->onDelete('cascade');
         });
     }
 

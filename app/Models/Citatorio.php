@@ -28,6 +28,11 @@ class Citatorio extends Model
 
    ];
 
+   public function carpeta()
+    {
+        return $this->belongsTo('app/Models/Carpeta');
+    }
+
    
 
 }
