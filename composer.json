@@ -18,6 +18,7 @@
         "nesbot/carbon": "1.23",
         "phpoffice/phpword": "^0.13.0",
         "phpspec/phpspec": "^3.0.0",
+        "schwarzer/laravel-mysql-to-seeder": "^0.9.2",
         "uxweb/sweet-alert": "^1.4",
         "yajra/laravel-datatables-oracle": "8.0"
     },
