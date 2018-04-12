@@ -59,7 +59,7 @@
 				<div class="col-12">
 					<div class="form-group">
 						{!! Form::label('motivo', 'Motivo de la Cita', ['class' => 'col-form-label-sm']) !!}
-						{!! Form::textarea('motivo', null, ['class' => 'form-control form-control-sm','id' => 'motivoCita', 'required']) !!}
+						{!! Form::textarea('motivo', null, ['class' => 'form-control form-control-sm','id' => 'motivoCita', 'required','data-validation'=>'length','data-validation-length'=>'5-500']) !!}
 					</div>
 				</div>
 			</div>   
