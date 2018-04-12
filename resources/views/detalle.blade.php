@@ -16,6 +16,9 @@
             <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#tautoridad">Autoridad</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#ttestigo">Testigo</a>
+            </li>
             <li class="nav-item" id="tabfisica">
                 <a class="nav-link" data-toggle="tab" href="#tabogado">Abogados</a>
             </li>
@@ -27,16 +30,16 @@
             @if(count($denunciantes)>0 || count($denunciados)>0)
             <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#tfamiliar">Familiares</a>
-            @endif
             </li>
+            @endif            
             <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#tdelito">Delitos</a>
             </li>
             @if(count($delitos)>0 && count($denunciantes)>0 && count($denunciados)>0)
             <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#tacusacion">Acusaciones</a>
-                @endif
             </li>
+                @endif
              <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#tvehiculo">Vehículos</a>
             </li>
@@ -65,12 +68,22 @@
         </div>
     </div> 
 
+   
 
     <div class="tab-pane container" id="tautoridad">
         <div class="boxtwo">
             @include('tables.autoridades')
             <div class="text-right"> 
                 <a href="{{ route('new.autoridad', $carpetaNueva[0]->id) }}" class="btn btn-primary">Agregar autoridad</a><hr>
+            </div>
+        </div>
+    </div>
+
+     <div class="tab-pane container" id="ttestigo">
+        <div class="boxtwo">
+            @include('tables.testigos')
+            <div class="text-right"> 
+                <a href="{{ route('new.testigo', $carpetaNueva[0]->id) }}" class="btn btn-primary">Agregar testigo</a><hr>
             </div>
         </div>
     </div>
@@ -101,6 +114,8 @@
             </div>
         </div>                   
     </div>
+
+    
 
     <div class="tab-pane container" id="tdelito">
         <div class="boxtwo">

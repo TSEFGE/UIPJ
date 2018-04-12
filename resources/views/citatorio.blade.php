@@ -7,6 +7,7 @@
 		<div class="row">
 			<div class="text-left">
 				{!! Form::hidden('idCitado', $idCitado) !!}
+				{!! Form::hidden('tipoInvolucrado', $tipoInvolucrado) !!}
 			</div>
 			<div class="col">
 				<div class="text-right">

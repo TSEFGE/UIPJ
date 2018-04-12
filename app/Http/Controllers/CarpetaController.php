@@ -86,6 +86,7 @@ class CarpetaController extends Controller
         if(count($carpetaNueva)>0){
             $denunciantes = CarpetaController::getDenunciantes($id);
             $denunciados = CarpetaController::getDenunciados($id);
+            $testigos = CarpetaController::getTestigos($id);
             $autoridades = CarpetaController::getAutoridades($id);
             $abogados = CarpetaController::getAbogados($id);
             $defensas = CarpetaController::getDefensas($id);
@@ -98,6 +99,7 @@ class CarpetaController extends Controller
             return view('carpeta')->with('carpetaNueva', $carpetaNueva)
                 ->with('denunciantes', $denunciantes)
                 ->with('denunciados', $denunciados)
+                ->with('testigos', $testigos)
                 ->with('autoridades', $autoridades)
                 ->with('abogados', $abogados)
                 ->with('defensas', $defensas)
@@ -115,6 +117,7 @@ class CarpetaController extends Controller
         if(count($carpetaNueva)>0){
             $denunciantes = CarpetaController::getDenunciantes($id);
             $denunciados = CarpetaController::getDenunciados($id);
+            $testigos = CarpetaController::getTestigos($id);
             $autoridades = CarpetaController::getAutoridades($id);
             $abogados = CarpetaController::getAbogados($id);
             $defensas = CarpetaController::getDefensas($id);
@@ -127,6 +130,7 @@ class CarpetaController extends Controller
             return view('detalle')->with('carpetaNueva', $carpetaNueva)
                 ->with('denunciantes', $denunciantes)
                 ->with('denunciados', $denunciados)
+                 ->with('testigos', $testigos)
                 ->with('autoridades', $autoridades)
                 ->with('abogados', $abogados)
                 ->with('defensas', $defensas)
