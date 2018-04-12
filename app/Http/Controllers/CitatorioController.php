@@ -16,7 +16,7 @@ Citatorio     * @return \Illuminate\Http\Response
     {
             
           //$citatorios= Citatorio::where('idAcusacion',$idAcusacion)->get();
-          return view('citatorio')->with('idCitado',$idCitado);
+          return view('forms.citatorio')->with('idCitado',$idCitado);
     }
 
     /**
