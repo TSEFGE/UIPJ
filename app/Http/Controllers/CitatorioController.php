@@ -37,6 +37,13 @@ Citatorio     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
+        //if($request->tipoInvolucrado=="")
+        //Generar documento
+        $citatorio = new Citatorio($request->all());
+        $citatorio->intento = 1;
+        $citatorio->documento = "xd.jpg";
+        $citatorio->save();
+        //Retornar documento
     
     }
 
