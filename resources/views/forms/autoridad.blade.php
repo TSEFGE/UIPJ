@@ -35,18 +35,30 @@
 				</div>
 <!-- Pestañas -->
 		<div id="tautoridad">
-				<ul class="nav nav-tabs">
+				<ul id="tabsautoridad" class="nav nav-tabs">
  					<li class="nav-item">
     					<a class="nav-link active" id="personal" data-toggle="tab" href="#collapsePersonales3"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+    							<span id="vacioa" class="xvacio"></span>
+								<span id="errora" class="error"></span>
+								<span id="biena" class="bien"></span>
   					</li>
   					<li class="nav-item">
     					<a class="nav-link" id="direccion" data-toggle="tab" href="#collapseDir3"><i class="fa fa-address-card" aria-hidden="true"></i></a>
+    					<span id="vacioa1" class="xvacio"></span>
+								<span id="errora1" class="error"></span>
+								<span id="biena1" class="bien"></span>
   					</li>
   					<li class="nav-item">
     					<a class="nav-link" data-toggle="tab" id="dtrabajo" href="#collapseTrab3"><i class="fa fa-industry" aria-hidden="true"></i></a>
+    					<span id="vacioa2" class="xvacio"></span>
+								<span id="errora2" class="error"></span>
+								<span id="biena2" class="bien"></span>
   					</li>  		
 			   		<li class="nav-item">
 			    		<a class="nav-link" data-toggle="tab" id="autoridad" href="#collapseAutoridad"><i class="fa fa-shield" aria-hidden="true"></i></a>
+			    				<span id="vacioa3" class="xvacio"></span>
+								<span id="errora3" class="error"></span>
+								<span id="biena3" class="bien"></span>
 			  		</li>
 				</ul>
 		</div>
@@ -80,6 +92,38 @@
 		@include('tables.autoridades')
 	</div>
 @endsection
+
+@push('PilaScripts')
+<script type="text/javascript">
+	
+$(document).ready(function() {
+
+$("#nombres").addClass("vacio");
+$("#primerAp").addClass("vacio");
+$("#segundoAp").addClass("vacio");
+$("#rfc").addClass("vacio");
+$("#homo").addClass("vacio");
+$("#curp").addClass("vacio");
+$("#telefono").addClass("vacio");
+$("#motivoEstancia").addClass("vacio");
+$("#docIdentificacion").addClass("vacio");  	
+$("#numDocIdentificacion").addClass("vacio");
+
+$("#calle").addClass("vacio");
+$("#numExterno").addClass("vacio");  	
+$("#numInterno").addClass("vacio");
+
+$("#lugarTrabajo").addClass("vacio");
+$("#telefonoTrabajo").addClass("vacio");  	
+$("#calle2").addClass("vacio");
+
+$("#antiguedad").addClass("vacio");
+$("#horarioLaboral").addClass("vacio");
+
+});
+
+</script>
+@endpush
 
 
 

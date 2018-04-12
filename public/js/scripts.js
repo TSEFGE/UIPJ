@@ -375,7 +375,7 @@ $(document).ready(function(){
             $('#datosDir').show();
             $('#datosTrab').hide();
             $('#datosNotif').show();
-            $('#datosExtra').show();
+            $('#datosExtra').hide();
             $('#extra-fis').hide();
             $('#Victima').hide();
 
