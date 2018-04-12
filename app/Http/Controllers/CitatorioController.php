@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use App\Models\Citatorio;
 
 class CitatorioController extends Controller
@@ -14,7 +15,7 @@ Citatorio     * @return \Illuminate\Http\Response
      */
     public function index($idCarpeta,$idCitado,$tipoInvolucrado)
     {
-        $citatorios= Citatorio::where('idCarpeta',$idCarpeta)->where('idCitado',$idCitado)->where('tipoInvolucrado',$tipoInvolucrado)->get();
+        $citatorios= Citatorio::where('idCarpeta',$idCarpeta)->where('idCitado',$idCitado)->where('tipo',$tipoInvolucrado)->get();
         return view('forms.citatorio')->with('idCarpeta',$idCarpeta)->with('idCitado',$idCitado)->with('tipoInvolucrado',$tipoInvolucrado)->with('citatorios', $citatorios);
     }
 
@@ -36,9 +37,12 @@ Citatorio     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
+        //dd($request->all());
+        $fecha = Carbon::parse($request->fecha)->format("Y-d-m H:i:00");
         //if($request->tipoInvolucrado=="")
         //Generar documento
         $citatorio = new Citatorio($request->all());
+        $citatorio->fecha = $fecha;
         $citatorio->intento = 1;
         $citatorio->documento = "xd.jpg";
         $citatorio->save();
