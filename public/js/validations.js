@@ -251,32 +251,32 @@ $('#tabstestigo.nav-tabs a').on('hidden.bs.tab', function(event){
                                 
                                 case 1:
                                var count = $('#collapseDirTestigo .error').length;                                
-                               $("#error").html(count); 
+                               $("#error1").html(count); 
                                var correctos = $('#collapseDirTestigo .valid').length;                                
-                               $("#bien").html(correctos); 
+                               $("#bien1").html(correctos); 
                                var countvacio = $('#collapseDirTestigo .vacio').length; 
                                countvacio= countvacio-count-correctos;
-                               $("#vacio").html(countvacio);
+                               $("#vacio1").html(countvacio);
                                break;
 
                                case 2:
                                var count = $('#collapseTrabTestigo .error').length;                                
-                               $("#error").html(count); 
+                               $("#error2").html(count); 
                                var correctos = $('#collapseTrabTestigo .valid').length;                                
-                               $("#bien").html(correctos); 
+                               $("#bien2").html(correctos); 
                                var countvacio = $('#collapseTrabTestigo .vacio').length; 
                                countvacio= countvacio-count-correctos;
-                               $("#vacio").html(countvacio);
+                               $("#vacio2").html(countvacio);
                                break;
 
                                case 3:
                                var count = $('#collapseNotifsTestigo .error').length;                                
-                               $("#error").html(count); 
+                               $("#error3").html(count); 
                                var correctos = $('#collapseNotifsTestigo .valid').length;                                
-                               $("#bien").html(correctos); 
+                               $("#bien3").html(correctos); 
                                var countvacio = $('#collapseNotifsTestigo .vacio').length; 
                                countvacio= countvacio-count-correctos;
-                               $("#vacio").html(countvacio);
+                               $("#vacio3").html(countvacio);
                                break;
 
 
