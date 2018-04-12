@@ -167,57 +167,57 @@ var contador=0;
                                  case 0:
                                 
                                 var count = $('#collapsePersonales2 .error').length; 
-                                $("#txtTab1").html(count);
+                                $("#error").html(count);
                                 var correctos = $('#collapsePersonales2 .valid').length; 
-                                 $("#t1").html(correctos);
+                                 $("#bien").html(correctos);
                                  var countvacio = $('#collapsePersonales2 .vacio').length; 
                                  countvacio= countvacio-count-correctos;
-                                 $("#tab1").html(countvacio);
+                                 $("#vacio").html(countvacio);
                                  
                                 break;
                                 
                                 case 1:
                                 var count = $('#collapseDir2 .error').length;                                
-                                $("#txtTab2").html(count); 
+                                $("#error1").html(count); 
                                 var correctos = $('#collapseDir2 .valid').length;                                
-                                $("#t2").html(correctos); 
+                                $("#bien1").html(correctos); 
                                 var countvacio = $('#collapseDir2 .vacio').length; 
                                  countvacio= countvacio-count-correctos;
-                               $("#tab2").html(countvacio);
+                               $("#vacio1").html(countvacio);
 
 
                                 break;
 
                                 case 2:
                                 var count = $('#collapseTrab2 .error').length;                                
-                                $("#txtTab3").html(count);
+                                $("#error2").html(count);
                                 var correctos = $('#collapseTrab2 .valid').length;                                
-                                $("#t3").html(correctos); 
+                                $("#bien2").html(correctos); 
 
                                  var countvacio = $('#collapseTrab2 .vacio').length;
                                  countvacio=countvacio-count-correctos;                                
-                                $("#tab3").html(countvacio); 
+                                $("#vacio2").html(countvacio); 
 
                                 break;
 
                                 case 3:
                                 var count = $('#collapseNotifs2 .error').length;                                
-                                $("#txtTab4").html(count); 
+                                $("#error3").html(count); 
                                  var correctos = $('#collapseNotifs2 .valid').length;                                
-                                $("#t4").html(correctos); 
+                                $("#bien3").html(correctos); 
                                 var countvacio = $('#collapseNotifs2 .vacio').length;
                                  countvacio=countvacio-count-correctos;                                
-                                $("#tab4").html(countvacio); 
+                                $("#vacio3").html(countvacio); 
                                 break;
 
                                 case 4:
                                var count = $('#collapseDenun2 .error').length;                                
-                                $("#txtTab4").html(count); 
+                                $("#error4").html(count); 
                                  var correctos = $('#collapseDenun2 .valid').length;                                
-                                $("#t4").html(correctos); 
+                                $("#bien4").html(correctos); 
                                 var countvacio = $('#collapseDenun2 .vacio').length;
                                  countvacio=countvacio-count-correctos;                                
-                                $("#tab4").html(countvacio); 
+                                $("#vacio4").html(countvacio); 
                                 break;
 
                                 default:
@@ -243,32 +243,32 @@ $('#tabsautoridad.nav-tabs a').on('hidden.bs.tab', function(event){
                                 
                                 case 1:
                                var count = $('#collapseDir3 .error').length;                                
-                               $("#txtTab2").html(count); 
+                               $("#errora1").html(count); 
                                var correctos = $('#collapseDir3 .valid').length;                                
-                               $("#t2").html(correctos); 
+                               $("#biena1").html(correctos); 
                                var countvacio = $('#collapseDir3 .vacio').length; 
                                countvacio= countvacio-count-correctos;
-                               $("#tab2").html(countvacio);
+                               $("#vacioa1").html(countvacio);
                                break;
 
                                case 2:
                                 var count = $('#collapseTrab3 .error').length;                                
-                                $("#txtTab3").html(count);
+                                $("#errora2").html(count);
                                 var correctos = $('#collapseTrab3 .valid').length;                                
-                                $("#t3").html(correctos); 
+                                $("#biena2").html(correctos); 
                                 var countvacio = $('#collapseTrab3 .vacio').length;
                                 countvacio=countvacio-count-correctos;                                
-                                $("#tab3").html(countvacio); 
+                                $("#vacioa2").html(countvacio); 
                                 break;
 
                                 case 3:
                                 var count = $('#collapseAutoridad .error').length;                                
-                                $("#txtTab3").html(count);
+                                $("#errora3").html(count);
                                 var correctos = $('#collapseAutoridad .valid').length;                                
-                                $("#t3").html(correctos); 
+                                $("#biena3").html(correctos); 
                                 var countvacio = $('#collapseAutoridad .vacio').length;
                                 countvacio=countvacio-count-correctos;                                
-                                $("#tab3").html(countvacio); 
+                                $("#vacioa3").html(countvacio); 
                                 break;
 
                                 default:
@@ -339,36 +339,86 @@ $('#tabstestigo.nav-tabs a').on('hidden.bs.tab', function(event){
                                 
                                 case 1:
                                var count = $('#collapseDirTestigo .error').length;                                
-                               $("#error").html(count); 
+                               $("#error1").html(count); 
                                var correctos = $('#collapseDirTestigo .valid').length;                                
-                               $("#bien").html(correctos); 
+                               $("#bien1").html(correctos); 
                                var countvacio = $('#collapseDirTestigo .vacio').length; 
                                countvacio= countvacio-count-correctos;
-                               $("#vacio").html(countvacio);
+                               $("#vacio1").html(countvacio);
                                break;
 
                                case 2:
                                var count = $('#collapseTrabTestigo .error').length;                                
-                               $("#error").html(count); 
+                               $("#error2").html(count); 
                                var correctos = $('#collapseTrabTestigo .valid').length;                                
-                               $("#bien").html(correctos); 
+                               $("#bien2").html(correctos); 
                                var countvacio = $('#collapseTrabTestigo .vacio').length; 
                                countvacio= countvacio-count-correctos;
-                               $("#vacio").html(countvacio);
+                               $("#vacio2").html(countvacio);
                                break;
 
                                case 3:
                                var count = $('#collapseNotifsTestigo .error').length;                                
-                               $("#error").html(count); 
+                               $("#error3").html(count); 
                                var correctos = $('#collapseNotifsTestigo .valid').length;                                
-                               $("#bien").html(correctos); 
+                               $("#bien3").html(correctos); 
                                var countvacio = $('#collapseNotifsTestigo .vacio').length; 
                                countvacio= countvacio-count-correctos;
-                               $("#vacio").html(countvacio);
+                               $("#vacio3").html(countvacio);
                                break;
 
 
                                 default:
+                                break;
+
+
+                               }
+
+
+
+                          });
+
+
+
+
+
+
+$('#tabsabogado.nav-tabs a').on('hidden.bs.tab', function(event){
+
+  var index= $($(this).attr('href')).index();
+                                switch(index) {
+                                 case 0:
+
+                                var count = $('#collapsePersonales3 .error').length; 
+                                $("#error").html(count);
+                                var correctos = $('#collapsePersonales3 .valid').length; 
+                                $("#bien").html(correctos);
+                                var countvacio = $('#collapsePersonales3 .vacio').length; 
+                                countvacio= countvacio-count-correctos;
+                                $("#vacio").html(countvacio);                                 
+                                break;
+                                
+                                case 1:
+                               var count = $('#collapseTrab3 .error').length;                                
+                               $("#error1").html(count); 
+                               var correctos = $('#collapseTrab3 .valid').length;                                
+                               $("#bien1").html(correctos); 
+                               var countvacio = $('#collapseTrab3 .vacio').length; 
+                               countvacio= countvacio-count-correctos;
+                               $("#vacio1").html(countvacio);
+                               break;
+
+                               case 2:
+                               var count = $('#collapseAutoridad .error').length;                                
+                               $("#error2").html(count); 
+                               var correctos = $('#collapseAutoridad .valid').length;                                
+                               $("#bien2").html(correctos); 
+                               var countvacio = $('#collapseAutoridad .vacio').length; 
+                               countvacio= countvacio-count-correctos;
+                               $("#vacio2").html(countvacio);
+                               break;
+
+                               default:
                                 break;
 
 

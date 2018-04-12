@@ -58,21 +58,36 @@
 			</div>
 			<div class="comparecencia">
 				<div id="denunciado">
-					<ul class="nav nav-tabs">
+					<ul class="nav nav-tabs" id="tdenunciado">
 						<li class="nav-item" id="datosPer">
 							<a class="nav-link active" data-toggle="tab" id="personal" href="#collapsePersonales2"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+								<span id="vacio" class="xvacio"></span>
+								<span id="error" class="error"></span>
+								<span id="bien" class="bien"></span>
 						</li>
 						<li class="nav-item" id="datosDir" >
 							<a class="nav-link" data-toggle="tab" id="direccion" href="#collapseDir2"><i class="fa fa-address-card" aria-hidden="true"></i></a>
+								<span id="vacio1" class="xvacio"></span>
+								<span id="error1" class="error"></span>
+								<span id="bien1" class="bien"></span>
 						</li>
 						<li class="nav-item" id="datosTrab">
 							<a class="nav-link" data-toggle="tab" id="dtrabajo" href="#collapseTrab2"><i class="fa fa-industry" aria-hidden="true"></i></a>
+								<span id="vacio2" class="xvacio"></span>
+								<span id="error2" class="error"></span>
+								<span id="bien2" class="bien"></span>
 						</li> 
 						<li class="nav-item" id="datosNotif">
 							<a class="nav-link" data-toggle="tab" id="dnotificaciones" href="#collapseNotifs2"><i class="fa fa-bell" aria-hidden="true"></i></a>
+									<span id="vacio3" class="xvacio"></span>
+									<span id="error3" class="error"></span>
+									<span id="bien3" class="bien"></span>
 						</li> 
 						<li class="nav-item"  id="datosExtra">
 							<a class="nav-link" data-toggle="tab" id="dextra"  href="#collapseDenun2"><i class="fa fa-asterisk" aria-hidden="true"></i></a>
+									<span id="vacio4" class="xvacio"></span>
+									<span id="error4" class="error"></span>
+									<span id="bien4" class="bien"></span>
 						</li> 		
 
 					</ul>
@@ -133,3 +148,25 @@
 @include('tables.denunciados')
 </div>
 @endsection
+@push('PilaScripts')
+<script type="text/javascript">
+	$(document).ready(function() {
+
+//extradenunciado
+$("#alias").addClass("vacio");
+ $("#ingreso").addClass("vacio");
+ $("#residenciaAnterior").addClass("vacio");
+  $("#vestimenta").addClass("vacio");
+ $("#senasPartic").addClass("vacio");
+ $("#curp").addClass("vacio");
+  $("#telefono").addClass("vacio");
+ $("#motivoEstancia").addClass("vacio");
+ $("#docIdentificacion").addClass("vacio");  	
+$("#numDocIdentificacion").addClass("vacio");
+
+
+
+});
+
+</script>
+@endpush

@@ -29,34 +29,46 @@
 				</div>
 				<div class="" id="datosPer">
 					<div id="testigo">
-						<ul class="nav nav-tabs">
+						<ul id="tabstestigo" class="nav nav-tabs">
 							<li class="nav-item" id="datosPer">
-								<a class="nav-link active pestaña" id="personal" data-toggle="tab" href="#collapsePersonales1"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+								<a class="nav-link active pestaña" id="personal" data-toggle="tab" href="#collapsePersonalesTestigo"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+								<span id="vacio" class="xvacio"></span>
+								<span id="error" class="error"></span>
+								<span id="bien" class="bien"></span>
 							</li>
 							<li class="nav-item" id="datosDir">
-								<a class="nav-link" data-toggle="tab" id="direccion" href="#collapseDir1"><i class="fa fa-address-card" aria-hidden="true"></i></a>
+								<a class="nav-link" data-toggle="tab" id="direccion" href="#collapseDirTestigo"><i class="fa fa-address-card" aria-hidden="true"></i></a>
+								<span id="vacio1" class="xvacio"></span>
+								<span id="error1" class="error"></span>
+								<span id="bien1" class="bien"></span>
 							</li>
 							<li class="nav-item" id="datosTrab">
-								<a class="nav-link" data-toggle="tab" id="dtrabajo" href="#collapseTrab1"><i class="fa fa-industry" aria-hidden="true"></i></a>
+								<a class="nav-link" data-toggle="tab" id="dtrabajo" href="#collapseTrabTestigo"><i class="fa fa-industry" aria-hidden="true"></i></a>
+								<span id="vacio2" class="xvacio"></span>
+								<span id="error2" class="error"></span>
+								<span id="bien2" class="bien"></span>
 							</li>
 							<li class="nav-item" id="datosNotif">
-								<a class="nav-link" data-toggle="tab" id="dnotificaciones" href="#collapseNotifs1"><i class="fa fa-bell" aria-hidden="true"></i></a>
+								<a class="nav-link" data-toggle="tab" id="dnotificaciones" href="#collapseNotifsTestigo"><i class="fa fa-bell" aria-hidden="true"></i></a>
+								<span id="vacio3" class="xvacio"></span>
+								<span id="error3" class="error"></span>
+								<span id="bien3" class="bien"></span>
 							</li>
 						</ul>
 					</div>
 				</div>
 				<div id="cajados" class="boxtwo">
 					<div class="tab-content" id="cttestigo">
-						<div class="tab-pane active container" id="collapsePersonales1">
+						<div class="tab-pane active container" id="collapsePersonalesTestigo">
 							@include('fields.personales')
 						</div>
-						<div class="tab-pane container" id="collapseDir1">
+						<div class="tab-pane container" id="collapseDirTestigo">
 							@include('fields.direcciones')
 						</div>
-						<div class="tab-pane container" id="collapseTrab1">
+						<div class="tab-pane container" id="collapseTrabTestigo">
 							@include('fields.lugartrabajo')
 						</div>
-						<div class="tab-pane container" id="collapseNotifs1">
+						<div class="tab-pane container" id="collapseNotifsTestigo">
 							@include('fields.notificaciones')
 						</div>
 					</div>

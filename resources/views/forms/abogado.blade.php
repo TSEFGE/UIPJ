@@ -2,6 +2,7 @@
 
 @section('title', 'Agregar abogado')
 @section('contenido')	
+
 {!! Form::open(['route' => 'store.abogado', 'method' => 'POST'])  !!}
 {{ csrf_field() }}
 <div class="card-header">
@@ -21,15 +22,24 @@
 @include('forms.errores')
 <div class=" card-body boxone">
 		<div id="tabogado">
-				<ul class="nav nav-tabs">
+				<ul id="tabsabogado" class="nav nav-tabs">
 					 <li class="nav-item">
 						<a class="nav-link active" data-toggle="tab" id="personal" href="#collapsePersonales3"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+								<span id="vacio" class="xvacio"></span>
+								<span id="error" class="error"></span>
+								<span id="bien" class="bien"></span>
 					  </li>
 					  <li class="nav-item">
 						<a class="nav-link" data-toggle="tab" id="dtrabajo" href="#collapseTrab3"><i class="fa fa-industry" aria-hidden="true"></i></a>
+								<span id="vacio1" class="xvacio"></span>
+								<span id="error1" class="error"></span>
+								<span id="bien1" class="bien"></span>
 					  </li>  		
 					   <li class="nav-item">
 						<a class="nav-link" data-toggle="tab" id="autoridad" href="#collapseAutoridad"><i class="fa fa-shield" aria-hidden="true"></i></a>
+								<span id="vacio2" class="xvacio"></span>
+								<span id="error2" class="error"></span>
+								<span id="bien2" class="bien"></span>
 					  </li>
 				</ul>
 		</div>
@@ -58,10 +68,39 @@
 	</div>
 </div>	
 {!! Form::close() !!}
+
+
 @endsection
 @section('tabla')
 	<div class="boxtwo">
 		@section('titulo-tabla', 'Abogados Registrados')
 		@include('tables.abogados')
 	</div>
+
 @endsection
+@push('PilaScripts')
+<script type="text/javascript">
+$(document).ready(function() {
+					
+$("#nombres").addClass("vacio");
+$("#primerAp").addClass("vacio");
+$("#segundoAp").addClass("vacio");
+$("#rfc").addClass("vacio");
+$("#homo").addClass("vacio");
+$("#curp").addClass("vacio");
+$("#telefono").addClass("vacio");
+
+$("#lugarTrabajo").addClass("vacio");
+$("#telefonoTrabajo").addClass("vacio"); 
+
+$("#calle2").addClass("vacio");
+$("#numExterno2").addClass("vacio");
+$("#numInterno2").addClass("vacio");  	
+$("#numInterno3").addClass("vacio");
+
+$("#cedulaProf").addClass("vacio");
+$("#correo").addClass("vacio");
+
+	});
+</script>
+@endpush
