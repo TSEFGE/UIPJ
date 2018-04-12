@@ -28,7 +28,7 @@
 <div class="row no-gutters">
 	<div class="col-12">
 		<div class="boxtwo">
-			<h6>Seleccione acusaciones</h6>
+			<h6>Para generar el documento debe seleccionar el o los servicios y la acusación:</h6>
 			<div class="row">
 				<div class="boxtwo">
 					<div class="form-group">
@@ -50,8 +50,8 @@
 
 <div class="table">
 	<table class="table table-striped">
-		<thead>
-			<th>Seleccione una</th>
+		<thead  align="center">
+			<th>Seleccionar acusación</th>
 			<th>Nombre denunciante</th>
 			<th>Delito</th>
 			<th>Nombre denunciado</th>
@@ -62,10 +62,10 @@
 			@else
 			@foreach($acusaciones as $acusacion)
 			<tr>
-				<td><input type="radio" value="{{ $acusacion->id }}" name="radioAcusacion"></td>
-				<td>{{ $acusacion->nombres." ".$acusacion->primerAp." ".$acusacion->segundoAp }}</td>
-				<td>{{ $acusacion->delito }}</td>
-				<td>{{ $acusacion->nombres2." ".$acusacion->primerAp2." ".$acusacion->segundoAp2 }}</td>
+				<td align="center"><input type="radio" id="radio" value="{{ $acusacion->id }}" name="radioAcusacion" style="width:20px;height:20px"></td>
+				<td align="center">{{ $acusacion->nombres." ".$acusacion->primerAp." ".$acusacion->segundoAp }}</td>
+				<td align="center">{{ $acusacion->delito }}</td>
+				<td align="center">{{ $acusacion->nombres2." ".$acusacion->primerAp2." ".$acusacion->segundoAp2 }}</td>
 			</tr>
 			@endforeach
 			@endif
@@ -74,4 +74,3 @@
 </div>
 {!! Form::close() !!}
 @endsection
-

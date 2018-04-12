@@ -434,6 +434,49 @@ $(document).ready(function(){
             $("#perseguidoPenalmente1").prop('disabled', true);
             $("#perseguidoPenalmente2").prop('disabled', true);
             $("#vestimenta").prop('disabled', true);
+
+
+                //para generar notificaciones
+
+            $("#nombres").removeClass("vacio");
+            $("#primerAp").removeClass("vacio");
+            $("#segundoAp").removeClass("vacio");
+            $("#rfc").removeClass("vacio");
+            $("#homo").removeClass("vacio");
+            $("#curp").removeClass("vacio");
+            $("#telefono").removeClass("vacio");
+            $("#motivoEstancia").removeClass("vacio");
+            $("#docIdentificacion").removeClass("vacio");     
+            $("#numDocIdentificacion").removeClass("vacio");
+            $("#calle").removeClass("vacio");
+            $("#numExterno").removeClass("vacio");    
+            $("#numInterno").removeClass("vacio");
+            $("#numExterno2").removeClass("vacio");   
+            $("#numInterno2").removeClass("vacio");
+            $("#lugarTrabajo").removeClass("vacio");
+            $("#telefonoTrabajo").removeClass("vacio");   
+            $("#calle2").removeClass("vacio");
+            $("#numExterno2").removeClass("vacio");    
+            $("#numInterno2").removeClass("vacio");
+
+
+                $("#nombres2").addClass("vacio");
+                $("#fechaAltaEmpresa").addClass("vacio");
+                $("#rfc2").addClass("vacio");
+                $("#homo2").addClass("vacio");
+                $("#representanteLegal").addClass("vacio");
+
+                $("#calle").addClass("vacio");
+                $("#numExterno").addClass("vacio");     
+                $("#numInterno").addClass("vacio"); 
+                $("#calle3").addClass("vacio");
+                $("#numExterno3").addClass("vacio");    
+                $("#numInterno3").addClass("vacio");
+
+                $("#correo").addClass("vacio");
+                 $("#telefonoN").addClass("vacio");     
+                $("#fax").addClass("vacio");
+
         }
     });
     //No es empresa
@@ -505,6 +548,56 @@ $(document).ready(function(){
             $("#vestimenta").prop('disabled', false);
             $("#senasPartic").prop('disabled', false);
             $("#narracion").prop('disabled', false);
+
+                $("#nombres2").removeClass("vacio");
+                $("#fechaAltaEmpresa").removeClass("vacio");
+                $("#rfc2").removeClass("vacio");
+                $("#homo2").removeClass("vacio");
+                $("#representanteLegal").removeClass("vacio");
+
+                $("#calle").removeClass("vacio");
+                $("#numExterno").removeClass("vacio");     
+                $("#numInterno").removeClass("vacio"); 
+                $("#calle3").removeClass("vacio");
+                $("#numExterno3").removeClass("vacio");    
+                $("#numInterno3").removeClass("vacio");
+
+                $("#correo").removeClass("vacio");
+                 $("#telefonoN").removeClass("vacio");     
+                $("#fax").removeClass("vacio");
+
+
+//Para generar Notificaciones
+$("#nombres").addClass("vacio");
+$("#primerAp").addClass("vacio");
+$("#segundoAp").addClass("vacio");
+$("#rfc").addClass("vacio");
+$("#homo").addClass("vacio");
+$("#curp").addClass("vacio");
+$("#telefono").addClass("vacio");
+$("#motivoEstancia").addClass("vacio");
+$("#docIdentificacion").addClass("vacio");     
+$("#numDocIdentificacion").addClass("vacio");
+$("#calle").addClass("vacio");
+$("#numExterno").addClass("vacio");    
+$("#numInterno").addClass("vacio");
+$("#numExterno2").addClass("vacio");   
+$("#numInterno2").addClass("vacio");
+$("#lugarTrabajo").addClass("vacio");
+$("#telefonoTrabajo").addClass("vacio");   
+$("#calle2").addClass("vacio");
+$("#numExterno2").addClass("vacio");    
+$("#numInterno2").addClass("vacio");
+
+
+$("#calle3").addClass("vacio");
+ $("#numExterno3").addClass("vacio");   
+$("#numInterno3").addClass("vacio");
+$("#correo").addClass("vacio");
+ $("#telefonoN").addClass("vacio");     
+$("#fax").addClass("vacio");
+
+
         }
     });
 
@@ -851,7 +944,7 @@ $("#btn-narracion").on("click",function(){
 
 });
 // ---- Transiciones BOTONES y pestañas---//
-   
+  
 $( "#btn-reset" ).hover(function() {    
     $(this).html( "Limpiar campos" );    
   },function(){    
@@ -861,23 +954,51 @@ $( "#regresocarpeta" ).hover(function() {
     $(this).html( "Regresar a carpeta" );    
   },function(){    
     $(this).html('<i class="fa fa-folder-open" aria-hidden="true"></i>')
-});  
+}); 
+$("#p-personal").hasClass('')
+$("#personal").html( "Datos personales" );
+$("#espacio-notif").css("margin-left","90px");
+$("#p-personal").click(function(){
+    if ($(this).hasClass('show')){
+        $("#personal").html( "Datos personales" );
+        $("#espacio-notif").css("margin-left","90px");
+    }else{}
+        
+});/*
+$( "#personal" ).on({
+    focus: function() {
+        $(this).html( "Datos personales" );
+        $("#espacio-notif").css("margin-left","90px");
+    }, mouseenter: function() {
+        $(this).html( "Datos personales" );
+        $("#espacio-notif").css("margin-left","90px");
+    }, mouseleave: function() {
+        $(this).html('<i class="fa fa-user-circle-o" aria-hidden="true"></i>')
+        $("#espacio-notif").css("margin-left","0px"); 
+    }
+  }); /*
     
   $( "#personal" ).hover(function() {    
-        $(this).html( "Datos personales" )       
+        $(this).html( "Datos personales" );
+        $("#espacio-notif").css("margin-left","90px");     
   }, function(){
     $(this).html('<i class="fa fa-user-circle-o" aria-hidden="true"></i>')
-  });
+    $("#espacio-notif").css("margin-left","0px"); 
+  });*/
   $( "#direccion" ).hover(function() {
-      $(this).html( "Dirección" );       
+      $(this).html( "Dirección" ); 
+      $("#espacio-notif1").css("margin-left","35px");      
   }, function(){
     $(this).html('<i class="fa fa-address-card" aria-hidden="true"></i>')
+    $("#espacio-notif1").css("margin-left","0px"); 
   });
 
   $( "#dtrabajo" ).hover(function() {
-    $(this).html( "Datos del trabajo" );          
+    $(this).html( "Datos del trabajo" ); 
+    $("#espacio-notif2").css("margin-left","87px");               
   }, function(){
     $(this).html('<i class="fa fa-industry" aria-hidden="true"></i>')
+    $("#espacio-notif2").css("margin-left","0px"); 
   });
   /* condicion para Tab acive mantenga html en letras//
   $ ("#personal").click(function (){ 
@@ -886,17 +1007,23 @@ $( "#regresocarpeta" ).hover(function() {
  }
 });*/
   $( "#dnotificaciones" ).hover(function() {
-    $(this).html( "Dirección para notificaciones" );        
+    $(this).html( "Dirección para notificaciones" ); 
+    $("#espacio-notif3").css("margin-left","170px");             
   }, function(){
     $(this).html('<i class="fa fa-bell" aria-hidden="true"></i>')
+    $("#espacio-notif3").css("margin-left","0px"); 
   });
   $( "#dextra" ).hover(function() {
-    $(this).html( "Otros datos" );        
+    $(this).html( "Otros datos" ); 
+    $("#espacio-notif4").css("margin-left","90px");             
   }, function(){
     $(this).html('<i class="fa fa-asterisk" aria-hidden="true"></i>')
+    $("#espacio-notif4").css("margin-left","0px"); 
   });
   $( "#autoridad" ).hover(function() {
-    $(this).html( "Información sobre la autoridad" );        
+    $(this).html( "Información sobre la autoridad" ); 
+    $("#espacio-notif5").css("margin-left","90px");             
   }, function(){
     $(this).html('<i class="fa fa-shield" aria-hidden="true"></i>')
+    $("#espacio-notif5").css("margin-left","0px"); 
   });

@@ -134,7 +134,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('narracion/create', 'NarracionController@store')->name('store.narracion');
 
   /*-------------- RUTA PARA CITATORIOS---------------------*/
-    Route::get('citatorio/{idCitado}/{tipoInvolucrado}', 'CitatorioController@index')->name('citatorio');
+    Route::get('citatorio/{idCarpeta}/{idCitado}/{tipoInvolucrado}', 'CitatorioController@index')->name('citatorio');
     Route::post('citatorio/create', 'CitatorioController@store')->name('store.citatorio');
 });
 

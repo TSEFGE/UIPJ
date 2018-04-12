@@ -50,33 +50,31 @@
 
 						<ul id="tabsdenunciante" class="nav nav-tabs">
 							<li class="nav-item" id="datosPer">
-								<a class="nav-link active pestaña "  data-toggle="tab" href="#collapsePersonales1"><p id="personal" class="pestaña" style="padding-bottom: 0"><i class="fa fa-user-circle-o" aria-hidden="true"></p></i>
-								<span id="tab1" class="xvacio"></span>
-								<span id="txtTab1" class="xerror"></span>
-								<span id="t1" class="bien"></span>								
+								<a class="nav-link active pestaña " id="p-personal" data-toggle="tab" href="#collapsePersonales1"><p id="personal" class="pestaña" style="padding-bottom: 0"><i class="fa fa-user-circle-o" aria-hidden="true"></p></i>
+								<div id="espacio-notif"><span id="tab1" class="xvacio"></span>
+									<span id="txtTab1" class="xerror"></span>
+									<span id="t1" class="bien"></span></div>																
 								</a>
 							</li>
 							<li class="nav-item" id="datosDir">
 								<a class="nav-link" data-toggle="tab"  href="#collapseDir1"><p id="direccion" class="pestaña"><i class="fa fa-address-card" aria-hidden="true"></i></p>
-								<span id="tab2" class="xvacio"></span>
-								<span id="txtTab2" class="xerror"></span>
-								<span id="t2" class="bien"></span>
-								
+								<div id="espacio-notif1"><span id="tab2" class="xvacio"></span>
+									<span id="txtTab2" class="xerror"></span>
+									<span id="t2" class="bien"></span></div>								
 								</a>
 							</li>
 							<li class="nav-item" id="datosTrab">
-								<a class="nav-link" data-toggle="tab"  href="#collapseTrab1"><p id="dtrabajo" class="pestaña"> <i class="fa fa-industry" aria-hidden="true"></i></p>
-								<span id="tab3" class="xvacio"></span>
-								<span id="txtTab3" class="xerror"></span>
-								<span id="t3" class="bien"></span>
-								
+								<a class="nav-link" data-toggle="tab"  href="#collapseTrab1"><p id="dtrabajo" class="pestaña"> <i class="fa fa-industry" aria-hidden="true"></i></p>									
+								<div id="espacio-notif2"><span id="tab3" class="xvacio"></span>
+									<span id="txtTab3" class="xerror"></span>
+									<span id="t3" class="bien"></span></div>
 								</a>
 							</li>
 							<li class="nav-item" id="datosNotif">
 								<a class="nav-link" data-toggle="tab"  href="#collapseNotifs1"><p id="dnotificaciones" class="pestaña"><i class="fa fa-bell" aria-hidden="true"></i></p>
-									<span id="tab4" class="xvacio"></span>
+									<div id="espacio-notif3"><span id="tab4" class="xvacio"></span>
 									<span id="txtTab4" class="xerror"></span>
-									<span id="t4" class="bien"></span>
+									<span id="t4" class="bien"></span></div>
 								</a>
 							</li>
 						</ul>
@@ -118,30 +116,7 @@
 					$('#tipop').hide();
 
 
- $("#nombres").addClass("vacio");
- $("#primerAp").addClass("vacio");
- $("#segundoAp").addClass("vacio");
-  $("#rfc").addClass("vacio");
- $("#homo").addClass("vacio");
- $("#curp").addClass("vacio");
-  $("#telefono").addClass("vacio");
- $("#motivoEstancia").addClass("vacio");
- $("#docIdentificacion").addClass("vacio");  	
-$("#numDocIdentificacion").addClass("vacio");
- $("#calle").addClass("vacio");
- $("#numExterno").addClass("vacio");  	
-$("#numInterno").addClass("vacio");
- $("#numExterno2").addClass("vacio");  	
-$("#numInterno2").addClass("vacio");
- $("#lugarTrabajo").addClass("vacio");
- $("#telefonoTrabajo").addClass("vacio");  	
-$("#calle2").addClass("vacio");
-$("#calle3").addClass("vacio");
- $("#numExterno3").addClass("vacio");  	
-$("#numInterno3").addClass("vacio");
-$("#correo").addClass("vacio");
- $("#telefonoN").addClass("vacio");  	
-$("#fax").addClass("vacio");
+ 
 
 });
 	$('input[type=radio][name=esVictima]').change(function() {
