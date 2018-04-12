@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "98d71740d2624a9eebaa455e94f86ca5",
+    "content-hash": "02bd2f92b25af5ec416e64b66dbcbd64",
     "packages": [
         {
             "name": "adldap2/adldap2",
@@ -2247,6 +2247,52 @@
                 "uuid"
             ],
             "time": "2018-01-20T00:28:24+00:00"
+        },
+        {
+            "name": "schwarzer/laravel-mysql-to-seeder",
+            "version": "v0.9.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SchwarzerIT/laravel-mysql-to-seeder.git",
+                "reference": "18d88983743a6bc35e600df9713b5ca80d16f3ab"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SchwarzerIT/laravel-mysql-to-seeder/zipball/18d88983743a6bc35e600df9713b5ca80d16f3ab",
+                "reference": "18d88983743a6bc35e600df9713b5ca80d16f3ab",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Schwarzer\\LaravelHelper\\MySQLToSeeder\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "André Schwarzer",
+                    "email": "andre@schwarzer.it",
+                    "homepage": "https://www.schwarzer.it",
+                    "role": "Developer"
+                }
+            ],
+            "description": "MySQL to Laravel >5.1 Seeder",
+            "keywords": [
+                "laravel",
+                "mysql",
+                "seeder"
+            ],
+            "time": "2016-02-01T21:56:27+00:00"
         },
         {
             "name": "sebastian/comparator",

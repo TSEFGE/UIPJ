@@ -28,14 +28,14 @@
 <div class="row no-gutters">
 	<div class="col-12">
 		<div class="boxtwo">
-			<h6>Para generar el documento debe seleccionar el o los servicios y la acusación:</h6>
+			<h6>Servicios:</h6>
 			<div class="row">
 				<div class="boxtwo">
 					<div class="form-group">
 						@foreach($servicios as $servicio)
 						<div class="form-check">
 							<label class="form-check-label col-form-label col-form-label-sm">
-								<input class="form-check-input" type="checkbox" name="servicios[]" value="{{ $servicio->id }}" id="servicio{{ $servicio->id }}"> {{ $servicio->nombre }}
+								<input class="form-check-input" type="checkbox" name="servicios[]" value="{{ $servicio->id }}" id="servicio{{ $servicio->id }}"  style="width:15px;height:15px"> {{ $servicio->nombre }}
 							</label>
 						</div>
 						@endforeach
@@ -74,3 +74,9 @@
 </div>
 {!! Form::close() !!}
 @endsection
+<style type="text/css">
+	
+	.radio{
+		background-color: #2196F3;
+	}
+</style>

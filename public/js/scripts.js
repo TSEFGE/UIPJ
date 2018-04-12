@@ -434,6 +434,49 @@ $(document).ready(function(){
             $("#perseguidoPenalmente1").prop('disabled', true);
             $("#perseguidoPenalmente2").prop('disabled', true);
             $("#vestimenta").prop('disabled', true);
+
+
+                //para generar notificaciones
+
+            $("#nombres").removeClass("vacio");
+            $("#primerAp").removeClass("vacio");
+            $("#segundoAp").removeClass("vacio");
+            $("#rfc").removeClass("vacio");
+            $("#homo").removeClass("vacio");
+            $("#curp").removeClass("vacio");
+            $("#telefono").removeClass("vacio");
+            $("#motivoEstancia").removeClass("vacio");
+            $("#docIdentificacion").removeClass("vacio");     
+            $("#numDocIdentificacion").removeClass("vacio");
+            $("#calle").removeClass("vacio");
+            $("#numExterno").removeClass("vacio");    
+            $("#numInterno").removeClass("vacio");
+            $("#numExterno2").removeClass("vacio");   
+            $("#numInterno2").removeClass("vacio");
+            $("#lugarTrabajo").removeClass("vacio");
+            $("#telefonoTrabajo").removeClass("vacio");   
+            $("#calle2").removeClass("vacio");
+            $("#numExterno2").removeClass("vacio");    
+            $("#numInterno2").removeClass("vacio");
+
+
+                $("#nombres2").addClass("vacio");
+                $("#fechaAltaEmpresa").addClass("vacio");
+                $("#rfc2").addClass("vacio");
+                $("#homo2").addClass("vacio");
+                $("#representanteLegal").addClass("vacio");
+
+                $("#calle").addClass("vacio");
+                $("#numExterno").addClass("vacio");     
+                $("#numInterno").addClass("vacio"); 
+                $("#calle3").addClass("vacio");
+                $("#numExterno3").addClass("vacio");    
+                $("#numInterno3").addClass("vacio");
+
+                $("#correo").addClass("vacio");
+                 $("#telefonoN").addClass("vacio");     
+                $("#fax").addClass("vacio");
+
         }
     });
     //No es empresa
@@ -505,6 +548,56 @@ $(document).ready(function(){
             $("#vestimenta").prop('disabled', false);
             $("#senasPartic").prop('disabled', false);
             $("#narracion").prop('disabled', false);
+
+                $("#nombres2").removeClass("vacio");
+                $("#fechaAltaEmpresa").removeClass("vacio");
+                $("#rfc2").removeClass("vacio");
+                $("#homo2").removeClass("vacio");
+                $("#representanteLegal").removeClass("vacio");
+
+                $("#calle").removeClass("vacio");
+                $("#numExterno").removeClass("vacio");     
+                $("#numInterno").removeClass("vacio"); 
+                $("#calle3").removeClass("vacio");
+                $("#numExterno3").removeClass("vacio");    
+                $("#numInterno3").removeClass("vacio");
+
+                $("#correo").removeClass("vacio");
+                 $("#telefonoN").removeClass("vacio");     
+                $("#fax").removeClass("vacio");
+
+
+//Para generar Notificaciones
+$("#nombres").addClass("vacio");
+$("#primerAp").addClass("vacio");
+$("#segundoAp").addClass("vacio");
+$("#rfc").addClass("vacio");
+$("#homo").addClass("vacio");
+$("#curp").addClass("vacio");
+$("#telefono").addClass("vacio");
+$("#motivoEstancia").addClass("vacio");
+$("#docIdentificacion").addClass("vacio");     
+$("#numDocIdentificacion").addClass("vacio");
+$("#calle").addClass("vacio");
+$("#numExterno").addClass("vacio");    
+$("#numInterno").addClass("vacio");
+$("#numExterno2").addClass("vacio");   
+$("#numInterno2").addClass("vacio");
+$("#lugarTrabajo").addClass("vacio");
+$("#telefonoTrabajo").addClass("vacio");   
+$("#calle2").addClass("vacio");
+$("#numExterno2").addClass("vacio");    
+$("#numInterno2").addClass("vacio");
+
+
+$("#calle3").addClass("vacio");
+ $("#numExterno3").addClass("vacio");   
+$("#numInterno3").addClass("vacio");
+$("#correo").addClass("vacio");
+ $("#telefonoN").addClass("vacio");     
+$("#fax").addClass("vacio");
+
+
         }
     });
 
@@ -667,7 +760,7 @@ $(document).ready(function(){
     });
 
      $('#fechaCit').datetimepicker({
-       
+          format: 'YYYY-MM-DD HH:mm',
            maxDate: moment(),
            widgetPositioning: {
             vertical: 'bottom',

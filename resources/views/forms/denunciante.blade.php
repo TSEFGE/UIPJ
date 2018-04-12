@@ -48,7 +48,7 @@
 				<div class="" id="datosPer">
 					<div id="denunciante">
 
-						<ul class="nav nav-tabs">
+						<ul id="tabsdenunciante" class="nav nav-tabs">
 							<li class="nav-item" id="datosPer">
 								<a class="nav-link active pestaña " id="p-personal" data-toggle="tab" href="#collapsePersonales1"><p id="personal" class="pestaña" style="padding-bottom: 0"><i class="fa fa-user-circle-o" aria-hidden="true"></p></i>
 								<div id="espacio-notif"><span id="tab1" class="xvacio"></span>
@@ -116,41 +116,9 @@
 					$('#tipop').hide();
 
 
- $("#nombres").addClass("vacio");
- $("#primerAp").addClass("vacio");
- $("#segundoAp").addClass("vacio");
-  $("#rfc").addClass("vacio");
- $("#homo").addClass("vacio");
- $("#curp").addClass("vacio");
-  $("#telefono").addClass("vacio");
- $("#motivoEstancia").addClass("vacio");
- $("#docIdentificacion").addClass("vacio");  	
-$("#numDocIdentificacion").addClass("vacio");
+ 
 
-
- $("#calle").addClass("vacio");
- $("#numExterno").addClass("vacio");  	
-$("#numInterno").addClass("vacio");
-
- $("#lugarTrabajo").addClass("vacio");
- $("#telefonoTrabajo").addClass("vacio");  	
-$("#calle2").addClass("vacio");
-$("#numExterno2").addClass("vacio");  	
-$("#numInterno2").addClass("vacio");
-
-
-$("#calle3").addClass("vacio");
- $("#numExterno3").addClass("vacio");  	
-$("#numInterno3").addClass("vacio");
-$("#correo").addClass("vacio");
- $("#telefono").addClass("vacio");  	
-$("#fax").addClass("vacio");
-
-
-
-
-
-	});
+});
 	$('input[type=radio][name=esVictima]').change(function() {
 		if (this.value == 0) {
 			swal("Atención", "Ha seleccionado registrar un denunciante como ofendido .", "warning")
