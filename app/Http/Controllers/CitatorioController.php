@@ -40,7 +40,7 @@ Citatorio     * @return \Illuminate\Http\Response
                     // Add color and link on event
                     [
                         'color' => $color,
-                        'url' => 'storage\citatorios\\'.$citatorio->documento,
+                        'url' => route('edit.citatorio', $citatorio->id),
                     ]
                 );
             }
