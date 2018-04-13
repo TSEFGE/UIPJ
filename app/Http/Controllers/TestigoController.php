@@ -61,6 +61,7 @@ class TestigoController extends Controller
 
         public function storeTestigo(StoreTestigo $request)
         {
+          dd($request->all());
           $persona = Persona::where('curp', $request->curp)->get();
           if ($persona->isNotEmpty()){
               Alert::error('Ya existe una persona registrada con ese CURP.', 'Error')->persistent("Aceptar");
@@ -240,5 +241,5 @@ class TestigoController extends Controller
             //return redirect()->route('carpeta', $request->idCarpeta);
             return redirect()->route('new.testigo', $request->idCarpeta);
         }
-}
+    }
 }
