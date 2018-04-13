@@ -19,6 +19,8 @@
 	});
 
 	function obtenerRFCFISICA() {
+		toastr.clear();
+		
 		nombre = $("#nombres").val().toUpperCase();
 		apPaterno = $("#primerAp").val().toUpperCase();
 		apMaterno = $("#segundoAp").val().toUpperCase();
