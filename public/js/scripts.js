@@ -1005,7 +1005,7 @@ $( "#regresocarpeta" ).hover(function() {
   },function(){
     $(this).html('<i class="fa fa-folder-open" aria-hidden="true"></i>')
 });
-  $( "#personal" ).hover(function() {
+ /* $( "#personal" ).hover(function() {
         $(this).html( "Datos personales" );
         $("#espacio-notif").css("margin-left","90px");
   }, function(){
@@ -1048,4 +1048,4 @@ $( "#regresocarpeta" ).hover(function() {
   }, function(){
     $(this).html('<i class="fa fa-shield" aria-hidden="true"></i>')
     $("#espacio-notif5").css("margin-left","0px");
-  });
+  });*/

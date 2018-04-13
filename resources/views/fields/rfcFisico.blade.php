@@ -1,5 +1,5 @@
 <script>
-	$("#nombres").focusout(function() {
+	{{--$("#nombres").focusout(function() {
 		obtenerRFCFISICA();
 	});
 	$("#primerAp").focusout(function() {
@@ -10,7 +10,7 @@
 	});
 	$("#fechaNacimiento").focusout(function() {
 		obtenerRFCFISICA();
-	});
+	});--}}
 
 	$.ajaxSetup({
 		headers: {
@@ -19,8 +19,6 @@
 	});
 
 	function obtenerRFCFISICA() {
-		toastr.clear();
-		
 		nombre = $("#nombres").val().toUpperCase();
 		apPaterno = $("#primerAp").val().toUpperCase();
 		apMaterno = $("#segundoAp").val().toUpperCase();
