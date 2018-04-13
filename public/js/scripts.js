@@ -371,9 +371,9 @@ $(document).ready(function(){
         if ($('#esEmpresa1').is(':checked') ) {
 
 
-            $('.xvacio').html(); 
-            $('.xerror').html(); 
-            $('.bien').html(); 
+//            $('.xvacio').html(); 
+  //          $('.xerror').html(); 
+    //        $('.bien').html(); 
 
             $('#datosPer').show();
             $('#personaFisica').hide();
@@ -464,13 +464,68 @@ $(document).ready(function(){
             $("#calle").removeClass("vacio");
             $("#numExterno2").removeClass("vacio");    
             $("#numInterno2").removeClass("vacio");
-          //  $("#calle3").removeClass("vacio");
-           // $("#numExterno3").removeClass("vacio");    
-            //$("#numInterno3").removeClass("vacio");
-            $("#correo").removeClass("vacio");
-                $("#telefonoN").removeClass("vacio");     
-                $("#fax").removeClass("vacio");  
+           $("#correo").removeClass("vacio");
+            $("#telefonoN").removeClass("vacio");     
+            $("#fax").removeClass("vacio");
+            $("#narracionUno").removeClass("vacio");
+             $("#narracionUnoM").removeClass("vacio");
 
+             $("#nombres").removeClass("valid");
+            $("#primerAp").removeClass("valid");
+            $("#segundoAp").removeClass("valid");
+            $("#fechaNacimiento").removeClass("valid");
+            $("#rfc").removeClass("valid");
+            $("#homo").removeClass("valid");
+            $("#curp").removeClass("valid");
+            $("#telefono").removeClass("valid");
+            $("#motivoEstancia").removeClass("valid");
+            $("#docIdentificacion").removeClass("valid");     
+            $("#numDocIdentificacion").removeClass("valid");
+            $("#calle").removeClass("valid");
+            $("#numExterno").removeClass("valid");    
+            $("#numInterno").removeClass("valid");
+            $("#numExterno2").removeClass("valid");   
+            $("#numInterno2").removeClass("valid");
+            $("#lugarTrabajo").removeClass("valid");
+            $("#telefonoTrabajo").removeClass("valid");   
+            $("#calle").removeClass("valid");
+            $("#numExterno2").removeClass("valid");    
+            $("#numInterno2").removeClass("valid");
+                $("#correo").removeClass("valid");
+                $("#telefonoN").removeClass("valid");     
+                $("#fax").removeClass("valid");
+                $("#narracionUno").removeClass("valid");
+                $("#narracionUnoM").removeClass("valid");
+
+  $("#nombres").removeClass("error");
+            $("#primerAp").removeClass("error");
+            $("#segundoAp").removeClass("error");
+            $("#fechaNacimiento").removeClass("error");
+            $("#rfc").removeClass("error");
+            $("#homo").removeClass("error");
+            $("#curp").removeClass("error");
+            $("#telefono").removeClass("error");
+            $("#motivoEstancia").removeClass("error");
+            $("#docIdentificacion").removeClass("error");     
+            $("#numDocIdentificacion").removeClass("error");
+            $("#calle").removeClass("error");
+            $("#numExterno").removeClass("error");    
+            $("#numInterno").removeClass("error");
+            $("#numExterno2").removeClass("error");   
+            $("#numInterno2").removeClass("error");
+            $("#lugarTrabajo").removeClass("error");
+            $("#telefonoTrabajo").removeClass("error");   
+            $("#calle").removeClass("error");
+            $("#numExterno2").removeClass("error");    
+            $("#numInterno2").removeClass("error");
+                $("#correo").removeClass("error");
+                $("#telefonoN").removeClass("error");     
+                $("#fax").removeClass("error");
+                $("#narracionUno").removeClass("error");
+                $("#narracionUnoM").removeClass("error");
+
+
+            
 
             $("#nombres2").addClass("vacio");
             $("#fechaAltaEmpresa").addClass("vacio");
@@ -483,7 +538,8 @@ $(document).ready(function(){
                 $("#calle3").addClass("vacio");
                 $("#numExterno3").addClass("vacio");    
                 $("#numInterno3").addClass("vacio");
-                  $("#narracionUno").addClass("vacio");
+                $("#narracionUno").addClass("vacio");
+                $("#narracionUnoM").addClass("vacio");
                 
 
         }
@@ -569,11 +625,15 @@ correctos=0;
             $("#senasPartic").prop('disabled', false);
             $("#narracion").prop('disabled', false);
 
+
+
+
                 $("#nombres2").removeClass("vacio");
                 $("#fechaAltaEmpresa").removeClass("vacio");
                 $("#rfc2").removeClass("vacio");
                 $("#homo2").removeClass("vacio");
-                $("#representanteLegal").removeClass("vacio");
+                $("#representanteLegal").removeClass("vacio");            
+
                 $("#calle").removeClass("vacio");
                 $("#numExterno").removeClass("vacio");     
                 $("#numInterno").removeClass("vacio"); 
@@ -590,6 +650,59 @@ correctos=0;
                 $("#residenciaAnterior").removeClass("vacio");
                 $("#vestimenta").removeClass("vacio");
                 $("#senasPartic").removeClass("vacio");
+                 $("#narracionUno").addClass("vacio");
+                 $("#narracionUnoM").addClass("vacio");
+
+
+
+                $("#nombres2").removeClass("valid");
+                $("#fechaAltaEmpresa").removeClass("valid");
+                $("#rfc2").removeClass("valid");
+                $("#homo2").removeClass("valid");
+                $("#representanteLegal").removeClass("valid");
+                $("#calle").removeClass("valid");
+                $("#numExterno").removeClass("valid");     
+                $("#numInterno").removeClass("valid"); 
+                $("#calle3").removeClass("valid");
+                $("#numExterno3").removeClass("valid");    
+                $("#numInterno3").removeClass("valid");
+                $("#correo").removeClass("valid");
+                $("#telefonoN").removeClass("valid");     
+                $("#fax").removeClass("valid");
+                $("#alias").removeClass("valid");
+                $("#personasBajoSuGuarda").removeClass("valid");     
+                $("#ingreso").removeClass("valid");
+                $("#residenciaAnterior").removeClass("valid");
+                $("#vestimenta").removeClass("valid");
+                $("#senasPartic").removeClass("valid");
+                 $("#narracionUno").addClass("valid");
+                  $("#narracionUnoM").addClass("valid");
+
+                 $("#nombres2").removeClass("error");
+                $("#fechaAltaEmpresa").removeClass("error");
+                $("#rfc2").removeClass("error");
+                $("#homo2").removeClass("error");
+                $("#representanteLegal").removeClass("error");
+                $("#calle").removeClass("error");
+                $("#numExterno").removeClass("error");     
+                $("#numInterno").removeClass("error"); 
+                $("#calle3").removeClass("error");
+                $("#numExterno3").removeClass("error");    
+                $("#numInterno3").removeClass("error");
+                $("#correo").removeClass("error");
+                $("#telefonoN").removeClass("error");     
+                $("#fax").removeClass("error");
+                $("#alias").removeClass("error");
+                $("#personasBajoSuGuarda").removeClass("error");     
+                $("#ingreso").removeClass("error");
+                $("#residenciaAnterior").removeClass("error");
+                $("#vestimenta").removeClass("error");
+                $("#senasPartic").removeClass("error");
+                 $("#narracionUno").addClass("error");
+                 $("#narracionUnoM").addClass("error");
+
+
+
 
                 //Para generar Notificaciones se asigna clase
                 $("#nombres").addClass("vacio");
@@ -626,9 +739,9 @@ correctos=0;
                 $("#ingreso").addClass("vacio");
                 $("#residenciaAnterior").addClass("vacio");
                 $("#vestimenta").addClass("vacio");
-                $("#senasPartic").addClass("vacio");
-                 
+                $("#senasPartic").addClass("vacio");                 
                 $("#narracionUno").addClass("vacio");
+                $("#narracionUnoM").addClass("vacio");
 
 
 
