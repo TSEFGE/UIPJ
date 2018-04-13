@@ -8,10 +8,10 @@
     <div id="tabscarpeta">
         <ul class="nav nav-tabs">
             <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#tdenunciante">Denunciante o agraviado</a>
+                <a class="nav-link active" data-toggle="tab" href="#tdenunciante">Víctima u ofendido</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#tdenunciado">Denunciado o imputado</a>
+                <a class="nav-link" data-toggle="tab" href="#tdenunciado">Investigado</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#tautoridad">Autoridad</a>
@@ -48,7 +48,6 @@
 </div>
 
 <!-- Contenido en Pestañas -->
-
 <div class="tab-content" id="contenidotabs">
     <div class="tab-pane active container" id="tdenunciante">
         <div class="boxtwo">
@@ -67,8 +66,6 @@
             </div>
         </div>
     </div> 
-
-   
 
     <div class="tab-pane container" id="tautoridad">
         <div class="boxtwo">
@@ -115,8 +112,6 @@
         </div>                   
     </div>
 
-    
-
     <div class="tab-pane container" id="tdelito">
         <div class="boxtwo">
             @include('tables.delitos')
@@ -147,7 +142,6 @@
             </div>
         </div>           
     </div>
-
 </div>
 @endsection
 

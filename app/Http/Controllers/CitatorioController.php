@@ -25,11 +25,11 @@ Citatorio     * @return \Illuminate\Http\Response
         if($citatorios->count()) {
             foreach ($citatorios as $key => $citatorio) {
                 if($citatorio->status == 1){
-                    $color = 'yellow';
+                    $color = '#ffc425';
                 }elseif($citatorio->status == 2){
-                    $color = 'green';
+                    $color = '#3cb371';
                 }elseif($citatorio->status == 3){
-                    $color = 'red';
+                    $color = '#FE642E';
                 }
                 $events[] = Calendar::event(
                     $citatorio->motivo,
@@ -40,7 +40,7 @@ Citatorio     * @return \Illuminate\Http\Response
                     // Add color and link on event
                     [
                         'color' => $color,
-                        'url' => 'storage\citatorios\\'.$citatorio->documento,
+                        'url' => route('edit.citatorio', $citatorio->id),
                     ]
                 );
             }
@@ -91,7 +91,8 @@ Citatorio     * @return \Illuminate\Http\Response
     public function store(Request $request)
     {
         //dd($request->all());
-        $fecha = Carbon::parse($request->fecha)->format("Y-m-d H:i:00");
+        $fecha1 = $request->fecha." ".$request->hora;
+        $fecha = Carbon::parse($fecha1)->format("Y-m-d H:i:00");
         if($request->tipo==1){//Investigado
             $info = DB::table('extra_denunciado')
                 ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
@@ -142,7 +143,7 @@ Citatorio     * @return \Illuminate\Http\Response
         $yearCit = Carbon::parse($request->fecha)->format("Y");
         $mesLetraCit = DocxMakerController::getMesLetra((int)$mesCit);
         $fechaCompletaCit = mb_strtoupper($diaCit." DE ".$mesLetraCit." DE ".$yearCit);
-        $horaCit = Carbon::parse($request->fecha)->format("H:i");
+        $horaCit = $request->hora;
 
         //Generar documento
         if($request->tipo==1){//Investigado
@@ -150,7 +151,7 @@ Citatorio     * @return \Illuminate\Http\Response
         }elseif($request->tipo==2){//Testigo
             $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('templates/CitaTestigo.docx');
         }
-        
+
         $templateProcessor->setValue('distritoLetra', $distritoLetra);
         $templateProcessor->setValue('municipioUnidadM', mb_strtoupper($info->municipio));
         $templateProcessor->setValue('motivoCita', $request->motivo);
@@ -170,13 +171,12 @@ Citatorio     * @return \Illuminate\Http\Response
         $templateProcessor->setValue('direccion', $info->direccion);
         $templateProcessor->setValue('telefono', $info->telefono);
         $templateProcessor->setValue('nombreFiscal', $nombreFiscal);
-        
+
         $name='Citatorio'.time().'.docx';
         $templateProcessor->saveAs(public_path().'\storage\citatorios\\'.$name);
         //$templateProcessor->saveAs('../storage/oficios/ConstanciaDeHechos'.$info->id.'.docx');
 
         $citatorio = new Citatorio($request->all());
-        $citatorio->fecha = $fecha;
         $citatorio->intento = $numCitatorio;
         $citatorio->documento = $name;
         $citatorio->save();
@@ -185,7 +185,7 @@ Citatorio     * @return \Illuminate\Http\Response
         //return response()->download(public_path().'\storage\citatorios\\'.$name);
         //return redirect()->route('carpeta', $request->idCarpeta);
         return redirect()->route('citatorio', ['idCarpeta'=>$request->idCarpeta,'idCitado'=>$request->idCitado, 'tipoInvolucrado'=>$request->tipo]);
-    
+
     }
 
     /**
@@ -207,7 +207,8 @@ Citatorio     * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        $citatorio=Citatorio::find($id)->first();
+        return view('forms.citatorioEdit')->with('citatorio',$citatorio);
     }
 
     /**
@@ -219,7 +220,11 @@ Citatorio     * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
+        //dd($request,$id);
+        $citatorio=Citatorio::find($id)->first();
+        $citatorio->fill($request->all());
+        $citatorio->save();
+        return  redirect()->route('citatorio',[$request->idCarpeta,$request->idCitado,$request->tipo]);
     }
 
     /**

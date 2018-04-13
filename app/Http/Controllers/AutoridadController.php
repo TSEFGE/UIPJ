@@ -23,6 +23,7 @@ use App\Models\Domicilio;
 use App\Models\VariablesPersona;
 use App\Models\ExtraAutoridad;
 use App\Models\Bitacora;
+use App\Models\Narracion;
 
 class AutoridadController extends Controller
 {
@@ -138,6 +139,16 @@ class AutoridadController extends Controller
         $ExtraAutoridad->save();
         //Agregar a bitacora
         Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_autoridad', 'accion' => 'insert', 'descripcion' => 'Se ha registrado Informacion extra de Autoridad', 'idFilaAccion' => $ExtraAutoridad->id]);
+
+        $narracion= new Narracion();
+        $narracion->idInvolucrado=$ExtraAutoridad->id;
+        $narracion->idCarpeta=$request->idCarpeta;
+        $narracion->narracion=$request->narracionUno;
+        $narracion->tipoInvolucrado=3;
+        $narracion->archivo=null;
+        $narracion->save();
+
+        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'narracion', 'accion' => 'insert', 'descripcion' => 'Se ha registrado una nueva narracion de autoridad.', 'idFilaAccion' => $narracion->id]);
 
         /*
         Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
