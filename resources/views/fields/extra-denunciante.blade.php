@@ -8,7 +8,7 @@
 			<div class="clearfix"></div>
 			<div class="form-check form-check-inline">
 				<label class="form-check-label col-form-label col-form-label-sm">
-					<input class="form-check-input" type="radio" id="conoceAlDenunciado1" name="conoceAlDenunciado" value="1" required> Sí
+					<input class="form-check-input" type="radio" id="conoceAlDenunciado1" name="conoceAlDenunciado" value="1"> Sí
 				</label>
 			</div>
 			<div class="form-check form-check-inline">
