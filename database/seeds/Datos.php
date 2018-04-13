@@ -28,7 +28,7 @@ class Datos extends Seeder
        //  vehiculo
        //  acusacion
 
-       $entries =
+       /*$entries =
        [
            [
                "id" => "1",
@@ -45,13 +45,39 @@ class Datos extends Seeder
                "tokenSession" => "dp8HWxwKpeBQOSrrsMRyNIcKcER0I2AYarPM0uxX",
                "remember_token" => "04g80GFIeFX5dLchMXM7PSrP7itMtIgs3uZMQUGGVmLLrH5Nab1ogNtUm6ax",
                "deleted_at" => ""
+           ],
+           [
+               "id" => "2",
+               "created_at" => "2018-04-12 18:18:32",
+               "updated_at" => "2018-04-12 18:18:32",
+               "idUnidad" => "11",
+               "username" => "admin",
+               "nombres" => "Admin",
+               "apellidos" => "UIPJ",
+               "email" => "admin@fiscaliaveracruz.gob.mx",
+               "password" => "\$2y\$10\$Ch3CzT6wLv3RNq6NgVMoJ.YRdCI8WLoGvJfFblRRfG.MdnADvXo2S",
+               "numFiscal" => "1",
+               "nivel" => "1",
+               "tokenSession" => "dp8HWxwKpeBQOSrrsMRyNIcKcER0I2AYarPM0uxX",
+               "remember_token" => "04g80GFIeFX5dLchMXM7PSrP7itMtIgs3uZMQUGGVmLLrH5Nab1ogNtUm6ax",
+               "deleted_at" => ""
            ]
        ];
 
 
        foreach($entries as $entry){
            DB::table('users')->insert($entry);
-       }
+       }*/
+       $user = App\User::create([
+            'idUnidad' => 1,
+            'username' => 'admin',
+            'nombres' => 'Administrador',
+            'apellidos' => '´Godínez',
+            'email' => 'admin@fiscaliaveracruz.gob.mx',
+            'password' => bcrypt('admin'),
+            'numFiscal' => '1',
+            'nivel' => 1
+        ]);
        $entries =
        [
            [
