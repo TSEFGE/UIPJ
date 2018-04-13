@@ -81,17 +81,18 @@
 							</a>
 						</li> 
 						<li class="nav-item" id="datosNotif">
-							<a class="nav-link" data-toggle="tab" id="dnotificaciones" href="#collapseNotifs2"><p id="dnotificaciones" class="pestaña"><i class="fa fa-bell" aria-hidden="true"></i></p>
+							<a class="nav-link" data-toggle="tab"  href="#collapseNotifs2"><p id="dnotificaciones" class="pestaña"><i class="fa fa-bell" aria-hidden="true"></i></p>
 									<span id="vacio3" class="xvacio"></span>
 									<span id="error3" class="xerror"></span>
 									<span id="bien3" class="bien"></span>
 								</a>
 						</li> 
 						<li class="nav-item"  id="datosExtra">
-							<a class="nav-link" data-toggle="tab" id="dextra"  href="#collapseDenun2"><p><i class="fa fa-asterisk" aria-hidden="true"></i></p></a>
+							<a class="nav-link" data-toggle="tab"   href="#collapseDenun2"><p id="dextra" class="pestaña"><i class="fa fa-asterisk" aria-hidden="true"></i></p>
 									<span id="vacio4" class="xvacio"></span>
 									<span id="error4" class="xerror"></span>
 									<span id="bien4" class="bien"></span>
+								</a>
 						</li> 		
 
 					</ul>
