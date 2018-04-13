@@ -48,7 +48,7 @@
 				<div class="" id="datosPer">
 					<div id="denunciante">
 
-						<ul id="tabsdenunciante" class="nav nav-tabs">
+						<ul id="tdenunciante" class="nav nav-tabs">
 							<li class="nav-item" id="datosPer">
 								<a class="nav-link active pestaña " id="p-personal" data-toggle="tab" href="#collapsePersonales1"><p id="personal" class="pestaña" ><i class="fa fa-user-circle-o" aria-hidden="true"></i></p>
 								<div id="espacio-notif"><span id="tab1" class="xvacio"></span>
