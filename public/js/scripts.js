@@ -1044,7 +1044,7 @@ $( "#regresocarpeta" ).hover(function() {
   });
   $( "#autoridad" ).hover(function() {
     $(this).html( "Información sobre la autoridad" );
-    $("#espacio-notif5").css("margin-left","90px");
+    $("#espacio-notif5").css("margin-left","190px");
   }, function(){
     $(this).html('<i class="fa fa-shield" aria-hidden="true"></i>')
     $("#espacio-notif5").css("margin-left","0px");

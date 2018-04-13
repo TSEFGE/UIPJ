@@ -370,12 +370,24 @@ class DenunciadoController extends Controller
                     if (!is_null($request->vestimenta)){
                         $ExtraDenunciado->vestimenta = $request->vestimenta;
                     }
-                   
-                   
+
+
                     $ExtraDenunciado->save();
                     $idExtraDenunciado=$ExtraDenunciado->id;
 
                     Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_denunciado', 'accion' => 'insert', 'descripcion' => 'Se ha registradoun nuevo extra denunciado de persona física de tipo denunciado por comparecencia.', 'idFilaAccion' => $idExtraDenunciado]);
+
+                    //------------ N A R R A C I O N B I T A C O R A
+                    $narracion= new Narracion();
+                    $narracion->idInvolucrado=$ExtraDenunciado->id;
+                    $narracion->idCarpeta=$request->idCarpeta;
+                    //dd($request);
+                    $narracion->narracion=$request->narracionUno;
+                    $narracion->tipoInvolucrado=2;
+                    $narracion->archivo=null;
+                    $narracion->save();
+                    Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'narracion', 'accion' => 'insert', 'descripcion' => 'Se ha registrado una narracion de persona fisica de tipo denunciado por comparecencia.', 'idFilaAccion' => $narracion->id]);
+
 
                 }
             }elseif($request->esEmpresa==1){
@@ -463,13 +475,23 @@ class DenunciadoController extends Controller
                 $ExtraDenunciado->idVariablesPersona = $idVariablesPersona;
                 $ExtraDenunciado->idNotificacion = $idNotificacion;
                 $ExtraDenunciado->senasPartic = $request->senasPartic;
-             
-              
+
+
                 $ExtraDenunciado->save();
                 $idExtraDenunciado=$ExtraDenunciado->id;
 
                 Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_denunciado', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un nuevo extra denunciado de persona moral de tipo denunciado por comparecencia.', 'idFilaAccion' => $idExtraDenunciado]);
 
+                //------------ N A R R A C I O N B I T A C O R A
+                $narracion= new Narracion();
+                $narracion->idInvolucrado=$ExtraDenunciado->id;
+                $narracion->idCarpeta=$request->idCarpeta;
+                //dd($request);
+                $narracion->narracion=$request->narracionUnoM;
+                $narracion->tipoInvolucrado=2;
+                $narracion->archivo=null;
+                $narracion->save();
+                Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'narracion', 'accion' => 'insert', 'descripcion' => 'Se ha registrado una narracion de persona moral de tipo denunciado por comparecencia.', 'idFilaAccion' => $narracion->id]);
             }
         }
         /*
@@ -492,7 +514,7 @@ class DenunciadoController extends Controller
         //dd($request->all());
         $denunciado = ExtraDenunciado::find($request->idExtra);
         //$denunciante->fill($request->all());
-       
+
         $denunciado->save();
         Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_denunciado', 'accion' => 'update', 'descripcion' => 'Se ha modificado el campo complemento de la narración en extra denunciado.', 'idFilaAccion' => $denunciado->id]);
         Alert::success('Complemento agregado con éxito', 'Hecho')->persistent("Aceptar");
