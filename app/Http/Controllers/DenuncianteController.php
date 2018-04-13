@@ -59,7 +59,7 @@ class DenuncianteController extends Controller
 
     public function storeDenunciante(StoreDenunciante $request)
     {
-        dd($request->all());
+        //dd($request->all());
         if ($request->esEmpresa==0) {
             $persona = Persona::where('curp', $request->curp)->get();
             if ($persona->isNotEmpty()){
