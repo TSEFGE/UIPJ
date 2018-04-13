@@ -5,8 +5,11 @@ var contador=0;
 
        });
                 
-
- $('.nav-tabs a').on('hidden.bs.tab', function(event){
+ $('#tdenunciante.nav-tabs a').on('shown.bs.tab', function(event){
+  $("#personal").html( "Datos personales" );
+  $("#espacio-notif").css("margin-left","90px");
+ });
+ $('#tdenunciante.nav-tabs a').on('hidden.bs.tab', function(event){
                     
 //event.preventDefault();
                         var index= $($(this).attr('href')).index();
@@ -151,7 +154,43 @@ var contador=0;
                                 default:
                                 break;
                         }
+$( "#personal" ).hover(function() {
+        $(this).html( "Datos personales" );
+        $("#espacio-notif").css("margin-left","90px");
+  }, function(){
+    $(this).html('<i class="fa fa-user-circle-o" aria-hidden="true"></i>')
+    $("#espacio-notif").css("margin-left","0px");
+  });
+  $( "#direccion" ).hover(function() {
+      $(this).html( "Dirección" );
+      $("#espacio-notif1").css("margin-left","35px");
+  }, function(){
+    $(this).html('<i class="fa fa-address-card" aria-hidden="true"></i>')
+    $("#espacio-notif1").css("margin-left","0px");
+  });
 
+  $( "#dtrabajo" ).hover(function() {
+    $(this).html( "Datos del trabajo" );
+    $("#espacio-notif2").css("margin-left","87px");
+  }, function(){
+    $(this).html('<i class="fa fa-industry" aria-hidden="true"></i>')
+    $("#espacio-notif2").css("margin-left","0px");
+  });
+
+  $( "#dnotificaciones" ).hover(function() {
+    $(this).html( "Dirección para notificaciones" );
+    $("#espacio-notif3").css("margin-left","170px");
+  }, function(){
+    $(this).html('<i class="fa fa-bell" aria-hidden="true"></i>')
+    $("#espacio-notif3").css("margin-left","0px");
+  });
+  $( "#dextra" ).hover(function() {
+    $(this).html( "Otros datos" );
+    $("#espacio-notif4").css("margin-left","90px");
+  }, function(){
+    $(this).html('<i class="fa fa-asterisk" aria-hidden="true"></i>')
+    $("#espacio-notif4").css("margin-left","0px");
+  });
                     });
 
 
