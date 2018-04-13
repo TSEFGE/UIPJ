@@ -220,10 +220,11 @@ Citatorio     * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        dd($request,$id);
+        //dd($request,$id);
         $citatorio=Citatorio::find($id)->first();
         $citatorio->fill($request->all());
-        return route('citatorio',[$request->idCarpeta,$request->idCitado,$request->tipoInvolucrado]);
+        $citatorio->save();
+        return  redirect()->route('citatorio',[$request->idCarpeta,$request->idCitado,$request->tipo]);
     }
 
     /**
