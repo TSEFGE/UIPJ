@@ -6,13 +6,16 @@ var contador=0;
        });
                 
 
- $('.nav-tabs a').on('hidden.bs.tab', function(event){
+ $('#tdenunciante.nav-tabs a').on('hidden.bs.tab', function(event){
                     
 //event.preventDefault();
                         var index= $($(this).attr('href')).index();
                         var totalG, correctosG;
+
                         switch(index) {
-                                case 0:                                                        
+                                case 0:  
+                                var countvacio = $('#collapsePersonales1 .vacio').length;
+                                totales=countvacio ;                                                      
                                 var count = $('#collapsePersonales1 .error').length; 
                                 if (count==0){
                                   $("#txtTab1").hide();
@@ -32,9 +35,7 @@ var contador=0;
                                 else{
                                   $("#t1").show();                             
                                   $("#t1").html(correctos);
-                                }
-                                 var countvacio = $('#collapsePersonales1 .vacio').length;
-                                 totales=countvacio 
+                                }                                 
                                  countvacio= countvacio-count-correctos;
                                  if (countvacio == 0 || countvacio == totales){
                                   $("#tab1").hide();
