@@ -369,6 +369,12 @@ $(document).ready(function(){
     //Si es empresa
     $("#esEmpresa1").change(function(event){
         if ($('#esEmpresa1').is(':checked') ) {
+
+
+            $('.xvacio').html(); 
+            $('.xerror').html(); 
+            $('.bien').html(); 
+
             $('#datosPer').show();
             $('#personaFisica').hide();
             $('#personaMoral').show();
@@ -455,35 +461,47 @@ $(document).ready(function(){
             $("#numInterno2").removeClass("vacio");
             $("#lugarTrabajo").removeClass("vacio");
             $("#telefonoTrabajo").removeClass("vacio");   
-            $("#calle2").removeClass("vacio");
+            $("#calle").removeClass("vacio");
             $("#numExterno2").removeClass("vacio");    
             $("#numInterno2").removeClass("vacio");
+          //  $("#calle3").removeClass("vacio");
+           // $("#numExterno3").removeClass("vacio");    
+            //$("#numInterno3").removeClass("vacio");
+            $("#correo").removeClass("vacio");
+                $("#telefonoN").removeClass("vacio");     
+                $("#fax").removeClass("vacio");  
 
 
-
-
-           $("#nombres2").addClass("vacio");
-           $("#fechaAltaEmpresa").addClass("vacio");
-           $("#rfc2").addClass("vacio");
+            $("#nombres2").addClass("vacio");
+            $("#fechaAltaEmpresa").addClass("vacio");
+            $("#rfc2").addClass("vacio");
             $("#homo2").addClass("vacio");
             $("#representanteLegal").addClass("vacio");
-
                 $("#calle").addClass("vacio");
                 $("#numExterno").addClass("vacio");     
                 $("#numInterno").addClass("vacio"); 
                 $("#calle3").addClass("vacio");
                 $("#numExterno3").addClass("vacio");    
                 $("#numInterno3").addClass("vacio");
-
-                $("#correo").addClass("vacio");
-                 $("#telefonoN").addClass("vacio");     
-                $("#fax").addClass("vacio");
+                  $("#narracionUno").addClass("vacio");
+                
 
         }
     });
     //No es empresa
     $("#esEmpresa2").change(function(event){
         if ($('#esEmpresa2').is(':checked') ) {
+
+$("#tab1").html(''); 
+$("#txtTab1").html(''); 
+$("#t1").html(''); 
+ 
+count=0;
+countvacio=0;
+correctos=0;
+
+
+
             $('#datosPer').show();
             $('#personaFisica').show();
             $('#personaMoral').hide();
@@ -556,18 +574,22 @@ $(document).ready(function(){
                 $("#rfc2").removeClass("vacio");
                 $("#homo2").removeClass("vacio");
                 $("#representanteLegal").removeClass("vacio");
-
                 $("#calle").removeClass("vacio");
                 $("#numExterno").removeClass("vacio");     
                 $("#numInterno").removeClass("vacio"); 
                 $("#calle3").removeClass("vacio");
                 $("#numExterno3").removeClass("vacio");    
                 $("#numInterno3").removeClass("vacio");
-
                 $("#correo").removeClass("vacio");
                 $("#telefonoN").removeClass("vacio");     
                 $("#fax").removeClass("vacio");
 
+                $("#alias").removeClass("vacio");
+                $("#personasBajoSuGuarda").removeClass("vacio");     
+                $("#ingreso").removeClass("vacio");
+                $("#residenciaAnterior").removeClass("vacio");
+                $("#vestimenta").removeClass("vacio");
+                $("#senasPartic").removeClass("vacio");
 
                 //Para generar Notificaciones se asigna clase
                 $("#nombres").addClass("vacio");
@@ -592,13 +614,22 @@ $(document).ready(function(){
                 $("#numExterno2").addClass("vacio");    
                 $("#numInterno2").addClass("vacio");
 
-
                 $("#calle3").addClass("vacio");
                 $("#numExterno3").addClass("vacio");   
                 $("#numInterno3").addClass("vacio");
                 $("#correo").addClass("vacio");
                 $("#telefonoN").addClass("vacio");     
                 $("#fax").addClass("vacio");
+
+                $("#alias").addClass("vacio");
+                $("#personasBajoSuGuarda").addClass("vacio");     
+                $("#ingreso").addClass("vacio");
+                $("#residenciaAnterior").addClass("vacio");
+                $("#vestimenta").addClass("vacio");
+                $("#senasPartic").addClass("vacio");
+                 
+                $("#narracionUno").addClass("vacio");
+
 
 
         }
