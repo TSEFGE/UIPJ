@@ -1,6 +1,9 @@
 $(document).ready(function(){        
 
-var contador=0;
+var count=0;
+var countvacio=0;
+var correctos=0;
+
 
 
        });
@@ -13,7 +16,7 @@ var contador=0;
                         var totalG, correctosG;
                         switch(index) {
                                 case 0:                                
-                                var count = $('#collapsePersonales1 .error').length; 
+                                count = $('#collapsePersonales1 .error').length; 
                                 if (count==0){
                                   $("#txtTab1").hide();
                                 } 
@@ -21,7 +24,7 @@ var contador=0;
                                   $("#txtTab1").show();                             
                                   $("#txtTab1").html(count); 
                                 }
-                                var correctos = $('#collapsePersonales1 .valid').length;
+                                 correctos = $('#collapsePersonales1 .valid').length;
                                 if (correctos==0){
                                   $("#t1").hide();
                                 } 
@@ -33,7 +36,7 @@ var contador=0;
                                   $("#t1").show();                             
                                   $("#t1").html(correctos);
                                 }
-                                 var countvacio = $('#collapsePersonales1 .vacio').length;
+                                 countvacio = $('#collapsePersonales1 .vacio').length;
                                  totales=countvacio 
                                  countvacio= countvacio-count-correctos;
                                  if (countvacio == 0 || countvacio == totales){
@@ -48,7 +51,7 @@ var contador=0;
                                  
                                 break;                                
                                 case 1:
-                                var count = $('#collapseDir1 .error').length;
+                                count = $('#collapseDir1 .error').length;
                                 if (count==0){
                                   $("#txtTab2").hide();
                                 } 
@@ -56,7 +59,7 @@ var contador=0;
                                   $("#txtTab2").show();                             
                                   $("#txtTab2").html(count); 
                                 }                                
-                                var correctos = $('#collapseDir1 .valid').length; 
+                                 correctos = $('#collapseDir1 .valid').length; 
                                 if (correctos==0){
                                   $("#t2").hide();
                                 } 
@@ -68,7 +71,7 @@ var contador=0;
                                   $("#t2").show();                             
                                   $("#t2").html(correctos); 
                                 }                               
-                                var countvacio = $('#collapseDir1 .vacio').length; 
+                                 countvacio = $('#collapseDir1 .vacio').length; 
                                 totales = countvacio
                                  countvacio= countvacio-count-correctos;
                                  if (countvacio == 0 || countvacio == totales){
@@ -114,6 +117,8 @@ var contador=0;
                                 break;
 
                                 case 3:
+totales=0;
+
                                 var count = $('#collapseNotifs1 .error').length;
                                 if (count==0){
                                   $("#txtTab4").hide();

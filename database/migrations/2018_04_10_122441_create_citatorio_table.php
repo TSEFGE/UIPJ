@@ -20,7 +20,8 @@ class CreateCitatorioTable extends Migration
             $table->integer('idCitado')->unsigned();
             $table->integer('tipo');//testigo=2, investigado=1
             $table->string('motivo', 500);
-            $table->dateTime('fecha');
+            $table->date('fecha');
+            $table->time('hora');
             $table->integer('status');//1=pendiente
             $table->integer('intento');//1=primera
             $table->string('documento');

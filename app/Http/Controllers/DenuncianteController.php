@@ -15,6 +15,7 @@ use App\Models\CatEtnia;
 use App\Models\CatLengua;
 use App\Models\CatNacionalidad;
 use App\Models\CatOcupacion;
+use App\Models\Narracion;
 use App\Models\CatReligion;
 use App\Models\Carpeta;
 use App\Models\Persona;
@@ -228,6 +229,18 @@ class DenuncianteController extends Controller
 
                 $ExtraDenunciante->save();
 
+
+              $narracion= new Narracion();
+              $narracion->idInvolucrado=$ExtraDenunciante->id;
+              $narracion->idCarpeta=$request->idCarpeta;
+              //dd($request);
+              $narracion->narracion=$request->narracionUno;
+              $narracion->tipoInvolucrado=1;
+              $narracion->archivo=null;
+              $narracion->save();
+
+              Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'narracion', 'accion' => 'insert', 'descripcion' => 'Se ha registrado una nueva narracion de persona física de tipo Denunciante.', 'idFilaAccion' => $narracion->id]);
+
                 if($ExtraDenunciante->esVictima==1){
                          Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_denunciado', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un denunciante de tipo Victima.', 'idFilaAccion' => $ExtraDenunciante->id]);
                 } else{
@@ -235,6 +248,9 @@ class DenuncianteController extends Controller
                 }
 
                 Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_denunciante', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un nuevo extra denunciante de persona física.', 'idFilaAccion' => $ExtraDenunciante->id]);
+
+
+
             }
         } elseif ($request->esEmpresa==1) {
             $persona = new Persona();
@@ -324,6 +340,18 @@ class DenuncianteController extends Controller
 
             $ExtraDenunciante->save();
             Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_denunciante', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un nuevo extra denunciante de persona moral.', 'idFilaAccion' => $ExtraDenunciante->id]);
+
+
+              $narracion= new Narracion();
+              $narracion->idInvolucrado=$ExtraDenunciante->id;
+              $narracion->idCarpeta=$request->idCarpeta;
+              //dd($request);
+              $narracion->narracion=$request->narracionUnoM;
+              $narracion->tipoInvolucrado=1;
+              $narracion->archivo=null;
+              $narracion->save();
+
+              Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'narracion', 'accion' => 'insert', 'descripcion' => 'Se ha registrado una nueva narracion de persona Moral de tipo Denunciante.', 'idFilaAccion' => $narracion->id]);
         }
         /*
         Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
