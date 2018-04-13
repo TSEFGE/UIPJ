@@ -150,7 +150,7 @@ Citatorio     * @return \Illuminate\Http\Response
         }elseif($request->tipo==2){//Testigo
             $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('templates/CitaTestigo.docx');
         }
-        
+
         $templateProcessor->setValue('distritoLetra', $distritoLetra);
         $templateProcessor->setValue('municipioUnidadM', mb_strtoupper($info->municipio));
         $templateProcessor->setValue('motivoCita', $request->motivo);
@@ -170,7 +170,7 @@ Citatorio     * @return \Illuminate\Http\Response
         $templateProcessor->setValue('direccion', $info->direccion);
         $templateProcessor->setValue('telefono', $info->telefono);
         $templateProcessor->setValue('nombreFiscal', $nombreFiscal);
-        
+
         $name='Citatorio'.time().'.docx';
         $templateProcessor->saveAs(public_path().'\storage\citatorios\\'.$name);
         //$templateProcessor->saveAs('../storage/oficios/ConstanciaDeHechos'.$info->id.'.docx');
@@ -185,7 +185,7 @@ Citatorio     * @return \Illuminate\Http\Response
         //return response()->download(public_path().'\storage\citatorios\\'.$name);
         //return redirect()->route('carpeta', $request->idCarpeta);
         return redirect()->route('citatorio', ['idCarpeta'=>$request->idCarpeta,'idCitado'=>$request->idCitado, 'tipoInvolucrado'=>$request->tipo]);
-    
+
     }
 
     /**
@@ -207,7 +207,8 @@ Citatorio     * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        $citatorio=Citatorio::find($id)->first();
+        return view('forms.citatorioEdit')->with('citatorio',$citatorio);
     }
 
     /**
@@ -219,7 +220,10 @@ Citatorio     * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
+        dd($request,$id);
+        $citatorio=Citatorio::find($id)->first();
+        $citatorio->fill($request->all());
+        return route('citatorio',[$request->idCarpeta,$request->idCitado,$request->tipoInvolucrado]);
     }
 
     /**
