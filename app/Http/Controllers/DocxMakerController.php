@@ -28,7 +28,7 @@ class DocxMakerController extends Controller
             ->get();
         //dd($info);
       //  $info=$info[0];
-dd($info->fechaInicio);
+//dd($info->fechaInicio);
 		$fechaInicio = new Carbon($info->fechaInicio);
         $distritoLetra = DocxMakerController::getDistritoLetra($info->distrito);
 		$fechaHoy = new Carbon();
