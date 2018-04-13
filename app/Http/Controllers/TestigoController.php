@@ -228,7 +228,7 @@ class TestigoController extends Controller
               $narracion= new Narracion();
               $narracion->idInvolucrado=$ExtraTestigo->id;
               $narracion->idCarpeta=$request->idCarpeta;
-              dd($request);
+              //dd($request);
               $narracion->narracion=$request->narracionUno;
               $narracion->tipoInvolucrado=4;
               $narracion->archivo=null;
