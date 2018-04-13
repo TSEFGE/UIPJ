@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use DB;
 use Alert;
 use Carbon\Carbon;
+use MaddHatter\LaravelFullcalendar\Facades\Calendar;
 use App\Http\Controllers\DocxMakerController;
 use App\Models\Citatorio;
 
@@ -19,7 +20,56 @@ Citatorio     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        
+        $events = [];
+        $citatorios = Citatorio::all();
+        if($citatorios->count()) {
+            foreach ($citatorios as $key => $citatorio) {
+                if($citatorio->status == 1){
+                    $color = 'yellow';
+                }elseif($citatorio->status == 1){
+                    $color = 'green';
+                }elseif($citatorio->status == 1){
+                    $color = 'red';
+                }
+                $events[] = Calendar::event(
+                    $citatorio->motivo,
+                    false,
+                    $citatorio->fecha,
+                    Carbon::parse($citatorio->fecha)->addHour(),
+                    null,
+                    // Add color and link on event
+                    [
+                        'color' => $color,
+                        'url' => 'storage/citatorios/'.$citatorio->documento,
+                    ]
+                );
+            }
+        }
+        $calendar = Calendar::addEvents($events)
+            ->setOptions([ //set fullcalendar options
+                'header' => [
+                    'left' => 'prev,next today',
+                    'center' => 'title',
+                    'right' => 'month,agendaWeek,agendaDay',
+                ],
+                'firstDay' => 0,
+                'slotDuration' => '00:30:00',
+                //'minTime' => '09:00:00',
+                //'maxTime' => '22:00:00',
+                'slotEventOverlap' => false,
+                'nowIndicator' => true,
+                'allDaySlot' => false
+            ]);
+            /*->setCallbacks([ //set fullcalendar callback options (will not be JSON encoded)
+                //'viewRender' => 'function() {alert("Callbacks!");}',
+                'dayClick' => 'function(date, jsEvent, view){
+                    //alert(date.format());
+                    window.location.href = "../agenda-dia/"+date.format("YYYY-MM-DD");
+                }'
+            ]);*/
+        //dd($calendar->script());
+        dd($calendar);
+        return view('cita.agenda', compact('calendar'));
     }
 
     /**
