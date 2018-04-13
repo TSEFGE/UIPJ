@@ -91,7 +91,7 @@ Citatorio     * @return \Illuminate\Http\Response
     public function store(Request $request)
     {
         //dd($request->all());
-        $fecha = Carbon::parse($request->fecha)->format("Y-d-m H:i:00");
+        $fecha = Carbon::parse($request->fecha)->format("Y-m-d H:i:00");
         if($request->tipo==1){//Investigado
             $info = DB::table('extra_denunciado')
                 ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
