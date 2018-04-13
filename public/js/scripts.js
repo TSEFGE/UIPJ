@@ -694,9 +694,11 @@ $(document).ready(function(){
         });
     });
 
-    $('#esVictima').on('click',function(e) {
+    $("input[name = 'esVictima']").on('click',function(e) {
+      console.log('hola');
           $('#fechanac').datetimepicker("destroy");
-      if ($('#esVictima').is(':checked') ) {
+      if ($('#esVictima1').is(':checked') ) {
+        console.log('entra1');
         $('#edad').attr({'min':0});
         $('#fechanac').datetimepicker({
             format: 'YYYY-MM-DD',
@@ -708,7 +710,8 @@ $(document).ready(function(){
             }
         });
         $('#edad').attr({'min':0});
-      }else{
+      }else if($('#esVictima2').is(':checked') ) {
+        console.log('entra2');
         $('#fechanac').datetimepicker("destroy");
         $('#edad').attr({'min':16});
         $('#fechanac').datetimepicker({
@@ -728,7 +731,7 @@ $(document).ready(function(){
     $('#fechanac').datetimepicker({
         format: 'YYYY-MM-DD',
         minDate: moment().subtract(150, 'years').format('YYYY-MM-DD'),
-        maxDate: moment().subtract(16, 'years').format('YYYY-MM-DD'),
+        maxDate: moment().subtract(18, 'years').format('YYYY-MM-DD'),
         widgetPositioning: {
             vertical: 'bottom',
             horizontal: 'left'
@@ -820,8 +823,8 @@ $(document).ready(function(){
     });
     var tiempoDelay;
 });
-      $('#fechanac').trigger('change');
-      $('#edad').val('16');
+    $('#fechanac').trigger('change');
+      //$('#edad').val('16');
 $("#btn-reset").on("click",function(){
     swal({
         title: "¿Estas seguro?",
@@ -909,7 +912,7 @@ $("#btn-reset").on("click",function(){
 
 
       $('#fechanac').trigger('change');
-      $('#edad').val('16');
+    //  $('#edad').val('16');
       $("#btn-reset").on("click",function(){
         swal({
             title: "¿Estas seguro?",
