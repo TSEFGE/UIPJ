@@ -26,9 +26,9 @@ Citatorio     * @return \Illuminate\Http\Response
             foreach ($citatorios as $key => $citatorio) {
                 if($citatorio->status == 1){
                     $color = 'yellow';
-                }elseif($citatorio->status == 1){
+                }elseif($citatorio->status == 2){
                     $color = 'green';
-                }elseif($citatorio->status == 1){
+                }elseif($citatorio->status == 3){
                     $color = 'red';
                 }
                 $events[] = Calendar::event(
@@ -40,7 +40,7 @@ Citatorio     * @return \Illuminate\Http\Response
                     // Add color and link on event
                     [
                         'color' => $color,
-                        'url' => 'storage/citatorios/'.$citatorio->documento,
+                        'url' => 'storage\citatorios\\'.$citatorio->documento,
                     ]
                 );
             }
@@ -68,8 +68,7 @@ Citatorio     * @return \Illuminate\Http\Response
                 }'
             ]);*/
         //dd($calendar->script());
-        dd($calendar);
-        return view('cita.agenda', compact('calendar'));
+        return view('agenda', compact('calendar'));
     }
 
     /**
