@@ -727,6 +727,7 @@ $(document).ready(function(){
 
     });
 
+    $('#edad').attr({'min':18});
 
     $('#fechanac').datetimepicker({
         format: 'YYYY-MM-DD',
@@ -823,8 +824,9 @@ $(document).ready(function(){
     });
     var tiempoDelay;
 });
-    $('#fechanac').trigger('change');
-      //$('#edad').val('16');
+$('#fechanac').trigger('change');
+
+$('#edad').val('18');
 $("#btn-reset").on("click",function(){
     swal({
         title: "¿Estas seguro?",
