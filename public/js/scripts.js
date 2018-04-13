@@ -794,13 +794,23 @@ correctos=0;
     });
 
      $('#fechaCit').datetimepicker({
-          format: 'YYYY-MM-DD HH:mm',
-           maxDate: moment(),
+          format: 'YYYY-MM-DD',
+          minDate: moment(),          
            widgetPositioning: {
             vertical: 'bottom',
             horizontal: 'left'
         }
        });
+     $(function () { //Datetimepicker a la zquierda y debajo para vizualizar mejor no se oculte en la nav
+        $('#horaCit').datetimepicker({
+            format: 'LT',
+            defaultDate: moment(),  
+            widgetPositioning: {
+                vertical: 'bottom',
+                horizontal: 'left'
+            }
+       });
+    });
 
     $(function () {
         $('#fechadelit').datetimepicker({

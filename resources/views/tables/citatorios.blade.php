@@ -2,13 +2,15 @@
     <table class="table table-striped">
         <thead>
             <th>Tipo</th>
+            <th>Fecha</th>
+            <th>Hora</th>
             <th>Estado</th>
             <th>Número</th>
             <th>Generar Documento</th>  
         </thead>
         <tbody>
             @if(count($citatorios)==0)
-                <tr><td colspan="4" class="text-center">SIN RESGISTROS</td></tr>
+                <tr><td colspan="6" class="text-center">SIN RESGISTROS</td></tr>
             @else
                 @foreach($citatorios as $citatorio)
                     <tr>
@@ -26,6 +28,9 @@
                                 <td>NO SE PRESENTÓ</td>
                             @endif
                         @endif
+                        <td>{{ $citatorio->fecha }}</td>
+                        <td>{{ $citatorio->hora }}</td>
+                        <td>PRIMERA</td>
                         <td>PRIMERA</td>
                         <td align="center"><a href="{{ asset('storage/citatorios/'.$citatorio->documento) }}" class="btn btn-info" target="_blank">Ver documento</a></td>
                     </tr>
