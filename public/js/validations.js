@@ -123,7 +123,7 @@ var contador=0;
                                   $("#txtTab4").html(count); 
                                 }    
                                  var correctos = $('#collapseNotifs1 .valid').length;
-                                 if (count==0){
+                                 if (correctos==0){
                                   $("#t4").hide();
                                 } 
                                 else if( correctos ==totales){
@@ -132,7 +132,7 @@ var contador=0;
                                 }                                
                                 else{  
                                   $("#t4").show();                             
-                                  $("#t4").html(count); 
+                                  $("#t4").html(correctos); 
                                 } 
                                 var countvacio = $('#collapseNotifs1 .vacio').length;
                                 totales = countvacio
@@ -144,8 +144,7 @@ var contador=0;
                                   $("#tab4").html(countvacio); 
                                 }
                                 
-                               console.log ("correctos",correctos);                               
-                               console.log (totales);  
+                              
                                 break;
 
                                 case 4:
