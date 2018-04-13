@@ -14,6 +14,7 @@ $.ajaxSetup({
 });
 
 function obtenerRFC(){
+	toastr.clear();
 
 	console.log('entra ajax');
 
