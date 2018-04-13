@@ -177,6 +177,13 @@
 				
 
 			</div>
+			<div class="col-12">
+		<div class="form-group">
+			{!! Form::label('narracionUno', 'Narración', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::textarea('narracionUno', null, ['class' => 'form-control form-control-sm','id' => 'narracionUno', 'data-validation'=>'length','rows' => '3', 'data-validation-length'=>'5-500']) !!}
+		</div>
+	</div>
+
 		</div>
 	</div>
                               <!--      DATOS DE PERSONA MORAL       -->
@@ -221,6 +228,12 @@
 
 				</div>
 			</div>
+			<div class="col-12">
+		<div class="form-group">
+			{!! Form::label('narracionUno', 'Narración', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::textarea('narracionUno', null, ['class' => 'form-control form-control-sm','id' => 'narracionUno', 'data-validation'=>'length','rows' => '3', 'data-validation-length'=>'5-500']) !!}
+		</div>
+	</div>
 		</div>
 	</div>
 </div>

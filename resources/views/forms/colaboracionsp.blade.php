@@ -32,7 +32,7 @@
 				            @else
 				                @foreach($acusaciones as $acusacion)
 				                    <tr>
-				                    	<td><input type="radio" value="{{ $acusacion->id }}" name="radioAcusacion"></td>
+				                    	<td><input style="width:20px;height:20px" type="radio" value="{{ $acusacion->id }}" name="radioAcusacion"></td>
 				                        <td>{{ $acusacion->nombres." ".$acusacion->primerAp." ".$acusacion->segundoAp }}</td>
 				                        <td>{{ $acusacion->delito }}</td>
 				                        <td>{{ $acusacion->nombres2." ".$acusacion->primerAp2." ".$acusacion->segundoAp2 }}</td>
@@ -52,7 +52,7 @@
 					@foreach($servicios as $servicio)
 						<div class="form-check">
 							<label class="form-check-label col-form-label col-form-label-sm">
-								<input class="form-check-input" type="checkbox" name="servicios[]" value="{{ $servicio->id }}" id="servicio{{ $servicio->id }}"> {{ $servicio->nombre }}
+								<input class="form-check-input" type="checkbox" name="servicios[]" value="{{ $servicio->id }}" id="servicio{{ $servicio->id }}" style="width:15px;height:15px"> {{ $servicio->nombre }}
 							</label>
 						</div>
 					@endforeach
