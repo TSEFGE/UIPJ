@@ -84,7 +84,9 @@
 					<div class="tab-content" id="ctdenunciante">
 						<div class="tab-pane active container" id="collapsePersonales1">
 							@include('fields.personales')
+							
 							@include('fields.extra-denunciante')
+
 
 						</div>
 						<div class="tab-pane container" id="collapseDir1">

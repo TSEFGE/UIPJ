@@ -28,7 +28,7 @@ class Datos extends Seeder
        //  vehiculo
        //  acusacion
 
-       /*$entries =
+       $entries =
        [
            [
                "id" => "1",
@@ -67,17 +67,17 @@ class Datos extends Seeder
 
        foreach($entries as $entry){
            DB::table('users')->insert($entry);
-       }*/
-       $user = App\User::create([
-            'idUnidad' => 1,
-            'username' => 'admin',
-            'nombres' => 'Administrador',
-            'apellidos' => '´Godínez',
-            'email' => 'admin@fiscaliaveracruz.gob.mx',
-            'password' => bcrypt('admin'),
-            'numFiscal' => '1',
-            'nivel' => 1
-        ]);
+       }
+       // $user = App\User::create([
+       //      'idUnidad' => 1,
+       //      'username' => 'admin',
+       //      'nombres' => 'Administrador',
+       //      'apellidos' => '´Godínez',
+       //      'email' => 'admin@fiscaliaveracruz.gob.mx',
+       //      'password' => bcrypt('admin'),
+       //      'numFiscal' => '1',
+       //      'nivel' => 1
+       //  ]);
        $entries =
        [
            [

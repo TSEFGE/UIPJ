@@ -436,45 +436,47 @@ $(document).ready(function(){
             $("#vestimenta").prop('disabled', true);
 
 
-                //para generar notificaciones
-
+            //para generar notificaciones
             $("#nombres").removeClass("vacio");
             $("#primerAp").removeClass("vacio");
             $("#segundoAp").removeClass("vacio");
+            $("#fechaNacimiento").removeClass("vacio");
             $("#rfc").removeClass("vacio");
             $("#homo").removeClass("vacio");
             $("#curp").removeClass("vacio");
             $("#telefono").removeClass("vacio");
             $("#motivoEstancia").removeClass("vacio");
-            $("#docIdentificacion").removeClass("vacio");     
+            $("#docIdentificacion").removeClass("vacio");
             $("#numDocIdentificacion").removeClass("vacio");
             $("#calle").removeClass("vacio");
-            $("#numExterno").removeClass("vacio");    
+            $("#numExterno").removeClass("vacio");
             $("#numInterno").removeClass("vacio");
-            $("#numExterno2").removeClass("vacio");   
+            $("#numExterno2").removeClass("vacio");
             $("#numInterno2").removeClass("vacio");
             $("#lugarTrabajo").removeClass("vacio");
-            $("#telefonoTrabajo").removeClass("vacio");   
+            $("#telefonoTrabajo").removeClass("vacio");
             $("#calle2").removeClass("vacio");
-            $("#numExterno2").removeClass("vacio");    
+            $("#numExterno2").removeClass("vacio");
             $("#numInterno2").removeClass("vacio");
 
 
-                $("#nombres2").addClass("vacio");
-                $("#fechaAltaEmpresa").addClass("vacio");
-                $("#rfc2").addClass("vacio");
-                $("#homo2").addClass("vacio");
-                $("#representanteLegal").addClass("vacio");
+
+
+           $("#nombres2").addClass("vacio");
+           $("#fechaAltaEmpresa").addClass("vacio");
+           $("#rfc2").addClass("vacio");
+            $("#homo2").addClass("vacio");
+            $("#representanteLegal").addClass("vacio");
 
                 $("#calle").addClass("vacio");
-                $("#numExterno").addClass("vacio");     
-                $("#numInterno").addClass("vacio"); 
+                $("#numExterno").addClass("vacio");
+                $("#numInterno").addClass("vacio");
                 $("#calle3").addClass("vacio");
-                $("#numExterno3").addClass("vacio");    
+                $("#numExterno3").addClass("vacio");
                 $("#numInterno3").addClass("vacio");
 
                 $("#correo").addClass("vacio");
-                 $("#telefonoN").addClass("vacio");     
+                 $("#telefonoN").addClass("vacio");
                 $("#fax").addClass("vacio");
 
         }
@@ -556,46 +558,47 @@ $(document).ready(function(){
                 $("#representanteLegal").removeClass("vacio");
 
                 $("#calle").removeClass("vacio");
-                $("#numExterno").removeClass("vacio");     
-                $("#numInterno").removeClass("vacio"); 
+                $("#numExterno").removeClass("vacio");
+                $("#numInterno").removeClass("vacio");
                 $("#calle3").removeClass("vacio");
-                $("#numExterno3").removeClass("vacio");    
+                $("#numExterno3").removeClass("vacio");
                 $("#numInterno3").removeClass("vacio");
 
                 $("#correo").removeClass("vacio");
-                 $("#telefonoN").removeClass("vacio");     
+                $("#telefonoN").removeClass("vacio");
                 $("#fax").removeClass("vacio");
 
 
-//Para generar Notificaciones
-$("#nombres").addClass("vacio");
-$("#primerAp").addClass("vacio");
-$("#segundoAp").addClass("vacio");
-$("#rfc").addClass("vacio");
-$("#homo").addClass("vacio");
-$("#curp").addClass("vacio");
-$("#telefono").addClass("vacio");
-$("#motivoEstancia").addClass("vacio");
-$("#docIdentificacion").addClass("vacio");     
-$("#numDocIdentificacion").addClass("vacio");
-$("#calle").addClass("vacio");
-$("#numExterno").addClass("vacio");    
-$("#numInterno").addClass("vacio");
-$("#numExterno2").addClass("vacio");   
-$("#numInterno2").addClass("vacio");
-$("#lugarTrabajo").addClass("vacio");
-$("#telefonoTrabajo").addClass("vacio");   
-$("#calle2").addClass("vacio");
-$("#numExterno2").addClass("vacio");    
-$("#numInterno2").addClass("vacio");
+                //Para generar Notificaciones se asigna clase
+                $("#nombres").addClass("vacio");
+                $("#primerAp").addClass("vacio");
+                $("#segundoAp").addClass("vacio");
+                $("#fechaNacimiento").addClass("vacio");
+                $("#rfc").addClass("vacio");
+                $("#homo").addClass("vacio");
+                $("#curp").addClass("vacio");
+                $("#telefono").addClass("vacio");
+                $("#motivoEstancia").addClass("vacio");
+                $("#docIdentificacion").addClass("vacio");
+                $("#numDocIdentificacion").addClass("vacio");
+                $("#calle").addClass("vacio");
+                $("#numExterno").addClass("vacio");
+                $("#numInterno").addClass("vacio");
+                $("#numExterno2").addClass("vacio");
+                $("#numInterno2").addClass("vacio");
+                $("#lugarTrabajo").addClass("vacio");
+                $("#telefonoTrabajo").addClass("vacio");
+                $("#calle2").addClass("vacio");
+                $("#numExterno2").addClass("vacio");
+                $("#numInterno2").addClass("vacio");
 
 
-$("#calle3").addClass("vacio");
- $("#numExterno3").addClass("vacio");   
-$("#numInterno3").addClass("vacio");
-$("#correo").addClass("vacio");
- $("#telefonoN").addClass("vacio");     
-$("#fax").addClass("vacio");
+                $("#calle3").addClass("vacio");
+                $("#numExterno3").addClass("vacio");
+                $("#numInterno3").addClass("vacio");
+                $("#correo").addClass("vacio");
+                $("#telefonoN").addClass("vacio");
+                $("#fax").addClass("vacio");
 
 
         }
@@ -694,7 +697,7 @@ $("#fax").addClass("vacio");
     $('#esVictima').on('click',function(e) {
           $('#fechanac').datetimepicker("destroy");
       if ($('#esVictima').is(':checked') ) {
-
+        $('#edad').attr({'min':0});
         $('#fechanac').datetimepicker({
             format: 'YYYY-MM-DD',
             minDate: moment().subtract(150, 'years').format('YYYY-MM-DD'),
@@ -706,6 +709,7 @@ $("#fax").addClass("vacio");
         });
         $('#edad').attr({'min':0});
       }else{
+        $('#fechanac').datetimepicker("destroy");
         $('#edad').attr({'min':16});
         $('#fechanac').datetimepicker({
             format: 'YYYY-MM-DD',
@@ -730,7 +734,6 @@ $("#fax").addClass("vacio");
             horizontal: 'left'
         }
     });
-      $('#edad').attr({'min':16});
 
     $("#fechanac").on("change.datetimepicker", function (e) {
         $('#edad').val(moment().diff(e.date,'years'));
@@ -867,7 +870,7 @@ $("#btn-reset").on("click",function(){
       $("#narracion").prop( "disabled", true );
       $.get("../../"+id+"/ver",'async:true',function(response){
        $('#narracion').val(response.narracion);
-       if(response.archivo!=""){
+       if(response.archivo!="" && response.archivo!=null){
          $("#subirArchivo").show();
          console.log('entra');
          //ruta=window.location.host+"/"+$.url('1')+("/public/storage/adjuntoNarracion/"+response.archivo);
@@ -945,57 +948,57 @@ $("#btn-narracion").on("click",function(){
 });
 // ---- Transiciones BOTONES y pestañas---//
 
-$( "#btn-reset" ).hover(function() {    
-    $(this).html( "Limpiar campos" );    
-  },function(){    
+$( "#btn-reset" ).hover(function() {
+    $(this).html( "Limpiar campos" );
+  },function(){
     $(this).html('<i class="fa fa-eraser" aria-hidden="true"></i>')
-});  
-$( "#regresocarpeta" ).hover(function() {    
-    $(this).html( "Regresar a carpeta" );    
-  },function(){    
+});
+$( "#regresocarpeta" ).hover(function() {
+    $(this).html( "Regresar a carpeta" );
+  },function(){
     $(this).html('<i class="fa fa-folder-open" aria-hidden="true"></i>')
-});  
-  $( "#personal" ).hover(function() {    
+});
+  $( "#personal" ).hover(function() {
         $(this).html( "Datos personales" );
-        $("#espacio-notif").css("margin-left","90px");     
+        $("#espacio-notif").css("margin-left","90px");
   }, function(){
     $(this).html('<i class="fa fa-user-circle-o" aria-hidden="true"></i>')
-    $("#espacio-notif").css("margin-left","0px"); 
+    $("#espacio-notif").css("margin-left","0px");
   });
   $( "#direccion" ).hover(function() {
-      $(this).html( "Dirección" ); 
-      $("#espacio-notif1").css("margin-left","35px");      
+      $(this).html( "Dirección" );
+      $("#espacio-notif1").css("margin-left","35px");
   }, function(){
     $(this).html('<i class="fa fa-address-card" aria-hidden="true"></i>')
-    $("#espacio-notif1").css("margin-left","0px"); 
+    $("#espacio-notif1").css("margin-left","0px");
   });
 
   $( "#dtrabajo" ).hover(function() {
-    $(this).html( "Datos del trabajo" ); 
-    $("#espacio-notif2").css("margin-left","87px");               
+    $(this).html( "Datos del trabajo" );
+    $("#espacio-notif2").css("margin-left","87px");
   }, function(){
     $(this).html('<i class="fa fa-industry" aria-hidden="true"></i>')
-    $("#espacio-notif2").css("margin-left","0px"); 
+    $("#espacio-notif2").css("margin-left","0px");
   });
-  
+
   $( "#dnotificaciones" ).hover(function() {
-    $(this).html( "Dirección para notificaciones" ); 
-    $("#espacio-notif3").css("margin-left","170px");             
+    $(this).html( "Dirección para notificaciones" );
+    $("#espacio-notif3").css("margin-left","170px");
   }, function(){
     $(this).html('<i class="fa fa-bell" aria-hidden="true"></i>')
-    $("#espacio-notif3").css("margin-left","0px"); 
+    $("#espacio-notif3").css("margin-left","0px");
   });
   $( "#dextra" ).hover(function() {
-    $(this).html( "Otros datos" ); 
-    $("#espacio-notif4").css("margin-left","90px");             
+    $(this).html( "Otros datos" );
+    $("#espacio-notif4").css("margin-left","90px");
   }, function(){
     $(this).html('<i class="fa fa-asterisk" aria-hidden="true"></i>')
-    $("#espacio-notif4").css("margin-left","0px"); 
+    $("#espacio-notif4").css("margin-left","0px");
   });
   $( "#autoridad" ).hover(function() {
-    $(this).html( "Información sobre la autoridad" ); 
-    $("#espacio-notif5").css("margin-left","90px");             
+    $(this).html( "Información sobre la autoridad" );
+    $("#espacio-notif5").css("margin-left","90px");
   }, function(){
     $(this).html('<i class="fa fa-shield" aria-hidden="true"></i>')
-    $("#espacio-notif5").css("margin-left","0px"); 
+    $("#espacio-notif5").css("margin-left","0px");
   });
