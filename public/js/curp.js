@@ -287,26 +287,35 @@
 
 }(this));
 $("#nombres").focusout(function() {
+	toastr.clear();
 	obtenerCURP();
+	obtenerRFCFISICA();
 });
 $("#primerAp").focusout(function() {
+	toastr.clear();
 	obtenerCURP();
+	obtenerRFCFISICA();
 });
 $("#segundoAp").focusout(function() {
+	toastr.clear();
 	obtenerCURP();
+	obtenerRFCFISICA();
 });
 $("#sexo").change(function() {
+	toastr.clear();
 	obtenerCURP();
 });
 $("#fechaNacimiento").focusout(function() {
+	toastr.clear();
 	obtenerCURP();
+	obtenerRFCFISICA();
 });
 $("#idEstadoOrigen").change(function() {
+	toastr.clear();
 	obtenerCURP();
 });
 
 function obtenerCURP() {
-
 	nombre = $("#nombres").val().toUpperCase();
 	apellidoPaterno = $("#primerAp").val().toUpperCase();
 	apellidoMaterno = $("#segundoAp").val().toUpperCase();

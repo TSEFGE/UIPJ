@@ -1,9 +1,6 @@
 $(document).ready(function(){        
 
-var count=0;
-var countvacio=0;
-var correctos=0;
-
+var contador=0;
 
 
        });
@@ -15,8 +12,8 @@ var correctos=0;
                         var index= $($(this).attr('href')).index();
                         var totalG, correctosG;
                         switch(index) {
-                                case 0:                                
-                                count = $('#collapsePersonales1 .error').length; 
+                                case 0:                                                        
+                                var count = $('#collapsePersonales1 .error').length; 
                                 if (count==0){
                                   $("#txtTab1").hide();
                                 } 
@@ -24,7 +21,7 @@ var correctos=0;
                                   $("#txtTab1").show();                             
                                   $("#txtTab1").html(count); 
                                 }
-                                 correctos = $('#collapsePersonales1 .valid').length;
+                                var correctos = $('#collapsePersonales1 .valid').length;
                                 if (correctos==0){
                                   $("#t1").hide();
                                 } 
@@ -36,7 +33,7 @@ var correctos=0;
                                   $("#t1").show();                             
                                   $("#t1").html(correctos);
                                 }
-                                 countvacio = $('#collapsePersonales1 .vacio').length;
+                                 var countvacio = $('#collapsePersonales1 .vacio').length;
                                  totales=countvacio 
                                  countvacio= countvacio-count-correctos;
                                  if (countvacio == 0 || countvacio == totales){
@@ -44,14 +41,10 @@ var correctos=0;
                                 } else{  
                                   $("#tab1").show();                             
                                   $("#tab1").html(countvacio); 
-                                }if (totales == correctos){
-                                   $("#tab1").html('Ok');
-                                   
-                                 }
-                                 
+                                }                                 
                                 break;                                
                                 case 1:
-                                count = $('#collapseDir1 .error').length;
+                                var count = $('#collapseDir1 .error').length;
                                 if (count==0){
                                   $("#txtTab2").hide();
                                 } 
@@ -59,7 +52,7 @@ var correctos=0;
                                   $("#txtTab2").show();                             
                                   $("#txtTab2").html(count); 
                                 }                                
-                                 correctos = $('#collapseDir1 .valid').length; 
+                                var correctos = $('#collapseDir1 .valid').length; 
                                 if (correctos==0){
                                   $("#t2").hide();
                                 } 
@@ -71,7 +64,7 @@ var correctos=0;
                                   $("#t2").show();                             
                                   $("#t2").html(correctos); 
                                 }                               
-                                 countvacio = $('#collapseDir1 .vacio').length; 
+                                var countvacio = $('#collapseDir1 .vacio').length; 
                                 totales = countvacio
                                  countvacio= countvacio-count-correctos;
                                  if (countvacio == 0 || countvacio == totales){
@@ -117,8 +110,6 @@ var correctos=0;
                                 break;
 
                                 case 3:
-totales=0;
-
                                 var count = $('#collapseNotifs1 .error').length;
                                 if (count==0){
                                   $("#txtTab4").hide();
@@ -168,60 +159,164 @@ totales=0;
 
   var index= $($(this).attr('href')).index();
                                 switch(index) {
-                                 case 0:
-                                
+                                 case 0:                               
+                                var countvacio = $('#collapsePersonales2 .vacio').length; 
+                                totales = countvacio                                                             
                                 var count = $('#collapsePersonales2 .error').length; 
-                                $("#error").html(count);
+                                if (count==0){
+                                  $("#error").hide();
+                                } 
+                                else{  
+                                  $("#error").show();                             
+                                  $("#error").html(count); 
+                                } 
                                 var correctos = $('#collapsePersonales2 .valid').length; 
-                                 $("#bien").html(correctos);
-                                 var countvacio = $('#collapsePersonales2 .vacio').length; 
-                                 countvacio= countvacio-count-correctos;
-                                 $("#vacio").html(countvacio);
-                                 
-                                break;
-                                
+                                if (correctos==0){
+                                  $("#bien").hide();
+                                } 
+                                else if( correctos ==totales){
+                                  $("#bien").show();
+                                  $("#bien").html('<i class="fa fa-check" aria-hidden="true"></i>');                                                                
+                                }                                
+                                else{  
+                                  $("#bien").show();                             
+                                  $("#bien").html(correctos); 
+                                }
+                                countvacio=countvacio-count-correctos;
+                                 if (countvacio == 0 || countvacio ==totales){
+                                  $("#vacio").hide();
+                                } else{  
+                                  $("#vacio").show();                            
+                                  $("#vacio").html(countvacio); 
+                                }          
+                                break;                                
                                 case 1:
-                                var count = $('#collapseDir2 .error').length;                                
-                                $("#error1").html(count); 
-                                var correctos = $('#collapseDir2 .valid').length;                                
-                                $("#bien1").html(correctos); 
                                 var countvacio = $('#collapseDir2 .vacio').length; 
-                                 countvacio= countvacio-count-correctos;
-                               $("#vacio1").html(countvacio);
-
-
+                                totales= countvacio;                                
+                                var count = $('#collapseDir2 .error').length;
+                                if (count==0){
+                                  $("#error1").hide();
+                                } 
+                                else{  
+                                  $("#error1").show();                             
+                                  $("#error1").html(count); 
+                                } 
+                                var correctos = $('#collapseDir2 .valid').length;
+                                if (correctos==0){
+                                  $("#bien1").hide();
+                                } 
+                                else if( correctos ==totales){
+                                  $("#bien1").show();
+                                  $("#bien1").html('<i class="fa fa-check" aria-hidden="true"></i>');                                                                
+                                }                                
+                                else{  
+                                  $("#bien1").show();                             
+                                  $("#bien1").html(correctos); 
+                                } 
+                                countvacio= countvacio-count-correctos;
+                                 if (countvacio == 0 || countvacio ==totales){
+                                  $("#vacio1").hide();
+                                } else{  
+                                  $("#vacio1").show();                            
+                                  $("#vacio1").html(countvacio); 
+                                }
                                 break;
 
                                 case 2:
+                                var countvacio = $('#collapseTrab2 .vacio').length;
+                                totales= countvacio;
                                 var count = $('#collapseTrab2 .error').length;                                
-                                $("#error2").html(count);
+                                if (count==0){
+                                  $("#error2").hide();
+                                } 
+                                else{  
+                                  $("#error2").show();                             
+                                  $("#error2").html(count); 
+                                } 
                                 var correctos = $('#collapseTrab2 .valid').length;                                
-                                $("#bien2").html(correctos); 
-
-                                 var countvacio = $('#collapseTrab2 .vacio').length;
-                                 countvacio=countvacio-count-correctos;                                
-                                $("#vacio2").html(countvacio); 
-
+                                if (correctos==0){
+                                  $("#bien2").hide();
+                                } 
+                                else if( correctos ==totales){
+                                  $("#bien2").show();
+                                  $("#bien2").html('<i class="fa fa-check" aria-hidden="true"></i>');                                                                
+                                }                                
+                                else{  
+                                  $("#bien2").show();                             
+                                  $("#bien2").html(correctos); 
+                                }                                 
+                                countvacio= countvacio-count-correctos;
+                                 if (countvacio == 0 || countvacio ==totales){
+                                  $("#vacio2").hide();
+                                } else{  
+                                  $("#vacio2").show();                            
+                                  $("#vacio2").html(countvacio); 
+                                }
                                 break;
 
                                 case 3:
-                                var count = $('#collapseNotifs2 .error').length;                                
-                                $("#error3").html(count); 
-                                 var correctos = $('#collapseNotifs2 .valid').length;                                
-                                $("#bien3").html(correctos); 
                                 var countvacio = $('#collapseNotifs2 .vacio').length;
-                                 countvacio=countvacio-count-correctos;                                
-                                $("#vacio3").html(countvacio); 
+                                totales= countvacio;
+                                var count = $('#collapseNotifs2 .error').length;                                
+                                if (count==0){
+                                  $("#error3").hide();
+                                } 
+                                else{  
+                                  $("#error3").show();                             
+                                  $("#error3").html(count); 
+                                } 
+                                var correctos = $('#collapseNotifs2 .valid').length;                                
+                                if (correctos==0){
+                                  $("#bien3").hide();
+                                } 
+                                else if( correctos ==totales){
+                                  $("#bien3").show();
+                                  $("#bien3").html('<i class="fa fa-check" aria-hidden="true"></i>');
+                                  console.log("son iguales");
+                                }                                
+                                else{  
+                                  $("#bien3").show();                             
+                                  $("#bien3").html(correctos); 
+                                } 
+                                countvacio= countvacio-count-correctos;
+                                 if (countvacio == 0 || countvacio ==totales){
+                                  $("#vacio3").hide();
+                                } else{  
+                                  $("#vacio3").show();                            
+                                  $("#vacio3").html(countvacio); 
+                                }  
                                 break;
 
                                 case 4:
-                               var count = $('#collapseDenun2 .error').length;                                
-                                $("#error4").html(count); 
-                                 var correctos = $('#collapseDenun2 .valid').length;                                
-                                $("#bien4").html(correctos); 
                                 var countvacio = $('#collapseDenun2 .vacio').length;
-                                 countvacio=countvacio-count-correctos;                                
-                                $("#vacio4").html(countvacio); 
+                                totales= countvacio;
+                                var count = $('#collapseDenun2 .error').length;                                
+                                if (count==0){
+                                  $("#error4").hide();
+                                } 
+                                else{  
+                                  $("#error4").show();                             
+                                  $("#error4").html(count); 
+                                } 
+                                 var correctos = $('#collapseDenun2 .valid').length;                                
+                                 if (correctos==0){
+                                  $("#bien4").hide();
+                                } 
+                                else if( correctos ==totales){
+                                  $("#bien4").show();
+                                  $("#bien4").html('<i class="fa fa-check" aria-hidden="true"></i>');                                                                
+                                }                                
+                                else{  
+                                  $("#bien4").show();                             
+                                  $("#bien4").html(correctos); 
+                                }  
+                                countvacio= countvacio-count-correctos;
+                                 if (countvacio == 0 || countvacio ==totales){
+                                  $("#vacio4").hide();
+                                } else{  
+                                  $("#vacio4").show();                            
+                                  $("#vacio4").html(countvacio); 
+                                } 
                                 break;
 
                                 default:
@@ -235,59 +330,139 @@ $('#tabsautoridad.nav-tabs a').on('hidden.bs.tab', function(event){
   var index= $($(this).attr('href')).index();
                                 switch(index) {
                                  case 0:
-
-                                var count = $('#collapsePersonales3 .error').length; 
-                                $("#errora").html(count);
-                                var correctos = $('#collapsePersonales3 .valid').length; 
-                                $("#biena").html(correctos);
-                                var countvacio = $('#collapsePersonales3 .vacio').length; 
+                                var countvacio = $('#collapsePersonales3 .vacio').length;
+                                totales= countvacio;
+                                var count = $('#collapsePersonales3 .error').length;
+                                if (count==0){
+                                  $("#errora").hide();
+                                } 
+                                else{  
+                                  $("#errora").show();                             
+                                  $("#errora").html(count); 
+                                }  
+                                var correctos = $('#collapsePersonales3 .valid').length;
+                                if (correctos==0){
+                                  $("#biena").hide();
+                                } 
+                                else if( correctos ==totales){
+                                  $("#biena").show();
+                                  $("#biena").html('<i class="fa fa-check" aria-hidden="true"></i>');                                                                
+                                }                                
+                                else{  
+                                  $("#biena").show();                             
+                                  $("#biena").html(correctos); 
+                                } 
+                                 
                                 countvacio= countvacio-count-correctos;
-                                $("#vacioa").html(countvacio);                                 
+                                 if (countvacio == 0 || countvacio ==totales){
+                                  $("#vacioa").hide();
+                                } else{  
+                                  $("#vacioa").show();                            
+                                  $("#vacioa").html(countvacio); 
+                                } 
                                 break;
                                 
                                 case 1:
-                               var count = $('#collapseDir3 .error').length;                                
-                               $("#errora1").html(count); 
-                               var correctos = $('#collapseDir3 .valid').length;                                
-                               $("#biena1").html(correctos); 
                                var countvacio = $('#collapseDir3 .vacio').length; 
+                               totales = countvacio;
+                               var count = $('#collapseDir3 .error').length;
+                               if (count==0){
+                                $("#errora1").hide();
+                              } 
+                              else{  
+                                $("#errora1").show();                             
+                                $("#errora1").html(count); 
+                              } 
+                               var correctos = $('#collapseDir3 .valid').length;
+                               if (correctos==0){
+                                $("#biena1").hide();
+                              } 
+                              else if( correctos ==totales){
+                                $("#biena1").show();
+                                $("#biena1").html('<i class="fa fa-check" aria-hidden="true"></i>');                                                                
+                              }                                
+                              else{  
+                                $("#biena1").show();                             
+                                $("#biena1").html(correctos); 
+                              } 
                                countvacio= countvacio-count-correctos;
-                               $("#vacioa1").html(countvacio);
+                               if (countvacio == 0 || countvacio ==totales){
+                                $("#vacioa1").hide();
+                              } else{  
+                                $("#vacioa1").show();                            
+                                $("#vacioa1").html(countvacio); 
+                              }
                                break;
 
                                case 2:
-                                var count = $('#collapseTrab3 .error').length;                                
-                                $("#errora2").html(count);
-                                var correctos = $('#collapseTrab3 .valid').length;                                
-                                $("#biena2").html(correctos); 
-                                var countvacio = $('#collapseTrab3 .vacio').length;
+                               var countvacio = $('#collapseTrab3 .vacio').length;
+                               totales=countvacio;
+                                var count = $('#collapseTrab3 .error').length;
+                                if (count==0){
+                                  $("#errora2").hide();
+                                } 
+                                else{  
+                                  $("#errora2").show();                             
+                                  $("#errora2").html(count); 
+                                }   
+                                var correctos = $('#collapseTrab3 .valid').length;
+                                if (correctos==0){
+                                  $("#biena2").hide();
+                                } 
+                                else if( correctos ==totales){
+                                  $("#biena2").show();
+                                  $("#biena2").html('<i class="fa fa-check" aria-hidden="true"></i>');                                                                
+                                }                                
+                                else{  
+                                  $("#biena2").show();                             
+                                  $("#biena2").html(correctos); 
+                                } 
                                 countvacio=countvacio-count-correctos;                                
-                                $("#vacioa2").html(countvacio); 
+                                if (countvacio == 0 || countvacio ==totales){
+                                  $("#vacioa2").hide();
+                                } else{  
+                                  $("#vacioa2").show();                            
+                                  $("#vacioa2").html(countvacio); 
+                                } 
                                 break;
 
                                 case 3:
-                                var count = $('#collapseAutoridad .error').length;                                
-                                $("#errora3").html(count);
-                                var correctos = $('#collapseAutoridad .valid').length;                                
-                                $("#biena3").html(correctos); 
                                 var countvacio = $('#collapseAutoridad .vacio').length;
+                                totales=countvacio;
+                                var count = $('#collapseAutoridad .error').length; 
+                                if (count==0){
+                                  $("#errora3").hide();
+                                } 
+                                else{  
+                                  $("#errora3").show();                             
+                                  $("#errora3").html(count); 
+                                } 
+                                var correctos = $('#collapseAutoridad .valid').length;                                
+                                if (correctos==0){
+                                  $("#biena3").hide();
+                                } 
+                                else if( correctos ==totales){
+                                  $("#biena3").show();
+                                  $("#biena3").html('<i class="fa fa-check" aria-hidden="true"></i>');                                                                
+                                }                                
+                                else{  
+                                  $("#biena3").show();                             
+                                  $("#biena3").html(correctos); 
+                                } 
                                 countvacio=countvacio-count-correctos;                                
-                                $("#vacioa3").html(countvacio); 
+                                if (countvacio == 0 || countvacio ==totales){
+                                  $("#vacioa3").hide();
+                                } else{  
+                                  $("#vacioa3").show();                            
+                                  $("#vacioa3").html(countvacio); 
+                                }
                                 break;
 
                                 default:
                                 break;
 
-
                                }
-
-
-
                           });
-
-
-
-
 
 
 $('#tabsdelito.nav-tabs a').on('hidden.bs.tab', function(event){
@@ -295,27 +470,70 @@ $('#tabsdelito.nav-tabs a').on('hidden.bs.tab', function(event){
   var index= $($(this).attr('href')).index();
                                 switch(index) {
                                  case 0:
-
-                                var count = $('#infodelito .error').length; 
-                                $("#errorad").html(count);
+                                 var countvacio = $('#infodelito .vacio').length; 
+                                 totales=countvacio;
+                                var count = $('#infodelito .error').length;
+                                if (count==0){
+                                  $("#errorad").hide();
+                                } 
+                                else{  
+                                  $("#errorad").show();                             
+                                  $("#errorad").html(count); 
+                                } 
                                 var correctos = $('#infodelito .valid').length; 
-                                $("#bienad").html(correctos);
-                                var countvacio = $('#infodelito .vacio').length; 
+                                if (correctos==0){
+                                  $("#bienad").hide();
+                                } 
+                                else if( correctos ==totales){
+                                  $("#bienad").show();
+                                  $("#bienad").html('<i class="fa fa-check" aria-hidden="true"></i>');                                                                
+                                }                                
+                                else{  
+                                  $("#bienad").show();                             
+                                  $("#bienad").html(correctos); 
+                                } 
                                 countvacio= countvacio-count-correctos;
-                                $("#vacioad").html(countvacio);                                 
+                                if (countvacio == 0 || countvacio ==totales){
+                                  $("#vacioad").hide();
+                                } else{  
+                                  $("#vacioad").show();                            
+                                  $("#vacioad").html(countvacio); 
+                                }                               
                                 break;
                                 
                                 case 1:
-                               var count = $('#lugardelito .error').length;                                
-                               $("#errorad2").html(count); 
-                               var correctos = $('#lugardelito .valid').length;                                
-                               $("#bienad2").html(correctos); 
-                               var countvacio = $('#lugardelito .vacio').length; 
+                                var countvacio = $('#lugardelito .vacio').length; 
+                                totales=countvacio;
+                               var count = $('#lugardelito .error').length;
+                               if (count==0){
+                                $("#errorad2").hide();
+                              } 
+                              else{  
+                                $("#errorad2").show();                             
+                                $("#errorad2").html(count); 
+                              }  
+                               var correctos = $('#lugardelito .valid').length; 
+                               if (correctos==0){
+                                $("#bienad2").hide();
+                              } 
+                              else if( correctos ==totales){
+                                $("#bienad2").show();
+                                $("#bienad2").html('<i class="fa fa-check" aria-hidden="true"></i>');                                                                
+                              }                                
+                              else{  
+                                $("#bienad2").show();                             
+                                $("#bienad2").html(correctos); 
+                              }  
                                countvacio= countvacio-count-correctos;
-                               $("#vacioad2").html(countvacio);
+                               if (countvacio == 0 || countvacio ==totales){
+                                $("#vacioad2").hide();
+                              } else{  
+                                $("#vacioad2").show();                            
+                                $("#vacioad2").html(countvacio); 
+                              } 
                                break;
-                                default:
-                                break;
+                               default:
+                               break;
 
 
                                }
@@ -331,44 +549,132 @@ $('#tabstestigo.nav-tabs a').on('hidden.bs.tab', function(event){
   var index= $($(this).attr('href')).index();
                                 switch(index) {
                                  case 0:
-
+                                 var countvacio = $('#collapsePersonalesTestigo .vacio').length; 
+                                 totales=countvacio;
                                 var count = $('#collapsePersonalesTestigo .error').length; 
-                                $("#error").html(count);
+                                if (count==0){
+                                  $("#error").hide();
+                                } 
+                                else{  
+                                  $("#error").show();                             
+                                  $("#error").html(count); 
+                                } 
                                 var correctos = $('#collapsePersonalesTestigo .valid').length; 
-                                $("#bien").html(correctos);
-                                var countvacio = $('#collapsePersonalesTestigo .vacio').length; 
+                                if (correctos==0){
+                                  $("#bien").hide();
+                                } 
+                                else if( correctos ==totales){
+                                  $("#bien").show();
+                                  $("#bien").html('<i class="fa fa-check" aria-hidden="true"></i>');                                                                
+                                }                                
+                                else{  
+                                  $("#bien").show();                             
+                                  $("#bien").html(correctos); 
+                                }                                
                                 countvacio= countvacio-count-correctos;
-                                $("#vacio").html(countvacio);                                 
+                                if (countvacio == 0 || countvacio ==totales){
+                                  $("#vacio").hide();
+                                } else{  
+                                  $("#vacio").show();                            
+                                  $("#vacio").html(countvacio); 
+                                }                                
                                 break;
                                 
                                 case 1:
-                               var count = $('#collapseDirTestigo .error').length;                                
-                               $("#error1").html(count); 
+                                var countvacio = $('#collapseDirTestigo .vacio').length; 
+                                totales=countvacio;
+                               var count = $('#collapseDirTestigo .error').length;
+                               if (count==0){
+                                $("#error1").hide();
+                              } 
+                              else{  
+                                $("#error1").show();                             
+                                $("#error1").html(count); 
+                              }
                                var correctos = $('#collapseDirTestigo .valid').length;                                
-                               $("#bien1").html(correctos); 
-                               var countvacio = $('#collapseDirTestigo .vacio').length; 
+                               if (correctos==0){
+                                $("#bien1").hide();
+                              } 
+                              else if( correctos ==totales){
+                                $("#bien1").show();
+                                $("#bien1").html('<i class="fa fa-check" aria-hidden="true"></i>');                                                                
+                              }                                
+                              else{  
+                                $("#bien1").show();                             
+                                $("#bien1").html(correctos); 
+                              } 
                                countvacio= countvacio-count-correctos;
-                               $("#vacio1").html(countvacio);
+                               if (countvacio == 0 || countvacio ==totales){
+                                $("#vacio1").hide();
+                              } else{  
+                                $("#vacio1").show();                            
+                                $("#vacio1").html(countvacio); 
+                              } 
                                break;
 
                                case 2:
-                               var count = $('#collapseTrabTestigo .error').length;                                
+                               var countvacio = $('#collapseTrabTestigo .vacio').length; 
+                               totales=countvacio;
+                               var count = $('#collapseTrabTestigo .error').length; 
+                               if (count==0){
+                                $("#error2").hide();
+                              } 
+                              else{  
+                                $("#error2").show();                             
+                                $("#error2").html(count); 
+                              }                                
                                $("#error2").html(count); 
                                var correctos = $('#collapseTrabTestigo .valid').length;                                
-                               $("#bien2").html(correctos); 
-                               var countvacio = $('#collapseTrabTestigo .vacio').length; 
+                               if (correctos==0){
+                                $("#bien2").hide();
+                              } 
+                              else if( correctos ==totales){
+                                $("#bien2").show();
+                                $("#bien2").html('<i class="fa fa-check" aria-hidden="true"></i>');                                                                
+                              } 
+                              else{  
+                                  $("#bien2").show();                             
+                                  $("#bien2").html(correctos); 
+                                } 
                                countvacio= countvacio-count-correctos;
-                               $("#vacio2").html(countvacio);
+                               if (countvacio == 0 || countvacio ==totales){
+                                $("#vacio2").hide();
+                              } else{  
+                                $("#vacio2").show();                            
+                                $("#vacio2").html(countvacio); 
+                              }
                                break;
 
                                case 3:
-                               var count = $('#collapseNotifsTestigo .error').length;                                
-                               $("#error3").html(count); 
-                               var correctos = $('#collapseNotifsTestigo .valid').length;                                
-                               $("#bien3").html(correctos); 
                                var countvacio = $('#collapseNotifsTestigo .vacio').length; 
+                               totales=countvacio;
+                               var count = $('#collapseNotifsTestigo .error').length;                                
+                               if (count==0){
+                                $("#error3").hide();
+                              } 
+                              else{  
+                                $("#error3").show();                             
+                                $("#error3").html(count); 
+                              }
+                               var correctos = $('#collapseNotifsTestigo .valid').length;                                
+                               if (correctos==0){
+                                $("#bien3").hide();
+                              } 
+                              else if( correctos ==totales){
+                                $("#bien3").show();
+                                $("#bien3").html('<i class="fa fa-check" aria-hidden="true"></i>');                                                                
+                              }                                
+                              else{  
+                                $("#bien3").show();                             
+                                $("#bien3").html(correctos); 
+                              }
                                countvacio= countvacio-count-correctos;
-                               $("#vacio3").html(countvacio);
+                               if (countvacio == 0 || countvacio ==totales){
+                                $("#vacio3").hide();
+                              } else{  
+                                $("#vacio3").show();                            
+                                $("#vacio3").html(countvacio); 
+                              }
                                break;
 
 
@@ -392,34 +698,99 @@ $('#tabsabogado.nav-tabs a').on('hidden.bs.tab', function(event){
   var index= $($(this).attr('href')).index();
                                 switch(index) {
                                  case 0:
-
+                                 var countvacio = $('#collapsePersonales3 .vacio').length; 
+                                 totales= countvacio;
                                 var count = $('#collapsePersonales3 .error').length; 
+                                if (count==0){
+                                  $("#error").hide();
+                                } 
+                                else{  
+                                  $("#error").show();                             
+                                  $("#error").html(count); 
+                                }
                                 $("#error").html(count);
-                                var correctos = $('#collapsePersonales3 .valid').length; 
-                                $("#bien").html(correctos);
-                                var countvacio = $('#collapsePersonales3 .vacio').length; 
+                                var correctos = $('#collapsePersonales3 .valid').length;
+                                if (correctos==0){
+                                  $("#bien").hide();
+                                } 
+                                else if( correctos ==totales){
+                                  $("#bien").show();
+                                  $("#bien").html('<i class="fa fa-check" aria-hidden="true"></i>');                                                                
+                                }                                
+                                else{  
+                                  $("#bien").show();                             
+                                  $("#bien").html(correctos); 
+                                } 
                                 countvacio= countvacio-count-correctos;
-                                $("#vacio").html(countvacio);                                 
+                                if (countvacio == 0 || countvacio ==totales){
+                                  $("#vacio").hide();
+                                } else{  
+                                  $("#vacio").show();                            
+                                  $("#vacio").html(countvacio); 
+                                }                               
                                 break;
                                 
                                 case 1:
-                               var count = $('#collapseTrab3 .error').length;                                
-                               $("#error1").html(count); 
-                               var correctos = $('#collapseTrab3 .valid').length;                                
-                               $("#bien1").html(correctos); 
-                               var countvacio = $('#collapseTrab3 .vacio').length; 
+                                var countvacio = $('#collapseTrab3 .vacio').length; 
+                                totales = countvacio;
+                               var count = $('#collapseTrab3 .error').length;
+                               if (count==0){
+                                $("#error1").hide();
+                              } 
+                              else{  
+                                $("#error1").show();                             
+                                $("#error1").html(count); 
+                              }   
+                               var correctos = $('#collapseTrab3 .valid').length;
+                               if (correctos==0){
+                                $("#bien1").hide();
+                              } 
+                              else if( correctos ==totales){
+                                $("#bien1").show();
+                                $("#bien1").html('<i class="fa fa-check" aria-hidden="true"></i>');                                                                
+                              }                                
+                              else{  
+                                $("#bien1").show();                             
+                                $("#bien1").html(correctos); 
+                              } 
                                countvacio= countvacio-count-correctos;
-                               $("#vacio1").html(countvacio);
+                               if (countvacio == 0 || countvacio ==totales){
+                                $("#vacio1").hide();
+                              } else{  
+                                $("#vacio1").show();                            
+                                $("#vacio1").html(countvacio); 
+                              }  
                                break;
-
                                case 2:
-                               var count = $('#collapseAutoridad .error').length;                                
-                               $("#error2").html(count); 
-                               var correctos = $('#collapseAutoridad .valid').length;                                
-                               $("#bien2").html(correctos); 
                                var countvacio = $('#collapseAutoridad .vacio').length; 
+                               totales=countvacio;
+                               var count = $('#collapseAutoridad .error').length; 
+                               if (count==0){
+                                $("#error2").hide();
+                              } 
+                              else{  
+                                $("#error2").show();                             
+                                $("#error2").html(count); 
+                              }  
+                               var correctos = $('#collapseAutoridad .valid').length;
+                               if (correctos==0){
+                                $("#bien2").hide();
+                              } 
+                              else if( correctos ==totales){
+                                $("#bien2").show();
+                                $("#bien2").html('<i class="fa fa-check" aria-hidden="true"></i>');                                                                
+                              }                                
+                              else{  
+                                $("#bien2").show();                             
+                                $("#bien2").html(correctos); 
+                              } 
                                countvacio= countvacio-count-correctos;
-                               $("#vacio2").html(countvacio);
+                               if (countvacio == 0 || countvacio ==totales){
+                                $("#vacio2").hide();
+                              } else{  
+                                $("#vacio2").show();                            
+                                $("#vacio2").html(countvacio); 
+                              }  
                                break;
 
                                default:
