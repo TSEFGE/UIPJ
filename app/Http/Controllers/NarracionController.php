@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Narracion;
+use App\Models\Persona;
+use App\Models\Bitacora;
 use Alert;
 use DB;
+use Auth;
 
 class NarracionController extends Controller
 {
@@ -109,10 +112,62 @@ public function ver($id){
     $idCarpeta=$request->idCarpeta;
     $idInvolucrado=$request->idInvolucrado;
     $tipoInvolucrado=$request->tipoInvolucrado;
+
+    if($tipoInvolucrado==1){
+
+        $idP = DB::table('extra_denunciante')
+         ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+         ->select('variables_persona.idPersona')
+         ->where('variables_persona.idCarpeta', '=', $idCarpeta)->where('extra_denunciante.id', '=', $idInvolucrado)
+         ->get()->first();
+
+        $idPersona=$idP->idPersona;
+        $persona= Persona::Where('id',$idPersona)->get()->first();
+
+        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'narracion', 'accion' => 'insert', 'descripcion' => 'Se ha registrado una narración al denunciante '.$persona->nombres.' '.$persona->primerAp.' en la carpeta número '.$idCarpeta.'.', 'idFilaAccion' => $narracion->id]);
+    }
+    if($tipoInvolucrado==2){ 
+
+        $idP = DB::table('extra_denunciado')
+         ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
+         ->select('variables_persona.idPersona')
+         ->where('variables_persona.idCarpeta', '=', $idCarpeta)->where('extra_denunciado.id', '=', $idInvolucrado)
+         ->get()->first();
+
+        $idPersona=$idP->idPersona;
+        $persona= Persona::Where('id',$idPersona)->get()->first();
+
+        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'narracion', 'accion' => 'insert', 'descripcion' => 'Se ha registrado una narración al denunciado '.$persona->nombres.' '.$persona->primerAp.' en la carpeta número '.$idCarpeta.'.', 'idFilaAccion' => $narracion->id]);
+    }
+    if($tipoInvolucrado==3){
+        $idP = DB::table('extra_autoridad')
+         ->join('variables_persona', 'variables_persona.id', '=', 'extra_autoridad.idVariablesPersona')
+         ->select('variables_persona.idPersona')
+         ->where('variables_persona.idCarpeta', '=', $idCarpeta)->where('extra_autoridad.id', '=', $idInvolucrado)
+         ->get()->first();
+
+        $idPersona=$idP->idPersona;
+        $persona= Persona::Where('id',$idPersona)->get()->first();
+
+        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'narracion', 'accion' => 'insert', 'descripcion' => 'Se ha registrado una narración a la autoridad '.$persona->nombres.' '.$persona->primerAp.' en la carpeta número '.$idCarpeta.'.', 'idFilaAccion' => $narracion->id]);
+    }
+    if($tipoInvolucrado==4){
+
+         $idP = DB::table('extra_testigo')
+         ->join('variables_persona', 'variables_persona.id', '=', 'extra_testigo.idVariablesPersona')
+         ->select('variables_persona.idPersona')
+         ->where('variables_persona.idCarpeta', '=', $idCarpeta)->where('extra_testigo.id', '=', $idInvolucrado)
+         ->get()->first();
+
+        $idPersona=$idP->idPersona;
+        $persona= Persona::Where('id',$idPersona)->get()->first();
+
+        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'narracion', 'accion' => 'insert', 'descripcion' => 'Se ha registrado una narración al testigo '.$persona->nombres.' '.$persona->primerAp.' en la carpeta número '.$idCarpeta.'.', 'idFilaAccion' => $narracion->id]);
+    }
+
     Alert::success('Narración registrada con éxito', 'Hecho')->persistent("Aceptar");
 
     return redirect()->route('narracion.index',['idCarpeta'=>$idCarpeta,'idInvolucrado'=>$idInvolucrado,'tipoInvolucrado'=>$tipoInvolucrado]);
-
 
 }
 
