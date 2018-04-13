@@ -7,7 +7,7 @@
             <th>Hora</th>
             
             <th>Número</th>
-            <th>Generar Documento</th>  
+            <th>Generar documento</th>  
         </thead>
         <tbody>
             @if(count($citatorios)==0)
