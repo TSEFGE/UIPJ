@@ -36,9 +36,9 @@
 
 
                 @if(isset($carpetaNueva))
-                <td align="center"><a href="{{ route('citatorio',['idCitado'=>$denunciado->id,  'idCarpeta'=>$carpetaNueva[0]->id, 'tipoInvolucrado'=>1])}}"> <i class="fa fa-plus-square" style="font-size:24px;color:grey"></i></a></td>
+                <td align="center"><a href="{{ route('citatorio',['idCitado'=>$denunciado->id,  'idCarpeta'=>$carpetaNueva[0]->id, 'tipoInvolucrado'=>1])}}"> <i class="fa fa-calendar" style="font-size:24px;color:grey"></i></a></td>
                 @else
-                <td align="center"><a href="{{ route('citatorio',['idCitado'=>$denunciado->id,'idCarpeta'=>$idCarpeta, 'tipoInvolucrado'=>1])}}"> <i class="fa fa-plus-square" style="font-size:24px;color:grey"></i></a></td>
+                <td align="center"><a href="{{ route('citatorio',['idCitado'=>$denunciado->id,'idCarpeta'=>$idCarpeta, 'tipoInvolucrado'=>1])}}"> <i class="fa fa-calendar" style="font-size:24px;color:grey"></i></a></td>
                 @endif
 
                 @endforeach

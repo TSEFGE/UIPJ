@@ -61,37 +61,37 @@
 					<ul class="nav nav-tabs" id="tdenunciado">
 						<li class="nav-item" id="datosPer">
 							<a class="nav-link active" data-toggle="tab"  href="#collapsePersonales2"><p id="personal" class="pestaña" ><i class="fa fa-user-circle-o" aria-hidden="true"></i></p>
-								<span id="vacio" class="xvacio"></span>
+								<div id="espacio-notif"><span id="vacio" class="xvacio"></span>
 								<span id="error" class="xerror"></span>
-								<span id="bien" class="bien"></span>
+								<span id="bien" class="bien"></span></div>
 							</a>
 						</li>
 						<li class="nav-item" id="datosDir" >
 							<a class="nav-link" data-toggle="tab" href="#collapseDir2"><p id="direccion" class="pestaña"><i class="fa fa-address-card" aria-hidden="true"></i></p>
-								<span id="vacio1" class="xvacio"></span>
+								<div id="espacio-notif1"><span id="vacio1" class="xvacio"></span>
 								<span id="error1" class="xerror"></span>
-								<span id="bien1" class="bien"></span>
+								<span id="bien1" class="bien"></span></div>
 							</a>
 						</li>
 						<li class="nav-item" id="datosTrab">
 							<a class="nav-link" data-toggle="tab" href="#collapseTrab2"><p id="dtrabajo" class="pestaña"> <i class="fa fa-industry" aria-hidden="true"></i></p>
-								<span id="vacio2" class="xvacio"></span>
+								<div id="espacio-notif2"><span id="vacio2" class="xvacio"></span>
 								<span id="error2" class="xerror"></span>
-								<span id="bien2" class="bien"></span>
+								<span id="bien2" class="bien"></span></div>
 							</a>
 						</li> 
 						<li class="nav-item" id="datosNotif">
 							<a class="nav-link" data-toggle="tab"  href="#collapseNotifs2"><p id="dnotificaciones" class="pestaña"><i class="fa fa-bell" aria-hidden="true"></i></p>
-									<span id="vacio3" class="xvacio"></span>
+									<div id="espacio-notif3"><span id="vacio3" class="xvacio"></span>
 									<span id="error3" class="xerror"></span>
-									<span id="bien3" class="bien"></span>
+									<span id="bien3" class="bien"></span></div>
 								</a>
 						</li> 
 						<li class="nav-item"  id="datosExtra">
 							<a class="nav-link" data-toggle="tab"   href="#collapseDenun2"><p id="dextra" class="pestaña"><i class="fa fa-asterisk" aria-hidden="true"></i></p>
-									<span id="vacio4" class="xvacio"></span>
+									<div id="espacio-notif4"><span id="vacio4" class="xvacio"></span>
 									<span id="error4" class="xerror"></span>
-									<span id="bien4" class="bien"></span>
+									<span id="bien4" class="bien"></span></div>
 								</a>
 						</li> 		
 
