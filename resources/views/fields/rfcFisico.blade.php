@@ -1,5 +1,5 @@
 <script>
-	$("#nombres").focusout(function() {
+	{{--$("#nombres").focusout(function() {
 		obtenerRFCFISICA();
 	});
 	$("#primerAp").focusout(function() {
@@ -10,7 +10,7 @@
 	});
 	$("#fechaNacimiento").focusout(function() {
 		obtenerRFCFISICA();
-	});
+	});--}}
 
 	$.ajaxSetup({
 		headers: {

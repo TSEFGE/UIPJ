@@ -22,6 +22,7 @@ class Citatorio extends Model
 		'tipo',
         'motivo',
         'fecha',
+        'hora',
 		'status',
 		'intento',
 		'documento'
