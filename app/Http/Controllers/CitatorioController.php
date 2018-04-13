@@ -25,11 +25,11 @@ Citatorio     * @return \Illuminate\Http\Response
         if($citatorios->count()) {
             foreach ($citatorios as $key => $citatorio) {
                 if($citatorio->status == 1){
-                    $color = 'yellow';
+                    $color = '#ffc425';
                 }elseif($citatorio->status == 2){
-                    $color = 'green';
+                    $color = '#3cb371';
                 }elseif($citatorio->status == 3){
-                    $color = 'red';
+                    $color = '#FE642E';
                 }
                 $events[] = Calendar::event(
                     $citatorio->motivo,
