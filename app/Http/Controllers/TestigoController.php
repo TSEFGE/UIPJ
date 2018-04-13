@@ -25,6 +25,7 @@ use App\Models\Domicilio;
 use RFC\RfcBuilder;
 use App\Models\Bitacora;
 use App\Models\Testigo;
+use App\Models\Narracion;
 
 class TestigoController extends Controller
 {
@@ -60,6 +61,7 @@ class TestigoController extends Controller
 
         public function storeTestigo(StoreTestigo $request)
         {
+          //dd($request->all());
           $persona = Persona::where('curp', $request->curp)->get();
           if ($persona->isNotEmpty()){
               Alert::error('Ya existe una persona registrada con ese CURP.', 'Error')->persistent("Aceptar");
@@ -223,10 +225,21 @@ class TestigoController extends Controller
               $ExtraTestigo->save();
               Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_testigo', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un nuevo extra testigo de persona física.', 'idFilaAccion' => $ExtraTestigo->id]);
 
+              $narracion= new Narracion();
+              $narracion->idInvolucrado=$ExtraTestigo->id;
+              $narracion->idCarpeta=$request->idCarpeta;
+              //dd($request);
+              $narracion->narracion=$request->narracionUno;
+              $narracion->tipoInvolucrado=4;
+              $narracion->archivo=null;
+              $narracion->save();
+
+              Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'narracion', 'accion' => 'insert', 'descripcion' => 'Se ha registrado una nueva narracion de persona física de tipo testigo.', 'idFilaAccion' => $narracion->id]);
+
 
             Alert::success('Testigo registrado con éxito', 'Hecho')->persistent("Aceptar");
             //return redirect()->route('carpeta', $request->idCarpeta);
             return redirect()->route('new.testigo', $request->idCarpeta);
         }
-}
+    }
 }
