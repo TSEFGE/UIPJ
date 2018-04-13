@@ -436,11 +436,11 @@ $(document).ready(function(){
             $("#vestimenta").prop('disabled', true);
 
 
-                //para generar notificaciones
-
+            //para generar notificaciones 
             $("#nombres").removeClass("vacio");
             $("#primerAp").removeClass("vacio");
             $("#segundoAp").removeClass("vacio");
+            $("#fechaNacimiento").removeClass("vacio");
             $("#rfc").removeClass("vacio");
             $("#homo").removeClass("vacio");
             $("#curp").removeClass("vacio");
@@ -460,11 +460,13 @@ $(document).ready(function(){
             $("#numInterno2").removeClass("vacio");
 
 
-                $("#nombres2").addClass("vacio");
-                $("#fechaAltaEmpresa").addClass("vacio");
-                $("#rfc2").addClass("vacio");
-                $("#homo2").addClass("vacio");
-                $("#representanteLegal").addClass("vacio");
+
+
+           $("#nombres2").addClass("vacio");
+           $("#fechaAltaEmpresa").addClass("vacio");
+           $("#rfc2").addClass("vacio");
+            $("#homo2").addClass("vacio");
+            $("#representanteLegal").addClass("vacio");
 
                 $("#calle").addClass("vacio");
                 $("#numExterno").addClass("vacio");     
@@ -563,39 +565,40 @@ $(document).ready(function(){
                 $("#numInterno3").removeClass("vacio");
 
                 $("#correo").removeClass("vacio");
-                 $("#telefonoN").removeClass("vacio");     
+                $("#telefonoN").removeClass("vacio");     
                 $("#fax").removeClass("vacio");
 
 
-//Para generar Notificaciones
-$("#nombres").addClass("vacio");
-$("#primerAp").addClass("vacio");
-$("#segundoAp").addClass("vacio");
-$("#rfc").addClass("vacio");
-$("#homo").addClass("vacio");
-$("#curp").addClass("vacio");
-$("#telefono").addClass("vacio");
-$("#motivoEstancia").addClass("vacio");
-$("#docIdentificacion").addClass("vacio");     
-$("#numDocIdentificacion").addClass("vacio");
-$("#calle").addClass("vacio");
-$("#numExterno").addClass("vacio");    
-$("#numInterno").addClass("vacio");
-$("#numExterno2").addClass("vacio");   
-$("#numInterno2").addClass("vacio");
-$("#lugarTrabajo").addClass("vacio");
-$("#telefonoTrabajo").addClass("vacio");   
-$("#calle2").addClass("vacio");
-$("#numExterno2").addClass("vacio");    
-$("#numInterno2").addClass("vacio");
+                //Para generar Notificaciones se asigna clase
+                $("#nombres").addClass("vacio");
+                $("#primerAp").addClass("vacio");
+                $("#segundoAp").addClass("vacio");
+                $("#fechaNacimiento").addClass("vacio");
+                $("#rfc").addClass("vacio");
+                $("#homo").addClass("vacio");
+                $("#curp").addClass("vacio");
+                $("#telefono").addClass("vacio");
+                $("#motivoEstancia").addClass("vacio");
+                $("#docIdentificacion").addClass("vacio");     
+                $("#numDocIdentificacion").addClass("vacio");
+                $("#calle").addClass("vacio");
+                $("#numExterno").addClass("vacio");    
+                $("#numInterno").addClass("vacio");
+                $("#numExterno2").addClass("vacio");   
+                $("#numInterno2").addClass("vacio");
+                $("#lugarTrabajo").addClass("vacio");
+                $("#telefonoTrabajo").addClass("vacio");   
+                $("#calle2").addClass("vacio");
+                $("#numExterno2").addClass("vacio");    
+                $("#numInterno2").addClass("vacio");
 
 
-$("#calle3").addClass("vacio");
- $("#numExterno3").addClass("vacio");   
-$("#numInterno3").addClass("vacio");
-$("#correo").addClass("vacio");
- $("#telefonoN").addClass("vacio");     
-$("#fax").addClass("vacio");
+                $("#calle3").addClass("vacio");
+                $("#numExterno3").addClass("vacio");   
+                $("#numInterno3").addClass("vacio");
+                $("#correo").addClass("vacio");
+                $("#telefonoN").addClass("vacio");     
+                $("#fax").addClass("vacio");
 
 
         }
