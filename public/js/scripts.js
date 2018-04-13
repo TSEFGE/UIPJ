@@ -371,10 +371,6 @@ $(document).ready(function(){
         if ($('#esEmpresa1').is(':checked') ) {
 
 
-//            $('.xvacio').html(); 
-  //          $('.xerror').html(); 
-    //        $('.bien').html(); 
-
             $('#datosPer').show();
             $('#personaFisica').hide();
             $('#personaMoral').show();
@@ -468,7 +464,7 @@ $(document).ready(function(){
             $("#telefonoN").removeClass("vacio");     
             $("#fax").removeClass("vacio");
             $("#narracionUno").removeClass("vacio");
-             $("#narracionUnoM").removeClass("vacio");
+            // $("#narracionUnoM").removeClass("vacio");
 
              $("#nombres").removeClass("valid");
             $("#primerAp").removeClass("valid");
@@ -495,7 +491,7 @@ $(document).ready(function(){
                 $("#telefonoN").removeClass("valid");     
                 $("#fax").removeClass("valid");
                 $("#narracionUno").removeClass("valid");
-                $("#narracionUnoM").removeClass("valid");
+               // $("#narracionUnoM").removeClass("valid");
 
   $("#nombres").removeClass("error");
             $("#primerAp").removeClass("error");
@@ -522,7 +518,7 @@ $(document).ready(function(){
                 $("#telefonoN").removeClass("error");     
                 $("#fax").removeClass("error");
                 $("#narracionUno").removeClass("error");
-                $("#narracionUnoM").removeClass("error");
+               // $("#narracionUnoM").removeClass("error");
 
 
             
@@ -539,7 +535,7 @@ $(document).ready(function(){
                 $("#numExterno3").addClass("vacio");    
                 $("#numInterno3").addClass("vacio");
                 $("#narracionUno").addClass("vacio");
-                $("#narracionUnoM").addClass("vacio");
+               // $("#narracionUnoM").addClass("vacio");
                 
 
         }
@@ -547,15 +543,6 @@ $(document).ready(function(){
     //No es empresa
     $("#esEmpresa2").change(function(event){
         if ($('#esEmpresa2').is(':checked') ) {
-
-$("#tab1").html(''); 
-$("#txtTab1").html(''); 
-$("#t1").html(''); 
- 
-count=0;
-countvacio=0;
-correctos=0;
-
 
 
             $('#datosPer').show();
@@ -627,7 +614,7 @@ correctos=0;
 
 
 
-
+                //quitar campos de persona moral
                 $("#nombres2").removeClass("vacio");
                 $("#fechaAltaEmpresa").removeClass("vacio");
                 $("#rfc2").removeClass("vacio");
@@ -651,7 +638,7 @@ correctos=0;
                 $("#vestimenta").removeClass("vacio");
                 $("#senasPartic").removeClass("vacio");
                  $("#narracionUno").addClass("vacio");
-                 $("#narracionUnoM").addClass("vacio");
+               // $("#narracionUnoM").addClass("vacio");
 
 
 
@@ -675,8 +662,8 @@ correctos=0;
                 $("#residenciaAnterior").removeClass("valid");
                 $("#vestimenta").removeClass("valid");
                 $("#senasPartic").removeClass("valid");
-                 $("#narracionUno").addClass("valid");
-                  $("#narracionUnoM").addClass("valid");
+                 $("#narracionUno").removeClass("valid");
+               // $("#narracionUnoM").removeClass("valid");
 
                  $("#nombres2").removeClass("error");
                 $("#fechaAltaEmpresa").removeClass("error");
@@ -698,8 +685,8 @@ correctos=0;
                 $("#residenciaAnterior").removeClass("error");
                 $("#vestimenta").removeClass("error");
                 $("#senasPartic").removeClass("error");
-                 $("#narracionUno").addClass("error");
-                 $("#narracionUnoM").addClass("error");
+                $("#narracionUno").removeClass("error");
+                //$("#narracionUnoM").removeClass("error");
 
 
 
@@ -716,17 +703,19 @@ correctos=0;
                 $("#motivoEstancia").addClass("vacio");
                 $("#docIdentificacion").addClass("vacio");     
                 $("#numDocIdentificacion").addClass("vacio");
+                $("#narracionUno").addClass("vacio");
+
                 $("#calle").addClass("vacio");
                 $("#numExterno").addClass("vacio");    
                 $("#numInterno").addClass("vacio");
+
+                $("#lugarTrabajo").addClass("vacio");
+                $("#telefonoTrabajo").addClass("vacio"); 
+                $("#calle2").addClass("vacio");
                 $("#numExterno2").addClass("vacio");   
                 $("#numInterno2").addClass("vacio");
-                $("#lugarTrabajo").addClass("vacio");
-                $("#telefonoTrabajo").addClass("vacio");   
-                $("#calle2").addClass("vacio");
-                $("#numExterno2").addClass("vacio");    
-                $("#numInterno2").addClass("vacio");
-
+                  
+                
                 $("#calle3").addClass("vacio");
                 $("#numExterno3").addClass("vacio");   
                 $("#numInterno3").addClass("vacio");
@@ -739,9 +728,8 @@ correctos=0;
                 $("#ingreso").addClass("vacio");
                 $("#residenciaAnterior").addClass("vacio");
                 $("#vestimenta").addClass("vacio");
-                $("#senasPartic").addClass("vacio");                 
-                $("#narracionUno").addClass("vacio");
-                $("#narracionUnoM").addClass("vacio");
+                $("#senasPartic").addClass("vacio");   
+               // $("#narracionUno").addClass("vacio");
 
 
 
