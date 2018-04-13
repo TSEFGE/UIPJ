@@ -306,6 +306,7 @@ $("#idEstadoOrigen").change(function() {
 });
 
 function obtenerCURP() {
+	toastr.clear();
 
 	nombre = $("#nombres").val().toUpperCase();
 	apellidoPaterno = $("#primerAp").val().toUpperCase();
