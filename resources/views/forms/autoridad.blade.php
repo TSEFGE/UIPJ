@@ -37,28 +37,32 @@
 		<div id="tautoridad">
 				<ul id="tabsautoridad" class="nav nav-tabs">
  					<li class="nav-item">
-    					<a class="nav-link active" id="personal" data-toggle="tab" href="#collapsePersonales3"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+    					<a class="nav-link active" data-toggle="tab" href="#collapsePersonales3"><p id="personal" class="pestaña" ><i class="fa fa-user-circle-o" aria-hidden="true"></i></p>
     							<span id="vacioa" class="xvacio"></span>
-								<span id="errora" class="error"></span>
+								<span id="errora" class="xerror"></span>
 								<span id="biena" class="bien"></span>
+							</a>
   					</li>
   					<li class="nav-item">
-    					<a class="nav-link" id="direccion" data-toggle="tab" href="#collapseDir3"><i class="fa fa-address-card" aria-hidden="true"></i></a>
+    					<a class="nav-link"  data-toggle="tab" href="#collapseDir3"><p id="direccion" class="pestaña"><i class="fa fa-address-card" aria-hidden="true"></i></p>
     					<span id="vacioa1" class="xvacio"></span>
-								<span id="errora1" class="error"></span>
+								<span id="errora1" class="xerror"></span>
 								<span id="biena1" class="bien"></span>
+						</a>
   					</li>
   					<li class="nav-item">
-    					<a class="nav-link" data-toggle="tab" id="dtrabajo" href="#collapseTrab3"><i class="fa fa-industry" aria-hidden="true"></i></a>
+    					<a class="nav-link" data-toggle="tab"  href="#collapseTrab3"><p id="dtrabajo" class="pestaña"> <i class="fa fa-industry" aria-hidden="true"></i></p>
     					<span id="vacioa2" class="xvacio"></span>
-								<span id="errora2" class="error"></span>
+								<span id="errora2" class="xerror"></span>
 								<span id="biena2" class="bien"></span>
+						</a>
   					</li>  		
 			   		<li class="nav-item">
-			    		<a class="nav-link" data-toggle="tab" id="autoridad" href="#collapseAutoridad"><i class="fa fa-shield" aria-hidden="true"></i></a>
+			    		<a class="nav-link" data-toggle="tab"  href="#collapseAutoridad"><p id="autoridad" class="pestaña"><i class="fa fa-shield" aria-hidden="true"></i></p>
 			    				<span id="vacioa3" class="xvacio"></span>
-								<span id="errora3" class="error"></span>
+								<span id="errora3" class="xerror"></span>
 								<span id="biena3" class="bien"></span>
+						</a>
 			  		</li>
 				</ul>
 		</div>
