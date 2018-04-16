@@ -10,8 +10,8 @@
 	<div class="row">
 			<div class="col">
 				<div class="text-right">
-					{!! Form::submit('Iniciar', ['class' => 'btn btn-dark', 'id' => 'btn-submit']) !!}
-					<a href="{{ route('home') }}" class="btn btn-dark text-center"><i class="fa fa-folder-open"></i></a>
+					{!! Form::submit('Iniciar', ['class' => 'btn btn-primary', 'id' => 'btn-submit']) !!}
+					<a href="{{ route('home') }}" class="btn btn-primary text-center"><i class="fa fa-folder-open"></i></a>
 
 				</div>
 			</div>
@@ -24,4 +24,10 @@
 	</div>
 	{!! Form::close() !!}
 @endsection
- 
+@push('PilaScripts')
+ <script>
+	 $("#btn-submit").on("click", function(){
+		localStorage.clear();		
+	 });
+ </script>
+@endpush
