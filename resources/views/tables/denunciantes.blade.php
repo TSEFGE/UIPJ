@@ -19,14 +19,14 @@
                 @foreach($denunciantes as $denunciante)
                     <tr>
                         <td>{{ $denunciante->nombres." ".$denunciante->primerAp." ".$denunciante->segundoAp }}</td>
-                        <td  align="center">{{ $denunciante->rfc }}</td>
-                        <td  align="center">{{ $denunciante->edad }}</td>
-                        <td  align="center">{{ $denunciante->sexo }}</td>
-                        <td  align="center">{{ $denunciante->telefono }}</td>
+                        <td >{{ $denunciante->rfc }}</td>
+                        <td >{{ $denunciante->edad }}</td>
+                        <td >{{ $denunciante->sexo }}</td>
+                        <td >{{ $denunciante->telefono }}</td>
                         @if($denunciante->esEmpresa==1)
-                            <td  align="center">SI</td>
+                            <td>SI</td>
                         @else
-                            <td  align="center">NO</td>
+                            <td>NO</td>
                         @endif
 
 

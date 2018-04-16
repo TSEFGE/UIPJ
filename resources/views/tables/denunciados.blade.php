@@ -1,6 +1,6 @@
 <div class="table">
     <table class="table table-striped">
-        <thead align="center">
+        <thead >
             <th>Nombre</th>
             <th>RFC</th>
             <th>Edad</th>
@@ -17,14 +17,14 @@
             @foreach($denunciados as $denunciado)
             <tr>
                 <td>{{ $denunciado->nombres." ".$denunciado->primerAp." ".$denunciado->segundoAp }}</td>
-                <td  align="center">{{ $denunciado->rfc }}</td>
-                <td  align="center">{{ $denunciado->edad }}</td>
-                <td  align="center">{{ $denunciado->sexo }}</td>
-                <td  align="center">{{ $denunciado->telefono }}</td>
+                <td >{{ $denunciado->rfc }}</td>
+                <td >{{ $denunciado->edad }}</td>
+                <td >{{ $denunciado->sexo }}</td>
+                <td >{{ $denunciado->telefono }}</td>
                 @if($denunciado->esEmpresa==1)
-                <td  align="center">SI</td>
+                <td >SI</td>
                 @else
-                <td  align="center">NO</td>
+                <td >NO</td>
 
                 @endif
 
