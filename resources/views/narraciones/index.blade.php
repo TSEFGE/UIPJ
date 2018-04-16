@@ -59,7 +59,7 @@
 				<div class="col-lg-10">
 
 					{!! Form::label('narracion', 'Narración', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::textarea('narracion', null, ['class' => 'form-control form-control-sm','id' => 'narracion']) !!}
+					{!! Form::textarea('narracion', null, ['class' => 'form-control form-control-sm','id' => 'narracion', 'data-validation-length'=>'5-1000','data-validation-error-msg'=>'Narración deben contener al menos cinco letras']) !!}
 
 
 					<div  class="form-group" id="subirArchivo">
