@@ -6624,7 +6624,7 @@ class Datos extends Seeder
             'idInvolucrado' => 1,
             'idCarpeta' => 1,
             'narracion' => 'Narración denunciante',
-            'tipoInvolucrado' => 21,
+            'tipoInvolucrado' => 2,
             'archivo' => null
         ]);
 
@@ -6640,7 +6640,7 @@ class Datos extends Seeder
             'idInvolucrado' => 1,
             'idCarpeta' => 1,
             'narracion' => 'Narración autoridad',
-            'tipoInvolucrado' => 3
+            'tipoInvolucrado' => 3,
             'archivo' => null
         ]);
 
