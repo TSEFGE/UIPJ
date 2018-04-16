@@ -63,13 +63,13 @@
 			<div class="col-sm-3">
 				<div class="form-group">
 					{!! Form::label('npd', 'Número de puesta a disposición', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('npd', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número del puesta a disposición','data-validation'=>'length', 'data-validation-length'=>'3-50', 'required']) !!}
+					{!! Form::text('npd', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número del puesta a disposición','data-validation'=>'length', 'data-validation-length'=>'3-50','data-validation-error-msg'=>'Éste campo debe contener al menos tres números']) !!}
 				</div>
 			</div>
 			<div class="col-sm-3">
 				<div class="form-group">
 					{!! Form::label('numIph', 'Número IPH', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('numIph', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número del IPH','data-validation'=>'length', 'data-validation-length'=>'3-50', 'required']) !!}
+					{!! Form::text('numIph', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número del IPH','data-validation'=>'length', 'data-validation-length'=>'3-50', 'data-validation-length'=>'3-50','data-validation-error-msg'=>'Éste campo debe contener al menos tres números']) !!}
 				</div>
 			</div>
 			<div class="col-sm-3">
@@ -86,7 +86,7 @@
 			<div class="col-sm-12">
 				<div class="form-group">
 					{!! Form::label('narracionIph', 'Narración IPH', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::textarea('narracionIph', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la narración del IPH','rows' => '3','data-validation'=>'length', 'data-validation-length'=>'5-2000', 'required']) !!}
+					{!! Form::textarea('narracionIph', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la narración del IPH','rows' => '3','data-validation'=>'length', 'data-validation-length'=>'5-2000', 'data-validation-length'=>'3-50','data-validation-error-msg'=>'Éste campo debe contener al menos cinco letras']) !!}
 					{{--<div style="color: #757575; float:right"><span id="contaNarr">2000</span> Caracteres restantes</div>--}}
 					
 										
@@ -97,7 +97,7 @@
 	<div class="col-12">
 		<div class="form-group">
 			{!! Form::label('descripcionHechos', 'Descripción de los hechos', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::textarea('descripcionHechos', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la descripción de los hechos','rows' => '3','data-validation'=>'length', 'data-validation-length'=>'5-500', 'required']) !!}
+			{!! Form::textarea('descripcionHechos', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la descripción de los hechos','rows' => '3','data-validation'=>'length', 'data-validation-length'=>'5-500', 'data-validation-error-msg'=>'Nombre debe contener al menos cinco letras']) !!}
 			{{--<div  style="color: #757575; float:right"><span id="contaDesc">500</span> Caracteres restantes</div>--}}
 		</div>
 	</div>

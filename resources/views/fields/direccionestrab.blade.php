@@ -32,19 +32,19 @@
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('calle2', 'Calle', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('calle2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la calle', 'data-validation'=>'length', 'data-validation-length'=>'3-100']) !!}
+			{!! Form::text('calle2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la calle', 'data-validation'=>'length', 'data-validation-length'=>'3-100','data-validation-error-msg'=>'Calle debe contener al menos tres caracteres']) !!}
 		</div>
 	</div>
 	<div class="col-2">
 		<div class="form-group">
 			{!! Form::label('numExterno2', 'Número exterior', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('numExterno2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número exterior','data-validation'=>'custom', 'data-validation-regexp'=>'^(([A-Z]|[-]|[\d])|(S/N)|(SIN NUMERO)){1,10}$']) !!}
+			{!! Form::text('numExterno2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número exterior','data-validation'=>'custom', 'data-validation-regexp'=>'^(([A-Z]|[-]|[\d])|(S/N)|(SIN NUMERO)){1,10}$','data-validation-error-msg'=>'En caso de no haber número debe ingresar S/N']) !!}
 		</div>
 	</div>
 	<div class="col-2">
 		<div class="form-group">
 			{!! Form::label('numInterno2', 'Número interior', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('numInterno2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número interior','data-validation'=>'custom', 'data-validation-regexp'=>'^(([A-Z]|[-]|[\d])|(S/N)|(SIN NUMERO)){1,10}$']) !!}
+			{!! Form::text('numInterno2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número interior','data-validation'=>'custom', 'data-validation-regexp'=>'^(([A-Z]|[-]|[\d])|(S/N)|(SIN NUMERO)){1,10}$','data-validation-error-msg'=>'En caso de no haber número debe ingresar S/N']) !!}
 		</div>
 	</div>
 </div>

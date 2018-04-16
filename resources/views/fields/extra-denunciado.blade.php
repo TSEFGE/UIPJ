@@ -14,19 +14,19 @@
 				<div class="col-3">
 					<div class="form-group">
 						{!! Form::label('alias', 'Alias', ['class' => 'col-form-label-sm']) !!}
-						{!! Form::text('alias', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el alias','data-validation'=>'length', 'data-validation-length'=>'5-100']) !!}
+						{!! Form::text('alias', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el alias','data-validation'=>'length', 'data-validation-length'=>'5-100','data-validation-error-msg'=>'Alias debe contener al menos cinco letras']) !!}
 					</div>
 				</div>
 				<div class="col-3">
 					<div class="form-group">
 						{!! Form::label('personasBajoSuGuarda', 'Dependientes Económicos', ['class' => 'col-form-label-sm']) !!}
-						{!! Form::number('personasBajoSuGuarda', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número de Dependientes Económicos', 'min' => 0, 'required', 'data-validation'=>'custom' ,'data-validation-regexp'=>'^([0-9]){1,11}$']) !!}
+						{!! Form::number('personasBajoSuGuarda', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número de Dependientes Económicos', 'min' => 0, 'required', 'data-validation'=>'custom' ,'data-validation-regexp'=>'^([0-9]){1,11}$','data-validation-error-msg'=>'Este campo no debe estar vacio, ingresar solo números.']) !!}
 					</div>
 				</div>
 				<div class="col-3">
 					<div class="form-group">
 						{!! Form::label('ingreso', 'Ingreso', ['class' => 'col-form-label-sm']) !!}
-						{!! Form::text('ingreso', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el sueldo', 'data-validation'=>'custom', 'data-validation-regexp'=>'^[0-9]{1,15}$']) !!}
+						{!! Form::text('ingreso', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el sueldo', 'data-validation'=>'custom', 'data-validation-regexp'=>'^[0-9]{1,15}$','data-validation-error-msg'=>'Este campo no debe estar vacio, ingresar solo números.']) !!}
 					</div>
 				</div>
 				<div class="col-3">
@@ -38,7 +38,7 @@
 				<div class="col-3">
 					<div class="form-group">
 						{!! Form::label('residenciaAnterior', 'Residencia anterior', ['class' => 'col-form-label-sm']) !!}
-						{!! Form::text('residenciaAnterior', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la  residencia anterior','data-validation'=>'length', 'data-validation-length'=>'1-100']) !!}
+						{!! Form::text('residenciaAnterior', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la  residencia anterior','data-validation'=>'length', 'data-validation-length'=>'5-100','data-validation-error-msg'=>'Este campo no debe estar vacio']) !!}
 					</div>
 				</div>
 				<div class="col-3">
@@ -60,7 +60,7 @@
 				<div class="col-3">
 					<div class="form-group">
 						{!! Form::label('vestimenta', 'Vestimenta', ['class' => 'col-form-label-sm']) !!}
-						{!! Form::text('vestimenta', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la vestimenta','data-validation'=>'length', 'data-validation-length'=>'1-150']) !!}
+						{!! Form::text('vestimenta', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la vestimenta','data-validation'=>'length', 'data-validation-length'=>'5-150','data-validation-error-msg'=>'Este campo no debe estar vacio']) !!}
 					</div>
 				</div>
 			</div>
@@ -69,7 +69,7 @@
 	<div class="col-12">
 		<div class="form-group">
 			{!! Form::label('senasPartic', 'Señas particulares', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::textarea('senasPartic', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese las señas particulares','rows' => '3','data-validation'=>'length', 'data-validation-length'=>'5-500']) !!}
+			{!! Form::textarea('senasPartic', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese las señas particulares','rows' => '3','data-validation'=>'length', 'data-validation-length'=>'5-500','data-validation-error-msg'=>'Este campo no debe estar vacio, ingrese al menos cinco letras']) !!}
 		</div>
 	</div>
 		

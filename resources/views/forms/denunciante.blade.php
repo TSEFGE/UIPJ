@@ -119,10 +119,7 @@
 @endsection @push('PilaScripts')
 <script type="text/javascript">
 	$(document).ready(function() {
-					$('#tipop').hide();
-
-
- 
+					$('#tipop').hide(); 
 
 });
 	$('input[type=radio][name=esVictima]').change(function() {

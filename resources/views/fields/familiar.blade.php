@@ -28,19 +28,19 @@
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('nombres', 'Nombre', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('nombres', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÍÓÚ]+[\s]*)+$']) !!}		
+			{!! Form::text('nombres', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÍÓÚ]+[\s]*)+$', 'data-validation-error-msg'=>'Nombre debe contener al menos una letra']) !!}	
 		</div>
 	</div>
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('primerAp', 'Primer Apellido', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('primerAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el primer apellido','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÍÓÚ]+[\s]*)+$']) !!}
+			{!! Form::text('primerAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el primer apellido','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÍÓÚ]+[\s]*)+$','data-validation-error-msg'=>'Primer apellido debe contener al menos una letra']) !!}
 		</div>
 	</div>
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('segundoAp', 'Segundo Apellido', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('segundoAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido','data-validation'=>'custom', 'data-validation-regexp'=>'^(([A-ZÁÉÑÍÓÚ][\s]*)?){1,50}$']) !!}
+			{!! Form::text('segundoAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido','data-validation'=>'custom', 'data-validation-regexp'=>'^(([A-ZÁÉÑÍÓÚ][\s]*)?){1,50}$','data-validation-error-msg'=>'Segundo apellido debe contener solo letras']) !!}
 		</div>
 	</div>
 </div>
