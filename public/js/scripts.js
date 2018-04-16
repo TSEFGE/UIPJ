@@ -370,6 +370,12 @@ $(document).ready(function(){
     $("#esEmpresa1").change(function(event){
         if ($('#esEmpresa1').is(':checked') ) {
 
+$('.xvacio').hide();
+
+$('.xerror').hide();
+
+$('.bien').hide();
+
 
             $('#datosPer').show();
             $('#personaFisica').hide();
@@ -463,7 +469,7 @@ $(document).ready(function(){
            $("#correo").removeClass("vacio");
             $("#telefonoN").removeClass("vacio");     
            $("#fax").removeClass("vacio");
-            //$("#narracionUno").removeClass("vacio");
+            $("#narracionUno").removeClass("vacio");
              $("#narracionUnoM").removeClass("vacio");
 
              $("#nombres").removeClass("valid");
@@ -534,17 +540,25 @@ $(document).ready(function(){
                 $("#calle3").addClass("vacio");
                 $("#numExterno3").addClass("vacio");    
                 $("#numInterno3").addClass("vacio");
-               // $("#narracionUno").addClass("vacio");
+                $("#narracionUnoM").addClass("vacio");
                 $("#correo").addClass("vacio");
             $("#telefonoN").addClass("vacio");     
            $("#fax").addClass("vacio");
                 
+
+ //$("#narracionUno").addClass("vacio"); //para comprobar 
 
         }
     });
     //No es empresa
     $("#esEmpresa2").change(function(event){
         if ($('#esEmpresa2').is(':checked') ) {
+
+$('.xvacio').hide();
+
+$('.xerror').hide();
+
+$('.bien').hide();
 
 
             $('#datosPer').show();
@@ -639,7 +653,7 @@ $(document).ready(function(){
                 $("#residenciaAnterior").removeClass("vacio");
                 $("#vestimenta").removeClass("vacio");
                 $("#senasPartic").removeClass("vacio");
-                 $("#narracionUno").addClass("vacio");
+                 $("#narracionUno").removeClass("vacio");
                // $("#narracionUnoM").addClass("vacio");
 
 
@@ -705,7 +719,7 @@ $(document).ready(function(){
                 $("#motivoEstancia").addClass("vacio");
                 $("#docIdentificacion").addClass("vacio");     
                 $("#numDocIdentificacion").addClass("vacio");
-                $("#narracionUno").addClass("vacio");
+             $("#narracionUno").addClass("vacio");
 
                 $("#calle").addClass("vacio");
                 $("#numExterno").addClass("vacio");    
@@ -731,7 +745,7 @@ $(document).ready(function(){
                 $("#residenciaAnterior").addClass("vacio");
                 $("#vestimenta").addClass("vacio");
                 $("#senasPartic").addClass("vacio");   
-               // $("#narracionUno").addClass("vacio");
+              //  $("#narracionUno").addClass("vacio"); //para comprobar en autoridad
 
 
 
