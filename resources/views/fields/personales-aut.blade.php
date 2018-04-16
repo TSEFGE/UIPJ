@@ -148,7 +148,6 @@
 			{!! Form::text('numDocIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el núm. del docto. de identificación','data-validation'=>'custom', 'data-validation-regexp'=>'^[0-9]{1,50}$','data-validation-error-msg'=>'Ingrese al menos un número']) !!}
 		</div>
 		
-
 	</div>
 	<div class="col-12">
 	<div class="form-group">
