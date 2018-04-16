@@ -1,9 +1,9 @@
 <aside class="main-sidebar  elevation-4 barra-izquierda">
 	<!-- Brand Logo -->
-	<a href="index3.html" class="brand-link">
-		<img src="https://rawcdn.githack.com/Romaincks/assets/master/img/logo-150px-FGE.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+	<a href="{{ url('/home') }}" class="brand-link">
+		<img src="https://rawcdn.githack.com/Romaincks/assets/master/img/only-escudo-ver.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
 		style="opacity: .8">
-		<span class="brand-text font-weight-light">FGE Veracruz</span>
+		<span class="brand-text font-weight-light">FGE | Veracruz</span>
 	</a>
 
 	<!-- Sidebar -->
@@ -34,7 +34,7 @@
 						<li class="nav-item"><a href="{{ url('/iniciar-carpeta') }}" class="{{ Request::is( 'iniciar-carpeta') ? 'active' : '' }} nav-link"><i class="nav-icon fa fa-folder"></i><p>Nueva carpeta</p> <span></span></a></li>
 						<li class="nav-item"><a href="{{ url('/bitacora') }}" class="{{ Request::is( 'bitacora') ? 'active' : '' }} nav-link"><i class="nav-icon fa fa-pencil-square-o"></i><p>Bitácora</p> <span></span></a></li>
 						<li class="nav-item"><a href="{{ route('agenda') }}" class="{{ Request::is( 'agenda') ? 'active' : '' }} nav-link"><i class="nav-icon fa fa-calendar"></i><p>Agenda</p> <span></span></a></li>
-						<li class="nav-item">
+						{{--<li class="nav-item">
 							<a href="pages/widgets.html" class="nav-link">
 								<i class="nav-icon fa fa-th"></i>
 								<p>
@@ -71,15 +71,15 @@
 									</a>
 								</li>
 							</ul>
-						</li>
+						</li>--}}
 
-						<li class="nav-header">MISCELLANEOUS</li>
+						{{--<li class="nav-header">MISCELLANEOUS</li>
 						<li class="nav-item">
 							<a href="https://adminlte.io/docs" class="nav-link">
 								<i class="nav-icon fa fa-file"></i>
 								<p>Documentation</p>
 							</a>
-						</li>
+						</li>--}}
 						<li class="nav-item bottom" ><a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
 							document.getElementById('logout-form').submit();"><i class=" nav-icon fa fa-power-off" ></i><p> Cerrar sesión</p></a>
 							<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
