@@ -14,7 +14,8 @@
             <tr>
                 <td colspan="7" class="text-center">SIN RESGISTROS</td>
             </tr>
-            @else @foreach($citatorios as $citatorio)
+            @else
+                @foreach($citatorios as $citatorio)
             <tr align="center">
                 @if($citatorio->tipo == 1)
                 <td>INVESTIGADO</td>
@@ -34,9 +35,10 @@
 
                 <td align="center"><a href="{{ asset('storage/citatorios/'.$citatorio->documento) }}" class="fa fa-cloud-download" style="font-size:24px;color:grey"></i></a></td>
                 <td align="center"><a href="{{route('edit.citatorio',$citatorio->id)}}"> <i class="fa fa-edit" style="font-size:24px;color:grey"></i></a></td>
-                
+
             </tr>
-            @endforeach @endif
+            @endforeach
+        @endif
         </tbody>
     </table>
 </div>
