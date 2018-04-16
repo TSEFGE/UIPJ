@@ -6620,5 +6620,37 @@ class Datos extends Seeder
            DB::table('acusacion')->insert($entry);
        }
 
+       $narracion = App\Models\Narracion::create([
+            'idInvolucrado' => 1,
+            'idCarpeta' => 1,
+            'narracion' => 'Narración denunciante',
+            'tipoInvolucrado' => 2,
+            'archivo' => null
+        ]);
+
+       $narracion = App\Models\Narracion::create([
+            'idInvolucrado' => 1,
+            'idCarpeta' => 1,
+            'narracion' => 'Narración denunciado',
+            'tipoInvolucrado' => 1,
+            'archivo' => null
+        ]);
+
+       $narracion = App\Models\Narracion::create([
+            'idInvolucrado' => 1,
+            'idCarpeta' => 1,
+            'narracion' => 'Narración autoridad',
+            'tipoInvolucrado' => 3,
+            'archivo' => null
+        ]);
+
+       $narracion = App\Models\Narracion::create([
+            'idInvolucrado' => 1,
+            'idCarpeta' => 1,
+            'narracion' => 'Narración testigo',
+            'tipoInvolucrado' => 4,
+            'archivo' => null
+        ]);
+
      }
 }

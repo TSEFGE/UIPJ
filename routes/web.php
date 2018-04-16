@@ -137,7 +137,7 @@ Route::middleware(['auth'])->group(function () {
   	Route::get('agenda', 'CitatorioController@index')->name('agenda');
     Route::get('citatorio/{idCarpeta}/{idCitado}/{tipoInvolucrado}', 'CitatorioController@create')->name('citatorio');
     Route::post('citatorio/create', 'CitatorioController@store')->name('store.citatorio');
-    Route::get('citatorio/edit/{id}', 'CitatorioController@edit')->name('edit.citatorio');
+    Route::get('citatorio/{id}/edit', 'CitatorioController@edit')->name('edit.citatorio');
     Route::put('citatorio/update/{id}', 'CitatorioController@update')->name('update.citatorio');
 });
 
