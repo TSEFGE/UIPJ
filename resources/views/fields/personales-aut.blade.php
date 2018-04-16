@@ -150,10 +150,12 @@
 		
 
 	</div>
-	<div class="form-group">
-			{!! Form::label('narracionUno', 'Narración', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::textarea('narracionUno', null, ['class' => 'form-control form-control-sm','id' => 'narracionUno', 'data-validation'=>'length','rows' => '3', 'data-validation-length'=>'5-500']) !!}
+	<div class="col-12">
+		<div class="form-group">
+				{!! Form::label('narracionUno', 'Narración', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::textarea('narracionUno', null, ['class' => 'form-control form-control-sm','id' => 'narracionUno', 'data-validation'=>'length','rows' => '3', 'data-validation-length'=>'5-500']) !!}
 		</div>
+	</div>	
 </div>
 @include('fields.ajaxCurp')
 {{--<div id="accordion" role="tablist">

@@ -23,6 +23,7 @@ use App\Models\ExtraDenunciado;
 use App\Models\Notificacion;
 use App\Models\Domicilio;
 use App\Models\Bitacora;
+use App\Models\Narracion;
 
 class DenunciadoController extends Controller
 {
