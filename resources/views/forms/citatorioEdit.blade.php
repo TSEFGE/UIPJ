@@ -31,18 +31,18 @@
             {!! Form::select('status', ['1' => 'PENDIENTE', '2' => 'SE PRESENTÓ', '3' => 'NO SE PRESENTÓ'],$citatorio->status, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una opción','required']) !!}
           </div>
         </div>
-					<div class="col-6">
+					<div class="col-4">
 						<div class="form-group">
 							{!! Form::label('fecha', 'Fecha', ['class' => 'col-form-label-sm']) !!}
 							<div class="input-group date" id="fechaCit" data-target-input="nearest">
-								{!! Form::text('fecha',$citatorio->fecha, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaCit', 'data-toggle' => 'datetimepicker', 'required', 'placeholder' => 'AAAA-MM-DD', 'data-validation'=>'date','data-validation-format'=>'yyyy-mm-dd']) !!}
+								{!! Form::text('fecha',$citatorio->fecha, ['readonly','class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaCit', 'data-toggle' => 'datetimepicker', 'required', 'placeholder' => 'AAAA-MM-DD', 'data-validation'=>'date','data-validation-format'=>'yyyy-mm-dd']) !!}
 								<div class="input-group-append" data-target="#fechaCit" data-toggle="datetimepicker">
 									<div class="input-group-text"><i class="fa fa-calendar"></i></div>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-6">
+					<div class="col-4">
 						<div class="form-group" id="" >
 							{!! Form::label('hora', 'Hora', ['class' => 'col-form-label-sm']) !!}
 							<div class="input-group date" id="horaCit" data-target-input="nearest">
@@ -67,3 +67,19 @@
 
 	{!! Form::close() !!}
 	@endsection
+	@push('PilaScripts')
+<script type="text/javascript">
+	$(document).ready(function(){
+		console.log('hola');
+		localStorage.removeItem("[id=undefined][name=undefined][id=status][name=status]");
+		localStorage.removeItem("[id=undefined][name=undefined][id=fecha][name=fecha]");
+		localStorage.removeItem("[id=undefined][name=undefined][id=motivo][name=motivo]");
+		localStorage.removeItem("[id=undefined][name=undefined][id=hora][name=hora]");
+		$('#hora').val('{{$citatorio->hora}}');
+
+	});
+
+
+
+</script>
+	@endpush

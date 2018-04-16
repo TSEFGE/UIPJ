@@ -207,7 +207,8 @@ Citatorio     * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $citatorio=Citatorio::find($id)->first();
+        $citatorio=Citatorio::find($id);
+        //dd($citatorio);
         return view('forms.citatorioEdit')->with('citatorio',$citatorio);
     }
 
