@@ -53,8 +53,8 @@
 					<div id="denunciante">
 
 						<ul id="tdenunciante" class="nav nav-tabs">
-							<li class="nav-item" id="datosPer">
-								<a class="nav-link active pestaña " id="p-personal" data-toggle="tab" href="#collapsePersonales1"><p id="personal" class="pestaña" ><i class="fa fa-user-circle-o" aria-hidden="true"></i></p>
+							<li class="nav-item " id="datosPer">
+								<a class="nav-link tab active pestaña " id="p-personal" data-toggle="tab" href="#collapsePersonales1"><p id="personal" class="pestaña" ><i class="fa fa-user-circle-o" aria-hidden="true"></i></p>
 								<div id="espacio-notif"><span id="tab1" class="xvacio"></span>
 									<span id="txtTab1" class="xerror"></span>
 									<span id="t1" class="bien"></span></div>																
