@@ -462,9 +462,9 @@ $(document).ready(function(){
             $("#numInterno2").removeClass("vacio");
            $("#correo").removeClass("vacio");
             $("#telefonoN").removeClass("vacio");     
-            $("#fax").removeClass("vacio");
-            $("#narracionUno").removeClass("vacio");
-            // $("#narracionUnoM").removeClass("vacio");
+           $("#fax").removeClass("vacio");
+            //$("#narracionUno").removeClass("vacio");
+             $("#narracionUnoM").removeClass("vacio");
 
              $("#nombres").removeClass("valid");
             $("#primerAp").removeClass("valid");
@@ -490,8 +490,8 @@ $(document).ready(function(){
                 $("#correo").removeClass("valid");
                 $("#telefonoN").removeClass("valid");     
                 $("#fax").removeClass("valid");
-                $("#narracionUno").removeClass("valid");
-               // $("#narracionUnoM").removeClass("valid");
+              //  $("#narracionUno").removeClass("valid");
+                $("#narracionUnoM").removeClass("valid");
 
   $("#nombres").removeClass("error");
             $("#primerAp").removeClass("error");
@@ -517,8 +517,8 @@ $(document).ready(function(){
                 $("#correo").removeClass("error");
                 $("#telefonoN").removeClass("error");     
                 $("#fax").removeClass("error");
-                $("#narracionUno").removeClass("error");
-               // $("#narracionUnoM").removeClass("error");
+              //  $("#narracionUno").removeClass("error");
+                $("#narracionUnoM").removeClass("error");
 
 
             
@@ -534,8 +534,10 @@ $(document).ready(function(){
                 $("#calle3").addClass("vacio");
                 $("#numExterno3").addClass("vacio");    
                 $("#numInterno3").addClass("vacio");
-                $("#narracionUno").addClass("vacio");
-               // $("#narracionUnoM").addClass("vacio");
+               // $("#narracionUno").addClass("vacio");
+                $("#correo").addClass("vacio");
+            $("#telefonoN").addClass("vacio");     
+           $("#fax").addClass("vacio");
                 
 
         }
