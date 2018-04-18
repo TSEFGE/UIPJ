@@ -56,7 +56,11 @@
 							@else
 								<li class="breadcrumb-item"><a href="{{ route('home') }}">Inicio</a></li>
 							@endif
-							<li class="breadcrumb-item active">@yield('title')</li>
+							@isset($carpetaNueva)
+								<li class="breadcrumb-item active">{{ $carpetaNueva[0]->numCarpeta }}</li>
+							@else
+								<li class="breadcrumb-item active">@yield('title')</li>
+							@endif
 						</ol>
 					</div><!-- /.col -->
 				</div><!-- /.row -->
