@@ -105,6 +105,8 @@ $(document).ready(function() {
 $("#nombres").addClass("vacio");
 $("#primerAp").addClass("vacio");
 $("#segundoAp").addClass("vacio");
+$("#fechaNacimiento").addClass("vacio");
+$("#edad").addClass("vacio");
 $("#rfc").addClass("vacio");
 $("#homo").addClass("vacio");
 $("#curp").addClass("vacio");
@@ -112,15 +114,13 @@ $("#telefono").addClass("vacio");
 $("#motivoEstancia").addClass("vacio");
 $("#docIdentificacion").addClass("vacio");  	
 $("#numDocIdentificacion").addClass("vacio");
-
+$("#narracionUno").addClass("vacio");
 $("#calle").addClass("vacio");
 $("#numExterno").addClass("vacio");  	
 $("#numInterno").addClass("vacio");
-
 $("#lugarTrabajo").addClass("vacio");
 $("#telefonoTrabajo").addClass("vacio");  	
 $("#calle2").addClass("vacio");
-
 $("#antiguedad").addClass("vacio");
 $("#horarioLaboral").addClass("vacio");
 
