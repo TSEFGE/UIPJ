@@ -394,5 +394,5 @@ $("#idAgrupacion1").change(function(event){
 
 //-----------------------
 $('form').sisyphus({
-		excludeFields: $( 'input[name=_token]' )
+		excludeFields: $( 'input[name=_token]','input[type:radio]' )
 });
