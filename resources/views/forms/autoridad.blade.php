@@ -118,6 +118,8 @@ $("#narracionUno").addClass("vacio");
 $("#calle").addClass("vacio");
 $("#numExterno").addClass("vacio");  	
 $("#numInterno").addClass("vacio");
+$("#numExterno2").addClass("vacio");  	
+$("#numInterno2").addClass("vacio");
 $("#lugarTrabajo").addClass("vacio");
 $("#telefonoTrabajo").addClass("vacio");  	
 $("#calle2").addClass("vacio");
