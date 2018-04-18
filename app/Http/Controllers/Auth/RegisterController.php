@@ -4,10 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
-use App\Models\Unidad;
 
 class RegisterController extends Controller
 {
@@ -50,13 +49,9 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'idUnidad' => 'required|integer|max:56',
-            'nombres' => 'required|string|max:50',
-            'primerAp' => 'required|string|max:50',
-            'segundoAp' => 'required|string|max:50',
-            'email' => 'required|string|email|max:100|unique:users',
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            'numFiscal' => 'required|integer|max:100',
         ]);
     }
 
@@ -69,19 +64,9 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'idUnidad' => $data['idUnidad'],
-            'nombres' => $data['nombres'],
-            'primerAp' => $data['primerAp'],
-            'segundoAp' => $data['segundoAp'],
+            'name' => $data['name'],
             'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-            'numFiscal' => $data['numFiscal'],
+            'password' => Hash::make($data['password']),
         ]);
-    }
-
-    public function showRegistrationForm()
-    {
-        $unidades = Unidad::orderBy('id', 'ASC')->pluck('nombre', 'id');
-        return view('auth.register')->with('unidades', $unidades);
     }
 }

@@ -23,7 +23,7 @@ use App\Models\VariablesPersona;
 use App\Models\ExtraDenunciante;
 use App\Models\Notificacion;
 use App\Models\Domicilio;
-use RFC\RfcBuilder;
+use uipj\rfc\src\RfcBuilder;
 use App\Models\Bitacora;
 
 class DenuncianteController extends Controller

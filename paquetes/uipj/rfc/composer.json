@@ -1,0 +1,28 @@
+{
+    "name": "uipj/rfc",
+    "description": "RFC Generator",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Nain Lobato",
+            "email": "wolverinenain@gmail.com"
+        }
+    ],
+    "require": {
+        "php" : ">=7.0.0",
+        "uipj/rfc": "@dev"
+    },
+    "require-dev": {
+        "phpunit/phpunit" : "~5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "uipj\\rfc\\src\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "uipj\\rfc\\tests\\": "tests"
+        }
+    }
+}
