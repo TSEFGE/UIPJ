@@ -2652,11 +2652,11 @@
         },
         {
             "name": "uipj/rfc",
-            "version": "dev-master",
+            "version": "dev-develop",
             "dist": {
                 "type": "path",
                 "url": "paquetes/uipj/rfc",
-                "reference": "e9a69391943ae12a1a36a7bc81d3e2f9c861dfc4",
+                "reference": "97957c6c3cbbee716cada760ba2e8b09a331bc76",
                 "shasum": null
             },
             "require": {
@@ -3339,7 +3339,7 @@
             ],
             "authors": [
                 {
-                    "name": "Padraic Brady",
+                    "name": "Pádraic Brady",
                     "email": "padraic.brady@gmail.com",
                     "homepage": "http://blog.astrumfutura.com"
                 },
