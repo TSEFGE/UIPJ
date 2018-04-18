@@ -26,11 +26,13 @@ class AbogadoController extends Controller
     {
         $carpetaNueva = Carpeta::where('id', $idCarpeta)->where('idFiscal', Auth::user()->id)->get();
         if(count($carpetaNueva)>0){
+            $numCarpeta = $carpetaNueva[0]->numCarpeta;
             $abogados = CarpetaController::getAbogados($idCarpeta);
             $estados = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $municipiosVer = CatMunicipio::select('id', 'nombre')->where('idEstado',30)->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $estadoscivil = CatEstadoCivil::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             return view('forms.abogado')->with('idCarpeta', $idCarpeta)
+                ->with('numCarpeta', $numCarpeta)
                 ->with('abogados', $abogados)
                 ->with('estados', $estados)
                 ->with('municipiosVer', $municipiosVer)
@@ -127,6 +129,7 @@ class AbogadoController extends Controller
     {
         $carpetaNueva = Carpeta::where('id', $idCarpeta)->where('idFiscal', Auth::user()->id)->get();
         if(count($carpetaNueva)>0){
+            $numCarpeta = $carpetaNueva[0]->numCarpeta;
             $defensas = CarpetaController::getDefensas($idCarpeta);
             $abogados = DB::table('extra_abogado')
                 ->join('variables_persona', 'variables_persona.id', '=', 'extra_abogado.idVariablesPersona')
@@ -136,6 +139,7 @@ class AbogadoController extends Controller
                 ->orderBy('persona.nombres', 'ASC')
                 ->get();
             return view('forms.defensa')->with('idCarpeta', $idCarpeta)
+                ->with('numCarpeta', $numCarpeta)
                 ->with('defensas', $defensas)
                 ->with('abogados', $abogados);
         }else{
