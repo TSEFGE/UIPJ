@@ -11,12 +11,14 @@ use App\Models\CatAseguradora;
 use App\Models\CatClaseVehiculo;
 use App\Models\CatColor;
 use App\Models\CatEstado;
+use App\Models\CatDelito;
 use App\Models\CatMarca;
 use App\Models\CatProcedencia;
 use App\Models\CatTipoUso;
 use App\Models\Carpeta;
 use App\Models\Vehiculo;
 use App\Models\TipifDelito;
+use App\Models\Bitacora;
 
 class VehiculoController extends Controller
 {
@@ -28,9 +30,9 @@ class VehiculoController extends Controller
             $tipifdelitos = DB::table('tipif_delito')
                 ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
                 ->select('tipif_delito.id', 'cat_delito.id as idDelito', 'cat_delito.nombre as delito')
-                ->where('tipif_delito.idCarpeta', '=', $idCarpeta)
-                ->whereIn('idDelito', [130, 131, 132, 133, 134, 135, 242, 243, 244, 245, 227])
-                ->get();
+                ->where('tipif_delito.idCarpeta', '=', $idCarpeta)->get();
+                //->whereIn('idDelito', [130, 131, 132, 133, 134, 135, 242, 243, 244, 245, 227])
+              
             $aseguradoras = CatAseguradora::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $clasesveh = CatClaseVehiculo::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $colores = CatColor::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
@@ -57,7 +59,7 @@ class VehiculoController extends Controller
         //dd($request->all());
         $vehiculo = new Vehiculo();
         $vehiculo->idTipifDelito = $request->idTipifDelito;
-        $vehiculo->status = $request->status;
+      
         $vehiculo->placas = $request->placas;
         $vehiculo->idEstado = $request->idEstado;
         $vehiculo->idSubmarca = $request->idSubmarca;
@@ -73,6 +75,10 @@ class VehiculoController extends Controller
         $vehiculo->idProcedencia = $request->idProcedencia;
         $vehiculo->idAseguradora = $request->idAseguradora;
         $vehiculo->save();
+
+
+        //Agregar a Bitacora
+        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'vehiculo', 'accion' => 'insert', 'descripcion' => 'Se han registrado datos generales de un Vehículo del delito: '.$request->idTipifDelito.' con Placas: '.$request->placas.' Del estado: '.$request->idEstado, 'idFilaAccion' => $vehiculo->id]);
         /*
         Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
         //Para mostrar modal

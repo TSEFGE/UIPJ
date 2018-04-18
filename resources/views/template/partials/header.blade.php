@@ -14,6 +14,9 @@
 					<li class="nav-item">
 						<a class="nav-link" href="{{ route('libro.gobierno') }}">Libro de gobierno</a>
 					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ route('bitacora') }}">Bitácora</a>
+					</li>
 					{{--<li class="nav-item">
 						<a class="nav-link" href="{{ url('/registrar-carpeta') }}">Registrar nueva Carpeta</a>
 					</li>--}}
@@ -39,7 +42,7 @@
 				@else
 					<li class="nav-item dropdown">
 						<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-							{{ Auth::user()->nombres." ".Auth::user()->primerAp." ".Auth::user()->segundoAp }} <span class="caret"></span>
+							{{ Auth::user()->nombres." ".Auth::user()->apellidos }} <span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu">
 							<li><a class="dropdown-item" href="#">Cambiar contraseña</a></li>

@@ -1,4 +1,3 @@
-<h6>Denunciante o Agraviado</h6>
 <div class="table">
     <table class="table table-striped">
         <thead>
@@ -8,25 +7,37 @@
             <th>Sexo</th>
             <th>Teléfono</th>
             <th>Persona moral</th>
-            <th>Opciones</th>
+            <th>Constancia de hechos</th>
+            <th>Narración</th>
+         
+
         </thead>
         <tbody>
             @if(count($denunciantes)==0)
-                <tr><td colspan="7" class="text-center">Sin registros</td></tr>
+                <tr><td colspan="8" class="text-center">Sin registros</td></tr>
             @else
                 @foreach($denunciantes as $denunciante)
                     <tr>
                         <td>{{ $denunciante->nombres." ".$denunciante->primerAp." ".$denunciante->segundoAp }}</td>
-                        <td>{{ $denunciante->rfc }}</td>
-                        <td>{{ $denunciante->edad }}</td>
-                        <td>{{ $denunciante->sexo }}</td>
-                        <td>{{ $denunciante->telefono }}</td>
+                        <td >{{ $denunciante->rfc }}</td>
+                        <td >{{ $denunciante->edad }}</td>
+                        <td >{{ $denunciante->sexo }}</td>
+                        <td >{{ $denunciante->telefono }}</td>
                         @if($denunciante->esEmpresa==1)
                             <td>SI</td>
                         @else
                             <td>NO</td>
                         @endif
-                        <td><a href="{{ route('constancia.hechos', $denunciante->id) }}" class="btn btn-secondary text-right">Descargar constancia de hechos</a></td>
+
+
+                        <td align="center"><a href="{{ route('constancia.hechos',$denunciante->id) }}"> <i class="fa fa-cloud-download" style="font-size:24px;color:grey"></i></a></td> 
+
+                      @if(isset($carpetaNueva))
+                       <td align="center"><a href="{{ route('narracion.index', ['idDenunciante'=>$denunciante->id, 'idCarpeta'=>$carpetaNueva[0]->id,  'tipoInvolucrado'=>1])}}"> <i class="fa fa-plus-square" style="font-size:24px;color:grey"></i></a></td>
+                       @else
+                       <td align="center"><a href="{{ route('narracion.index', ['idDenunciante'=>$denunciante->id, 'idCarpeta'=>$idCarpeta, 'tipoInvolucrado'=>1])}}"> <i class="fa fa-plus-square" style="font-size:24px;color:grey"></i></a></td>
+                       @endif
+
                     </tr>
                 @endforeach
             @endif

@@ -21,18 +21,21 @@ class DocxMakerController extends Controller
 			->join('carpeta', 'carpeta.id', '=', 'variables_persona.idCarpeta' )
             ->join('unidad', 'unidad.id', '=', 'carpeta.idUnidad')
             ->join('users', 'users.id', '=', 'carpeta.idFiscal')
-            ->select('extra_denunciante.narracion', 'persona.nombres as nombresD', 'persona.primerAp as primerApD', 'persona.segundoAp as segundoApD', 'carpeta.id', 'carpeta.numCarpeta', 'carpeta.fechaInicio', 'unidad.direccion', 'unidad.telefono', 'unidad.distrito', 'unidad.municipio', 'users.nombres', 'users.primerAp', 'users.segundoAp', 'users.numFiscal')
+            ->select('persona.nombres as nombresD', 'persona.primerAp as primerApD', 'persona.segundoAp as segundoApD', 'carpeta.id', 'carpeta.numCarpeta', 'carpeta.fechaInicio', 'unidad.direccion', 'unidad.telefono', 'unidad.distrito', 'unidad.municipio', 'users.nombres', 'users.apellidos', 'users.numFiscal')
             ->where('extra_denunciante.id', '=', $idDenunciante)
             ->get();
         //dd($info);
         $info=$info[0];
 
+        $narracion = DB::table('narracion')->where('idInvolucrado', $idDenunciante)->where('tipoInvolucrado', 1)->first();
+        //dd($narracion);
+//dd($info->fechaInicio);
 		$fechaInicio = new Carbon($info->fechaInicio);
         $distritoLetra = DocxMakerController::getDistritoLetra($info->distrito);
 		$fechaHoy = new Carbon();
 		$mesLetra = DocxMakerController::getMesLetra($fechaHoy->month);
 		$fechaCompleta = mb_strtoupper($fechaHoy->day." DE ".$mesLetra." DE ".$fechaHoy->year);
-		$nombreFiscal = mb_strtoupper($info->nombres." ".$info->primerAp." ".$info->segundoAp);
+		$nombreFiscal = mb_strtoupper($info->nombres." ".$info->apellidos);
 		$diaLetra = mb_strtolower(DocxMakerController::getDiaLetra($fechaHoy->day));
 		$mesLetra = mb_strtolower($mesLetra);
 
@@ -52,7 +55,7 @@ class DocxMakerController extends Controller
 		$templateProcessor->setValue('mesInicio', $mesLetra);
 		$templateProcessor->setValue('anioInicio', $fechaInicio->year);
 		$templateProcessor->setValue('nombreDenunciante', $info->nombresD." ".$info->primerApD." ".$info->segundoApD);
-		$templateProcessor->setValue('narracion', $info->narracion);
+		$templateProcessor->setValue('narracion', $narracion->narracion);
 		$templateProcessor->setValue('diaLetra', $diaLetra);
 		$templateProcessor->setValue('mesLetra', $mesLetra);
 		$templateProcessor->setValue('direccion', $info->direccion);
@@ -67,7 +70,7 @@ class DocxMakerController extends Controller
 			->join('carpeta', 'carpeta.id', '=', 'acusacion.idCarpeta')
 			->join('users', 'users.id', '=', 'carpeta.idFiscal')
 			->join('unidad', 'unidad.id', '=', 'users.idUnidad')
-			->select('carpeta.numCarpeta', 'carpeta.fechaInicio', 'carpeta.conDetenido', 'users.nombres', 'users.primerAp', 'users.segundoAp', 'users.numFiscal', 'unidad.direccion', 'unidad.telefono', 'unidad.distrito', 'unidad.municipio')
+			->select('carpeta.numCarpeta', 'carpeta.fechaInicio', 'carpeta.conDetenido', 'users.nombres', 'users.apellidos', 'users.numFiscal', 'unidad.direccion', 'unidad.telefono', 'unidad.distrito', 'unidad.municipio')
 			->where('acusacion.id', '=', $idAcusacion)
 			->get();
 
@@ -110,7 +113,7 @@ class DocxMakerController extends Controller
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
             ->join('cat_municipio', 'cat_municipio.id', '=', 'persona.idMunicipioOrigen')
             ->join('cat_estado', 'cat_estado.id', '=', 'cat_municipio.idEstado')
-            ->select('extra_denunciante.conoceAlDenunciado', 'extra_denunciante.narracion', 'notificacion.correo', 'notificacion.telefono as telefonoN', 'notificacion.fax', 'munN.nombre as municipioN', 'estN.nombre as estadoN', 'locN.nombre as localidadN', 'colN.nombre as coloniaN', 'colN.codigoPostal as cpN', 'dirN.calle as calleN', 'dirN.numExterno as numExternoN', 'dirN.numInterno as numInternoN', 'variables_persona.edad', 'variables_persona.telefono', 'variables_persona.motivoEstancia', 'variables_persona.docIdentificacion', 'variables_persona.numDocIdentificacion', 'variables_persona.lugarTrabajo', 'variables_persona.telefonoTrabajo', 'cat_ocupacion.nombre as ocupacion', 'cat_estado_civil.nombre as estadoCivil', 'cat_escolaridad.nombre as escolaridad', 'cat_religion.nombre as religion', 'munD.nombre as municipioD', 'estD.nombre as estadoD', 'locD.nombre as localidadD', 'colD.nombre as coloniaD', 'colD.codigoPostal as cpD', 'dirD.calle as calleD', 'dirD.numExterno as numExternoD', 'dirD.numInterno as numInternoD', 'munT.nombre as municipioT', 'estT.nombre as estadoT', 'locT.nombre as localidadT', 'colT.nombre as coloniaT', 'colT.codigoPostal as cpT', 'dirT.calle as calleT', 'dirT.numExterno as numExternoT', 'dirT.numInterno as numInternoT', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.fechaNacimiento', 'persona.rfc', 'persona.curp', 'persona.sexo', 'cat_municipio.nombre as municipioOrigen', 'cat_estado.nombre as estadoOrigen', 'persona.esEmpresa')
+            ->select('extra_denunciante.id', 'extra_denunciante.conoceAlDenunciado', 'notificacion.correo', 'notificacion.telefono as telefonoN', 'notificacion.fax', 'munN.nombre as municipioN', 'estN.nombre as estadoN', 'locN.nombre as localidadN', 'colN.nombre as coloniaN', 'colN.codigoPostal as cpN', 'dirN.calle as calleN', 'dirN.numExterno as numExternoN', 'dirN.numInterno as numInternoN', 'variables_persona.edad', 'variables_persona.telefono', 'variables_persona.motivoEstancia', 'variables_persona.docIdentificacion', 'variables_persona.numDocIdentificacion', 'variables_persona.lugarTrabajo', 'variables_persona.telefonoTrabajo', 'cat_ocupacion.nombre as ocupacion', 'cat_estado_civil.nombre as estadoCivil', 'cat_escolaridad.nombre as escolaridad', 'cat_religion.nombre as religion', 'munD.nombre as municipioD', 'estD.nombre as estadoD', 'locD.nombre as localidadD', 'colD.nombre as coloniaD', 'colD.codigoPostal as cpD', 'dirD.calle as calleD', 'dirD.numExterno as numExternoD', 'dirD.numInterno as numInternoD', 'munT.nombre as municipioT', 'estT.nombre as estadoT', 'locT.nombre as localidadT', 'colT.nombre as coloniaT', 'colT.codigoPostal as cpT', 'dirT.calle as calleT', 'dirT.numExterno as numExternoT', 'dirT.numInterno as numInternoT', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.fechaNacimiento', 'persona.rfc', 'persona.curp', 'persona.sexo', 'cat_municipio.nombre as municipioOrigen', 'cat_estado.nombre as estadoOrigen', 'persona.esEmpresa')
             ->where('acusacion.id', '=', $idAcusacion)
             ->get();
 
@@ -127,11 +130,14 @@ class DocxMakerController extends Controller
             ->where('acusacion.id', '=', $idAcusacion)
             ->get();
 
+
 		$carpeta = $carpeta[0];
 		$delito = $delito[0];
 		$denunciante = $denunciante[0];
 		$denunciado = $denunciado[0];
-        
+
+        $narracion = DB::table('narracion')->where('idInvolucrado', $denunciante->id)->where('tipoInvolucrado', 1)->first();
+
         $distritoLetra = DocxMakerController::getDistritoLetra($carpeta->distrito);
 		$fechaInicio = new Carbon($carpeta->fechaInicio);
 		$fechaNacimiento = new Carbon($denunciante->fechaNacimiento);
@@ -163,8 +169,8 @@ class DocxMakerController extends Controller
 		}
 
 		$templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('templates/FormatoDenuncia.docx');
-		
-		$templateProcessor->setValue('nombreFiscal', mb_strtoupper($carpeta->nombres." ".$carpeta->primerAp." ".$carpeta->segundoAp));
+
+		$templateProcessor->setValue('nombreFiscal', mb_strtoupper($carpeta->nombres." ".$carpeta->apellidos));
 		$templateProcessor->setValue('distrito', $carpeta->distrito);
 		$templateProcessor->setValue('distritoLetra', $distritoLetra);
 		$templateProcessor->setValue('municipioUnidadM', mb_strtoupper($carpeta->municipio));
@@ -218,7 +224,7 @@ class DocxMakerController extends Controller
 		$templateProcessor->setValue('vestimenta', $denunciado->vestimenta);
 		$templateProcessor->setValue('conoceAlDen', $conoceAlDen);
 		$templateProcessor->setValue('senasPartic', $denunciado->senasPartic);
-		$templateProcessor->setValue('narracion', $denunciante->narracion);
+		$templateProcessor->setValue('narracion', $narracion->narracion);
 
 		$templateProcessor->saveAs('../storage/oficios/FormatoDenuncia'.$idAcusacion.'.docx');
 		return response()->download('../storage/oficios/FormatoDenuncia'.$idAcusacion.'.docx');
@@ -230,7 +236,7 @@ class DocxMakerController extends Controller
 			->join('carpeta', 'carpeta.id', '=', 'acusacion.idCarpeta')
 			->join('users', 'users.id', '=', 'carpeta.idFiscal')
 			->join('unidad', 'unidad.id', '=', 'users.idUnidad')
-			->select('carpeta.numCarpeta', 'carpeta.fechaInicio', 'carpeta.conDetenido', 'users.nombres', 'users.primerAp', 'users.segundoAp', 'users.numFiscal', 'unidad.direccion', 'unidad.telefono', 'unidad.distrito', 'unidad.municipio')
+			->select('carpeta.numCarpeta', 'carpeta.fechaInicio', 'carpeta.conDetenido', 'users.nombres', 'users.apellidos', 'users.numFiscal', 'unidad.direccion', 'unidad.telefono', 'unidad.distrito', 'unidad.municipio')
 			->where('acusacion.id', '=', $request->radioAcusacion)
 			->get();
 		$acusacion = DB::table('acusacion')
@@ -264,8 +270,8 @@ class DocxMakerController extends Controller
 		$fechaCompleta = $fechaHoy->day." de ".$mesLetra." de ".$fechaHoy->year;
 
 		$templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('templates/InvestigaciónPolicíaMinisterial.docx');
-		
-		$templateProcessor->setValue('nombreFiscal', strtoupper($carpeta->nombres." ".$carpeta->primerAp." ".$carpeta->segundoAp));
+
+		$templateProcessor->setValue('nombreFiscal', strtoupper($carpeta->nombres." ".$carpeta->apellidos));
 		$templateProcessor->setValue('distrito', $carpeta->distrito);
 		$templateProcessor->setValue('distritoLetra', $distritoLetra);
 		$templateProcessor->setValue('municipioUnidadM', mb_strtoupper($carpeta->municipio));
@@ -300,7 +306,7 @@ class DocxMakerController extends Controller
 			->join('carpeta', 'carpeta.id', '=', 'acusacion.idCarpeta')
 			->join('users', 'users.id', '=', 'carpeta.idFiscal')
 			->join('unidad', 'unidad.id', '=', 'users.idUnidad')
-			->select('carpeta.numCarpeta', 'carpeta.fechaInicio', 'carpeta.conDetenido', 'users.nombres', 'users.primerAp', 'users.segundoAp', 'users.numFiscal', 'unidad.direccion', 'unidad.telefono', 'unidad.distrito', 'unidad.municipio')
+			->select('carpeta.numCarpeta', 'carpeta.fechaInicio', 'carpeta.conDetenido', 'users.nombres', 'users.apellidos', 'users.numFiscal', 'unidad.direccion', 'unidad.telefono', 'unidad.distrito', 'unidad.municipio')
 			->where('acusacion.id', '=', $request->radioAcusacion)
 			->get();
 		$acusacion = DB::table('acusacion')
@@ -334,8 +340,8 @@ class DocxMakerController extends Controller
 		$fechaCompleta = $fechaHoy->day." de ".$mesLetra." de ".$fechaHoy->year;
 
 		$templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('templates/InvestigaciónServiciosPericiales.docx');
-		
-		$templateProcessor->setValue('nombreFiscal', mb_strtoupper($carpeta->nombres." ".$carpeta->primerAp." ".$carpeta->segundoAp));
+
+		$templateProcessor->setValue('nombreFiscal', mb_strtoupper($carpeta->nombres." ".$carpeta->apellidos));
 		$templateProcessor->setValue('distrito', $carpeta->distrito);
 		$templateProcessor->setValue('distritoLetra', $distritoLetra);
 		$templateProcessor->setValue('municipioUnidadM', mb_strtoupper($carpeta->municipio));
@@ -459,7 +465,7 @@ class DocxMakerController extends Controller
 	public static function getDiaLetra($numDia){
 		switch ($numDia) {
         	case '1':
-        		$diaLetra = "Primero";
+        		$diaLetra = "Primer";
         		break;
         	case '1':
         		$diaLetra = "Dos";
@@ -551,7 +557,7 @@ class DocxMakerController extends Controller
         	case '31':
         		$diaLetra = "Treinta y un";
         		break;
-        	
+
         	default:
         		$diaLetra = "Primero";
         		break;
@@ -559,5 +565,5 @@ class DocxMakerController extends Controller
         return $diaLetra;
 	}
 
-	
+
 }

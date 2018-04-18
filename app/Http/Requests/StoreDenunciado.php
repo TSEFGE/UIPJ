@@ -11,7 +11,7 @@ class StoreDenunciado extends FormRequest
      *
      * @return bool
      */
-     public function authorize()
+    public function authorize()
     {
         return true;
     }
@@ -24,55 +24,46 @@ class StoreDenunciado extends FormRequest
     public function rules()
     {
         return [
-            'nombresQ' => 'nombre|min:3|max:200',
 
-            'nombresC' => 'nombre|min:3|max:200',
-            'primerApC' => 'nombre|min:3|max:50',
-           // 'aliasC' => 'alias|min:1|max:50',
-           // 'calleC' => 'string|min:3|max:100',
-            //'numExternoC' => 'alfanumdiag|min:1|max:10',
-          //'numInternoC' => 'alfanumdiag|min:1|max:10',
-            'narracionC' => 'string|min:5|max:2000',
             
-            'nombres2' => 'min:3|max:50',
-            'rfc2' => 'rfc|min:10|max:13',
-            'representanteLegal' => 'nombre|min:4|max:100',
-            'calle' => 'string|min:4|max:100',
-          //'numExterno' => 'alfanumdiag|min:1|max:10',
-           // 'numInterno' => 'alfanumdiag|min:1|max:10',
-            'calle3' => 'string|min:3|max:100',
-          //'numExterno3' => 'alfanumdiag|min:1|max:10',
-          //  'numInterno3' => 'alfanumdiag|min:1|max:10',
-            'correo' => 'email',
-            'telefonoN' => 'numtel|min:7|max:15',
-            'senasPartic' => 'string|min:1|max:150',
-            'narracion' => 'string|min:5|max:2000',
+           'nombresQ'=> array('regex:/^(([A-ZÁÉÑÍÓÚ][\s]*){1,100})/u'),
+           'nombresC' => array('regex:/^(([A-ZÁÉÑÍÓÚ][\s]*){1,100})/u'),
+           'primerApC' => array('regex:/^(([A-ZÁÉÑÍÓÚ][\s]*){1,50})/u'),
+           'aliasC' => array('regex:/^(^([A-ZÁÉÑÍÓÚ][.]*[,]*[\s]*){1,50})/u'),
+           'calleC' => 'string|min:3|max:100',
+           'narracionC' => 'string|min:5|max:2000',
+           'nombres2' => array('regex:/^(^([A-ZÁÉÑÍÓÚ][.]*[,]*[\s]*){1,100})/u'),
+           'rfc2' => 'min:9|max:12',
+           'representanteLegal'=> array('regex:/^(([A-ZÁÉÑÍÓÚ][.]*[,]*[\s]*){1,300})/u'),
+           'calle' => 'string|min:3|max:100',
+           'calle3' => 'string|min:3|max:100',
+           'correo' => 'email',
+           'telefonoN' => array('regex:/^([0-9]{10,15}|(SIN NUMERO))/u'),
+           'senasPartic' => 'string|min:1|max:500',
+           'narracion' => 'string|min:5|max:2000',
+           'nombres' => array('regex:/^(([A-ZÁÉÑÍÓÚ][\s]*){1,100})/u'),
+           'primerAp'  => array('regex:/^(([A-ZÁÉÑÍÓÚ][\s]*){1,50})/u'),
+      //     'segundoAp'=> array('regex:/^((([A-ZÁÉÑÍÓÚ][\s]*)?){1,50})/u'),
+           'rfc' => 'rfc|min:10|max:13',
+           'curp' => 'string|min:18|max:18',
+           'telefono' => array('regex:/^([0-9]{10,15}|(SIN NUMERO))/u'),
+           'motivoEstancia' => 'string|min:5|max:200',
+           'telefonoTrabajo' => array('regex:/^([0-9]{10,15}|(SIN NUMERO))/u'), 
+           'docIdentificacion' => 'string|min:3|max:50',
+           'numDocIdentificacion' => array('regex:/^([0-9]{1,50})/u'),
+           'lugarTrabajo' => 'string|min:5|max:50',
+           'calle2' => 'string|min:3|max:100',
+           'alias' => 'alias|min:1|max:50',
+           'ingreso' => 'numeric',
+           'residenciaAnterior' => 'string|min:4|max:100',
+           'vestimenta' => 'string|min:5|max:150',
+       ];
+   }
 
-            'nombres' => 'nombre|min:3|max:50',
-            'primerAp' => 'nombre|min:3|max:50',
-            'primerAp' => 'nombre|min:3|max:50',
-            'rfc' => 'rfc|min:10|max:13',
-            'curp' => 'string|min:18|max:18',
-            'telefono' => 'numtel|min:7|max:15',
-            'motivoEstancia' => 'string|min:4|max:200',
-            'telefonoTrabajo' => 'numtel|min:7|max:15',
-            'docIdentificacion' => 'string|min:3|max:50',
-            'numDocIdentificacion' => 'string|min:3|max:50',
-            'lugarTrabajo' => 'string',
-            'calle2' => 'string|min:3|max:100',
-          //'numExterno2' => 'alfanumdiag|min:1|max:10',
-           // 'numInterno2' => 'alfanumdiag|min:1|max:10',
-            'alias' => 'alias|min:1|max:50',
-            'ingreso' => 'numeric',
-            'residenciaAnterior' => 'string|min:4|max:100',
-            'vestimenta' => 'string|min:4|max:150',
-        ];
-    }
-
-    public function messages()
-    {
-        return [
-            'nombresQ.string' => 'El nombre Q.R.R. debe ser alfabético',
-        ];
-    }
+   public function messages()
+   {
+    return [
+        'nombresQ.string' => 'El nombre Q.R.R. debe ser alfabético',
+    ];
+}
 }

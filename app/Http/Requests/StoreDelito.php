@@ -25,8 +25,6 @@ class StoreDelito extends FormRequest
     {
         return [
             'calle' => 'string|min:3|max:100',
-            'numExterno' => 'alfanumdiag|min:1|max:10',
-            'numInterno' => 'alfanumdiag|min:1|max:10',
             'entreCalle' => 'string|min:3|max:100',
             'yCalle' => 'string|min:3|max:100',
             'calleTrasera' => 'string|min:3|max:100',

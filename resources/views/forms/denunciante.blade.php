@@ -1,94 +1,145 @@
 @extends('template.form')
 
-@section('title', 'Agregar Denunciante')
+@section('title', 'Agregar víctima, ofendido u apoderado legal')
 
 @section('contenido')
-	@include('forms.errores')
-    {!! Form::open(['route' => 'store.denunciante', 'method' => 'POST'])  !!}
-    {{ csrf_field() }}
-    <div class="boxtwo">
-    	<div class="row">
-    		@include('fields.tipo-persona')
-    	</div>
-    </div>
-	<div class="card" id="datosPer">
-		<div class="card-header">
-			<h5 class="mb-0 text-center">
-				<a data-toggle="collapse" href="#collapsePersonales1" aria-expanded="false" aria-controls="collapsePersonales1">
-					Datos personales
-				</a>
-			</h5>
-		</div>
-		<div id="collapsePersonales1" class="collapse show boxcollapse">
-			<div class="boxtwo">
-				@include('fields.personales')
-			</div>
-		</div>
-	</div>
+{!! Form::open(['route' => 'store.denunciante', 'method' => 'POST']) !!}
+{{ csrf_field() }}
+<div class="card-header">
+	<div class="row">
+		<div class="col">
+			<div class="text-left">
+				<div class="row">
 
-	<div class="card" id="datosDir">
-		<div class="card-header">
-			<h5 class="mb-0 text-center">
-				<a data-toggle="collapse" href="#collapseDir1" aria-expanded="false" aria-controls="collapseDir1">
-					Dirección
-				</a>
-			</h5>
+					<div class="col-6">
+						<div class="form-group">
+							<label class="col-form-label col-form-label-sm" for="formGroupExampleInput">¿Es víctima?</label>
+							<div class="clearfix"></div>
+							<div class="form-check form-check-inline">
+								<label class="form-check-label col-form-label col-form-label-sm">
+									<input class="form-check-input" type="radio" id="esVictima1" name="esVictima" value="1" required> Sí
+								</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<label class="form-check-label col-form-label col-form-label-sm">
+									<input class="form-check-input" type="radio" id="esVictima2" name="esVictima" value="0" required> No
+								</label> 
+							</div>
+						</div>
+					</div>
+					<div  id="tipop" class="col-6" >
+						@include('fields.tipo-persona')
+					</div>
+				</div>
+			</div>
 		</div>
-		<div id="collapseDir1" class="collapse boxcollapse">
-			<div class="boxtwo">
-				@include('fields.direcciones')
+		<div class="col">
+			<div class="text-right">
+				@include('forms.buttons')
 			</div>
 		</div>
 	</div>
+</div>
 
-	<div class="card" id="datosTrab">
-		<div class="card-header">
-			<h5 class="mb-0 text-center">
-				<a data-toggle="collapse" href="#collapseTrab1" aria-expanded="false" aria-controls="collapseTrab1">
-					Datos del trabajo
-				</a>
-			</h5>
-		</div>
-		<div id="collapseTrab1" class="collapse boxcollapse">
-			<div class="boxtwo">
-				@include('fields.lugartrabajo')
-			</div>
-		</div>
-	</div>
 
-	<div class="card" id="datosNotif">
-		<div class="card-header">
-			<h5 class="mb-0 text-center">
-				<a data-toggle="collapse" href="#collapseNotifs1" aria-expanded="false" aria-controls="collapseNotifs1">
-					Dirección para notificaciones
-				</a>
-			</h5>
-		</div>
-		<div id="collapseNotifs1" class="collapse boxcollapse">
-			<div class="boxtwo">
-				@include('fields.notificaciones')
-			</div>
-		</div>
-	</div>
+@include('forms.errores')
+<div class=" card-body boxone">
+	<div class="row no-gutters">
+		<div class="col-12">
+				<div class="row">
+					@if(!empty($idCarpeta)) {!! Form::hidden('idCarpeta', $idCarpeta) !!} @endif
+				</div>
+				<div class="" id="datosPer">
+					<div id="denunciante">
 
-	<div class="card" id="datosExtra">
-		<div class="card-header">
-			<h5 class="mb-0 text-center">
-				<a data-toggle="collapse" href="#collapseDenun" aria-expanded="false" aria-controls="collapseDenun">
-					Información sobre el Denunciante o Agraviado
-				</a>
-			</h5>
-		</div>
-		<div id="collapseDenun" class="collapse boxcollapse">
-			<div class="boxtwo">
-				@include('fields.extra-denunciante')
-			</div>
+						<ul id="tdenunciante" class="nav nav-tabs">
+							<li class="nav-item " id="datosPer">
+								<a class="nav-link tab active pestaña " id="p-personal" data-toggle="tab" href="#collapsePersonales1"><p id="personal" class="pestaña" ><i class="fa fa-user-circle-o" aria-hidden="true"></i></p>
+								<div id="espacio-notif"><span id="tab1" class="xvacio"></span>
+									<span id="txtTab1" class="xerror"></span>
+									<span id="t1" class="bien"></span></div>																
+								</a>
+							</li>
+							<li class="nav-item" id="datosDir">
+								<a class="nav-link" data-toggle="tab" id="p-direccion" href="#collapseDir1"><p id="direccion" class="pestaña"><i class="fa fa-address-card" aria-hidden="true"></i></p>
+								<div id="espacio-notif1"><span id="tab2" class="xvacio"></span>
+									<span id="txtTab2" class="xerror"></span>
+									<span id="t2" class="bien"></span></div>								
+								</a>
+							</li>
+							<li class="nav-item" id="datosTrab">
+								<a class="nav-link" data-toggle="tab"  href="#collapseTrab1"><p id="dtrabajo" class="pestaña"> <i class="fa fa-industry" aria-hidden="true"></i></p>									
+								<div id="espacio-notif2"><span id="tab3" class="xvacio"></span>
+									<span id="txtTab3" class="xerror"></span>
+									<span id="t3" class="bien"></span></div>
+								</a>
+							</li>
+							<li class="nav-item" id="datosNotif">
+								<a class="nav-link" data-toggle="tab"  href="#collapseNotifs1"><p id="dnotificaciones" class="pestaña"><i class="fa fa-bell" aria-hidden="true"></i></p>
+									<div id="espacio-notif3"><span id="tab4" class="xvacio"></span>
+									<span id="txtTab4" class="xerror"></span>
+									<span id="t4" class="bien"></span></div>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div id="cajados" class="boxtwo">
+					<div class="tab-content" id="ctdenunciante">
+						<div class="tab-pane active container" id="collapsePersonales1">
+							@include('fields.personales')
+							
+							@include('fields.extra-denunciante')
+
+
+						</div>
+						<div class="tab-pane container" id="collapseDir1">
+							@include('fields.direcciones')
+						</div>
+						<div class="tab-pane container" id="collapseTrab1">
+							@include('fields.lugartrabajo')
+						</div>
+						<div class="tab-pane container" id="collapseNotifs1">
+							@include('fields.notificaciones')
+						</div>
+					</div>
+				</div>
+					<!-- Fin pestañas -->
+
+
 		</div>
 	</div>
-	@include('forms.buttons')
-	{!! Form::close() !!}
-	<div class="boxtwo">
-		@include('tables.denunciantes')
-	</div>
-@endsection
+</div>
+
+
+{!! Form::close() !!} @endsection @section('tabla')
+<div class="boxtwo">
+	@section('titulo-tabla', 'Denunciantes registrados') @include('tables.denunciantes')
+</div>
+@endsection @push('PilaScripts')
+<script type="text/javascript">
+	$(document).ready(function() {
+					$('#tipop').hide(); 
+
+});
+	$('input[type=radio][name=esVictima]').change(function() {
+		if (this.value == 0) {
+			swal("Atención", "Ha seleccionado registrar un denunciante como ofendido .", "warning")
+		} else if (this.value == 1) {
+			swal("Atención", "Ha seleccionado registrar un denunciante como victima.", "warning")
+		}
+			$('#tipop').show();
+	});
+
+
+
+</script>
+
+
+
+@endpush
+
+
+
+
 

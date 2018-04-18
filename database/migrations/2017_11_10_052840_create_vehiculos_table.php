@@ -15,8 +15,7 @@ class CreateVehiculosTable extends Migration
     {
         Schema::create('vehiculo', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('idTipifDelito')->unsigned();
-            $table->string('status', 20);
+            $table->integer('idTipifDelito')->unsigned();       
             $table->string('placas', 9);
             $table->integer('idEstado')->unsigned()->default(33);
             $table->integer('idSubmarca')->unsigned()->default(24403);
@@ -31,7 +30,6 @@ class CreateVehiculosTable extends Migration
             $table->string('senasPartic', 100);
             $table->integer('idProcedencia')->unsigned()->default(4);
             $table->integer('idAseguradora')->unsigned()->default(25);
-
             $table->foreign('idTipifDelito')->references('id')->on('tipif_delito')->onDelete('cascade');
             $table->foreign('idEstado')->references('id')->on('cat_estado')->onDelete('cascade');
             $table->foreign('idSubmarca')->references('id')->on('cat_submarca')->onDelete('cascade');

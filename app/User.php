@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'id', 'idUnidad', 'nombres',  'primerAp', 'segundoAp', 'email', 'password', 'numFiscal', 'nivel',
+        'id', 'idUnidad', 'username', 'nombres',  'apellidos', 'email', 'password', 'numFiscal', 'nivel','tokenSession',
     ];
 
     /**
@@ -38,4 +38,11 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Models\Unidad');
     }
+    public function bitacoras()
+    {
+
+    return $this-> hasMany('App\Models\Bitacora');
+    }
+
+
 }

@@ -5,18 +5,18 @@
 		@endif
 		<div class="form-group">
 			{!! Form::label('idDelito', 'Delito', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idDelito', $delits, null, ['class' => 'form-control form-control-sm select2', 'placeholder' => 'Seleccione un delito', 'required']) !!}
+			{!! Form::select('idDelito', $delits, null, ['class' => 'form-control form-control-sm select2', 'placeholder' => 'Seleccione un delito','required']) !!}
 		</div>
 	</div>
 	<div class="col-sm-4">
 		<div class="form-group">
-			{!! Form::label('idAgrupacion1', ' Primera Desagregación', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::label('idAgrupacion1', ' Primera desagregación', ['class' => 'col-form-label-sm']) !!}
 			{!! Form::select('idAgrupacion1', ['placeholder'=>'Seleccione una desagregación'], null, ['class' => 'form-control form-control-sm select2', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-sm-4">
 		<div class="form-group">
-			{!! Form::label('idAgrupacion2', ' Segunda Desagregación', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::label('idAgrupacion2', ' Segunda desagregación', ['class' => 'col-form-label-sm']) !!}
 			{!! Form::select('idAgrupacion2', ['placeholder'=>'Seleccione una desagregación'], null, ['class' => 'form-control form-control-sm select2', 'required']) !!}
 		</div>
 	</div>
@@ -24,7 +24,7 @@
 		<div class="form-group">
 			{!! Form::label('fecha', 'Fecha', ['class' => 'col-form-label-sm']) !!}
             <div class="input-group date" id="fechadelit" data-target-input="nearest">
-                {!! Form::text('fecha', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechadelit', 'data-toggle' => 'datetimepicker', 'required', 'placeholder' => 'DD/MM/AAAA']) !!}
+                {!! Form::text('fecha', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechadelit', 'data-toggle' => 'datetimepicker', 'required', 'placeholder' => 'AAAA-MM-DD','data-validation'=>'date', 'data-validation-format'=>'yyyy-mm-dd','data-validation-error-msg'=>'Ingrese fecha en el formato correcto AAAA-MM-DD']) !!}
                 <div class="input-group-append" data-target="#fechadelit" data-toggle="datetimepicker">
                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                 </div>
@@ -35,7 +35,7 @@
 		<div class="form-group" id="" >
 			{!! Form::label('hora', 'Hora', ['class' => 'col-form-label-sm']) !!}
 			<div class="input-group date" id="horadelit" data-target-input="nearest">
-				{!! Form::text('hora', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#horadelit', 'required', 'placeholder' => '00:00','data-toggle'=>"datetimepicker"]) !!}
+				{!! Form::text('hora', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#horadelit', 'required', 'placeholder' => '00:00','data-toggle'=>"datetimepicker",'data-validation'=>'custom' ,'data-validation-regexp'=>'^([01]?[0-9]|2[0-3]):[0-5][0-9]$','data-validation-error-msg'=>'Ingrese hora en el formato correcto HH:MM (Formato 24 hrs)']) !!}
                 <div class="input-group-append" data-target="#horadelit" data-toggle="datetimepicker">
                     <div class="input-group-text"><i class="fa fa-clock-o"></i></div>
                 </div>

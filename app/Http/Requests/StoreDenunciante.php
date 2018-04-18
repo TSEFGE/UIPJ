@@ -13,7 +13,7 @@ class StoreDenunciante extends FormRequest
      */
     public function authorize()
     {
-        return true;
+      return true;
     }
 
     /**
@@ -23,43 +23,36 @@ class StoreDenunciante extends FormRequest
      */
     public function rules()
     {
+      return [
+
+        'nombres2' => array('regex:/^(([A-ZÁÉÑÍÓÚ][.]*[,]*[\s]*){1,100})/u'),
+        'rfc2' => 'min:9|max:12',
+        'representanteLegal' => array('regex:/^(([A-ZÁÉÑÍÓÚ][.]*[,]*[\s]*){1,300})/u'),
+        'calle' => 'string|min:3|max:100',
+        'calle3' => 'string|min:3|max:100',
+        'telefonoN' => array('regex:/^([0-9]{10,15}|(SIN NUMERO))/u'),
+        'narracion' => 'string|min:5|max:2000',
+        'nombres' => array('regex:/^(([A-ZÁÉÑÍÓÚ][\s]*){1,100})/u'),
+        'primerAp' => array('regex:/^(([A-ZÁÉÑÍÓÚ][\s]*){1,50})/u'),
+       
+        'rfc' => 'rfc|min:10|max:13', 
+        'curp' => 'string|min:18|max:18',
+        'telefono'  => array('regex:/^([0-9]{10,15}|(SIN NUMERO))/u'),
+        'motivoEstancia'=> 'string|min:5|max:200',
+        'docIdentificacion' => 'string|min:3|max:50',
+        'numDocIdentificacion' => array('regex:/^([0-9]{1,50})/u'),
+        'lugarTrabajo' => 'string|min:5|max:50',
+        'telefonoTrabajo'  => array('regex:/^([0-9]{10,15}|(SIN NUMERO))/u'),
+        'calle2' => 'string|min:3|max:100',
+         
+
+         ];
+       }
+
+       public function messages()
+       {
         return [
-
-            'nombres2' => 'min:3|max:200',
-            'rfc2' => 'rfc|min:10|max:13',
-            'representanteLegal' => 'nombre|min:4|max:100',
-            'calle' => 'string|min:3|max:100',
-          // 'numExterno' => 'alfanumdiag|min:1|max:10',
-          //  'numInterno' => 'alfanumdiag|min:1|max:10',
-            'calle3' => 'string|min:3|max:100',
-          //'numExterno3' => 'alfanumdiag|min:1|max:10',
-          //  'numInterno3' => 'alfanumdiag|min:1|max:10',
-          //'correo' => 'email',
-            'telefonoN' => 'numtel|min:7|max:15',
-            'narracion' => 'string|min:5|max:2000',
-
-            'nombres' => 'nombre|min:3|max:200',
-            'primerAp' => 'nombre|min:3|max:50',
-            'segundoAp' => 'nombre|min:3|max:50',
-            'rfc' => 'rfc|min:10|max:13',
-            'curp' => 'string|min:18|max:18',
-            'telefono' => 'numtel|min:7|max:15',
-            'motivoEstancia' => 'string|min:4|max:200',
-            'docIdentificacion' => 'string|min:3|max:50',
-            'numDocIdentificacion' => 'string|min:3|max:50',
-            'lugarTrabajo' => 'string',
-            'telefonoTrabajo' => 'numtel|min:7|max:15',
-            'calle2' => 'string|min:3|max:100',
-           //'numExterno2' => 'alfanumdiag|min:1|max:10',
-          //  'numInterno2' => 'alfanumdiag|min:1|max:10',
-            
+          'nombresQ.boolean' => 'A title is required',
         ];
+      }
     }
-
-    public function messages()
-    {
-        return [
-            'nombresQ.boolean' => 'A title is required',
-        ];
-    }
-}

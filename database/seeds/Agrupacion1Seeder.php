@@ -45,7 +45,8 @@ class Agrupacion1Seeder extends Seeder
 				['nombre' => 'NO CONSTITUTIVOS DE DELITO', 'idCatDelito' => 6],
 				['nombre' => 'DELICTUOSOS NO ESPECIFICADOS', 'idCatDelito' => 6],
 				['nombre' => 'SIN AGRUPACION', 'idCatDelito' => 7],
-				['nombre' => 'SIN AGRUPACION','idCatDelito'=> 8],				
+				['nombre' => 'SIN AGRUPACION','idCatDelito'=> 8],
+				//33				
 				['nombre' => 'OTROS', 'idCatDelito' => 9],
 				['nombre' => 'BANCO','idCatDelito'=> 9],
 				['nombre' => 'CAMION REPARTIDOR', 'idCatDelito' => 9],
@@ -66,6 +67,8 @@ class Agrupacion1Seeder extends Seeder
 				['nombre' => 'VEHICULO AUTOMOTOR', 'idCatDelito' => 9],
 				['nombre' => 'TRANSPORTISTAS', 'idCatDelito' => 9],  
 				['nombre' => 'AUTOPARTES', 'idCatDelito' =>9],
+				//52
+
 				['nombre' => 'DE FAMILIARES', 'idCatDelito' => 10],
 				['nombre' => 'EN GRADO DE TENTATIVA', 'idCatDelito' => 11],
 				['nombre' => 'SIN AGRUPACION','idCatDelito'=> 12],

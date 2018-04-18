@@ -1,8 +1,7 @@
-<h6>Defensas</h6>
 <div class="table">
     <table class="table table-striped">
         <thead>
-            <th>Nombre</th>
+            <th>Abogado</th>
             <th>Defiende a</th>                                
         </thead>
         <tbody>
@@ -12,7 +11,7 @@
                 @foreach($defensas as $defensa)
                     <tr>
                         <td>{{ $defensa->nombres." ".$defensa->primerAp." ".$defensa->segundoAp }}</td>
-                        <td>{{ $defensa->nombres2." ".$defensa->primerAp2." ".$defensa->segundoAp2 }}</td>                             
+                        <td>{{ $defensa->nombres2." ".$defensa->primerAp2." ".$defensa->segundoAp2 }}</td>
                     </tr>
                 @endforeach
             @endif

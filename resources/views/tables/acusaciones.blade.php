@@ -1,11 +1,12 @@
-<h6>Acusaciones</h6>
 <div class="table">
     <table class="table table-striped">
         <thead>
             <th>Nombre denunciante</th>
             <th>Delito</th>
             <th>Nombre denunciado</th>
-            <th>Opciones</th>
+            <th>Formato de denuncia</th>
+        
+           
         </thead>
         <tbody>
             @if(count($acusaciones)==0)
@@ -16,7 +17,9 @@
                         <td>{{ $acusacion->nombres." ".$acusacion->primerAp." ".$acusacion->segundoAp }}</td>
                         <td>{{ $acusacion->delito }}</td>
                         <td>{{ $acusacion->nombres2." ".$acusacion->primerAp2." ".$acusacion->segundoAp2 }}</td>
-                        <td><a href="{{ route('formato.denuncia', $acusacion->id) }}" class="btn btn-secondary text-right">Descargar formato de Denuncia</a></td>
+                      
+
+                        <td align="center"><a href="{{route('formato.denuncia', $acusacion->id)}}"> <i class="fa fa-cloud-download" style="font-size:24px;color:grey"></i></a></td> 
                     </tr>
                 @endforeach
             @endif

@@ -1,3 +1,4 @@
+jQuery.ajaxSetup({async:false});
 $("#idEstadoOrigen").change(function(event){
 	$.get("../municipios/"+event.target.value+"", function(response, estado){
 		$("#idMunicipioOrigen").empty();
@@ -74,24 +75,24 @@ $("#idLocalidad").change(function(event){
 	}
 });
 
-$("#cp").change(function(event){
-	if(event.target.value!=""){
-		$.get("../colonias/"+$('#cp option:selected').html()+"", function(response, cp){
-			$("#idColonia").empty();
-			$("#idColonia").append("<option value=''>Seleccione una colonia</option>");
-			for(i=0; i<response.length; i++){
-				$("#idColonia").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
-			}
-			$("#idColonia3").empty();
-			$("#idColonia3").append("<option value=''>Seleccione una colonia</option>");
-			for(i=0; i<response.length; i++){
-				$("#idColonia3").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
-			}
-		});
-		$('#cp3').val($('#cp').val()).trigger('change.select2');
-		$('#idColonia3').val($('#idColonia').val()).trigger('change.select2');
-	}
-});
+// $("#cp").change(function(event){
+// 	if(event.target.value!=""){
+// 		$.get("../colonias/"+$('#cp option:selected').html()+"", function(response, cp){
+// 			$("#idColonia").empty();
+// 			$("#idColonia").append("<option value=''>Seleccione una colonia</option>");
+// 			for(i=0; i<response.length; i++){
+// 				$("#idColonia").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
+// 			}
+// 			$("#idColonia3").empty();
+// 			$("#idColonia3").append("<option value=''>Seleccione una colonia</option>");
+// 			for(i=0; i<response.length; i++){
+// 				$("#idColonia3").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
+// 			}
+// 		});
+// 		$('#cp3').val($('#cp').val()).trigger('change.select2');
+// 		$('#idColonia3').val($('#idColonia').val()).trigger('change.select2');
+// 	}
+// });
 
 $("#idColonia").change(function(event){
 	if(event.target.value!=""){
@@ -154,17 +155,17 @@ $("#idMunicipio2").change(function(event){
 	}
 });
 
-$("#cp2").change(function(event){
-	if(event.target.value!=""){
-		$.get("../colonias/"+$('#cp2 option:selected').html()+"", function(response, cp){
-			$("#idColonia2").empty();
-			$("#idColonia2").append("<option value=''>Seleccione una colonia</option>");
-			for(i=0; i<response.length; i++){
-				$("#idColonia2").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
-			}
-		});
-	}
-});
+// $("#cp2").change(function(event){
+// 	if(event.target.value!=""){
+// 		$.get("../colonias/"+$('#cp2 option:selected').html()+"", function(response, cp){
+// 			$("#idColonia2").empty();
+// 			$("#idColonia2").append("<option value=''>Seleccione una colonia</option>");
+// 			for(i=0; i<response.length; i++){
+// 				$("#idColonia2").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
+// 			}
+// 		});
+// 	}
+// });
 
 $("#idColonia2").change(function(event){
 	if(event.target.value!=""){
@@ -213,17 +214,17 @@ $("#idMunicipio3").change(function(event){
 	}
 });
 
-$("#cp3").change(function(event){
-	if(event.target.value!=""){
-		$.get("../colonias/"+$('#cp3 option:selected').html()+"", function(response, cp){
-			$("#idColonia3").empty();
-			$("#idColonia3").append("<option value=''>Seleccione una colonia</option>");
-			for(i=0; i<response.length; i++){
-				$("#idColonia3").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
-			}
-		});
-	}
-});
+// $("#cp3").change(function(event){
+// 	if(event.target.value!=""){
+// 		$.get("../colonias/"+$('#cp3 option:selected').html()+"", function(response, cp){
+// 			$("#idColonia3").empty();
+// 			$("#idColonia3").append("<option value=''>Seleccione una colonia</option>");
+// 			for(i=0; i<response.length; i++){
+// 				$("#idColonia3").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
+// 			}
+// 		});
+// 	}
+// });
 
 $("#idColonia3").change(function(event){
 	if(event.target.value!=""){
@@ -300,7 +301,7 @@ $("#idAbogado").change(function(event){
 			$("#idInvolucrado").empty();
 			$("#idInvolucrado").append("<option value=''>Seleccione un involucrado</option>");
 			for(i=0; i<response.length; i++){
-				$("#idInvolucrado").append("<option value='"+response[i].id+"'> "+response[i].nombres+" "+response[i].primerAp+" "+response[i].segundoAp+"</option>");
+				$("#idInvolucrado").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
 			}
 		});
 	}
@@ -344,17 +345,17 @@ $("#idMunicipioC").change(function(event){
 	}
 });
 
-$("#cpC").change(function(event){
-	if(event.target.value!=""){
-		$.get("../colonias/"+$('#cpC option:selected').html()+"", function(response, cp){
-			$("#idColoniaC").empty();
-			$("#idColoniaC").append("<option value=''>Seleccione una colonia</option>");
-			for(i=0; i<response.length; i++){
-				$("#idColoniaC").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
-			}
-		});
-	}
-});
+// $("#cpC").change(function(event){
+// 	if(event.target.value!=""){
+// 		$.get("../colonias/"+$('#cpC option:selected').html()+"", function(response, cp){
+// 			$("#idColoniaC").empty();
+// 			$("#idColoniaC").append("<option value=''>Seleccione una colonia</option>");
+// 			for(i=0; i<response.length; i++){
+// 				$("#idColoniaC").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
+// 			}
+// 		});
+// 	}
+// });
 
 $("#idColoniaC").change(function(event){
 	if(event.target.value!=""){
@@ -391,4 +392,7 @@ $("#idAgrupacion1").change(function(event){
 }
 });
 
-
+//-----------------------
+$('form').sisyphus({
+		excludeFields: $( 'input[name=_token]' )
+});

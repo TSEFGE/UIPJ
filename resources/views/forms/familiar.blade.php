@@ -3,9 +3,24 @@
 @section('title', 'Agregar Familiar')
 
 @section('contenido')
-	@include('forms.errores')
-    {!! Form::open(['route' => 'store.familiar', 'method' => 'POST'])  !!}
-    {{ csrf_field() }}
+{!! Form::open(['route' => 'store.familiar', 'method' => 'POST'])  !!}
+{{ csrf_field() }}
+<div class="card-header">
+		<div class="row">
+				<div class="col">
+					<div class="text-left">
+							{{--Aqui van radios, etc --}}
+						</div>
+				</div>
+				<div class="col">	
+					<div class="text-right">
+							@include('forms.buttons')
+					</div>
+				</div>
+		</div>
+</div>
+@include('forms.errores')
+<div class=" card-body boxone">
 	<div class="row no-gutters">
 		<div class="col-12">
 			<div class="boxtwo">
@@ -14,9 +29,12 @@
 			</div>
 		</div>
 	</div>
-	@include('forms.buttons')
+</div>
 	{!! Form::close() !!}
+@endsection
+@section('tabla')
 	<div class="boxtwo">
+		@section('titulo-tabla', 'Familiares registrados')
 		@include('tables.familiares')
 	</div>
 @endsection

@@ -22,6 +22,8 @@ use App\Models\Persona;
 use App\Models\Domicilio;
 use App\Models\VariablesPersona;
 use App\Models\ExtraAutoridad;
+use App\Models\Bitacora;
+use App\Models\Narracion;
 
 class AutoridadController extends Controller
 {
@@ -63,7 +65,7 @@ class AutoridadController extends Controller
         $persona->primerAp = $request->primerAp;
         $persona->segundoAp = $request->segundoAp;
         $persona->fechaNacimiento = $request->fechaNacimiento;
-        $persona->rfc = $request->rfc;
+        $persona->rfc = $request->rfc.$request->homo;
         $persona->curp = $request->curp;
         $persona->sexo = $request->sexo;
         $persona->idNacionalidad = $request->idNacionalidad;
@@ -71,6 +73,13 @@ class AutoridadController extends Controller
         $persona->idLengua = $request->idLengua;
         $persona->idMunicipioOrigen = $request->idMunicipioOrigen;
         $persona->save();
+        //Agregar a bitacora
+        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se han registrado Datos Personales de una nueva Autoridad', 'idFilaAccion' => $persona->id]);
+
+        if($request->rfcAux!=$request->rfc.$request->homo){
+          Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un RFC diferente al generado por el sistema para una persona física de tipo Autoridad.', 'idFilaAccion' => $persona->id]);
+        }
+
         $idPersona = $persona->id;
 
         $domicilio = new Domicilio();
@@ -81,6 +90,9 @@ class AutoridadController extends Controller
         $domicilio->numExterno = $request->numExterno;
         $domicilio->numInterno = $request->numInterno;
         $domicilio->save();
+        //Agregar a bitacora
+        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'insert', 'descripcion' => 'Se ha registrado la Direccion de Autoridad', 'idFilaAccion' => $domicilio->id]);
+
         $idD1 = $domicilio->id;
 
         $domicilio2 = new Domicilio();
@@ -91,6 +103,9 @@ class AutoridadController extends Controller
         $domicilio2->numExterno = $request->numExterno2;
         $domicilio2->numInterno = $request->numInterno2;
         $domicilio2->save();
+        //Agregar a bitacora
+        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'variables_persona,domicilio', 'accion' => 'insert', 'descripcion' => 'Se han registrado Datos del Trabajo de Autoridad', 'idFilaAccion' => $domicilio2->id]);
+
         $idD2 = $domicilio2->id;
 
         $VariablesPersona = new VariablesPersona();
@@ -111,6 +126,8 @@ class AutoridadController extends Controller
         $VariablesPersona->telefonoTrabajo = $request->telefonoTrabajo;
         $VariablesPersona->representanteLegal = "NO APLICA";
         $VariablesPersona->save();
+        //Agregar a bitacora
+        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'variables_persona', 'accion' => 'insert', 'descripcion' => 'Se han registrado Variables Persona de Autoridad', 'idFilaAccion' => $VariablesPersona->id]);
         $idVariablesPersona = $VariablesPersona->id;
 
         $ExtraAutoridad = new ExtraAutoridad();
@@ -118,8 +135,21 @@ class AutoridadController extends Controller
         $ExtraAutoridad->antiguedad = $request->antiguedad;
         $ExtraAutoridad->rango = $request->rango;
         $ExtraAutoridad->horarioLaboral = $request->horarioLaboral;
-        $ExtraAutoridad->narracion = $request->narracion;
+      
         $ExtraAutoridad->save();
+        //Agregar a bitacora
+        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_autoridad', 'accion' => 'insert', 'descripcion' => 'Se ha registrado Informacion extra de Autoridad', 'idFilaAccion' => $ExtraAutoridad->id]);
+
+        $narracion= new Narracion();
+        $narracion->idInvolucrado=$ExtraAutoridad->id;
+        $narracion->idCarpeta=$request->idCarpeta;
+        $narracion->narracion=$request->narracionUno;
+        $narracion->tipoInvolucrado=3;
+        $narracion->archivo=null;
+        $narracion->save();
+
+        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'narracion', 'accion' => 'insert', 'descripcion' => 'Se ha registrado una nueva narracion de autoridad.', 'idFilaAccion' => $narracion->id]);
+
         /*
         Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
         //Para mostrar modal

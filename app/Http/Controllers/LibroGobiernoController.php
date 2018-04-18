@@ -21,7 +21,7 @@ class LibroGobiernoController extends Controller
             ->join('variables_persona','variables_persona.idCarpeta','=','carpeta.id')
             ->join('extra_denunciante','extra_denunciante.idVariablesPersona','=','variables_persona.id')
             ->join('persona','persona.id','=','variables_persona.idPersona')
-            ->select('carpeta.fechaInicio as Fecha','carpeta.numCarpeta','unidad.nombre as Unidad',DB::raw('CONCAT(users.nombres, " ", users.primerAp," ", ifnull(users.segundoAp,"")) AS Fiscal'),DB::raw('group_concat(persona.nombres," ",ifnull(persona.primerAp,"")," ",ifnull(persona.segundoAp,"")) as Denunciante'),'carpeta.descripcionHechos as Nota')
+            ->select('carpeta.fechaInicio as Fecha','carpeta.numCarpeta','unidad.nombre as Unidad',DB::raw('CONCAT(users.nombres, " ", users.apellidos) AS Fiscal'),DB::raw('group_concat(persona.nombres," ",ifnull(persona.primerAp,"")," ",ifnull(persona.segundoAp,"")) as Denunciante'),'carpeta.descripcionHechos as Nota')
             ->groupBy('carpeta.id')
             ->where('unidad.id','=', Auth::user()->idUnidad);
       return Datatables::of($libro)->make(true);
@@ -34,7 +34,7 @@ class LibroGobiernoController extends Controller
             ->join('variables_persona','variables_persona.idCarpeta','=','carpeta.id')
             ->join('extra_denunciante','extra_denunciante.idVariablesPersona','=','variables_persona.id')
             ->join('persona','persona.id','=','variables_persona.idPersona')
-            ->select('carpeta.fechaInicio as Fecha','carpeta.numCarpeta','unidad.nombre as Unidad',DB::raw('CONCAT(users.nombres, " ", users.primerAp," ", ifnull(users.segundoAp,"")) AS Fiscal'),DB::raw('group_concat(persona.nombres," ",ifnull(persona.primerAp,"")," ",ifnull(persona.segundoAp,"")) as Denunciante'),'carpeta.descripcionHechos as Nota')
+            ->select('carpeta.fechaInicio as Fecha','carpeta.numCarpeta','unidad.nombre as Unidad',DB::raw('CONCAT(users.nombres, " ", users.apellidos) AS Fiscal'),DB::raw('group_concat(persona.nombres," ",ifnull(persona.primerAp,"")," ",ifnull(persona.segundoAp,"")) as Denunciante'),'carpeta.descripcionHechos as Nota')
             ->groupBy('carpeta.id')
             ->where('unidad.id','=', Auth::user()->idUnidad)
             ->whereDate('carpeta.created_at', '>=',$request->fechaInicial)

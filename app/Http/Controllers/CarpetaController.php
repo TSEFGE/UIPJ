@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use App\Models\Carpeta;
 use App\Models\Unidad;
 use App\Models\CatTipoDeterminacion;
+use App\Models\Bitacora;
 
 class CarpetaController extends Controller
 {
@@ -60,9 +61,11 @@ class CarpetaController extends Controller
         }
         $carpeta->fechaDeterminacion = $request->fechaDeterminacion;
         $carpeta->save();
+        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'carpeta', 'accion' => 'insert', 'descripcion' => 'Se ha registrado una nueva carpeta.', 'idFilaAccion' => $carpeta->id]);
         $idCarpeta = $carpeta->id;
         //dd($idCarpeta);
         DB::table('unidad')->where('id', Auth::user()->idUnidad)->update(['consecutivo' => $num]);
+        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'unidad', 'accion' => 'update', 'descripcion' => 'Se ha actualizado el campo consecutivo al haber registrado una nueva carpeta.', 'idFilaAccion' => Auth::user()->idUnidad]);
         /*
         Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
         //Para mostrar modal
@@ -83,6 +86,7 @@ class CarpetaController extends Controller
         if(count($carpetaNueva)>0){
             $denunciantes = CarpetaController::getDenunciantes($id);
             $denunciados = CarpetaController::getDenunciados($id);
+            $testigos = CarpetaController::getTestigos($id);
             $autoridades = CarpetaController::getAutoridades($id);
             $abogados = CarpetaController::getAbogados($id);
             $defensas = CarpetaController::getDefensas($id);
@@ -90,19 +94,19 @@ class CarpetaController extends Controller
             $delitos = CarpetaController::getDelitos($id);
             $acusaciones = CarpetaController::getAcusaciones($id);
             $vehiculos = CarpetaController::getVehiculos($id);
-            $delits = CarpetaController::hayDelitosVeh($id);
+            //$delits = CarpetaController::hayDelitosVeh($id);
             //dd($vehiculos);
             return view('carpeta')->with('carpetaNueva', $carpetaNueva)
                 ->with('denunciantes', $denunciantes)
                 ->with('denunciados', $denunciados)
+                ->with('testigos', $testigos)
                 ->with('autoridades', $autoridades)
                 ->with('abogados', $abogados)
                 ->with('defensas', $defensas)
                 ->with('familiares', $familiares)
                 ->with('delitos', $delitos)
                 ->with('acusaciones', $acusaciones)
-                ->with('vehiculos', $vehiculos)
-                ->with('delits', $delits);
+                ->with('vehiculos', $vehiculos);
         }else{
             return redirect()->route('home');
         }
@@ -113,6 +117,7 @@ class CarpetaController extends Controller
         if(count($carpetaNueva)>0){
             $denunciantes = CarpetaController::getDenunciantes($id);
             $denunciados = CarpetaController::getDenunciados($id);
+            $testigos = CarpetaController::getTestigos($id);
             $autoridades = CarpetaController::getAutoridades($id);
             $abogados = CarpetaController::getAbogados($id);
             $defensas = CarpetaController::getDefensas($id);
@@ -120,19 +125,19 @@ class CarpetaController extends Controller
             $delitos = CarpetaController::getDelitos($id);
             $acusaciones = CarpetaController::getAcusaciones($id);
             $vehiculos = CarpetaController::getVehiculos($id);
-            $delits = CarpetaController::hayDelitosVeh($id);
+            //$delits = CarpetaController::hayDelitosVeh($id);
             //dd($vehiculos);
             return view('detalle')->with('carpetaNueva', $carpetaNueva)
                 ->with('denunciantes', $denunciantes)
                 ->with('denunciados', $denunciados)
+                 ->with('testigos', $testigos)
                 ->with('autoridades', $autoridades)
                 ->with('abogados', $abogados)
                 ->with('defensas', $defensas)
                 ->with('familiares', $familiares)
                 ->with('delitos', $delitos)
                 ->with('acusaciones', $acusaciones)
-                ->with('vehiculos', $vehiculos)
-                ->with('delits', $delits);
+                ->with('vehiculos', $vehiculos);
         }else{
             return redirect()->route('home');
         }
@@ -146,6 +151,16 @@ class CarpetaController extends Controller
             ->where('variables_persona.idCarpeta', '=', $id)
             ->get();
         return $denunciantes;
+    }
+
+    public static function getTestigos($id){
+        $testigos = DB::table('extra_testigo')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_testigo.idVariablesPersona')
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+            ->select('extra_testigo.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.rfc', 'persona.esEmpresa', 'variables_persona.edad', 'persona.sexo', 'variables_persona.telefono')
+            ->where('variables_persona.idCarpeta', '=', $id)
+            ->get();
+        return $testigos;
     }
 
     public static function getDenunciados($id){

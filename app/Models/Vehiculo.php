@@ -9,7 +9,7 @@ class Vehiculo extends Model
     protected $table = 'vehiculo';
 
     protected $fillable = [
-        'id', 'idTipifDelito', 'status', 'placas', 'idEstado', 'idSubmarca', 'modelo', 'nrpv', 'idColor', 'permiso', 'numSerie', 'numMotor', 'idTipoVehiculo', 'idTipoUso', 'senasPartic', 'idProcedencia', 'idAseguradora',
+        'id', 'idTipifDelito', 'placas', 'idEstado', 'idSubmarca', 'modelo', 'nrpv', 'idColor', 'permiso', 'numSerie', 'numMotor', 'idTipoVehiculo', 'idTipoUso', 'senasPartic', 'idProcedencia', 'idAseguradora',
     ];
 
     public function tipifDelito()

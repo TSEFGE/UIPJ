@@ -65,7 +65,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'America/Mexico_City',
 
     /*
     |--------------------------------------------------------------------------
@@ -182,6 +182,8 @@ return [
         Laraveles\Spanish\SpanishServiceProvider::class,
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
+        Adldap\Laravel\AdldapServiceProvider::class,
+        MaddHatter\LaravelFullcalendar\ServiceProvider::class,
 
     ],
 
@@ -236,6 +238,8 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
+        'Adldap' => Adldap\Laravel\Facades\Adldap::class,
+        'Calendar' => MaddHatter\LaravelFullcalendar\Facades\Calendar::class,
 
     ],
 

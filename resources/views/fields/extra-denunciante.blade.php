@@ -1,5 +1,5 @@
-<div class="row">
-	<div class="col-6">
+<div id=""class="row">
+	<div class="col-6" id="datosExtra">
 		@if(!empty($idCarpeta))
 		{!! Form::hidden('idCarpeta', $idCarpeta) !!}
 		@endif
@@ -8,7 +8,7 @@
 			<div class="clearfix"></div>
 			<div class="form-check form-check-inline">
 				<label class="form-check-label col-form-label col-form-label-sm">
-					<input class="form-check-input" type="radio" id="conoceAlDenunciado1" name="conoceAlDenunciado" value="1" required> Sí
+					<input class="form-check-input" type="radio" id="conoceAlDenunciado1" name="conoceAlDenunciado" value="1"> Sí
 				</label>
 			</div>
 			<div class="form-check form-check-inline">
@@ -18,13 +18,5 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-12">
-		<div class="form-group">
-			{!! Form::label('narracion', 'Narración', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::textarea('narracion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la narración de los hechos', 'rows' => '5', 'required']) !!}
-			<div id="ValidarNarracion" class="invalid-feedback">
-				El campo debe contener entre 5 y 2000 caracteres.
-			</div>
-		</div>
-	</div>
+	
 </div>

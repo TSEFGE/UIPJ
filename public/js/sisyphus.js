@@ -362,13 +362,19 @@
 					} else if( field.is( ":checkbox" ) && resque === "false" && ( name === undefined || name.indexOf( "[" ) === -1 ) ) {
 						// If we aren't named by name (e.g. id) or we aren't in a multiple element field
 						field.prop( "checked", false );
-					/*} else if ( field.is( ":radio" ) ) {
+					/*}/* else if ( field.is( ":radio" ) ) {
 						if ( field.val() === resque ) {
 							field.prop( "checked", true );
 						}*/
 					} else if ( name === undefined || name.indexOf( "[" ) === -1 ) {
+						if (field.is ("select")){
+							field.val( resque ).trigger('change');
+						}
+						else{
+							field.val(resque);
+						}
 						// If we aren't named by name (e.g. id) or we aren't in a multiple element field
-						field.val( resque );
+						
 					} else {
 						resque = resque.split( "," );
 						field.val( resque );

@@ -50,6 +50,7 @@ use App\Models\Vehiculo;
 use App\Models\Acusacion;
 use App\Models\CatAgrupacion1;
 use App\Models\CatAgrupacion2;
+use App\Models\Contador;
 use DB;
 
 class RegistroController extends Controller
@@ -119,9 +120,7 @@ class RegistroController extends Controller
     }
 
  public function getAgrupaciones1(Request $request, $id){
-
         if($request->ajax()){
-
             $agrupaciones1 = CatAgrupacion1::agrupaciones1($id);
             return response()->json($agrupaciones1);
         }
@@ -169,7 +168,7 @@ class RegistroController extends Controller
                 $involucrados = DB::table('extra_denunciante')
                     ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
                     ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-                    ->select('variables_persona.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+                    ->select('variables_persona.id', DB::raw('CONCAT(persona.nombres, " ", ifnull(persona.primerAp,"")," ", ifnull(persona.segundoAp,"")) AS nombre'))
                     ->where('variables_persona.idCarpeta', '=', $idCarpeta)
                     ->whereNull('extra_denunciante.idAbogado')
                     ->orderBy('persona.nombres', 'ASC')
@@ -178,7 +177,7 @@ class RegistroController extends Controller
                 $involucrados = DB::table('extra_denunciado')
                     ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
                     ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-                    ->select('variables_persona.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+                    ->select('variables_persona.id',DB::raw('CONCAT(persona.nombres, " ", ifnull(persona.primerAp,"")," ", ifnull(persona.segundoAp,"")) AS nombre'))
                     ->where('variables_persona.idCarpeta', '=', $idCarpeta)
                     ->whereNull('extra_denunciado.idAbogado')
                     ->orderBy('persona.nombres', 'ASC')
@@ -1019,6 +1018,16 @@ class RegistroController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function buscarCURP(Request $request){
+      return Persona::buscarCURP($request->curp);
+    }
+
+    public function contador(){
+      $contador = Contador::whereRaw('id = (select max(`id`) from contador)')->get();
+      dd($contador);
+      return $contador;
     }
 
 }

@@ -11,7 +11,7 @@
 			{!! Form::select('idMunicipioC', $municipiosVer,null, ['placeholder' => 'Seleccione un municipio','class' => 'form-control form-control-sm', 'required']) !!}
 		</div>
 	</div>
-	<div class="col-4">
+	<div class="col-4"> 
 		<div class="form-group">
 			{!! Form::label('idLocalidadC', 'Localidad', ['class' => 'col-form-label-sm']) !!}
 			{!! Form::select('idLocalidadC', [ '' => 'Seleccione una localidad'], null, ['class' => 'form-control form-control-sm', 'required']) !!}
@@ -25,27 +25,27 @@
 	</div>
 	<div class="col-2">
 		<div class="form-group">
-			{!! Form::label('cpC', 'Código Postal', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::label('cpC', 'Código postal', ['class' => 'col-form-label-sm']) !!}
 			{!! Form::select('cpC', ['' => 'Seleccione un código postal'], null, ['class' => 'form-control form-control-sm']) !!}
 		</div>
 	</div>
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('calleC', 'Calle', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('calleC',"SIN INFORMACION", ['class' => 'form-control form-control-sm']) !!}
+			{!! Form::text('calleC',"SIN INFORMACION", ['class' => 'form-control form-control-sm','data-validation'=>'length', 'data-validation-length'=>'3-100','data-validation-error-msg'=>'Calle debe contener al menos tres caracteres']) !!}
 		</div>
 	</div>
 	<div class="col-2">
 		<div class="form-group">
 			{!! Form::label('numExternoC', 'Número exterior', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('numExternoC',"S/N", ['class' => 'form-control form-control-sm']) !!}
+			{!! Form::text('numExternoC',"S/N", ['class' => 'form-control form-control-sm','data-validation'=>'custom', 'data-validation-regexp'=>'^(([A-Z]|[-]|[\d])|(S/N)|(SIN NUMERO)){1,10}$','data-validation-error-msg'=>'En caso de no haber número debe ingresar S/N']) !!}
 		</div>
 		
 	</div>
 	<div class="col-2">
 		<div class="form-group">
 			{!! Form::label('numInternoC', 'Número interior', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('numInternoC', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número interior']) !!}
+			{!! Form::text('numInternoC', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número interior','data-validation'=>'custom', 'data-validation-regexp'=>'^(([A-Z]|[-]|[\d])|(S/N)|(SIN NUMERO)){1,10}$','data-validation-error-msg'=>'En caso de no haber número debe ingresar S/N']) !!}
 		</div>
 	</div>
 </div>
