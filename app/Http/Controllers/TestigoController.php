@@ -22,7 +22,7 @@ use App\Models\VariablesPersona;
 use App\Models\ExtraTestigo;
 use App\Models\Notificacion;
 use App\Models\Domicilio;
-use RFC\RfcBuilder;
+use uipj\rfc\src\RfcBuilder;
 use App\Models\Bitacora;
 use App\Models\Testigo;
 use App\Models\Narracion;
