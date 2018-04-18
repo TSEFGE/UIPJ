@@ -445,6 +445,7 @@ $('.bien').hide();
 
 
             //para generar notificaciones 
+       //para generar notificaciones 
             $("#nombres").removeClass("vacio");
             $("#primerAp").removeClass("vacio");
             $("#segundoAp").removeClass("vacio");
@@ -466,11 +467,11 @@ $('.bien').hide();
             $("#calle").removeClass("vacio");
             $("#numExterno2").removeClass("vacio");    
             $("#numInterno2").removeClass("vacio");
-           $("#correo").removeClass("vacio");
+            $("#correo").removeClass("vacio");
             $("#telefonoN").removeClass("vacio");     
-           $("#fax").removeClass("vacio");
+            $("#fax").removeClass("vacio");
             $("#narracionUno").removeClass("vacio");
-             $("#narracionUnoM").removeClass("vacio");
+            $("#narracionUnoM").removeClass("vacio");
 
              $("#nombres").removeClass("valid");
             $("#primerAp").removeClass("valid");
@@ -493,13 +494,13 @@ $('.bien').hide();
             $("#calle").removeClass("valid");
             $("#numExterno2").removeClass("valid");    
             $("#numInterno2").removeClass("valid");
-                $("#correo").removeClass("valid");
-                $("#telefonoN").removeClass("valid");     
-                $("#fax").removeClass("valid");
+            $("#correo").removeClass("valid");
+            $("#telefonoN").removeClass("valid");     
+            $("#fax").removeClass("valid");
               //  $("#narracionUno").removeClass("valid");
-                $("#narracionUnoM").removeClass("valid");
+            $("#narracionUnoM").removeClass("valid");
 
-  $("#nombres").removeClass("error");
+             $("#nombres").removeClass("error");
             $("#primerAp").removeClass("error");
             $("#segundoAp").removeClass("error");
             $("#fechaNacimiento").removeClass("error");
@@ -520,14 +521,11 @@ $('.bien').hide();
             $("#calle").removeClass("error");
             $("#numExterno2").removeClass("error");    
             $("#numInterno2").removeClass("error");
-                $("#correo").removeClass("error");
-                $("#telefonoN").removeClass("error");     
-                $("#fax").removeClass("error");
-              //  $("#narracionUno").removeClass("error");
-                $("#narracionUnoM").removeClass("error");
-
-
-            
+            $("#correo").removeClass("error");
+            $("#telefonoN").removeClass("error");     
+            $("#fax").removeClass("error");
+            //  $("#narracionUno").removeClass("error");
+            $("#narracionUnoM").removeClass("error");         
 
             $("#nombres2").addClass("vacio");
             $("#fechaAltaEmpresa").addClass("vacio");
@@ -543,7 +541,7 @@ $('.bien').hide();
                 $("#narracionUnoM").addClass("vacio");
                 $("#correo").addClass("vacio");
             $("#telefonoN").addClass("vacio");     
-           $("#fax").addClass("vacio");
+           $("#fax").addClass("vacio");             
                 
 
  //$("#narracionUno").addClass("vacio"); //para comprobar 

@@ -19,7 +19,8 @@ class FamiliarController extends Controller
     public function showForm($idCarpeta)
     {
         $carpetaNueva = Carpeta::where('id', $idCarpeta)->where('idFiscal', Auth::user()->id)->get();
-        if(count($carpetaNueva)>0){ 
+        if(count($carpetaNueva)>0){
+            $numCarpeta = $carpetaNueva[0]->numCarpeta;
             $familiares = CarpetaController::getFamiliares($idCarpeta);
             $ocupaciones = CatOcupacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $involucrados1 = DB::table('extra_denunciado')
@@ -39,8 +40,8 @@ class FamiliarController extends Controller
                 ->union($involucrados1)
                 ->get();
 
-
            return view('forms.familiar')->with('idCarpeta', $idCarpeta)
+                ->with('numCarpeta', $numCarpeta)
                 ->with('familiares', $familiares)
                 ->with('involucrados', $involucrados)
                 ->with('ocupaciones', $ocupaciones);

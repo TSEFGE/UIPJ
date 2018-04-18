@@ -50,13 +50,17 @@
 					</div><!-- /.col -->
 					<div class="col-sm-6">
 						<ol class="breadcrumb float-sm-right">
-							@isset($idCarpeta)
-								<li class="breadcrumb-item"><a href="#">{{ $idCarpeta }}</a></li>
+							@isset($numCarpeta)
+								<li class="breadcrumb-item"><a href="{{ route('home') }}">Inicio</a></li>
+								<li class="breadcrumb-item"><a href="{{ route('view.carpeta', $idCarpeta) }}">{{ $numCarpeta }}</a></li>
 							@else
-
-								<li class="breadcrumb-item"><a href="#">Home</a></li>
+								<li class="breadcrumb-item"><a href="{{ route('home') }}">Inicio</a></li>
 							@endif
-							<li class="breadcrumb-item active">@yield('title')</li>
+							@isset($carpetaNueva)
+								<li class="breadcrumb-item active">{{ $carpetaNueva[0]->numCarpeta }}</li>
+							@else
+								<li class="breadcrumb-item active">@yield('title')</li>
+							@endif
 						</ol>
 					</div><!-- /.col -->
 				</div><!-- /.row -->
