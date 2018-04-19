@@ -16,16 +16,17 @@ class Citatorio extends Model
     
     public $fillable = [
 
-		'id',
+        'id',
         'idCarpeta',
         'idCitado',
-		'tipo',
+        'tipo',
         'motivo',
         'fecha',
         'hora',
-		'status',
-		'intento',
-		'documento'
+        'status',
+        'intento',
+        'documento',
+        'fundamentoLegal',
 
    ];
 

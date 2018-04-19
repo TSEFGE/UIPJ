@@ -57,7 +57,14 @@
 					<div class="col-12">
 						<div class="form-group">
 							{!! Form::label('motivo', 'Motivo de la Cita', ['class' => 'col-form-label-sm']) !!}
-							{!! Form::textarea('motivo', $citatorio->motivo, ['readonly','class' => 'form-control form-control-sm','id' => 'motivoCita', 'required','data-validation'=>'length','data-validation-length'=>'5-500','data-validation-error-msg'=>'Motivo debe contener al menos cinco letras']) !!}
+							{!! Form::textarea('motivo', $citatorio->motivo, ['readonly','class' => 'form-control form-control-sm','id' => 'motivoCita','rows' => '2','required','data-validation'=>'length','data-validation-length'=>'5-500','data-validation-error-msg'=>'Motivo debe contener al menos cinco letras']) !!}
+						</div>
+					</div>
+
+					<div class="col-12">
+						<div class="form-group">
+							{!! Form::label('fundamentoLegal', 'Fundamento legal', ['class' => 'col-form-label-sm']) !!}
+							{!! Form::textarea('fundamentoLegal', null, ['class' => 'form-control form-control-sm','id' => 'fundamentoLegal', 'required' ,'rows' => '5','data-validation'=>'length','data-validation-length'=>'5-500','data-validation-error-msg'=>'Fundamento legal debe contener al menos cinco letras']) !!}
 						</div>
 					</div>
 				</div>
