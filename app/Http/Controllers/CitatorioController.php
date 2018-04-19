@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use DB;
 use App\Models\Persona;
+use App\Models\CatDelito;
+use App\Models\TipifDelito;
+use App\Models\CatAgrupacion2;
+use App\Models\CatAgrupacion1;
 use Alert;
 use Carbon\Carbon;
 use MaddHatter\LaravelFullcalendar\Facades\Calendar;
@@ -98,17 +102,32 @@ Citatorio     * @return \Illuminate\Http\Response
 
         }elseif($tipoInvolucrado==2){
 
-          /*  $delito = DB::table('acusacion')
+            $delito = DB::table('acusacion')
            ->join('tipif_delito', 'tipif_delito.id', '=', 'acusacion.idTipifDelito')
            ->select('tipif_delito.idDelito')
            ->where('tipif_delito.idCarpeta', '=', $idCarpeta)->where('acusacion.idDenunciante', '=', $idCitado)
            ->get()->first();
-
+        
            $idDelito=$delito->idDelito;
-           $persona= Persona::Where('id',$idPersona)->get()->first();
-           $motivoCitaTestigo='RELATIVO DE LA DENUNCIA PRESENTADA POR USTED REFERENTE A ';
-           $motivoCita=$motivoCitaTestigo;*/
-        }
+
+           $tipifDelito=  TipifDelito::Where('idDelito',$idDelito)->get()->first();
+
+           $delitoPrincipal= CatDelito::Where('id',$idDelito)->get()->first();
+           $agrupacion1= CatAgrupacion1::Where('id',$tipifDelito->idAgrupacion1)->get()->first();
+           $agrupacion2= CatAgrupacion2::Where('id',$tipifDelito->idAgrupacion2)->get()->first();
+
+           if($agrupacion1->nombre=='SIN AGRUPACION'){
+              $motivoCitaTestigo='RELATIVO DE LA DENUNCIA PRESENTADA POR USTED REFERENTE A '.$delitoPrincipal->nombre.'.';
+            
+              }elseif ($agrupacion2->nombre=='SIN AGRUPACION') {
+                  $motivoCitaTestigo='RELATIVO DE LA DENUNCIA PRESENTADA POR USTED REFERENTE A '.$delitoPrincipal->nombre.' '.$agrupacion1->nombre.'.';
+
+              }else {
+                  $motivoCitaTestigo='RELATIVO DE LA DENUNCIA PRESENTADA POR USTED REFERENTE A '.$delitoPrincipal->nombre.' '.$agrupacion1->nombre.' '.$agrupacion2->nombre.'.';
+              }
+                     
+               $motivoCita=$motivoCitaTestigo;
+           }
 
         $fundamentoLegalTestigo = 'CON FUNDAMENTOS EN LO DISPUESTO POR LOS ARTÍCULOS 21 DE LA CONSTITUCIÓN POLÍTICA DE LOS ESTADOS UNIDOS MEXICANOS; 1,2,90,91,129,131, Y ADEMÁS RELATIVOS Y APLICABLES DEL CÓDIGO NACIONAL DE PROCEDIMIENTOS PENALES VIGENTE EN EL DISTRITO JUDICIAL AL MOMENTO DE SUCEDIDOS LOS HECHOS; 1,2,5,6,7 Y DEMÁS RELATIVOS Y APLICABLES DE LA LEY ORGÁNICA DE LA FISCALÍA GENERAL DEL ESTADO 29 Y 37 DE SU REGLAMENTO. HACIÉNDOLE DE SU CONOCIMIENTO QUE DE HACER CASO OMISO AL PRESENTE CITATORIO, SE HARÁ USO DE LOS MEDIOS DE APREMIO QUE ESTIPULA EL ARTICULO 104 DEL CÓDIGO NACIONAL DE PROCEDIMIENTOS PENALES VIGENTE EN ESTE DISTRITO JUDICIAL'; 
 
