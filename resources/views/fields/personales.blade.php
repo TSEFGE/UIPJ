@@ -128,7 +128,6 @@
 					{!! Form::text('telefono', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono', 'data-validation'=>'custom', 'data-validation-regexp'=>'^([0-9]{10,15}|(SIN NUMERO)|(SN))$','data-validation-error-msg'=>'Teléfono debe contener de diez a quince números']) !!}
 				</div>
 			</div>
-
 			
 			<div class="col-3">
 				<div class="form-group">
@@ -190,7 +189,7 @@
 			<div class="col-6">
 				<div class="form-group">
 					{!! Form::label('nombres2', 'Nombre', ['class' => 'col-form-label-sm']) !!}
-	{!! Form::text('nombres2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre', 'required','data-validation'=>'custom' ,'data-validation-regexp'=>'^(([A-ZÁÉÑÍÓÚ]|[0-9])(-|,|.|\s)*){1,100}$', 'data-validation-error-msg'=>'Nombre debe contener al menos una letra']) !!}
+					{!! Form::text('nombres2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre', 'required','data-validation'=>'custom' ,'data-validation-regexp'=>'^(([A-ZÁÉÑÍÓÚ]|[0-9])(-|,|.|\s)*){1,100}$', 'data-validation-error-msg'=>'Nombre debe contener al menos una letra']) !!}
 				</div>
 			</div>
 			<div class="col-6">

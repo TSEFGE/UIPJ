@@ -1,8 +1,13 @@
 @extends('template.form')
 
 @section('title', 'Agregar abogado')
-@section('contenido')	
 
+@push('css')
+	<link rel="stylesheet" href="{{ asset('plugins/toastr/css/toastr.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('plugins/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}">
+@endpush
+
+@section('contenido')
 {!! Form::open(['route' => 'store.abogado', 'method' => 'POST'])  !!}
 {{ csrf_field() }}
 <div class="card-header">
@@ -10,8 +15,8 @@
 		<div class="col">
 			<div class="text-left">
 				{{--Aqui van radios, etc --}}
-				</div>
 			</div>
+		</div>
 		<div class="col">	
 			<div class="text-right">
 			@include('forms.buttons')
@@ -71,39 +76,43 @@
 	</div>
 </div>	
 {!! Form::close() !!}
-
-
 @endsection
+
 @section('tabla')
 	<div class="boxtwo">
 		@section('titulo-tabla', 'Abogados Registrados')
 		@include('tables.abogados')
 	</div>
-
 @endsection
-@push('PilaScripts')
-<script type="text/javascript">
-$(document).ready(function() {
-					
-$("#nombres").addClass("vacio");
-$("#primerAp").addClass("vacio");
-$("#segundoAp").addClass("vacio");
-$("#rfc").addClass("vacio");
-$("#homo").addClass("vacio");
-$("#curp").addClass("vacio");
-$("#telefono").addClass("vacio");
 
-$("#lugarTrabajo").addClass("vacio");
-$("#telefonoTrabajo").addClass("vacio"); 
+@push('scripts')
+	<script src="{{ asset('plugins/toastr/js/toastr.min.js')}}" ></script>
+	<script src="{{ asset('plugins/moment/js/moment.min.js') }}"></script>
+    <script src="{{ asset('plugins/moment/locales/es.js') }}"></script>
+    <script src="{{ asset('plugins/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+	@include('fields.ajaxCurp')
+ 	@include('fields.rfcMoral')
+    @include('fields.rfcFisico')
+    <script src="{{ asset('js/curp.js') }}"></script>
+@endpush
 
-$("#calle2").addClass("vacio");
-$("#numExterno2").addClass("vacio");
-$("#numInterno2").addClass("vacio");  	
-$("#numInterno3").addClass("vacio");
+@push('docready-js')
+	$("#nombres").addClass("vacio");
+	$("#primerAp").addClass("vacio");
+	$("#segundoAp").addClass("vacio");
+	$("#rfc").addClass("vacio");
+	$("#homo").addClass("vacio");
+	$("#curp").addClass("vacio");
+	$("#telefono").addClass("vacio");
 
-$("#cedulaProf").addClass("vacio");
-$("#correo").addClass("vacio");
+	$("#lugarTrabajo").addClass("vacio");
+	$("#telefonoTrabajo").addClass("vacio"); 
 
-	});
-</script>
+	$("#calle2").addClass("vacio");
+	$("#numExterno2").addClass("vacio");
+	$("#numInterno2").addClass("vacio");  	
+	$("#numInterno3").addClass("vacio");
+
+	$("#cedulaProf").addClass("vacio");
+	$("#correo").addClass("vacio");
 @endpush
