@@ -2,7 +2,7 @@
 <script type="text/javascript">
 	$("#curp").on("change focusout", function() {
 		var curp=$(this).val();
-		$.get("/persona/curp/"+curp, function(response, estado){
+		$.get("../../persona/curp/"+curp, function(response, estado){
 			if(response.res==true){
 				console.log('true')
 				swal({
