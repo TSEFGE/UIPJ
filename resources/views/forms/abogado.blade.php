@@ -90,10 +90,10 @@
 	<script src="{{ asset('plugins/moment/js/moment.min.js') }}"></script>
     <script src="{{ asset('plugins/moment/locales/es.js') }}"></script>
     <script src="{{ asset('plugins/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+    <script src="{{ asset('js/curp.js') }}"></script>
 	@include('fields.ajaxCurp')
  	@include('fields.rfcMoral')
     @include('fields.rfcFisico')
-    <script src="{{ asset('js/curp.js') }}"></script>
 @endpush
 
 @push('docready-js')
