@@ -2,7 +2,6 @@
 
 @section('title', 'Iniciar nueva carpeta de investigación')
 
-
 @section('contenido')
 	{!! Form::open(['route' => 'store.carpeta', 'method' => 'POST'])  !!}
 	{{ csrf_field() }}

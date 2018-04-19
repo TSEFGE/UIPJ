@@ -1,6 +1,11 @@
 @extends('template.form')
 
 @section('title', 'Generar citatorio')
+
+@push('css')
+	<link rel="stylesheet" href="{{ asset('plugins/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}">
+@endpush
+
 @section('contenido')
 {!! Form::open(['route' => ['update.citatorio',$citatorio->id], 'method' => 'PUT'])  !!}
 
@@ -71,22 +76,20 @@
 			</div>
 		</div>
 	</div>
+{!! Form::close() !!}
+@endsection
 
-	{!! Form::close() !!}
-	@endsection
-	@push('PilaScripts')
-<script type="text/javascript">
-	$(document).ready(function(){
-		console.log('hola');
-		localStorage.removeItem("[id=undefined][name=undefined][id=status][name=status]");
-		localStorage.removeItem("[id=undefined][name=undefined][id=fecha][name=fecha]");
-		localStorage.removeItem("[id=undefined][name=undefined][id=motivo][name=motivo]");
-		localStorage.removeItem("[id=undefined][name=undefined][id=hora][name=hora]");
-		$('#hora').val('{{$citatorio->hora}}');
+@push('scripts')
+	<script src="{{ asset('plugins/moment/js/moment.min.js') }}"></script>
+    <script src="{{ asset('plugins/moment/locales/es.js') }}"></script>
+    <script src="{{ asset('plugins/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+@endpush
 
-	});
-
-
-
-</script>
-	@endpush
+@push('docready-js')
+	console.log('hola');
+	localStorage.removeItem("[id=undefined][name=undefined][id=status][name=status]");
+	localStorage.removeItem("[id=undefined][name=undefined][id=fecha][name=fecha]");
+	localStorage.removeItem("[id=undefined][name=undefined][id=motivo][name=motivo]");
+	localStorage.removeItem("[id=undefined][name=undefined][id=hora][name=hora]");
+	$('#hora').val('{{$citatorio->hora}}');
+@endpush

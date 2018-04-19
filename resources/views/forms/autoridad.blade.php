@@ -1,12 +1,17 @@
 @extends('template.form')
 
-@section('title', 'Agregar autoridad') 
-@section('contenido')
- {!! Form::open(['route' => 'store.autoridad', 'method' => 'POST'])  !!}
- {{ csrf_field() }}
+@section('title', 'Agregar autoridad')
 
+@push('css')
+	<link rel="stylesheet" href="{{ asset('plugins/toastr/css/toastr.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('plugins/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}">
+@endpush
+
+@section('contenido')
+{!! Form::open(['route' => 'store.autoridad', 'method' => 'POST'])  !!}
+{{ csrf_field() }}
 <div class="card-header">
-<div class="row">
+	<div class="row">
 		<div class="col">
 			<div class="text-left">
 				{{--Aqui van radios, etc --}}
@@ -20,19 +25,15 @@
 	</div>
 </div>
 
-
 @include('forms.errores')
-
 <div class=" card-body boxone">
 	<div class="row no-gutters">
 		<div class="col-12">
-			
-		
-				<div class="row">
-					@if(!empty($idCarpeta))
-						{!! Form::hidden('idCarpeta', $idCarpeta) !!}
-					@endif	
-				</div>
+			<div class="row">
+				@if(!empty($idCarpeta))
+					{!! Form::hidden('idCarpeta', $idCarpeta) !!}
+				@endif	
+			</div>
 <!-- Pestañas -->
 		<div id="tautoridad">
 				<ul id="tabsautoridad" class="nav nav-tabs">
@@ -97,38 +98,41 @@
 	</div>
 @endsection
 
-@push('PilaScripts')
-<script type="text/javascript">
-	
-$(document).ready(function() {
+@push('scripts')
+	<script src="{{ asset('plugins/toastr/js/toastr.min.js')}}" ></script>
+	<script src="{{ asset('plugins/moment/js/moment.min.js') }}"></script>
+    <script src="{{ asset('plugins/moment/locales/es.js') }}"></script>
+    <script src="{{ asset('plugins/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+	<script src="{{ asset('js/curp.js') }}"></script>
+	@include('fields.rfcMoral');
+    @include('fields.rfcFisico')
+	@include('fields.ajaxCurp')
+@endpush
 
-$("#nombres").addClass("vacio");
-$("#primerAp").addClass("vacio");
-$("#segundoAp").addClass("vacio");
-$("#fechaNacimiento").addClass("vacio");
-$("#edad").addClass("vacio");
-$("#rfc").addClass("vacio");
-$("#homo").addClass("vacio");
-$("#curp").addClass("vacio");
-$("#telefono").addClass("vacio");
-$("#motivoEstancia").addClass("vacio");
-$("#docIdentificacion").addClass("vacio");  	
-$("#numDocIdentificacion").addClass("vacio");
-$("#narracionUno").addClass("vacio");
-$("#calle").addClass("vacio");
-$("#numExterno").addClass("vacio");  	
-$("#numInterno").addClass("vacio");
-$("#numExterno2").addClass("vacio");  	
-$("#numInterno2").addClass("vacio");
-$("#lugarTrabajo").addClass("vacio");
-$("#telefonoTrabajo").addClass("vacio");  	
-$("#calle2").addClass("vacio");
-$("#antiguedad").addClass("vacio");
-$("#horarioLaboral").addClass("vacio");
-
-});
-
-</script>
+@push('docready-js')
+	$("#nombres").addClass("vacio");
+	$("#primerAp").addClass("vacio");
+	$("#segundoAp").addClass("vacio");
+	$("#fechaNacimiento").addClass("vacio");
+	$("#edad").addClass("vacio");
+	$("#rfc").addClass("vacio");
+	$("#homo").addClass("vacio");
+	$("#curp").addClass("vacio");
+	$("#telefono").addClass("vacio");
+	$("#motivoEstancia").addClass("vacio");
+	$("#docIdentificacion").addClass("vacio");  	
+	$("#numDocIdentificacion").addClass("vacio");
+	$("#narracionUno").addClass("vacio");
+	$("#calle").addClass("vacio");
+	$("#numExterno").addClass("vacio");  	
+	$("#numInterno").addClass("vacio");
+	$("#numExterno2").addClass("vacio");  	
+	$("#numInterno2").addClass("vacio");
+	$("#lugarTrabajo").addClass("vacio");
+	$("#telefonoTrabajo").addClass("vacio");  	
+	$("#calle2").addClass("vacio");
+	$("#antiguedad").addClass("vacio");
+	$("#horarioLaboral").addClass("vacio");
 @endpush
 
 

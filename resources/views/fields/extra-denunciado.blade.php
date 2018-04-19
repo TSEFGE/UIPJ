@@ -72,5 +72,4 @@
 			{!! Form::textarea('senasPartic', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese las señas particulares','rows' => '3','data-validation'=>'length', 'data-validation-length'=>'5-500','data-validation-error-msg'=>'Este campo no debe estar vacio, ingrese al menos cinco letras']) !!}
 		</div>
 	</div>
-		
 </div>

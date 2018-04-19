@@ -375,8 +375,8 @@ $("#idDelito").change(function(event){
 			for(i=0; i<response.length; i++){
 				$("#idAgrupacion1").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
 			}
-	});
-}
+		});
+	}
 });
 
 $("#idAgrupacion1").change(function(event){
@@ -388,11 +388,11 @@ $("#idAgrupacion1").change(function(event){
 			for(i=0; i<response.length; i++){
 				$("#idAgrupacion2").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
 			}
-	});
-}
+		});
+	}
 });
 
 //-----------------------
 $('form').sisyphus({
-		excludeFields: $( 'input[name=_token]','input[type:radio]' )
+	excludeFields: $( 'input[name=_token]','input[type=radio]')
 });

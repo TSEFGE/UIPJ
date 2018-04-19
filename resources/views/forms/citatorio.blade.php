@@ -1,6 +1,11 @@
 @extends('template.form')
 
 @section('title', 'Generar citatorio')
+
+@push('css')
+	<link rel="stylesheet" href="{{ asset('plugins/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}">
+@endpush
+
 @section('contenido')
 {!! Form::open(['route' => 'store.citatorio', 'method' => 'POST'])  !!}
 <div class="card-header">
@@ -71,7 +76,6 @@
 						</div>
 					</div>
 					
-
 					<div class="col-12">
 						<div class="form-group">
 							{!! Form::label('fundamentoLegal', 'Fundamento legal', ['class' => 'col-form-label-sm']) !!}
@@ -82,11 +86,18 @@
 			</div>   
 		</div>   
 	</div>
+{!! Form::close() !!}
+@endsection
 
-	{!! Form::close() !!}
-	@endsection 
-	@section('tabla')
+@section('tabla')
 	<div class="boxtwo">
-		@section('titulo-tabla', 'Citatorios registrados') @include('tables.citatorios')
+		@section('titulo-tabla', 'Citatorios registrados')
+		@include('tables.citatorios')
 	</div>
-	@endsection
+@endsection
+
+@push('scripts')
+	<script src="{{ asset('plugins/moment/js/moment.min.js') }}"></script>
+    <script src="{{ asset('plugins/moment/locales/es.js') }}"></script>
+    <script src="{{ asset('plugins/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+@endpush

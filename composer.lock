@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "adldap2/adldap2",
-            "version": "v8.1.4",
+            "version": "v8.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Adldap2/Adldap2.git",
-                "reference": "2abf3c6cd68ba4d3239fbc761dee4484dfd170d0"
+                "reference": "54722408c68f12942fcbf4a1b666d90a178ddc5c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Adldap2/Adldap2/zipball/2abf3c6cd68ba4d3239fbc761dee4484dfd170d0",
-                "reference": "2abf3c6cd68ba4d3239fbc761dee4484dfd170d0",
+                "url": "https://api.github.com/repos/Adldap2/Adldap2/zipball/54722408c68f12942fcbf4a1b666d90a178ddc5c",
+                "reference": "54722408c68f12942fcbf4a1b666d90a178ddc5c",
                 "shasum": ""
             },
             "require": {
@@ -56,7 +56,7 @@
                 "ldap",
                 "windows"
             ],
-            "time": "2018-03-29T15:42:37+00:00"
+            "time": "2018-04-19T15:06:54+00:00"
         },
         {
             "name": "adldap2/adldap2-laravel",
@@ -2656,15 +2656,12 @@
             "dist": {
                 "type": "path",
                 "url": "paquetes/uipj/rfc",
-                "reference": "97957c6c3cbbee716cada760ba2e8b09a331bc76",
+                "reference": "4bf0d8e6cc9f576f81d9ee3e0048fc54ce70fda8",
                 "shasum": null
             },
             "require": {
                 "php": ">=7.0.0",
                 "uipj/rfc": "@dev"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~5.0"
             },
             "type": "library",
             "autoload": {
@@ -3339,7 +3336,7 @@
             ],
             "authors": [
                 {
-                    "name": "Pádraic Brady",
+                    "name": "Padraic Brady",
                     "email": "padraic.brady@gmail.com",
                     "homepage": "http://blog.astrumfutura.com"
                 },

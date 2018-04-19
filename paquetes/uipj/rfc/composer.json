@@ -8,12 +8,13 @@
             "email": "wolverinenain@gmail.com"
         }
     ],
+    "minimum-stability": "dev",
     "require": {
         "php" : ">=7.0.0",
         "uipj/rfc": "@dev"
     },
     "require-dev": {
-        "phpunit/phpunit" : "~5.0"
+        
     },
     "autoload": {
         "psr-4": {
