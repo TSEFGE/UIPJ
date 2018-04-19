@@ -29,18 +29,12 @@
 	<div class="col-12">
 		<div class="boxtwo">
 			<h6>Servicios:</h6>
-			<div class="row">
+			
 				<div class="boxtwo">
 					<div class="form-group">
-						@foreach($servicios as $servicio)
-						<div class="form-check">
-							<label class="form-check-label col-form-label col-form-label-sm">
-								<input class="form-check-input" type="checkbox" name="servicios[]" value="{{ $servicio->id }}" id="servicio{{ $servicio->id }}"  style="width:15px;height:15px"> {{ $servicio->nombre }}
-							</label>
-						</div>
-						@endforeach
+							{!! Form::select('servicios', $servicios->pluck('nombre','id')->all(), null, ['name'=>'servicios[]','class' => 'form-control', 'multiple']) !!}
 					</div>
-				</div>
+				
 			</div>
 		</div>
 		@include('forms.idcarpeta')
