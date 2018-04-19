@@ -30,7 +30,8 @@ class AutoridadController extends Controller
     public function showForm($idCarpeta)
     {
         $carpetaNueva = Carpeta::where('id', $idCarpeta)->where('idFiscal', Auth::user()->id)->get();
-        if(count($carpetaNueva)>0){ 
+        if(count($carpetaNueva)>0){
+            $numCarpeta = $carpetaNueva[0]->numCarpeta;
             $autoridades = CarpetaController::getAutoridades($idCarpeta);
             $escolaridades = CatEscolaridad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $estados = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
@@ -43,6 +44,7 @@ class AutoridadController extends Controller
             $religiones = CatReligion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             //dd($ocupaciones);
             return view('forms.autoridad')->with('idCarpeta', $idCarpeta)
+                ->with('numCarpeta', $numCarpeta)
                 ->with('autoridades', $autoridades)
                 ->with('escolaridades', $escolaridades)
                 ->with('estados', $estados)

@@ -25,6 +25,7 @@ class CreateCitatorioTable extends Migration
             $table->integer('status');//1=pendiente
             $table->integer('intento');//1=primera
             $table->string('documento');
+              $table->string('fundamentoLegal',3000);
 
             $table->timestamps();
 

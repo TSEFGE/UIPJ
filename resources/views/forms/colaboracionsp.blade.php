@@ -47,16 +47,13 @@
 					{!! Form::select('termino', ['8' => '8 horas', '12' => '12 horas', '24' => '24 horas'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el termino', 'required']) !!}
 				</div>
 			</div>
-			<div class="boxtwo barras">
+			<div class="boxtwo ">
 				<div class="form-group">
-					@foreach($servicios as $servicio)
-						<div class="form-check">
-							<label class="form-check-label col-form-label col-form-label-sm">
-								<input class="form-check-input" type="checkbox" name="servicios[]" value="{{ $servicio->id }}" id="servicio{{ $servicio->id }}" style="width:15px;height:15px"> {{ $servicio->nombre }}
-							</label>
-						</div>
-					@endforeach
+						{!! Form::select('servicios', $servicios->pluck('nombre','id')->all(), null, ['name'=>'servicios[]','class' => 'form-control', 'multiple']) !!}
+												
 				</div>
+				
+				
 			</div>
 			@include('forms.idcarpeta')
 		</div>

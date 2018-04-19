@@ -25,7 +25,8 @@ class VehiculoController extends Controller
     public function showForm($idCarpeta)
     {
         $carpetaNueva = Carpeta::where('id', $idCarpeta)->where('idFiscal', Auth::user()->id)->get();
-        if(count($carpetaNueva)>0){ 
+        if(count($carpetaNueva)>0){
+            $numCarpeta = $carpetaNueva[0]->numCarpeta;
             $vehiculos = CarpetaController::getVehiculos($idCarpeta);
             $tipifdelitos = DB::table('tipif_delito')
                 ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
@@ -41,6 +42,7 @@ class VehiculoController extends Controller
             $procedencias = CatProcedencia::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $tiposuso = CatTipoUso::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             return view('forms.vehiculo')->with('idCarpeta', $idCarpeta)
+                ->with('numCarpeta', $numCarpeta)
                 ->with('vehiculos', $vehiculos)
                 ->with('tipifdelitos', $tipifdelitos)
                 ->with('aseguradoras', $aseguradoras)

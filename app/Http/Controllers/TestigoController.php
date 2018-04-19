@@ -33,6 +33,7 @@ class TestigoController extends Controller
 	{
 		$carpetaNueva = Carpeta::where('id', $idCarpeta)->where('idFiscal', Auth::user()->id)->get();
 		if (count($carpetaNueva)>0) {
+			$numCarpeta = $carpetaNueva[0]->numCarpeta;
 			$testigos = CarpetaController::getTestigos($idCarpeta);
 			$escolaridades = CatEscolaridad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
 			$estados = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
@@ -44,16 +45,17 @@ class TestigoController extends Controller
 			$ocupaciones = CatOcupacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
 			$religiones = CatReligion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
 			return view('forms.testigo')->with('idCarpeta', $idCarpeta)
-			->with('testigos', $testigos)
-			->with('escolaridades', $escolaridades)
-			->with('estados', $estados)
-			->with('municipiosVer', $municipiosVer)
-			->with('estadoscivil', $estadoscivil)
-			->with('etnias', $etnias)
-			->with('lenguas', $lenguas)
-			->with('nacionalidades', $nacionalidades)
-			->with('ocupaciones', $ocupaciones)
-			->with('religiones', $religiones);
+                ->with('numCarpeta', $numCarpeta)
+				->with('testigos', $testigos)
+				->with('escolaridades', $escolaridades)
+				->with('estados', $estados)
+				->with('municipiosVer', $municipiosVer)
+				->with('estadoscivil', $estadoscivil)
+				->with('etnias', $etnias)
+				->with('lenguas', $lenguas)
+				->with('nacionalidades', $nacionalidades)
+				->with('ocupaciones', $ocupaciones)
+				->with('religiones', $religiones);
 		} else {
 			return redirect()->route('home');
 		}
