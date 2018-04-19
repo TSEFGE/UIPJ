@@ -2,11 +2,12 @@
 
 @section('title', 'Bitácora de actividades')
 
+@push('css')
+	<link rel="stylesheet" href="{{ asset('plugins/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/datatables/css/datatables.min.css') }}">
+@endpush
+
 @section('content')
-
-<link rel="stylesheet" type="text/css" href="{{ asset('css/datatables.min.css') }}">
-<link rel="stylesheet" href="{{ asset('css/tempusdominus-bootstrap-4.min.css') }}">
-
 <div class="card-header">
 	<div class="row">
 		<div class="col">
@@ -21,7 +22,6 @@
 		</div>
 	</div>
 </div>  
-
 
 @include('forms.errores')
 <div class=" card-body boxone">
@@ -52,53 +52,54 @@
 		</div>
 	</div>
 </div>
-
 @endsection
 
-@section('scripts')
-<script src="{{ asset('js/datatables.min.js')}}" ></script>
-<script type="text/javascript">
-	var table = $('#bitacoraTable').DataTable({
-		language: {
-			"url": "{{ asset('json/Spanish.json') }}"
-		},
-		ajax: "{{ route('api.bitacora') }}",
-		columns: [
-		{data: 'id', name: 'id'},
-		{data: 'usuario', name: 'usuario'},
-		{data: 'tabla', name: 'tabla'},
-		{data: 'accion', name: 'accion'},
-		{data: 'descripcion', name: 'descripcion'},
-		{data: 'idFilaAccion', name: 'idFilaAccion'},
-		{data: 'created_at', name: 'created_at'},
-		],
-		dom: 'Bfrtip',
-		buttons: [
-		'csv', 'excel',
-		{
-			extend: 'pdfHtml5',
-			orientation: 'landscape',
-			tittle:'Carpetas generadas',
-			pageSize: 'letter',
-			/*customize: function ( doc ) {
-				doc.content.splice( 0, 0, {
-				  alignment: 'left',
-					margin: [ 0, 0, 0, 0 ],
-					image: imagen,
-					width: 750
-					} );
-				}*/ 
+@push('scripts')
+	<script src="{{ asset('plugins/moment/js/moment.min.js') }}"></script>
+    <script src="{{ asset('plugins/moment/locales/es.js') }}"></script>
+    <script src="{{ asset('plugins/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+	<script src="{{ asset('plugins/datatables/js/datatables.min.js')}}" ></script>
+	<script type="text/javascript">
+		var table = $('#bitacoraTable').DataTable({
+			language: {
+				"url": "{{ asset('plugins/datatables/json/Spanish.json') }}"
 			},
+			ajax: "{{ route('api.bitacora') }}",
+			columns: [
+			{data: 'id', name: 'id'},
+			{data: 'usuario', name: 'usuario'},
+			{data: 'tabla', name: 'tabla'},
+			{data: 'accion', name: 'accion'},
+			{data: 'descripcion', name: 'descripcion'},
+			{data: 'idFilaAccion', name: 'idFilaAccion'},
+			{data: 'created_at', name: 'created_at'},
+			],
+			dom: 'Bfrtip',
+			buttons: [
+			'csv', 'excel',
 			{
-				extend: 'pageLength',
-				text: 'Cantidad de registros'
-			}           
-			]
-		});
+				extend: 'pdfHtml5',
+				orientation: 'landscape',
+				tittle:'Carpetas generadas',
+				pageSize: 'letter',
+				/*customize: function ( doc ) {
+					doc.content.splice( 0, 0, {
+					  alignment: 'left',
+						margin: [ 0, 0, 0, 0 ],
+						image: imagen,
+						width: 750
+						} );
+					}*/ 
+				},
+				{
+					extend: 'pageLength',
+					text: 'Cantidad de registros'
+				}           
+				]
+			});
 
-	setInterval( function () {
-		table.ajax.reload( null, false );
-	}, 20000 );
-</script>
-
-@endsection
+		setInterval( function () {
+			table.ajax.reload( null, false );
+		}, 20000 );
+	</script>
+@endpush

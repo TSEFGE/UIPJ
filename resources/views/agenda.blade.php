@@ -2,9 +2,9 @@
 
 @section('title', 'Agenda')
 
-@section('css')
+@push('css')
     <link rel="stylesheet" href="{{ asset('plugins/fullcalendar/css/fullcalendar.min.css') }}">
-@endsection
+@endpush
 
 @section('content')
     <div class="card">
@@ -23,12 +23,12 @@
     </div>
 @endsection
 
-@section('scripts')
+@push('scripts')
     <script src="{{ asset('plugins/fullcalendar/js/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('plugins/fullcalendar/js/moment.min.js') }}"></script>
     <script src="{{ asset('plugins/fullcalendar/js/es.js') }}"></script>
     <script src="{{ asset('plugins/fullcalendar/js/fullcalendar.min.js') }}"></script>
     <script src="{{ asset('plugins/fullcalendar/js/fullcalendar-es.js') }}"></script>
-    {!! $calendar->script() !!}
     <script>setTimeout('document.location.reload()',60000); </script>
-@endsection
+    {!! $calendar->script() !!}
+@endpush

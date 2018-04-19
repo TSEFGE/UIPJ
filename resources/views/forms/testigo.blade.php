@@ -2,6 +2,11 @@
 
 @section('title', 'Agregar testigo')
 
+@push('css')
+	<link rel="stylesheet" href="{{ asset('plugins/toastr/css/toastr.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('plugins/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}">
+@endpush
+
 @section('contenido')
 {!! Form::open(['route' => 'store.testigo', 'method' => 'POST']) !!}
 {{ csrf_field() }}
@@ -81,25 +86,35 @@
 		</div>
 	</div>
 </div>
-
-{!! Form::close() !!} @endsection @section('tabla')
-<div class="boxtwo">
-	@section('titulo-tabla', 'Testigos registrados') @include('tables.testigos')
-</div>
+{!! Form::close() !!}
 @endsection
-@push('PilaScripts')
-<script>
-	$(document).ready(function(){
-		$('#esEmpresa2').trigger('click');
-		$('#datosPer').show();
-        $('#personaFisica').show();
-        $('#personaMoral').hide();
-        $('#datosDir').show();
-        $('#datosTrab').show();
-        $('#datosNotif').show();
-        $('#datosExtra').show();
-        $('#extra-fis').show();
-        $('#Victima').show();
-    });
-</script>
+
+@section('tabla')
+	<div class="boxtwo">
+		@section('titulo-tabla', 'Testigos registrados') @include('tables.testigos')
+	</div>
+@endsection
+
+@push('scripts')
+	<script src="{{ asset('plugins/toastr/js/toastr.min.js')}}" ></script>
+	<script src="{{ asset('plugins/moment/js/moment.min.js') }}"></script>
+    <script src="{{ asset('plugins/moment/locales/es.js') }}"></script>
+    <script src="{{ asset('plugins/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+	<script src="{{ asset('js/curp.js') }}"></script>
+	@include('fields.rfcMoral');
+    @include('fields.rfcFisico')
+	@include('fields.ajaxCurp')
+@endpush
+
+@push('docready-js')
+	$('#esEmpresa2').trigger('click');
+	$('#datosPer').show();
+    $('#personaFisica').show();
+    $('#personaMoral').hide();
+    $('#datosDir').show();
+    $('#datosTrab').show();
+    $('#datosNotif').show();
+    $('#datosExtra').show();
+    $('#extra-fis').show();
+    $('#Victima').show();
 @endpush

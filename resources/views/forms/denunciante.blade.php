@@ -2,6 +2,11 @@
 
 @section('title', 'Agregar víctima, ofendido u apoderado legal')
 
+@push('css')
+	<link rel="stylesheet" href="{{ asset('plugins/toastr/css/toastr.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('plugins/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}">
+@endpush
+
 @section('contenido')
 {!! Form::open(['route' => 'store.denunciante', 'method' => 'POST']) !!}
 {{ csrf_field() }}
@@ -40,7 +45,6 @@
 		</div>
 	</div>
 </div>
-
 
 @include('forms.errores')
 <div class=" card-body boxone">
@@ -104,42 +108,40 @@
 						</div>
 					</div>
 				</div>
-					<!-- Fin pestañas -->
-
-
+				<!-- Fin pestañas -->
 		</div>
 	</div>
 </div>
+{!! Form::close() !!}
+@endsection
 
+@section('tabla')
+	<div class="boxtwo">
+		@section('titulo-tabla', 'Denunciantes registrados')
+		@include('tables.denunciantes')
+	</div>
+@endsection
 
-{!! Form::close() !!} @endsection @section('tabla')
-<div class="boxtwo">
-	@section('titulo-tabla', 'Denunciantes registrados') @include('tables.denunciantes')
-</div>
-@endsection @push('PilaScripts')
-<script type="text/javascript">
-	$(document).ready(function() {
-					$('#tipop').hide(); 
+@push('scripts')
+	<script src="{{ asset('plugins/toastr/js/toastr.min.js')}}" ></script>
+	<script src="{{ asset('plugins/moment/js/moment.min.js') }}"></script>
+    <script src="{{ asset('plugins/moment/locales/es.js') }}"></script>
+    <script src="{{ asset('plugins/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+	<script src="{{ asset('js/curp.js') }}"></script>
+	@include('fields.rfcMoral');
+    @include('fields.rfcFisico')
+	@include('fields.ajaxCurp')
+@endpush
 
-});
+@push('docready-js')
+	$('#tipop').hide(); 
+
 	$('input[type=radio][name=esVictima]').change(function() {
 		if (this.value == 0) {
 			swal("Atención", "Ha seleccionado registrar un denunciante como ofendido .", "warning")
 		} else if (this.value == 1) {
 			swal("Atención", "Ha seleccionado registrar un denunciante como victima.", "warning")
 		}
-			$('#tipop').show();
+		$('#tipop').show();
 	});
-
-
-
-</script>
-
-
-
 @endpush
-
-
-
-
-

@@ -2,6 +2,10 @@
 
 @section('title', 'Iniciar nueva carpeta de investigación')
 
+@push('css')
+	<link rel="stylesheet" href="{{ asset('plugins/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}">
+@endpush
+
 @section('contenido')
 	{!! Form::open(['route' => 'store.carpeta', 'method' => 'POST'])  !!}
 	{{ csrf_field() }}
@@ -23,10 +27,15 @@
 	</div>
 	{!! Form::close() !!}
 @endsection
-@push('PilaScripts')
- <script>
-	 $("#btn-submit").on("click", function(){
+
+@push('scripts')
+	<script src="{{ asset('plugins/moment/js/moment.min.js') }}"></script>
+    <script src="{{ asset('plugins/moment/locales/es.js') }}"></script>
+    <script src="{{ asset('plugins/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+@endpush
+
+@push('docready-js')
+	$("#btn-submit").on("click", function(){
 		localStorage.clear();		
-	 });
- </script>
+	});
 @endpush

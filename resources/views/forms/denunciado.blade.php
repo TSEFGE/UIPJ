@@ -2,6 +2,11 @@
 
 @section('title', 'Agregar investigado o imputado')
 
+@push('css')
+	<link rel="stylesheet" href="{{ asset('plugins/toastr/css/toastr.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('plugins/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}">
+@endpush
+
 @section('contenido')
 @include('forms.errores')
 {!! Form::open(['route' => 'store.denunciado', 'method' => 'POST'])  !!}
@@ -148,30 +153,33 @@
 @endsection
 
 @section('tabla')
-<div class="boxtwo">
-@section('titulo-tabla', 'Denunciados registrados')
-@include('tables.denunciados')
-</div>
+	<div class="boxtwo">
+		@section('titulo-tabla', 'Denunciados registrados')
+		@include('tables.denunciados')
+	</div>
 @endsection
-@push('PilaScripts')
-<script type="text/javascript">
-	$(document).ready(function() {
 
-//extradenunciado
-$("#alias").addClass("vacio");
- $("#ingreso").addClass("vacio");
- $("#residenciaAnterior").addClass("vacio");
-  $("#vestimenta").addClass("vacio");
- $("#senasPartic").addClass("vacio");
- $("#curp").addClass("vacio");
-  $("#telefono").addClass("vacio");
- $("#motivoEstancia").addClass("vacio");
- $("#docIdentificacion").addClass("vacio");  	
-$("#numDocIdentificacion").addClass("vacio");
+@push('scripts')
+	<script src="{{ asset('plugins/toastr/js/toastr.min.js')}}" ></script>
+	<script src="{{ asset('plugins/moment/js/moment.min.js') }}"></script>
+    <script src="{{ asset('plugins/moment/locales/es.js') }}"></script>
+    <script src="{{ asset('plugins/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+	<script src="{{ asset('js/curp.js') }}"></script>
+	@include('fields.rfcMoral');
+    @include('fields.rfcFisico')
+	@include('fields.ajaxCurp')
+@endpush
 
-
-
-});
-
-</script>
+@push('docready-js')
+	//extradenunciado
+	$("#alias").addClass("vacio");
+	$("#ingreso").addClass("vacio");
+	$("#residenciaAnterior").addClass("vacio");
+	$("#vestimenta").addClass("vacio");
+	$("#senasPartic").addClass("vacio");
+	$("#curp").addClass("vacio");
+	$("#telefono").addClass("vacio");
+	$("#motivoEstancia").addClass("vacio");
+	$("#docIdentificacion").addClass("vacio");  	
+	$("#numDocIdentificacion").addClass("vacio");
 @endpush

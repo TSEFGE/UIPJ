@@ -2,6 +2,10 @@
 
 @section('title', 'Agregar vehículo')
 
+@push('css')
+	<link rel="stylesheet" href="{{ asset('plugins/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}">
+@endpush
+
 @section('contenido')
 {!! Form::open(['route' => 'store.vehiculo', 'method' => 'POST'])  !!}
 {{ csrf_field() }}
@@ -44,3 +48,9 @@
 		@include('tables.vehiculos')
 	</div>
 @endsection
+
+@push('scripts')
+	<script src="{{ asset('plugins/moment/js/moment.min.js') }}"></script>
+    <script src="{{ asset('plugins/moment/locales/es.js') }}"></script>
+    <script src="{{ asset('plugins/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+@endpush
