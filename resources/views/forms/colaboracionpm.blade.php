@@ -23,22 +23,18 @@
 </div>
 </div>
 
-
 @include('forms.errores')
 <div class="row no-gutters">
 	<div class="col-12">
 		<div class="boxtwo">
 			<h6>Servicios:</h6>
-			
-				<div class="boxtwo">
-					<div class="form-group">
-							{!! Form::select('servicios', $servicios->pluck('nombre','id')->all(), null, ['name'=>'servicios[]','class' => 'form-control', 'multiple']) !!}
-					</div>
-				
+			<div class="boxtwo">
+				<div class="form-group">
+					{!! Form::select('servicios', $servicios->pluck('nombre','id')->all(), null, ['name'=>'servicios[]','class' => 'form-control', 'multiple']) !!}
+				</div>
 			</div>
 		</div>
 		@include('forms.idcarpeta')
-		
 	</div>
 </div>
 
@@ -68,9 +64,3 @@
 </div>
 {!! Form::close() !!}
 @endsection
-<style type="text/css">
-	
-	.radio{
-		background-color: #2196F3;
-	}
-</style>
