@@ -28,11 +28,50 @@
 	<link rel="stylesheet" href="{{ asset('css/theme-jquery-validation.min.css') }}">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     @yield('css')
+
+<style type="text/css">
+
+#subir {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  padding: 10px 35px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+#subir:hover {
+  background-color: black;
+}
+
+#subir:before {
+ font-family: FontAwesome;
+ content:"\f062";
+ position: absolute;
+ top: 11px;
+ left: -30px;
+ transition: all 200ms ease;
+}
+#subir:hover:before {
+ left: 7px;
+}
+
+
+</style>
+
 </head>
 
 <body class="hold-transition sidebar-mini">
 	<div class="wrapper">
-		
+
 	<!-- Navbar -->
 	@include('template.partials.navbar')
 	<!-- /.navbar -->
@@ -42,8 +81,12 @@
 
 	<div class="content-wrapper">
 		<!-- Content Header (Page header) -->
+<button onclick="topFunction()" id="subir" title="Subir">Subir</button>
 		<div class="content-header">
 			<div class="container-fluid">
+
+	<button  id="subir" title="Subir" class="ancla">Subir</button>
+
 				<div class="row mb-2">
 					<div class="col-sm-6">
 						<h1 class="m-0 text-dark">@yield('title')</h1>
@@ -191,6 +234,25 @@
 			$.validate({
 				 lang : 'es'
 			});
+
+
+
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("subir").style.display = "block";
+    } else {
+        document.getElementById("subir").style.display = "none";
+    }
+}
+
+function topFunction() {
+   // document.body.scrollTop = 20;
+    document.documentElement.scrollTop = 0;
+}
+
+
 	</script>
 
 	@yield('scripts')
