@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use DB;
+use App\Models\Persona;
 use Alert;
 use Carbon\Carbon;
 use MaddHatter\LaravelFullcalendar\Facades\Calendar;
@@ -20,6 +21,7 @@ Citatorio     * @return \Illuminate\Http\Response
      */
     public function index()
     {
+
         $events = [];
         $citatorios = Citatorio::all();
         if($citatorios->count()) {
@@ -78,8 +80,49 @@ Citatorio     * @return \Illuminate\Http\Response
      */
     public function create($idCarpeta,$idCitado,$tipoInvolucrado)
     {
+
+        if($tipoInvolucrado==1){
+
+            $idP = DB::table('extra_denunciado')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
+            ->select('variables_persona.idPersona')
+            ->where('variables_persona.idCarpeta', '=', $idCarpeta)->where('extra_denunciado.id', '=', $idCitado)
+            ->get()->first();
+
+            $idPersona=$idP->idPersona;
+            $persona= Persona::Where('id',$idPersona)->get()->first();
+
+             $motivoCitaInvestigado='RELATIVO A LOS HECHOS QUE DENUNCIARA EL C. '.$persona->nombres.' '.$persona->primerAp.' '.$persona->primerAp.' POR HECHOS PROBABLEMENTE DELICTIVOS';
+
+            $motivoCita=$motivoCitaInvestigado;
+
+        }elseif($tipoInvolucrado==2){
+
+          /*  $delito = DB::table('acusacion')
+           ->join('tipif_delito', 'tipif_delito.id', '=', 'acusacion.idTipifDelito')
+           ->select('tipif_delito.idDelito')
+           ->where('tipif_delito.idCarpeta', '=', $idCarpeta)->where('acusacion.idDenunciante', '=', $idCitado)
+           ->get()->first();
+
+           $idDelito=$delito->idDelito;
+           $persona= Persona::Where('id',$idPersona)->get()->first();
+           $motivoCitaTestigo='RELATIVO DE LA DENUNCIA PRESENTADA POR USTED REFERENTE A ';
+           $motivoCita=$motivoCitaTestigo;*/
+        }
+
+        $fundamentoLegalTestigo = 'CON FUNDAMENTOS EN LO DISPUESTO POR LOS ARTÍCULOS 21 DE LA CONSTITUCIÓN POLÍTICA DE LOS ESTADOS UNIDOS MEXICANOS; 1,2,90,91,129,131, Y ADEMÁS RELATIVOS Y APLICABLES DEL CÓDIGO NACIONAL DE PROCEDIMIENTOS PENALES VIGENTE EN EL DISTRITO JUDICIAL AL MOMENTO DE SUCEDIDOS LOS HECHOS; 1,2,5,6,7 Y DEMÁS RELATIVOS Y APLICABLES DE LA LEY ORGÁNICA DE LA FISCALÍA GENERAL DEL ESTADO 29 Y 37 DE SU REGLAMENTO. HACIÉNDOLE DE SU CONOCIMIENTO QUE DE HACER CASO OMISO AL PRESENTE CITATORIO, SE HARÁ USO DE LOS MEDIOS DE APREMIO QUE ESTIPULA EL ARTICULO 104 DEL CÓDIGO NACIONAL DE PROCEDIMIENTOS PENALES VIGENTE EN ESTE DISTRITO JUDICIAL'; 
+
+        $fundamentoLegalInvestigado= 'CON FUNDAMENTOS EN LO DISPUESTO POR LOS ARTÍCULOS 21 DE LA CONSTITUCIÓN POLÍTICA DE LOS ESTADOS UNIDOS MEXICANOS; 1,2,90,91,129,131, Y ADEMÁS RELATIVOS Y APLICABLES DEL CÓDIGO NACIONAL DE PROCEDIMIENTOS PENALES VIGENTE EN EL DISTRITO JUDICIAL AL MOMENTO DE SUCEDIDOS LOS HECHOS; 1,2,5,6,7 Y DEMÁS RELATIVOS Y APLICABLES DE LA LEY ORGÁNICA DE LA FISCALÍA GENERAL DEL ESTADO Y 29. HACIÉNDOLE DE SU CONOCIMIENTO QUE DE HACER CASO OMISO AL PRESENTE CITATORIO, SE HARÁ USO DE LOS MEDIOS DE APREMIO QUE ESTIPULA EL ARTICULO 104 DEL CÓDIGO NACIONAL DE PROCEDIMIENTOS PENALES VIGENTE EN ESTE DISTRITO JUDICIAL';
+
+            if($tipoInvolucrado==1){
+                $fundamentoLegal=$fundamentoLegalInvestigado;
+            }elseif($tipoInvolucrado==2){
+                $fundamentoLegal= $fundamentoLegalTestigo;
+            }
+
+
         $citatorios= Citatorio::where('idCarpeta',$idCarpeta)->where('idCitado',$idCitado)->where('tipo',$tipoInvolucrado)->get();
-        return view('forms.citatorio')->with('idCarpeta',$idCarpeta)->with('idCitado',$idCitado)->with('tipoInvolucrado',$tipoInvolucrado)->with('citatorios', $citatorios);
+        return view('forms.citatorio')->with('idCarpeta',$idCarpeta)->with('idCitado',$idCitado)->with('tipoInvolucrado',$tipoInvolucrado)->with('citatorios', $citatorios)->with('fundamentoLegal',$fundamentoLegal)->with('motivoCita',$motivoCita);
     }
 
     /**
@@ -220,8 +263,8 @@ Citatorio     * @return \Illuminate\Http\Response
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
         //dd($request,$id);
+    {
         $citatorio=Citatorio::find($id)->first();
         $citatorio->fill($request->all());
         $citatorio->save();

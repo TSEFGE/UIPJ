@@ -910,6 +910,7 @@ $('.bien').hide();
 
      $('#fechaCit').datetimepicker({
           format: 'YYYY-MM-DD',
+          defaultDate: moment(), 
           minDate: moment(),          
            widgetPositioning: {
             vertical: 'bottom',
