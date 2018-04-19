@@ -46,6 +46,7 @@
     <script src="{{ asset('js/selects.js') }}"></script>
 
     {{-- Subdividir --}}
+    <script src="{{ asset('js/scripts.js') }}"></script>
 @endpush
 
 @push('docready-js')
@@ -60,22 +61,4 @@
     $.validate({
         lang : 'es'
     });
-
-    toastr.options = {
-        "closeButton": true,
-        "debug": false,
-        "newestOnTop": true,
-        "progressBar": true,
-        "positionClass": "toast-bottom-right",
-        "preventDuplicates": true,
-        "onclick": null,
-        "showDuration": "300",
-        "hideDuration": "1000",
-        "timeOut": "3000",
-        "extendedTimeOut": "1000",
-        "showEasing": "swing",
-        "hideEasing": "linear",
-        "showMethod": "fadeIn",
-        "hideMethod": "fadeOut"
-    }
 @endpush
