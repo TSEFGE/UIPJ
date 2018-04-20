@@ -90,6 +90,10 @@
 	<script src="{{ asset('plugins/moment/js/moment.min.js') }}"></script>
     <script src="{{ asset('plugins/moment/locales/es.js') }}"></script>
     <script src="{{ asset('plugins/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+    <script src="{{ asset('js/selects/async.js') }}"></script>
+    <script src="{{ asset('js/selects/origen.js') }}"></script>
+    <script src="{{ asset('js/selects/domicilio-trab.js') }}"></script>
+    <script src="{{ asset('js/selects/sisy.js') }}"></script>
     <script src="{{ asset('js/curp.js') }}"></script>
 	@include('fields.ajaxCurp')
  	@include('fields.rfcMoral')
