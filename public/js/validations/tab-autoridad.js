@@ -37,7 +37,9 @@ $('#tabsautoridad.nav-tabs a').on('hidden.bs.tab', function(event){
 	
 	case 1:
 	var countvacio = $('#collapseDir3 .vacio').length; 
-	totales = countvacio;
+    totales = countvacio;
+    console.log(totales);
+    
 	var count = $('#collapseDir3 .error').length;
 	if (count==0){
 		$("#errora1").hide();
@@ -64,7 +66,10 @@ $('#tabsautoridad.nav-tabs a').on('hidden.bs.tab', function(event){
 	} else{  
 		$("#vacioa1").show();                            
 		$("#vacioa1").html(countvacio); 
-	}
+    }
+    console.log('errores',count);
+    console.log('correctos',correctos);
+    
 	break;
 
 	case 2:

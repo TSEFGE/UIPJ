@@ -41,12 +41,12 @@
 							<h1 class="m-0 text-dark">@yield('title')</h1>
 						</div><!-- /.col -->
 						<div class="col-sm-6">
-							<ol class="breadcrumb float-sm-right">
+							<ol class="breadcrumb float-sm-right" id="breadcumb">
 								@isset($numCarpeta)
-								<li class="breadcrumb-item"><a href="{{ route('home') }}">Inicio</a></li>
+								<li class="breadcrumb-item"><a href="{{ route('home') }}"><i class=" nav-icon fa fa-home"></i> Inicio</a></li>
 								<li class="breadcrumb-item"><a href="{{ route('view.carpeta', $idCarpeta) }}">{{ $numCarpeta }}</a></li>
 								@else
-								<li class="breadcrumb-item"><a href="{{ route('home') }}">Inicio</a></li>
+								<li class="breadcrumb-item"><a href="{{ route('home') }}"><i class=" nav-icon fa fa-home"></i> Inicio</a></li>
 								@endif
 								@isset($carpetaNueva)
 								<li class="breadcrumb-item active">{{ $carpetaNueva[0]->numCarpeta }}</li>

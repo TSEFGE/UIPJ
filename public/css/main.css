@@ -111,7 +111,9 @@ body{
 	padding: 0rem 0rem 0rem 0rem;
 	border-bottom: 0;
 }
-
+#breadcumb{
+	color: #1b1b1b;
+}
 /*.boxcollapse{
 	background-color: #D6D6D6;
 }*/
