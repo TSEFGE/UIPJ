@@ -27,10 +27,35 @@
 <div class="row no-gutters">
 	<div class="col-12">
 		<div class="boxtwo">
+			<h6>Acusaciones</h6>
+			<div class="table">
+				<table class="table table-striped">
+					<thead  align="center">
+						<th>Seleccionar acusación</th>
+						<th>Nombre denunciante</th>
+						<th>Delito</th>
+						<th>Nombre denunciado</th>
+					</thead>
+					<tbody>
+						@if(count($acusaciones)==0)
+						<tr><td colspan="4" class="text-center">Sin registros</td></tr>
+						@else
+						@foreach($acusaciones as $acusacion)
+						<tr>
+							<td align="center"><input type="radio" id="radio" value="{{ $acusacion->id }}" name="radioAcusacion" style="width:20px;height:20px"></td>
+							<td align="center">{{ $acusacion->nombres." ".$acusacion->primerAp." ".$acusacion->segundoAp }}</td>
+							<td align="center">{{ $acusacion->delito }}</td>
+							<td align="center">{{ $acusacion->nombres2." ".$acusacion->primerAp2." ".$acusacion->segundoAp2 }}</td>
+						</tr>
+						@endforeach
+						@endif
+					</tbody>
+				</table>
+			</div>
 			<h6>Servicios:</h6>
 			<div class="boxtwo">
 				<div class="form-group">
-					{!! Form::select('servicios', $servicios->pluck('nombre','id')->all(), null, ['name'=>'servicios[]','class' => 'form-control', 'multiple']) !!}
+					{!! Form::select('servicios', $servicios->pluck('nombre','id')->all(), null, ['class' => 'select2-multi', 'name'=>'servicios[]','class' => 'form-control', 'multiple']) !!}
 				</div>
 			</div>
 		</div>
@@ -38,29 +63,10 @@
 	</div>
 </div>
 
-<div class="table">
-	<table class="table table-striped">
-		<thead  align="center">
-			<th>Seleccionar acusación</th>
-			<th>Nombre denunciante</th>
-			<th>Delito</th>
-			<th>Nombre denunciado</th>
-		</thead>
-		<tbody>
-			@if(count($acusaciones)==0)
-			<tr><td colspan="4" class="text-center">Sin registros</td></tr>
-			@else
-			@foreach($acusaciones as $acusacion)
-			<tr>
-				<td align="center"><input type="radio" id="radio" value="{{ $acusacion->id }}" name="radioAcusacion" style="width:20px;height:20px"></td>
-				<td align="center">{{ $acusacion->nombres." ".$acusacion->primerAp." ".$acusacion->segundoAp }}</td>
-				<td align="center">{{ $acusacion->delito }}</td>
-				<td align="center">{{ $acusacion->nombres2." ".$acusacion->primerAp2." ".$acusacion->segundoAp2 }}</td>
-			</tr>
-			@endforeach
-			@endif
-		</tbody>
-	</table>
-</div>
+
 {!! Form::close() !!}
 @endsection
+
+@push('docready-js')
+    $('.select2-multi').select2();
+@endpush

@@ -14,7 +14,8 @@
 				</div>
 			</div>
 		</div>
-	</div> 
+	</div>
+
 	<div class="row no-gutters">
 		<div class="col-12">
 			<div class="boxtwo">
@@ -45,12 +46,13 @@
 				</div>
 				<div class="form-group">
 					{!! Form::label('termino', 'Término', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('termino', ['8' => '8 horas', '12' => '12 horas', '24' => '24 horas'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el termino', 'required']) !!}
+					{!! Form::select('termino', ['8' => '8 horas', '12' => '12 horas', '24' => '24 horas'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el término', 'required']) !!}
 				</div>
 			</div>
 			<div class="boxtwo ">
+				<h6>Servicios:</h6>
 				<div class="form-group">
-					{!! Form::select('servicios', $servicios->pluck('nombre','id')->all(), null, ['name'=>'servicios[]','class' => 'form-control', 'multiple']) !!}
+					{!! Form::select('servicios', $servicios->pluck('nombre','id')->all(), null, ['name'=>'servicios[]','class' => 'form-control select2-multi', 'multiple']) !!}
 				</div>
 			</div>
 			@include('forms.idcarpeta')
@@ -58,3 +60,7 @@
 	</div>
 	{!! Form::close() !!}
 @endsection
+
+@push('docready-js')
+    $('.select2-multi').select2();
+@endpush
