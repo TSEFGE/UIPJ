@@ -97,7 +97,6 @@
 	<script src="{{ asset('js/validations/tab-abogado.js') }}"></script>
     <script src="{{ asset('js/curp.js') }}"></script>
 	@include('fields.ajaxCurp')
- 	@include('fields.rfcMoral')
     @include('fields.rfcFisico')
 @endpush
 
@@ -123,6 +122,7 @@
 	$("#nombres").addClass("vacio");
 	$("#primerAp").addClass("vacio");
 	$("#segundoAp").addClass("vacio");
+	$("#fechaNacimiento").addClass("vacio");
 	$("#rfc").addClass("vacio");
 	$("#homo").addClass("vacio");
 	$("#curp").addClass("vacio");
