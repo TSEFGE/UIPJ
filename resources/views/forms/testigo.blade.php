@@ -105,7 +105,8 @@
     <script src="{{ asset('js/selects/domicilio.js') }}"></script>
     <script src="{{ asset('js/selects/domicilio-trab.js') }}"></script>
     <script src="{{ asset('js/selects/domicilio-notif.js') }}"></script>
-    <script src="{{ asset('js/selects/sisy.js') }}"></script>
+	<script src="{{ asset('js/selects/sisy.js') }}"></script>
+	<script src="{{ asset('js/validations/tab-testigo.js') }}"></script>
 	<script src="{{ asset('js/curp.js') }}"></script>
 	@include('fields.rfcMoral');
     @include('fields.rfcFisico')
