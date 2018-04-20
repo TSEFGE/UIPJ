@@ -102,7 +102,11 @@ Citatorio     * @return \Illuminate\Http\Response
 
         }elseif($tipoInvolucrado==2){
 
-            $delito = DB::table('acusacion')
+            if(empty($delito)){
+
+                $motivoCitaTestigo="";
+            } else{
+                $delito = DB::table('acusacion')
            ->join('tipif_delito', 'tipif_delito.id', '=', 'acusacion.idTipifDelito')
            ->select('tipif_delito.idDelito')
            ->where('tipif_delito.idCarpeta', '=', $idCarpeta)->where('acusacion.idDenunciante', '=', $idCitado)
@@ -125,6 +129,9 @@ Citatorio     * @return \Illuminate\Http\Response
               }else {
                   $motivoCitaTestigo='RELATIVO DE LA DENUNCIA PRESENTADA POR USTED REFERENTE A '.$delitoPrincipal->nombre.' '.$agrupacion1->nombre.' '.$agrupacion2->nombre.'.';
               }
+            }
+
+            
                      
                $motivoCita=$motivoCitaTestigo;
            }
@@ -236,7 +243,6 @@ Citatorio     * @return \Illuminate\Http\Response
 
         $name='Citatorio'.time().'.docx';
         $templateProcessor->saveAs(public_path().'\storage\citatorios\\'.$name);
-        //$templateProcessor->saveAs('../storage/oficios/ConstanciaDeHechos'.$info->id.'.docx');
 
         $citatorio = new Citatorio($request->all());
         $citatorio->intento = $numCitatorio;
