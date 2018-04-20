@@ -76,7 +76,7 @@ sessionStorage.removeItem('isLive');
 					</div>
 				</form>
 			</div>
-			<div id="cargando">
+			<div id="cargando" style="display:none;">
 				<div class="sk-circle">
 					<div class="sk-circle1 sk-child"></div>
 					<div class="sk-circle2 sk-child"></div>
@@ -92,7 +92,6 @@ sessionStorage.removeItem('isLive');
 					<div class="sk-circle12 sk-child"></div>
 				</div>
 			</div>
-
 		</div>
 		<!-- /.login-card-body -->
 
@@ -114,6 +113,7 @@ sessionStorage.removeItem('isLive');
 	}
 
 	$(document).ready(function() {
+
 		$("#name").focusout(function() {
 			$("#email").val($(this).val()+"@fiscaliaveracruz.gob.mx".toLowerCase());
 		});
@@ -127,7 +127,9 @@ sessionStorage.removeItem('isLive');
 			$("#txtPassword").val("");
 			$("#txtPassword").attr("type", "text");
 			$("#txtPassword").remove();
-			$('#cuadro').hide();
+			$('#formulario').hide();
+			$('#cargando').show();
+
 			console.log('hia');
 			//e.preventDefault();
 		});
