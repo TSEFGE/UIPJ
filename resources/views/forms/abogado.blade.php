@@ -123,6 +123,7 @@
 	$("#nombres").addClass("vacio");
 	$("#primerAp").addClass("vacio");
 	$("#segundoAp").addClass("vacio");
+	$("#fechaNacimiento").addClass("vacio");
 	$("#rfc").addClass("vacio");
 	$("#homo").addClass("vacio");
 	$("#curp").addClass("vacio");
