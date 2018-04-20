@@ -62,11 +62,13 @@ body{
 	background-color:#424242;
 	margin: 10px;
 }
+
 #login-logo >img{
 	height: 100px;
 	display:block;
 	margin:auto;
 }
+
 .logofge{
 	height: 40px;
 }
@@ -232,3 +234,19 @@ body{
             transform: scale(1);
   }
 }
+/*-------------------- DONT ALLOWED------------------*/
+.login-logo2{
+	background-color:#424242;
+	margin: 10px;
+}
+.login-box2{
+    border: 1px solid rgba(0, 0, 0,1);
+    width: 360px;
+    margin: 7% auto;
+}
+#login-logo2 >img{
+	height: 200px;
+	display:block;
+	margin:auto;
+}
+/*-------------------- DONT ALLOWED FIN------------------*/

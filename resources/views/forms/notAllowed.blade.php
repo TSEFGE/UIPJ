@@ -9,39 +9,18 @@
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/bootstrap/css/bootstrap.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/cssfonts.css') }}">
-	<link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/login.css') }}">
 </head>
-
-<body>
-	<div class="container">
-		<header>
-			<nav class="navbar fixed-top navbar-expand-lg navbar-dark">
-				<a class="navbar-brand" href="#"><img src="{{ asset('img/logofge2.png') }}" alt="" class="logofge"></a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-				 <span class="navbar-toggler-icon"></span>
-			 </button>
-
-			 <div class="collapse navbar-collapse" id="navbarNavDropdown">
-				<ul class="navbar-nav mr-auto">
-				</ul>
+<body class="hold-transition login-page">	
+	<div id="#dontcard" class="login-box2 rounded">
+			<div class="card-body arriba rounded-top">
+				<a id="login-logo2" ><img src="{{ asset('img/logo-fge-svg.svg') }}" alt=""></a>
 			</div>
-		</nav>
-	</header>
-
-	<br><br><br><br>
-	<div class="card">
-		<div class="card-header">
-			<h5 class="mb-0 text-center">
-				<a>No permitido.</a>
-			</h5>
-		</div>
-		<div style="display: flex; justify-content: center;">
-			<img src="{{ asset('img/fgeLogo.jpg') }}" width="30%">
-		</div>
-		<h5 class="mb-0 text-center">
-			<a>Sólo está permitido usar una pestaña.</a>
-		</h5>
+			<div id="cuadro" class="card-body login-card-body abajo rounded-bottom">
+				<div class="text-center" >
+					<strong style="color:#ffffff">Ya tiene una sesión activa en este navegador</strong>
+				</div>
+			</div>		
 	</div>
-</div>
 </body>
 </html>
