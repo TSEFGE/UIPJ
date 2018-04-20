@@ -52,7 +52,7 @@
 			<div class="boxtwo ">
 				<h6>Servicios:</h6>
 				<div class="form-group">
-					{!! Form::select('servicios', $servicios->pluck('nombre','id')->all(), null, ['name'=>'servicios[]','class' => 'form-control select2-multi', 'multiple']) !!}
+					{!! Form::select('servicios', $servicios->pluck('nombre','id')->all(), null, ['name'=>'servicios[]','class' => 'form-control select2-multi', 'multiple' => 'multiple']) !!}
 				</div>
 			</div>
 			@include('forms.idcarpeta')
@@ -62,5 +62,8 @@
 @endsection
 
 @push('docready-js')
-    $('.select2-multi').select2();
+	$('select').select2('destroy');
+    $('.select2-multi').select2({
+  		language: "es"
+	});
 @endpush
