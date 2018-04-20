@@ -3,6 +3,7 @@
 @push('css')
     <link rel="stylesheet" type="text/css" href="{{ asset('plugins/select2/css/select2.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/jquery-validator/css/theme-jquery-validation.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/forms.css') }}">
 @endpush
 
 @section('content')

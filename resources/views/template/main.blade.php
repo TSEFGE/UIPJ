@@ -17,8 +17,7 @@
 	<link rel="stylesheet" href="{{asset ('plugins/sweetalert/css/sweetalert.css')}}">
 	<link rel="stylesheet" href="{{ asset('css/cssfonts.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/pagination.css') }}">
-	{{-- Subdividir --}}
-	<link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/main.css') }}">
 	@stack('css')
 </head>
 
@@ -37,7 +36,6 @@
 			<button onclick="topFunction()" id="subir" title="Subir">Subir</button>
 			<div class="content-header">
 				<div class="container-fluid">
-					<button  id="subir" title="Subir" class="ancla">Subir</button>
 					<div class="row mb-2">
 						<div class="col-sm-6">
 							<h1 class="m-0 text-dark">@yield('title')</h1>
