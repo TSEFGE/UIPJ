@@ -38,3 +38,9 @@
 		@include('tables.defensas')
 	</div>
 @endsection
+
+@push('scripts')
+	<script src="{{ asset('js/selects/async.js') }}"></script>
+    <script src="{{ asset('js/selects/defensa.js') }}"></script>
+    <script src="{{ asset('js/selects/sisy.js') }}"></script>
+@endpush
