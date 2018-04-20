@@ -111,7 +111,7 @@
 				<a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
 			</div>
 		</li>--}}
-		<li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Cerrar sesión">
+		<li class="nav-item" >
 			<a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
 			document.getElementById('logout-form').submit();" ><i class="fa fa-power-off"></i></a>
 				<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
