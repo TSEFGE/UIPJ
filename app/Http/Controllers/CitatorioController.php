@@ -236,7 +236,6 @@ Citatorio     * @return \Illuminate\Http\Response
 
         $name='Citatorio'.time().'.docx';
         $templateProcessor->saveAs(public_path().'\storage\citatorios\\'.$name);
-        //$templateProcessor->saveAs('../storage/oficios/ConstanciaDeHechos'.$info->id.'.docx');
 
         $citatorio = new Citatorio($request->all());
         $citatorio->intento = $numCitatorio;
