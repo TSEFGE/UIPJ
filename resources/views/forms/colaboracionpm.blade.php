@@ -8,16 +8,16 @@
 <div class="card-header">
 <div class="row">
 	<div class="col">
-		<div class="text-left"> 
+		<div class="text-left">
 			{{--Aqui van radios, etc --}}
 		</div>
 	</div>
-	<div class="col">	
+	<div class="col">
 		<div class="text-right">
 			{!! Form::button('Limpiar campos', ['class' => 'btn btn-dark', 'id' => 'btn-reset']) !!}
 			{!! Form::submit('Generar documento', ['class' => 'btn btn-dark', 'id' => 'btn-submit']) !!}
 			<a href="{{ route('carpeta', $idCarpeta) }}" class="btn btn-dark text-center"><i class="fa fa-folder-open"></i></a>
-			
+
 		</div>
 	</div>
 </div>
@@ -55,7 +55,7 @@
 			<h6>Servicios:</h6>
 			<div class="boxtwo">
 				<div class="form-group">
-					{!! Form::select('servicios', $servicios->pluck('nombre','id')->all(), null, ['class' => 'select2-multi', 'name'=>'servicios[]','class' => 'form-control', 'multiple']) !!}
+					{!! Form::select('servicios', $servicios->pluck('nombre','id')->all(), null, ['id'=>'multi','class' => 'select2-multi', 'name'=>'servicios[]','class' => 'form-control', 'multiple']) !!}
 				</div>
 			</div>
 		</div>
@@ -65,10 +65,3 @@
 
 {!! Form::close() !!}
 @endsection
-
-@push('docready-js')
-	$('select').select2('destroy');
-    $('.select2-multi').select2({
-  		language: "es"
-	});
-@endpush
