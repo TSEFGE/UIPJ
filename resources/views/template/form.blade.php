@@ -34,6 +34,7 @@
     <script src="{{ asset('plugins/jquery-validator/js/jquery.form-validator.min.js')}}" ></script>
     <script src="{{ asset('plugins/jquery-ui/js/jquery-ui.js')}}" ></script>
     <script src="{{ asset('plugins/sisyphus/js/sisyphus.js')}}" ></script>
+    <script src="{{ asset('js/selects/sisy.js') }}"></script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
