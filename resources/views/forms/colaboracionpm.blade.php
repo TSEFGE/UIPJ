@@ -63,10 +63,12 @@
 	</div>
 </div>
 
-
 {!! Form::close() !!}
 @endsection
 
 @push('docready-js')
-    $('.select2-multi').select2();
+	$('select').select2('destroy');
+    $('.select2-multi').select2({
+  		language: "es"
+	});
 @endpush

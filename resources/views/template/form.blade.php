@@ -44,7 +44,9 @@
 @endpush
 
 @push('docready-js')
-    $('select').select2();
+    $('select').select2({
+        language: "es"
+    });
 
     $(document).on('focus', '.select2', function (e) {
         if (e.originalEvent) {
