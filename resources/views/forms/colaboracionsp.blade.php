@@ -7,7 +7,7 @@
 	{{ csrf_field() }}
 	<div class="card-header">
 		<div class="row">
-			<div class="col">	
+			<div class="col">
 				<div class="text-right">
 					{!! Form::submit('Generar documento', ['class' => 'btn btn-dark', 'id' => 'btn-submit']) !!}
 					<a href="{{ route('carpeta', $idCarpeta) }}" class="btn btn-dark text-center"><i class="fa fa-folder-open"></i></a>
@@ -52,7 +52,7 @@
 			<div class="boxtwo ">
 				<h6>Servicios:</h6>
 				<div class="form-group">
-					{!! Form::select('servicios', $servicios->pluck('nombre','id')->all(), null, ['name'=>'servicios[]','class' => 'form-control select2-multi', 'multiple' => 'multiple']) !!}
+					{!! Form::select('servicios', $servicios->pluck('nombre','id')->all(), null, ['id'=>'multi','name'=>'servicios[]','class' => 'form-control select2-multi', 'multiple' => 'multiple']) !!}
 				</div>
 			</div>
 			@include('forms.idcarpeta')
@@ -60,10 +60,3 @@
 	</div>
 	{!! Form::close() !!}
 @endsection
-
-@push('docready-js')
-	$('select').select2('destroy');
-    $('.select2-multi').select2({
-  		language: "es"
-	});
-@endpush
