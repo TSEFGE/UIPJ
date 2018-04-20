@@ -31,15 +31,15 @@ sessionStorage.removeItem('isLive');
                 <div class="card-body arriba rounded-top">
                   <a id="login-logo" ><img src="{{ asset('img/logo-fge-svg.svg') }}" alt=""></a>
                 </div>
-                <!-- /.login-logo -->                
-                  <div class="card-body login-card-body abajo rounded-bottom">                                
-                    <form method="POST" action="{{ route('login') }}">
+                <!-- /.login-logo -->
+                  <div class="card-body login-card-body abajo rounded-bottom">
+                    <form method="POST" action="{{ route('login') }}" id="login-form">
                         {{ csrf_field() }}
                         <input type="hidden" id="email" name="email" value="">
                         <div id="usuario" class="form-row align-items-center">
                             <div class="col form-group has-feedback row{{ $errors->has('password') ? ' has-error' : '' }} inputrow">
                               <input type="text" class="form-control mb-2" id="name" name="name" placeholder="Usuario">
-                              <label class="fa fa-user fa-lg" for="name"></label> 
+                              <label class="fa fa-user fa-lg" for="name"></label>
                             </div>
                             <div class="col form-group has-feedback">
                               <label class="sr-only" for="inlineFormInputGroup" style="white">Username</label>
@@ -53,33 +53,34 @@ sessionStorage.removeItem('isLive');
                             <span class="help-block">
                                 <strong>{{ $errors->first('email') }}</strong>
                             </span>
-                        @endif           
+                        @endif
                       </div>
                       <div class="form-group has-feedback row{{ $errors->has('password') ? ' has-error' : '' }} inputrow">
-                        <input id="password" type="password" class="form-control" name="password"  placeholder="Contraseña">
+                        <input id="password" type="text" class="form-control password" name="password"  placeholder="Contraseña" >
                         <label class="fa fa-lock fa-lg" for="password" ></label>
                         @if ($errors->has('password'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                                 @endif
-                      </div>                      
+                      </div>
                       <div class="row">
                         <!-- /.col -->
                         <div class="col-12 ">
                           <button id="iniciar" type="submit" class="btn btn-primary btn-block btn-flat rounded">Entrar</button>
                         </div>
-                        <!-- /.col --> 
+                        <!-- /.col -->
                       </div>
-                    </form>           
+                    </form>
                   </div>
                   <!-- /.login-card-body -->
-                
-              </div>            
-	
-<script src="{{ asset('js/jquery-3.2.1.min.js')}}" ></script>
-<script src="{{ asset('js/popper.min.js')}}" ></script>
-<script src="{{ asset('js/bootstrap.min.js')}}" ></script>
+
+              </div>
+
+			  <script src="{{ asset('plugins/jquery/js/jquery-3.2.1.min.js')}}" ></script>
+		  	<script src="{{ asset('plugins/popper/js/popper.min.js')}}" ></script>
+		  	<script src="{{ asset('plugins/bootstrap/js/bootstrap.min.js')}}" ></script>
+			<script src="https://terrylinooo.github.io/jquery.disableAutoFill/assets/js/jquery.disableAutoFill.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
@@ -95,10 +96,28 @@ sessionStorage.removeItem('isLive');
         $("#name").focusout(function() {
             $("#email").val($(this).val()+"@fiscaliaveracruz.gob.mx".toLowerCase());
         });
-        $('input:text').focus(function(){
-            $(this).css( "color","#6b6b6b");
-        });
+		$('#login-form').disableAutoFill({
+		    passwordFiled: '.password'
+		});
+
     });
+	$(function() {
+$('input[type=password]').each(function() {
+	$(this).attr('data-background-color', $(this).css('background-color'));
+	$(this).css('background-color', $(this).css('color'));
+	$(this).attr('type', 'text');
+
+	$(this).focus(function() {
+		$(this).attr('type', 'password');
+		$(this).css('background-color', $(this).attr('data-background-color'));
+	});
+
+	$(this).blur(function() {
+		$(this).css('background-color', $(this).css('color'));
+		$(this).attr('type', 'text');
+	});
+});
+});
 </script>
 
 @yield('scripts')
