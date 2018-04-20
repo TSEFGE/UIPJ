@@ -1,0 +1,113 @@
+html{
+  	font-family: 'neosanspro-regular';
+  	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+body{
+	background-color: #efefef;
+	font-family: 'neosanspro-regular';
+  	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.login-page{
+	background-color: #6b6b6b;
+}
+.arriba{
+	margin-bottom:0px;
+	background-color: #424242;
+}
+.abajo{
+	margin-bottom:0px;
+	background-color: #1b1b1b;
+}
+.login-box{
+	
+	border: 1px solid rgba(0, 0, 0,1);
+}
+
+.login-card-body .inputrow label {
+    position: absolute;
+	margin: 15px 10px;
+}
+.login-card-body .inputrow label:before {
+    color: #424242;
+}
+#usuario .form-group {
+    margin-bottom: 0;
+}
+.login-card-body .help-block{
+	color: ffffff;
+    font-size: 1rem;
+}
+#dominio{
+	font-weight: 200;
+    color: #ffffff;
+    background-color: 1b1b1b;
+    border-color: 1b1b1b;
+}
+.login-card-body input[type="text"], .login-card-body input[type="password"] {
+	padding: 10px 12px 10px 32px;
+   }
+.input[type="text"]:focus { 
+    outline: none !important;
+	border:2px solid #6b6b6b45;
+}
+.login-card-body input[type="password"] {
+	outline: none !important;
+	border:2px solid #6b6b6b45;
+}
+.login-logo{
+	background-color:#424242;
+	margin: 10px;
+}
+#login-logo >img{
+	height: 100px;
+	display:block;
+	margin:auto;
+}
+.logofge{
+	height: 40px;
+}
+#iniciar:hover{
+	background-color: #6b6b6b;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #424242;
+	border-color: #424242;	
+}
+.btn-primary:hover {
+    background-color: #1b1b1b;
+    border-color: #1b1b1b;
+}
+.btn-primary:active {
+	background-color: #1b1b1b;
+	border-color: #6b6b6b !important;
+	box-shadow: 3 3 6px rgba(112, 112, 112, 0.938) !important;
+}
+.btn-primary:focus{
+	background-color: #1b1b1b;
+	border-color: #6b6b6b !important;
+	box-shadow: 3 3 6px rgba(112, 112, 112, 0.938) !important;
+}
+.btn-primary:after{
+	background-color: #1b1b1b;
+	border-color: #6b6b6b !important;
+	box-shadow: 3 3 6px rgba(112, 112, 112, 0.938) !important;
+}
+.btn-primary.disabled, .btn-primary:disabled {
+	color: #ffffff;
+	background-color: #1b1b1b;
+	border-color: #6b6b6b !important;
+	box-shadow: 3 3 6px rgba(112, 112, 112, 0.938) !important;
+  }
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+  	color: #ffffff;
+  	background-color: #1b1b1b;
+  	border-color: #6b6b6b !important;
+  	box-shadow: 3 3 6px rgba(112, 112, 112, 0.938) !important;
+}

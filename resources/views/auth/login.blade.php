@@ -23,7 +23,7 @@ sessionStorage.removeItem('isLive');
 	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/font-awesome/css/font-awesome.css') }}">
 	<link rel="stylesheet" type="text/css"  href="{{asset ('admin/dist/css/adminlte.css')}}">
 	<link rel="stylesheet" href="{{ asset('css/cssfonts.css') }}">
-	<link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 </head>
 
 <body class="hold-transition login-page">
