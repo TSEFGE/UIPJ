@@ -44,9 +44,6 @@
     <script src="{{ asset('js/validations/validations.js') }}"></script>
     
     {{-- Subdividir --}}
-    <script src="{{ asset('js/selects.js') }}"></script>
-
-    {{-- Subdividir --}}
     <script src="{{ asset('js/scripts.js') }}"></script>
 @endpush
 
