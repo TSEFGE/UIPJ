@@ -95,9 +95,11 @@
     <script src="{{ asset('js/selects/domicilio-trab.js') }}"></script>
 	<script src="{{ asset('js/selects/sisy.js') }}"></script>
 	<script src="{{ asset('js/validations/tab-abogado.js') }}"></script>
-    <script src="{{ asset('js/curp.js') }}"></script>
+	<script src="{{ asset('js/curp.js') }}"></script>
+	<script src="{{ asset('js/persona.js') }}"></script>
 	@include('fields.ajaxCurp')
-    @include('fields.rfcFisico')
+	@include('fields.rfcFisico')
+	
 @endpush
 
 @push('docready-js')

@@ -91,92 +91,74 @@
     <script src="{{ asset('plugins/moment/locales/es.js') }}"></script>
     <script src="{{ asset('plugins/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
 	<script src="{{ asset('plugins/datatables/js/datatables.min.js')}}" ></script>
-	<script type="text/javascript">
-		$(function () {
-			$('#fechaLibroIni').datetimepicker({
-				format: 'YYYY-MM-DD',
-				maxDate: moment(),
-				useCurrent: false
-
-			});
-			$('#fechaLibroFin').datetimepicker({
-				format: 'YYYY-MM-DD',
-				maxDate: moment(),
-				useCurrent: false
-			});
-			$("#fechaLibroIni").on("change.datetimepicker", function (e) {
-				$('#fechaLibroFin').datetimepicker('minDate', e.date);
-			});
-			$("#fechaLibroFin").on("change.datetimepicker", function (e) {
-				$('#fechaLibroIni').datetimepicker('maxDate', e.date);
-			});
-		});
-		
-		var table = $('#libroTable').DataTable({
-			language: {
-				"url": "{{ asset('json/Spanish.json') }}"
+	<script src="{{ asset('js/libro-gobierno.js') }}"></script>
+	<script type="text/javascript">			
+	var table = $('#libroTable').DataTable({
+		language: {
+			"url": "{{ asset('plugins/datatables/json/Spanish.json') }}"
+		},
+		ajax: "{{ route('api.libro') }}",
+		columns: [
+			{data: 'Fecha', name: 'Fecha'},
+			{data: 'numCarpeta', name: 'numCarpeta'},
+			{data: 'Unidad', name: 'Unidad'},
+			{data: 'Fiscal', name: 'Fiscal'},
+			{data: 'Denunciante', name: 'Denunciante'},
+			{data: 'Nota', name: 'Nota'},
+		],
+		dom: 'Bfrtip',
+		buttons: [
+			'csv', 'excel',
+			{
+			extend: 'pdfHtml5',
+			orientation: 'landscape',
+			tittle:'Carpetas generadas',
+			pageSize: 'letter',
+			/*customize: function ( doc ) {
+				doc.content.splice( 0, 0, {
+				alignment: 'left',
+					margin: [ 0, 0, 0, 0 ],
+					image: imagen,
+					width: 750
+					} );
+				}*/ 
 			},
-			ajax: "{{ route('api.libro') }}",
-			columns: [
-				{data: 'Fecha', name: 'Fecha'},
-				{data: 'numCarpeta', name: 'numCarpeta'},
-				{data: 'Unidad', name: 'Unidad'},
-				{data: 'Fiscal', name: 'Fiscal'},
-				{data: 'Denunciante', name: 'Denunciante'},
-				{data: 'Nota', name: 'Nota'},
-			],
-			dom: 'Bfrtip',
-	        buttons: [
-				'csv', 'excel',
-				{
-				extend: 'pdfHtml5',
-				orientation: 'landscape',
-				tittle:'Carpetas generadas',
-				pageSize: 'letter',
-				/*customize: function ( doc ) {
-					doc.content.splice( 0, 0, {
-					  alignment: 'left',
-						margin: [ 0, 0, 0, 0 ],
-						image: imagen,
-						width: 750
-						} );
-	                }*/ 
-				},
-				{
-					extend: 'pageLength',
-					text: 'Cantidad de registros'
-				}           
-	        ]
-		});
+			{
+				extend: 'pageLength',
+				text: 'Cantidad de registros'
+			}           
+		]
+	});
 
-		setInterval( function () {
-		    table.ajax.reload( null, false );
-		}, 20000 );
+setInterval( function () {
+    table.ajax.reload( null, false );
+}, 20000 );
 
-		$.ajaxSetup({
-	        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
-	    });
-	    $('#consultar').on('click',function(e){
-	        var route="{{route('api.rango')}}";
-	        var fechaIni=$("#fechaIni").val();
-	        var fechaFin=$("#fechaFin").val();
-	        if(fechaIni!="" || fechaFin!=""){
-	            $.ajax({
-	                type: 'get',
-	                url:route,
-	                data:{fechaInicial:fechaIni, fechaFinal: fechaFin},
-	                dataType:'json',
-	                success: function(data){
-	                    table.clear().draw();
-	                    table.rows.add( data ).draw();
-	                },
-	                error:function(e){
-	                    console.log(e);
-	                }
-	            });
-	        }else{
-	            swal("Atención", 'Seleccione un rango de fechas.', 'warning');
-	        }
-		});
+$.ajaxSetup({
+    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
+});
+$('#consultar').on('click',function(e){
+    var route="{{route('api.rango')}}";
+    var fechaIni=$("#fechaIni").val();
+    var fechaFin=$("#fechaFin").val();
+    if(fechaIni!="" || fechaFin!=""){
+        $.ajax({
+            type: 'get',
+            url:route,
+            data:{fechaInicial:fechaIni, fechaFinal: fechaFin},
+            dataType:'json',
+            success: function(data){
+                table.clear().draw();
+                table.rows.add( data ).draw();
+            },
+            error:function(e){
+                console.log(e);
+            }
+        });
+        }else{
+            swal("Atención", 'Seleccione un rango de fechas.', 'warning');
+        }
+    });
+		
 	</script>
 @endpush

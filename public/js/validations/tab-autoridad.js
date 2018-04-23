@@ -67,8 +67,7 @@ $('#tabsautoridad.nav-tabs a').on('hidden.bs.tab', function(event){
 		$("#vacioa1").show();                            
 		$("#vacioa1").html(countvacio); 
     }
-    console.log('errores',count);
-    console.log('correctos',correctos);
+    
     
 	break;
 

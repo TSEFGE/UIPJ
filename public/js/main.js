@@ -28,3 +28,4 @@ function topFunction() {
 	// document.body.scrollTop = 20;
 	document.documentElement.scrollTop = 0;
 }
+$('[data-toggle="tooltip"]').tooltip();
