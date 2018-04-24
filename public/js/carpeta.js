@@ -1,6 +1,6 @@
 $(function () {
     $('#fechaInicial').datetimepicker({
-       format: 'YYYY-MM-DD',
+       format: 'DD-MM-YYYY',
        defaultDate: moment(),
        widgetPositioning: {
         vertical: 'bottom',
@@ -21,7 +21,7 @@ $(function () {
 });
 $(function () {
     $('#fechaiph2').datetimepicker({
-       format: 'YYYY-MM-DD',
+       format: 'DD-MM-YYYY',
        maxDate: moment(),
        widgetPositioning: {
         vertical: 'bottom',
@@ -31,7 +31,7 @@ $(function () {
 });
 $(function () {
     $('#fechadet').datetimepicker({
-        format: 'YYYY-MM-DD',
+        format: 'DD-MM-YYYY',
         defaultDate: moment(),
         widgetPositioning: {
             vertical: 'bottom',
