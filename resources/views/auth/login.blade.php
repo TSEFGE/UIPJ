@@ -79,7 +79,7 @@ sessionStorage.removeItem('isLive');
 			<div id="cargando" style="display:none;">
 				<div class="text-center">
 					<strong  style="color:#f5f5f5;">Inciando sesión<strong>
-				</div>				
+				</div>
 				<div class="sk-circle">
 					<div class="sk-circle1 sk-child"></div>
 					<div class="sk-circle2 sk-child"></div>
@@ -133,38 +133,16 @@ sessionStorage.removeItem('isLive');
 			$('#formulario').hide();
 			$('#cargando').show();
 
-			console.log('hia');
 			//e.preventDefault();
 		});
-		// function executeAdjustment(){
-		//     $("#password").val($("#txtPassword").val());
-		// 	$("#txtPassword").val("");
-		// 	$("#txtPassword").attr("type", "text");
-		//     $(":password").remove();
-		//
-		//     var myForm = document.getElementById("login-form");
-		//     myForm.action = "executeCreditAdjustment.do";
-		//     myForm.submit();
-		// }
+		$('input').keypress(function (e) {
+		  if (e.which == 13){
+		   $('#iniciar').trigger('click');
+		  }
+		});
 
 	});
-	// 	$(function() {
-	// $('input[type=password]').each(function() {
-	// 	$(this).attr('data-background-color', $(this).css('background-color'));
-	// 	$(this).css('background-color', $(this).css('color'));
-	// 	$(this).attr('type', 'text');
-	//
-	// 	$(this).focus(function() {
-	// 		$(this).attr('type', 'password');
-	// 		$(this).css('background-color', $(this).attr('data-background-color'));
-	// 	});
-	//
-	// 	$(this).blur(function() {
-	// 		$(this).css('background-color', $(this).css('color'));
-	// 		$(this).attr('type', 'text');
-	// 	});
-	// });
-	// });
+
 </script>
 
 @yield('scripts')
