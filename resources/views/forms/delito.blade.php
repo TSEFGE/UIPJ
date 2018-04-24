@@ -85,6 +85,7 @@
     <script src="{{ asset('js/selects/domicilio.js') }}"></script>
 	<script src="{{ asset('js/selects/sisy.js') }}"></script>
 	<script src="{{ asset('js/validations/tab-delito.js') }}"></script>
+	<script src="{{ asset('js/delito.js') }}"></script>
 @endpush
 
 @push('docready-js')

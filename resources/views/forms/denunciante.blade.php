@@ -135,6 +135,9 @@
 	<script src="{{ asset('js/selects/sisy.js') }}"></script>
 	<script src="{{ asset('js/validations/tab-denunciante.js') }}"></script>
 	<script src="{{ asset('js/curp.js') }}"></script>
+	<script src="{{ asset('js/persona.js') }}"></script>
+	<script src="{{ asset('js/tipo-persona.js') }}"></script>
+	<script src="{{ asset('js/denunciante.js') }}"></script>	
 	@include('fields.rfcMoral');
     @include('fields.rfcFisico')
 	@include('fields.ajaxCurp')
