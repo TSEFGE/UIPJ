@@ -136,6 +136,7 @@
 	<script src="{{ asset('js/validations/tab-denunciante.js') }}"></script>
 	<script src="{{ asset('js/curp.js') }}"></script>
 	<script src="{{ asset('js/persona.js') }}"></script>
+	<script src="{{ asset('js/persona-moral.js') }}"></script>
 	<script src="{{ asset('js/tipo-persona.js') }}"></script>
 	<script src="{{ asset('js/denunciante.js') }}"></script>	
 	@include('fields.rfcMoral');

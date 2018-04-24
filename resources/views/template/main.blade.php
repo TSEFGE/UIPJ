@@ -76,11 +76,12 @@
 		<!-- Main Footer -->
 	</div>
 
-	<script src="{{ asset('plugins/jquery/js/jquery-3.2.1.min.js')}}" ></script>	
+	<script src="{{ asset('plugins/jquery/js/jquery-3.2.1.min.js')}}" ></script>
 	<script src="{{ asset('plugins/bootstrap/js/bootstrap.min.js')}}" ></script>
 	<script src="{{ asset('plugins/popper/js/popper.min.js')}}" ></script>
 	<script src="{{ asset ('plugins/sweetalert/js/sweetalert.min.js')}}"></script>
-	<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+	<script src="{{ asset('plugins/cookie/js.cookie.min.js')}}" ></script>
+
 	<!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
 	<!-- REQUIRED SCRIPTS -->
@@ -90,7 +91,7 @@
 	<script src="{{ asset('admin/dist/js/adminlte.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('plugins/idle-timer/js/idle-timer.min.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
-	@include('template.scriptExpireSession')
+	
 
 	@stack('scripts')
 	<script type="text/javascript">
@@ -98,7 +99,7 @@
 			@stack('docready-js')
 		});
 	</script>
-
+	@include('template.scriptExpireSession')
 	@include('sweet::alert')
 	@include('template.partials.footer')
 </body>
