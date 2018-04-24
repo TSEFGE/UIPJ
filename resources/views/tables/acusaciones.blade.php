@@ -1,9 +1,9 @@
 <div class="table">
     <table class="table table-striped">
         <thead>
-            <th>Nombre denunciante</th>
+            <th>Nombre de víctima u ofendido</th>
             <th>Delito</th>
-            <th>Nombre denunciado</th>
+            <th>Nombre de investigado</th>
             <th>Formato de inicio</th>
         </thead>
         <tbody>

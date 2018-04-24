@@ -13,26 +13,39 @@ class Unidad extends Model
      *
      * @var array
      */
-    
+
     public $fillable = [
         'id',
+        'idDistrito',
+        'idRegion',
         'nombre',
         'direccion',
         'latitud',
         'longitud',
         'telefono',
-        'distrito',
-        'region',
         'abrevMun',
         'nomCompleto',
-        'consecutivo'
+        'consecutivo',
     ];
 
-    public function carpetas(){
+    public function carpetas()
+    {
         return $this->hasMany('App\Models\Carpeta');
     }
 
-    public function users(){
+    public function users()
+    {
         return $this->hasMany('App\User');
     }
+
+    public function distritos()
+    {
+        return $this->hasMany('App\Models\Distrito');
+    }
+
+    public function regiones()
+    {
+        return $this->hasMany('App\Models\Regiones');
+    }
+
 }

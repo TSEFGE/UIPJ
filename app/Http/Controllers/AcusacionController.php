@@ -63,13 +63,13 @@ class AcusacionController extends Controller
        
        
         //Agregar a Bitacora
-        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'acusacion', 'accion' => 'insert', 'descripcion' => 'Se han registrado nueva Acusación del Denunciante '.$request->idDenunciante.' por el Delito de '.$request->idTipifDelito.' al Denunciado: '. $request->idDenunciado, 'idFilaAccion' => $acusacion->id]);
+        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'acusacion', 'accion' => 'insert', 'descripcion' => 'Se han registrado nueva denuncia de la victima '.$request->idDenunciante.' por el Delito de '.$request->idTipifDelito.' al investigado: '. $request->idDenunciado, 'idFilaAccion' => $acusacion->id]);
         /*
         Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
         //Para mostrar modal
         //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
         */
-        Alert::success('Acusación registrado con éxito', 'Hecho')->persistent("Aceptar");
+        Alert::success('Denuncia registrado con éxito', 'Hecho')->persistent("Aceptar");
         //return redirect()->route('carpeta', $request->idCarpeta);
         return redirect()->route('new.acusacion', $request->idCarpeta);
     }

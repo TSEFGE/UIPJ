@@ -4,7 +4,7 @@
 		{!! Form::hidden('idCarpeta', $idCarpeta) !!}
 		@endif
 		<div class="form-group">
-			<label class="col-form-label col-form-label-sm" for="conoceAlDenunciado">¿Conoce al Denunciado o Imputado?</label>
+			<label class="col-form-label col-form-label-sm" for="conoceAlDenunciado">¿Conoce al investigado?</label>
 			<div class="clearfix"></div>
 			<div class="form-check form-check-inline">
 				<label class="form-check-label col-form-label col-form-label-sm">
