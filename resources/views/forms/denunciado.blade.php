@@ -154,7 +154,7 @@
 
 @section('tabla')
 	<div class="boxtwo">
-		@section('titulo-tabla', 'Denunciados registrados')
+		@section('titulo-tabla', 'Investigados o imputados registrados')
 		@include('tables.denunciados')
 	</div>
 @endsection
