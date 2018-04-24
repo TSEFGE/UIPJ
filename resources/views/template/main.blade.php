@@ -70,7 +70,7 @@
 		</div>
 
 		<!-- Control Sidebar (a secondary optional sidebar) -->
-		@include('template.partials.sidebar2')
+		{{--@include('template.partials.sidebar2')--}}
 		<!-- /.control-sidebar -->
 
 		<!-- Main Footer -->
