@@ -84,7 +84,30 @@
     <script src="{{ asset('plugins/moment/locales/es.js') }}"></script>
 	<script src="{{ asset('plugins/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
 	<script src="{{ asset('js/citatorio.js') }}"></script>
+	<script>
+		$('#fechaCit').datetimepicker({
+			format: 'YYYY-MM-DD',
+			defaultDate: moment(), 
+			minDate: moment(),          
+			 widgetPositioning: {
+			  vertical: 'bottom',
+			  horizontal: 'left'
+		  }
+		 });
+		$(function () { //Datetimepicker a la zquierda y debajo para vizualizar mejor no se oculte en la nav
+		  $('#horaCit').datetimepicker({
+			  format: 'LT',
+			  defaultDate: moment(),  
+			  widgetPositioning: {
+				  vertical: 'bottom',
+				  horizontal: 'left'
+			  }
+		 });
+		});
+	</script>
+	
 @endpush
+
 
 @push('docready-js')
 	console.log('hola');
