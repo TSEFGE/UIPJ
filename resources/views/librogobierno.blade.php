@@ -74,7 +74,7 @@
 								<th>Núm. carpeta</th>
 								<th>Unidad</th>
 								<th>Fiscal</th>
-								<th>Denunciante(s)</th>
+								<th>Víctima u ofendido</th>
 								<th>Nota</th>
 							</tr>
 						</thead>
