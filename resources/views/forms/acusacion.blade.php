@@ -1,6 +1,6 @@
 @extends('template.form')
 
-@section('title', 'Agregar acusación')
+@section('title', 'Agregar denuncias registradas')
 
 @section('contenido')
 
@@ -26,7 +26,7 @@
 	<div class="row no-gutters">
 		<div class="col-12">
 			<div class="boxtwo">
-				<h6>Datos de la acusación</h6>
+				<h6>Datos de la denuncia</h6>
 				
 					@if(!empty($idCarpeta))
 						{!! Form::hidden('idCarpeta', $idCarpeta) !!}
@@ -43,7 +43,7 @@
 @endsection
 @section('tabla')
 	<div class="boxtwo">
-		@section('titulo-tabla', 'Acusaciones registradas')
+		@section('titulo-tabla', 'Denuncias registradas')
 		@include('tables.acusaciones')
 	</div>
 @endsection
