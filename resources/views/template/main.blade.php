@@ -90,7 +90,7 @@
 	<script src="{{ asset('admin/dist/js/adminlte.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('plugins/idle-timer/js/idle-timer.min.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
-	@include('template.scriptExpireSession')
+	
 
 	@stack('scripts')
 	<script type="text/javascript">
@@ -98,7 +98,7 @@
 			@stack('docready-js')
 		});
 	</script>
-
+	@include('template.scriptExpireSession')
 	@include('sweet::alert')
 	@include('template.partials.footer')
 </body>

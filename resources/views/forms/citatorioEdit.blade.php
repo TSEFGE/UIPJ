@@ -86,8 +86,7 @@
 	<script src="{{ asset('js/citatorio.js') }}"></script>
 	<script>
 		$('#fechaCit').datetimepicker({
-			format: 'YYYY-MM-DD',
-			defaultDate: moment(), 
+			format: 'YYYY-MM-DD',			
 			minDate: moment(),          
 			 widgetPositioning: {
 			  vertical: 'bottom',
@@ -96,8 +95,7 @@
 		 });
 		$(function () { //Datetimepicker a la zquierda y debajo para vizualizar mejor no se oculte en la nav
 		  $('#horaCit').datetimepicker({
-			  format: 'LT',
-			  defaultDate: moment(),  
+			  format: 'LT',			  
 			  widgetPositioning: {
 				  vertical: 'bottom',
 				  horizontal: 'left'
