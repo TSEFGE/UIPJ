@@ -15,8 +15,8 @@ class CreateUnidadesTable extends Migration
     {
         Schema::create('unidad', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('idDistrito')->unsigned();
             $table->integer('idRegion')->unsigned();
+            $table->integer('idDistrito')->unsigned();
             $table->string('nombre', 100)->unique();
             $table->string('direccion', 100);
             $table->string('latitud', 15);

@@ -79,7 +79,7 @@ sessionStorage.removeItem('isLive');
 			<div id="cargando" style="display:none;">
 				<div class="text-center">
 					<strong  style="color:#f5f5f5;">Inciando sesión<strong>
-				</div>				
+				</div>
 				<div class="sk-circle">
 					<div class="sk-circle1 sk-child"></div>
 					<div class="sk-circle2 sk-child"></div>
@@ -103,8 +103,8 @@ sessionStorage.removeItem('isLive');
 	<script src="{{ asset('plugins/jquery/js/jquery-3.2.1.min.js')}}" ></script>
 	<script src="{{ asset('plugins/popper/js/popper.min.js')}}" ></script>
 	<script src="{{ asset('plugins/bootstrap/js/bootstrap.min.js')}}" ></script>
-	<script src="https://terrylinooo.github.io/jquery.disableAutoFill/assets/js/jquery.disableAutoFill.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+	<script src="{{ asset('plugins/disableautofill/jquery.disableAutoFill.min.js')}}" ></script>
+	<script src="{{ asset('plugins/cookie/js.cookie.min.js')}}" ></script>
 	<!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
 
@@ -116,15 +116,12 @@ sessionStorage.removeItem('isLive');
 	}
 
 	$(document).ready(function() {
-
 		$("#name").focusout(function() {
 			$("#email").val($(this).val()+"@fiscaliaveracruz.gob.mx".toLowerCase());
 		});
 		$('#login-form').disableAutoFill({
 			passwordFiled: '.password'
 		});
-
-
 		$('#login-form').submit(function(e) {
 			$("#vpassword").val($("#txtPassword").val());
 			$("#txtPassword").val("");
@@ -132,39 +129,16 @@ sessionStorage.removeItem('isLive');
 			$("#txtPassword").remove();
 			$('#formulario').hide();
 			$('#cargando').show();
-
-			console.log('hia');
 			//e.preventDefault();
 		});
-		// function executeAdjustment(){
-		//     $("#password").val($("#txtPassword").val());
-		// 	$("#txtPassword").val("");
-		// 	$("#txtPassword").attr("type", "text");
-		//     $(":password").remove();
-		//
-		//     var myForm = document.getElementById("login-form");
-		//     myForm.action = "executeCreditAdjustment.do";
-		//     myForm.submit();
-		// }
+		$('input').keypress(function (e) {
+		  if (e.which == 13){
+		   $('#iniciar').trigger('click');
+		  }
+		});
 
 	});
-	// 	$(function() {
-	// $('input[type=password]').each(function() {
-	// 	$(this).attr('data-background-color', $(this).css('background-color'));
-	// 	$(this).css('background-color', $(this).css('color'));
-	// 	$(this).attr('type', 'text');
-	//
-	// 	$(this).focus(function() {
-	// 		$(this).attr('type', 'password');
-	// 		$(this).css('background-color', $(this).attr('data-background-color'));
-	// 	});
-	//
-	// 	$(this).blur(function() {
-	// 		$(this).css('background-color', $(this).css('color'));
-	// 		$(this).attr('type', 'text');
-	// 	});
-	// });
-	// });
+
 </script>
 
 @yield('scripts')
