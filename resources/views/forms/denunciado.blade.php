@@ -28,7 +28,7 @@
 					</div>
 					<div class="form-check form-check-inline">
 						<label class="form-check-label col-form-label col-form-label-sm">
-							<input class="form-check-input" type="radio" id="tipoDenunciado2" name="tipoDenunciado" value="2" required> Conoce al denunciado o imputado
+							<input class="form-check-input" type="radio" id="tipoDenunciado2" name="tipoDenunciado" value="2" required> Conoce al investigado
 						</label>
 					</div>
 					<div class="form-check form-check-inline">
@@ -154,7 +154,7 @@
 
 @section('tabla')
 	<div class="boxtwo">
-		@section('titulo-tabla', 'Denunciados registrados')
+		@section('titulo-tabla', 'Investigados o imputados registrados')
 		@include('tables.denunciados')
 	</div>
 @endsection
