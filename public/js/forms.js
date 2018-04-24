@@ -1,6 +1,6 @@
 $(document).ready(function(){
     $("input[type=radio]").attr("checked", false);
-
+    
    
 });    
 $("#btn-reset").on("click",function(){
