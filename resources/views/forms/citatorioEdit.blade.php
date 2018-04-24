@@ -51,7 +51,7 @@
 						<div class="form-group" id="" >
 							{!! Form::label('hora', 'Hora', ['class' => 'col-form-label-sm']) !!}
 							<div class="input-group date" id="horaCit" data-target-input="nearest">
-								{!! Form::text('hora', $citatorio->hora, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#horaCit', 'required', 'placeholder' => '00:00','data-toggle'=>"datetimepicker",'data-validation'=>'custom' ,'data-validation-regexp'=>'^([01]?[0-9]|2[0-3]):[0-5][0-9]$','data-validation-error-msg'=>'Ingrese hora en el formato correcto HH:MM (Formato 24 hrs)']) !!}
+								{!! Form::text('hora', $citatorio->hora, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#horaCit', 'required', 'placeholder' => '00:00','data-toggle'=>"datetimepicker",'data-validation'=>'custom' ,'data-validation-regexp'=>'^([01]?[0-9]|2[0-3]):[0-5][0-9]$','data-validation-error-msg'=>'Ingrese hora en el formato correcto HH:MM:SS (Formato 24 hrs)']) !!}
 								<div class="input-group-append" data-target="#horaCit" data-toggle="datetimepicker">
 									<div class="input-group-text"><i class="fa fa-clock-o"></i></div>
 								</div>
@@ -62,14 +62,14 @@
 					<div class="col-12">
 						<div class="form-group">
 							{!! Form::label('motivo', 'Motivo de la Cita', ['class' => 'col-form-label-sm']) !!}
-							{!! Form::textarea('motivo', $citatorio->motivo, ['readonly','class' => 'form-control form-control-sm','id' => 'motivoCita','rows' => '2','required','data-validation'=>'length','data-validation-length'=>'5-500','data-validation-error-msg'=>'Motivo debe contener al menos cinco letras']) !!}
+							{!! Form::textarea('motivo', $citatorio->motivo, ['readonly','class' => 'form-control form-control-sm','id' => 'motivoCita','rows' => '2','required']) !!}
 						</div>
 					</div>
 
 					<div class="col-12">
 						<div class="form-group">
 							{!! Form::label('fundamentoLegal', 'Fundamento legal', ['class' => 'col-form-label-sm']) !!}
-							{!! Form::textarea('fundamentoLegal', $citatorio->fundamentoLegal, ['class' => 'form-control form-control-sm','id' => 'fundamentoLegal', 'required' ,'rows' => '5','data-validation'=>'length','data-validation-length'=>'5-500','data-validation-error-msg'=>'Fundamento legal debe contener al menos cinco letras']) !!}
+							{!! Form::textarea('fundamentoLegal', $citatorio->fundamentoLegal, ['class' => 'form-control form-control-sm','id' => 'fundamentoLegal', 'required' ,'rows' => '5']) !!}
 						</div>
 					</div>
 				</div>
