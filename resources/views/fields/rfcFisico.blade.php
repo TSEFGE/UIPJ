@@ -7,11 +7,8 @@
 	});
 	$("#segundoAp").focusout(function() {
 		obtenerRFCFISICA();
-	});
-	$("#fechaNacimiento").focusout(function() {
-		obtenerRFCFISICA();
 	});--}}
-
+	
 	$.ajaxSetup({
 		headers: {
 			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -19,6 +16,9 @@
 	});
 
 	function obtenerRFCFISICA() {
+
+		
+
 		nombre = $("#nombres").val().toUpperCase();
 		apPaterno = $("#primerAp").val().toUpperCase();
 		apMaterno = $("#segundoAp").val().toUpperCase();
@@ -62,12 +62,18 @@
 
 				rfc=rfcSH.join("");;
 				homo=homoC.join("");
+				var contador=0;
+
 
 				if($("#rfc").val() == "" || $("#homo").val() == ""){
-					$("#rfc").val(rfc);
-					$("#homo").val(homo);
-					$('#rfcAux').val(rfcOriginal);
-					toastr.success('Se ha modificado el RFC', '¡Atención!');
+
+					if($("#fechaNacimiento").val() != "" ){
+						$("#rfc").val(rfc);
+						$("#homo").val(homo);
+						$('#rfcAux').val(rfcOriginal);
+				//	toastr.success('Se ha modificado el RFC', '¡Atención!');
+					}
+					
 				}else{
 					if($("#rfc").val() != rfc || $("#homo").val() != homo){
 						toastr.options ={
@@ -88,8 +94,10 @@
 			error: function(data) {
 				// console.log(data);
 			}
-		});
-	}
+	
+	 });
+		
+}
 	function actualizarFisico(rfcOriginal, rfc, homo){
     	$("#rfc").val(rfc);
     	$("#homo").val(homo);
