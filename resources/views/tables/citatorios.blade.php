@@ -30,7 +30,7 @@
                 @endif @endif
                 <td>{{ $citatorio->fecha }}</td>
                 <td>{{ $citatorio->hora }}</td>
-                <td>PRIMERA</td>
+                <td>{{ $citatorio->intento }}</td>
 
 
                 <td align="center"><a href="{{ asset('storage/citatorios/'.$citatorio->documento) }}" class="fa fa-cloud-download" style="font-size:24px;color:grey"></i></a></td>
