@@ -37,7 +37,7 @@
             </li>
             @if(count($delitos)>0 && count($denunciantes)>0 && count($denunciados)>0)
             <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#tacusacion">Acusaciones</a>
+                <a class="nav-link" data-toggle="tab" href="#tacusacion">Denuncias registrada</a>
             </li>
                 @endif
              <li class="nav-item">
@@ -129,7 +129,7 @@
                     <a href="{{ route('new.colaboracionpm', $carpetaNueva[0]->id) }}" class="btn btn-primary">Colaboración PM</a>
                     <a href="{{ route('new.colaboracionsp', $carpetaNueva[0]->id) }}" class="btn btn-primary">Colaboración SP</a>
                 @endif
-                <a href="{{ route('new.acusacion', $carpetaNueva[0]->id) }}" class="btn btn-primary">Agregar Acusación</a><hr>
+                <a href="{{ route('new.acusacion', $carpetaNueva[0]->id) }}" class="btn btn-primary">Agregar denuncia registrada</a><hr>
             </div>
         </div>
     </div>
