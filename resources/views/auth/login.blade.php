@@ -103,8 +103,8 @@ sessionStorage.removeItem('isLive');
 	<script src="{{ asset('plugins/jquery/js/jquery-3.2.1.min.js')}}" ></script>
 	<script src="{{ asset('plugins/popper/js/popper.min.js')}}" ></script>
 	<script src="{{ asset('plugins/bootstrap/js/bootstrap.min.js')}}" ></script>
-	<script src="https://terrylinooo.github.io/jquery.disableAutoFill/assets/js/jquery.disableAutoFill.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+	<script src="{{ asset('plugins/disableautofill/jquery.disableAutoFill.min.js')}}" ></script>
+	<script src="{{ asset('plugins/cookie/js.cookie.min.js')}}" ></script>
 	<!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
 
@@ -116,15 +116,12 @@ sessionStorage.removeItem('isLive');
 	}
 
 	$(document).ready(function() {
-
 		$("#name").focusout(function() {
 			$("#email").val($(this).val()+"@fiscaliaveracruz.gob.mx".toLowerCase());
 		});
 		$('#login-form').disableAutoFill({
 			passwordFiled: '.password'
 		});
-
-
 		$('#login-form').submit(function(e) {
 			$("#vpassword").val($("#txtPassword").val());
 			$("#txtPassword").val("");
@@ -132,7 +129,6 @@ sessionStorage.removeItem('isLive');
 			$("#txtPassword").remove();
 			$('#formulario').hide();
 			$('#cargando').show();
-
 			//e.preventDefault();
 		});
 		$('input').keypress(function (e) {
