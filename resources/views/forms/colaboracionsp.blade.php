@@ -3,7 +3,7 @@
 @section('title', 'Diligencias a servicios periciales')
 
 @section('contenido')
-    {!! Form::open(['route' => 'colaboracion.sp', 'method' => 'POST'])  !!}
+    {!! Form::open(['route' => 'diligencia.sp', 'method' => 'POST'])  !!}
 	{{ csrf_field() }}
 	<div class="card-header">
 		<div class="row">
@@ -62,16 +62,16 @@
                                 </center>
                     </div>
     				<div class="form-group col-md-3">
-    					{!! Form::label('unidadTermino', 'Unidad Termino', ['class' => 'col-form-label-sm']) !!}
+    					{!! Form::label('unidadTermino', 'Unidad término', ['class' => 'col-form-label-sm']) !!}
                         {!! Form::select('unidadTermino', ['horas' => 'horas', 'dias' => 'dias'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el término', 'required']) !!}
     				</div>
                     <div class="form-group col-md-3">
-                        {!! Form::label('cantidadTermino', 'Cantidad termino', ['class' => 'col-form-label-sm']) !!}
+                        {!! Form::label('cantidadTermino', 'Cantidad término', ['class' => 'col-form-label-sm']) !!}
                         {!! Form::number('cantidadTermino', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el tiempo', 'required']) !!}
                     </div>
                     <div class="form-group col-md-3">
                         {!! Form::label('servicio', 'Servicio:', ['class' => 'col-form-label-sm']) !!}
-                        {!! Form::select('servicio', $servicios->pluck('nombre','id')->all(), null, ['class' => 'form-control select', 'required']) !!}
+                        {!! Form::select('servicio', $servicios->pluck('nombre','nombre')->all(), null, ['class' => 'form-control select', 'required']) !!}
                     </div>
                 </div>
 

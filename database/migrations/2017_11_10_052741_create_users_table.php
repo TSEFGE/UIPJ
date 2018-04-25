@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('password', 100);
             $table->integer('numFiscal')->nullable();
             $table->enum('nivel', ['1', '2', '3', '4', '5'])->default('1')->nullable();
+            $table->integer('oficioConsecutivo')->default('0')->nullable();
             $table->string('tokenSession')->nullable();
 
 
