@@ -55,6 +55,7 @@ class DenuncianteController extends Controller
                 ->with('nacionalidades', $nacionalidades)
                 ->with('ocupaciones', $ocupaciones)
                 ->with('religiones', $religiones);
+                
         } else {
             return redirect()->route('home');
         }
@@ -200,7 +201,13 @@ class DenuncianteController extends Controller
                 }
                 $VariablesPersona->idDomicilio = $idD1;
                 if (!is_null($request->docIdentificacion)) {
-                    $VariablesPersona->docIdentificacion = $request->docIdentificacion;
+                    if ($request->docIdentificacion=='OTRO'){
+                    $VariablesPersona->docIdentificacion = $request->otroDocumento;
+                    }
+                    else
+                    {
+                    $VariablesPersona->docIdentificacion = $request->docIdentificacion;                        
+                    }
                 }
                 if (!is_null($request->numDocIdentificacion)) {
                     $VariablesPersona->numDocIdentificacion = $request->numDocIdentificacion;
