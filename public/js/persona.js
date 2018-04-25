@@ -40,16 +40,6 @@ $(document).ready(function() {
     $('#idOcupacion').change(function(event) {
         var ocupacion = $('#idOcupacion').val();
         if (ocupacion == 2947) {
-            /* var estado = $("#idEstado2").val();
-             var idMunicipio2 = $("#idMunicipio2").val();
-             var idLocalidad2 = $("#idLocalidad2").val();
-             var idColonia2 = $("#idColonia2").val();
-             var cp2 = $("#cp2").val();
-             console.log(estado);
-             console.log(idMunicipio2);
-             console.log(idLocalidad2);
-             console.log(idColonia2);
-             console.log(cp2);*/
             $("#idEstado2").val(33).prop('disabled', true);
             $('#idEstado2').select2('destroy');
             $("#idMunicipio2").val(2496).prop('disabled', true);
