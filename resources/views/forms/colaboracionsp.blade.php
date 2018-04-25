@@ -3,7 +3,7 @@
 @section('title', 'Diligencias a servicios periciales')
 
 @section('contenido')
-    {!! Form::open(['route' => 'colaboracion.sp', 'method' => 'POST'])  !!}
+    {!! Form::open(['route' => 'diligencia.sp', 'method' => 'POST'])  !!}
 	{{ csrf_field() }}
 	<div class="card-header">
 		<div class="row">
