@@ -121,7 +121,16 @@ class AutoridadController extends Controller
         $VariablesPersona->idEscolaridad = $request->idEscolaridad;
         $VariablesPersona->idReligion = $request->idReligion;
         $VariablesPersona->idDomicilio = $idD1;
-        $VariablesPersona->docIdentificacion = $request->docIdentificacion;
+       // $VariablesPersona->docIdentificacion = $request->docIdentificacion;
+        if (!is_null($request->docIdentificacion)) {
+                    if ($request->docIdentificacion=='OTRO'){
+                    $VariablesPersona->docIdentificacion = $request->otroDocumento;
+                    }
+                    else
+                    {
+                    $VariablesPersona->docIdentificacion = $request->docIdentificacion;                        
+                    }
+                }
         $VariablesPersona->numDocIdentificacion = $request->numDocIdentificacion;
         $VariablesPersona->lugarTrabajo = $request->lugarTrabajo;
         $VariablesPersona->idDomicilioTrabajo = $idD2;
