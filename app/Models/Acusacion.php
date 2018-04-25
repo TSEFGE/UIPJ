@@ -38,4 +38,8 @@ class Acusacion extends Model
         return $this->hasOne('App\Models\TipifDelito');
     }
 
+    public function diligencias(){
+        return $this->hasMany('App\Models\DiligenciaSP');
+    }
+
 }
