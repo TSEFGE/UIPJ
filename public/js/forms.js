@@ -29,3 +29,4 @@ $("#btn-reset").on("click",function(){
     $("#btn-reset").html('<i class="fa fa-eraser" aria-hidden="true"></i>');
 
 });
+
