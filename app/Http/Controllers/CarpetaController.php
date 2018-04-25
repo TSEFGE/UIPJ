@@ -42,10 +42,10 @@ class CarpetaController extends Controller
         $carpeta->idFiscal   = Auth::user()->id;
         $carpeta->numCarpeta = "UIPJ/D" . $datos[0]->idDistrito . "/" . $datos[0]->abrevMun . "/" . $datos[0]->numFiscal . "/" . $num . "/" . Carbon::now()->year;
 
-        /*  $fechaInicioAux =
-        $fechaInicio    = date("Y/m/d", strtotime($fechaInicioAux));
-        dd($fechaInicio);*/
-        $carpeta->fechaInicio = $request->fechaInicio;
+        $fechaInicioAux = $request->fechaInicio;
+        $fechaInicio    = date("Y-m-d", strtotime($fechaInicioAux));
+        //dd($fechaInicio);
+        $carpeta->fechaInicio = $fechaInicio;
         if (isset($request->conDetenido)) {
             $carpeta->conDetenido = $request->conDetenido;
         }
@@ -61,11 +61,16 @@ class CarpetaController extends Controller
         if (!is_null($request->numIph)) {
             $carpeta->numIph = $request->numIph;
         }
-        $carpeta->fechaIph = $request->fechaIph;
+        $fechaIphAux       = $request->fechaIph;
+        $fechaIph          = date("Y-m-d", strtotime($fechaIphAux));
+        $carpeta->fechaIph = $fechaIph;
         if (!is_null($request->narracionIph)) {
             $carpeta->narracionIph = $request->narracionIph;
         }
-        $carpeta->fechaDeterminacion = $request->fechaDeterminacion;
+
+        $fechaDeterminacionAux       = $request->fechaDeterminacion;
+        $fechaDeterminacion          = date("Y-m-d", strtotime($fechaDeterminacionAux));
+        $carpeta->fechaDeterminacion = $fechaDeterminacion;
         $carpeta->save();
         Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'carpeta', 'accion' => 'insert', 'descripcion' => 'Se ha registrado una nueva carpeta.', 'idFilaAccion' => $carpeta->id]);
         $idCarpeta = $carpeta->id;

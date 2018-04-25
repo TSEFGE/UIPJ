@@ -23,9 +23,9 @@ function obtenerRFC(){
 		
 	console.log(fecha);
 
-	dia = fecha.substr(8, 2);
-	mes = fecha.substr(5, 2);
-	ano = fecha.substr(2, 2);
+	dia = fecha.substr(0, 2);
+	mes = fecha.substr(3, 2);
+	año = fecha.substr(8, 2);
 
 	ruta="{{route('rfc.denunciante')}}";
 	$.ajax({
