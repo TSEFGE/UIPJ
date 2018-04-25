@@ -16,7 +16,9 @@ class DiligenciaSPController extends Controller
 			->join('carpeta', 'carpeta.id', '=', 'acusacion.idCarpeta')
 			->join('users', 'users.id', '=', 'carpeta.idFiscal')
 			->join('unidad', 'unidad.id', '=', 'users.idUnidad')
-			->select('carpeta.numCarpeta', 'carpeta.fechaInicio', 'carpeta.conDetenido', 'users.nombres', 'users.apellidos', 'users.numFiscal', 'unidad.direccion', 'unidad.telefono', 'unidad.distrito', 'unidad.municipio')
+			->join('distrito', 'distrito.id', '=', 'unidad.idDistrito')
+			->join('region', 'region.id', '=', 'distrito.idRegion')
+			->select('carpeta.numCarpeta', 'carpeta.fechaInicio', 'carpeta.conDetenido', 'users.nombres', 'users.apellidos', 'users.numFiscal', 'users.oficioConsecutivo', 'unidad.direccion', 'unidad.telefono', 'unidad.municipio', 'distrito.distrito', 'region.region')
 			->where('acusacion.id', '=', $request->radioAcusacion)
 			->get();
 		$acusacion = DB::table('acusacion')
