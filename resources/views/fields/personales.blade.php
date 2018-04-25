@@ -177,7 +177,7 @@
 			<div class="col-12">
 		<div class="form-group">
 			{!! Form::label('narracionUno', 'Narración', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::textarea('narracionUno', null, ['class' => 'form-control form-control-sm','id' => 'narracionUno', 'data-validation'=>'length','rows' => '3', 'data-validation-length'=>'5-500','data-validation-error-msg'=>'Narración deben contener al menos cinco letras']) !!}
+			{!! Form::textarea('narracionUno', null, ['class' => 'form-control form-control-sm','id' => 'narracionUno', 'data-validation'=>'length','rows' => '3']) !!}
 		</div>
 	</div>
 
@@ -228,7 +228,7 @@
 			<div class="col-12">
 		<div class="form-group">
 			{!! Form::label('narracionUnoM', 'Narración', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::textarea('narracionUnoM', null, ['class' => 'form-control form-control-sm','id' => 'narracionUnoM', 'data-validation'=>'length','rows' => '3', 'data-validation-length'=>'5-500','data-validation-error-msg'=>'Narración debe contener al menos cinco letras']) !!}
+			{!! Form::textarea('narracionUnoM', null, ['class' => 'form-control form-control-sm','id' => 'narracionUnoM', 'data-validation'=>'length','rows' => '3']) !!}
 		</div>
 	</div>
 		</div>
