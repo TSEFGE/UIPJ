@@ -3,16 +3,9 @@
 @section('title', 'Listado de Carpetas')
 
 @section('content')
-
-                <div class="boxtwo">
-                     @if (session('status'))
-                                    <div class="alert alert-success">
-                                        {{ session('status') }}
-                                    </div>
-                                @endif
-                </div>
+                
                 <div id="listacarpeta" class="card-header">
-                  <div id="tabslista">
+                  <div id="tabslista" class="center" >
                    <ul class="nav nav-tabs">
                      <li class="nav-item">
                         <a class="nav-link active" data-toggle="tab" href="#iniciadas">Carpetas iniciadas</a>
@@ -25,6 +18,13 @@
                  </div>
 
                  <!-- Contenido en Pestañas -->
+                 
+                 <div class="boxtwo">
+                        @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
                 <div class="tab-content" id="contenidotabs">
                 <div class="tab-pane active" id="iniciadas">
                     <div class="table">
@@ -61,7 +61,7 @@
 
                 <div class="tab-pane container" id="asignadas">
                     <div class="boxtwo">
-                       
+                       <h4 style="text-align:center;">PRÓXIMAMENTE</h4>
                         
                     </div>
                 </div> 
@@ -70,6 +70,8 @@
                     {{ $carpetas->links() }}
                 </div>
             </div>
+        
+ </div>
      
 
 @endsection
