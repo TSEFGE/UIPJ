@@ -2,43 +2,49 @@
 
 namespace App\Http\Controllers;
 
+use Alert;
+use App\Http\Requests\StoreCarpeta;
+use App\Models\Bitacora;
+use App\Models\Carpeta;
+use App\Models\CatTipoDeterminacion;
+use App\Models\Unidad;
+use Carbon\Carbon;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\StoreCarpeta;
-use DB;
-use Alert;
-use Carbon\Carbon;
-use App\Models\Carpeta;
-use App\Models\Unidad;
-use App\Models\CatTipoDeterminacion;
-use App\Models\Bitacora;
 
 class CarpetaController extends Controller
 {
-    public function __construct(){
+    public function __construct()
+    {
         Carbon::setLocale('es');
     }
 
-     public function showForm()
+    public function showForm()
     {
-        $tiposdet = CatTipoDeterminacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $tiposdet     = CatTipoDeterminacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $nombreUnidad = Unidad::select('nombre')->where('id', Auth::user()->idUnidad)->pluck('nombre');
         $nombreUnidad = $nombreUnidad[0];
         return view('forms.inicio')->with('nombreUnidad', $nombreUnidad)->with('tiposdet', $tiposdet);
     }
 
-    public function storeCarpeta(StoreCarpeta $request){
+    public function storeCarpeta(StoreCarpeta $request)
+    {
         //dd($request->all());
         $datos = DB::table('users')
             ->join('unidad', 'unidad.id', '=', 'users.idUnidad')
-            ->select('unidad.distrito','users.numFiscal', 'unidad.consecutivo', 'unidad.abrevMun')
+            ->select('unidad.idDistrito', 'users.numFiscal', 'unidad.consecutivo', 'unidad.abrevMun')
             ->where('users.id', '=', Auth::user()->id)
             ->get();
-        $num = $datos[0]->consecutivo+1;
-        $carpeta = new Carpeta();
-        $carpeta->idUnidad = Auth::user()->idUnidad;
-        $carpeta->idFiscal = Auth::user()->id;
-        $carpeta->numCarpeta = "UIPJ/D".$datos[0]->distrito."/".$datos[0]->abrevMun."/".$datos[0]->numFiscal."/".$num."/".Carbon::now()->year;
+        $num                 = $datos[0]->consecutivo + 1;
+        $carpeta             = new Carpeta();
+        $carpeta->idUnidad   = Auth::user()->idUnidad;
+        $carpeta->idFiscal   = Auth::user()->id;
+        $carpeta->numCarpeta = "UIPJ/D" . $datos[0]->idDistrito . "/" . $datos[0]->abrevMun . "/" . $datos[0]->numFiscal . "/" . $num . "/" . Carbon::now()->year;
+
+        /*  $fechaInicioAux =
+        $fechaInicio    = date("Y/m/d", strtotime($fechaInicioAux));
+        dd($fechaInicio);*/
         $carpeta->fechaInicio = $request->fechaInicio;
         if (isset($request->conDetenido)) {
             $carpeta->conDetenido = $request->conDetenido;
@@ -46,17 +52,17 @@ class CarpetaController extends Controller
         if (isset($request->esRelevante)) {
             $carpeta->esRelevante = $request->esRelevante;
         }
-        $carpeta->estadoCarpeta = "INICIO";
-        $carpeta->horaIntervencion = $request->horaIntervencion;
+        $carpeta->estadoCarpeta     = "INICIO";
+        $carpeta->horaIntervencion  = $request->horaIntervencion;
         $carpeta->descripcionHechos = $request->descripcionHechos;
-        if (!is_null($request->npd)){
+        if (!is_null($request->npd)) {
             $carpeta->npd = $request->npd;
         }
-        if (!is_null($request->numIph)){
+        if (!is_null($request->numIph)) {
             $carpeta->numIph = $request->numIph;
         }
         $carpeta->fechaIph = $request->fechaIph;
-        if (!is_null($request->narracionIph)){
+        if (!is_null($request->narracionIph)) {
             $carpeta->narracionIph = $request->narracionIph;
         }
         $carpeta->fechaDeterminacion = $request->fechaDeterminacion;
@@ -70,7 +76,7 @@ class CarpetaController extends Controller
         Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
         //Para mostrar modal
         //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
-        */
+         */
         Alert::success('Carpeta iniciada con éxito', 'Hecho')->persistent("Aceptar");
         return redirect()->route('carpeta', $idCarpeta);
     }
@@ -83,17 +89,17 @@ class CarpetaController extends Controller
     public function index($id)
     {
         $carpetaNueva = Carpeta::where('id', $id)->where('idFiscal', Auth::user()->id)->get();
-        if(count($carpetaNueva)>0){
+        if (count($carpetaNueva) > 0) {
             $denunciantes = CarpetaController::getDenunciantes($id);
-            $denunciados = CarpetaController::getDenunciados($id);
-            $testigos = CarpetaController::getTestigos($id);
-            $autoridades = CarpetaController::getAutoridades($id);
-            $abogados = CarpetaController::getAbogados($id);
-            $defensas = CarpetaController::getDefensas($id);
-            $familiares = CarpetaController::getFamiliares($id);
-            $delitos = CarpetaController::getDelitos($id);
-            $acusaciones = CarpetaController::getAcusaciones($id);
-            $vehiculos = CarpetaController::getVehiculos($id);
+            $denunciados  = CarpetaController::getDenunciados($id);
+            $testigos     = CarpetaController::getTestigos($id);
+            $autoridades  = CarpetaController::getAutoridades($id);
+            $abogados     = CarpetaController::getAbogados($id);
+            $defensas     = CarpetaController::getDefensas($id);
+            $familiares   = CarpetaController::getFamiliares($id);
+            $delitos      = CarpetaController::getDelitos($id);
+            $acusaciones  = CarpetaController::getAcusaciones($id);
+            $vehiculos    = CarpetaController::getVehiculos($id);
             //$delits = CarpetaController::hayDelitosVeh($id);
             //dd($vehiculos);
             return view('carpeta')->with('carpetaNueva', $carpetaNueva)
@@ -107,30 +113,31 @@ class CarpetaController extends Controller
                 ->with('delitos', $delitos)
                 ->with('acusaciones', $acusaciones)
                 ->with('vehiculos', $vehiculos);
-        }else{
+        } else {
             return redirect()->route('home');
         }
     }
 
-    public function verDetalle($id){
+    public function verDetalle($id)
+    {
         $carpetaNueva = Carpeta::where('id', $id)->where('idFiscal', Auth::user()->id)->get();
-        if(count($carpetaNueva)>0){
+        if (count($carpetaNueva) > 0) {
             $denunciantes = CarpetaController::getDenunciantes($id);
-            $denunciados = CarpetaController::getDenunciados($id);
-            $testigos = CarpetaController::getTestigos($id);
-            $autoridades = CarpetaController::getAutoridades($id);
-            $abogados = CarpetaController::getAbogados($id);
-            $defensas = CarpetaController::getDefensas($id);
-            $familiares = CarpetaController::getFamiliares($id);
-            $delitos = CarpetaController::getDelitos($id);
-            $acusaciones = CarpetaController::getAcusaciones($id);
-            $vehiculos = CarpetaController::getVehiculos($id);
+            $denunciados  = CarpetaController::getDenunciados($id);
+            $testigos     = CarpetaController::getTestigos($id);
+            $autoridades  = CarpetaController::getAutoridades($id);
+            $abogados     = CarpetaController::getAbogados($id);
+            $defensas     = CarpetaController::getDefensas($id);
+            $familiares   = CarpetaController::getFamiliares($id);
+            $delitos      = CarpetaController::getDelitos($id);
+            $acusaciones  = CarpetaController::getAcusaciones($id);
+            $vehiculos    = CarpetaController::getVehiculos($id);
             //$delits = CarpetaController::hayDelitosVeh($id);
             //dd($vehiculos);
             return view('detalle')->with('carpetaNueva', $carpetaNueva)
                 ->with('denunciantes', $denunciantes)
                 ->with('denunciados', $denunciados)
-                 ->with('testigos', $testigos)
+                ->with('testigos', $testigos)
                 ->with('autoridades', $autoridades)
                 ->with('abogados', $abogados)
                 ->with('defensas', $defensas)
@@ -138,74 +145,80 @@ class CarpetaController extends Controller
                 ->with('delitos', $delitos)
                 ->with('acusaciones', $acusaciones)
                 ->with('vehiculos', $vehiculos);
-        }else{
+        } else {
             return redirect()->route('home');
         }
     }
 
-    public static function getDenunciantes($id){
+    public static function getDenunciantes($id)
+    {
         $denunciantes = DB::table('extra_denunciante')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.rfc', 'persona.esEmpresa', 'variables_persona.edad', 'persona.sexo', 'variables_persona.telefono')
+            ->select('extra_denunciante.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.rfc', 'persona.esEmpresa', 'variables_persona.edad', 'persona.sexo', 'variables_persona.telefono')
             ->where('variables_persona.idCarpeta', '=', $id)
             ->get();
         return $denunciantes;
     }
 
-    public static function getTestigos($id){
+    public static function getTestigos($id)
+    {
         $testigos = DB::table('extra_testigo')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_testigo.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->select('extra_testigo.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.rfc', 'persona.esEmpresa', 'variables_persona.edad', 'persona.sexo', 'variables_persona.telefono')
+            ->select('extra_testigo.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.rfc', 'persona.esEmpresa', 'variables_persona.edad', 'persona.sexo', 'variables_persona.telefono')
             ->where('variables_persona.idCarpeta', '=', $id)
             ->get();
         return $testigos;
     }
 
-    public static function getDenunciados($id){
+    public static function getDenunciados($id)
+    {
         $denunciados = DB::table('extra_denunciado')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->select('extra_denunciado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.rfc', 'persona.esEmpresa', 'variables_persona.edad', 'persona.sexo', 'variables_persona.telefono')
+            ->select('extra_denunciado.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.rfc', 'persona.esEmpresa', 'variables_persona.edad', 'persona.sexo', 'variables_persona.telefono')
             ->where('variables_persona.idCarpeta', '=', $id)
             ->get();
         return $denunciados;
     }
 
-    public static function getAbogados($id){
+    public static function getAbogados($id)
+    {
         $abogados = DB::table('extra_abogado')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_abogado.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->select('extra_abogado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'extra_abogado.cedulaProf', 'extra_abogado.sector', 'extra_abogado.tipo')
+            ->select('extra_abogado.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'extra_abogado.cedulaProf', 'extra_abogado.sector', 'extra_abogado.tipo')
             ->where('variables_persona.idCarpeta', '=', $id)
             ->get();
         return $abogados;
     }
 
-    public static function getDefensas($id){
+    public static function getDefensas($id)
+    {
         $defensas1 = DB::table('extra_abogado')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_abogado.idVariablesPersona')
-            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')            
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
             ->join('extra_denunciante', 'extra_denunciante.idAbogado', '=', 'extra_abogado.id')
             ->join('variables_persona as var', 'var.id', '=', 'extra_denunciante.idVariablesPersona')
-            ->join('persona as per', 'per.id', '=', 'var.idPersona')  
-            ->select('extra_abogado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'per.nombres as nombres2', 'per.primerAp as primerAp2', 'per.segundoAp as segundoAp2')
+            ->join('persona as per', 'per.id', '=', 'var.idPersona')
+            ->select('extra_abogado.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'per.nombres as nombres2', 'per.primerAp as primerAp2', 'per.segundoAp as segundoAp2')
             ->where('variables_persona.idCarpeta', '=', $id);
         $defensas = DB::table('extra_abogado')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_abogado.idVariablesPersona')
-            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')            
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
             ->join('extra_denunciado', 'extra_denunciado.idAbogado', '=', 'extra_abogado.id')
             ->join('variables_persona as var', 'var.id', '=', 'extra_denunciado.idVariablesPersona')
-            ->join('persona as per', 'per.id', '=', 'var.idPersona')  
-            ->select('extra_abogado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'per.nombres as nombres2', 'per.primerAp as primerAp2', 'per.segundoAp as segundoAp2')
+            ->join('persona as per', 'per.id', '=', 'var.idPersona')
+            ->select('extra_abogado.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'per.nombres as nombres2', 'per.primerAp as primerAp2', 'per.segundoAp as segundoAp2')
             ->where('variables_persona.idCarpeta', '=', $id)
             ->union($defensas1)
             ->get();
         return $defensas;
     }
 
-    public static function getAutoridades($id){
+    public static function getAutoridades($id)
+    {
         $autoridades = DB::table('extra_autoridad')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_autoridad.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
@@ -215,27 +228,29 @@ class CarpetaController extends Controller
         return $autoridades;
     }
 
-    public static function getFamiliares($id){
+    public static function getFamiliares($id)
+    {
         $familiaresDenunciado = DB::table('familiar')
             ->join('cat_ocupacion', 'cat_ocupacion.id', '=', 'familiar.idOcupacion')
             ->join('persona', 'persona.id', '=', 'familiar.idPersona')
             ->join('variables_persona', 'variables_persona.idPersona', '=', 'persona.id')
             ->join('extra_denunciado', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
-            ->select('familiar.nombres as familiarNombre','familiar.primerAp as familiarPrimerAp', 'familiar.segundoAp as familiarSegundoAp', 'familiar.parentesco', 'cat_ocupacion.nombre as ocupacion' , 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+            ->select('familiar.nombres as familiarNombre', 'familiar.primerAp as familiarPrimerAp', 'familiar.segundoAp as familiarSegundoAp', 'familiar.parentesco', 'cat_ocupacion.nombre as ocupacion', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
             ->where('variables_persona.idCarpeta', '=', $id);
         $familiares = DB::table('familiar')
             ->join('cat_ocupacion', 'cat_ocupacion.id', '=', 'familiar.idOcupacion')
             ->join('persona', 'persona.id', '=', 'familiar.idPersona')
             ->join('variables_persona', 'variables_persona.idPersona', '=', 'persona.id')
             ->join('extra_denunciante', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
-            ->select('familiar.nombres as familiarNombre','familiar.primerAp as familiarPrimerAp', 'familiar.segundoAp as familiarSegundoAp', 'familiar.parentesco', 'cat_ocupacion.nombre as ocupacion' , 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+            ->select('familiar.nombres as familiarNombre', 'familiar.primerAp as familiarPrimerAp', 'familiar.segundoAp as familiarSegundoAp', 'familiar.parentesco', 'cat_ocupacion.nombre as ocupacion', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
             ->where('variables_persona.idCarpeta', '=', $id)
             ->union($familiaresDenunciado)
             ->get();
         return $familiares;
     }
 
-    public static function getDelitos($id){
+    public static function getDelitos($id)
+    {
         $delitos = DB::table('tipif_delito')
             ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
             ->join('cat_modalidad', 'cat_modalidad.id', '=', 'tipif_delito.idModalidad')
@@ -245,21 +260,23 @@ class CarpetaController extends Controller
         return $delitos;
     }
 
-    public static function hayDelitosVeh($id){
+    public static function hayDelitosVeh($id)
+    {
         $delveh = DB::table('tipif_delito')
             ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
             ->select('tipif_delito.id', 'cat_delito.id as idDelito', 'cat_delito.nombre as delito')
             ->where('tipif_delito.idCarpeta', '=', $id)
             ->whereIn('idDelito', [130, 131, 132, 133, 134, 135, 242, 243, 244, 245, 227])
             ->get();
-        if(count($delveh)>0){
+        if (count($delveh) > 0) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
-    public static function getAcusaciones($id){
+    public static function getAcusaciones($id)
+    {
         $acusaciones = DB::table('acusacion')
             ->join('extra_denunciante', 'extra_denunciante.id', '=', 'acusacion.idDenunciante')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
@@ -275,15 +292,16 @@ class CarpetaController extends Controller
         return $acusaciones;
     }
 
-    public static function getVehiculos($id){
-       $vehiculos = DB::table('vehiculo')
+    public static function getVehiculos($id)
+    {
+        $vehiculos = DB::table('vehiculo')
             ->join('tipif_delito', 'tipif_delito.id', '=', 'vehiculo.idTipifDelito')
             ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
             ->join('cat_submarca', 'cat_submarca.id', '=', 'vehiculo.idSubmarca')
             ->join('cat_marca', 'cat_marca.id', '=', 'cat_submarca.idMarca')
             ->join('cat_tipo_vehiculo', 'cat_tipo_vehiculo.id', '=', 'vehiculo.idTipoVehiculo')
             ->join('cat_color', 'cat_color.id', '=', 'vehiculo.idColor')
-            ->select('vehiculo.id','cat_delito.nombre as delito', 'cat_marca.nombre as marca', 'vehiculo.modelo', 'vehiculo.placas', 'cat_tipo_vehiculo.nombre as tipovehiculo', 'cat_color.nombre as color')
+            ->select('vehiculo.id', 'cat_delito.nombre as delito', 'cat_marca.nombre as marca', 'vehiculo.modelo', 'vehiculo.placas', 'cat_tipo_vehiculo.nombre as tipovehiculo', 'cat_color.nombre as color')
             ->where('tipif_delito.idCarpeta', '=', $id)
             ->get();
         return $vehiculos;

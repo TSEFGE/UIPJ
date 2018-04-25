@@ -1,19 +1,18 @@
  @extends('template.main')
 
+@section('title', 'Listado de Carpetas')
+
 @section('content')
-<div class="row">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-header">Listado de Carpetas</div>
-            <div class="card-body">
-                @if (session('status'))
-                    <div class="alert alert-success">
-                        {{ session('status') }}
-                    </div>
-                @endif
 
-
-                 <div id="listacarpeta">
+                <div class="boxtwo">
+                     @if (session('status'))
+                                    <div class="alert alert-success">
+                                        {{ session('status') }}
+                                    </div>
+                                @endif
+                </div>
+                <div id="listacarpeta" class="card-header">
+                  <div id="tabslista">
                    <ul class="nav nav-tabs">
                      <li class="nav-item">
                         <a class="nav-link active" data-toggle="tab" href="#iniciadas">Carpetas iniciadas</a>
@@ -23,12 +22,12 @@
                     </li>
                     </ul>
                  </div>
+                 </div>
 
                  <!-- Contenido en Pestañas -->
                 <div class="tab-content" id="contenidotabs">
-                <div class="tab-pane active container" id="iniciadas">
-                    <div class="boxtwo">
-                     <div class="table">
+                <div class="tab-pane active" id="iniciadas">
+                    <div class="table">
                     <table class="table table-striped">
                         <thead>
                             <th>Núm. Carpeta</th>
@@ -57,7 +56,7 @@
                     </table>
                 </div>
                         
-                    </div>
+                    
                 </div>
 
                 <div class="tab-pane container" id="asignadas">
@@ -67,14 +66,10 @@
                     </div>
                 </div> 
 
-        
-
-
                 <div class="text-center">
                     {{ $carpetas->links() }}
                 </div>
             </div>
-        </div>
-    </div>
-</div>
+     
+
 @endsection

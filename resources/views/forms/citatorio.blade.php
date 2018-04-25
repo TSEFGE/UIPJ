@@ -104,7 +104,7 @@
 	{{--<script src="{{ asset('js/citatorio.js') }}"></script>--}}
 	<script>
 		$('#fechaCit').datetimepicker({
-			format: 'YYYY-MM-DD',
+			format: 'DD-MM-YYYY',
 			defaultDate: moment(), 
 			minDate: moment(),          
 			 widgetPositioning: {
