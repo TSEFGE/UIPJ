@@ -11,7 +11,24 @@
                         {{ session('status') }}
                     </div>
                 @endif
-                <div class="table">
+
+
+                 <div id="listacarpeta">
+                   <ul class="nav nav-tabs">
+                     <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#iniciadas">Carpetas iniciadas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#asignadas">Carpetas asignadas</a>
+                    </li>
+                    </ul>
+                 </div>
+
+                 <!-- Contenido en Pestañas -->
+                <div class="tab-content" id="contenidotabs">
+                <div class="tab-pane active container" id="iniciadas">
+                    <div class="boxtwo">
+                     <div class="table">
                     <table class="table table-striped">
                         <thead>
                             <th>Núm. Carpeta</th>
@@ -39,6 +56,18 @@
                         </tbody>
                     </table>
                 </div>
+                        
+                    </div>
+                </div>
+
+                <div class="tab-pane container" id="asignadas">
+                    <div class="boxtwo">
+                       
+                        
+                    </div>
+                </div> 
+
+        
 
 
                 <div class="text-center">

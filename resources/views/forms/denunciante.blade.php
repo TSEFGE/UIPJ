@@ -163,14 +163,26 @@
         "hideMethod": "fadeOut"
     }
     
-	$('#tipop').hide(); 
+	
 
-	$('input[type=radio][name=esVictima]').change(function() {
-		if (this.value == 0) {
-			swal("Atención", "Ha seleccionado registrar un denunciante como ofendido .", "warning")
-		} else if (this.value == 1) {
-			swal("Atención", "Ha seleccionado registrar un denunciante como victima.", "warning")
-		}
-		$('#tipop').show();
-	});
+	var victima1 =localStorage.getItem('[id=undefined][name=undefined][id=esVictima1][name=esVictima]');
+	var victima2 =localStorage.getItem('[id=undefined][name=undefined][id=esVictima2][name=esVictima]');
+	if (victima1 == 1){
+			$("#esVictima1").attr('checked', true);
+			
+			
+		} else if (victima2 == 0){
+			$("#esVictima2").attr('checked', true);
+			
+		}	
+		
+
+		$('input[type=radio][name=esVictima]').change(function() {
+				if (this.value == 0) {
+					swal("Atención", "Ha seleccionado registrar un denunciante como ofendido .", "warning")
+				} else if (this.value == 1) {
+					swal("Atención", "Ha seleccionado registrar un denunciante como victima.", "warning")
+				}
+			});
+		
 @endpush

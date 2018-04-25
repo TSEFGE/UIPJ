@@ -97,7 +97,7 @@
 	<div class="col-12">
 		<div class="form-group">
 			{!! Form::label('descripcionHechos', 'Causa por la que se inicia', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::textarea('descripcionHechos', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la causa por la que se inicia','rows' => '3','data-validation'=>'length', 'data-validation-length'=>'5-500', 'data-validation-error-msg'=>'Nombre debe contener al menos cinco letras']) !!}
+			{!! Form::textarea('descripcionHechos', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la causa por la que se inicia','rows' => '3','data-validation'=>'length', 'data-validation-length'=>'5-1000', 'data-validation-error-msg'=>'Nombre debe contener al menos cinco letras']) !!}
 			{{--<div  style="color: #757575; float:right"><span id="contaDesc">500</span> Caracteres restantes</div>--}}
 		</div>
 	</div>

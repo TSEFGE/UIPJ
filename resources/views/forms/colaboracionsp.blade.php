@@ -3,7 +3,7 @@
 @section('title', 'Diligencias a servicios periciales')
 
 @section('contenido')
-    {!! Form::open(['route' => 'colaboracion.sp', 'method' => 'POST'])  !!}
+    {!! Form::open(['route' => 'diligencia.sp', 'method' => 'POST'])  !!}
 	{{ csrf_field() }}
 	<div class="card-header">
 		<div class="row">
@@ -44,15 +44,40 @@
 				        </tbody>
 				    </table>
 				</div>
+                <div class="row">
+                    <div class="form-group col-md-3">
+                                <center>
+                                    <label class="col-form-label col-form-label-sm">¿Con indicio?</label>
+                                    <div class="clearfix"></div>
+                                    <div class="form-check form-check-inline">
+                                        <label class="form-check-label col-form-label col-form-label-sm">
+                                            <input class="form-check-input" type="radio" id="conIndicio1" name="conIndicio" value="1" required> Sí
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <label class="form-check-label col-form-label col-form-label-sm">
+                                            <input class="form-check-input" type="radio" id="conIndicio2" name="conIndicio" value="0" required> No
+                                        </label>
+                                    </div>
+                                </center>
+                    </div>
+    				<div class="form-group col-md-3">
+    					{!! Form::label('unidadTermino', 'Unidad Termino', ['class' => 'col-form-label-sm']) !!}
+                        {!! Form::select('unidadTermino', ['horas' => 'horas', 'dias' => 'dias'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el término', 'required']) !!}
+    				</div>
+                    <div class="form-group col-md-3">
+                        {!! Form::label('cantidadTermino', 'Cantidad termino', ['class' => 'col-form-label-sm']) !!}
+                        {!! Form::number('cantidadTermino', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el tiempo', 'required']) !!}
+                    </div>
+                    <div class="form-group col-md-3">
+                        {!! Form::label('servicio', 'Servicio:', ['class' => 'col-form-label-sm']) !!}
+                        {!! Form::select('servicio', $servicios->pluck('nombre','id')->all(), null, ['class' => 'form-control select', 'required']) !!}
+                    </div>
+                </div>
+
 				<div class="form-group">
-					{!! Form::label('termino', 'Término', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('termino', ['8' => '8 horas', '12' => '12 horas', '24' => '24 horas'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el término', 'required']) !!}
-				</div>
-			</div>
-			<div class="boxtwo ">
-				<h6>Servicios:</h6>
-				<div class="form-group">
-					{!! Form::select('servicios', $servicios->pluck('nombre','id')->all(), null, ['id'=>'multi','name'=>'servicios[]','class' => 'form-control select2-multi', 'multiple' => 'multiple']) !!}
+                    {!! Form::label('observaciones', 'Observaciones:', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::textarea('observaciones', null, ['class'=>'form-control', 'rows' => 2,'required']) !!}
 				</div>
 			</div>
 			@include('forms.idcarpeta')

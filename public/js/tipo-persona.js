@@ -209,7 +209,7 @@ $('.bien').hide();
             $('#datosExtra').show();
             $('#extra-fis').show();
             $('#Victima').show();
-            $('#esVictima').prop('checked',false);
+            //$('#esVictima').prop('checked',false);
 
             //Datos personales no requeridos de Persona Moral o Empresa
             $('#nombres2').prop('disabled', true);
