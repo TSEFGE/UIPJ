@@ -111,6 +111,13 @@ body{
 	padding: 0rem 0rem 0rem 0rem;
 	border-bottom: 0;
 }
+#listacarpeta {
+	padding: 0rem 0rem 0rem 0rem;
+	border-bottom: 0;
+}
+#tabslista{
+	margin-left: 35%;
+}
 #breadcumb >li>a{
 	color: #1b1b1b;
 }
