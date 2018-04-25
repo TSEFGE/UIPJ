@@ -328,7 +328,7 @@
     });
     $(function () {
         $('#fechanac2').datetimepicker({
-            format: 'YYYY-MM-DD',
+            format: 'DD-MM-YYYY',
             minDate: moment().subtract(150, 'years').format('YYYY-MM-DD'),
             maxDate: moment(),
             widgetPositioning: {
