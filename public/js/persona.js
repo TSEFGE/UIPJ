@@ -28,4 +28,24 @@ $("#numExterno3").val("S/N");
 $("#numExternoC").val("S/N");
 $("#fax").val("SIN INFORMACION");
 $("#correo").val("sin@informacion.com");
+
+
+$("#docIdentificacion").change(function(event){
+
+    var otro= $("#docIdentificacion").val();
+    
+    if(otro=="OTRO"){
+    
+      
+      $("#otrodocto").show();
+           
+    }
+    else
+    {
+
+      $("#otrodocto").hide(); 
+    }
+
 });
+});
+

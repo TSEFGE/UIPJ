@@ -24,12 +24,11 @@ class StoreCarpeta extends FormRequest
     public function rules()
     {
         return [
-            'npd' => 'min:3|max:50',
-            'numIph' => 'min:3|max:50',
-            'narracionIph' => 'min:3|max:2000',
-            'descripcionHechos' => 'min:3|max:500',
+            'npd'               => 'min:3|max:50',
+            'numIph'            => 'min:3|max:50',
+            'narracionIph'      => 'min:3|max:2000',
+            'descripcionHechos' => 'min:3|max:1000',
 
-            
         ];
     }
 }

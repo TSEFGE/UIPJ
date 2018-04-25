@@ -13,7 +13,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/bootstrap/css/bootstrap.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/font-awesome/css/font-awesome.css') }}">
 	<!-- Theme style -->
-	<link rel="stylesheet" href="{{ asset('admin/dist/css/adminlte.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('admin/dist/css/adminlte.css') }}">
 	<link rel="stylesheet" href="{{asset ('plugins/sweetalert/css/sweetalert.css')}}">
 	<link rel="stylesheet" href="{{ asset('css/cssfonts.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/pagination.css') }}">
@@ -38,7 +38,7 @@
 				<div class="container-fluid">
 					<div class="row mb-2">
 						<div class="col-sm-6">
-							<h1 class="m-0 text-dark">@yield('title')</h1>
+							<h5 class="m-0 text-dark">@yield('title')</h5>
 						</div><!-- /.col -->
 						<div class="col-sm-6">
 							<ol class="breadcrumb float-sm-right" id="breadcumb">

@@ -1,6 +1,6 @@
 @extends('template.form')
 
-@section('title', 'Generar documento de colaboración con servicios periciales')
+@section('title', 'Diligencias a servicios periciales')
 
 @section('contenido')
     {!! Form::open(['route' => 'colaboracion.sp', 'method' => 'POST'])  !!}
