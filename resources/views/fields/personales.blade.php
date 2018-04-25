@@ -161,8 +161,17 @@
 			</div>
 			<div class="col-3">
 				<div class="form-group">
-					{!! Form::label('docIdentificacion', 'Documento de identificación', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('docIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el docto. de identificacion','data-validation'=>'length', 'data-validation-length'=>'3-50','data-validation-error-msg'=>'Documento de identificación debe contener al menos tres letras']) !!}
+					{!! Form::label('docIdentificacion', 'Documento de identificación', ['class' => 'col-form-label-sm']) !!}					
+
+					{!! Form::select('docIdentificacion', ['CREDENCIAL DE ELECTOR' => 'CREDENCIAL DE ELECTOR', 'PASAPORTE' => 'PASAPORTE','	
+						CARTILLA MILITAR' => 'CARTILLA MILITAR','LICENCIA PARA CONDUCIR' => 'LICENCIA PARA CONDUCIR','CREDENCIAL ESCOLAR' => 'CREDENCIAL ESCOLAR','VISA' => 'VISA','OTRO' => 'OTRO'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una forma de comisión', 'required']) !!}
+
+
+					<div id="otrodocto" style="display:none;">
+					{!! Form::label('otroDocumento', 'Otro documento identificación', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::text('otroDocumento',null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese documento','data-validation'=>'length', 'data-validation-length'=>'5-200','data-validation-error-msg'=>'El nombre de documento debe contener al menos 5 caracteres']) !!}
+					</div>
+
 				</div>
 				
 			</div>
