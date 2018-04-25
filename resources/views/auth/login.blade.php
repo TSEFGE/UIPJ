@@ -1,5 +1,5 @@
 {{-- @extends('template.main') --}}
-<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<script src="{{ asset('plugins/cookie/js.cookie.min.js')}}" ></script>
 <script type="text/javascript">
 Cookies.remove('isLiveC');
 //localStorage.clear();
@@ -104,7 +104,6 @@ sessionStorage.removeItem('isLive');
 	<script src="{{ asset('plugins/popper/js/popper.min.js')}}" ></script>
 	<script src="{{ asset('plugins/bootstrap/js/bootstrap.min.js')}}" ></script>
 	<script src="{{ asset('plugins/disableautofill/jquery.disableAutoFill.min.js')}}" ></script>
-	<script src="{{ asset('plugins/cookie/js.cookie.min.js')}}" ></script>
 	<!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
 
