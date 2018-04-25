@@ -22,7 +22,7 @@
     // Tempus Dominus 
     $(function () {
         $('#fechadelit').datetimepicker({
-           format: 'YYYY-MM-DD',
+           format: 'DD-MM-YYYY',
            maxDate: moment(),
            widgetPositioning: {
             vertical: 'bottom',
