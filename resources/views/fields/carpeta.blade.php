@@ -76,7 +76,7 @@
 				<div class="form-group">
 					{!! Form::label('fechaIph', 'Fecha IPH', ['class' => 'col-form-label-sm']) !!}
 					<div class="input-group date" id="fechaiph2" data-target-input="nearest">
-		                {!! Form::text('fechaIph', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaiph2', 'data-toggle' => 'datetimepicker', 'required', 'placeholder' => 'AAAA-MM-DD','data-validation'=>'date', 'data-validation-format'=>'dd-mm-yyyy']) !!}
+		                {!! Form::text('fechaIph', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaiph2', 'data-toggle' => 'datetimepicker', 'required', 'placeholder' => 'DD-MM-AAAA','data-validation'=>'date', 'data-validation-format'=>'dd-mm-yyyy']) !!}
 		                <div class="input-group-append" data-target="#fechaiph2" data-toggle="datetimepicker">
 		                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
 		                </div>

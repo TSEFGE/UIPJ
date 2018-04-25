@@ -1,5 +1,5 @@
 $('#fechanac').datetimepicker({
-    format: 'YYYY-MM-DD',
+    format: 'DD-MM-YYYY',
     minDate: moment().subtract(150, 'years').format('YYYY-MM-DD'),
     maxDate: moment().subtract(16, 'years').format('YYYY-MM-DD'),
     widgetPositioning: {
