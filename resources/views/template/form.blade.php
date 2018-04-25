@@ -59,4 +59,8 @@
     $.validate({
         lang : 'es'
     });
+    $('form').sisyphus({
+        excludeFields: $( 'input[name=_token]')
+    });
+    
 @endpush
