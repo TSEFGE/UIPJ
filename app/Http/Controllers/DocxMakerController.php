@@ -405,10 +405,37 @@ class DocxMakerController extends Controller
         		$distritoLetra = "DECIMO";
         		break;
         	case 'XI':
-        		$distritoLetra = "DECIMOPRIMER";
+        		$distritoLetra = "DECIMOPRIMERO";
         		break;
         	case 'XII':
         		$distritoLetra = "DECIMOSEGUNDO";
+        		break;
+        	case 'XIII':
+        		$distritoLetra = "DECIMOTERCERO";
+        		break;
+        	case 'XIV':
+        		$distritoLetra = "DECIMOCUARTO";
+        		break;
+        	case 'XV':
+        		$distritoLetra = "DECIMOQUINTO";
+        		break;
+        	case 'XVI':
+        		$distritoLetra = "DECIMOSEXTO";
+        		break;
+        	case 'XVII':
+        		$distritoLetra = "DECIMOSEPTIMO";
+        		break;
+        	case 'XVIII':
+        		$distritoLetra = "DECIMOOCTAVO";
+        		break;
+        	case 'XIX':
+        		$distritoLetra = "DECIMONOVENO";
+        		break;
+        	case 'XX':
+        		$distritoLetra = "VIGESIMO";
+        		break;
+        	case 'XXI':
+        		$distritoLetra = "VIGESIMO PRIMERO";
         		break;
         	default:
         		$distritoLetra = "PRIMER";

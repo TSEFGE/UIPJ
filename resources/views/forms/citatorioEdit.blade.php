@@ -51,7 +51,7 @@
 						<div class="form-group" id="" >
 							{!! Form::label('hora', 'Hora', ['class' => 'col-form-label-sm']) !!}
 							<div class="input-group date" id="horaCit" data-target-input="nearest">
-								{!! Form::text('hora', $citatorio->hora, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#horaCit', 'required', 'placeholder' => '00:00','data-toggle'=>"datetimepicker",'data-validation'=>'custom' ,'data-validation-regexp'=>'^([01]?[0-9]|2[0-3]):[0-5][0-9]$','data-validation-error-msg'=>'Ingrese hora en el formato correcto HH:MM:SS (Formato 24 hrs)']) !!}
+								{!! Form::text('hora', Carbon\Carbon::parse($citatorio->fecha)->format("H:i"), ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#horaCit', 'required', 'placeholder' => '00:00','data-toggle'=>"datetimepicker",'data-validation'=>'custom' ,'data-validation-regexp'=>'^([01]?[0-9]|2[0-3]):[0-5][0-9]$','data-validation-error-msg'=>'Ingrese hora en el formato correcto HH:MM:SS (Formato 24 hrs)']) !!}
 								<div class="input-group-append" data-target="#horaCit" data-toggle="datetimepicker">
 									<div class="input-group-text"><i class="fa fa-clock-o"></i></div>
 								</div>
@@ -83,19 +83,12 @@
 	<script src="{{ asset('plugins/moment/js/moment.min.js') }}"></script>
     <script src="{{ asset('plugins/moment/locales/es.js') }}"></script>
 	<script src="{{ asset('plugins/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-	<script src="{{ asset('js/citatorio.js') }}"></script>
+	{{--<script src="{{ asset('js/citatorio.js') }}"></script>--}}
 	<script>
-		$('#fechaCit').datetimepicker({
-			format: 'YYYY-MM-DD',			
-			minDate: moment(),          
-			 widgetPositioning: {
-			  vertical: 'bottom',
-			  horizontal: 'left'
-		  }
-		 });
 		$(function () { //Datetimepicker a la zquierda y debajo para vizualizar mejor no se oculte en la nav
 		  $('#horaCit').datetimepicker({
-			  format: 'LT',			  
+			  format: 'LT',
+			  defaultDate: moment(),  
 			  widgetPositioning: {
 				  vertical: 'bottom',
 				  horizontal: 'left'

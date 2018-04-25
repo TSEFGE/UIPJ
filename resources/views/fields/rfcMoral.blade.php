@@ -53,10 +53,12 @@ function obtenerRFC(){
 			homo=homoC.join("");
 
 			if($("#rfc2").val() == "" || $("#homo2").val() == ""){
-				$("#rfc2").val(rfc);
-				$("#homo2").val(homo);
-				$('#rfcAux').val(rfcOriginal);
-				toastr.success('Se ha modificado el RFC', '¡Atención!');
+				if($("#fechaAltaEmpresa").val() != "" ){
+						$("#rfc2").val(rfc);
+						$("#homo2").val(homo);
+						$('#rfcAux').val(rfcOriginal);
+				//	toastr.success('Se ha modificado el RFC', '¡Atención!');
+					}
 			}else{
 				if($("#rfc2").val() != rfc || $("#homo2").val() != homo){
 					toastr.options ={

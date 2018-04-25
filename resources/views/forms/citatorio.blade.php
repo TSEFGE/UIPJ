@@ -101,9 +101,8 @@
 	<script src="{{ asset('plugins/moment/js/moment.min.js') }}"></script>
     <script src="{{ asset('plugins/moment/locales/es.js') }}"></script>
 	<script src="{{ asset('plugins/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-	<script src="{{ asset('js/citatorio.js') }}"></script>
-	<script defer>
-		
+	{{--<script src="{{ asset('js/citatorio.js') }}"></script>--}}
+	<script>
 		$('#fechaCit').datetimepicker({
 			format: 'YYYY-MM-DD',
 			defaultDate: moment(), 
