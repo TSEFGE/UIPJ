@@ -9815,10 +9815,12 @@ body,
   .sidebar-mini.sidebar-collapse .main-sidebar .user-panel .image {
     float: none;
   }
+  /* EFECTO HOVER DE MINI SIDE BAR DEHABILITADO
   .sidebar-mini.sidebar-collapse .main-sidebar:hover {
     width: 250px;
   }
-  .sidebar-mini.sidebar-collapse .main-sidebar:hover .user-panel {
+ 
+ .sidebar-mini.sidebar-collapse .main-sidebar:hover .user-panel {
     text-align: left;
   }
   .sidebar-mini.sidebar-collapse .main-sidebar:hover .user-panel .image {
@@ -9841,7 +9843,7 @@ body,
   }
   .sidebar-mini.sidebar-collapse .main-sidebar:hover .nav-sidebar > .nav-item > .nav-link > span {
     display: inline-block !important;
-  }
+  }*/
   .sidebar-mini.sidebar-collapse .visible-sidebar-mini {
     display: block !important;
   }
