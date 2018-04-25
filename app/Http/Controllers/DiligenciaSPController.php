@@ -8,10 +8,35 @@ use App\Http\Controllers\DocxMakerController;
 use Illuminate\Support\Facades\Auth;
 use DB;
 use Carbon\Carbon;
+use GuzzleHttp\Client;
 
 class DiligenciaSPController extends Controller
 {
+	public static function test(Request $request){
+		DiligenciaSP::create(['idAcusacion' => $request->idAcusacion, 'numOficio' => $request->numOficio, 'termino' => $request->termino, 'dictamen' => $request->dictamen, 'status' => $request->status]);
+		return ['success'=>true];
+	}
+
 	public static function enviarSolicitud(Request $request){
+		//dd($request->all());
+		$client = new Client(['base_uri' => 'http://127.0.0.1/uipj/public/api/']);
+		$res = $client->post("test",  [
+			'headers' => [
+				'Content-Type' => 'application/json'
+			],
+			'json' => [
+				'idAcusacion' => $request->radioAcusacion,
+				'numOficio' => 1,
+				'termino' => "hola",
+				'dictamen' => "xd",
+				'status' => 1
+			]
+		]);
+
+		//$response = $res->getStatusCode();
+		$result= $res->getBody()->getContents();
+		dd($result);
+
 		$carpeta = DB::table('acusacion')
 			->join('carpeta', 'carpeta.id', '=', 'acusacion.idCarpeta')
 			->join('users', 'users.id', '=', 'carpeta.idFiscal')
