@@ -126,7 +126,11 @@
 	<script src="{{ asset('plugins/toastr/js/toastr.min.js')}}" ></script>
 	<script src="{{ asset('plugins/moment/js/moment.min.js') }}"></script>
     <script src="{{ asset('plugins/moment/locales/es.js') }}"></script>
-    <script src="{{ asset('plugins/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+	<script src="{{ asset('plugins/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+	<script src="{{ asset('js/persona.js') }}"></script>
+	<script src="{{ asset('js/persona-moral.js') }}"></script>
+	<script src="{{ asset('js/tipo-persona.js') }}"></script>
+	<script src="{{ asset('js/denunciante.js') }}"></script>	
     <script src="{{ asset('js/selects/async.js') }}"></script>
     <script src="{{ asset('js/selects/origen.js') }}"></script>
     <script src="{{ asset('js/selects/domicilio.js') }}"></script>
@@ -135,10 +139,6 @@
 	<script src="{{ asset('js/selects/sisy.js') }}"></script>
 	<script src="{{ asset('js/validations/tab-denunciante.js') }}"></script>
 	<script src="{{ asset('js/curp.js') }}"></script>
-	<script src="{{ asset('js/persona.js') }}"></script>
-	<script src="{{ asset('js/persona-moral.js') }}"></script>
-	<script src="{{ asset('js/tipo-persona.js') }}"></script>
-	<script src="{{ asset('js/denunciante.js') }}"></script>	
 	@include('fields.rfcMoral');
     @include('fields.rfcFisico')
 	@include('fields.ajaxCurp')
