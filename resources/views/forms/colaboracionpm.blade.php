@@ -1,6 +1,6 @@
 @extends('template.form')
 
-@section('title', 'Generar documento de colaboración con policia ministerial')
+@section('title', 'Diligencias a policia ministerial')
 
 @section('contenido')
 {!! Form::open(['route' => 'colaboracion.pm', 'method' => 'POST'])  !!}
