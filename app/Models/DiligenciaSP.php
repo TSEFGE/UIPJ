@@ -15,7 +15,7 @@ class DiligenciaSP extends Model
      */
     
     public $fillable = [
-        'id', 'idAcusacion', 'numOficio', 'termino', 'dictamen', 'status'
+        'id', 'idAcusacion', 'numOficio', 'termino', 'dictamen', 'status', 'oficio'
    ];
 
    public function acusacion()
