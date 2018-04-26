@@ -14,7 +14,12 @@
     //Si es empresa
     $("#esEmpresa1").change(function(event){
         if ($('#esEmpresa1').is(':checked') ) {
-
+            correcto= 0;
+            $("#datosPer").addClass('visible');
+            $("#datosDir").addClass('visible');
+            $("#datosTrab").addClass('visible');           
+            $("#datosNotif").addClass('visible');            
+            $("#btn-submit").prop('disabled',true);
             $('.xvacio').hide();
             $('.xerror').hide();
             $('.bien').hide();
@@ -23,8 +28,9 @@
             $('#personaMoral').show();
             $('#datosDir').show();
             $('#datosTrab').hide();
+            $('#datosTrab').removeClass('visible');
             $('#datosNotif').show();
-            $('#datosExtra').hide();
+            $('#datosExtra').hide();            
             $('#extra-fis').hide();
             $('#Victima').hide();
 
@@ -192,12 +198,18 @@
     //No es empresa
     $("#esEmpresa2").change(function(event){
         if ($('#esEmpresa2').is(':checked') ) {
+            correcto = 0;
+            $("#datosPer").addClass('visible');
+            $("#datosDir").addClass('visible');
+            $("#datosTrab").addClass('visible');           
+            $("#datosNotif").addClass('visible');
+            
+            $("#btn-submit").prop('disabled',true);
+            $('.xvacio').hide();
 
-$('.xvacio').hide();
+            $('.xerror').hide();
 
-$('.xerror').hide();
-
-$('.bien').hide();
+            $('.bien').hide();
 
 
             $('#datosPer').show();
@@ -205,6 +217,7 @@ $('.bien').hide();
             $('#personaMoral').hide();
             $('#datosDir').show();
             $('#datosTrab').show();
+            $('#datosTrab').addClass('visible');
             $('#datosNotif').show();
             $('#datosExtra').show();
             $('#extra-fis').show();

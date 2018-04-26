@@ -1,8 +1,8 @@
-
+$("#btn-submit").prop('disabled',true);
 $('#tdenunciante.nav-tabs a').on('hidden.bs.tab', function(event){
     //event.preventDefault();
-        var index= $($(this).attr('href')).index();
-        var pass0,pass1,pass2,pass3,pass4;
+        var index= $($(this).attr('href')).index();       
+        
         switch(index) {
             case 0:  
             var countvacio = $('#collapsePersonales1 .vacio').length;
@@ -36,7 +36,8 @@ $('#tdenunciante.nav-tabs a').on('hidden.bs.tab', function(event){
             } else{  
                 $("#tab1").show();                             
                 $("#tab1").html(countvacio); 
-            }                                 
+            } 
+                                            
             break;                                
             case 1:
             var countvacio = $('#collapseDir1 .vacio').length; 
@@ -56,6 +57,7 @@ $('#tdenunciante.nav-tabs a').on('hidden.bs.tab', function(event){
             else if( correctos ==totales){
                 $("#t2").show();
                 $("#t2").html('<i class="fa fa-check" aria-hidden="true"></i>'); 
+                $("#t2").addClass('correcto');
                 pass1 =1;                                
             }
             else{  
@@ -90,7 +92,8 @@ $('#tdenunciante.nav-tabs a').on('hidden.bs.tab', function(event){
             } 
             else if( correctos ==totales){
                 $("#t3").show();
-                $("#t3").html('<i class="fa fa-check" aria-hidden="true"></i>');   
+                $("#t3").html('<i class="fa fa-check" aria-hidden="true"></i>'); 
+                $("#t3").addClass('correcto');  
                 pass2 =1;                                   
             }
             else{  
@@ -125,7 +128,8 @@ $('#tdenunciante.nav-tabs a').on('hidden.bs.tab', function(event){
         } 
         else if( correctos ==totales){
             $("#t4").show();
-            $("#t4").html('<i class="fa fa-check" aria-hidden="true"></i>'); 
+            $("#t4").html('<i class="fa fa-check" aria-hidden="true"></i>');
+            $("#t4").addClass('correcto');   
             pass3 =1;                                                                 
         }                                
         else{  
@@ -149,7 +153,19 @@ $('#tdenunciante.nav-tabs a').on('hidden.bs.tab', function(event){
             
       default:
         break;
+    }   
+    
+    var tabs= $("#tdenunciante .visible").length;
+    var correcto = $('#tdenunciante .correcto').length;
+    if (correcto == tabs){
+        $("#btn-submit").prop('disabled',false);
+    }else{
+        $("#btn-submit").prop('disabled',true);
     }
-         
+   
+    
+    
+    console.log( "tabs", tabs);
   });
-  
+  console.log( "correcto", correcto);
+    

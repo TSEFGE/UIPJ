@@ -29,3 +29,4 @@ function topFunction() {
 	document.documentElement.scrollTop = 0;
 }
 $('[data-toggle="tooltip"]').tooltip();
+var correcto=0; 

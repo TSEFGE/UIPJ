@@ -53,7 +53,7 @@
 				<div class="row">
 					@if(!empty($idCarpeta)) {!! Form::hidden('idCarpeta', $idCarpeta) !!} @endif
 				</div>
-				<div class="" id="datosPer">
+				<div class="" id="">
 					<div id="denunciante">
 
 						<ul id="tdenunciante" class="nav nav-tabs">
