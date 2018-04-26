@@ -248,55 +248,56 @@ $("#idEstadoOrigen").change(function() {
 });
 
 function obtenerCURP() {
-    nombre = $("#nombres").val().toUpperCase();
-    apellidoPaterno = $("#primerAp").val().toUpperCase();
-    apellidoMaterno = $("#segundoAp").val().toUpperCase();
-    fecha = $("#fechaNacimiento").val();
-    sexo = $("#sexo").val();
-    if (sexo == 'HOMBRE') {
-        sexo = "H";
-    } else if (sexo == 'MUJER') {
-        sexo = "M";
-    } else {
-        sexo = "";
-    }
-    if (nombre != "" && apellidoPaterno != "" && sexo != "") {
-        var abreviacion = ["AS", "BC", "BS", "CC", "CS", "CH", "CL", "CM", "CX", "DF", "DG", "GT", "GR", "HG", "JC", "MC", "MN", "MS", "NT", "NL", "OC", "PL", "QT", "QR", "SP", "SL", "SR", "TC", "TS", "TL", "VZ", "YN", "ZS"];
-        estado = abreviacion[($("#idEstadoOrigen").val())];
-        año = fecha.substr(8, 2);
-        mes = fecha.substr(3, 2);
-        dia = fecha.substr(0, 2);
-        console.log(fecha);
-        console.log(año);
-        console.log(mes);
-        console.log(dia);
-        var curp = generaCurp({
-            nombre: nombre,
-            apellido_paterno: apellidoPaterno,
-            apellido_materno: apellidoMaterno,
-            sexo: sexo,
-            estado: estado,
-            fecha_nacimiento: [dia, mes, año]
-        });
-        curp2 = curp;
-        if ($("#curp").val() == "") {
-            $("#curp").val(curp);
-            $('#curp').trigger('change');
-            toastr.success('Se ha modificado el CURP', '¡Atención!');
-        } else {
-            if ($("#curp").val() != curp2) {
-                toastr.options = {
-                    "closeButton": true,
-                    "newestOnTop": true,
-                    "preventDuplicates": true,
-                    "timeOut": 0,
-                    "extendedTimeOut": 10000,
-                    "positionClass": "toast-bottom-right",
-                }
-                toastr.info('Se ha detectado un cambio ¿Desea actualizar el CURP?<br /><button type="button" class="btn btn-light" onclick="actualizarCurp(\'' + curp2 + '\')">Sí</button>');
-            }
-        }
-    }
+	nombre = $("#nombres").val().toUpperCase();
+	apellidoPaterno = $("#primerAp").val().toUpperCase();
+	apellidoMaterno = $("#segundoAp").val().toUpperCase();
+	fecha = $("#fechaNacimiento").val();
+	sexo = $("#sexo").val();
+	if (sexo == 'HOMBRE') {
+		sexo = "H";
+	} else if(sexo == 'MUJER'){
+		sexo = "M";
+	}else{
+		sexo="";
+	}
+	if(nombre!=""&& apellidoPaterno!=""&&sexo!=""){
+		var abreviacion = ["AS", "BC", "BS", "CC", "CS", "CH", "CL", "CM", "CX", "DF", "DG", "GT", "GR", "HG", "JC", "MC", "MN", "MS", "NT", "NL", "OC", "PL", "QT", "QR", "SP", "SL", "SR", "TC", "TS", "TL", "VZ", "YN", "ZS"];
+		estado = abreviacion[($("#idEstadoOrigen").val())];
+		console.log(fecha);
+		dia = fecha.substr(0, 2);
+		mes = fecha.substr(3, 2);
+		año = fecha.substr(6, 4);
+
+		//console.log(dia+"/"+mes+"/"+año);
+
+		var curp = generaCurp({
+			nombre: nombre,
+			apellido_paterno: apellidoPaterno,
+			apellido_materno: apellidoMaterno,
+			sexo: sexo,
+			estado: estado,
+			fecha_nacimiento: [dia, mes, año]
+		});
+		curp2=curp;
+		if($("#curp").val() == ""){
+			$("#curp").val(curp);
+			$('#curp').trigger('change');
+			toastr.success('Se ha modificado el CURP', '¡Atención!');
+		}else{
+			if($("#curp").val() != curp2){
+				toastr.options ={
+					"closeButton": true,
+					"newestOnTop": true,
+					"preventDuplicates": true,
+					"timeOut": 0,
+  					"extendedTimeOut": 10000,
+  					"positionClass": "toast-bottom-right",
+				}
+				toastr.info('Se ha detectado un cambio ¿Desea actualizar el CURP?<br /><button type="button" class="btn btn-light" onclick="actualizarCurp(\''+curp2+'\')">Sí</button>');
+			}
+
+		}
+	}
 }
 
 function actualizarCurp(curp) {
