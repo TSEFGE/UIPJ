@@ -84,4 +84,6 @@
     <script src="{{ asset('plugins/fileinput/js/fileinput.min.js')}}" ></script>
     <script src="{{ asset('plugins/fileinput/themes/fa/theme.min.js')}}" ></script>
     <script src="{{ asset('plugins/fileinput/locales/es.js')}}" ></script>
+    <script src="{{ asset('js/narraciones.js')}}" ></script>
+
 @endpush
