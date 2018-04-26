@@ -49,7 +49,7 @@
 
 <!-- Contenido en Pestañas -->
 <div class="tab-content" id="contenidotabs">
-    <div class="tab-pane active container" id="tdenunciante">
+    <div class="tab-pane active " id="tdenunciante">
         <div class="boxtwo">
             @include('tables.denunciantes')
             <div class="text-right"> 
@@ -58,7 +58,7 @@
         </div>
     </div>
 
-    <div class="tab-pane container" id="tdenunciado">
+    <div class="tab-pane " id="tdenunciado">
         <div class="boxtwo">
             @include('tables.denunciados')
             <div class="text-right"> 
@@ -67,7 +67,7 @@
         </div>
     </div> 
 
-    <div class="tab-pane container" id="tautoridad">
+    <div class="tab-pane " id="tautoridad">
         <div class="boxtwo">
             @include('tables.autoridades')
             <div class="text-right"> 
@@ -76,7 +76,7 @@
         </div>
     </div>
 
-    <div class="tab-pane container" id="ttestigo">
+    <div class="tab-pane " id="ttestigo">
         <div class="boxtwo">
             @include('tables.testigos')
             <div class="text-right"> 
@@ -85,7 +85,7 @@
         </div>
     </div>
 
-    <div class="tab-pane container" id="tabogado">
+    <div class="tab-pane " id="tabogado">
         <div class="boxtwo">
             @include('tables.abogados')
             <div class="text-right"> 
@@ -94,7 +94,7 @@
         </div>          
     </div>
 
-    <div class="tab-pane container" id="tdefensa">
+    <div class="tab-pane " id="tdefensa">
         <div class="boxtwo">
             @include('tables.defensas')
             <div class="text-right"> 
@@ -103,7 +103,7 @@
         </div>               
     </div>
 
-    <div class="tab-pane container" id="tfamiliar">
+    <div class="tab-pane " id="tfamiliar">
         <div class="boxtwo">
             @include('tables.familiares')
             <div class="text-right"> 
@@ -112,7 +112,7 @@
         </div>                   
     </div>
 
-    <div class="tab-pane container" id="tdelito">
+    <div class="tab-pane " id="tdelito">
         <div class="boxtwo">
             @include('tables.delitos')
             <div class="text-right"> 
@@ -121,7 +121,7 @@
         </div>          
     </div>
 
-    <div class="tab-pane container" id="tacusacion">
+    <div class="tab-pane " id="tacusacion">
         <div class="boxtwo">
             @include('tables.acusaciones')
             <div class="text-right">
@@ -134,7 +134,7 @@
         </div>
     </div>
 
-    <div class="tab-pane container" id="tvehiculo">
+    <div class="tab-pane " id="tvehiculo">
         <div class="boxtwo">
             @include('tables.vehiculos')
             <div class="text-right"> 
