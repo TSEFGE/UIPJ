@@ -45,6 +45,7 @@
     
 @endpush
 
+
 @push('docready-js')
     $('select').select2({
         language: "es"
