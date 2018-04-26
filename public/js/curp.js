@@ -332,9 +332,12 @@ function obtenerCURP() {
 		var abreviacion = ["AS", "BC", "BS", "CC", "CS", "CH", "CL", "CM", "CX", "DF", "DG", "GT", "GR", "HG", "JC", "MC", "MN", "MS", "NT", "NL", "OC", "PL", "QT", "QR", "SP", "SL", "SR", "TC", "TS", "TL", "VZ", "YN", "ZS"];
 		estado = abreviacion[($("#idEstadoOrigen").val())];
 		console.log(fecha);
-		año = fecha.substr(0, 4);
-		mes = fecha.substr(5, 2);
-		dia = fecha.substr(8, 2);
+		dia = fecha.substr(0, 2);
+		mes = fecha.substr(3, 2);
+		año = fecha.substr(6, 4);
+
+		//console.log(dia+"/"+mes+"/"+año);
+
 		var curp = generaCurp({
 			nombre: nombre,
 			apellido_paterno: apellidoPaterno,
@@ -360,7 +363,7 @@ function obtenerCURP() {
 				}
 				toastr.info('Se ha detectado un cambio ¿Desea actualizar el CURP?<br /><button type="button" class="btn btn-light" onclick="actualizarCurp(\''+curp2+'\')">Sí</button>');
 			}
-			
+
 		}
 	}
 }
