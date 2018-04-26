@@ -1,9 +1,11 @@
 <nav class="main-header navbar navbar-expand   border-bottom ">
 	<!-- Left navbar links -->
 	<ul class="navbar-nav">
-		<li class="nav-item">
-			<a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
-		</li>{{--
+		<li class="nav-item" id="pushmenu">
+			<a class="nav-link" data-widget="pushmenu"  href="#"><i class="fa fa-bars"></i></a>	
+		</li>
+		<span id="mensajepush" style="color: white"> <i class="fa fa-arrow-left" aria-hidden="true"></i> Da click para abrir la barra izquierda</span>
+		{{--
 		<li class="nav-item d-none d-sm-inline-block">
 			<a href="index3.html" class="nav-link">Home</a>
 		</li>
