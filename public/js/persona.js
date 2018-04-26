@@ -29,14 +29,7 @@ $(document).ready(function() {
     $("#numExternoC").val("S/N");
     $("#fax").val("SIN INFORMACION");
     $("#correo").val("sin@informacion.com");
-    $("#docIdentificacion").change(function(event) {
-        var otro = $("#docIdentificacion").val();
-        if (otro == "OTRO") {
-            $("#otrodocto").show();
-        } else {
-            $("#otrodocto").hide();
-        }
-    });
+    
     $('#idOcupacion').change(function(event) {
         var ocupacion = $('#idOcupacion').val();
         if (ocupacion == 2947) {
@@ -68,4 +61,30 @@ $(document).ready(function() {
             $("#numInterno2").prop('disabled', false);
         }
     });
+
+
+$("#docIdentificacion").change(function(event){
+
+    var otro= $("#docIdentificacion").val();
+    
+    if(otro=="OTRO"){
+    
+      
+      $("#otrodocto").show();
+      $("#otroDocumento").removeClass("error"); 
+      $("#otroDocumento").removeClass("valid"); 
+      $("#otroDocumento").addClass("vacio");  
+
+    }
+    else
+    {
+
+      $("#otrodocto").hide(); 
+      $("#otroDocumento").removeClass("vacio");
+      $("#otroDocumento").removeClass("error"); 
+      $("#otroDocumento").removeClass("valid"); 
+    }
+
+});
+
 });

@@ -18,7 +18,7 @@
 		</div>
 		<div class="col">
 			<div class="text-right">
-				{!! Form::button('<i class="fa fa-eraser" aria-hidden="true"></i>', array ('class' => 'btn btn-primary borrar ', 'id' => 'btn-reset')) !!}
+				{!! Form::button('<i class="fa fa-eraser" aria-hidden="true"></i>', array ('class' => 'btn btn-secondary borrar ', 'id' => 'btn-reset')) !!}
 				{!! Form::submit('Guardar', ['class' => 'btn btn-primary', 'id' => 'btn-submit']) !!}
 			</div>
 		</div>
@@ -40,7 +40,7 @@
 						<div class="form-group">
 							{!! Form::label('fecha', 'Fecha', ['class' => 'col-form-label-sm']) !!}
 							<div class="input-group date" id="fechaCit" data-target-input="nearest">
-								{!! Form::text('fecha',$citatorio->fecha, ['readonly','class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaCit', 'data-toggle' => 'datetimepicker', 'required', 'placeholder' => 'AAAA-MM-DD', 'data-validation'=>'date','data-validation-format'=>'yyyy-mm-dd','data-validation-error-msg'=>'Ingrese fecha en el formato correcto AAAA-MM-DD']) !!}
+								{!! Form::text('fecha',$citatorio->fecha, ['readonly','class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaCit', 'data-toggle' => 'datetimepicker', 'required', 'placeholder' => 'DD-MM-YYYY', 'data-validation'=>'date','data-validation-format'=>'dd-mm-yyyy','data-validation-error-msg'=>'Ingrese fecha en el formato correcto DD-MM-YYYY']) !!}
 								<div class="input-group-append" data-target="#fechaCit" data-toggle="datetimepicker">
 									<div class="input-group-text"><i class="fa fa-calendar"></i></div>
 								</div>

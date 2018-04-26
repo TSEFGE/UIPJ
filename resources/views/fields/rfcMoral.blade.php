@@ -21,11 +21,16 @@ function obtenerRFC(){
 	nombre = $("#nombres2").val().toUpperCase();
 	fecha = $("#fechaAltaEmpresa").val();
 		
-	console.log(fecha);
+	
 
-	dia = fecha.substr(8, 2);
-	mes = fecha.substr(5, 2);
-	ano = fecha.substr(2, 2);
+	dia = fecha.substr(0, 2);
+	mes = fecha.substr(3, 2);
+	ano = fecha.substr(8, 2);
+
+	console.log(fecha);
+	console.log(dia);
+	console.log(mes);
+	console.log(ano);
 
 	ruta="{{route('rfc.denunciante')}}";
 	$.ajax({
@@ -36,6 +41,7 @@ function obtenerRFC(){
 		success: function(data){
 
 			rfc=data.res;
+			console.log(rfc);
 			rfcOriginal=rfc;
 			var array= rfc.split("");
 			var rfcSH=[];

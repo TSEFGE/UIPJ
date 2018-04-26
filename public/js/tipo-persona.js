@@ -96,7 +96,7 @@
             $("#curp").removeClass("vacio");
             $("#telefono").removeClass("vacio");
             $("#motivoEstancia").removeClass("vacio");
-            $("#docIdentificacion").removeClass("vacio");     
+              
             $("#numDocIdentificacion").removeClass("vacio");
             $("#calle").removeClass("vacio");
             $("#numExterno").removeClass("vacio");    
@@ -111,8 +111,8 @@
             $("#correo").removeClass("vacio");
             $("#telefonoN").removeClass("vacio");     
             $("#fax").removeClass("vacio");
-            $("#narracionUno").removeClass("vacio");
-            $("#narracionUnoM").removeClass("vacio");
+          //  $("#narracionUno").removeClass("vacio");
+           // $("#narracionUnoM").removeClass("vacio");
 
              $("#nombres").removeClass("valid");
             $("#primerAp").removeClass("valid");
@@ -123,7 +123,7 @@
             $("#curp").removeClass("valid");
             $("#telefono").removeClass("valid");
             $("#motivoEstancia").removeClass("valid");
-            $("#docIdentificacion").removeClass("valid");     
+              
             $("#numDocIdentificacion").removeClass("valid");
             $("#calle").removeClass("valid");
             $("#numExterno").removeClass("valid");    
@@ -139,7 +139,7 @@
             $("#telefonoN").removeClass("valid");     
             $("#fax").removeClass("valid");
               //  $("#narracionUno").removeClass("valid");
-            $("#narracionUnoM").removeClass("valid");
+            //$("#narracionUnoM").removeClass("valid");
 
              $("#nombres").removeClass("error");
             $("#primerAp").removeClass("error");
@@ -150,7 +150,7 @@
             $("#curp").removeClass("error");
             $("#telefono").removeClass("error");
             $("#motivoEstancia").removeClass("error");
-            $("#docIdentificacion").removeClass("error");     
+            
             $("#numDocIdentificacion").removeClass("error");
             $("#calle").removeClass("error");
             $("#numExterno").removeClass("error");    
@@ -165,8 +165,8 @@
             $("#correo").removeClass("error");
             $("#telefonoN").removeClass("error");     
             $("#fax").removeClass("error");
-            //  $("#narracionUno").removeClass("error");
-            $("#narracionUnoM").removeClass("error");         
+            
+            //$("#narracionUnoM").removeClass("error");         
 
             $("#nombres2").addClass("vacio");
             $("#fechaAltaEmpresa").addClass("vacio");
@@ -179,7 +179,7 @@
                 $("#calle3").addClass("vacio");
                 $("#numExterno3").addClass("vacio");    
                 $("#numInterno3").addClass("vacio");
-                $("#narracionUnoM").addClass("vacio");
+            //    $("#narracionUnoM").addClass("vacio");
                 $("#correo").addClass("vacio");
             $("#telefonoN").addClass("vacio");     
            $("#fax").addClass("vacio");             
@@ -285,15 +285,15 @@ $('.bien').hide();
                 $("#correo").removeClass("vacio");
                 $("#telefonoN").removeClass("vacio");     
                 $("#fax").removeClass("vacio");
-
+                $("#otroDocumento").removeClass("vacio");
                 $("#alias").removeClass("vacio");
                 $("#personasBajoSuGuarda").removeClass("vacio");     
                 $("#ingreso").removeClass("vacio");
                 $("#residenciaAnterior").removeClass("vacio");
                 $("#vestimenta").removeClass("vacio");
                 $("#senasPartic").removeClass("vacio");
-                 $("#narracionUno").removeClass("vacio");
-               // $("#narracionUnoM").addClass("vacio");
+                // $("#narracionUno").removeClass("vacio");
+             
 
 
 
@@ -317,7 +317,8 @@ $('.bien').hide();
                 $("#residenciaAnterior").removeClass("valid");
                 $("#vestimenta").removeClass("valid");
                 $("#senasPartic").removeClass("valid");
-                 $("#narracionUno").removeClass("valid");
+                $("#otroDocumento").removeClass("valid");
+               //  $("#narracionUno").removeClass("valid");
                // $("#narracionUnoM").removeClass("valid");
 
                  $("#nombres2").removeClass("error");
@@ -340,9 +341,9 @@ $('.bien').hide();
                 $("#residenciaAnterior").removeClass("error");
                 $("#vestimenta").removeClass("error");
                 $("#senasPartic").removeClass("error");
-                $("#narracionUno").removeClass("error");
-                //$("#narracionUnoM").removeClass("error");
-
+               // $("#narracionUno").removeClass("error");
+               $("#otroDocumento").removeClass("error");
+               
 
 
 
@@ -355,10 +356,10 @@ $('.bien').hide();
                 $("#homo").addClass("vacio");
                 $("#curp").addClass("vacio");
                 $("#telefono").addClass("vacio");
-                $("#motivoEstancia").addClass("vacio");
-                $("#docIdentificacion").addClass("vacio");     
+                $("#motivoEstancia").addClass("vacio");               
+                //$("#docIdentificacion").addClass("vacio");     
                 $("#numDocIdentificacion").addClass("vacio");
-             $("#narracionUno").addClass("vacio");
+          //   $("#narracionUno").addClass("vacio");
 
                 $("#calle").addClass("vacio");
                 $("#numExterno").addClass("vacio");    
@@ -386,7 +387,33 @@ $('.bien').hide();
                 $("#senasPartic").addClass("vacio");   
               //  $("#narracionUno").addClass("vacio"); //para comprobar en autoridad
 
+                $("#docIdentificacion").change(function(event){
+                var otro= $("#docIdentificacion").val();    
+                if(otro=="OTRO"){   
+
+                  $("#otrodocto").show();
+                  $("#otroDocumento").removeClass("valid");
+                  $("#otroDocumento").removeClass("error");
+                  $("#otroDocumento").addClass("vacio");  
+               
+                }
+                else
+                {
+                  $("#otrodocto").hide(); 
+                  $("#otroDocumento").removeClass("vacio");
+                  $("#otroDocumento").removeClass("valid");
+                  $("#otroDocumento").removeClass("error");
+                }
+            });
 
 
         }
+
+
+
+
+
+
+
     });
+

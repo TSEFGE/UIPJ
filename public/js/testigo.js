@@ -1,3 +1,23 @@
+ $('#fechanac').datetimepicker({
+    format: 'DD-MM-YYYY',
+    minDate: moment().subtract(150, 'years').format('YYYY-MM-DD'),
+    maxDate: moment().subtract(16, 'years').format('YYYY-MM-DD'),
+    widgetPositioning: {
+        vertical: 'bottom',
+        horizontal: 'left'
+    }
+});
+$('#edad').attr({
+    'min': 16
+});
+$("#fechanac").on("change.datetimepicker", function(e) {
+    $('#edad').val(moment().diff(e.date, 'years'));
+});
+$("#edad").change(function() {
+    var anios = $('#edad').val();
+    $('#fechanac').datetimepicker('date', moment().subtract(anios, 'years').format('YYYY-MM-DD'));
+});
+
  $(document).ready(function(){ 
 
  //Para generar Notificaciones se asigna clase
@@ -10,7 +30,7 @@
                 $("#curp").addClass("vacio");
                 $("#telefono").addClass("vacio");
                 $("#motivoEstancia").addClass("vacio");
-                $("#docIdentificacion").addClass("vacio");     
+               // $("#docIdentificacion").addClass("vacio");     
                 $("#numDocIdentificacion").addClass("vacio");
            //  $("#narracionUno").addClass("vacio");
 
@@ -49,12 +69,14 @@ $("#docIdentificacion").change(function(event){
     
       
       $("#otrodocto").show();
-           
+      $("#otroDocumento").addClass("vacio");  
+
     }
     else
     {
 
       $("#otrodocto").hide(); 
+      $("#otroDocumento").removeClass("vacio");
     }
 
 });
