@@ -103,6 +103,8 @@
 	<script src="{{ asset('plugins/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
 	{{--<script src="{{ asset('js/citatorio.js') }}"></script>--}}
 	<script>
+			var maxDate = moment().add(1, 'seconds').toDate();
+			var defaultDate = moment().toDate();
 		$('#fechaCit').datetimepicker({
 			format: 'DD-MM-YYYY',
 			defaultDate: moment(), 

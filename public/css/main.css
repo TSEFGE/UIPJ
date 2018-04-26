@@ -60,9 +60,12 @@ body{
 	margin-top:0.7rem;
 	font-size: small;
 	-webkit-transition: opacity .35s ease-in;
+	-moz-transition: opacity .35s ease-in;
+	-o-transition: opacity .35s ease-in;
+	transition: opacity .35s ease-in;
 	
 }
-#pushmenu:hover +#mensajepush{
+#pushmenu:hover + #mensajepush{
 	opacity: 100;
 	
 }
