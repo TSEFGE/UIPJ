@@ -144,9 +144,8 @@
 	$("#curp").addClass("vacio");
 	$("#telefono").addClass("vacio");
 	$("#motivoEstancia").addClass("vacio");
-	$("#docIdentificacion").addClass("vacio");  	
+		
 	$("#numDocIdentificacion").addClass("vacio");
-	$("#narracionUno").addClass("vacio");
 	$("#calle").addClass("vacio");
 	$("#numExterno").addClass("vacio");  	
 	$("#numInterno").addClass("vacio");

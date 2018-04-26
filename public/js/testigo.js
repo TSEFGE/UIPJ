@@ -69,14 +69,14 @@ $("#docIdentificacion").change(function(event){
     
       
       $("#otrodocto").show();
-      $("#otrodocto").addClass("vacio");  
+      $("#otroDocumento").addClass("vacio");  
 
     }
     else
     {
 
       $("#otrodocto").hide(); 
-      $("#otrodocto").removeClass("vacio");
+      $("#otroDocumento").removeClass("vacio");
     }
 
 });
