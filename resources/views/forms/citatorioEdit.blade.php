@@ -18,7 +18,7 @@
 		</div>
 		<div class="col">
 			<div class="text-right">
-				{!! Form::button('<i class="fa fa-eraser" aria-hidden="true"></i>', array ('class' => 'btn btn-primary borrar ', 'id' => 'btn-reset')) !!}
+				{!! Form::button('<i class="fa fa-eraser" aria-hidden="true"></i>', array ('class' => 'btn btn-secondary borrar ', 'id' => 'btn-reset')) !!}
 				{!! Form::submit('Guardar', ['class' => 'btn btn-primary', 'id' => 'btn-submit']) !!}
 			</div>
 		</div>

@@ -1,6 +1,6 @@
 // ---- Transiciones BOTONES y pestañas---//
 
-$( "#btn-reset" ).hover(function() {    
+/*$( "#btn-reset" ).hover(function() {    
     $(this).html( "Limpiar campos" );    
   },function(){    
     $(this).html('<i class="fa fa-eraser" aria-hidden="true"></i>')
@@ -9,7 +9,7 @@ $( "#regresocarpeta" ).hover(function() {
     $(this).html( "Regresar a carpeta" );    
   },function(){    
     $(this).html('<i class="fa fa-folder-open" aria-hidden="true"></i>')
-});  
+});  */
   $( "#personal" ).hover(function() {    
         $(this).html( "Datos personales" );
         $("#espacio-notif").css("margin-left","90px");     
