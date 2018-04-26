@@ -26,7 +26,7 @@
 	<div class="col-2">
 		<div class="form-group">
 			{!! Form::label('cp', 'Código postal', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('cp', ['' => 'Seleccione un código postal'], null, ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
+			{!! Form::select('cp', ['' => 'Seleccione un código postal'], null, ['class' => 'form-control form-control-sm']) !!}
 		</div>
 	</div>
 	<div class="col-4">

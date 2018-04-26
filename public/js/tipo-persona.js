@@ -96,7 +96,7 @@
             $("#curp").removeClass("vacio");
             $("#telefono").removeClass("vacio");
             $("#motivoEstancia").removeClass("vacio");
-           // $("#docIdentificacion").removeClass("vacio");     
+              
             $("#numDocIdentificacion").removeClass("vacio");
             $("#calle").removeClass("vacio");
             $("#numExterno").removeClass("vacio");    
@@ -123,7 +123,7 @@
             $("#curp").removeClass("valid");
             $("#telefono").removeClass("valid");
             $("#motivoEstancia").removeClass("valid");
-           // $("#docIdentificacion").removeClass("valid");     
+              
             $("#numDocIdentificacion").removeClass("valid");
             $("#calle").removeClass("valid");
             $("#numExterno").removeClass("valid");    
@@ -150,7 +150,7 @@
             $("#curp").removeClass("error");
             $("#telefono").removeClass("error");
             $("#motivoEstancia").removeClass("error");
-           // $("#docIdentificacion").removeClass("error");     
+            
             $("#numDocIdentificacion").removeClass("error");
             $("#calle").removeClass("error");
             $("#numExterno").removeClass("error");    
@@ -285,7 +285,7 @@ $('.bien').hide();
                 $("#correo").removeClass("vacio");
                 $("#telefonoN").removeClass("vacio");     
                 $("#fax").removeClass("vacio");
-
+                $("#otroDocumento").removeClass("vacio");
                 $("#alias").removeClass("vacio");
                 $("#personasBajoSuGuarda").removeClass("vacio");     
                 $("#ingreso").removeClass("vacio");
@@ -317,6 +317,7 @@ $('.bien').hide();
                 $("#residenciaAnterior").removeClass("valid");
                 $("#vestimenta").removeClass("valid");
                 $("#senasPartic").removeClass("valid");
+                $("#otroDocumento").removeClass("valid");
                //  $("#narracionUno").removeClass("valid");
                // $("#narracionUnoM").removeClass("valid");
 
@@ -341,6 +342,7 @@ $('.bien').hide();
                 $("#vestimenta").removeClass("error");
                 $("#senasPartic").removeClass("error");
                // $("#narracionUno").removeClass("error");
+               $("#otroDocumento").removeClass("error");
                
 
 
@@ -385,27 +387,33 @@ $('.bien').hide();
                 $("#senasPartic").addClass("vacio");   
               //  $("#narracionUno").addClass("vacio"); //para comprobar en autoridad
 
+                $("#docIdentificacion").change(function(event){
+                var otro= $("#docIdentificacion").val();    
+                if(otro=="OTRO"){   
+
+                  $("#otrodocto").show();
+                  $("#otroDocumento").removeClass("valid");
+                  $("#otroDocumento").removeClass("error");
+                  $("#otroDocumento").addClass("vacio");  
+               
+                }
+                else
+                {
+                  $("#otrodocto").hide(); 
+                  $("#otroDocumento").removeClass("vacio");
+                  $("#otroDocumento").removeClass("valid");
+                  $("#otroDocumento").removeClass("error");
+                }
+            });
 
 
         }
+
+
+
+
+
+
+
     });
 
-$("#docIdentificacion").change(function(event){
-
-    var otro= $("#docIdentificacion").val();
-    
-    if(otro=="OTRO"){
-    
-      
-      $("#otrodocto").show();
-      $("#otrodocto").addClass("vacio");  
-
-    }
-    else
-    {
-
-      $("#otrodocto").hide(); 
-      $("#otrodocto").removeClass("vacio");
-    }
-
-});

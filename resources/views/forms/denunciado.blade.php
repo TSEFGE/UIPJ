@@ -209,6 +209,6 @@
 	$("#curp").addClass("vacio");
 	$("#telefono").addClass("vacio");
 	$("#motivoEstancia").addClass("vacio");
-	$("#docIdentificacion").addClass("vacio");  	
+	
 	$("#numDocIdentificacion").addClass("vacio");
 @endpush

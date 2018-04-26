@@ -81,7 +81,7 @@
 		<div class="form-group">
 			{!! Form::label('telefono', 'Teléfono', ['class' => 'col-form-label-sm']) !!}
 			
-			{!! Form::text('telefono', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono', 'data-validation'=>'custom', 'data-validation-regexp'=>'^([0-9]{10,15}|(SIN NUMERO))$','data-validation-error-msg'=>'Teléfono debe contener de diez a quince números']) !!}
+			{!! Form::text('telefono', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono', 'data-validation'=>'custom', 'data-validation-regexp'=>'^([0-9]{10,15}|(SIN NUMERO))$','data-validation-error-msg'=>'Teléfono debe contener de diez a quince números o SIN NUMERO']) !!}
 		</div>
 	</div>
 </div>
