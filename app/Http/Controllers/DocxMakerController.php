@@ -189,8 +189,13 @@ class DocxMakerController extends Controller
         $templateProcessor->setValue('religion', $denunciante->religion);
         $templateProcessor->setValue('rfc', $denunciante->rfc);
         $templateProcessor->setValue('curp', $denunciante->curp);
-        $templateProcessor->setValue('municipioOrigen', $denunciante->municipioOrigen);
-        $templateProcessor->setValue('estadoOrigen', $denunciante->estadoOrigen);
+        if (strpos($denunciante->municipioOrigen, 'SIN INFORMACION') !== false) {
+            $templateProcessor->setValue('municipioOrigen', "SIN ");
+            $templateProcessor->setValue('estadoOrigen', "INFORMACION");
+        } else {
+            $templateProcessor->setValue('municipioOrigen', ($denunciante->municipioOrigen).",");
+            $templateProcessor->setValue('estadoOrigen', $denunciante->estadoOrigen);
+        }
         $templateProcessor->setValue('fechaNacimiento', $fechaNacimiento->format('d/m/Y'));
         $templateProcessor->setValue('edad', $denunciante->edad);
         $templateProcessor->setValue('sexo', $denunciante->sexo);
@@ -202,7 +207,11 @@ class DocxMakerController extends Controller
         $templateProcessor->setValue('telefonoTrabajo', $denunciante->telefonoTrabajo);
         $templateProcessor->setValue('dirTrabajo', $dirTrabajo);
         $templateProcessor->setValue('dirNotif', $dirNotif);
-        $templateProcessor->setValue('correo', $denunciante->correo);
+        if (strpos($denunciante->correo, 'sin@informacion.com') !== false) {
+            $templateProcessor->setValue('correo', "SIN INFORMACION");
+        } else {
+            $templateProcessor->setValue('correo', $denunciante->correo);
+        }
         $templateProcessor->setValue('telefonoN', $denunciante->telefonoN);
         $templateProcessor->setValue('fax', $denunciante->fax);
         $templateProcessor->setValue('dirDelito', $dirDelito);
@@ -220,7 +229,11 @@ class DocxMakerController extends Controller
         $templateProcessor->setValue('consumacion', $delito->consumacion);
         $templateProcessor->setValue('nombreDen', $denunciado->nombres . " " . $denunciado->primerAp . " " . $denunciado->segundoAp);
         $templateProcessor->setValue('edadDen', $denunciado->edad);
-        $templateProcessor->setValue('dirDen', $dirDenunciado);
+        if (strpos($dirDenunciado, 'SIN INFORMACION #S/N, COLONIA SIN INFORMACION, SIN INFORMACION, SIN INFORMACION') !== false) {
+            $templateProcessor->setValue('dirDen', "SIN INFORMACION");
+        } else {
+            $templateProcessor->setValue('dirDen', $dirDenunciado);
+        }
         $templateProcessor->setValue('vestimenta', $denunciado->vestimenta);
         $templateProcessor->setValue('conoceAlDen', $conoceAlDen);
         $templateProcessor->setValue('senasPartic', $denunciado->senasPartic);
@@ -228,7 +241,6 @@ class DocxMakerController extends Controller
 
         $templateProcessor->saveAs('../storage/oficios/FormatoDenuncia' . $idAcusacion . '.docx');
         return response()->download('../storage/oficios/FormatoDenuncia' . $idAcusacion . '.docx');
-
     }
 
     public static function getFormatoColaboracionPm(Request $request)
@@ -596,5 +608,4 @@ class DocxMakerController extends Controller
         }
         return $diaLetra;
     }
-
 }
