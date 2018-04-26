@@ -40,7 +40,7 @@ class DocxMakerController extends Controller
         $mesLetra      = mb_strtolower($mesLetra);
 
         $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('templates/ConstanciaDeHechos.docx');
-        $templateProcessor->setValue('distrito', $info->distrito);
+        $templateProcessor->setValue('distrito', $info->idDistrito);
         $templateProcessor->setValue('distritoLetra', $distritoLetra);
         $templateProcessor->setValue('numFiscal', $info->numFiscal);
         $templateProcessor->setValue('numOficio', 0);
@@ -193,7 +193,7 @@ class DocxMakerController extends Controller
             $templateProcessor->setValue('municipioOrigen', "SIN ");
             $templateProcessor->setValue('estadoOrigen', "INFORMACION");
         } else {
-            $templateProcessor->setValue('municipioOrigen', ($denunciante->municipioOrigen).",");
+            $templateProcessor->setValue('municipioOrigen', ($denunciante->municipioOrigen) . ",");
             $templateProcessor->setValue('estadoOrigen', $denunciante->estadoOrigen);
         }
         $templateProcessor->setValue('fechaNacimiento', $fechaNacimiento->format('d/m/Y'));
@@ -285,7 +285,7 @@ class DocxMakerController extends Controller
         $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('templates/InvestigaciónPolicíaMinisterial.docx');
 
         $templateProcessor->setValue('nombreFiscal', strtoupper($carpeta->nombres . " " . $carpeta->apellidos));
-        $templateProcessor->setValue('distrito', $carpeta->distrito);
+        $templateProcessor->setValue('distrito', $carpeta->idDistrito);
         $templateProcessor->setValue('distritoLetra', $distritoLetra);
         $templateProcessor->setValue('municipioUnidadM', mb_strtoupper($carpeta->municipio));
         $templateProcessor->setValue('dirUnidad', $carpeta->direccion);
@@ -356,7 +356,7 @@ class DocxMakerController extends Controller
         $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('templates/InvestigaciónServiciosPericiales.docx');
 
         $templateProcessor->setValue('nombreFiscal', mb_strtoupper($carpeta->nombres . " " . $carpeta->apellidos));
-        $templateProcessor->setValue('distrito', $carpeta->distrito);
+        $templateProcessor->setValue('distrito', $carpeta->idDistrito);
         $templateProcessor->setValue('distritoLetra', $distritoLetra);
         $templateProcessor->setValue('municipioUnidadM', mb_strtoupper($carpeta->municipio));
         $templateProcessor->setValue('dirUnidad', $carpeta->direccion);
