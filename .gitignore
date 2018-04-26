@@ -1,6 +1,8 @@
 /node_modules
 /public/hot
-/public/storage
+/public/storage/adjuntoNarracion
+/public/storage/citatorios
+/public/storage/diligencias-sp
 /storage/*.key
 /vendor
 /.idea
