@@ -20,6 +20,7 @@ class CreateDiligenciasSpTable extends Migration
             $table->string('termino', 50);
             $table->string('dictamen', 100);
             $table->integer('status');//1=pendiente, 2=aplicada
+            $table->string('oficio', 100);
             $table->timestamps();
 
             $table->foreign('idAcusacion')->references('id')->on('acusacion')->onDelete('cascade');
