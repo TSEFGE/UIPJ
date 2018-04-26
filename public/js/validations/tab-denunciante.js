@@ -2,8 +2,7 @@
 $('#tdenunciante.nav-tabs a').on('hidden.bs.tab', function(event){
     //event.preventDefault();
         var index= $($(this).attr('href')).index();
-        var totalG, correctosG;
-    
+        var pass0,pass1,pass2,pass3,pass4;
         switch(index) {
             case 0:  
             var countvacio = $('#collapsePersonales1 .vacio').length;
@@ -22,11 +21,14 @@ $('#tdenunciante.nav-tabs a').on('hidden.bs.tab', function(event){
             } 
             else if( correctos ==totales){
                 $("#t1").show();
-                $("#t1").html('<i class="fa fa-check" aria-hidden="true"></i>');  ;                                  
+                $("#t1").html('<i class="fa fa-check" aria-hidden="true"></i>');
+                $("#t1").addClass('correcto');
+                pass0 =1;                              
             }
             else{
                 $("#t1").show();                             
                 $("#t1").html(correctos);
+                $("#t1").removeClass('correcto');
             }                                 
             countvacio= countvacio-count-correctos;
             if (countvacio == 0 || countvacio == totales){
@@ -53,7 +55,8 @@ $('#tdenunciante.nav-tabs a').on('hidden.bs.tab', function(event){
             } 
             else if( correctos ==totales){
                 $("#t2").show();
-                $("#t2").html('<i class="fa fa-check" aria-hidden="true"></i>');  ;                                  
+                $("#t2").html('<i class="fa fa-check" aria-hidden="true"></i>'); 
+                pass1 =1;                                
             }
             else{  
                 $("#t2").show();                             
@@ -87,7 +90,8 @@ $('#tdenunciante.nav-tabs a').on('hidden.bs.tab', function(event){
             } 
             else if( correctos ==totales){
                 $("#t3").show();
-                $("#t3").html('<i class="fa fa-check" aria-hidden="true"></i>');                                    
+                $("#t3").html('<i class="fa fa-check" aria-hidden="true"></i>');   
+                pass2 =1;                                   
             }
             else{  
                 $("#t3").show();                             
@@ -121,7 +125,8 @@ $('#tdenunciante.nav-tabs a').on('hidden.bs.tab', function(event){
         } 
         else if( correctos ==totales){
             $("#t4").show();
-            $("#t4").html('<i class="fa fa-check" aria-hidden="true"></i>');                                                                
+            $("#t4").html('<i class="fa fa-check" aria-hidden="true"></i>'); 
+            pass3 =1;                                                                 
         }                                
         else{  
             $("#t4").show();                             
@@ -141,10 +146,10 @@ $('#tdenunciante.nav-tabs a').on('hidden.bs.tab', function(event){
     
         case 4: 
              break;
-    
+            
       default:
         break;
     }
-    
+         
   });
-    
+  

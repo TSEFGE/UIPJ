@@ -2,47 +2,46 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use DB;
 use Alert;
 use App\Http\Requests\StoreDenunciante;
+use App\Models\Bitacora;
+use App\Models\Carpeta;
 use App\Models\CatEscolaridad;
 use App\Models\CatEstado;
-use App\Models\CatMunicipio;
 use App\Models\CatEstadoCivil;
 use App\Models\CatEtnia;
 use App\Models\CatLengua;
+use App\Models\CatMunicipio;
 use App\Models\CatNacionalidad;
 use App\Models\CatOcupacion;
-use App\Models\Narracion;
 use App\Models\CatReligion;
-use App\Models\Carpeta;
+use App\Models\Domicilio;
+use App\Models\ExtraDenunciante;
+use App\Models\Narracion;
+use App\Models\Notificacion;
 use App\Models\Persona;
 use App\Models\VariablesPersona;
-use App\Models\ExtraDenunciante;
-use App\Models\Notificacion;
-use App\Models\Domicilio;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use uipj\rfc\src\RfcBuilder;
-use App\Models\Bitacora;
 
 class DenuncianteController extends Controller
 {
     public function showForm($idCarpeta)
     {
         $carpetaNueva = Carpeta::where('id', $idCarpeta)->where('idFiscal', Auth::user()->id)->get();
-        if (count($carpetaNueva)>0) {
-            $numCarpeta = $carpetaNueva[0]->numCarpeta;
-            $denunciantes = CarpetaController::getDenunciantes($idCarpeta);
-            $escolaridades = CatEscolaridad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-            $estados = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-            $municipiosVer = CatMunicipio::select('id', 'nombre')->where('idEstado', 30)->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-            $estadoscivil = CatEstadoCivil::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-            $etnias = CatEtnia::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-            $lenguas = CatLengua::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        if (count($carpetaNueva) > 0) {
+            $numCarpeta     = $carpetaNueva[0]->numCarpeta;
+            $denunciantes   = CarpetaController::getDenunciantes($idCarpeta);
+            $escolaridades  = CatEscolaridad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+            $estados        = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+            $municipiosVer  = CatMunicipio::select('id', 'nombre')->where('idEstado', 30)->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+            $estadoscivil   = CatEstadoCivil::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+            $etnias         = CatEtnia::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+            $lenguas        = CatLengua::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $nacionalidades = CatNacionalidad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-            $ocupaciones = CatOcupacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-            $religiones = CatReligion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+            $ocupaciones    = CatOcupacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+            $religiones     = CatReligion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             return view('forms.denunciante')->with('idCarpeta', $idCarpeta)
                 ->with('numCarpeta', $numCarpeta)
                 ->with('denunciantes', $denunciantes)
@@ -55,7 +54,7 @@ class DenuncianteController extends Controller
                 ->with('nacionalidades', $nacionalidades)
                 ->with('ocupaciones', $ocupaciones)
                 ->with('religiones', $religiones);
-                
+
         } else {
             return redirect()->route('home');
         }
@@ -64,19 +63,21 @@ class DenuncianteController extends Controller
     public function storeDenunciante(StoreDenunciante $request)
     {
         //dd($request->all());
-        if ($request->esEmpresa==0) {
+        if ($request->esEmpresa == 0) {
             $persona = Persona::where('curp', $request->curp)->get();
-            if ($persona->isNotEmpty()){
+            if ($persona->isNotEmpty()) {
                 Alert::error('Ya existe una persona registrada con ese CURP.', 'Error')->persistent("Aceptar");
                 return back()->withInput();
-            }else{
-                $persona = new Persona();
-                $persona->nombres = $request->nombres;
-                $persona->primerAp = $request->primerAp;
-                $persona->segundoAp = $request->segundoAp;
-                $persona->fechaNacimiento = $request->fechaNacimiento;
-                $persona->rfc = $request->rfc.$request->homo;
-                $persona->curp = $request->curp;
+            } else {
+                $persona                  = new Persona();
+                $persona->nombres         = $request->nombres;
+                $persona->primerAp        = $request->primerAp;
+                $persona->segundoAp       = $request->segundoAp;
+                $fechaAux                 = $request->fechaNacimiento;
+                $fechaNacimiento          = date("Y-m-d", strtotime($fechaAux));
+                $persona->fechaNacimiento = $fechaNacimiento;
+                $persona->rfc             = $request->rfc . $request->homo;
+                $persona->curp            = $request->curp;
                 if (!is_null($request->sexo)) {
                     $persona->sexo = $request->sexo;
                 }
@@ -93,7 +94,7 @@ class DenuncianteController extends Controller
                     $persona->idMunicipioOrigen = $request->idMunicipioOrigen;
                 }
                 $persona->save();
-                if($request->rfcAux != $request->rfc.$request->homo){
+                if ($request->rfcAux != $request->rfc . $request->homo) {
                     Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un RFC diferente al generado por el sistema para una persona física de tipo victima u ofendido.', 'idFilaAccion' => $persona->id]);
                 }
                 Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se ha registrado una nueva persona física de tipo victima u ofendido.', 'idFilaAccion' => $persona->id]);
@@ -168,19 +169,19 @@ class DenuncianteController extends Controller
                 Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un nuevo domicilio para notificaciones para persona física.', 'idFilaAccion' => $domicilio3->id]);
                 $idD3 = $domicilio3->id;
 
-                $notificacion = new Notificacion();
+                $notificacion              = new Notificacion();
                 $notificacion->idDomicilio = $idD3;
-                $notificacion->correo = $request->correo;
-                $notificacion->telefono = $request->telefono;
-                $notificacion->fax = $request->fax;
+                $notificacion->correo      = $request->correo;
+                $notificacion->telefono    = $request->telefono;
+                $notificacion->fax         = $request->fax;
                 $notificacion->save();
                 Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'notificacion', 'accion' => 'insert', 'descripcion' => 'Se ha registrado una nueva notificación para persona física de tipo victima u ofendido.', 'idFilaAccion' => $notificacion->id]);
                 $idNotificacion = $notificacion->id;
 
-                $VariablesPersona = new VariablesPersona();
+                $VariablesPersona            = new VariablesPersona();
                 $VariablesPersona->idCarpeta = $request->idCarpeta;
                 $VariablesPersona->idPersona = $idPersona;
-                $VariablesPersona->edad = $request->edad;
+                $VariablesPersona->edad      = $request->edad;
                 if (!is_null($request->telefono)) {
                     $VariablesPersona->telefono = $request->telefono;
                 }
@@ -201,12 +202,10 @@ class DenuncianteController extends Controller
                 }
                 $VariablesPersona->idDomicilio = $idD1;
                 if (!is_null($request->docIdentificacion)) {
-                    if ($request->docIdentificacion=='OTRO'){
-                    $VariablesPersona->docIdentificacion = $request->otroDocumento;
-                    }
-                    else
-                    {
-                    $VariablesPersona->docIdentificacion = $request->docIdentificacion;                        
+                    if ($request->docIdentificacion == 'OTRO') {
+                        $VariablesPersona->docIdentificacion = $request->otroDocumento;
+                    } else {
+                        $VariablesPersona->docIdentificacion = $request->docIdentificacion;
                     }
                 }
                 if (!is_null($request->numDocIdentificacion)) {
@@ -224,51 +223,48 @@ class DenuncianteController extends Controller
                 Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'variables_persona', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un nuevo variables persona de persona física de tipo victima u ofendido.', 'idFilaAccion' => $VariablesPersona->id]);
                 $idVariablesPersona = $VariablesPersona->id;
 
-                $ExtraDenunciante = new ExtraDenunciante();
+                $ExtraDenunciante                     = new ExtraDenunciante();
                 $ExtraDenunciante->idVariablesPersona = $idVariablesPersona;
-                $ExtraDenunciante->idNotificacion = $idNotificacion;
-                $ExtraDenunciante->idAbogado = null;
-                if ($request->conoceAlDenunciado===1) {
+                $ExtraDenunciante->idNotificacion     = $idNotificacion;
+                $ExtraDenunciante->idAbogado          = null;
+                if ($request->conoceAlDenunciado === 1) {
                     $ExtraDenunciante->conoceAlDenunciado = 1;
                 }
 
-                if($request->esVictima!=null){
-                  $ExtraDenunciante->esVictima=1;
+                if ($request->esVictima != null) {
+                    $ExtraDenunciante->esVictima = 1;
                 }
 
                 $ExtraDenunciante->save();
 
+                $narracion                = new Narracion();
+                $narracion->idInvolucrado = $ExtraDenunciante->id;
+                $narracion->idCarpeta     = $request->idCarpeta;
+                //dd($request);
+                $narracion->narracion       = $request->narracionUno;
+                $narracion->tipoInvolucrado = 1;
+                $narracion->archivo         = null;
+                $narracion->save();
 
-              $narracion= new Narracion();
-              $narracion->idInvolucrado=$ExtraDenunciante->id;
-              $narracion->idCarpeta=$request->idCarpeta;
-              //dd($request);
-              $narracion->narracion=$request->narracionUno;
-              $narracion->tipoInvolucrado=1;
-              $narracion->archivo=null;
-              $narracion->save();
+                Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'narracion', 'accion' => 'insert', 'descripcion' => 'Se ha registrado una nueva narracion de persona física de tipo victima u ofendido.', 'idFilaAccion' => $narracion->id]);
 
-              Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'narracion', 'accion' => 'insert', 'descripcion' => 'Se ha registrado una nueva narracion de persona física de tipo victima u ofendido.', 'idFilaAccion' => $narracion->id]);
-
-                if($ExtraDenunciante->esVictima==1){
-                         Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_denunciado', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un ofendido de tipo Victima.', 'idFilaAccion' => $ExtraDenunciante->id]);
-                } else{
+                if ($ExtraDenunciante->esVictima == 1) {
+                    Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_denunciado', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un ofendido de tipo Victima.', 'idFilaAccion' => $ExtraDenunciante->id]);
+                } else {
                     Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_denunciado', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un ofendido de tipo No Victima.', 'idFilaAccion' => $ExtraDenunciante->id]);
                 }
 
                 Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_denunciante', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un nuevo extra ofendido de persona física.', 'idFilaAccion' => $ExtraDenunciante->id]);
 
-
-
             }
-        } elseif ($request->esEmpresa==1) {
-            $persona = new Persona();
-            $persona->nombres = $request->nombres2;
-            $persona->rfc = $request->rfc2.$request->homo2;
+        } elseif ($request->esEmpresa == 1) {
+            $persona            = new Persona();
+            $persona->nombres   = $request->nombres2;
+            $persona->rfc       = $request->rfc2 . $request->homo2;
             $persona->esEmpresa = 1;
             $persona->save();
             $idPersona = $persona->id;
-            if($request->rfcAux != $request->rfc2.$request->homo2){
+            if ($request->rfcAux != $request->rfc2 . $request->homo2) {
                 Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un RFC diferente al generado por el sistema para una persona moral de tipo victima u ofendido.', 'idFilaAccion' => $persona->id]);
             }
             Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se ha registrado una nueva persona moral de tipo victima u ofendido.', 'idFilaAccion' => $persona->id]);
@@ -319,70 +315,71 @@ class DenuncianteController extends Controller
             Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un nuevo domicilio de trabajo para persona moral de tipo victima u ofendido.', 'idFilaAccion' => $domicilio3->id]);
             $idD3 = $domicilio3->id;
 
-            $notificacion = new Notificacion();
+            $notificacion              = new Notificacion();
             $notificacion->idDomicilio = $idD3;
-            $notificacion->correo = $request->correo;
-            $notificacion->telefono = $request->telefonoN;
-            $notificacion->fax = $request->fax;
+            $notificacion->correo      = $request->correo;
+            $notificacion->telefono    = $request->telefonoN;
+            $notificacion->fax         = $request->fax;
             $notificacion->save();
             Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'notificacion', 'accion' => 'insert', 'descripcion' => 'Se ha registrado una nueva notificación para persona moral de tipo victima u ofendido.', 'idFilaAccion' => $notificacion->id]);
             $idNotificacion = $notificacion->id;
 
-            $VariablesPersona = new VariablesPersona();
-            $VariablesPersona->idCarpeta = $request->idCarpeta;
-            $VariablesPersona->idPersona = $idPersona;
-            $VariablesPersona->idDomicilio = $idD1;
+            $VariablesPersona                     = new VariablesPersona();
+            $VariablesPersona->idCarpeta          = $request->idCarpeta;
+            $VariablesPersona->idPersona          = $idPersona;
+            $VariablesPersona->idDomicilio        = $idD1;
             $VariablesPersona->idDomicilioTrabajo = $idD1;
             $VariablesPersona->representanteLegal = $request->representanteLegal;
             $VariablesPersona->save();
             Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'variables_persona', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un nuevo variables persona de persona moral de tipo victima u ofendido.', 'idFilaAccion' => $VariablesPersona->id]);
             $idVariablesPersona = $VariablesPersona->id;
 
-            $ExtraDenunciante = new ExtraDenunciante();
+            $ExtraDenunciante                     = new ExtraDenunciante();
             $ExtraDenunciante->idVariablesPersona = $idVariablesPersona;
-            $ExtraDenunciante->idNotificacion = $idNotificacion;
-            $ExtraDenunciante->idAbogado = null;
-            if ($request->conoceAlDenunciado==1) {
+            $ExtraDenunciante->idNotificacion     = $idNotificacion;
+            $ExtraDenunciante->idAbogado          = null;
+            if ($request->conoceAlDenunciado == 1) {
                 $ExtraDenunciante->conoceAlDenunciado = 1;
             }
-           $ExtraDenunciante->esVictima=$request->esVictima;
+            $ExtraDenunciante->esVictima = $request->esVictima;
 
             $ExtraDenunciante->save();
             Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_denunciante', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un nuevo extra victima u ofendido de persona moral.', 'idFilaAccion' => $ExtraDenunciante->id]);
 
+            $narracion                = new Narracion();
+            $narracion->idInvolucrado = $ExtraDenunciante->id;
+            $narracion->idCarpeta     = $request->idCarpeta;
+            //dd($request);
+            $narracion->narracion       = $request->narracionUnoM;
+            $narracion->tipoInvolucrado = 1;
+            $narracion->archivo         = null;
+            $narracion->save();
 
-              $narracion= new Narracion();
-              $narracion->idInvolucrado=$ExtraDenunciante->id;
-              $narracion->idCarpeta=$request->idCarpeta;
-              //dd($request);
-              $narracion->narracion=$request->narracionUnoM;
-              $narracion->tipoInvolucrado=1;
-              $narracion->archivo=null;
-              $narracion->save();
-
-              Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'narracion', 'accion' => 'insert', 'descripcion' => 'Se ha registrado una nueva narracion de persona Moral de tipo victima u ofendido.', 'idFilaAccion' => $narracion->id]);
+            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'narracion', 'accion' => 'insert', 'descripcion' => 'Se ha registrado una nueva narracion de persona Moral de tipo victima u ofendido.', 'idFilaAccion' => $narracion->id]);
         }
         /*
         Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
         //Para mostrar modal
         //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
-        */
+         */
         Alert::success('Víctima u ofendido registrado con éxito', 'Hecho')->persistent("Aceptar");
         //return redirect()->route('carpeta', $request->idCarpeta);
         return redirect()->route('new.denunciante', $request->idCarpeta);
     }
 
-    public function showComplement($idDenunciante, $idCarpeta){
+    public function showComplement($idDenunciante, $idCarpeta)
+    {
         $denunciante = ExtraDenunciante::find($idDenunciante);
         //dd($denunciante);
         return view('forms.complement1')->with('extra', $denunciante)->with('idCarpeta', $idCarpeta);
     }
 
-    public function storeComplement(Request $request){
+    public function storeComplement(Request $request)
+    {
         //dd($request->all());
         $denunciante = ExtraDenunciante::find($request->idExtra);
         //$denunciante->fill($request->all());
-         $denunciante->save();
+        $denunciante->save();
         Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_denunciante', 'accion' => 'update', 'descripcion' => 'Se ha modificado el campo complemento de la narración en extra victima u ofendido.', 'idFilaAccion' => $denunciante->id]);
         Alert::success('Complemento agregado con éxito', 'Hecho')->persistent("Aceptar");
         return redirect()->route('carpeta', $request->idCarpeta);
@@ -466,10 +463,10 @@ class DenuncianteController extends Controller
 
     public function rfcMoral(Request $request)
     {
-        $nombre= $request->nombre;
-        $dia= $request->dia;
-        $mes= $request->mes;
-        $ano= $request->ano;
+        $nombre = $request->nombre;
+        $dia    = $request->dia;
+        $mes    = $request->mes;
+        $ano    = $request->ano;
 
         $builder = new RfcBuilder();
 
@@ -477,19 +474,19 @@ class DenuncianteController extends Controller
             ->creationDate($dia, $mes, $ano)
             ->build()
             ->toString();
-        return ['res'=>$rfc];
+        return ['res' => $rfc];
     }
 
     public function rfcFisico(Request $request)
     {
         $builder = new RfcBuilder();
-        $rfc = $builder->name($request->nombre)
+        $rfc     = $builder->name($request->nombre)
             ->firstLastName($request->apPaterno)
             ->secondLastName($request->apMaterno)
             ->birthday($request->dia, $request->mes, $request->año)
             ->build()
             ->toString();
 
-        return ['res'=>$rfc];
+        return ['res' => $rfc];
     }
 }

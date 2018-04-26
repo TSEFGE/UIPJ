@@ -40,7 +40,7 @@
 						<div class="form-group">
 							{!! Form::label('fecha', 'Fecha', ['class' => 'col-form-label-sm']) !!}
 							<div class="input-group date" id="fechaCit" data-target-input="nearest">
-								{!! Form::text('fecha',$citatorio->fecha, ['readonly','class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaCit', 'data-toggle' => 'datetimepicker', 'required', 'placeholder' => 'DD-MM-YYYY', 'data-validation'=>'date','data-validation-format'=>'dd-mm-yyyy','data-validation-error-msg'=>'Ingrese fecha en el formato correcto DD-MM-YYYY']) !!}
+								{!! Form::text('fecha',$citatorio->fecha, ['readonly','class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaCit', 'data-toggle' => 'datetimepicker', 'required' ]) !!}
 								<div class="input-group-append" data-target="#fechaCit" data-toggle="datetimepicker">
 									<div class="input-group-text"><i class="fa fa-calendar"></i></div>
 								</div>
