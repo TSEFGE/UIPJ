@@ -96,7 +96,7 @@ class DiligenciaSPController extends Controller
 		];
 		//dd($data);
 		//Envío POST
-		$client = new Client(['base_uri' => 'http://127.0.0.1/uipj/public/api/']);
+		$client = new Client(['base_uri' => route('test')]);
         $res = $client->post("test", $data);
 		//$response = $res->getStatusCode();
 		$result= $res->getBody()->getContents();
