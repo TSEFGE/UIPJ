@@ -85,3 +85,10 @@
 	</div>
 	{!! Form::close() !!}
 @endsection
+
+@section('tabla')
+	<div class="boxtwo">
+		@section('titulo-tabla', 'Diligencias registradas')
+		@include('tables.diligencias-sp')
+	</div>
+@endsection
