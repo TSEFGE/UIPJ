@@ -7,6 +7,7 @@ use App\Models\DiligenciaSP;
 use App\Http\Controllers\DocxMakerController;
 use Illuminate\Support\Facades\Auth;
 use DB;
+use Alert;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
 
@@ -150,7 +151,9 @@ class DiligenciaSPController extends Controller
 			$templateProcessor->saveAs($path.$name);
 			DiligenciaSP::create(['idAcusacion' => $request->radioAcusacion, 'numOficio' => $carpeta->oficioConsecutivo+1, 'termino' => $request->cantidadTermino." ".$request->unidadTermino, 'dictamen' => $request->servicio, 'status' => 1, 'oficio' => $name]);
 			DB::table('users')->where('id', Auth::user()->id)->update(['oficioConsecutivo' => $carpeta->oficioConsecutivo+1]);
-			return response()->download($path.$name);
+			Alert::success('Diligencia solicitada con éxito.', 'Hecho')->persistent("Aceptar");
+			return redirect()->route('new.colaboracionsp', $request->idCarpeta );
+			//return response()->download($path.$name);
 		}
 	}
     
