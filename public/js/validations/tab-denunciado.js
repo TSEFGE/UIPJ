@@ -19,7 +19,8 @@ $('#tdenunciado.nav-tabs a').on('hidden.bs.tab', function(event){
 	} 
 	else if( correctos ==totales){
 		$("#bien").show();
-		$("#bien").html('<i class="fa fa-check" aria-hidden="true"></i>');                                                                
+		$("#bien").html('<i class="fa fa-check" aria-hidden="true"></i>'); 
+		$("#bien").addClass('correcto');                                                               
 	}                                
 	else{  
 		$("#bien").show();                             
@@ -50,7 +51,8 @@ $('#tdenunciado.nav-tabs a').on('hidden.bs.tab', function(event){
 	} 
 	else if( correctos ==totales){
 		$("#bien1").show();
-		$("#bien1").html('<i class="fa fa-check" aria-hidden="true"></i>');                                                                
+		$("#bien1").html('<i class="fa fa-check" aria-hidden="true"></i>');
+		$("#bien1").addClass('correcto');                                                                
 	}                                
 	else{  
 		$("#bien1").show();                             
@@ -82,7 +84,8 @@ $('#tdenunciado.nav-tabs a').on('hidden.bs.tab', function(event){
 	} 
 	else if( correctos ==totales){
 		$("#bien2").show();
-		$("#bien2").html('<i class="fa fa-check" aria-hidden="true"></i>');                                                                
+		$("#bien2").html('<i class="fa fa-check" aria-hidden="true"></i>'); 
+		$("#bien2").addClass('correcto');                                                               
 	}                                
 	else{  
 		$("#bien2").show();                             
@@ -115,7 +118,7 @@ $('#tdenunciado.nav-tabs a').on('hidden.bs.tab', function(event){
 	else if( correctos ==totales){
 		$("#bien3").show();
 		$("#bien3").html('<i class="fa fa-check" aria-hidden="true"></i>');
-		console.log("son iguales");
+		$("#bien3").addClass('correcto');
 	}                                
 	else{  
 		$("#bien3").show();                             
@@ -147,7 +150,8 @@ $('#tdenunciado.nav-tabs a').on('hidden.bs.tab', function(event){
 	} 
 	else if( correctos ==totales){
 		$("#bien4").show();
-		$("#bien4").html('<i class="fa fa-check" aria-hidden="true"></i>');                                                                
+		$("#bien4").html('<i class="fa fa-check" aria-hidden="true"></i>');
+		$("#bien4").addClass('correcto');                                                                
 	}                                
 	else{  
 		$("#bien4").show();                             
@@ -165,5 +169,12 @@ $('#tdenunciado.nav-tabs a').on('hidden.bs.tab', function(event){
 	default:
 	break;
 }
-
+	var tabs= $("#tdenunciado .visible").length;
+	var correcto = $('#tdenunciado .correcto').length;
+	if (correcto == tabs){
+		$("#btn-submit").prop('disabled',false);
+	}else{
+		$("#btn-submit").prop('disabled',true);
+	}
+	console.log( "tabs", tabs);
 });

@@ -203,6 +203,7 @@
             $("#datosDir").addClass('visible');
             $("#datosTrab").addClass('visible');           
             $("#datosNotif").addClass('visible');
+            $('#datosExtra').addClass('visible');
             
             $("#btn-submit").prop('disabled',true);
             $('.xvacio').hide();
