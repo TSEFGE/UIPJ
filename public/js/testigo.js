@@ -82,12 +82,17 @@
              $("#numInterno2").val("S/N").prop('disabled', true);
          } else {
              $("#idEstado2").prop('disabled', false);
+             $('#idEstado2').select2();
              $("#lugarTrabajo").prop('disabled', false);
              $("#telefonoTrabajo").prop('disabled', false);
              $("#idMunicipio2").prop('disabled', false);
+             $('#idMunicipio2').select2();
              $("#idLocalidad2").prop('disabled', false);
+             $('#idLocalidad2').select2();
              $("#idColonia2").prop('disabled', false);
+             $('#idColonia2').select2();
              $("#cp2").prop('disabled', false);
+             $('#cp2').select2();
              $("#calle2").prop('disabled', false);
              $("#numExterno2").prop('disabled', false);
              $("#numInterno2").prop('disabled', false);
