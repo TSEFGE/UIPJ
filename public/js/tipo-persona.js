@@ -212,6 +212,8 @@
             $("#datosTrab").addClass('visible');  
             }
 
+            });
+
             $("#datosNotif").addClass('visible');
             $('#datosExtra').addClass('visible');
             
