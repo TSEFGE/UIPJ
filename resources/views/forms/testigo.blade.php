@@ -32,7 +32,7 @@
 				<div class="row">
 					@if(!empty($idCarpeta)) {!! Form::hidden('idCarpeta', $idCarpeta) !!} @endif
 				</div>
-				<div class="" id="datosPer">
+				<div class="" id="">
 					<div id="testigo">
 						<ul id="tabstestigo" class="nav nav-tabs">
 							<li class="nav-item" id="datosPer">

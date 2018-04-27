@@ -29,7 +29,6 @@ $(document).ready(function() {
     $("#numExternoC").val("S/N");
     $("#fax").val("SIN INFORMACION");
     $("#correo").val("sin@informacion.com");
-    
     $('#idOcupacion').change(function(event) {
         var ocupacion = $('#idOcupacion').val();
         if (ocupacion == 2947) {
@@ -52,17 +51,23 @@ $(document).ready(function() {
         } else {
             $('#datosTrab').addClass('visible');
             $("#idEstado2").prop('disabled', false);
+            $('#idEstado2').select2();
             $("#lugarTrabajo").prop('disabled', false);
             $("#telefonoTrabajo").prop('disabled', false);
             $("#idMunicipio2").prop('disabled', false);
+            $('#idMunicipio2').select2();
             $("#idLocalidad2").prop('disabled', false);
+            $('#idLocalidad2').select2();
             $("#idColonia2").prop('disabled', false);
+            $('#idColonia2').select2();
             $("#cp2").prop('disabled', false);
+            $('#cp2').select2();
             $("#calle2").prop('disabled', false);
             $("#numExterno2").prop('disabled', false);
             $("#numInterno2").prop('disabled', false);
         }
     });
+<<<<<<< HEAD
 
 
 $("#docIdentificacion").change(function(event){
@@ -88,6 +93,20 @@ $("#docIdentificacion").change(function(event){
       $("#otroDocumento").removeClass("valid"); 
     }
 
-});
-
+=======
+    $("#docIdentificacion").change(function(event) {
+        var otro = $("#docIdentificacion").val();
+        if (otro == "OTRO") {
+            $("#otrodocto").show();
+            $("#otroDocumento").removeClass("error");
+            $("#otroDocumento").removeClass("valid");
+            $("#otroDocumento").addClass("vacio");
+        } else {
+            $("#otrodocto").hide();
+            $("#otroDocumento").removeClass("vacio");
+            $("#otroDocumento").removeClass("error");
+            $("#otroDocumento").removeClass("valid");
+        }
+    });
+>>>>>>> 89f877cf3c805cece2ce762f0d45f8176c340fc2
 });

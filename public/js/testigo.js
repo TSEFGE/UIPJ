@@ -17,7 +17,13 @@
      var anios = $('#edad').val();
      $('#fechanac').datetimepicker('date', moment().subtract(anios, 'years').format('YYYY-MM-DD'));
  });
+
  $(document).ready(function() {
+     
+     $("#datosDir").addClass('visible');
+     $("#datosTrab").addClass('visible');
+     $("#datosNotif").addClass('visible');
+     $("#datosPer").addClass('visible');
      //Para generar Notificaciones se asigna clase
      $("#nombres").addClass("vacio");
      $("#primerAp").addClass("vacio");
@@ -27,10 +33,11 @@
      $("#homo").addClass("vacio");
      $("#curp").addClass("vacio");
      $("#telefono").addClass("vacio");
-     $("#motivoEstancia").addClass("vacio");
+     $("#motivoEstancia").addClass("vacio");     
      // $("#docIdentificacion").addClass("vacio");     
      $("#numDocIdentificacion").addClass("vacio");
      //  $("#narracionUno").addClass("vacio");
+
      $("#calle").addClass("vacio");
      $("#numExterno").addClass("vacio");
      $("#numInterno").addClass("vacio");
@@ -82,12 +89,17 @@
              $("#numInterno2").val("S/N").prop('disabled', true);
          } else {
              $("#idEstado2").prop('disabled', false);
+             $('#idEstado2').select2();
              $("#lugarTrabajo").prop('disabled', false);
              $("#telefonoTrabajo").prop('disabled', false);
              $("#idMunicipio2").prop('disabled', false);
+             $('#idMunicipio2').select2();
              $("#idLocalidad2").prop('disabled', false);
+             $('#idLocalidad2').select2();
              $("#idColonia2").prop('disabled', false);
+             $('#idColonia2').select2();
              $("#cp2").prop('disabled', false);
+             $('#cp2').select2();
              $("#calle2").prop('disabled', false);
              $("#numExterno2").prop('disabled', false);
              $("#numInterno2").prop('disabled', false);

@@ -1,3 +1,7 @@
+$("#btn-submit").prop('disabled',true);
+$("#datosPer").addClass('visible');
+$("#datosTrab").addClass('visible');
+$("#datosAut").addClass('visible');
 $('#tabsabogado.nav-tabs a').on('hidden.bs.tab', function(event){
 
 	var index= $($(this).attr('href')).index();
@@ -20,7 +24,8 @@ $('#tabsabogado.nav-tabs a').on('hidden.bs.tab', function(event){
 	} 
 	else if( correctos ==totales){
 		$("#bien").show();
-		$("#bien").html('<i class="fa fa-check" aria-hidden="true"></i>');                                                                
+		$("#bien").html('<i class="fa fa-check" aria-hidden="true"></i>'); 
+		$("#bien").addClass('correcto');                                                            
 	}                                
 	else{  
 		$("#bien").show();                             
@@ -52,7 +57,8 @@ $('#tabsabogado.nav-tabs a').on('hidden.bs.tab', function(event){
 	} 
 	else if( correctos ==totales){
 		$("#bien1").show();
-		$("#bien1").html('<i class="fa fa-check" aria-hidden="true"></i>');                                                                
+		$("#bien1").html('<i class="fa fa-check" aria-hidden="true"></i>');
+		$("#bien1").addClass('correcto');                                                                
 	}                                
 	else{  
 		$("#bien1").show();                             
@@ -83,7 +89,8 @@ $('#tabsabogado.nav-tabs a').on('hidden.bs.tab', function(event){
 	} 
 	else if( correctos ==totales){
 		$("#bien2").show();
-		$("#bien2").html('<i class="fa fa-check" aria-hidden="true"></i>');                                                                
+		$("#bien2").html('<i class="fa fa-check" aria-hidden="true"></i>');
+		$("#bien2").addClass('correcto');                                                                
 	}                                
 	else{  
 		$("#bien2").show();                             
@@ -100,7 +107,12 @@ $('#tabsabogado.nav-tabs a').on('hidden.bs.tab', function(event){
 
 	default:
 	break;
-
-
-}
+	}
+	var tabs= $("#tabsabogado .visible").length;
+    var correcto = $('#tabsabogado .correcto').length;
+    if (correcto == tabs){
+        $("#btn-submit").prop('disabled',false);
+    }else{
+        $("#btn-submit").prop('disabled',true);
+    } 
 });

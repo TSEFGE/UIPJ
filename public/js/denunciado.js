@@ -9,6 +9,7 @@
     //Si es QRR
     $("#tipoDenunciado1").change(function(event){
         if ($('#tipoDenunciado1').is(':checked') ) {
+            $("#btn-submit").prop('disabled',false);
             $('#qrr').show();
             $('#conocido').hide();
             $('.comparecencia').hide();
@@ -116,6 +117,7 @@
     //Si lo conoce el denunciante
     $("#tipoDenunciado2").change(function(event){
         if ($('#tipoDenunciado2').is(':checked') ) {
+            $("#btn-submit").prop('disabled',false);
             $('#qrr').hide();
             $('#conocido').show();
             $('.comparecencia').hide();
@@ -223,6 +225,7 @@
     //Si es por comparecencia
     $("#tipoDenunciado3").change(function(event){
         if ($('#tipoDenunciado3').is(':checked') ) {
+            $("#btn-submit").prop('disabled',true);
             $('#qrr').hide();
             $('#conocido').hide();
             $('.comparecencia').show();

@@ -1,3 +1,4 @@
+$("#btn-submit").prop('disabled',true);
 $('#tabstestigo.nav-tabs a').on('hidden.bs.tab', function(event){
 
 	var index= $($(this).attr('href')).index();
@@ -19,7 +20,8 @@ $('#tabstestigo.nav-tabs a').on('hidden.bs.tab', function(event){
 	} 
 	else if( correctos ==totales){
 		$("#bien").show();
-		$("#bien").html('<i class="fa fa-check" aria-hidden="true"></i>');                                                                
+		$("#bien").html('<i class="fa fa-check" aria-hidden="true"></i>'); 
+		$("#bien").addClass('correcto');                                                                              
 	}                                
 	else{  
 		$("#bien").show();                             
@@ -51,7 +53,8 @@ $('#tabstestigo.nav-tabs a').on('hidden.bs.tab', function(event){
 	} 
 	else if( correctos ==totales){
 		$("#bien1").show();
-		$("#bien1").html('<i class="fa fa-check" aria-hidden="true"></i>');                                                                
+		$("#bien1").html('<i class="fa fa-check" aria-hidden="true"></i>'); 
+		$("#bien1").addClass('correcto');                                                                              
 	}                                
 	else{  
 		$("#bien1").show();                             
@@ -84,7 +87,8 @@ $('#tabstestigo.nav-tabs a').on('hidden.bs.tab', function(event){
 	} 
 	else if( correctos ==totales){
 		$("#bien2").show();
-		$("#bien2").html('<i class="fa fa-check" aria-hidden="true"></i>');                                                                
+		$("#bien2").html('<i class="fa fa-check" aria-hidden="true"></i>'); 
+		$("#bien2").addClass('correcto');                                                                              
 	} 
 	else{  
 		$("#bien2").show();                             
@@ -116,7 +120,8 @@ $('#tabstestigo.nav-tabs a').on('hidden.bs.tab', function(event){
 	} 
 	else if( correctos ==totales){
 		$("#bien3").show();
-		$("#bien3").html('<i class="fa fa-check" aria-hidden="true"></i>');                                                                
+		$("#bien3").html('<i class="fa fa-check" aria-hidden="true"></i>');  
+		$("#bien3").addClass('correcto');                                                                             
 	}                                
 	else{  
 		$("#bien3").show();                             
@@ -134,7 +139,14 @@ $('#tabstestigo.nav-tabs a').on('hidden.bs.tab', function(event){
 
 	default:
 	break;
-
-
 }
+var tabs= $("#tabstestigo .visible").length;
+    var correcto = $('#tabstestigo .correcto').length;
+    if (correcto == tabs){
+        $("#btn-submit").prop('disabled',false);
+    }else{
+        $("#btn-submit").prop('disabled',true);
+	}
+	console.log ("tabs", tabs)
+	console.log ("correcto", correcto)
 });
