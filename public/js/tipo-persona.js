@@ -206,6 +206,8 @@
                 var ocupacion = $('#idOcupacion').val();
                 if (ocupacion == 2947) {          
             $("#datosTrab").removeClass('visible');   
+            
+            
             }
             else
             {

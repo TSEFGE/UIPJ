@@ -32,7 +32,7 @@ $(document).ready(function() {
     $('#idOcupacion').change(function(event) {
         var ocupacion = $('#idOcupacion').val();
         if (ocupacion == 2947) {
-            $('#datosTrab').removeClass('visible');
+           
             $("#idEstado2").val(33).prop('disabled', true);
             $('#idEstado2').select2('destroy');
             $("#idMunicipio2").val(2496).prop('disabled', true);
@@ -48,8 +48,9 @@ $(document).ready(function() {
             $("#calle2").val("SIN INFORMACION").prop('disabled', true);
             $("#numExterno2").val("S/N").prop('disabled', true);
             $("#numInterno2").val("S/N").prop('disabled', true);
+             $('#datosTrab').removeClass('visible');
         } else {
-            $('#datosTrab').addClass('visible');
+         
             $("#idEstado2").prop('disabled', false);
             $('#idEstado2').select2();
             $("#lugarTrabajo").prop('disabled', false);
@@ -65,35 +66,11 @@ $(document).ready(function() {
             $("#calle2").prop('disabled', false);
             $("#numExterno2").prop('disabled', false);
             $("#numInterno2").prop('disabled', false);
+            $('#datosTrab').addClass('visible');
         }
     });
-<<<<<<< HEAD
 
 
-$("#docIdentificacion").change(function(event){
-
-
-    var otro= $("#docIdentificacion").val();
-    
-    if(otro=="OTRO"){
-    
-      
-      $("#otrodocto").show();
-      $("#otroDocumento").removeClass("error"); 
-      $("#otroDocumento").removeClass("valid"); 
-      $("#otroDocumento").addClass("vacio");  
-
-    }
-    else
-    {
-
-      $("#otrodocto").hide(); 
-      $("#otroDocumento").removeClass("vacio");
-      $("#otroDocumento").removeClass("error"); 
-      $("#otroDocumento").removeClass("valid"); 
-    }
-
-=======
     $("#docIdentificacion").change(function(event) {
         var otro = $("#docIdentificacion").val();
         if (otro == "OTRO") {
@@ -108,5 +85,5 @@ $("#docIdentificacion").change(function(event){
             $("#otroDocumento").removeClass("valid");
         }
     });
->>>>>>> 89f877cf3c805cece2ce762f0d45f8176c340fc2
+
 });
