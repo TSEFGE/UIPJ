@@ -85,6 +85,12 @@
 	<script src="{{ asset('plugins/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
 	{{--<script src="{{ asset('js/citatorio.js') }}"></script>--}}
 	<script>
+	</script>
+	
+@endpush
+
+
+@push('docready-js')
 		$(function () { //Datetimepicker a la zquierda y debajo para vizualizar mejor no se oculte en la nav
 		  $('#horaCit').datetimepicker({
 			  format: 'LT',
@@ -95,12 +101,6 @@
 			  }
 		 });
 		});
-	</script>
-	
-@endpush
-
-
-@push('docready-js')
 	console.log('hola');
 	localStorage.removeItem("[id=undefined][name=undefined][id=status][name=status]");
 	localStorage.removeItem("[id=undefined][name=undefined][id=fecha][name=fecha]");
