@@ -17,7 +17,7 @@
             correcto= 0;
             $("#datosPer").addClass('visible');
             $("#datosDir").addClass('visible');
-            $("#datosTrab").addClass('visible');           
+           // $("#datosTrab").addClass('visible');           
             $("#datosNotif").addClass('visible');            
             $("#btn-submit").prop('disabled',true);
             $('.xvacio').hide();
@@ -28,7 +28,7 @@
             $('#personaMoral').show();
             $('#datosDir').show();
             $('#datosTrab').hide();
-            $('#datosTrab').removeClass('visible');
+            //$('#datosTrab').removeClass('visible');
             $('#datosNotif').show();
             $('#datosExtra').hide();            
             $('#extra-fis').hide();
@@ -201,8 +201,21 @@
             correcto = 0;
             $("#datosPer").addClass('visible');
             $("#datosDir").addClass('visible');
-            $("#datosTrab").addClass('visible');           
+
+             $('#idOcupacion').change(function(event) {
+                var ocupacion = $('#idOcupacion').val();
+                if (ocupacion == 2947) {          
+            $("#datosTrab").removeClass('visible');   
+            }
+            else
+            {
+            $("#datosTrab").addClass('visible');  
+            }
+
+            });
+
             $("#datosNotif").addClass('visible');
+            $('#datosExtra').addClass('visible');
             
             $("#btn-submit").prop('disabled',true);
             $('.xvacio').hide();
@@ -217,7 +230,7 @@
             $('#personaMoral').hide();
             $('#datosDir').show();
             $('#datosTrab').show();
-            $('#datosTrab').addClass('visible');
+           // $('#datosTrab').addClass('visible');
             $('#datosNotif').show();
             $('#datosExtra').show();
             $('#extra-fis').show();

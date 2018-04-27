@@ -35,21 +35,21 @@
 				</div>
 		<div id="tabogado">
 				<ul id="tabsabogado" class="nav nav-tabs">
-					 <li class="nav-item" >
+					 <li class="nav-item" id="datosPer" >
 						<a class="nav-link active" data-toggle="tab" href="#collapsePersonales3"><p id="personal" class="pestaña" ><i class="fa fa-user-circle-o" aria-hidden="true"></i></p>
 								<div id="espacio-notif"><span id="vacio" class="xvacio"></span>
 								<span id="error" class="xerror"></span>
 								<span id="bien" class="bien"></span></div>
 						</a>
 					  </li>
-					  <li class="nav-item">
+					  <li class="nav-item" id="datosTrab">
 						<a class="nav-link" data-toggle="tab" href="#collapseTrab3"><p id="dtrabajo" class="pestaña"> <i class="fa fa-industry" aria-hidden="true"></i></p>
 								<div id="espacio-notif2"><span id="vacio1" class="xvacio"></span>
 								<span id="error1" class="xerror"></span>
 								<span id="bien1" class="bien"></span></div>
 					</a>
 					  </li>  		
-					   <li class="nav-item">
+					   <li class="nav-item" id="datosAut">
 						<a class="nav-link" data-toggle="tab" href="#collapseAutoridad"><p id="autoridad" class="pestaña"><i class="fa fa-shield" aria-hidden="true"></i></p>
 						 		<div id="espacio-notif5"><span id="vacio2" class="xvacio"></span>
 								<span id="error2" class="xerror"></span>

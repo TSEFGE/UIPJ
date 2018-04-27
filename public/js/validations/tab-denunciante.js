@@ -161,10 +161,7 @@ $('#tdenunciante.nav-tabs a').on('hidden.bs.tab', function(event){
         $("#btn-submit").prop('disabled',false);
     }else{
         $("#btn-submit").prop('disabled',true);
-    }
-   
-    
-    
+    } 
     console.log( "tabs", tabs);
   });
   console.log( "correcto", correcto);

@@ -49,7 +49,7 @@
 
 					<div class="col-6">
 						<div class="form-group">
-							{!! Form::label('fechaCit', 'Fecha', ['class' => 'col-form-label-sm']) !!}
+							{!! Form::label('fecha', 'Fecha', ['class' => 'col-form-label-sm']) !!}
 							<div class="input-group date" id="fechaCit" data-target-input="nearest">
 								{!! Form::text('fecha', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaCit', 'data-toggle' => 'datetimepicker', 'required', 'data-validation'=>'date','data-validation-format'=>'dd-mm-YYYY','data-validation-error-msg'=>'Ingrese fecha en el formato correcto DD-MM-AAAA']) !!}
 								<div class="input-group-append" data-target="#fechaCit" data-toggle="datetimepicker">
@@ -60,7 +60,7 @@
 					</div>
 					<div class="col-6">
 						<div class="form-group" id="" >
-							{!! Form::label('horaCit', 'Hora', ['class' => 'col-form-label-sm']) !!}
+							{!! Form::label('hora', 'Hora', ['class' => 'col-form-label-sm']) !!}
 							<div class="input-group date" id="horaCit" data-target-input="nearest">
 								{!! Form::text('hora', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#horaCit', 'required', 'placeholder' => '00:00','data-toggle'=>"datetimepicker",'data-validation'=>'custom' ,'data-validation-regexp'=>'^([01]?[0-9]|2[0-3]):[0-5][0-9]$','data-validation-error-msg'=>'Ingrese hora en el formato correcto HH:MM (Formato 24 hrs)']) !!}
 								<div class="input-group-append" data-target="#horaCit" data-toggle="datetimepicker">
@@ -80,7 +80,7 @@
 					<div class="col-12">
 						<div class="form-group">
 							{!! Form::label('fundamentoLegal', 'Fundamento legal', ['class' => 'col-form-label-sm']) !!}
-							{!! Form::textarea('fundamentoLegal',$fundamentoLegal, ['class' => 'form-control form-control-sm','id' => 'fundamentoLegal', 'required' ,'rows' => '5','data-validation'=>'length','data-validation-length'=>'5-3000','data-validation-error-msg'=>'Fundamento legal debe contener al menos cinco letras']) !!}
+							{!! Form::textarea('fundamentoLegal',$fundamentoLegal, ['class' => 'form-control form-control-sm','id' => 'fundamentoLegal', 'required' ,'rows' => '5','data-validation'=>'length','data-validation-length'=>'5-30000','data-validation-error-msg'=>'Fundamento legal debe contener al menos cinco letras']) !!}
 						</div>
 					</div>
 				</div>					
@@ -105,25 +105,30 @@
 	<script>
 			var maxDate = moment().add(1, 'seconds').toDate();
 			var defaultDate = moment().toDate();
-		$('#fechaCit').datetimepicker({
-			format: 'DD-MM-YYYY',
-			defaultDate: moment(), 
-			minDate: moment(),          
-			 widgetPositioning: {
-			  vertical: 'bottom',
-			  horizontal: 'left'
-		  }
-		 });
-		$(function () { //Datetimepicker a la zquierda y debajo para vizualizar mejor no se oculte en la nav
-		  $('#horaCit').datetimepicker({
-			  format: 'LT',
-			  defaultDate: moment(),  
-			  widgetPositioning: {
-				  vertical: 'bottom',
-				  horizontal: 'left'
-			  }
-		 });
-		});
+
+		
 	</script>
 	
+@endpush
+
+@push('docready-js')
+$('#fechaCit').datetimepicker({
+	format: 'DD-MM-YYYY',
+	defaultDate: moment(), 
+	minDate: moment(),          
+	 widgetPositioning: {
+	  vertical: 'bottom',
+	  horizontal: 'left'
+  }
+ });
+$(function () { //Datetimepicker a la zquierda y debajo para vizualizar mejor no se oculte en la nav
+  $('#horaCit').datetimepicker({
+	  format: 'LT',
+	  defaultDate: moment(),  
+	  widgetPositioning: {
+		  vertical: 'bottom',
+		  horizontal: 'left'
+	  }
+ });
+});
 @endpush
