@@ -80,7 +80,7 @@
 					<div class="col-12">
 						<div class="form-group">
 							{!! Form::label('fundamentoLegal', 'Fundamento legal', ['class' => 'col-form-label-sm']) !!}
-							{!! Form::textarea('fundamentoLegal',$fundamentoLegal, ['class' => 'form-control form-control-sm','id' => 'fundamentoLegal', 'required' ,'rows' => '5','data-validation'=>'length','data-validation-length'=>'5-3000','data-validation-error-msg'=>'Fundamento legal debe contener al menos cinco letras']) !!}
+							{!! Form::textarea('fundamentoLegal',$fundamentoLegal, ['class' => 'form-control form-control-sm','id' => 'fundamentoLegal', 'required' ,'rows' => '5','data-validation'=>'length','data-validation-length'=>'5-30000','data-validation-error-msg'=>'Fundamento legal debe contener al menos cinco letras']) !!}
 						</div>
 					</div>
 				</div>					
