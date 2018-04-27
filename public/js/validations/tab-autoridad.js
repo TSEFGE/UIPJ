@@ -1,3 +1,4 @@
+$("#btn-submit").prop('disabled',true);
 $('#tabsautoridad.nav-tabs a').on('hidden.bs.tab', function(event){
 
 	var index= $($(this).attr('href')).index();
@@ -19,7 +20,8 @@ $('#tabsautoridad.nav-tabs a').on('hidden.bs.tab', function(event){
 	} 
 	else if( correctos ==totales){
 		$("#biena").show();
-		$("#biena").html('<i class="fa fa-check" aria-hidden="true"></i>');                                                                
+		$("#biena").html('<i class="fa fa-check" aria-hidden="true"></i>'); 
+		$("#biena").addClass('correcto');                                                                
 	}                                
 	else{  
 		$("#biena").show();                             
@@ -54,7 +56,8 @@ $('#tabsautoridad.nav-tabs a').on('hidden.bs.tab', function(event){
 	} 
 	else if( correctos ==totales){
 		$("#biena1").show();
-		$("#biena1").html('<i class="fa fa-check" aria-hidden="true"></i>');                                                                
+		$("#biena1").html('<i class="fa fa-check" aria-hidden="true"></i>');
+		$("#biena1").addClass('correcto');                                                                   
 	}                                
 	else{  
 		$("#biena1").show();                             
@@ -88,7 +91,8 @@ $('#tabsautoridad.nav-tabs a').on('hidden.bs.tab', function(event){
 	} 
 	else if( correctos ==totales){
 		$("#biena2").show();
-		$("#biena2").html('<i class="fa fa-check" aria-hidden="true"></i>');                                                                
+		$("#biena2").html('<i class="fa fa-check" aria-hidden="true"></i>'); 
+		$("#biena2").addClass('correcto');                                                                  
 	}                                
 	else{  
 		$("#biena2").show();                             
@@ -120,7 +124,8 @@ $('#tabsautoridad.nav-tabs a').on('hidden.bs.tab', function(event){
 	} 
 	else if( correctos ==totales){
 		$("#biena3").show();
-		$("#biena3").html('<i class="fa fa-check" aria-hidden="true"></i>');                                                                
+		$("#biena3").html('<i class="fa fa-check" aria-hidden="true"></i>'); 
+		$("#biena3").addClass('correcto');                                                                  
 	}                                
 	else{  
 		$("#biena3").show();                             
@@ -137,6 +142,13 @@ $('#tabsautoridad.nav-tabs a').on('hidden.bs.tab', function(event){
 
 	default:
 	break;
-
 }
+
+var tabs= $("#tabsautoridad .visible").length;
+    var correcto = $('#tabsautoridad .correcto').length;
+    if (correcto == tabs){
+        $("#btn-submit").prop('disabled',false);
+    }else{
+        $("#btn-submit").prop('disabled',true);
+    }
 });

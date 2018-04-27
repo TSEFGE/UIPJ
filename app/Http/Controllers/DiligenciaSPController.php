@@ -14,7 +14,8 @@ class DiligenciaSPController extends Controller
 {
 	public static function test(Request $request){
 		//DiligenciaSP::create(['idAcusacion' => $request->idAcusacion, 'numOficio' => $request->numOficio, 'termino' => $request->termino, 'dictamen' => $request->dictamen, 'status' => $request->status]);
-		return ['success'=>true, 'code' => 200, ['message' => 'Éxito']];
+		$res = ['msg'=> 'Éxitoso', 'code' => 200];
+		return ['msg'=> 'Éxitoso', 'code' => 200];
 	}
 
 	public static function enviarSolicitud(Request $request){

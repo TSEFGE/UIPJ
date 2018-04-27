@@ -105,25 +105,30 @@
 	<script>
 			var maxDate = moment().add(1, 'seconds').toDate();
 			var defaultDate = moment().toDate();
-		$('#fechaCit').datetimepicker({
-			format: 'DD-MM-YYYY',
-			defaultDate: moment(), 
-			minDate: moment(),          
-			 widgetPositioning: {
-			  vertical: 'bottom',
-			  horizontal: 'left'
-		  }
-		 });
-		$(function () { //Datetimepicker a la zquierda y debajo para vizualizar mejor no se oculte en la nav
-		  $('#horaCit').datetimepicker({
-			  format: 'LT',
-			  defaultDate: moment(),  
-			  widgetPositioning: {
-				  vertical: 'bottom',
-				  horizontal: 'left'
-			  }
-		 });
-		});
+
+		
 	</script>
 	
+@endpush
+
+@push('docready-js')
+$('#fechaCit').datetimepicker({
+	format: 'DD-MM-YYYY',
+	defaultDate: moment(), 
+	minDate: moment(),          
+	 widgetPositioning: {
+	  vertical: 'bottom',
+	  horizontal: 'left'
+  }
+ });
+$(function () { //Datetimepicker a la zquierda y debajo para vizualizar mejor no se oculte en la nav
+  $('#horaCit').datetimepicker({
+	  format: 'LT',
+	  defaultDate: moment(),  
+	  widgetPositioning: {
+		  vertical: 'bottom',
+		  horizontal: 'left'
+	  }
+ });
+});
 @endpush
