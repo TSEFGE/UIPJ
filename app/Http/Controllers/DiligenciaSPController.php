@@ -14,11 +14,11 @@ class DiligenciaSPController extends Controller
 {
 	public static function test(Request $request){
 		//DiligenciaSP::create(['idAcusacion' => $request->idAcusacion, 'numOficio' => $request->numOficio, 'termino' => $request->termino, 'dictamen' => $request->dictamen, 'status' => $request->status]);
-		if($request->isNull()){	
-			$res = ['msg'=> 'Error de servidor', 'code' => 500];
-			$res = ['msg'=> 'Error de cliente', 'code' => 400];
+		if(is_null($request)){	
+			$res = ['msg'=> 'error de servidor', 'code' => 500];
+			$res = ['msg'=> 'error de cliente', 'code' => 400];
 		}else{
-			$res = ['msg'=> 'Éxitoso', 'code' => 200];
+			$res = ['msg'=> 'exitoso', 'code' => 200];
 		}
 		return $res;
 	}
@@ -108,48 +108,50 @@ class DiligenciaSPController extends Controller
 		$result= $res->getBody()->getContents();
 		//dd($result);
 
-		
-		//Si todo sale bien se crea el documento y se almacena la información en la base de datos
-		$distritoLetra = DocxMakerController::getDistritoLetra($carpeta->distrito);
-		//$dirDenunciante = $acusacion->calle." #".$acusacion->numExterno.", COLONIA ".$acusacion->colonia.", EN ".$acusacion->municipio.", ".$acusacion->estado;
-		$fechaHoy = new Carbon();
-		$mesLetra = DocxMakerController::getMesLetra($fechaHoy->month);
-		$fechaCompleta = $fechaHoy->day." de ".$mesLetra." de ".$fechaHoy->year;
+		if($result == '{"msg":"exitoso","code":200}'){
+			//Si todo sale bien se crea el documento y se almacena la información en la base de datos
+			$distritoLetra = DocxMakerController::getDistritoLetra($carpeta->distrito);
+			//$dirDenunciante = $acusacion->calle." #".$acusacion->numExterno.", COLONIA ".$acusacion->colonia.", EN ".$acusacion->municipio.", ".$acusacion->estado;
+			$fechaHoy = new Carbon();
+			$mesLetra = DocxMakerController::getMesLetra($fechaHoy->month);
+			$fechaCompleta = $fechaHoy->day." de ".$mesLetra." de ".$fechaHoy->year;
 
-		$templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('templates/InvestigaciónServiciosPericiales.docx');
+			$templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('templates/InvestigaciónServiciosPericiales.docx');
 
-		$templateProcessor->setValue('nombreFiscal', mb_strtoupper($carpeta->nombres." ".$carpeta->apellidos));
-		$templateProcessor->setValue('distrito', $carpeta->distrito);
-		$templateProcessor->setValue('distritoLetra', $distritoLetra);
-		$templateProcessor->setValue('municipioUnidadM', mb_strtoupper($carpeta->municipio));
-		$templateProcessor->setValue('dirUnidad', $carpeta->direccion);
-		$templateProcessor->setValue('telUnidad', $carpeta->telefono);
-		$templateProcessor->setValue('numOficio', $carpeta->oficioConsecutivo+1);
-		$templateProcessor->setValue('anio', $fechaHoy->year);
-		$templateProcessor->setValue('numCarpeta', $carpeta->numCarpeta);
-		$templateProcessor->setValue('numFiscal', $carpeta->numFiscal);
-		$templateProcessor->setValue('municipioUnidad', $carpeta->municipio);
-		$templateProcessor->setValue('fechaCompleta', $fechaCompleta);
-		$templateProcessor->setValue('nombreDenunciante', $acusacion->nombres." ".$acusacion->primerAp." ".$acusacion->segundoAp);
-		$templateProcessor->setValue('nombreDenunciado', $acusacion->nombres2." ".$acusacion->primerAp2." ".$acusacion->segundoAp2);
-		$templateProcessor->setValue('delito', $acusacion->delito);
-		//$templateProcessor->setValue('dirDenunciante', $dirDenunciante);
-		$templateProcessor->setValue('telefono', $acusacion->telefono);
-		//Servicios
-		$templateProcessor->cloneRow('rowService', count($servicios));
-		$cont = 1;
-		foreach ($servicios as $servi){
-			$templateProcessor->setValue('rowNum#'.$cont, $cont.").-");
-			$templateProcessor->setValue('rowService#'.$cont, $servi->nombre);
-			$cont ++;
+			$templateProcessor->setValue('nombreFiscal', mb_strtoupper($carpeta->nombres." ".$carpeta->apellidos));
+			$templateProcessor->setValue('distrito', $carpeta->distrito);
+			$templateProcessor->setValue('distritoLetra', $distritoLetra);
+			$templateProcessor->setValue('municipioUnidadM', mb_strtoupper($carpeta->municipio));
+			$templateProcessor->setValue('dirUnidad', $carpeta->direccion);
+			$templateProcessor->setValue('telUnidad', $carpeta->telefono);
+			$templateProcessor->setValue('numOficio', $carpeta->oficioConsecutivo+1);
+			$templateProcessor->setValue('anio', $fechaHoy->year);
+			$templateProcessor->setValue('numCarpeta', $carpeta->numCarpeta);
+			$templateProcessor->setValue('numFiscal', $carpeta->numFiscal);
+			$templateProcessor->setValue('municipioUnidad', $carpeta->municipio);
+			$templateProcessor->setValue('fechaCompleta', $fechaCompleta);
+			$templateProcessor->setValue('nombreDenunciante', $acusacion->nombres." ".$acusacion->primerAp." ".$acusacion->segundoAp);
+			$templateProcessor->setValue('nombreDenunciado', $acusacion->nombres2." ".$acusacion->primerAp2." ".$acusacion->segundoAp2);
+			$templateProcessor->setValue('delito', $acusacion->delito);
+			//$templateProcessor->setValue('dirDenunciante', $dirDenunciante);
+			$templateProcessor->setValue('telefono', $acusacion->telefono);
+			//Servicios
+			$templateProcessor->cloneRow('rowService', count($servicios));
+			$cont = 1;
+			foreach ($servicios as $servi){
+				$templateProcessor->setValue('rowNum#'.$cont, $cont.").-");
+				$templateProcessor->setValue('rowService#'.$cont, $servi->nombre);
+				$cont ++;
+			}
+			$templateProcessor->setValue('termino', $request->cantidadTermino." ".$request->unidadTermino);
+
+			$name = 'InvestigaciónServiciosPericiales'.time().$request->radioAcusacion.'.docx';
+	        $path = public_path().'\storage\diligencias-sp\\';
+			$templateProcessor->saveAs($path.$name);
+			DiligenciaSP::create(['idAcusacion' => $request->radioAcusacion, 'numOficio' => $carpeta->oficioConsecutivo+1, 'termino' => $request->cantidadTermino." ".$request->unidadTermino, 'dictamen' => $request->servicio, 'status' => 1, 'oficio' => $name]);
+			DB::table('users')->where('id', Auth::user()->id)->update(['oficioConsecutivo' => $carpeta->oficioConsecutivo+1]);
+			return response()->download($path.$name);
 		}
-		$templateProcessor->setValue('termino', $request->cantidadTermino." ".$request->unidadTermino);
-
-		$name = 'InvestigaciónServiciosPericiales'.time().$request->radioAcusacion.'.docx';
-        $path = public_path().'\storage\diligencias-sp\\';
-		$templateProcessor->saveAs($path.$name);
-		DiligenciaSP::create(['idAcusacion' => $request->radioAcusacion, 'numOficio' => $carpeta->oficioConsecutivo+1, 'termino' => $request->cantidadTermino." ".$request->unidadTermino, 'dictamen' => $request->servicio, 'status' => 1, 'oficio' => $name]);
-		return response()->download($path.$name);
 	}
     
 }
