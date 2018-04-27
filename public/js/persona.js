@@ -33,6 +33,7 @@ $(document).ready(function() {
     $('#idOcupacion').change(function(event) {
         var ocupacion = $('#idOcupacion').val();
         if (ocupacion == 2947) {
+            $('#datosTrab').removeClass('visible');
             $("#idEstado2").val(33).prop('disabled', true);
             $('#idEstado2').select2('destroy');
             $("#idMunicipio2").val(2496).prop('disabled', true);
@@ -49,6 +50,7 @@ $(document).ready(function() {
             $("#numExterno2").val("S/N").prop('disabled', true);
             $("#numInterno2").val("S/N").prop('disabled', true);
         } else {
+            $('#datosTrab').addClass('visible');
             $("#idEstado2").prop('disabled', false);
             $("#lugarTrabajo").prop('disabled', false);
             $("#telefonoTrabajo").prop('disabled', false);
@@ -64,6 +66,7 @@ $(document).ready(function() {
 
 
 $("#docIdentificacion").change(function(event){
+
 
     var otro= $("#docIdentificacion").val();
     
