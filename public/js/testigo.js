@@ -21,7 +21,22 @@
  $(document).ready(function() {
      
      $("#datosDir").addClass('visible');
-     $("#datosTrab").addClass('visible');
+
+
+   
+    $('#idOcupacion').change(function(event) {
+                var ocupacion = $('#idOcupacion').val();
+                if (ocupacion == 2947) {          
+           $("#datosTrab").removeClass('visible');  
+            }
+            else
+            {
+            $("#datosTrab").addClass('visible');  
+            }
+
+            });
+
+
      $("#datosNotif").addClass('visible');
      $("#datosPer").addClass('visible');
      //Para generar Notificaciones se asigna clase

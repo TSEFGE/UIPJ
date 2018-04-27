@@ -4,11 +4,11 @@ $("#personal").addClass('visible');
     $('#idOcupacion').change(function(event) {
                 var ocupacion = $('#idOcupacion').val();
                 if (ocupacion == 2947) {          
-           $("#dtrabajo").addClass('visible');  
+           $("#dtrabajo").removeClass('visible');  
             }
             else
             {
-            $("#dtrabajo").removeClass('visible');  
+            $("#dtrabajo").addClass('visible');  
             }
 
             });
