@@ -67,9 +67,7 @@ $("#docIdentificacion").change(function(event){
 
     var otro= $("#docIdentificacion").val();
     
-    if(otro=="OTRO"){
-    
-      
+    if(otro=="OTRO"){ 
       $("#otrodocto").show();
       $("#otroDocumento").removeClass("error"); 
       $("#otroDocumento").removeClass("valid"); 

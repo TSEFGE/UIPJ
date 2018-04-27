@@ -1,3 +1,4 @@
+$("#btn-submit").prop('disabled',true);
 $('#tabstestigo.nav-tabs a').on('hidden.bs.tab', function(event){
 
 	var index= $($(this).attr('href')).index();
@@ -134,7 +135,12 @@ $('#tabstestigo.nav-tabs a').on('hidden.bs.tab', function(event){
 
 	default:
 	break;
-
-
 }
+var tabs= $("#tabstestigo .visible").length;
+    var correcto = $('#tabstestigo .correcto').length;
+    if (correcto == tabs){
+        $("#btn-submit").prop('disabled',false);
+    }else{
+        $("#btn-submit").prop('disabled',true);
+    }
 });
