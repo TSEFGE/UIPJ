@@ -14,8 +14,13 @@ class DiligenciaSPController extends Controller
 {
 	public static function test(Request $request){
 		//DiligenciaSP::create(['idAcusacion' => $request->idAcusacion, 'numOficio' => $request->numOficio, 'termino' => $request->termino, 'dictamen' => $request->dictamen, 'status' => $request->status]);
-		$res = ['msg'=> 'Éxitoso', 'code' => 200];
-		return ['msg'=> 'Éxitoso', 'code' => 200];
+		if($request->isNull()){	
+			$res = ['msg'=> 'Error de servidor', 'code' => 500];
+			$res = ['msg'=> 'Error de cliente', 'code' => 400];
+		}else{
+			$res = ['msg'=> 'Éxitoso', 'code' => 200];
+		}
+		return $res;
 	}
 
 	public static function enviarSolicitud(Request $request){
@@ -103,6 +108,7 @@ class DiligenciaSPController extends Controller
 		$result= $res->getBody()->getContents();
 		//dd($result);
 
+		
 		//Si todo sale bien se crea el documento y se almacena la información en la base de datos
 		$distritoLetra = DocxMakerController::getDistritoLetra($carpeta->distrito);
 		//$dirDenunciante = $acusacion->calle." #".$acusacion->numExterno.", COLONIA ".$acusacion->colonia.", EN ".$acusacion->municipio.", ".$acusacion->estado;
