@@ -139,7 +139,7 @@
 		<div class="form-group">
 			{!! Form::label('docIdentificacion', 'Documento de identificación', ['class' => 'col-form-label-sm']) !!}
 			{!! Form::select('docIdentificacion', ['CREDENCIAL DE ELECTOR' => 'CREDENCIAL DE ELECTOR', 'PASAPORTE' => 'PASAPORTE','	
-						CARTILLA MILITAR' => 'CARTILLA MILITAR','LICENCIA PARA CONDUCIR' => 'LICENCIA PARA CONDUCIR','CREDENCIAL ESCOLAR' => 'CREDENCIAL ESCOLAR','VISA' => 'VISA','OTRO' => 'OTRO'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una forma de comisión', 'required']) !!}
+						CARTILLA MILITAR' => 'CARTILLA MILITAR','LICENCIA PARA CONDUCIR' => 'LICENCIA PARA CONDUCIR','CREDENCIAL ESCOLAR' => 'CREDENCIAL ESCOLAR','VISA' => 'VISA','OTRO' => 'OTRO'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione uno', 'required']) !!}
 
 
 					<div id="otrodocto" style="display:none;">

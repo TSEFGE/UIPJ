@@ -8,8 +8,9 @@
             <th>Teléfono</th>
             <th>Persona moral</th>
             {{-- <th>Constancia de hechos</th> --}}
-             <th>Narración</th>
-             <th>Agregar citatorio</th>
+            <th>Narración</th>
+            <th>Agregar citatorio</th>
+            <th>Editar registro</th>    
 
 
         </thead>
@@ -38,8 +39,10 @@
                 <td align="center"><a href="{{ route('citatorio',['idCitado'=>$testigo->id, 'idCarpeta'=>$carpetaNueva[0]->id, 'tipoInvolucrado'=>2])}}"> <i class="fa fa-calendar" style="font-size:24px;color:grey"></i></a></td>
                 @else
                 <td align="center"><a href="{{ route('citatorio',['idCitado'=>$testigo->id,'idCarpeta'=>$idCarpeta, 'tipoInvolucrado'=>2])}}"> <i class="fa fa-calendar" style="font-size:24px;color:grey"></i></a></td>
-                @endif
 
+
+                @endif
+                    <td><a href=""> <i class="fa fa-pencil-square-o"  style="font-size:24px;color:grey"></i></a></td>
                     </tr>
                 @endforeach
             @endif

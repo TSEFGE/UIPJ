@@ -242,4 +242,8 @@ class TestigoController extends Controller
             return redirect()->route('new.testigo', $request->idCarpeta);
         }
     }
+
+    public function edit($id)
+    {
+    }
 }

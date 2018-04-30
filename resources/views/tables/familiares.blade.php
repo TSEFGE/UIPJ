@@ -5,6 +5,7 @@
             <th>Familiar de</th>
             <th>Parentesco</th>
             <th>Ocupación</th>
+            <th>Editar registro</th>    
         </thead>
         <tbody>
             @if(count($familiares)==0)
@@ -16,6 +17,7 @@
                         <td>{{ $familiar->nombres." ".$familiar->primerAp." ".$familiar->segundoAp }}</td>
                         <td>{{ $familiar->parentesco }}</td>
                         <td>{{ $familiar->ocupacion }}</td>
+                        <td><a href=""> <i class="fa fa-pencil-square-o"  style="font-size:24px;color:grey"></i></a></td>
                     </tr>
                 @endforeach
             @endif
