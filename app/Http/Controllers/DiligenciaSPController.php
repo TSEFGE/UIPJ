@@ -98,7 +98,8 @@ class DiligenciaSPController extends Controller
                 'segundoApI' => $acusacion->segundoAp2,
 
                 'conIndicio' => $request->conIndicio,
-                'termino' => $request->cantidadTermino." ".$request->unidadTermino,
+                'unidadTermino' => $request->unidadTermino,
+                'cantidadTermino' => $request->cantidadTermino,
                 'dictamen' => $request->servicio,
                 'observaciones' => $request->observaciones
             ]

@@ -20,7 +20,7 @@
                         <td >{{ $diligenciaSP->nombresADO}}</td>
                         <td >{{ $diligenciaSP->dictamen }}</td>
                         <td >{{Carbon\Carbon::parse($diligenciaSP->fecha)->format('d-m-Y')}}</td>
-                        <td > @if ($diligenciaSP->status ==1)Pendiente @else Aplicada @endif</td>
+                        <td > @if ($diligenciaSP->status ==1)PENDIENTE @else APLICADA @endif</td>
                         <td align="center"><a href="{{ asset('storage/diligencias-sp/'.$diligenciaSP->oficio) }}" class="fa fa-cloud-download" style="font-size:24px;color:grey"></i></a></td>
 
                     </tr>
