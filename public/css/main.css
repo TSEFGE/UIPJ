@@ -103,7 +103,12 @@ body{
 	/*border: solid 1px #BFBFBF;*/	
 	padding: 9px;
 }
-
+th {
+	text-align: center;
+}
+td {
+	text-align: center;
+}
 /* Pestañas colores*/
 .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
 	color: #1b1b1b;

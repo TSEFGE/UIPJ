@@ -9,6 +9,7 @@
             <th>Persona moral</th>
             <th>Narración</th>
             <th>Agregar citatorio</th>
+            <th>Editar registro</th>
         </thead>
         <tbody>
             @if(count($denunciados)==0)
@@ -29,7 +30,7 @@
                 @endif
 
                 @if(isset($carpetaNueva))
-                <td align="center"><a href="{{ route('narracion.index', ['idDenunciado'=>$denunciado->id, 'idCarpeta'=>$carpetaNueva[0]->id,  'tipoInvolucrado'=>2])}}"> <i class="fa fa-plus-square" style="font-size:24px;color:grey"></i></a></td>
+                <td align="center"><a href="{{ route('narracion.index', ['idDenunciado'=>$denunciado->id, 'idCarpeta'=>$carpetaNueva[0]->id,  'tipoInvolucrado'=>2])}}"> <i class="fa fa-plus-square" style="font-size:24px;color:grey"></i></a></td>                
                 @else
                 <td align="center"><a href="{{ route('narracion.index', ['idDenunciado'=>$denunciado->id, 'idCarpeta'=>$idCarpeta, 'tipoInvolucrado'=>2])}}"> <i class="fa fa-plus-square" style="font-size:24px;color:grey"></i></a></td>
                 @endif
@@ -39,6 +40,9 @@
                 <td align="center"><a href="{{ route('citatorio',['idCitado'=>$denunciado->id,  'idCarpeta'=>$carpetaNueva[0]->id, 'tipoInvolucrado'=>1])}}"> <i class="fa fa-calendar" style="font-size:24px;color:grey"></i></a></td>
                 @else
                 <td align="center"><a href="{{ route('citatorio',['idCitado'=>$denunciado->id,'idCarpeta'=>$idCarpeta, 'tipoInvolucrado'=>1])}}"> <i class="fa fa-calendar" style="font-size:24px;color:grey"></i></a></td>
+                @endif
+                @if(isset($carpetaNueva))
+                <td ><a href=""> <i class="fa fa-pencil-square-o" style="font-size:24px;color:grey"></i></a></td>
                 @endif
 
                 @endforeach

@@ -9,7 +9,7 @@
             <th>Persona moral</th>
             <th>Constancia de hechos</th>
             <th>Narración</th>
-         
+            <th>Editar registro</th>        
 
         </thead>
         <tbody>
@@ -37,7 +37,9 @@
                        @else
                        <td align="center"><a href="{{ route('narracion.index', ['idDenunciante'=>$denunciante->id, 'idCarpeta'=>$idCarpeta, 'tipoInvolucrado'=>1])}}"> <i class="fa fa-plus-square" style="font-size:24px;color:grey"></i></a></td>
                        @endif
-
+                       @if(isset($carpetaNueva))
+                       <td ><a href=""> <i class="fa fa-pencil-square-o" style="font-size:24px;color:grey"></i></a></td>
+                       @endif
                     </tr>
                 @endforeach
             @endif
