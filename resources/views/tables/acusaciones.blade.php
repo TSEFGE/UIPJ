@@ -5,6 +5,7 @@
             <th>Delito</th>
             <th>Nombre de investigado</th>
             <th>Formato de inicio</th>
+            <th>Editar registro</th>
         </thead>
         <tbody>
             @if(count($acusaciones)==0)
@@ -16,6 +17,7 @@
                         <td>{{ $acusacion->delito }}</td>
                         <td>{{ $acusacion->nombres2." ".$acusacion->primerAp2." ".$acusacion->segundoAp2 }}</td>
                         <td align="center"><a href="{{route('formato.denuncia', $acusacion->id)}}"> <i class="fa fa-cloud-download" style="font-size:24px;color:grey"></i></a></td> 
+                        <td align="center"><a href=""> <i class="fa fa-pencil-square-o"  style="font-size:24px;color:grey"></i></a></td> 
                     </tr>
                 @endforeach
             @endif

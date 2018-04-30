@@ -7,6 +7,7 @@
             <th>Placas</th>
             <th>Tipo vehículo</th>
             <th>Color</th>
+            <th>Editar registro</th>
         </thead>
         <tbody>
             @if(count($vehiculos)==0)
@@ -20,6 +21,7 @@
                         <td>{{ $vehiculo->placas }}</td>
                         <td>{{ $vehiculo->tipovehiculo }}</td>
                         <td>{{ $vehiculo->color }}</td>
+                        <td><a href=""> <i class="fa fa-pencil-square-o"  style="font-size:24px;color:grey"></i></a></td> 
                     </tr>
                 @endforeach
             @endif

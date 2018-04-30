@@ -27,6 +27,9 @@ $(document).ready(function() {
     $("#numExterno2").val("S/N");
     $("#numExterno3").val("S/N");
     $("#numExternoC").val("S/N");
+    $("#alias").val("SIN INFORMACION");
+    $("#vestimenta").val("SIN INFORMACION");
+    $("#senasPartic").val("SIN INFORMACION");
     $("#fax").val("SIN INFORMACION");
     $("#correo").val("sin@informacion.com");
     $('#idOcupacion').change(function(event) {

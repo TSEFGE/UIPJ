@@ -8,6 +8,7 @@
             <th>Documento</th>
             <th>Num. documento</th>
             <th>Narración</th>
+            <th>Editar registro</th>
         </thead>
         <tbody>
             @if(count($autoridades)==0)
@@ -23,9 +24,12 @@
                         <td>{{ $autoridad->numDocIdentificacion }}</td>
 
                         @if(isset($carpetaNueva))
-                       <td align="center"><a href="{{ route('narracion.index', ['idAutoridad'=>$autoridad->id, 'idCarpeta'=>$carpetaNueva[0]->id,  'tipoInvolucrado'=>3])}}"> <i class="fa fa-plus-square" style="font-size:24px;color:grey"></i></a></td>
+                       <td align="center"><a href="{{ route('narracion.index', ['idAutoridad'=>$autoridad->id, 'idCarpeta'=>$carpetaNueva[0]->id,  'tipoInvolucrado'=>3])}}"> <i class="fa fa-plus-square" style="font-size:24px;color:grey"></i></a></td>                       
                        @else
-                       <td align="center"><a href="{{ route('narracion.index', ['idAutoridad'=>$autoridad->id, 'idCarpeta'=>$idCarpeta, 'tipoInvolucrado'=>3])}}"> <i class="fa fa-plus-square" style="font-size:24px;color:grey"></i></a></td>
+                       <td align="center"><a href="{{ route('narracion.index', ['idAutoridad'=>$autoridad->id, 'idCarpeta'=>$idCarpeta, 'tipoInvolucrado'=>3])}}"> <i class="fa fa-plus-square" style="font-size:24px;color:grey"></i></a></td>                       
+                       @endif
+                       @if(isset($carpetaNueva))
+                       <td ><a href=""> <i class="fa fa-pencil-square-o" style="font-size:24px;color:grey"></i></a></td>
                        @endif
                     </tr>
                 @endforeach
