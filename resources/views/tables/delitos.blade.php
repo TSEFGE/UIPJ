@@ -5,6 +5,7 @@
             <th>Modalidad</th>
             <th>Fecha</th>
             <th>Hora</th>
+            <th>Editar registro</th>    
         </thead>
         <tbody>
             @if(count($delitos)==0)
@@ -16,6 +17,7 @@
                         <td>{{ $delito->modalidad }}</td>
                         <td>{{ $delito->fecha }}</td>
                         <td>{{ $delito->hora }}</td>
+                        <td><a href=""> <i class="fa fa-pencil-square-o"  style="font-size:24px;color:grey"></i></a></td>
                     </tr>
                 @endforeach
             @endif
