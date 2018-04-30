@@ -16,3 +16,12 @@ $("#personal").addClass('visible');
 
 $("#direccion").addClass('visible');
 $("#dnotificaciones").addClass('visible');
+
+$(document).ready(function() {
+    $("#numInterno").val("S/N");
+    $("#numExterno").val("S/N");
+    $("#numInterno2").val("S/N");
+    $("#numExterno2").val("S/N");
+   
+
+     });
