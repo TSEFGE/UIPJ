@@ -32,7 +32,7 @@
 						<li class="nav-item" ><a href="{{ route('view.carpeta', $idCarpeta) }}" class="active nav-link"><i class="nav-icon fa fa-folder-open"></i><p>Carpeta Abierta</p> <span></span></a></li>
 						@endif
 						<li class="nav-item"><a href="{{ url('/iniciar-carpeta') }}" class="{{ Request::is( 'iniciar-carpeta') ? 'active' : '' }} nav-link"><i class="nav-icon fa fa-folder"></i><p>Nueva carpeta</p> <span></span></a></li>
-						<li class="nav-item"><a href="{{ url('/bitacora') }}" class="{{ Request::is( 'bitacora') ? 'active' : '' }} nav-link"><i class="nav-icon fa fa-pencil-square-o"></i><p>Bitácora</p> <span></span></a></li>
+						<li class="nav-item"><a href="{{ url('/bitacora') }}" class="{{ Request::is( 'bitacora') ? 'active' : '' }} nav-link"><i class="nav-icon fa fa-database"></i><p>Bitácora</p> <span></span></a></li>
 						<li class="nav-item"><a href="{{ route('agenda') }}" class="{{ Request::is( 'agenda') ? 'active' : '' }} nav-link"><i class="nav-icon fa fa-calendar"></i><p>Agenda</p> <span></span></a></li>
 						{{--<li class="nav-item">
 							<a href="pages/widgets.html" class="nav-link">
