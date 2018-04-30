@@ -23,7 +23,7 @@
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('correo', 'Correo', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('correo', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el correo del abogado', 'data-validation'=>'email','data-validation-error-msg'=>'Proporcione un correo válido. Ejemplo: algo@gmail.com']) !!}
+			{!! Form::text('correo', "sin@informacion.com", ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el correo del abogado', 'data-validation'=>'email','data-validation-error-msg'=>'Proporcione un correo válido. Ejemplo: algo@gmail.com']) !!}
 		</div>
 	</div>
 </div>
