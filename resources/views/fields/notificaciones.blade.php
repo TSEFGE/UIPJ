@@ -15,7 +15,7 @@
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('fax', 'Fax', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('fax', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el fax','data-validation'=>'custom', 'data-validation-regexp'=>'^([0-9]{1,20}|(SIN INFORMACION))$','data-validation-error-msg'=>'En caso de existir fax debe ingresar SIN INFORMACION']) !!}
+			{!! Form::text('fax',"SIN INFORMACION", ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el fax','data-validation'=>'custom', 'data-validation-regexp'=>'^([0-9]{1,20}|(SIN INFORMACION))$','data-validation-error-msg'=>'En caso de existir fax debe ingresar SIN INFORMACION']) !!}
 		</div>
 	</div>
 </div>

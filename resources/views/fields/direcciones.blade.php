@@ -38,13 +38,13 @@
 	<div class="col-2">
 		<div class="form-group">
 			{!! Form::label('numExterno', 'Número exterior', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('numExterno', null, ['class' => 'form-control form-control-sm','data-validation'=>'custom', 'data-validation-regexp'=>'^(([A-Z]|[-]|[\d])|(S/N)|(SIN NUMERO)){1,10}$','data-validation-error-msg'=>'En caso de no haber número debe ingresar S/N']) !!}
+			{!! Form::text('numExterno', "S/N", ['class' => 'form-control form-control-sm','data-validation'=>'custom', 'data-validation-regexp'=>'^(([A-Z]|[-]|[\d])|(S/N)|(SIN NUMERO)){1,10}$','data-validation-error-msg'=>'En caso de no haber número debe ingresar S/N']) !!}
 		</div>
 	</div>
 	<div class="col-2">
 		<div class="form-group">
 			{!! Form::label('numInterno', 'Número interior', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('numInterno', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número interior','data-validation'=>'custom', 'data-validation-regexp'=>'^(([A-Z]|[-]|[\d])|(S/N)|(SIN NUMERO)){1,10}$','data-validation-error-msg'=>'En caso de no haber número debe ingresar S/N']) !!}
+			{!! Form::text('numInterno', "S/N", ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número interior','data-validation'=>'custom', 'data-validation-regexp'=>'^(([A-Z]|[-]|[\d])|(S/N)|(SIN NUMERO)){1,10}$','data-validation-error-msg'=>'En caso de no haber número debe ingresar S/N']) !!}
 		</div>
 	</div>
 </div>

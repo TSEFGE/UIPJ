@@ -116,3 +116,9 @@ $('#tabsabogado.nav-tabs a').on('hidden.bs.tab', function(event){
         $("#btn-submit").prop('disabled',true);
     } 
 });
+
+
+
+$(document).ready(function() {
+    $("#correo").val("sin@informacion.com");  
+     });
