@@ -343,6 +343,7 @@ var PushMenu = function ($) {
     TOGGLE_BUTTON: '[data-widget="pushmenu"]',
     SIDEBAR_MINI: '.sidebar-mini',
     SIDEBAR_COLLAPSED: '.sidebar-collapse',
+    NAV_SIDEBAR: '.barra-izquierda',
     BODY: 'body',
     OVERLAY: '#sidebar-overlay',
     WRAPPER: '.wrapper'
@@ -352,7 +353,10 @@ var PushMenu = function ($) {
     SIDEBAR_OPEN: 'sidebar-open',
     COLLAPSED: 'sidebar-collapse',
     OPEN: 'sidebar-open',
-    SIDEBAR_MINI: 'sidebar-mini'
+    SIDEBAR_MINI: 'sidebar-mini',
+    MINI: 'collapsado',
+    MACRO: 'abierto'
+
 
     /**
      * Class Definition
@@ -360,6 +364,9 @@ var PushMenu = function ($) {
      */
 
   };
+  var attr={
+    ID : 'lateral'
+  }
   var PushMenu = function () {
     function PushMenu(element, options) {
       classCallCheck(this, PushMenu);
@@ -376,13 +383,14 @@ var PushMenu = function ($) {
 
     PushMenu.prototype.show = function show() {
       $(Selector.BODY).addClass(ClassName.OPEN).removeClass(ClassName.COLLAPSED);
-
+      $(Selector.NAV_SIDEBAR).addClass(ClassName.MACRO).removeClass(ClassName.MINI);
       var shownEvent = $.Event(Event.SHOWN);
       $(this._element).trigger(shownEvent);
     };
 
     PushMenu.prototype.collapse = function collapse() {
       $(Selector.BODY).removeClass(ClassName.OPEN).addClass(ClassName.COLLAPSED);
+      $(Selector.NAV_SIDEBAR).removeClass(ClassName.MACRO).addClass(ClassName.MINI);
 
       var collapsedEvent = $.Event(Event.COLLAPSED);
       $(this._element).trigger(collapsedEvent);
