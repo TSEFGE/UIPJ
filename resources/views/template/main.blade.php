@@ -22,7 +22,7 @@
 </head>
 
 <body class="hold-transition sidebar-mini sidebar-collapse">
-	<div class="wrapper">
+	<div class="wrapper" id="cuerpo">
 
 		<!-- Navbar -->
 		@include('template.partials.navbar')
@@ -33,7 +33,7 @@
 
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
-			<button onclick="topFunction()" id="subir" title="Subir">Subir</button>
+			<button onclick="scrollToTop(1500);" id="subir" title="Subir">Subir</button>
 			<div class="content-header">
 				<div class="container-fluid">
 					<div class="row mb-2">
@@ -97,6 +97,7 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			@stack('docready-js')
+			
 		});
 	</script>
 	
