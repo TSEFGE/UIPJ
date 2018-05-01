@@ -246,4 +246,9 @@ class TestigoController extends Controller
     public function edit($id)
     {
     }
+
+    public function update(Request $request, $id)
+    {
+        //
+    }
 }
