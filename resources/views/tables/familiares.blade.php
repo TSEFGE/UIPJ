@@ -17,7 +17,11 @@
                         <td>{{ $familiar->nombres." ".$familiar->primerAp." ".$familiar->segundoAp }}</td>
                         <td>{{ $familiar->parentesco }}</td>
                         <td>{{ $familiar->ocupacion }}</td>
-                        <td><a href=""> <i class="fa fa-pencil-square-o"  style="font-size:24px;color:grey"></i></a></td>
+                        @if(isset($carpetaNueva))
+                       <td ><a href="{{ route('edit.familiar', ['idCarpeta'=>$carpetaNueva[0]->id,'idFamiliar'=>$familiar->id])}}"> <i class="fa fa-pencil-square-o" style="font-size:24px;color:grey"></i></a></td>
+                       @else
+                       <td ><a href="{{ route('edit.familiar', ['idFamiliar'=>$familiar->id, 'idCarpeta'=>$idCarpeta])}}"> <i class="fa fa-pencil-square-o" style="font-size:24px;color:grey"></i></a></td>
+                       @endif                   
                     </tr>
                 @endforeach
             @endif

@@ -42,9 +42,10 @@
                 <td align="center"><a href="{{ route('citatorio',['idCitado'=>$denunciado->id,'idCarpeta'=>$idCarpeta, 'tipoInvolucrado'=>1])}}"> <i class="fa fa-calendar" style="font-size:24px;color:grey"></i></a></td>
                 @endif
                 @if(isset($carpetaNueva))
-                <td ><a href=""> <i class="fa fa-pencil-square-o" style="font-size:24px;color:grey"></i></a></td>
+                <td ><a href="{{ route('edit.denunciado', ['idCarpeta'=>$carpetaNueva[0]->id,'idDenunciado'=>$denunciado->id])}}"> <i class="fa fa-pencil-square-o" style="font-size:24px;color:grey"></i></a></td>
+                @else
+                <td ><a href="{{ route('edit.denunciado', ['idDenunciado'=>$denunciado->id, 'idCarpeta'=>$idCarpeta])}}"> <i class="fa fa-pencil-square-o" style="font-size:24px;color:grey"></i></a></td>
                 @endif
-
                 @endforeach
                 @endif
             </tbody>

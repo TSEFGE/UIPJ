@@ -17,7 +17,7 @@
                         <td>{{ $delito->modalidad }}</td>
                         <td>{{ $delito->fecha }}</td>
                         <td>{{ $delito->hora }}</td>
-                        <td><a href=""> <i class="fa fa-pencil-square-o"  style="font-size:24px;color:grey"></i></a></td>
+                        {{--<td align="center"><a href="{{ route('edit.delito', ['idCarpeta'=>$idCarpeta,$delito->id])}}"> <i class="fa fa-pencil-square-o" style="font-size:24px;color:grey"></i></a></td>       --}}
                     </tr>
                 @endforeach
             @endif
