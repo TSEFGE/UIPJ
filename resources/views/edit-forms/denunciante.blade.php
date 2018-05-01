@@ -12,32 +12,7 @@
 {{ csrf_field() }}
 <div class="card-header">
 	<div class="row">
-		<div class="col">
-			<div class="text-left">
-				<div class="row">
-
-					<div class="col-6">
-						<div class="form-group">
-							<label class="col-form-label col-form-label-sm" for="formGroupExampleInput">¿Es víctima?</label>
-							<div class="clearfix"></div>
-							<div class="form-check form-check-inline">
-								<label class="form-check-label col-form-label col-form-label-sm">
-									<input class="form-check-input" type="radio" id="esVictima1" name="esVictima" value="1" required> Sí
-								</label>
-							</div>
-							<div class="form-check form-check-inline">
-								<label class="form-check-label col-form-label col-form-label-sm">
-									<input class="form-check-input" type="radio" id="esVictima2" name="esVictima" value="0" required> No
-								</label> 
-							</div>
-						</div>
-					</div>
-					<div  id="tipop" class="col-6" >
-						@include('fields.tipo-persona')
-					</div>
-				</div>
-			</div>
-		</div>
+		
 		<div class="col">
 			<div class="text-right">
 				@include('forms.buttons')
@@ -91,11 +66,12 @@
 				<div id="cajados" class="boxtwo">
 					<div class="tab-content" id="ctdenunciante">
 						<div class="tab-pane active container" id="collapsePersonales1">
-							@include('fields.personales')
-							
-							@include('fields.extra-denunciante')
-
-
+							@if (isset(($personales->esEmpresa)== 1)
+								@include('edit-fields.personales-moral')
+								@include('fields.extra-denunciante')
+							@else
+								@include('edit-fields.personales-fisica')							
+								@include('fields.extra-denunciante')
 						</div>
 						<div class="tab-pane container" id="collapseDir1">
 							@include('fields.direcciones')
@@ -114,8 +90,6 @@
 </div>
 {!! Form::close() !!}
 @endsection
-
-
 
 @push('scripts')
 	<script src="{{ asset('plugins/toastr/js/toastr.min.js')}}" ></script>

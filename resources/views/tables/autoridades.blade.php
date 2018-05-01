@@ -28,11 +28,13 @@
                        @else
                        <td align="center"><a href="{{ route('narracion.index', ['idAutoridad'=>$autoridad->id, 'idCarpeta'=>$idCarpeta, 'tipoInvolucrado'=>3])}}"> <i class="fa fa-plus-square" style="font-size:24px;color:grey"></i></a></td>                       
                        @endif
+                      
                        @if(isset($carpetaNueva))
-                       <td ><a href="{{ route('edit.autoridad', ['idCarpeta'=>$carpetaNueva[0]->id,'idAutoridad'=>$autoridad->id])}}"> <i class="fa fa-pencil-square-o" style="font-size:24px;color:grey"></i></a></td>
-                       @else
-                       <td ><a href="{{ route('edit.autoridad', ['idAutoridad'=>$autoridad->id, 'idCarpeta'=>$idCarpeta])}}"> <i class="fa fa-pencil-square-o" style="font-size:24px;color:grey"></i></a></td>
-                       @endif
+                              <td ><a href="{{ route('edit.autoridad', ['idCarpeta'=>$carpetaNueva[0]->id,'idAutoridad'=>$autoridad->id])}}"> <i class="fa fa-pencil-square-o" style="font-size:24px;color:grey"></i></a></td>
+                              @else
+                              <td ><a href="{{ route('edit.autoridad', ['idAutoridad'=>$autoridad->id, 'idCarpeta'=>$idCarpeta])}}"> <i class="fa fa-pencil-square-o" style="font-size:24px;color:grey"></i></a></td>
+                              @endif
+
                     </tr>
                 @endforeach
             @endif
