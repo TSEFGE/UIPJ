@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Alert;
+use DB;
 use App\Http\Requests\StoreDenunciante;
 use App\Models\Bitacora;
 use App\Models\Carpeta;
@@ -444,7 +445,8 @@ class DenuncianteController extends Controller
             ->where('extra_denunciante.id', '=', $id)
             ->get()->first();
 
-            if($esMoral == 1){
+            //dd($esMoral->esEmpresa);
+            if($esMoral->esEmpresa == 1){
                 //consultas para empresa
                 $numCarpeta     = $carpetaNueva[0]->numCarpeta;
 
@@ -475,16 +477,6 @@ class DenuncianteController extends Controller
                 ->get();
 
                 return view('edit-forms.denunciante')->with('idCarpeta', $idCarpeta)
-                    ->with('numCarpeta', $numCarpeta)
-                    ->with('escolaridades', $escolaridades)
-                    ->with('estados', $estados)
-                    ->with('municipiosVer', $municipiosVer)
-                    ->with('estadoscivil', $estadoscivil)
-                    ->with('etnias', $etnias)
-                    ->with('lenguas', $lenguas)
-                    ->with('nacionalidades', $nacionalidades)
-                    ->with('ocupaciones', $ocupaciones)
-                    ->with('religiones', $religiones)
                     ->with('personales', $personales)
                     ->with('direccion', $direccion)
                     ->with('direccionNotif', $direccionNotif);
@@ -513,7 +505,7 @@ class DenuncianteController extends Controller
                 ->join('cat_lengua', 'cat_lengua.id', '=', 'persona.idLengua')
                 ->join('cat_municipio', 'cat_municipio.id', '=', 'persona.idMunicipioOrigen')
                 ->join('cat_estado', 'cat_estado.id', '=', 'cat_municipio.idEstado')
-                ->select('extra_denunciante.id', 'extra_denunciante.conoceAlDenunciado', 'extra_denunciante.idNotificacion', 'extra_denunciante.esVictima', 'variables_persona.id', 'variables_persona.edad', 'variables_persona.telefono', 'variables_persona.motivoEstancia', 'variables_persona.docIdentificacion', 'variables_persona.numDocIdentificacion', 'variables_persona.lugarTrabajo', 'variables_persona.telefonoTrabajo', 'variables_persona.idDomicilio', 'variables_persona.idDomicilioTrabajo', 'cat_ocupacion.nombre as ocupacion', 'cat_estado_civil.nombre as estadoCivil', 'cat_escolaridad.nombre as escolaridad', 'cat_religion.nombre as religion', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.fechaNacimiento', 'persona.rfc', 'persona.curp', 'persona.sexo', 'cat_municipio.nombre as municipioOrigen', 'cat_estado.nombre as estadoOrigen', 'persona.esEmpresa', 'cat_nacionalidad.nombre as nacionalidad', 'cat_etnia.nombre as etnia', 'cat_lengua as lengua')
+                ->select('extra_denunciante.id', 'extra_denunciante.conoceAlDenunciado', 'extra_denunciante.idNotificacion', 'extra_denunciante.esVictima', 'variables_persona.id', 'variables_persona.edad', 'variables_persona.telefono', 'variables_persona.motivoEstancia', 'variables_persona.docIdentificacion', 'variables_persona.numDocIdentificacion', 'variables_persona.lugarTrabajo', 'variables_persona.telefonoTrabajo', 'variables_persona.idDomicilio', 'variables_persona.idDomicilioTrabajo', 'cat_ocupacion.nombre as ocupacion', 'cat_estado_civil.nombre as estadoCivil', 'cat_escolaridad.nombre as escolaridad', 'cat_religion.nombre as religion', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.fechaNacimiento', 'persona.rfc', 'persona.curp', 'persona.sexo', 'cat_municipio.nombre as municipioOrigen', 'cat_estado.nombre as estadoOrigen', 'persona.esEmpresa', 'cat_nacionalidad.nombre as nacionalidad', 'cat_etnia.nombre as etnia', 'cat_lengua.nombre as lengua')
                 ->where('extra_denunciante.id', '=', $id)
                 ->get();
 
