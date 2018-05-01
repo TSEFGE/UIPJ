@@ -115,13 +115,6 @@
 {!! Form::close() !!}
 @endsection
 
-@section('tabla')
-	<div class="boxtwo">
-		@section('titulo-tabla', 'Víctimas u ofendidos registrados')
-		@include('tables.denunciantes')
-	</div>
-@endsection
-
 @push('scripts')
 	<script src="{{ asset('plugins/toastr/js/toastr.min.js')}}" ></script>
 	<script src="{{ asset('plugins/moment/js/moment.min.js') }}"></script>
