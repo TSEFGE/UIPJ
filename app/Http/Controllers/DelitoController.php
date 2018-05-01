@@ -17,6 +17,7 @@ use App\Models\CatTipoArma;
 use App\Models\CatZona;
 use App\Models\Domicilio;
 use App\Models\TipifDelito;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -113,13 +114,21 @@ class DelitoController extends Controller
         return redirect()->route('new.delito', $request->idCarpeta);
     }
 
-    public function edit($id)
+    public function edit($idCarpeta, $id)
     {
-        //
+        $comisionDelito = DB::table('tipif_delito')->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')->where('tipif_delito.idCarpeta', '=', $idCarpeta);
+        dd($comisionDelito);
+        // $lugarHechos=
+
+        /*   $idP = DB::table('extra_denunciado')
+    ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
+    ->select('variables_persona.idPersona')
+    ->where('variables_persona.idCarpeta', '=', $idCarpeta)->where('extra_denunciado.id', '=', $idCitado)
+    ->get()->first();*/
     }
     public function update(Request $request, $id)
     {
-        //
+
     }
 
 }
