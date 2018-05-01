@@ -174,9 +174,32 @@ class AbogadoController extends Controller
         return redirect()->route('new.defensa', $request->idCarpeta);
     }
 
-    public function edit($id)
+    public function edit($idCarpeta, $id)
     {
-        //
+        $personales = DB::table('extra_abogado')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_abogado.idVariablesPersona')
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+            ->select('persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.fechaNacimiento', 'persona.rfc', 'persona.sexo', 'persona.curp', 'persona.idNacionalidad', 'persona.idMunicipioOrigen', 'variables_persona.idEstadoCivil', 'variables_persona.telefono')
+            ->where('variables_persona.idCarpeta', '=', $idCarpeta)->where('extra_abogado.id', '=', $id)
+            ->orderBy('persona.nombres', 'ASC')
+            ->get();
+
+        $direccionTrab = DB::table('extra_abogado')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_abogado.idVariablesPersona')
+            ->join('domicilio', 'domicilio.id', '=', 'variables_persona.idDomicilioTrabajo')
+            ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
+            ->join('cat_estado', 'cat_estado.id', '=', 'cat_municipio.idEstado')
+            ->select('variables_persona.lugarTrabajo', 'variables_persona.telefonoTrabajo', 'cat_estado.id', 'domicilio.idMunicipio', 'domicilio.idLocalidad', 'domicilio.idColonia', 'domicilio.calle', 'domicilio.numExterno', 'domicilio.numInterno')
+            ->where('variables_persona.idCarpeta', '=', $idCarpeta)
+            ->where('extra_abogado.id', '=', $id)
+            ->get();
+
+        $info = DB::table('extra_abogado')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_abogado.idVariablesPersona')
+            ->select('extra_abogado.cedulaProf', 'extra_abogado.sector', 'extra_abogado.correo', 'extra_abogado.tipo')
+            ->where('variables_persona.idCarpeta', '=', $idCarpeta)->where('extra_abogado.id', '=', $id)
+            ->get();
+
     }
 
     public function update(Request $request, $id)
