@@ -51,7 +51,7 @@
 	<div class="row no-gutters">
 		<div class="col-12">
 				<div class="row">
-					
+					@if(!empty($idCarpeta)) {!! Form::hidden('idCarpeta', $idCarpeta) !!} @endif
 				</div>
 				<div class="" id="">
 					<div id="denunciante">
