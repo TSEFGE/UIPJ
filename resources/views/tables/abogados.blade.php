@@ -17,7 +17,12 @@
                         <td>{{ $abogado->cedulaProf }}</td>
                         <td>{{ $abogado->sector }}</td>
                         <td>{{ $abogado->tipo }}</td>
-                        <td ><a href=""> <i class="fa fa-pencil-square-o" style="font-size:24px;color:grey"></i></a></td>                                   
+                        @if(isset($carpetaNueva))
+                       <td ><a href="{{ route('edit.abogado', ['idCarpeta'=>$carpetaNueva[0]->id,'idAbogado'=>$abogado->id])}}"> <i class="fa fa-pencil-square-o" style="font-size:24px;color:grey"></i></a></td>
+                       @else
+                       <td ><a href="{{ route('edit.abogado', ['idAbogado'=>$abogado->id, 'idCarpeta'=>$idCarpeta])}}"> <i class="fa fa-pencil-square-o" style="font-size:24px;color:grey"></i></a></td>
+                       @endif
+                        
                     </tr>
                 @endforeach
             @endif
