@@ -39,12 +39,15 @@ class FamiliarController extends Controller
                 ->orderBy('persona.nombres', 'ASC')
                 ->union($involucrados1)
                 ->get();
+               
 
            return view('forms.familiar')->with('idCarpeta', $idCarpeta)
                 ->with('numCarpeta', $numCarpeta)
                 ->with('familiares', $familiares)
                 ->with('involucrados', $involucrados)
                 ->with('ocupaciones', $ocupaciones);
+                
+
         }else{
             return redirect()->route('home');
         }
