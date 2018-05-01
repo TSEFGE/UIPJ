@@ -21,8 +21,7 @@
                        <td ><a href="{{ route('edit.familiar', ['idCarpeta'=>$carpetaNueva[0]->id,'idFamiliar'=>$familiar->id])}}"> <i class="fa fa-pencil-square-o" style="font-size:24px;color:grey"></i></a></td>
                        @else
                        <td ><a href="{{ route('edit.familiar', ['idFamiliar'=>$familiar->id, 'idCarpeta'=>$idCarpeta])}}"> <i class="fa fa-pencil-square-o" style="font-size:24px;color:grey"></i></a></td>
-                       @endif
-                        
+                       @endif                   
                     </tr>
                 @endforeach
             @endif
