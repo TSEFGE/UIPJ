@@ -240,17 +240,18 @@ class CarpetaController extends Controller
             ->join('persona', 'persona.id', '=', 'familiar.idPersona')
             ->join('variables_persona', 'variables_persona.idPersona', '=', 'persona.id')
             ->join('extra_denunciado', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
-            ->select('familiar.nombres as familiarNombre', 'familiar.primerAp as familiarPrimerAp', 'familiar.segundoAp as familiarSegundoAp', 'familiar.parentesco', 'cat_ocupacion.nombre as ocupacion', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+            ->select('familiar.id','familiar.nombres as familiarNombre', 'familiar.primerAp as familiarPrimerAp', 'familiar.segundoAp as familiarSegundoAp', 'familiar.parentesco', 'cat_ocupacion.nombre as ocupacion', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
             ->where('variables_persona.idCarpeta', '=', $id);
         $familiares = DB::table('familiar')
             ->join('cat_ocupacion', 'cat_ocupacion.id', '=', 'familiar.idOcupacion')
             ->join('persona', 'persona.id', '=', 'familiar.idPersona')
             ->join('variables_persona', 'variables_persona.idPersona', '=', 'persona.id')
             ->join('extra_denunciante', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
-            ->select('familiar.nombres as familiarNombre', 'familiar.primerAp as familiarPrimerAp', 'familiar.segundoAp as familiarSegundoAp', 'familiar.parentesco', 'cat_ocupacion.nombre as ocupacion', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+            ->select('familiar.id','familiar.nombres as familiarNombre', 'familiar.primerAp as familiarPrimerAp', 'familiar.segundoAp as familiarSegundoAp', 'familiar.parentesco', 'cat_ocupacion.nombre as ocupacion', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
             ->where('variables_persona.idCarpeta', '=', $id)
             ->union($familiaresDenunciado)
             ->get();
+            //dd($familiares);
         return $familiares;
     }
 

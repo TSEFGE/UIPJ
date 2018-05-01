@@ -113,79 +113,21 @@ class DelitoController extends Controller
         return redirect()->route('new.delito', $request->idCarpeta);
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function edit($idCarpeta, $id)
     {
-        //
-    }
+        /*  $comisionDelito = DB::table('tipif_delito')->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')->where('tipif_delito.idCarpeta', '=', $idCarpeta);
+    dd($comisionDelito);
+    // $lugarHechos=
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    $idP = DB::table('extra_denunciado')
+    ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
+    ->select('variables_persona.idPersona')
+    ->where('variables_persona.idCarpeta', '=', $idCarpeta)->where('extra_denunciado.id', '=', $idCitado)
+    ->get()->first();*/
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
