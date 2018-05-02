@@ -103,6 +103,7 @@
 		</div>
 	</div>
 	{!! Form::hidden('esEmpresa', ($personales->esEmpresa)) !!}
+	{!! Form::hidden('rfcMoral', ($personales->rfc)) !!}
 	
 	<!-- Fin pestañas -->
 </div>
@@ -157,7 +158,15 @@
 		"hideMethod": "fadeOut"
 	}
 	
+	var rfcMoral = $("input[name='rfcMoral']").val();
+	var rfc = rfcMoral.substr (0,9);
+	var homoclave = rfcMoral.substr(-3);
 	$('#nombres2').val("{{ $personales->nombres }}");
+	$('#rfc2').val(rfc);
+	$('#homo2').val(homoclave);
 	$("#representanteLegal").val("{{ $personales->nombres }}");
-	$("#narracionUnoM").val("{{ $personales->nombres }}");
+	$("#narracionUnoM").prop('disabled',true);
+	console.log(rfcMoral);
+	console.log(rfc);
+	console.log(homoclave);
 	@endpush
