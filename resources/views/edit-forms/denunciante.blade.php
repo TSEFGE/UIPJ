@@ -102,7 +102,8 @@
 
 		</div>
 	</div>
-	{!! Form::hidden('esMoral', ($personales->esMoral) !!}
+	{!! Form::hidden('esEmpresa', ($personales->esEmpresa)) !!}
+	
 	<!-- Fin pestañas -->
 </div>
 </div>
