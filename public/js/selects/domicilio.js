@@ -1,6 +1,6 @@
 $("#idEstado").change(function(event){
 	if(event.target.value!=""){
-		$.get("/carpetas/public/carpeta/municipios/"+event.target.value+"", function(response, estado){
+		$.get(urlpath+"municipios/"+event.target.value+"", function(response, estado){
 			$("#idMunicipio").empty();
 			$("#idMunicipio").append("<option value=''>Seleccione un municipio</option>");
 			for(i=0; i<response.length; i++){
@@ -18,7 +18,7 @@ $("#idEstado").change(function(event){
 
 $("#idMunicipio").change(function(event){
 	if(event.target.value!=""){
-		$.get("/carpetas/public/carpeta/localidades/"+event.target.value+"", function(response, municipio){
+		$.get(urlpath+"localidades/"+event.target.value+"", function(response, municipio){
 			$("#idLocalidad").empty();
 			$("#idLocalidad").append("<option value=''>Seleccione una localidad</option>");
 			for(i=0; i<response.length; i++){
@@ -30,7 +30,7 @@ $("#idMunicipio").change(function(event){
 				$("#idLocalidad3").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
 			}
 		});
-		$.get("/carpetas/public/carpeta/colonias2/"+event.target.value+"", function(response, municipio){
+		$.get(urlpath+"colonias2/"+event.target.value+"", function(response, municipio){
 			$("#idColonia").empty();
 			$("#idColonia").append("<option value=''>Seleccione una colonia</option>");
 			for(i=0; i<response.length; i++){
@@ -42,7 +42,7 @@ $("#idMunicipio").change(function(event){
 				$("#idColonia3").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
 			}
 		});
-		$.get("/carpetas/public/carpeta/codigos/"+event.target.value+"", function(response, municipio){
+		$.get(urlpath+"codigos/"+event.target.value+"", function(response, municipio){
 			$("#cp").empty();
 			$("#cp").append("<option value=''>Seleccione un código postal</option>");
 			for(i=0; i<response.length; i++){
@@ -85,7 +85,7 @@ $("#idLocalidad").change(function(event){
 
 $("#idColonia").change(function(event){
 	if(event.target.value!=""){
-		$.get("/carpetas/public/carpeta/codigos2/"+event.target.value+"", function(response, colonia){
+		$.get(urlpath+"codigos2/"+event.target.value+"", function(response, colonia){
 			$("#cp").empty();
 			$("#cp").append("<option value='"+response[0].id+"'> "+response[0].codigoPostal+"</option>");
 			$("#cp3").empty();

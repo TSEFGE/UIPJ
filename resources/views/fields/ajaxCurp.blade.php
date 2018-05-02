@@ -2,7 +2,7 @@
 <script type="text/javascript">
 	$("#curp").on("change focusout", function() {
 		var curp=$(this).val();
-		$.get("/carpetas/public/persona/curp/"+curp, function(response, estado){
+		$.get(urlpathRFCurp+"persona/curp/"+curp, function(response, estado){
 			if(response.res==true){
 				console.log('true')
 				swal({
