@@ -14,36 +14,7 @@
 
 <div class="card-header">
 <div class="row">
-	<div class="col">
-		<div class=""> 
-		<div class="row">
-			<div class="col-9 text-left">
-				<div class="form-group">
-					<label class="col-form-label col-form-label-sm" for="formGroupExampleInput">Selecciona una opción</label>
-					<div class="clearfix"></div>
-					<div class="form-check form-check-inline">
-						<label class="form-check-label col-form-label col-form-label-sm">
-							<input class="form-check-input" type="radio" id="tipoDenunciado1" name="tipoDenunciado" value="1" required> Q.R.R.
-						</label>
-					</div>
-					<div class="form-check form-check-inline">
-						<label class="form-check-label col-form-label col-form-label-sm">
-							<input class="form-check-input" type="radio" id="tipoDenunciado2" name="tipoDenunciado" value="2" required> Conoce al investigado
-						</label>
-					</div>
-					<div class="form-check form-check-inline">
-						<label class="form-check-label col-form-label col-form-label-sm">
-							<input class="form-check-input" type="radio" id="tipoDenunciado3" name="tipoDenunciado" value="3" required> Por comparecencia
-						</label>
-					</div>
-				</div>
-			</div>
-			<div class="col-3 comparecencia text-right">				
-					@include('fields.tipo-persona')
-				</div>
-			</div>
-		</div>
-	</div>
+	
 			<div class="col-4">	
 				<div class="text-right">
 					@include('forms.buttons')
@@ -126,7 +97,12 @@
 			<div id="cajados" class="boxtwo">	
 				<div class="tab-content comparecencia" id="ctdenunciado">
 					<div class="tab-pane active container" id="collapsePersonales2">  		
-						@include('fields.personales')
+						@if (isset(($personales->esEmpresa)== 1)
+							@include('edit-fields.personales-moral')
+							@include('fields.extra-denunciante')
+						@else
+							@include('edit-fields.personales-fisica')							
+							@include('fields.extra-denunciante')
 
 					</div>
 					<div class="tab-pane container" id="collapseDir2">  		
