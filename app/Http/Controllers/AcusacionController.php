@@ -2,41 +2,39 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use DB;
 use Alert;
-use App\Models\Carpeta;
 use App\Models\Acusacion;
 use App\Models\Bitacora;
-use App\Models\Persona;
-
+use App\Models\Carpeta;
+use DB;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AcusacionController extends Controller
 {
     public function showForm($idCarpeta)
     {
         $carpetaNueva = Carpeta::where('id', $idCarpeta)->where('idFiscal', Auth::user()->id)->get();
-        if(count($carpetaNueva)>0){ 
-            $numCarpeta = $carpetaNueva[0]->numCarpeta;
-            $acusaciones = CarpetaController::getAcusaciones($idCarpeta);
+        if (count($carpetaNueva) > 0) {
+            $numCarpeta   = $carpetaNueva[0]->numCarpeta;
+            $acusaciones  = CarpetaController::getAcusaciones($idCarpeta);
             $denunciantes = DB::table('extra_denunciante')
                 ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
                 ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-                ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+                ->select('extra_denunciante.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
                 ->where('variables_persona.idCarpeta', '=', $idCarpeta)
                 ->orderBy('persona.nombres', 'ASC')
                 ->get();
             $denunciados = DB::table('extra_denunciado')
                 ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
                 ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-                ->select('extra_denunciado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+                ->select('extra_denunciado.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
                 ->where('variables_persona.idCarpeta', '=', $idCarpeta)
                 ->orderBy('persona.nombres', 'ASC')
                 ->get();
             $tipifdelitos = DB::table('tipif_delito')
                 ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
-                ->select('tipif_delito.id','cat_delito.nombre')
+                ->select('tipif_delito.id', 'cat_delito.nombre')
                 ->where('tipif_delito.idCarpeta', '=', $idCarpeta)
                 ->orderBy('cat_delito.nombre', 'ASC')
                 ->get();
@@ -46,106 +44,97 @@ class AcusacionController extends Controller
                 ->with('denunciantes', $denunciantes)
                 ->with('denunciados', $denunciados)
                 ->with('tipifdelitos', $tipifdelitos);
-        }else{
+        } else {
             return redirect()->route('home');
         }
     }
 
-    public function storeAcusacion(Request $request){
+    public function storeAcusacion(Request $request)
+    {
 //        dd($request->all());
-        $acusacion = new Acusacion();
-        $acusacion->idCarpeta = $request->idCarpeta;
+        $acusacion                = new Acusacion();
+        $acusacion->idCarpeta     = $request->idCarpeta;
         $acusacion->idDenunciante = $request->idDenunciante;
         $acusacion->idTipifDelito = $request->idTipifDelito;
-        $acusacion->idDenunciado = $request->idDenunciado;
+        $acusacion->idDenunciado  = $request->idDenunciado;
         $acusacion->save();
 
-       
-       
         //Agregar a Bitacora
-        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'acusacion', 'accion' => 'insert', 'descripcion' => 'Se han registrado nueva denuncia de la victima '.$request->idDenunciante.' por el Delito de '.$request->idTipifDelito.' al investigado: '. $request->idDenunciado, 'idFilaAccion' => $acusacion->id]);
+        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'acusacion', 'accion' => 'insert', 'descripcion' => 'Se han registrado nueva denuncia de la victima ' . $request->idDenunciante . ' por el Delito de ' . $request->idTipifDelito . ' al investigado: ' . $request->idDenunciado, 'idFilaAccion' => $acusacion->id]);
         /*
         Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
         //Para mostrar modal
         //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
-        */
+         */
         Alert::success('Denuncia registrado con éxito', 'Hecho')->persistent("Aceptar");
         //return redirect()->route('carpeta', $request->idCarpeta);
         return redirect()->route('new.acusacion', $request->idCarpeta);
     }
-    
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(){
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function edit($idCarpeta, $id)
     {
-        //
+        $denunciantes = DB::table('extra_denunciante')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+            ->select('extra_denunciante.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+            ->where('variables_persona.idCarpeta', '=', $idCarpeta)
+            ->orderBy('persona.nombres', 'ASC')
+            ->get();
+        $denunciados = DB::table('extra_denunciado')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+            ->select('extra_denunciado.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+            ->where('variables_persona.idCarpeta', '=', $idCarpeta)
+            ->orderBy('persona.nombres', 'ASC')
+            ->get();
+        $tipifdelitos = DB::table('tipif_delito')
+            ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
+            ->select('tipif_delito.id', 'cat_delito.nombre')
+            ->where('tipif_delito.idCarpeta', '=', $idCarpeta)
+            ->orderBy('cat_delito.nombre', 'ASC')
+            ->get();
+
+        $denunciante = DB::table('extra_denunciante')
+            ->join('acusacion', 'acusacion.idDenunciante', '=', 'extra_denunciante.id')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+            ->select('extra_denunciante.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+            ->where('variables_persona.idCarpeta', '=', $idCarpeta)
+            ->orderBy('persona.nombres', 'ASC')
+            ->get();
+
+        $denunciado = DB::table('extra_denunciado')
+            ->join('acusacion', 'acusacion.idDenunciado', '=', 'extra_denunciado.id')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+            ->select('extra_denunciado.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+            ->where('variables_persona.idCarpeta', '=', $idCarpeta)
+            ->orderBy('persona.nombres', 'ASC')
+            ->get();
+
+        $delito = DB::table('tipif_delito')
+            ->join('acusacion', 'acusacion.idTipifDelito', '=', 'tipif_delito.id')
+            ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
+            ->select('tipif_delito.id', 'cat_delito.nombre')
+            ->where('tipif_delito.idCarpeta', '=', $idCarpeta)
+            ->orderBy('cat_delito.nombre', 'ASC')
+            ->get();
+
+        return view('edit-forms.acusacion')
+            ->with('idCarpeta', $idCarpeta)
+            ->with('id', $id)
+            ->with('denunciantes', $denunciantes)
+            ->with('denunciados', $denunciados)
+            ->with('tipifdelitos', $tipifdelitos)
+            ->with('denunciante', $denunciante)
+            ->with('denunciado', $denunciado)
+            ->with('delito', $delito);
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

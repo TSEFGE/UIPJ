@@ -1,5 +1,3 @@
-	
-                              <!--      DATOS DE PERSONA MORAL       -->
                               <div class="col-12" id="personaMoral">
                                   <div class="row">
                                       <div class="col-6">
@@ -49,21 +47,6 @@
                               </div>
                                   </div>
                               </div>
-                          </div>
+                         
                           
-                          {{--<div id="accordion" role="tablist">
-                              <div class="card">
-                                  <div class="card-header" role="tab" id="headingGenerales">
-                                      <h5 class="mb-0">
-                                          <a data-toggle="collapse" href="#collapseGen" aria-expanded="true" aria-controls="collapseGen">
-                                              Datos personales
-                                          </a>
-                                      </h5>
-                                  </div>
-                                  <div id="collapseGen" class="collapse show boxcollapse" role="tabpanel" aria-labelledby="headingGenerales" data-parent="#accordion">
-                                      <div class="boxtwo">
-                                          @include('fields.personales')
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>--}}
+                          

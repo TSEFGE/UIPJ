@@ -116,15 +116,48 @@ class DelitoController extends Controller
 
     public function edit($idCarpeta, $id)
     {
-        $comisionDelito = DB::table('tipif_delito')->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')->where('tipif_delito.idCarpeta', '=', $idCarpeta);
-        dd($comisionDelito);
-        // $lugarHechos=
 
-        /*   $idP = DB::table('extra_denunciado')
-    ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
-    ->select('variables_persona.idPersona')
-    ->where('variables_persona.idCarpeta', '=', $idCarpeta)->where('extra_denunciado.id', '=', $idCitado)
-    ->get()->first();*/
+        $delits         = CatDelito::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $posiblescausas = CatPosibleCausa::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $estados        = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $municipiosVer  = CatMunicipio::select('id', 'nombre')->where('idEstado', 30)->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $lugares        = CatLugar::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $marcas         = CatMarca::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $modalidades    = CatModalidad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $tiposarma      = CatTipoArma::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $zonas          = CatZona::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+
+        $infoComision = DB::table('domicilio')
+            ->join('tipif_delito', 'tipif_delito.idDomicilio', '=', 'domicilio.id')
+            ->select('tipif_delito.idDelito', 'tipif_delito.idAgrupacion1', 'tipif_delito.idAgrupacion2', 'tipif_delito.hora', 'tipif_delito.fecha', 'tipif_delito.conViolencia', 'tipif_delito.idModalidad', 'tipif_delito.formaComision', 'tipif_delito.consumacion')
+            ->where('tipif_delito.idCarpeta', '=', $idCarpeta)
+            ->where('tipif_delito.id', '=', $id)
+            ->get();
+
+        $infoLugarHechos = DB::table('domicilio')
+            ->join('tipif_delito', 'tipif_delito.idDomicilio', '=', 'domicilio.id')
+            ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
+            ->join('cat_estado', 'cat_estado.id', '=', 'cat_municipio.idEstado')
+            ->select('tipif_delito.idLugar', 'tipif_delito.idZona', 'tipif_delito.entreCalle', 'tipif_delito.yCalle', 'tipif_delito.calleTrasera', 'tipif_delito.puntoReferencia', 'cat_estado.id', 'domicilio.idMunicipio', 'domicilio.idLocalidad', 'domicilio.idColonia', 'domicilio.calle', 'domicilio.numExterno', 'domicilio.numInterno')
+            ->where('tipif_delito.idCarpeta', '=', $idCarpeta)
+            ->where('tipif_delito.id', '=', $id)
+            ->get();
+
+        return view('edit-forms.delito')
+            ->with('idCarpeta', $idCarpeta)
+            ->with('id', $id)
+            ->with('delits', $delits)
+            ->with('posiblescausas', $posiblescausas)
+            ->with('estados', $estados)
+            ->with('municipiosVer', $municipiosVer)
+            ->with('lugares', $lugares)
+            ->with('marcas', $marcas)
+            ->with('modalidades', $modalidades)
+            ->with('tiposarma', $tiposarma)
+            ->with('zonas', $zonas)
+            ->with('infoComision', $infoComision)
+            ->with('infoLugarHechos', $infoLugarHechos);
+
     }
     public function update(Request $request, $id)
     {

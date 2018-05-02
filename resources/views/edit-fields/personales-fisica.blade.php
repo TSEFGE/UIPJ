@@ -1,5 +1,4 @@
-<div class="row">
-	<div class="col-12" id="personaFisica">
+<div class="col-12" id="personaFisica">
 		<div class="row">
 			<div class="col-3">
 				<div class="form-group">
@@ -189,6 +188,6 @@
 			{!! Form::textarea('narracionUno', null, ['class' => 'form-control form-control-sm','id' => 'narracionUno','rows' => '3']) !!}
 		</div>
 	</div>
-
 		</div>
 	</div>
+
