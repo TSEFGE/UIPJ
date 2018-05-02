@@ -200,6 +200,15 @@ class AbogadoController extends Controller
             ->where('variables_persona.idCarpeta', '=', $idCarpeta)->where('extra_abogado.id', '=', $id)
             ->get();
 
+        $estados       = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $municipiosVer = CatMunicipio::select('id', 'nombre')->where('idEstado', 30)->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $estadoscivil  = CatEstadoCivil::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+
+        return view('edit-forms.abogado')
+            ->with('idCarpeta', $idCarpeta)->with('estados', $estados)
+            ->with('municipiosVer', $municipiosVer)
+            ->with('estadoscivil', $estadoscivil);
+
     }
 
     public function update(Request $request, $id)
