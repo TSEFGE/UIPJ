@@ -8,13 +8,13 @@
 @endpush
 
 @section('contenido')
-{!! Form::open(['route' => 'store.abogado', 'method' => 'POST'])  !!}
+{!! Form::open(['route' => ['update.abogado', $idCarpeta, $id], 'method' => 'PUT'])  !!}
 {{ csrf_field() }}
 <div class="card-header">
 	<div class="row">
 		<div class="col">
 			<div class="text-left">
-				{{--Aqui van radios, etc --}}
+				
 			</div>
 		</div>
 		<div class="col">	
