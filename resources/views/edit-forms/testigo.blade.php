@@ -8,8 +8,8 @@
 @endpush
 
 @section('contenido')
-{!! Form::open(['route' => 'edit.testigo', 'method' => 'POST']) !!}
-{{ csrf_field() }}
+	{!! Form::open(['route' => ['update.testigo',$idCarpeta], 'method' => 'PUT'])  !!}
+
 
 <div class="card-header">
 	<div class="row">
@@ -30,7 +30,9 @@
 	<div class="row no-gutters">
 		<div class="col-12">
 				<div class="row">
-					@if(!empty($idCarpeta)) {!! Form::hidden('idCarpeta', $idCarpeta) !!} @endif
+					@if(!empty($idCarpeta))
+						 {!! Form::hidden('idCarpeta', $idCarpeta) !!}
+					 @endif
 				</div>
 				<div class="" id="">
 					<div id="testigo">
@@ -91,7 +93,7 @@
 
 @section('tabla')
 	<div class="boxtwo">
-		
+
 	</div>
 @endsection
 
@@ -131,7 +133,7 @@
         "showMethod": "fadeIn",
         "hideMethod": "fadeOut"
     }
-    
+
 	$('#esEmpresa2').trigger('click');
 	$('#datosPer').show();
     $('#personaFisica').show();

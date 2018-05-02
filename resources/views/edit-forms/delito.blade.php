@@ -7,7 +7,7 @@
 @endpush
 
 @section('contenido')
-{!! Form::open(['route' => 'store.delito', 'method' => 'POST'])  !!}
+{!! Form::open(['route' => ['update.delito', $idCarpeta, $id], 'method' => 'PUT'])  !!}
 {{ csrf_field() }}
 <div class="card-header">
 <div class="row">
