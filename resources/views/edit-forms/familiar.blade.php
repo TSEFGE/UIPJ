@@ -1,9 +1,9 @@
 @extends('template.form')
 
-@section('title', 'Agregar Familiar')
+@section('title', 'Editar Familiar')
 
 @section('contenido')
-{!! Form::open(['route' => 'store.familiar', 'method' => 'POST'])  !!}
+{!! Form::open(['route' => ['update.familiar', $idCarpeta, $familiar], 'method' => 'PUT'])  !!}
 {{ csrf_field() }}
 	<div class="card-header">
 		<div class="row">

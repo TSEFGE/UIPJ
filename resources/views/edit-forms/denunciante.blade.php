@@ -1,4 +1,4 @@
-@extends('template.form')
+@extends('template.form-edit')
 
 @section('title', 'Editar víctima, ofendido u apoderado legal')
 
@@ -25,8 +25,7 @@
 <div class=" card-body boxone">
 	<div class="row no-gutters">
 		<div class="col-12">
-			<div class="row">
-			 
+			<div class="row">			 
 		 </div>
 		 <div class="" id="">
 			 <div id="denunciante">
@@ -46,6 +45,8 @@
 						 <span id="t2" class="bien"></span></div>								
 					 </a>
 				 </li>
+				 @if (isset ($personales) )
+				@if ( ($personales->esEmpresa) == 0)
 				 <li class="nav-item" id="datosTrab">
 					<a class="nav-link" data-toggle="tab"  href="#collapseTrab1"><p id="dtrabajo" class="pestaña"> <i class="fa fa-industry" aria-hidden="true"></i></p>									
 						<div id="espacio-notif2"><span id="tab3" class="xvacio"></span>
@@ -53,6 +54,8 @@
 						 <span id="t3" class="bien"></span></div>
 					 </a>
 				 </li>
+				 @endif
+				 @endif
 				 <li class="nav-item" id="datosNotif">
 					<a class="nav-link" data-toggle="tab"  href="#collapseNotifs1"><p id="dnotificaciones" class="pestaña"><i class="fa fa-bell" aria-hidden="true"></i></p>
 					 <div id="espacio-notif3"><span id="tab4" class="xvacio"></span>
@@ -86,28 +89,35 @@
 			<div class="tab-pane container" id="collapseDir1">
 				@include('fields.direcciones')				
 			</div>
+			@if (isset ($personales) )
+				@if ( ($personales->esEmpresa) == 0)
 			<div class="tab-pane container" id="collapseTrab1">
 				@include('fields.lugartrabajo')
 			</div>
+			@endif
+			@endif
 			<div class="tab-pane container" id="collapseNotifs1">
 				@include('fields.notificaciones')
 			</div>
 
 		</div>
 	</div>
+	{!! Form::hidden('esEmpresa', ($personales->esEmpresa)) !!}
+	
 	<!-- Fin pestañas -->
 </div>
 </div>
 </div>
 {!! Form::close() !!}
 @endsection
+	
 
 @push('scripts')
 	<script src="{{ asset('plugins/toastr/js/toastr.min.js')}}" ></script>
 	<script src="{{ asset('plugins/moment/js/moment.min.js') }}"></script>
 	<script src="{{ asset('plugins/moment/locales/es.js') }}"></script>
 	<script src="{{ asset('plugins/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-	{{--<script src="{{ asset('js/persona.js') }}"></script>
+	{{--<script src="{{ asset('js/persona.js') }}"></script>--}}
 	<script src="{{ asset('js/persona-moral.js') }}"></script>
 	{{--<script src="{{ asset('js/tipo-persona.js') }}"></script>
 	<script src="{{ asset('js/denunciante.js') }}"></script>	
@@ -123,6 +133,10 @@
 	@include('fields.rfcFisico')
 	@include('fields.ajaxCurp')
 	@endpush
+	<script>
+			
+				
+	</script>
 
 	@push('docready-js')
 	toastr.options = {
@@ -143,26 +157,7 @@
 		"hideMethod": "fadeOut"
 	}
 	
-	
-
-	var victima1 =localStorage.getItem('[id=undefined][name=undefined][id=esVictima1][name=esVictima]');
-	var victima2 =localStorage.getItem('[id=undefined][name=undefined][id=esVictima2][name=esVictima]');
-	if (victima1 == 1){
-		$("#esVictima1").attr('checked', true);
-
-
-	} else if (victima2 == 0){
-		$("#esVictima2").attr('checked', true);
-
-	}	
-
-
-	$('input[type=radio][name=esVictima]').change(function() {
-		if (this.value == 0) {
-			swal("Atención", "Ha seleccionado registrar un denunciante como ofendido .", "warning")
-		} else if (this.value == 1) {
-			swal("Atención", "Ha seleccionado registrar un denunciante como victima.", "warning")
-		}
-	});
-
+	$('#nombres2').val("{{ $personales->nombres }}");
+	$("#representanteLegal").val("{{ $personales->nombres }}");
+	$("#narracionUnoM").val("{{ $personales->nombres }}");
 	@endpush

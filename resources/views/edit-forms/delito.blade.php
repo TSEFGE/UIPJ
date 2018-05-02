@@ -1,6 +1,6 @@
 @extends('template.form')
 
-@section('title', 'Agregar delito')
+@section('title', 'Editar delito')
 
 @push('css')
 	<link rel="stylesheet" href="{{ asset('plugins/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}">
