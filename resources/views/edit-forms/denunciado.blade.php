@@ -9,7 +9,7 @@
 
 @section('contenido')
 @include('forms.errores')
-{!! Form::open(['route' => 'store.denunciado', 'method' => 'POST'])  !!}
+{!! Form::open(['route' => ['update.denunciado', $personales->idDenunciado], 'method' => 'PUT']) !!}
 {{ csrf_field() }}
 
 <div class="card-header">
@@ -97,13 +97,13 @@
 			<div id="cajados" class="boxtwo">	
 				<div class="tab-content comparecencia" id="ctdenunciado">
 					<div class="tab-pane active container" id="collapsePersonales2">  		
-						@if (isset(($personales->esEmpresa)== 1)
+						@if (isset($personales) &&  $personales->esEmpresa == 1)
 							@include('edit-fields.personales-moral')
 							@include('fields.extra-denunciante')
 						@else
 							@include('edit-fields.personales-fisica')							
 							@include('fields.extra-denunciante')
-
+						@endif
 					</div>
 					<div class="tab-pane container" id="collapseDir2">  		
 						@include('fields.direcciones')		

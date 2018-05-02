@@ -205,7 +205,12 @@ class AbogadoController extends Controller
         $estadoscivil  = CatEstadoCivil::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
 
         return view('edit-forms.abogado')
-            ->with('idCarpeta', $idCarpeta)->with('estados', $estados)
+            ->with('idCarpeta', $idCarpeta)
+            ->with('id', $id)
+            ->with('personales', $personales)
+            ->with('direccionTrab', $direccionTrab)
+            ->with('info', $info)
+            ->with('estados', $estados)
             ->with('municipiosVer', $municipiosVer)
             ->with('estadoscivil', $estadoscivil);
 
