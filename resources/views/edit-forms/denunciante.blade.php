@@ -46,6 +46,8 @@
 						 <span id="t2" class="bien"></span></div>								
 					 </a>
 				 </li>
+				 @if (isset ($personales) )
+				@if ( ($personales->esEmpresa) == 0)
 				 <li class="nav-item" id="datosTrab">
 					<a class="nav-link" data-toggle="tab"  href="#collapseTrab1"><p id="dtrabajo" class="pestaña"> <i class="fa fa-industry" aria-hidden="true"></i></p>									
 						<div id="espacio-notif2"><span id="tab3" class="xvacio"></span>
@@ -53,6 +55,8 @@
 						 <span id="t3" class="bien"></span></div>
 					 </a>
 				 </li>
+				 @endif
+				 @endif
 				 <li class="nav-item" id="datosNotif">
 					<a class="nav-link" data-toggle="tab"  href="#collapseNotifs1"><p id="dnotificaciones" class="pestaña"><i class="fa fa-bell" aria-hidden="true"></i></p>
 					 <div id="espacio-notif3"><span id="tab4" class="xvacio"></span>
@@ -86,9 +90,13 @@
 			<div class="tab-pane container" id="collapseDir1">
 				@include('fields.direcciones')				
 			</div>
+			@if (isset ($personales) )
+				@if ( ($personales->esEmpresa) == 0)
 			<div class="tab-pane container" id="collapseTrab1">
 				@include('fields.lugartrabajo')
 			</div>
+			@endif
+			@endif
 			<div class="tab-pane container" id="collapseNotifs1">
 				@include('fields.notificaciones')
 			</div>
