@@ -1,112 +1,53 @@
-	<div class="col-4">
-		<div class="form-group">
-			{!! Form::label('idTipifDelito', 'Delito', ['class' => 'col-form-label-sm']) !!}
-			<select name="idTipifDelito" id="idTipifDelito" class="form-control form-control-sm" required>
-				<option value="">Seleccione un delito</option>
-				@foreach($tipifdelitos as $tipifdelito)
-				<option value="{{ $tipifdelito->id }}">{{ $tipifdelito->delito }}</option>
-				@endforeach
-			</select>
-		</div>
-	</div>
-	
-	<div class="col-4">
-		<div class="form-group">
-			{!! Form::label('placas', 'Placas', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('placas', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese las placas' ,'data-validation'=>'custom' ,'data-validation-regexp'=>'^((([A-ZÁÉÍÓÚ]|[\d])+[-]*)+){5,11}$','data-validation-error-msg'=>'Número de placas inválido']) !!}	
+@extends('template.form')
 
-			
-		</div>
-	</div>
-	<div class="col-4">
-		<div class="form-group">
-			{!! Form::label('idEstado', 'Entidad federativa', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idEstado', $estados, '30', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa', 'required']) !!}
-		</div>
-	</div>
-	<div class="col-2">
-		<div class="form-group">
-			{!! Form::label('idMarca', 'Marca', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idMarca', $marcas, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una marca', 'required']) !!}
-		</div>
-	</div>
-	<div class="col-2">
-		<div class="form-group">
-			{!! Form::label('idSubmarca', 'Submarca', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idSubmarca', ['' => 'Seleccione una submarca'], null, ['class' => 'form-control form-control-sm', 'required']) !!}
-		</div>
-	</div>
-	<div class="col-2">
-		<div class="form-group">
-			{!! Form::label('modelo', 'Modelo', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::number('modelo', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el modelo', 'min' => 1000, 'max' => 2050, 'required']) !!}
-		</div>
-	</div>
-	<div class="col-2">
-		<div class="form-group">
-			{!! Form::label('idColor', 'Color', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idColor', $colores, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un color', 'required']) !!}
-		</div>
-	</div>
-	<div class="col-4">
-		<div class="form-group">
-			{!! Form::label('nrpv', 'NRPV', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('nrpv', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el NRPV', 'data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-Z]|[\d]){17}$','data-validation-error-msg'=>'NRPV debe ser de longitud diecisiete']) !!}	
-					
-		</div>
-	</div>
-	<div class="col-4">
-		<div class="form-group">
-			{!! Form::label('numSerie', 'Número de serie', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('numSerie', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número de serie', 'data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-Z]|[\d]){17}$','data-validation-error-msg'=>'Número de serie debe ser de longitud diecisiete']) !!}	
-		</div>
-	</div>
-	<div class="col-4">
-		<div class="form-group">
-			{!! Form::label('numMotor', 'Número de motor', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('numMotor', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número de motor', 'data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-Z]|[\d]){1,20}$','data-validation-error-msg'=>'Número de motor debe tener una longitud máxima de veinte']) !!}	
-	</div>
-	</div>
+@section('title', 'Agregar vehículo')
 
-	<div class="col-4">
-		<div class="form-group">
-			{!! Form::label('permiso', 'Permiso', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('permiso', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el permiso', 'data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-Z]|[\d]){1,20}$','data-validation-error-msg'=>'Permiso debe tener una longitud máxima de veinte']) !!}	
+@push('css')
+	<link rel="stylesheet" href="{{ asset('plugins/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}">
+@endpush
+
+@section('contenido')
+{!! Form::open(['route' => 'store.vehiculo', 'method' => 'POST'])  !!}
+{{ csrf_field() }}
+<div class="card-header">
+<div class="row">
+		<div class="col">
+			<div class="text-left">
+				{{--Aqui van radios, etc --}}
+			</div>
+		</div>
+		<div class="col">	
+			<div class="text-right">
+				@include('forms.buttons')
+			</div>
 		</div>
 	</div>
-	<div class="col-4">
-		<div class="form-group">
-			{!! Form::label('idClaseVehiculo', 'Clase de vehículo', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idClaseVehiculo', $clasesveh, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una clase de vehículo', 'required']) !!}
+</div> 
+	@include('forms.errores')
+	<div class=" card-body boxone">
+	<div class="row no-gutters">
+		<div class="col-12">
+			<div class="boxtwo">
+				<h6>Datos generales de la unidad</h6>
+				<div class="row">
+					@if(!empty($idCarpeta))
+						{!! Form::hidden('idCarpeta', $idCarpeta) !!}
+					@endif
+					@include('fields.vehiculo')
+				</div>
+			</div>
 		</div>
 	</div>
-	<div class="col-4">
-		<div class="form-group">
-			{!! Form::label('idTipoVehiculo', 'Tipo de vehículo', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idTipoVehiculo', ['' => 'Seleccione un tipo de vehículo'], null, ['class' => 'form-control form-control-sm', 'required']) !!}
-		</div>
-	</div>
-	<div class="col-4">
-		<div class="form-group">
-			{!! Form::label('idTipoUso', 'Tipo de uso', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idTipoUso', $tiposuso, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un tipo de uso', 'required']) !!}
-		</div>
-	</div>
-	<div class="col-4">
-		<div class="form-group">
-			{!! Form::label('idProcedencia', 'Procedencia', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idProcedencia', $procedencias, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione procedencia', 'required']) !!}
-		</div>
-	</div>
-	<div class="col-4">
-		<div class="form-group">
-			{!! Form::label('idAseguradora', 'Aseguradora', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idAseguradora', $aseguradoras, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una aseguradora', 'required']) !!}
-		</div>
-	</div>
-	<div class="col-12">
-		<div class="form-group">
-			{!! Form::label('senasPartic', 'Señas particulares', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::textarea('senasPartic', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese las señas particulares','rows' => '3', 'required','data-validation'=>'custom' ,'data-validation-regexp'=>'^(([A-Z]|[\d]|[,|.]){1,500}$','data-validation-error-msg'=>'Señas particulares debe tener una longitud no debe estar vacio']) !!}	
-		</div>
-	</div>
+</div>
+	{!! Form::close() !!}
+@endsection
+
+
+@push('scripts')
+	<script src="{{ asset('plugins/moment/js/moment.min.js') }}"></script>
+    <script src="{{ asset('plugins/moment/locales/es.js') }}"></script>
+    <script src="{{ asset('plugins/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+    <script src="{{ asset('js/selects/async.js') }}"></script>
+    <script src="{{ asset('js/selects/vehiculo.js') }}"></script>
+    <script src="{{ asset('js/selects/sisy.js') }}"></script>
+@endpush
