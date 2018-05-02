@@ -619,7 +619,7 @@ class DenunciadoController extends Controller
                 ->where('notificacion.id', '=', $personales->idNotificacion)
                 ->get()->first();
 
-                return view('edit-forms.denunciante')->with('idCarpeta', $idCarpeta)
+                return view('edit-forms.denunciado')->with('idCarpeta', $idCarpeta)
                     ->with('estados', $estados)
                     ->with('municipiosVer', $municipiosVer)
                     ->with('personales', $personales)
