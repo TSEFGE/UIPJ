@@ -280,12 +280,34 @@ class TestigoController extends Controller
         //dd($personales, $direccion, $direccionTrab, $direccionNotif);
 
 
-        return view('editForms.testigo')
+        $escolaridades  = CatEscolaridad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $estados        = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $municipiosVer  = CatMunicipio::select('id', 'nombre')->where('idEstado', 30)->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $estadoscivil   = CatEstadoCivil::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $etnias         = CatEtnia::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $lenguas        = CatLengua::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $nacionalidades = CatNacionalidad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $ocupaciones    = CatOcupacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $religiones     = CatReligion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $idCarpeta=$personales->idCarpeta;
+
+        return view('edit-forms.testigo')
         ->with('personales', $personales)
         ->with('direccion', $direccion)
         ->with('direccionTrab', $direccionTrab)
         ->with('direccionNotif', $direccionNotif)
-        ->with('idCarpeta', $idCarpeta);
+        ->with('idCarpeta', $idCarpeta)
+        ->with('numCarpeta', 1)
+        ->with('escolaridades', $escolaridades)
+        ->with('estados', $estados)
+        ->with('municipiosVer', $municipiosVer)
+        ->with('estadoscivil', $estadoscivil)
+        ->with('etnias', $etnias)
+        ->with('lenguas', $lenguas)
+        ->with('nacionalidades', $nacionalidades)
+        ->with('ocupaciones', $ocupaciones)
+        ->with('religiones', $religiones);
+        ;
     }
 
     public function update(Request $request, $id)
