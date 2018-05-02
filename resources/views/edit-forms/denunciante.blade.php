@@ -1,6 +1,6 @@
 @extends('template.form')
 
-@section('title', 'Agregar víctima, ofendido u apoderado legal')
+@section('title', 'Editar víctima, ofendido u apoderado legal')
 
 @push('css')
 <link rel="stylesheet" href="{{ asset('plugins/toastr/css/toastr.min.css') }}">
@@ -26,7 +26,7 @@
 	<div class="row no-gutters">
 		<div class="col-12">
 			<div class="row">
-			 @if(!empty($idCarpeta)) {!! Form::hidden('idCarpeta', $idCarpeta) !!} @endif
+			 
 		 </div>
 		 <div class="" id="">
 			 <div id="denunciante">
@@ -46,6 +46,8 @@
 						 <span id="t2" class="bien"></span></div>								
 					 </a>
 				 </li>
+				 @if (isset ($personales) )
+				@if ( ($personales->esEmpresa) == 0)
 				 <li class="nav-item" id="datosTrab">
 					<a class="nav-link" data-toggle="tab"  href="#collapseTrab1"><p id="dtrabajo" class="pestaña"> <i class="fa fa-industry" aria-hidden="true"></i></p>									
 						<div id="espacio-notif2"><span id="tab3" class="xvacio"></span>
@@ -53,6 +55,8 @@
 						 <span id="t3" class="bien"></span></div>
 					 </a>
 				 </li>
+				 @endif
+				 @endif
 				 <li class="nav-item" id="datosNotif">
 					<a class="nav-link" data-toggle="tab"  href="#collapseNotifs1"><p id="dnotificaciones" class="pestaña"><i class="fa fa-bell" aria-hidden="true"></i></p>
 					 <div id="espacio-notif3"><span id="tab4" class="xvacio"></span>
@@ -66,23 +70,37 @@
 	 <div id="cajados" class="boxtwo">
 		 <div class="tab-content" id="ctdenunciante">
 			<div class="tab-pane active container" id="collapsePersonales1">
-			@if (isset($personales) &&  $personales->esEmpresa == 1)
-				@include('edit-fields.personales-moral')
-				@include('fields.extra-denunciante')
-			@else
+			@if (isset ($personales) )
+				@if ( ($personales->esEmpresa) == 1)
+					@include('edit-fields.personales-moral')
+					@include('fields.extra-denunciante')
+				@endif
+			@endif
+			@if (isset ($personales) )
+				@if ( ($personales->esEmpresa) == 0)
 				@include('edit-fields.personales-fisica')							
 				@include('fields.extra-denunciante')
+				@endif
 			@endif
+				
+			{{--@include('edit-fields.personales-fisica')							
+				@include('fields.extra-denunciante')--}}	
 			</div>
+			
 			<div class="tab-pane container" id="collapseDir1">
-				@include('fields.direcciones')
+				@include('fields.direcciones')				
 			</div>
+			@if (isset ($personales) )
+				@if ( ($personales->esEmpresa) == 0)
 			<div class="tab-pane container" id="collapseTrab1">
 				@include('fields.lugartrabajo')
 			</div>
+			@endif
+			@endif
 			<div class="tab-pane container" id="collapseNotifs1">
 				@include('fields.notificaciones')
 			</div>
+
 		</div>
 	</div>
 	<!-- Fin pestañas -->
@@ -97,16 +115,16 @@
 	<script src="{{ asset('plugins/moment/js/moment.min.js') }}"></script>
 	<script src="{{ asset('plugins/moment/locales/es.js') }}"></script>
 	<script src="{{ asset('plugins/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-	<script src="{{ asset('js/persona.js') }}"></script>
+	{{--<script src="{{ asset('js/persona.js') }}"></script>
 	<script src="{{ asset('js/persona-moral.js') }}"></script>
-	<script src="{{ asset('js/tipo-persona.js') }}"></script>
+	{{--<script src="{{ asset('js/tipo-persona.js') }}"></script>
 	<script src="{{ asset('js/denunciante.js') }}"></script>	
 	<script src="{{ asset('js/selects/async.js') }}"></script>
-	<script src="{{ asset('js/selects/origen.js') }}"></script>
+	{{--<script src="{{ asset('js/selects/origen.js') }}"></script>
 	<script src="{{ asset('js/selects/domicilio.js') }}"></script>
 	<script src="{{ asset('js/selects/domicilio-trab.js') }}"></script>
 	<script src="{{ asset('js/selects/domicilio-notif.js') }}"></script>
-	<script src="{{ asset('js/selects/sisy.js') }}"></script>
+	<script src="{{ asset('js/selects/sisy.js') }}"></script>--}}
 	<script src="{{ asset('js/validations/tab-denunciante.js') }}"></script>
 	<script src="{{ asset('js/curp.js') }}"></script>
 	@include('fields.rfcMoral');

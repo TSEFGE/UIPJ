@@ -437,7 +437,8 @@ class DenuncianteController extends Controller
     public function edit($idCarpeta, $id)
     {
         $carpetaNueva = Carpeta::where('id', $idCarpeta)->where('idFiscal', Auth::user()->id)->get();
-        if (count($carpetaNueva) > 0) {
+        $var = ExtraDenunciante::where('id', $id)->get();
+        if ($carpetaNueva->isNotEmpty() && $var->isNotEmpty()) {
             $esMoral = DB::table('extra_denunciante')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
@@ -461,20 +462,16 @@ class DenuncianteController extends Controller
 
                 $direccion = DB::table('domicilio')
                 ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
-                ->join('cat_estado', 'cat_estado.id', '=', 'cat_municipio.idEstado')
-                ->join('cat_localidad', 'cat_localidad.id', '=', 'domicilio.idLocalidad')
                 ->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
-                ->select('domicilio.id', 'cat_municipio.nombre as municipio', 'cat_estado.nombre as estado', 'cat_localidad.nombre as localidad', 'cat_colonia.nombre as colonia', 'cat_colonia.codigoPostal', 'domicilio.calle', 'domicilio.numExterno', 'domicilio.numInterno')
+                ->select('domicilio.id', 'domicilio.idMunicipio', 'domicilio.idLocalidad', 'domicilio.idColonia', 'domicilio.calle', 'domicilio.numExterno', 'domicilio.numInterno', 'cat_municipio.idEstado', 'cat_colonia.codigoPostal')
                 ->where('domicilio.id', '=', $personales->idDomicilio)
                 ->get()->first();
 
                 $direccionNotif = DB::table('notificacion')
                 ->join('domicilio', 'domicilio.id', '=', 'notificacion.idDomicilio')
                 ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
-                ->join('cat_estado', 'cat_estado.id', '=', 'cat_municipio.idEstado')
-                ->join('cat_localidad', 'cat_localidad.id', '=', 'domicilio.idLocalidad')
                 ->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
-                ->select('notificacion.id as idNotificacion', 'notificacion.correo', 'notificacion.telefono', 'notificacion.fax', 'domicilio.id as idDomicilio', 'cat_municipio.nombre as municipio', 'cat_estado.nombre as estado', 'cat_localidad.nombre as localidad', 'cat_colonia.nombre as colonia', 'cat_colonia.codigoPostal', 'domicilio.calle', 'domicilio.numExterno', 'domicilio.numInterno')
+                ->select('notificacion.id as idNotificacion', 'notificacion.correo', 'notificacion.telefono', 'notificacion.fax', 'domicilio.id as idDomicilio', 'domicilio.idMunicipio', 'domicilio.idLocalidad', 'domicilio.idColonia', 'domicilio.calle', 'domicilio.numExterno', 'domicilio.numInterno', 'cat_municipio.idEstado', 'cat_colonia.codigoPostal')
                 ->where('notificacion.id', '=', $personales->idNotificacion)
                 ->get()->first();
                 //dump($personales);
@@ -507,36 +504,29 @@ class DenuncianteController extends Controller
                 ->join('cat_etnia', 'cat_etnia.id', '=', 'persona.idEtnia')
                 ->join('cat_lengua', 'cat_lengua.id', '=', 'persona.idLengua')
                 ->join('cat_municipio', 'cat_municipio.id', '=', 'persona.idMunicipioOrigen')
-                ->join('cat_estado', 'cat_estado.id', '=', 'cat_municipio.idEstado')
-                ->select('extra_denunciante.id as idDenunciante', 'extra_denunciante.conoceAlDenunciado', 'extra_denunciante.idNotificacion', 'extra_denunciante.esVictima', 'variables_persona.id as idVariablesPersona', 'variables_persona.edad', 'variables_persona.telefono', 'variables_persona.motivoEstancia', 'variables_persona.docIdentificacion', 'variables_persona.numDocIdentificacion', 'variables_persona.lugarTrabajo', 'variables_persona.telefonoTrabajo', 'variables_persona.idDomicilio', 'variables_persona.idDomicilioTrabajo', 'cat_ocupacion.nombre as ocupacion', 'cat_estado_civil.nombre as estadoCivil', 'cat_escolaridad.nombre as escolaridad', 'cat_religion.nombre as religion', 'persona.id as idPersona', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.fechaNacimiento', 'persona.rfc', 'persona.curp', 'persona.sexo', 'cat_municipio.nombre as municipioOrigen', 'cat_estado.nombre as estadoOrigen', 'persona.esEmpresa', 'cat_nacionalidad.nombre as nacionalidad', 'cat_etnia.nombre as etnia', 'cat_lengua.nombre as lengua')
+                ->select('extra_denunciante.id as idDenunciante', 'extra_denunciante.conoceAlDenunciado', 'extra_denunciante.idNotificacion', 'extra_denunciante.esVictima', 'variables_persona.id as idVariablesPersona', 'variables_persona.edad', 'variables_persona.telefono', 'variables_persona.motivoEstancia', 'variables_persona.docIdentificacion', 'variables_persona.numDocIdentificacion', 'variables_persona.lugarTrabajo', 'variables_persona.telefonoTrabajo', 'variables_persona.idDomicilio', 'variables_persona.idDomicilioTrabajo', 'cat_ocupacion.nombre as ocupacion', 'cat_estado_civil.nombre as estadoCivil', 'cat_escolaridad.nombre as escolaridad', 'cat_religion.nombre as religion', 'persona.id as idPersona', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.fechaNacimiento', 'persona.rfc', 'persona.curp', 'persona.sexo', 'persona.idMunicipioOrigen', 'cat_municipio.idEstado', 'persona.esEmpresa', 'cat_nacionalidad.nombre as nacionalidad', 'cat_etnia.nombre as etnia', 'cat_lengua.nombre as lengua')
                 ->where('extra_denunciante.id', '=', $id)
                 ->get()->first();
 
                 $direccion = DB::table('domicilio')
                 ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
-                ->join('cat_estado', 'cat_estado.id', '=', 'cat_municipio.idEstado')
-                ->join('cat_localidad', 'cat_localidad.id', '=', 'domicilio.idLocalidad')
                 ->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
-                ->select('domicilio.id', 'cat_municipio.nombre as municipio', 'cat_estado.nombre as estado', 'cat_localidad.nombre as localidad', 'cat_colonia.nombre as colonia', 'cat_colonia.codigoPostal', 'domicilio.calle', 'domicilio.numExterno', 'domicilio.numInterno')
+                ->select('domicilio.id', 'domicilio.idMunicipio', 'domicilio.idLocalidad', 'domicilio.idColonia', 'domicilio.calle', 'domicilio.numExterno', 'domicilio.numInterno', 'cat_municipio.idEstado', 'cat_colonia.codigoPostal')
                 ->where('domicilio.id', '=', $personales->idDomicilio)
                 ->get()->first();
 
                 $direccionTrab = DB::table('domicilio')
                 ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
-                ->join('cat_estado', 'cat_estado.id', '=', 'cat_municipio.idEstado')
-                ->join('cat_localidad', 'cat_localidad.id', '=', 'domicilio.idLocalidad')
                 ->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
-                ->select('domicilio.id', 'cat_municipio.nombre as municipio', 'cat_estado.nombre as estado', 'cat_localidad.nombre as localidad', 'cat_colonia.nombre as colonia', 'cat_colonia.codigoPostal', 'domicilio.calle', 'domicilio.numExterno', 'domicilio.numInterno')
+                ->select('domicilio.id', 'domicilio.idMunicipio', 'domicilio.idLocalidad', 'domicilio.idColonia', 'domicilio.calle', 'domicilio.numExterno', 'domicilio.numInterno', 'cat_municipio.idEstado', 'cat_colonia.codigoPostal')
                 ->where('domicilio.id', '=', $personales->idDomicilioTrabajo)
                 ->get()->first();
 
                 $direccionNotif = DB::table('notificacion')
                 ->join('domicilio', 'domicilio.id', '=', 'notificacion.idDomicilio')
                 ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
-                ->join('cat_estado', 'cat_estado.id', '=', 'cat_municipio.idEstado')
-                ->join('cat_localidad', 'cat_localidad.id', '=', 'domicilio.idLocalidad')
                 ->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
-                ->select('notificacion.id as idNotificacion', 'notificacion.correo', 'notificacion.telefono', 'notificacion.fax', 'domicilio.id as idDomicilio', 'cat_municipio.nombre as municipio', 'cat_estado.nombre as estado', 'cat_localidad.nombre as localidad', 'cat_colonia.nombre as colonia', 'cat_colonia.codigoPostal', 'domicilio.calle', 'domicilio.numExterno', 'domicilio.numInterno')
+                ->select('notificacion.id as idNotificacion', 'notificacion.correo', 'notificacion.telefono', 'notificacion.fax', 'domicilio.id as idDomicilio', 'domicilio.idMunicipio', 'domicilio.idLocalidad', 'domicilio.idColonia', 'domicilio.calle', 'domicilio.numExterno', 'domicilio.numInterno', 'cat_municipio.idEstado', 'cat_colonia.codigoPostal')
                 ->where('notificacion.id', '=', $personales->idNotificacion)
                 ->get()->first();
 

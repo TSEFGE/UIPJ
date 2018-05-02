@@ -137,9 +137,46 @@ class VehiculoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($idCarpeta, $id)
     {
-        //
+        $carpetaNueva = Carpeta::where('id', $idCarpeta)->where('idFiscal', Auth::user()->id)->get();
+        $var = Vehiculo::where('id', $id)->get();
+        if ($carpetaNueva->isNotEmpty() && $var->isNotEmpty()) {
+            $numCarpeta   = $carpetaNueva[0]->numCarpeta;
+            $tipifdelitos = DB::table('tipif_delito')
+                ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
+                ->select('tipif_delito.id', 'cat_delito.id as idDelito', 'cat_delito.nombre as delito')
+                ->where('tipif_delito.idCarpeta', '=', $idCarpeta)->get();
+            //->whereIn('idDelito', [130, 131, 132, 133, 134, 135, 242, 243, 244, 245, 227])
+            $aseguradoras = CatAseguradora::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+            $clasesveh    = CatClaseVehiculo::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+            $colores      = CatColor::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+            $estados      = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+            $marcas       = CatMarca::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+            $procedencias = CatProcedencia::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+            $tiposuso     = CatTipoUso::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+
+            $vehiculo = DB::table('vehiculo')
+                ->join('cat_submarca', 'cat_submarca.id', '=', 'vehiculo.idSubmarca')
+                ->join('cat_tipo_vehiculo', 'cat_tipo_vehiculo.id', '=', 'vehiculo.idTipoVehiculo')
+                ->select('vehiculo.idTipifDelito', 'vehiculo.placas', 'vehiculo.idEstado', 'vehiculo.idSubmarca', 'vehiculo.modelo', 'vehiculo.nrpv', 'vehiculo.idColor', 'vehiculo.permiso', 'vehiculo.numSerie', 'vehiculo.numMotor', 'vehiculo.idTipoVehiculo', 'vehiculo.idTipoUso', 'vehiculo.senasPartic', 'vehiculo.idProcedencia', 'vehiculo.idAseguradora', 'cat_submarca.idMarca', 'cat_tipo_vehiculo.idClaseVehiculo')
+                ->where('vehiculo.id', '=', $id)
+                ->get()->first();
+
+            return view('edit-forms.vehiculo')->with('idCarpeta', $idCarpeta)
+                ->with('numCarpeta', $numCarpeta)
+                ->with('vehiculo', $vehiculo)
+                ->with('tipifdelitos', $tipifdelitos)
+                ->with('aseguradoras', $aseguradoras)
+                ->with('clasesveh', $clasesveh)
+                ->with('colores', $colores)
+                ->with('estados', $estados)
+                ->with('marcas', $marcas)
+                ->with('procedencias', $procedencias)
+                ->with('tiposuso', $tiposuso);
+        } else {
+            return redirect()->route('home');
+        }
     }
 
     /**

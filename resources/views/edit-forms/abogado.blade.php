@@ -57,8 +57,7 @@
 						</a>
 					  </li>
 				</ul>
-		</div>	
-		
+		</div>			
 			<div class="boxtwo">
 				<div class="tab-content" id="ctabogado">
 					<div class="tab-pane active container" id="collapsePersonales3">  		
@@ -69,6 +68,16 @@
 					</div>
 					<div class="tab-pane container" id="collapseAutoridad">  		
 						@include('fields.extra-abo')		
+					</div>
+					<div>
+						<?php // dd($personales) ?>
+							<textarea rows="4" cols="50">
+								{{$personales[0]->nombres}}
+								</textarea>
+								<textarea rows="4" cols="50">
+										{{$personales}}
+										</textarea>
+						
 					</div>
 				</div>
 			</div>
@@ -90,6 +99,7 @@
 	<script src="{{ asset('js/selects/sisy.js') }}"></script>
 	<script src="{{ asset('js/validations/tab-abogado.js') }}"></script>
 	<script src="{{ asset('js/curp.js') }}"></script>
+	<script src="{{ asset('js/edit-forms/abogado-edit.js') }}"></script>
 	@include('fields.ajaxCurp')
 	@include('fields.rfcFisico')
 	
