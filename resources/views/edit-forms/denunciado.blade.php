@@ -15,7 +15,7 @@
 <div class="card-header">
 <div class="row">
 	
-			<div class="col-4">	
+			<div class="col">	
 				<div class="text-right">
 					@include('forms.buttons')
 				</div>
@@ -78,44 +78,48 @@
 			<div id="qrr">
 				<div class="boxtwo">
 					<div class="row">
-						<div class="col-12">
-							<div class="form-group">
-								{!! Form::label('nombresQ', 'Nombre', ['class' => 'col-form-label-sm']) !!}
-								{!! Form::text('nombresQ', "QUIEN RESULTE RESPONSABLE", ['class' => 'form-control form-control-sm', 'readonly']) !!}
-							</div>
-						</div>
+					
 					</div>
 				</div>
 			</div>
 
-			<div id="conocido">
-				<div class="boxtwo">
-					@include('fields.det-conocido')
-				</div>
-			</div>	
-
 			<div id="cajados" class="boxtwo">	
 				<div class="tab-content comparecencia" id="ctdenunciado">
 					<div class="tab-pane active container" id="collapsePersonales2">  		
-						@if (isset($personales) &&  $personales->esEmpresa == 1)
-							@include('edit-fields.personales-moral')
-							@include('fields.extra-denunciante')
-						@else
-							@include('edit-fields.personales-fisica')							
-							@include('fields.extra-denunciante')
-						@endif
+						
+					@if (isset ($personales) )
+									@if ( ($personales->esEmpresa) == 1)
+										@include('edit-fields.personales-moral')
+										
+									@endif
+								@endif
+								@if (isset ($personales) )
+									@if ( ($personales->esEmpresa) == 0)
+									@include('edit-fields.personales-fisica')					
+									@endif
+								@endif
+
 					</div>
 					<div class="tab-pane container" id="collapseDir2">  		
 						@include('fields.direcciones')		
-					</div>
+											</div>
+						@if (isset ($personales) )
+							@if ( ($personales->esEmpresa) == 0)
+											
 					<div class="tab-pane container" id="collapseTrab2">  		
 						@include('fields.lugartrabajo')		
 					</div>
+					@endif
+			      @endif
 					<div class="tab-pane container" id="collapseNotifs2">  		
 						@include('fields.notificaciones')		
 					</div>
-					<div class="tab-pane container" id="collapseDenun2">  		
+					<div class="tab-pane container" id="collapseDenun2">  
+					@if (isset ($personales) )
+							@if ( ($personales->esEmpresa) == 0)		
 						@include('fields.extra-denunciado')
+						@endif
+			      @endif
 
 					</div>
 				</div>
@@ -134,7 +138,7 @@
 	<script src="{{ asset('plugins/moment/js/moment.min.js') }}"></script>
     <script src="{{ asset('plugins/moment/locales/es.js') }}"></script>
 	<script src="{{ asset('plugins/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-	<script src="{{ asset('js/persona.js') }}"></script>
+	{{-- <script src="{{ asset('js/persona.js') }}"></script>
 	<script src="{{ asset('js/persona-moral.js') }}"></script>
 	<script src="{{ asset('js/tipo-persona.js') }}"></script>
 	<script src="{{ asset('js/denunciado.js') }}"></script>
@@ -144,7 +148,7 @@
     <script src="{{ asset('js/selects/domicilio-trab.js') }}"></script>
     <script src="{{ asset('js/selects/domicilio-notif.js') }}"></script>
     <script src="{{ asset('js/selects/domicilio-den-conocido.js') }}"></script>
-	<script src="{{ asset('js/selects/sisy.js') }}"></script>
+	<script src="{{ asset('js/selects/sisy.js') }}"></script> --}}
 	<script src="{{ asset('js/validations/tab-denunciado.js') }}"></script>
 	<script src="{{ asset('js/curp.js') }}"></script>	>	
 	@include('fields.rfcMoral');
