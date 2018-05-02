@@ -1,6 +1,6 @@
 @extends('template.form')
 
-@section('title', 'Agregar víctima, ofendido u apoderado legal')
+@section('title', 'Editar víctima, ofendido u apoderado legal')
 
 @push('css')
 <link rel="stylesheet" href="{{ asset('plugins/toastr/css/toastr.min.css') }}">
@@ -70,11 +70,15 @@
 				@if ( ($personales->esEmpresa) == 1)
 					@include('edit-fields.personales-moral')
 					@include('fields.extra-denunciante')
-					@endif
-			@else if ( ($personales->esEmpresa) == 0)
+				@endif
+			@endif
+			@if (isset ($personales) )
+				@if ( ($personales->esEmpresa) == 0)
 				@include('edit-fields.personales-fisica')							
 				@include('fields.extra-denunciante')
-			@endif		
+				@endif
+			@endif
+				
 			{{--@include('edit-fields.personales-fisica')							
 				@include('fields.extra-denunciante')--}}	
 			</div>

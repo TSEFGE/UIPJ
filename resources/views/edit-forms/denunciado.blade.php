@@ -1,6 +1,6 @@
 @extends('template.form')
 
-@section('title', 'Agregar investigado o imputado')
+@section('title', 'Editar investigado o imputado')
 
 @push('css')
 	<link rel="stylesheet" href="{{ asset('plugins/toastr/css/toastr.min.css') }}">
