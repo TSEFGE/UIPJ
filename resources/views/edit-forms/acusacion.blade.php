@@ -4,7 +4,7 @@
 
 @section('contenido')
 
-{!! Form::open(['route' => 'store.acusacion', 'method' => 'POST'])  !!}
+{!! Form::open(['route' => ['update.acusacion', $idCarpeta, $id], 'method' => 'PUT'])  !!}
 {{ csrf_field() }}
 
 <div class="card-header">
