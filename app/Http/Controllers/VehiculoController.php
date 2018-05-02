@@ -159,11 +159,11 @@ class VehiculoController extends Controller
             $vehiculo = DB::table('vehiculo')
                 ->join('cat_submarca', 'cat_submarca.id', '=', 'vehiculo.idSubmarca')
                 ->join('cat_tipo_vehiculo', 'cat_tipo_vehiculo.id', '=', 'vehiculo.idTipoVehiculo')
-                ->select('vehiculo.idTipifDelito', 'vehiculo.placas', 'vehiculo.idEstado', 'vehiculo.idSubmarca', 'vehiculo.modelo', 'vehiculo.nrpv', 'vehiculo.idColor', 'vehiculo.permiso', 'vehiculo.numSerie', 'vehiculo.numMotor', 'vehiculo.idTipoVehiculo', 'vehiculo.idTipoUso', 'vehiculo.senasPartic', 'vehiculo.idProcedencia', 'vehiculo.idAseguradora', 'cat_submarca.idMarca', 'cat_tipo_vehiculo.idClase')
-                ->where('extra_denunciado.id', '=', $id)
+                ->select('vehiculo.idTipifDelito', 'vehiculo.placas', 'vehiculo.idEstado', 'vehiculo.idSubmarca', 'vehiculo.modelo', 'vehiculo.nrpv', 'vehiculo.idColor', 'vehiculo.permiso', 'vehiculo.numSerie', 'vehiculo.numMotor', 'vehiculo.idTipoVehiculo', 'vehiculo.idTipoUso', 'vehiculo.senasPartic', 'vehiculo.idProcedencia', 'vehiculo.idAseguradora', 'cat_submarca.idMarca', 'cat_tipo_vehiculo.idClaseVehiculo')
+                ->where('vehiculo.id', '=', $id)
                 ->get()->first();
 
-            return view('forms.vehiculo')->with('idCarpeta', $idCarpeta)
+            return view('edit-forms.vehiculo')->with('idCarpeta', $idCarpeta)
                 ->with('numCarpeta', $numCarpeta)
                 ->with('vehiculo', $vehiculo)
                 ->with('tipifdelitos', $tipifdelitos)
