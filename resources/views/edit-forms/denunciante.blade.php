@@ -25,8 +25,7 @@
 <div class=" card-body boxone">
 	<div class="row no-gutters">
 		<div class="col-12">
-			<div class="row">
-			 
+			<div class="row">			 
 		 </div>
 		 <div class="" id="">
 			 <div id="denunciante">
@@ -103,6 +102,7 @@
 
 		</div>
 	</div>
+	{!! Form::hidden('esMoral', ($personales->esMoral) !!}
 	<!-- Fin pestañas -->
 </div>
 </div>
