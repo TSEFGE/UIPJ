@@ -15,7 +15,7 @@
 <div class="card-header">
 <div class="row">
 	
-			<div class="col-4">	
+			<div class="col">	
 				<div class="text-right">
 					@include('forms.buttons')
 				</div>
