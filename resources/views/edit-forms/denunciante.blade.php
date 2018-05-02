@@ -66,7 +66,7 @@
 	 <div id="cajados" class="boxtwo">
 		 <div class="tab-content" id="ctdenunciante">
 			<div class="tab-pane active container" id="collapsePersonales1">
-			 @if (isset($personales) &&  $personales->esEmpresa == 1)
+			@if (isset($personales) &&  $personales->esEmpresa == 1)
 				@include('edit-fields.personales-moral')
 				@include('fields.extra-denunciante')
 			@else
