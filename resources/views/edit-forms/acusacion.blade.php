@@ -1,6 +1,6 @@
 @extends('template.form')
 
-@section('title', 'Agregar denuncias registradas')
+@section('title', 'Editar denuncias registradas')
 
 @section('contenido')
 

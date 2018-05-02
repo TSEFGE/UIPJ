@@ -1,6 +1,6 @@
 @extends('template.form')
 
-@section('title', 'Agregar abogado')
+@section('title', 'Editar abogado')
 
 @push('css')
 	<link rel="stylesheet" href="{{ asset('plugins/toastr/css/toastr.min.css') }}">
