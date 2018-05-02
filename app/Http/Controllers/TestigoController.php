@@ -246,40 +246,38 @@ class TestigoController extends Controller
 
     public function edit($idCarpeta, $idExtraTestigo)
     {
-        //return ['success'=>true];
-
         $personales=DB::table('extra_testigo', 'extra_testigo.id', '=', $idExtraTestigo)
                 ->join('variables_persona', 'variables_persona.id', '=', 'extra_testigo.idVariablesPersona')
                 ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
                 ->join('cat_municipio', 'cat_municipio.id', '=', 'persona.idMunicipioOrigen')
                 //->join('cat_estado','cat_estado.id','=','cat_municipio.idEstado')
-                ->select('persona.*', 'variables_persona.id as idPersona', 'variables_persona.*', 'extra_testigo.idNotificacion')
+                ->select('persona.*', 'persona.id as idPersona', 'variables_persona.id as idVariablesPersona', 'variables_persona.*', 'extra_testigo.idNotificacion as idNotificacion')
                 ->get()->first();
         //dd($personales);
 
         $direccion=DB::table('domicilio', 'domicilio.id', '=', $personales->idDomicilio)
                     ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
                     ->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
-                    ->select('domicilio.*', 'cat_colonia.codigoPostal')
+                    ->select('domicilio.*', 'domicilio.id as idDomicilio', 'cat_colonia.codigoPostal')
                     ->get()->first();
         $direccionTrab=DB::table('variables_persona', 'variables_persona.idPersona', '=', $personales->idPersona)
                     ->join('domicilio', 'domicilio.id', '=', 'variables_persona.idDomicilioTrabajo')
                     ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
                     ->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
-                    ->select('domicilio.*', 'cat_colonia.codigoPostal')
+                    ->select('domicilio.*', 'domicilio.id as idDomicilio', 'cat_colonia.codigoPostal')
                     ->get()->first();
         $direccionNotif=DB::table('notificacion', 'notificacion.id', '=', $personales->idNotificacion)
                     ->join('domicilio', 'domicilio.id', '=', 'notificacion.idDomicilio')
                     ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
                     ->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
-                    ->select('domicilio.*', 'cat_colonia.codigoPostal')
+                    ->select('domicilio.*', 'domicilio.id as idDomicilio', 'cat_colonia.codigoPostal')
                     ->get()->first();
 
-        //dump($idCarpeta, $personales, $direccion, $direccionTrab, $direccionNotif);
-        //dd($personales, $direccion);
-        //dd($personales, $direccion, $direccionTrab, $direccionNotif);
+        $carpeta=Carpeta::find($idCarpeta);
+        $numCarpeta=$carpeta->numCarpeta;
 
 
+        dump($numCarpeta, $idCarpeta, $personales, $direccion, $direccionTrab, $direccionNotif);
         $escolaridades  = CatEscolaridad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $estados        = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $municipiosVer  = CatMunicipio::select('id', 'nombre')->where('idEstado', 30)->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
@@ -297,7 +295,7 @@ class TestigoController extends Controller
         ->with('direccionTrab', $direccionTrab)
         ->with('direccionNotif', $direccionNotif)
         ->with('idCarpeta', $idCarpeta)
-        ->with('numCarpeta', 1)
+        ->with('numCarpeta', $numCarpeta)
         ->with('escolaridades', $escolaridades)
         ->with('estados', $estados)
         ->with('municipiosVer', $municipiosVer)
@@ -307,7 +305,6 @@ class TestigoController extends Controller
         ->with('nacionalidades', $nacionalidades)
         ->with('ocupaciones', $ocupaciones)
         ->with('religiones', $religiones);
-        ;
     }
 
     public function update(Request $request, $id)
