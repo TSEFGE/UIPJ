@@ -1,6 +1,6 @@
 @extends('template.form')
 
-@section('title', 'Agregar víctima, ofendido u apoderado legal')
+@section('title', 'Editar víctima, ofendido u apoderado legal')
 
 @push('css')
 <link rel="stylesheet" href="{{ asset('plugins/toastr/css/toastr.min.css') }}">
