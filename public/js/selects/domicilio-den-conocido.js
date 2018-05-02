@@ -1,6 +1,6 @@
 $("#idEstadoC").change(function(event){
 	if(event.target.value!=""){
-		$.get("../municipios/"+event.target.value+"", function(response, estado){
+		$.get("/carpetas/public/carpeta/municipios/"+event.target.value+"", function(response, estado){
 			$("#idMunicipioC").empty();
 			$("#idMunicipioC").append("<option value=''>Seleccione un municipio</option>");
 			for(i=0; i<response.length; i++){
@@ -12,21 +12,21 @@ $("#idEstadoC").change(function(event){
 
 $("#idMunicipioC").change(function(event){
 	if(event.target.value!=""){
-		$.get("../localidades/"+event.target.value+"", function(response, municipio){
+		$.get("/carpetas/public/carpeta/localidades/"+event.target.value+"", function(response, municipio){
 			$("#idLocalidadC").empty();
 			$("#idLocalidadC").append("<option value=''>Seleccione una localidad</option>");
 			for(i=0; i<response.length; i++){
 				$("#idLocalidadC").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
 			}
 		});
-		$.get("../colonias2/"+event.target.value+"", function(response, municipio){
+		$.get("/carpetas/public/carpeta/colonias2/"+event.target.value+"", function(response, municipio){
 			$("#idColoniaC").empty();
 			$("#idColoniaC").append("<option value=''>Seleccione una colonia</option>");
 			for(i=0; i<response.length; i++){
 				$("#idColoniaC").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
 			}
 		});
-		$.get("../codigos/"+event.target.value+"", function(response, municipio){
+		$.get("/carpetas/public/carpeta/codigos/"+event.target.value+"", function(response, municipio){
 			$("#cpC").empty();
 			$("#cpC").append("<option value=''>Seleccione un código postal</option>");
 			for(i=0; i<response.length; i++){
@@ -50,7 +50,7 @@ $("#idMunicipioC").change(function(event){
 
 $("#idColoniaC").change(function(event){
 	if(event.target.value!=""){
-		$.get("../codigos2/"+event.target.value+"", function(response, colonia){
+		$.get("/carpetas/public/carpeta/codigos2/"+event.target.value+"", function(response, colonia){
 			$("#cpC").empty();
 			$("#cpC").append("<option value='"+response[0].id+"'> "+response[0].codigoPostal+"</option>");
 		});

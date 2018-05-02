@@ -1,5 +1,5 @@
 $("#idEstadoOrigen").change(function(event){
-	$.get("../municipios/"+event.target.value+"", function(response, estado){
+	$.get("/carpetas/public/carpeta/municipios/"+event.target.value+"", function(response, estado){
 		$("#idMunicipioOrigen").empty();
 		$("#idMunicipioOrigen").append("<option value=''>Seleccione un municipio</option>");
 		for(i=0; i<response.length; i++){
