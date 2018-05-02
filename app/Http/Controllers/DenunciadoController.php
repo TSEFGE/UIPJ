@@ -635,6 +635,7 @@ class DenunciadoController extends Controller
                 $religiones     = CatReligion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
 
                 $personales = DB::table('extra_denunciado')
+                ->join('cat_puesto', 'cat_puesto.id', '=', 'extra_denunciado.idPuesto')
                 ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
                 ->join('cat_ocupacion', 'cat_ocupacion.id', '=', 'variables_persona.idOcupacion')
                 ->join('cat_estado_civil', 'cat_estado_civil.id', '=', 'variables_persona.idEstadoCivil')
@@ -646,7 +647,7 @@ class DenunciadoController extends Controller
                 ->join('cat_lengua', 'cat_lengua.id', '=', 'persona.idLengua')
                 ->join('cat_municipio', 'cat_municipio.id', '=', 'persona.idMunicipioOrigen')
                 ->join('cat_estado', 'cat_estado.id', '=', 'cat_municipio.idEstado')
-                ->select('extra_denunciado.id', 'extra_denunciado.conoceAlDenunciado', 'extra_denunciado.idNotificacion', 'extra_denunciado.esVictima', 'variables_persona.id', 'variables_persona.edad', 'variables_persona.telefono', 'variables_persona.motivoEstancia', 'variables_persona.docIdentificacion', 'variables_persona.numDocIdentificacion', 'variables_persona.lugarTrabajo', 'variables_persona.telefonoTrabajo', 'variables_persona.idDomicilio', 'variables_persona.idDomicilioTrabajo', 'cat_ocupacion.nombre as ocupacion', 'cat_estado_civil.nombre as estadoCivil', 'cat_escolaridad.nombre as escolaridad', 'cat_religion.nombre as religion', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.fechaNacimiento', 'persona.rfc', 'persona.curp', 'persona.sexo', 'cat_municipio.nombre as municipioOrigen', 'cat_estado.nombre as estadoOrigen', 'persona.esEmpresa', 'cat_nacionalidad.nombre as nacionalidad', 'cat_etnia.nombre as etnia', 'cat_lengua.nombre as lengua')
+                ->select('extra_denunciado.id', 'extra_denunciado.alias', 'extra_denunciado.senasPartic', 'extra_denunciado.ingreso', 'extra_denunciado.periodoIngreso', 'extra_denunciado.residenciaAnterior', 'extra_denunciado.personasBajoSuGuarda', 'extra_denunciado.perseguidoPenalmente', 'extra_denunciado.vestimenta', 'extra_denunciado.idNotificacion', 'variables_persona.id', 'variables_persona.edad', 'variables_persona.telefono', 'variables_persona.motivoEstancia', 'variables_persona.docIdentificacion', 'variables_persona.numDocIdentificacion', 'variables_persona.lugarTrabajo', 'variables_persona.telefonoTrabajo', 'variables_persona.idDomicilio', 'variables_persona.idDomicilioTrabajo', 'cat_ocupacion.nombre as ocupacion', 'cat_estado_civil.nombre as estadoCivil', 'cat_escolaridad.nombre as escolaridad', 'cat_religion.nombre as religion', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.fechaNacimiento', 'persona.rfc', 'persona.curp', 'persona.sexo', 'cat_municipio.nombre as municipioOrigen', 'cat_estado.nombre as estadoOrigen', 'persona.esEmpresa', 'cat_nacionalidad.nombre as nacionalidad', 'cat_etnia.nombre as etnia', 'cat_lengua.nombre as lengua')
                 ->where('extra_denunciado.id', '=', $id)
                 ->get();
 
@@ -678,7 +679,7 @@ class DenunciadoController extends Controller
                 ->where('notificacion.id', '=', $personales[0]->idNotificacion)
                 ->get();
 
-                return view('edit-forms.denunciante')->with('idCarpeta', $idCarpeta)
+                return view('edit-forms.denunciado')->with('idCarpeta', $idCarpeta)
                     ->with('numCarpeta', $numCarpeta)
                     ->with('escolaridades', $escolaridades)
                     ->with('estados', $estados)
