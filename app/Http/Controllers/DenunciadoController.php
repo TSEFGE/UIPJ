@@ -34,7 +34,7 @@ class DenunciadoController extends Controller
         if ($carpetaNueva->isEmpty() && $var->isEmpty()) {
             return redirect()->route('home');
         }
-        
+
         $numCarpeta     = $carpetaNueva[0]->numCarpeta;
         $denunciados    = CarpetaController::getDenunciados($idCarpeta);
         $escolaridades  = CatEscolaridad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
@@ -619,7 +619,7 @@ class DenunciadoController extends Controller
             ->where('notificacion.id', '=', $personales->idNotificacion)
             ->get()->first();
 
-            return view('edit-forms.denunciante')->with('idCarpeta', $idCarpeta)
+            return view('edit-forms.denunciado')->with('idCarpeta', $idCarpeta)
                 ->with('numCarpeta', $numCarpeta)
                 ->with('estados', $estados)
                 ->with('municipiosVer', $municipiosVer)
