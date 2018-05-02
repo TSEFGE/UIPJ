@@ -3,18 +3,9 @@
 namespace App\Http\Controllers;
 
 use Alert;
-use App\Http\Requests\StoreAbogado;
 use App\Models\Bitacora;
 use App\Models\Carpeta;
-use App\Models\CatEstado;
-use App\Models\CatEstadoCivil;
-use App\Models\CatMunicipio;
-use App\Models\Domicilio;
-use App\Models\ExtraAbogado;
 use App\Models\ExtraDenunciado;
-use App\Models\Persona;
-use App\Models\VariablesPersona;
-use Carbon\Carbon;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -70,9 +61,52 @@ class DefensaController extends Controller
         return redirect()->route('new.defensa', $request->idCarpeta);
     }
 
-    public function edit($id)
+    public function edit($idCarpeta, $id)
     {
-        //
+        $abogados = DB::table('extra_abogado')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_abogado.idVariablesPersona')
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+            ->select('extra_abogado.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+            ->where('variables_persona.idCarpeta', '=', $idCarpeta)
+            ->orderBy('persona.nombres', 'ASC')
+            ->get();
+
+        $abogado = DB::table('extra_abogado')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_abogado.idVariablesPersona')
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+            ->select('extra_abogado.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+            ->where('extra_abogado.id', '=', $id)
+            ->get();
+
+        $involucradoDenunciado = DB::table('extra_abogado')
+            ->join('extra_denunciado', 'extra_denunciado.idAbogado', '=', 'extra_abogado.id')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+            ->select('extra_denunciado.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+            ->where('extra_abogado.id', '=', $id)
+            ->get();
+
+        $involucradoDenunciante = DB::table('extra_abogado')
+            ->join('extra_denunciante', 'extra_denunciante.idAbogado', '=', 'extra_abogado.id')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+            ->select('extra_denunciante.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+            ->where('extra_abogado.id', '=', $id)
+            ->get();
+
+        if ($involucradoDenunciado->isNotEmpty()) {
+            $involucrado = $involucradoDenunciado;
+        } else {
+            $involucrado = $involucradoDenunciante;
+        }
+
+        return view('edit-forms.defensa')
+            ->with('idCarpeta', $idCarpeta)
+            ->with('id', $id)
+            ->with('abogados', $abogados)
+            ->with('abogado', $abogado)
+            ->with('involucrado', $involucrado);
+
     }
 
     public function update(Request $request, $id)
