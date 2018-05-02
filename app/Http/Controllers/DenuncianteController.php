@@ -459,7 +459,7 @@ class DenuncianteController extends Controller
             $personales = DB::table('extra_denunciante')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->select('extra_denunciante.id as idDenunciante', 'extra_denunciante.idNotificacion', 'extra_denunciante.esVictima', 'variables_persona.id as idVariablesPersona', 'variables_persona.idDomicilio', 'persona.id as idPersona', 'persona.nombres', 'persona.fechaNacimiento', 'persona.rfc', 'persona.esEmpresa')
+            ->select('extra_denunciante.id as idDenunciante', 'extra_denunciante.idNotificacion', 'extra_denunciante.esVictima', 'variables_persona.id as idVariablesPersona', 'variables_persona.idDomicilio', 'variables_persona.representanteLegal', 'persona.id as idPersona', 'persona.nombres', 'persona.fechaNacimiento', 'persona.rfc', 'persona.esEmpresa')
             ->where('extra_denunciante.id', '=', $id)
             ->get()->first();
 
