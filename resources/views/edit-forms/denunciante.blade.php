@@ -26,7 +26,7 @@
 	<div class="row no-gutters">
 		<div class="col-12">
 			<div class="row">
-			 @if(!empty($idCarpeta)) {!! Form::hidden('idCarpeta', $idCarpeta) !!} @endif
+			 
 		 </div>
 		 <div class="" id="">
 			 <div id="denunciante">
@@ -66,16 +66,21 @@
 	 <div id="cajados" class="boxtwo">
 		 <div class="tab-content" id="ctdenunciante">
 			<div class="tab-pane active container" id="collapsePersonales1">
-			@if (isset($personales) &&  $personales->esEmpresa == 1)
-				@include('edit-fields.personales-moral')
-				@include('fields.extra-denunciante')
-			@else
+			@if (isset ($personales) )
+				@if ( ($personales->esEmpresa) == 1)
+					@include('edit-fields.personales-moral')
+					@include('fields.extra-denunciante')
+					@endif
+			@else if ( ($personales->esEmpresa) == 0)
 				@include('edit-fields.personales-fisica')							
 				@include('fields.extra-denunciante')
-			@endif
+			@endif		
+			{{--@include('edit-fields.personales-fisica')							
+				@include('fields.extra-denunciante')--}}	
 			</div>
+			
 			<div class="tab-pane container" id="collapseDir1">
-				@include('fields.direcciones')
+				@include('fields.direcciones')				
 			</div>
 			<div class="tab-pane container" id="collapseTrab1">
 				@include('fields.lugartrabajo')
@@ -83,6 +88,7 @@
 			<div class="tab-pane container" id="collapseNotifs1">
 				@include('fields.notificaciones')
 			</div>
+
 		</div>
 	</div>
 	<!-- Fin pestañas -->
@@ -97,16 +103,16 @@
 	<script src="{{ asset('plugins/moment/js/moment.min.js') }}"></script>
 	<script src="{{ asset('plugins/moment/locales/es.js') }}"></script>
 	<script src="{{ asset('plugins/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-	<script src="{{ asset('js/persona.js') }}"></script>
+	{{--<script src="{{ asset('js/persona.js') }}"></script>
 	<script src="{{ asset('js/persona-moral.js') }}"></script>
-	<script src="{{ asset('js/tipo-persona.js') }}"></script>
+	{{--<script src="{{ asset('js/tipo-persona.js') }}"></script>
 	<script src="{{ asset('js/denunciante.js') }}"></script>	
 	<script src="{{ asset('js/selects/async.js') }}"></script>
-	<script src="{{ asset('js/selects/origen.js') }}"></script>
+	{{--<script src="{{ asset('js/selects/origen.js') }}"></script>
 	<script src="{{ asset('js/selects/domicilio.js') }}"></script>
 	<script src="{{ asset('js/selects/domicilio-trab.js') }}"></script>
 	<script src="{{ asset('js/selects/domicilio-notif.js') }}"></script>
-	<script src="{{ asset('js/selects/sisy.js') }}"></script>
+	<script src="{{ asset('js/selects/sisy.js') }}"></script>--}}
 	<script src="{{ asset('js/validations/tab-denunciante.js') }}"></script>
 	<script src="{{ asset('js/curp.js') }}"></script>
 	@include('fields.rfcMoral');
