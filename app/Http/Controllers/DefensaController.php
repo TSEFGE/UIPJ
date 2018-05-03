@@ -74,7 +74,7 @@ class DefensaController extends Controller
         $abogado = DB::table('extra_abogado')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_abogado.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->select('extra_abogado.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+            ->select('variables_persona.id as idVariablesPersona', 'persona.id as idPersona', 'extra_abogado.id as idExtraAbogado', 'persona.nombres as nombres', 'persona.primerAp as primerAp', 'persona.segundoAp as segundoAp')
             ->where('extra_abogado.id', '=', $id)
             ->get();
 
@@ -82,7 +82,7 @@ class DefensaController extends Controller
             ->join('extra_denunciado', 'extra_denunciado.idAbogado', '=', 'extra_abogado.id')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->select('extra_denunciado.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+            ->select('variables_persona.id as idVariablesPersona', 'persona.id as idPersona', 'extra_denunciado.id as idExtraDenunciado', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
             ->where('extra_abogado.id', '=', $id)
             ->get();
 
@@ -90,7 +90,7 @@ class DefensaController extends Controller
             ->join('extra_denunciante', 'extra_denunciante.idAbogado', '=', 'extra_abogado.id')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->select('extra_denunciante.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+            ->select('variables_persona.id as idVariablesPersona', 'persona.id as idPersona', 'extra_denunciante.id as idExtraDenunciante', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
             ->where('extra_abogado.id', '=', $id)
             ->get();
 
