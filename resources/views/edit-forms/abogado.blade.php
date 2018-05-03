@@ -81,10 +81,10 @@
 @endsection
 
 {!! Form::hidden('rfc-edit', ($personales->rfc)) !!}
-{!! Form::hidden('idExtraAbogado', ($personales->idDenunciante)) !!}
+{!! Form::hidden('idExtraAbogado', ($info->idExtraAbogado)) !!}
 {!! Form::hidden('idPersona', ($personales->idPersona)) !!}
-{!! Form::hidden('idVariablesPersona', ($personales->idVariablesPersona)) !!}
-{!! Form::hidden('idDireccionTrab', ($direccion->id)) !!}
+{!! Form::hidden('idVariablesPersona', ($info->idVariablesPersona)) !!}
+{!! Form::hidden('idDireccionTrab', ($direccionTrab->idDomicilioTrabajo)) !!}
 
 @push('scripts')
 	<script src="{{ asset('plugins/toastr/js/toastr.min.js')}}" ></script>
