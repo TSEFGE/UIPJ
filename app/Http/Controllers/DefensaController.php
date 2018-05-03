@@ -82,7 +82,7 @@ class DefensaController extends Controller
             ->join('extra_denunciado', 'extra_denunciado.idAbogado', '=', 'extra_abogado.id')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->select('variables_persona.id as idVariablesPersona', 'persona.id as idPersona', 'extra_denunciado.id as idExtraDenunciado', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+            ->select('extra_denunciado.id as idExtraDenunciado', 'variables_persona.id as idVariablesPersona', 'persona.id as idPersona', 'extra_denunciado.id as idExtraDenunciado', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
             ->where('extra_abogado.id', '=', $id)
             ->get()->first();
 
@@ -90,24 +90,28 @@ class DefensaController extends Controller
             ->join('extra_denunciante', 'extra_denunciante.idAbogado', '=', 'extra_abogado.id')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->select('variables_persona.id as idVariablesPersona', 'persona.id as idPersona', 'extra_denunciante.id as idExtraDenunciante', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+            ->select('extra_denunciante.id as idExtraDenunciante', 'variables_persona.id as idVariablesPersona', 'persona.id as idPersona', 'extra_denunciante.id as idExtraDenunciante', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
             ->where('extra_abogado.id', '=', $id)
             ->get()->first();
 
-        if ($involucradoDenunciado->isNotEmpty()) {
-            $involucrado = $involucradoDenunciado;
-        } else {
-            $involucrado = $involucradoDenunciante;
-        }
+        $involucradoDenunciadoID = $involucradoDenunciado->idExtraDenunciado);
+    $involucradoDenuncianteID = $involucradoDenunciante->idExtraDenunciante);
 
-        return view('edit-forms.defensa')
-            ->with('idCarpeta', $idCarpeta)
-            ->with('id', $id)
-            ->with('abogados', $abogados)
-            ->with('abogado', $abogado)
-            ->with('involucrado', $involucrado);
+if ($involucradoDenunciadoID->isNotEmpty()) {
+    $involucrado = $involucradoDenunciadoID;
+    // dump($involucradoDenunciado);
+} else {
+    $involucrado = $involucradoDenuncianteID;
+}
 
-    }
+return view('edit-forms.defensa')
+    ->with('idCarpeta', $idCarpeta)
+    ->with('id', $id)
+    ->with('abogados', $abogados)
+    ->with('abogado', $abogado)
+    ->with('involucrado', $involucrado);
+
+}
 
     public function update(Request $request, $id)
     {
