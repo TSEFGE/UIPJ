@@ -179,10 +179,13 @@ class AbogadoController extends Controller
         $personales = DB::table('extra_abogado')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_abogado.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->select('persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.fechaNacimiento', 'persona.rfc', 'persona.sexo', 'persona.curp', 'persona.idNacionalidad', 'persona.idMunicipioOrigen', 'variables_persona.idEstadoCivil', 'variables_persona.telefono')
+            ->join('domicilio', 'domicilio.idMunicipio', '=', 'persona.idMunicipioOrigen')
+            ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
+            ->join('cat_estado', 'cat_estado.id', '=', 'cat_municipio.idEstado')
+            ->select('persona.nombres as nombres', 'persona.primerAp as primerAp', 'persona.segundoAp as segundoAp', 'persona.fechaNacimiento as fechaNacimiento', 'persona.rfc as rfc', 'persona.sexo as sexo', 'persona.curp as curp', 'persona.idNacionalidad as idNacionalidad', 'persona.idMunicipioOrigen as idMunicipioOrigen', 'cat_estado.id as idEstado', 'variables_persona.idEstadoCivil as idEstadoCivil', 'variables_persona.telefono as telefono')
             ->where('variables_persona.idCarpeta', '=', $idCarpeta)->where('extra_abogado.id', '=', $id)
             ->orderBy('persona.nombres', 'ASC')
-            ->get();
+            ->get()->first();
 
         $direccionTrab = DB::table('extra_abogado')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_abogado.idVariablesPersona')
@@ -192,13 +195,13 @@ class AbogadoController extends Controller
             ->select('variables_persona.lugarTrabajo', 'variables_persona.telefonoTrabajo', 'cat_estado.id', 'domicilio.idMunicipio', 'domicilio.idLocalidad', 'domicilio.idColonia', 'domicilio.calle', 'domicilio.numExterno', 'domicilio.numInterno')
             ->where('variables_persona.idCarpeta', '=', $idCarpeta)
             ->where('extra_abogado.id', '=', $id)
-            ->get();
+            ->get()->first();
 
         $info = DB::table('extra_abogado')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_abogado.idVariablesPersona')
             ->select('extra_abogado.cedulaProf', 'extra_abogado.sector', 'extra_abogado.correo', 'extra_abogado.tipo')
             ->where('variables_persona.idCarpeta', '=', $idCarpeta)->where('extra_abogado.id', '=', $id)
-            ->get();
+            ->get()->first();
 
         $estados       = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $municipiosVer = CatMunicipio::select('id', 'nombre')->where('idEstado', 30)->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
@@ -207,13 +210,12 @@ class AbogadoController extends Controller
         return view('edit-forms.abogado')
             ->with('idCarpeta', $idCarpeta)
             ->with('id', $id)
-            ->with('personales', $personales)
-            ->with('direccionTrab', $direccionTrab)
-            ->with('info', $info)
             ->with('estados', $estados)
             ->with('municipiosVer', $municipiosVer)
-            ->with('estadoscivil', $estadoscivil);
-
+            ->with('estadoscivil', $estadoscivil)
+            ->with('personales', $personales)
+            ->with('info', $info)
+            ->with('direccionTrab', $direccionTrab);
     }
 
     public function update(Request $request, $id)
