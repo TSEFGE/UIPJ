@@ -179,7 +179,9 @@
 	});
 	
 	$("#narracionUnoM").prop('disabled',true);
+	$("#narracionUnoM").hide();
 	$("#narracionUno").prop('disabled',true);
+	$("#narracionUno").hide();
 	var esEmpresa = $("input[name='esEmpresa']").val();	
 	@if (isset ($personales) )
 		@if ( ($personales->esEmpresa) == 1)
