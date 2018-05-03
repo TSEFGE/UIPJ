@@ -258,7 +258,7 @@ class AutoridadController extends Controller
         $nacionalidades = CatNacionalidad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $ocupaciones    = CatOcupacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $religiones     = CatReligion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-        $autoridades    = CarpetaController::getAutoridades($idCarpeta);
+        $autoridades    = CarpetaController::getAutoridades($idCarpeta)->first();
 
         dump($autoridades, $idCarpeta, $personales, $direccion, $direccionTrab);
 
@@ -291,7 +291,8 @@ class AutoridadController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd($request);
+        return ['success'=>true];
     }
 
     /**

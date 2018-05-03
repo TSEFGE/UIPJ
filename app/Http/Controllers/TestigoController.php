@@ -254,7 +254,7 @@ class TestigoController extends Controller
                     ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
                     ->join('cat_municipio', 'cat_municipio.id', '=', 'persona.idMunicipioOrigen')
                     //->join('cat_estado','cat_estado.id','=','cat_municipio.idEstado')
-                    ->select('cat_municipio.idEstado as idEstado', 'persona.*', 'persona.id as idPersona', 'variables_persona.id as idVariablesPersona', 'variables_persona.*', 'extra_testigo.idNotificacion as idNotificacion')
+                    ->select('extra_testigo.id as $idExtraTestigo', 'cat_municipio.idEstado as idEstado', 'persona.*', 'persona.id as idPersona', 'variables_persona.id as idVariablesPersona', 'variables_persona.*', 'extra_testigo.idNotificacion as idNotificacion')
                     ->get()->first();
             //dd($personales);
 
@@ -283,7 +283,7 @@ class TestigoController extends Controller
             $numCarpeta=$carpeta->numCarpeta;
 
 
-            dump($numCarpeta, $idCarpeta, $personales, $direccion, $direccionTrab, $direccionNotif);
+            //dump($numCarpeta, $idCarpeta, $personales, $direccion, $direccionTrab, $direccionNotif);
             $escolaridades  = CatEscolaridad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $estados        = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $municipiosVer  = CatMunicipio::select('id', 'nombre')->where('idEstado', 30)->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
