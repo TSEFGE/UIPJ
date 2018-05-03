@@ -3,7 +3,7 @@
 @section('title', 'Agregar defensa')
 
 @section('contenido')
-	{!! Form::open(['route' => 'store.defensa', 'method' => 'POST'])  !!}
+{!! Form::open(['route' => ['update.defensa', $idCarpeta, $id], 'method' => 'PUT'])  !!}
 	{{ csrf_field() }}
 	<div class="card-header">
 		<div class="row">
@@ -12,6 +12,7 @@
 					{{--Aqui van radios, etc --}}
 				</div>
 			</div>
+			
 			<div class="col">	
 				<div class="text-right">
 					@include('forms.buttons')
