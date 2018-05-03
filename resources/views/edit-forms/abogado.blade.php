@@ -69,16 +69,7 @@
 					<div class="tab-pane container" id="collapseAutoridad">  		
 						@include('fields.extra-abo')		
 					</div>
-					<div>
-						<?php // dd($personales) ?>
-							<textarea rows="4" cols="50">
-								{{$personales[0]->nombres}}
-								</textarea>
-								<textarea rows="4" cols="50">
-										{{$personales}}
-										</textarea>
-						
-					</div>
+					
 				</div>
 			</div>
 		</div>
@@ -143,4 +134,39 @@
 
 	$("#cedulaProf").addClass("vacio");
 	$("#correo").addClass("vacio");
+
+	$('#nombres').val("{{ $personales->nombres }}");
+			$('#primerAp').val("{{ $personales->primerAp }}");
+			$('#segundoAp').val("{{ $personales->segundoAp }}");
+			$('#sexo').val("{{ $personales->sexo }}").trigger('change');
+			$('#idNacionalidad').val({{ $personales->idNacionalidad }}).trigger('change');
+			$('#idEstadoOrigen').val({{ $personales->idEstado}}).trigger('change');
+			$('#rfc').val(rfc);
+			$('#homo').val(homoclave);
+			$('#curp').val("{{$personales->curp}}");
+			$('#idEtnia').val({{$personales->idEtnia}}).trigger('change');
+			$('#idLengua').val({{$personales->idLengua}}).trigger('change');
+			$('#idMunicipioOrigen').val({{$personales->idMunicipioOrigen}}).trigger('change');
+			$('#idReligion').val({{$personales->idReligion}}).trigger('change');
+			$('#idEscolaridad').val({{$personales->idEscolaridad}}).trigger('change');
+			$('#telefono').val("{{$personales->telefono}}");
+			$('#motivoEstancia').val("{{$personales->motivoEstancia}}");
+			$('#idOcupacion').val({{$personales->idOcupacion}}).trigger('change');	
+			$('#idEstadoCivil').val({{$personales->idEstadoCivil}}).trigger('change');	
+			$('#docIdentificacion').val("{{$personales->docIdentificacion}}").trigger('change');
+			$('#numDocIdentificacion').val("{{$personales->numDocIdentificacion}}");
+			$('#calle').val("{{$direccion->calle}}");
+			$('#numExterno').val("{{$direccion->numExterno}}");
+			$('#numInterno').val("{{$direccion->numInterno}}");
+			$('#lugarTrabajo').val("{{$personales->lugarTrabajo}}");
+			$('#telefonoTrabajo').val("{{$personales->telefonoTrabajo}}");
+			$('#calle2').val("{{$direccionTrab->calle}}");
+			$('#numExterno2').val("{{$direccionTrab->numExterno}}");
+			$('#numInterno2').val("{{$direccionTrab->numInterno}}");
+			$('#calle3').val("{{$direccionNotif->calle}}");
+			$('#numExterno3').val("{{$direccionNotif->numExterno}}");
+			$('#numInterno3').val("{{$direccionNotif->numInterno}}");
+			$('#correo').val("{{$direccionNotif->correo}}");
+			$('#telefonoN').val("{{$direccionNotif->telefono}}");
+			$('#fax').val("{{$direccionNotif->fax}}")
 @endpush
