@@ -189,13 +189,13 @@
 	$('#rfc').val(rfc);
 	$('#homo').val(homoclave);
 	$('#curp').val("{{$personales->curp}}");
-	$('#idEtnia').val("{{$personales->etnia}}").trigger('change');
-	$('#idLengua').val("{{$personales->lengua}}").trigger('change');
+	$('#idEtnia').val({{$personales->idEtnia}}).trigger('change');
+	$('#idLengua').val({{$personales->idLengua}}).trigger('change');
 	$('#idMunicipioOrigen').val({{$personales->idMunicipioOrigen}}).trigger('change');
 	$('#telefono').val("{{$personales->telefono}}");
 	$('#motivoEstancia').val("{{$personales->motivoEstancia}}");
-	$('#idOcupacion').val("{{$personales->ocupacion}}").trigger('change');	
-	$('#idEstadoCivil').val("{{$personales->estadoCivil}}").trigger('change');	
+	$('#idOcupacion').val("{{$personales->idOcupacion}}").trigger('change');	
+	$('#idEstadoCivil').val("{{$personales->idEstadoCivil}}").trigger('change');	
 	$('#docIdentificacion').val("{{$personales->docIdentificacion}}").trigger('change');
 	$('#numDocIdentificacion').val("{{$personales->numDocIdentificacion}}");
 	$('#calle').val("{{$direccion->calle}}");
