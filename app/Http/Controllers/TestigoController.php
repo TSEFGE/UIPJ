@@ -283,7 +283,7 @@ class TestigoController extends Controller
             $numCarpeta=$carpeta->numCarpeta;
 
 
-            dump($numCarpeta, $idCarpeta, $personales, $direccion, $direccionTrab, $direccionNotif);
+            //dump($numCarpeta, $idCarpeta, $personales, $direccion, $direccionTrab, $direccionNotif);
             $escolaridades  = CatEscolaridad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $estados        = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $municipiosVer  = CatMunicipio::select('id', 'nombre')->where('idEstado', 30)->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
