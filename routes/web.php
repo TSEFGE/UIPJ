@@ -106,20 +106,20 @@ Route::middleware(['auth'])->group(function () {
 	Route::post('armarRfcFIsico', 'DenuncianteController@rfcFisico')->name('rfcFisico.denunciante');
 
 	/*---------Rutas para los selects dinámicos-------------*/
-	Route::get('carpeta/municipios/{id}', 'RegistroController@getMunicipios');
-	Route::get('carpeta/localidades/{id}', 'RegistroController@getLocalidades');
-	Route::get('carpeta/colonias/{cp}', 'RegistroController@getColonias');
-	Route::get('carpeta/colonias2/{id}', 'RegistroController@getColonias2');
-	Route::get('carpeta/codigos/{id}', 'RegistroController@getCodigos');
-	Route::get('carpeta/codigos2/{id}', 'RegistroController@getCodigos2');
-	Route::get('carpeta/submarcas/{id}', 'RegistroController@getSubmarcas');
-	Route::get('carpeta/tipoVehiculos/{id}', 'RegistroController@getTipoVehiculos');
-	Route::get('carpeta/armas/{id}', 'RegistroController@getArmas');
+	Route::get('municipios/{id}', 'RegistroController@getMunicipios')->name('get.municipios');
+	Route::get('localidades/{id}', 'RegistroController@getLocalidades')->name('get.localidades');
+	Route::get('colonias/{cp}', 'RegistroController@getColonias')->name('get.colonias');
+	Route::get('colonias2/{id}', 'RegistroController@getColonias2')->name('get.colonias2');
+	Route::get('codigos/{id}', 'RegistroController@getCodigos')->name('get.codigos');
+	Route::get('codigos2/{id}', 'RegistroController@getCodigos2')->name('get.codigos2');
+	Route::get('submarcas/{id}', 'RegistroController@getSubmarcas')->name('get.submarcas');
+	Route::get('tipoVehiculos/{id}', 'RegistroController@getTipoVehiculos')->name('get.tipovehiculo');
+	Route::get('armas/{id}', 'RegistroController@getArmas')->name('get.armas');
 	/*Route::get('denunciantes/{idCarpeta}', 'RegistroController@getDenunciantes');
 	Route::get('denunciados/{idCarpeta}', 'RegistroController@getDenunciados');*/
-	Route::get('carpeta/involucrados/{idCarpeta}/{idAbogado}', 'RegistroController@getInvolucrados');
-  	Route::get('carpeta/agrupaciones1/{id}','RegistroController@getAgrupaciones1');
-  	Route::get('carpeta/agrupaciones2/{id}','RegistroController@getAgrupaciones2');
+	Route::get('involucrados/{idCarpeta}/{idAbogado}', 'RegistroController@getInvolucrados')->name('get.involucrados');
+  	Route::get('agrupaciones1/{id}','RegistroController@getAgrupaciones1')->name('get.agrupaciones1');
+  	Route::get('agrupaciones2/{id}','RegistroController@getAgrupaciones2')->name('get.agrupaciones2');
     Route::get('persona/curp/{curp}','RegistroController@buscarCURP');
     Route::get('contador','RegistroController@contador');
 
