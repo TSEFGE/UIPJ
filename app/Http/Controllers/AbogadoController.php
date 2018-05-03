@@ -182,7 +182,7 @@ class AbogadoController extends Controller
             ->join('domicilio', 'domicilio.idMunicipio', '=', 'persona.idMunicipioOrigen')
             ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
             ->join('cat_estado', 'cat_estado.id', '=', 'cat_municipio.idEstado')
-            ->select('persona.nombres as nombres', 'persona.primerAp as primerAp', 'persona.segundoAp as segundoAp', 'persona.fechaNacimiento as fechaNacimiento', 'persona.rfc as rfc', 'persona.sexo as sexo', 'persona.curp as curp', 'persona.idNacionalidad as idNacionalidad', 'persona.idMunicipioOrigen as idMunicipioOrigen', 'cat_estado.id as idEstado', 'variables_persona.idEstadoCivil as idEstadoCivil', 'variables_persona.telefono as telefono')
+            ->select('persona.id as idPersona', 'variables_persona.id as idVariablesPersona', 'extra_abogado.id as idExtraAbogado', 'domicilio.id as idDomicilio', 'persona.nombres as nombres', 'persona.primerAp as primerAp', 'persona.segundoAp as segundoAp', 'persona.fechaNacimiento as fechaNacimiento', 'persona.rfc as rfc', 'persona.sexo as sexo', 'persona.curp as curp', 'persona.idNacionalidad as idNacionalidad', 'persona.idMunicipioOrigen as idMunicipioOrigen', 'cat_estado.id as idEstado', 'variables_persona.idEstadoCivil as idEstadoCivil', 'variables_persona.telefono as telefono')
             ->where('variables_persona.idCarpeta', '=', $idCarpeta)->where('extra_abogado.id', '=', $id)
             ->orderBy('persona.nombres', 'ASC')
             ->get()->first();
@@ -192,14 +192,14 @@ class AbogadoController extends Controller
             ->join('domicilio', 'domicilio.id', '=', 'variables_persona.idDomicilioTrabajo')
             ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
             ->join('cat_estado', 'cat_estado.id', '=', 'cat_municipio.idEstado')
-            ->select('variables_persona.lugarTrabajo', 'variables_persona.telefonoTrabajo', 'cat_estado.id', 'domicilio.idMunicipio', 'domicilio.idLocalidad', 'domicilio.idColonia', 'domicilio.calle', 'domicilio.numExterno', 'domicilio.numInterno')
+            ->select('variables_persona.idDomicilioTrabajo as idDomicilioTrabajo', 'variables_persona.lugarTrabajo', 'variables_persona.telefonoTrabajo', 'cat_estado.id', 'domicilio.idMunicipio', 'domicilio.idLocalidad', 'domicilio.idColonia', 'domicilio.calle', 'domicilio.numExterno', 'domicilio.numInterno')
             ->where('variables_persona.idCarpeta', '=', $idCarpeta)
             ->where('extra_abogado.id', '=', $id)
             ->get()->first();
 
         $info = DB::table('extra_abogado')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_abogado.idVariablesPersona')
-            ->select('extra_abogado.cedulaProf', 'extra_abogado.sector', 'extra_abogado.correo', 'extra_abogado.tipo')
+            ->select('variables_persona.id as idVariablesPersona', 'extra_abogado.id as idExtraAbogado', 'extra_abogado.cedulaProf', 'extra_abogado.sector', 'extra_abogado.correo', 'extra_abogado.tipo')
             ->where('variables_persona.idCarpeta', '=', $idCarpeta)->where('extra_abogado.id', '=', $id)
             ->get()->first();
 
@@ -220,7 +220,112 @@ class AbogadoController extends Controller
 
     public function update(Request $request, $id)
     {
-        //
+        $carpetaNueva = Carpeta::where('id', $request->idCarpeta)->where('idFiscal', Auth::user()->id)->get();
+        $var          = ExtraAbogado::where('id', $id)->get();
+        if ($carpetaNueva->isEmpty() && $var->isEmpty()) {
+            return redirect()->route('home');
+        }
+
+        $persona = Persona::where('curp', $request->curp)->get();
+        if ($persona->isNotEmpty()) {
+            Alert::error('Ya existe una persona registrada con ese CURP.', 'Error')->persistent("Aceptar");
+            return back()->withInput();
+        } else {
+            //dd($request->all());
+            $persona                  = Persona::find($request->idPersona);
+            $persona->nombres         = $request->nombres;
+            $persona->primerAp        = $request->primerAp;
+            $persona->segundoAp       = $request->segundoAp;
+            $fechaAux                 = $request->fechaNacimiento;
+            $fechaNacimiento          = date("Y-m-d", strtotime($fechaAux));
+            $persona->fechaNacimiento = $fechaNacimiento;
+            $persona->rfc             = $request->rfc . $request->homo;
+            if ($request->filled('sexo')) {
+                $persona->sexo = $request->sexo;
+            }
+            if ($request->filled('idNacionalidad')) {
+                $persona->idNacionalidad = $request->idNacionalidad;
+            }
+            if ($request->filled('idMunicipioOrigen')) {
+                $persona->idMunicipioOrigen = $request->idMunicipioOrigen;
+            }
+            $persona->curp = $request->curp;
+            $persona->save();
+
+            if ($request->rfcAux != $request->rfc . $request->homo) {
+                Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un RFC diferente al generado por el sistema para una persona física de tipo Abogado.', 'idFilaAccion' => $persona->id]);
+            }
+            $idPersona = $persona->id;
+            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se ha registrado una nueva persona física de tipo abogado.', 'idFilaAccion' => $idPersona]);
+
+            $domicilio2 = Domicilio::find($request->idDireccionTrabajo);
+            if ($request->filled('idMunicipio2')) {
+                $domicilio2->idMunicipio = $request->idMunicipio2;
+            }
+            if ($request->filled('idLocalidad2')) {
+                $domicilio2->idLocalidad = $request->idLocalidad2;
+            }
+            if ($request->filled('idColonia2')) {
+                $domicilio2->idColonia = $request->idColonia2;
+            }
+            if ($request->filled('calle2')) {
+                $domicilio2->calle = $request->calle2;
+            }
+            if ($request->filled('numExterno2')) {
+                $domicilio2->numExterno = $request->numExterno2;
+            }
+            if ($request->filled('numInterno2')) {
+                $domicilio2->numInterno = $request->numInterno2;
+            }
+            $domicilio2->save();
+            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'update', 'descripcion' => 'Se ha actualizado un domicilio de trabajo para persona física de tipo Abogado.', 'idFilaAccion' => $domicilio2->id]);
+            $idD2 = $domicilio2->id;
+
+            $VariablesPersona            = VariablesPersona::find($request->idVariablesPersona);
+            $VariablesPersona->idCarpeta = $request->idCarpeta;
+            $VariablesPersona->idPersona = $idPersona;
+            if ($request->filled('telefono')) {
+                $VariablesPersona->telefono = $request->telefono;
+            }
+
+            $VariablesPersona->motivoEstancia = "NO APLICA";
+
+            if ($request->filled('idOcupacion')) {
+                $VariablesPersona->idOcupacion = 2469;
+            }
+            if ($request->filled('idEstadoCivil')) {
+                $VariablesPersona->idEstadoCivil = $request->idEstadoCivil;
+            }
+            if ($request->filled('idEscolaridad')) {
+                $VariablesPersona->idEscolaridad = 8;
+            }
+            $VariablesPersona->docIdentificacion    = "NO APLICA";
+            $VariablesPersona->numDocIdentificacion = "NO APLICA";
+            if ($request->filled('lugarTrabajo')) {
+                $VariablesPersona->lugarTrabajo = $request->lugarTrabajo;
+            }
+            $VariablesPersona->idDomicilioTrabajo = $idD2;
+            if ($request->filled('telefonoTrabajo')) {
+                $VariablesPersona->telefonoTrabajo = $request->telefonoTrabajo;
+            }
+            $VariablesPersona->representanteLegal = "NO APLICA";
+            $VariablesPersona->save();
+            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'variables_persona', 'accion' => 'update', 'descripcion' => 'Se ha actualizado un variables persona de persona física de tipo Abogado.', 'idFilaAccion' => $VariablesPersona->id]);
+            $idVariablesPersona = $VariablesPersona->id;
+
+            $ExtraAbogado                     = ExtraAbogado::find($request->idExtraAbogado);
+            $ExtraAbogado->idVariablesPersona = $idVariablesPersona;
+            $ExtraAbogado->cedulaProf         = $request->cedulaProf;
+            $ExtraAbogado->sector             = $request->sector;
+            $ExtraAbogado->correo             = $request->correo;
+            $ExtraAbogado->tipo               = $request->tipo;
+            $ExtraAbogado->save();
+
+            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_abogado', 'accion' => 'update', 'descripcion' => 'Se ha actualizado un  extra abogado.', 'idFilaAccion' => $idVariablesPersona]);
+        }
+        Alert::success('Abogado actualizado con éxito', 'Hecho')->persistent("Aceptar");
+        return redirect()->route('carpeta', $request->idCarpeta);
+
     }
 
 }
