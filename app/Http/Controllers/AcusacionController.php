@@ -126,7 +126,7 @@ class AcusacionController extends Controller
             ->join('acusacion', 'acusacion.idDenunciante', '=', 'extra_denunciante.id')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->select('extra_denunciante.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+            ->select('extra_denunciante.id as idExtraDenunciante', 'persona.nombres as nombres', 'persona.primerAp as primerAp', 'persona.segundoAp as segundoAp', 'variables_persona.id as idVariablesPersona')
             ->where('variables_persona.idCarpeta', '=', $idCarpeta)
             ->orderBy('persona.nombres', 'ASC')
             ->get();
@@ -135,7 +135,7 @@ class AcusacionController extends Controller
             ->join('acusacion', 'acusacion.idDenunciado', '=', 'extra_denunciado.id')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->select('extra_denunciado.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+            ->select('extra_denunciado.id as idExtraDenunciado', 'persona.nombres as nombres', 'persona.primerAp as primerAp', 'persona.segundoAp as segundoAp', 'variables_persona.id as idVariablesPersona')
             ->where('variables_persona.idCarpeta', '=', $idCarpeta)
             ->orderBy('persona.nombres', 'ASC')
             ->get();
@@ -143,7 +143,7 @@ class AcusacionController extends Controller
         $delito = DB::table('tipif_delito')
             ->join('acusacion', 'acusacion.idTipifDelito', '=', 'tipif_delito.id')
             ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
-            ->select('tipif_delito.id', 'cat_delito.nombre')
+            ->select('tipif_delito.id as idTipifDelito', 'cat_delito.nombre as nombre')
             ->where('tipif_delito.idCarpeta', '=', $idCarpeta)
             ->orderBy('cat_delito.nombre', 'ASC')
             ->get();
@@ -161,6 +161,27 @@ class AcusacionController extends Controller
 
     public function update(Request $request, $id)
     {
+        $carpetaNueva = Carpeta::where('id', $request->idCarpeta)->where('idFiscal', Auth::user()->id)->get();
+        $var          = Acusacion::where('id', $id)->get();
+        if ($carpetaNueva->isEmpty() && $var->isEmpty()) {
+            return redirect()->route('home');
+        }
+
+        $acusacion                = Acusacion::find($id);
+        $acusacion->idCarpeta     = $request->idCarpeta;
+        $acusacion->idDenunciante = $request->idDenunciante;
+        $acusacion->idTipifDelito = $request->idTipifDelito;
+        $acusacion->idDenunciado  = $request->idDenunciado;
+
+        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'acusacion', 'accion' => 'update', 'descripcion' => 'Se han actualizado  denuncia de la victima ' . $request->idDenunciante . ' por el Delito de ' . $request->idTipifDelito . ' al investigado: ' . $request->idDenunciado, 'idFilaAccion' => $acusacion->id]);
+        /*
+        Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
+        //Para mostrar modal
+        //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
+         */
+        Alert::success('Denuncia actualizada con éxito', 'Hecho')->persistent("Aceptar");
+
+        return redirect()->route('carpeta', $request->idCarpeta);
 
     }
 
