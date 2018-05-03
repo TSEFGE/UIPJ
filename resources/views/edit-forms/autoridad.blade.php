@@ -9,6 +9,13 @@
 
 @section('contenido')
 {!! Form::open(['route' => ['update.autoridad',$idCarpeta ], 'method' => 'put'])  !!}
+
+	<input type="hidden" name="idExtraAutoridad" value="{{$personales->idExtraAutoridad}}">
+	<input type="hidden" name="idVariablesPersona" value="{{$personales->idVariablesPersona}}">
+	<input type="hidden" name="idPersona" value="{{$personales->idPersona}}">
+	<input type="hidden" name="idDomicilio" value="{{$direccion->idDomicilio}}">
+	<input type="hidden" name="idDomicilioTrabajo" value="{{$direccionTrab->idDomicilio}}">
+
 <div class="card-header">
 	<div class="row">
 		<div class="col">
@@ -217,7 +224,9 @@
 		$('#antiguedad').val('{{$autoridades->antiguedad}}');
 		$('#rango').val('{{$autoridades->rango}}').trigger('change');
 		$('#horarioLaboral').val('{{$autoridades->horarioLaboral}}');
-
-
 	@endisset
+
+
+
+
 @endpush

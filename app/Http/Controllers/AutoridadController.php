@@ -258,7 +258,7 @@ class AutoridadController extends Controller
         $nacionalidades = CatNacionalidad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $ocupaciones    = CatOcupacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $religiones     = CatReligion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-        $autoridades    = CarpetaController::getAutoridades($idCarpeta);
+        $autoridades    = CarpetaController::getAutoridades($idCarpeta)->first();
 
         dump($autoridades, $idCarpeta, $personales, $direccion, $direccionTrab);
 
@@ -291,7 +291,98 @@ class AutoridadController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $persona                    = Persona::find($request->idPersona);
+        $persona->nombres           = $request->nombres;
+        $persona->primerAp          = $request->primerAp;
+        $persona->segundoAp         = $request->segundoAp;
+        $fechaAux                   = $request->fechaNacimiento;
+        $fechaNacimiento            = date("Y-m-d", strtotime($fechaAux));
+        $persona->fechaNacimiento   = $fechaNacimiento;
+        $persona->rfc               = $request->rfc . $request->homo;
+        $persona->curp              = $request->curp;
+        $persona->sexo              = $request->sexo;
+        $persona->idNacionalidad    = $request->idNacionalidad;
+        $persona->idEtnia           = $request->idEtnia;
+        $persona->idLengua          = $request->idLengua;
+        $persona->idMunicipioOrigen = $request->idMunicipioOrigen;
+        $persona->save();
+        //Agregar a bitacora
+        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se han registrado Datos Personales de una nueva Autoridad', 'idFilaAccion' => $persona->id]);
+
+        if ($request->rfcAux != $request->rfc . $request->homo) {
+            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un RFC diferente al generado por el sistema para una persona física de tipo Autoridad.', 'idFilaAccion' => $persona->id]);
+        }
+
+        $idPersona = $persona->id;
+
+        $domicilio              = Domicilio::find($request->idDomicilio);
+        $domicilio->idMunicipio = $request->idMunicipio;
+        $domicilio->idLocalidad = $request->idLocalidad;
+        $domicilio->idColonia   = $request->idColonia;
+        $domicilio->calle       = $request->calle;
+        $domicilio->numExterno  = $request->numExterno;
+        $domicilio->numInterno  = $request->numInterno;
+        $domicilio->save();
+        //Agregar a bitacora
+        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'insert', 'descripcion' => 'Se ha registrado la Direccion de Autoridad', 'idFilaAccion' => $domicilio->id]);
+
+        $idD1 = $domicilio->id;
+
+        $domicilio2              = Domicilio::find($request->idDomicilioTrabajo);
+        $domicilio2->idMunicipio = $request->idMunicipio2;
+        $domicilio2->idLocalidad = $request->idLocalidad2;
+        $domicilio2->idColonia   = $request->idColonia2;
+        $domicilio2->calle       = $request->calle2;
+        $domicilio2->numExterno  = $request->numExterno2;
+        $domicilio2->numInterno  = $request->numInterno2;
+        $domicilio2->save();
+        //Agregar a bitacora
+        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'variables_persona,domicilio', 'accion' => 'insert', 'descripcion' => 'Se han registrado Datos del Trabajo de Autoridad', 'idFilaAccion' => $domicilio2->id]);
+
+        $idD2 = $domicilio2->id;
+
+        $VariablesPersona                 = VariablesPersona::find($request->idVariablesPersona);
+        $VariablesPersona->idCarpeta      = $request->idCarpeta;
+        $VariablesPersona->idPersona      = $idPersona;
+        $VariablesPersona->edad           = $request->edad;
+        $VariablesPersona->telefono       = $request->telefono;
+        $VariablesPersona->motivoEstancia = $request->motivoEstancia;
+        $VariablesPersona->idOcupacion    = $request->idOcupacion;
+        $VariablesPersona->idEstadoCivil  = $request->idEstadoCivil;
+        $VariablesPersona->idEscolaridad  = $request->idEscolaridad;
+        $VariablesPersona->idReligion     = $request->idReligion;
+        $VariablesPersona->idDomicilio    = $idD1;
+        // $VariablesPersona->docIdentificacion = $request->docIdentificacion;
+        if (!is_null($request->docIdentificacion)) {
+            if ($request->docIdentificacion == 'OTRO') {
+                $VariablesPersona->docIdentificacion = $request->otroDocumento;
+            } else {
+                $VariablesPersona->docIdentificacion = $request->docIdentificacion;
+            }
+        }
+        $VariablesPersona->numDocIdentificacion = $request->numDocIdentificacion;
+        $VariablesPersona->lugarTrabajo         = $request->lugarTrabajo;
+        $VariablesPersona->idDomicilioTrabajo   = $idD2;
+        $VariablesPersona->telefonoTrabajo      = $request->telefonoTrabajo;
+        $VariablesPersona->representanteLegal   = "NO APLICA";
+        $VariablesPersona->save();
+        //Agregar a bitacora
+        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'variables_persona', 'accion' => 'insert', 'descripcion' => 'Se han registrado Variables Persona de Autoridad', 'idFilaAccion' => $VariablesPersona->id]);
+        $idVariablesPersona = $VariablesPersona->id;
+
+        $ExtraAutoridad                     = ExtraAutoridad::find($request->$idExtraAutoridad);
+        $ExtraAutoridad->idVariablesPersona = $idVariablesPersona;
+        $ExtraAutoridad->antiguedad         = $request->antiguedad;
+        $ExtraAutoridad->rango              = $request->rango;
+        $ExtraAutoridad->horarioLaboral     = $request->horarioLaboral;
+
+        $ExtraAutoridad->save();
+        //Agregar a bitacora
+        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_autoridad', 'accion' => 'insert', 'descripcion' => 'Se ha registrado Informacion extra de Autoridad', 'idFilaAccion' => $ExtraAutoridad->id]);
+
+        Alert::success('Autoridad actualizada con éxito', 'Hecho')->persistent("Aceptar");
+        //return redirect()->route('carpeta', $request->idCarpeta);
+        return redirect()->route('new.autoridad', $request->idCarpeta);
     }
 
     /**
