@@ -104,6 +104,12 @@
 	</div>
 	{!! Form::hidden('esEmpresa', ($personales->esEmpresa)) !!}
 	{!! Form::hidden('rfc-edit', ($personales->rfc)) !!}
+	{!! Form::hidden('idExtraDenunciante', ($personales->idDenunciante)) !!}
+	{!! Form::hidden('idPersona', ($personales->idPersona)) !!}
+	{!! Form::hidden('idVariablesPersona', ($personales->idVariablesPersona)) !!}
+	{!! Form::hidden('idDireccion', ($direccion->id)) !!}
+	{!! Form::hidden('idDireccionTrab', ($direccionTrab->id)) !!}
+	{!! Form::hidden('idNoficiacion', ($direccionNotif->idNotificacion)) !!}
 	
 	<!-- Fin pestañas -->
 </div>
