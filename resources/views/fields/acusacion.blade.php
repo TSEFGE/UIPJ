@@ -19,7 +19,7 @@
 			<select name="idTipifDelito" id="idTipifDelito" class="form-control form-control-sm" required>
 				<option value="">Seleccione un delito</option>
 				@foreach($tipifdelitos as $tipifdelito)
-				<option value="{{ $tipifdelito->id }}">{{ $tipifdelito->nombre }}</option>
+				<option value="{{ $tipifdelito->id }}">{{ $tipifdelito->delito." ".$tipifdelito->desagregacion1." ".$tipifdelito->desagregacion2}}</option>
 				@endforeach
 			</select>
 		</div>
