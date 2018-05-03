@@ -478,7 +478,7 @@ class DenuncianteController extends Controller
             ->where('notificacion.id', '=', $personales->idNotificacion)
             ->get()->first();
             //dump($personales);
-
+            //dump($idCarpeta, $estados, $municipiosVer, $personales, $direccion, $direccionNotif);
             return view('edit-forms.denunciante')->with('idCarpeta', $idCarpeta)
                 ->with('estados', $estados)
                 ->with('municipiosVer', $municipiosVer)
@@ -557,6 +557,7 @@ class DenuncianteController extends Controller
             ->select('extra_denunciante.id', 'extra_denunciante.conoceAlDenunciado', 'notificacion.correo', 'notificacion.telefono as telefonoN', 'notificacion.fax', 'munN.nombre as municipioN', 'estN.nombre as estadoN', 'locN.nombre as localidadN', 'colN.nombre as coloniaN', 'colN.codigoPostal as cpN', 'dirN.calle as calleN', 'dirN.numExterno as numExternoN', 'dirN.numInterno as numInternoN', 'variables_persona.edad', 'variables_persona.telefono', 'variables_persona.motivoEstancia', 'variables_persona.docIdentificacion', 'variables_persona.numDocIdentificacion', 'variables_persona.lugarTrabajo', 'variables_persona.telefonoTrabajo', 'cat_ocupacion.nombre as ocupacion', 'cat_estado_civil.nombre as estadoCivil', 'cat_escolaridad.nombre as escolaridad', 'cat_religion.nombre as religion', 'munD.nombre as municipioD', 'estD.nombre as estadoD', 'locD.nombre as localidadD', 'colD.nombre as coloniaD', 'colD.codigoPostal as cpD', 'dirD.calle as calleD', 'dirD.numExterno as numExternoD', 'dirD.numInterno as numInternoD', 'munT.nombre as municipioT', 'estT.nombre as estadoT', 'locT.nombre as localidadT', 'colT.nombre as coloniaT', 'colT.codigoPostal as cpT', 'dirT.calle as calleT', 'dirT.numExterno as numExternoT', 'dirT.numInterno as numInternoT', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.fechaNacimiento', 'persona.rfc', 'persona.curp', 'persona.sexo', 'cat_municipio.nombre as municipioOrigen', 'cat_estado.nombre as estadoOrigen', 'persona.esEmpresa')
             ->where('extra_denunciante.id', '=', $id)
             ->get();*/
+            //dump($idCarpeta, $estados, $municipiosVer, $personales, $direccion, $direccionTrab, $direccionNotif);
 
             return view('edit-forms.denunciante')->with('idCarpeta', $idCarpeta)
                 ->with('numCarpeta', $numCarpeta)

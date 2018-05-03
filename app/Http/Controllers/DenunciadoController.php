@@ -619,6 +619,7 @@ class DenunciadoController extends Controller
             ->where('notificacion.id', '=', $personales->idNotificacion)
             ->get()->first();
 
+            //dump($idCarpeta, $estados, $municipiosVer, $personales, $direccion, $direccionNotif);
             return view('edit-forms.denunciado')->with('idCarpeta', $idCarpeta)
                 ->with('numCarpeta', $numCarpeta)
                 ->with('estados', $estados)
@@ -639,19 +640,10 @@ class DenunciadoController extends Controller
             $puestos        = CatPuesto::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
 
             $personales = DB::table('extra_denunciado')
-            ->join('cat_puesto', 'cat_puesto.id', '=', 'extra_denunciado.idPuesto')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
-            ->join('cat_ocupacion', 'cat_ocupacion.id', '=', 'variables_persona.idOcupacion')
-            ->join('cat_estado_civil', 'cat_estado_civil.id', '=', 'variables_persona.idEstadoCivil')
-            ->join('cat_escolaridad', 'cat_escolaridad.id', '=', 'variables_persona.idEscolaridad')
-            ->join('cat_religion', 'cat_religion.id', '=', 'variables_persona.idReligion')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->join('cat_nacionalidad', 'cat_nacionalidad.id', '=', 'persona.idNacionalidad')
-            ->join('cat_etnia', 'cat_etnia.id', '=', 'persona.idEtnia')
-            ->join('cat_lengua', 'cat_lengua.id', '=', 'persona.idLengua')
             ->join('cat_municipio', 'cat_municipio.id', '=', 'persona.idMunicipioOrigen')
-            ->join('cat_estado', 'cat_estado.id', '=', 'cat_municipio.idEstado')
-            ->select('extra_denunciado.id as idDenunciado', 'extra_denunciado.alias', 'extra_denunciado.senasPartic', 'extra_denunciado.ingreso', 'extra_denunciado.periodoIngreso', 'extra_denunciado.residenciaAnterior', 'extra_denunciado.personasBajoSuGuarda', 'extra_denunciado.perseguidoPenalmente', 'extra_denunciado.vestimenta', 'extra_denunciado.idNotificacion', 'variables_persona.id as idVariablesPersona', 'variables_persona.edad', 'variables_persona.telefono', 'variables_persona.motivoEstancia', 'variables_persona.docIdentificacion', 'variables_persona.numDocIdentificacion', 'variables_persona.lugarTrabajo', 'variables_persona.telefonoTrabajo', 'variables_persona.idDomicilio', 'variables_persona.idDomicilioTrabajo', 'variables_persona.idOcupacion', 'variables_persona.idEstadoCivil', 'variables_persona.idEscolaridad', 'variables_persona.idReligion', 'persona.id as idPersona', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.fechaNacimiento', 'persona.rfc', 'persona.curp', 'persona.sexo', 'persona.idMunicipioOrigen', 'cat_municipio.idEstado as idEstadoOrigen', 'cat_estado.nombre as estadoOrigen', 'persona.esEmpresa', 'persona.idNacionalidad', 'persona.idEtnia', 'persona.idLengua')
+            ->select('extra_denunciado.id as idDenunciado', 'extra_denunciado.idPuesto', 'extra_denunciado.alias', 'extra_denunciado.senasPartic', 'extra_denunciado.ingreso', 'extra_denunciado.periodoIngreso', 'extra_denunciado.residenciaAnterior', 'extra_denunciado.personasBajoSuGuarda', 'extra_denunciado.perseguidoPenalmente', 'extra_denunciado.vestimenta', 'extra_denunciado.idNotificacion', 'variables_persona.id as idVariablesPersona', 'variables_persona.edad', 'variables_persona.telefono', 'variables_persona.motivoEstancia', 'variables_persona.docIdentificacion', 'variables_persona.numDocIdentificacion', 'variables_persona.lugarTrabajo', 'variables_persona.telefonoTrabajo', 'variables_persona.idDomicilio', 'variables_persona.idDomicilioTrabajo', 'variables_persona.idOcupacion', 'variables_persona.idEstadoCivil', 'variables_persona.idEscolaridad', 'variables_persona.idReligion', 'persona.id as idPersona', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.fechaNacimiento', 'persona.rfc', 'persona.curp', 'persona.sexo', 'persona.idMunicipioOrigen', 'cat_municipio.idEstado', 'persona.esEmpresa', 'persona.idNacionalidad', 'persona.idEtnia', 'persona.idLengua')
             ->where('extra_denunciado.id', '=', $id)
             ->get()->first();
 
@@ -677,6 +669,7 @@ class DenunciadoController extends Controller
             ->where('notificacion.id', '=', $personales->idNotificacion)
             ->get()->first();
 
+            //dump($idCarpeta, $estados, $municipiosVer, $personales, $direccion, $direccionTrab, $direccionNotif);
             return view('edit-forms.denunciado')->with('idCarpeta', $idCarpeta)
                 ->with('numCarpeta', $numCarpeta)
                 ->with('escolaridades', $escolaridades)
