@@ -226,24 +226,26 @@ class AutoridadController extends Controller
                 ->join('variables_persona', 'variables_persona.id', '=', 'extra_autoridad.idVariablesPersona')
                 ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
                 ->join('cat_municipio', 'cat_municipio.id', '=', 'persona.idMunicipioOrigen')
-                //->join('cat_estado','cat_estado.id','=','cat_municipio.idEstado')
+                ->join('cat_estado', 'cat_estado.id', '=', 'cat_municipio.idEstado')
                 //->select('persona.*', 'persona.id as idPersona', 'variables_persona.*', 'variables_persona.id as idVariablesPersona', 'extra_autoridad.*', 'extra_autoridad.id $idExtraAutoridad')
-                ->select('persona.*', 'persona.id as idPersona', 'variables_persona.id as idVariablesPersona', 'variables_persona.*', 'extra_autoridad.*', 'extra_autoridad.id as $idExtraAutoridad')
-
+                ->select('cat_estado.id as idEstadoOrigen', 'persona.*', 'persona.id as idPersona', 'variables_persona.id as idVariablesPersona', 'variables_persona.*', 'extra_autoridad.*', 'extra_autoridad.id as idExtraAutoridad')
+                ->where('extra_autoridad.id', '=', $idExtraAutoridad)
 
                 ->get()->first();
         $direccion=DB::table('domicilio', 'domicilio.id', '=', $personales->idDomicilio)
                     ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
                     ->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
-                    ->select('domicilio.*', 'domicilio.id as idDomicilio', 'cat_colonia.codigoPostal')
+                    ->select('cat_municipio.idEstado as idEstado', 'domicilio.*', 'domicilio.id as idDomicilio', 'cat_colonia.codigoPostal')
+                    ->where('domicilio.id', '=', $personales->idDomicilio)
                     ->get()->first();
         $direccionTrab=DB::table('variables_persona', 'variables_persona.idPersona', '=', $personales->idPersona)
                     ->join('domicilio', 'domicilio.id', '=', 'variables_persona.idDomicilioTrabajo')
                     ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
                     ->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
                     ->select('domicilio.*', 'domicilio.id as idDomicilio', 'cat_colonia.codigoPostal')
+                    ->where('variables_persona.idPersona', '=', $personales->idPersona)
                     ->get()->first();
-        //dump($personales, $direccion, $direccionTrab);
+        dump($personales, $direccion, $direccionTrab);
         $carpeta=Carpeta::find($idCarpeta);
         $numCarpeta=$carpeta->numCarpeta;
 
