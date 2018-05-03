@@ -245,7 +245,7 @@ class AutoridadController extends Controller
                     ->select('cat_municipio.idEstado as idEstado', 'domicilio.*', 'domicilio.id as idDomicilio')
                     ->where('variables_persona.idPersona', '=', $personales->idPersona)
                     ->get()->first();
-        dump($personales, $direccion, $direccionTrab);
+        //dump($personales, $direccion, $direccionTrab);
         $carpeta=Carpeta::find($idCarpeta);
         $numCarpeta=$carpeta->numCarpeta;
 
@@ -258,8 +258,9 @@ class AutoridadController extends Controller
         $nacionalidades = CatNacionalidad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $ocupaciones    = CatOcupacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $religiones     = CatReligion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $autoridades    = CarpetaController::getAutoridades($idCarpeta);
 
-        //dump($idCarpeta, $personales, $direccion, $direccionTrab, $direccionNotif);
+        dump($autoridades, $idCarpeta, $personales, $direccion, $direccionTrab);
 
         $idCarpeta=$personales->idCarpeta;
 
@@ -277,7 +278,8 @@ class AutoridadController extends Controller
         ->with('lenguas', $lenguas)
         ->with('nacionalidades', $nacionalidades)
         ->with('ocupaciones', $ocupaciones)
-        ->with('religiones', $religiones);
+        ->with('religiones', $religiones)
+        ->with('autoridades', $autoridades);
     }
 
     /**

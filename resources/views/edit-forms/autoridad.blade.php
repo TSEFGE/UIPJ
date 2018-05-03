@@ -212,6 +212,11 @@
 		$('#calle2').val('{{$direccionTrab->calle}}');
 		$('#numExterno2').val('{{$direccionTrab->numExterno}}');
 		$('#numInterno2').val('{{$direccionTrab->numInterno}}');
+	@endisset
+	@isset($autoridades)
+		$('#antiguedad').val('{{$autoridades->antiguedad}}');
+		$('#rango').val('{{$autoridades->rango}}').trigger('change');
+		$('#horarioLaboral').val('{{$autoridades->horarioLaboral}}');
 
 
 	@endisset

@@ -275,15 +275,15 @@ class TestigoController extends Controller
                         ->join('domicilio', 'domicilio.id', '=', 'notificacion.idDomicilio')
                         ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
                         ->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
-                        ->select('domicilio.*', 'domicilio.id as idDomicilio')
-                        ->where('cat_municipio.idEstado as idEstado', 'notificacion.id', '=', $personales->idNotificacion)
+                        ->select('notificacion.*', 'cat_municipio.idEstado as idEstado', 'domicilio.*', 'domicilio.id as idDomicilio')
+                        ->where('notificacion.id', '=', $personales->idNotificacion)
                         ->get()->first();
 
             $carpeta=Carpeta::find($idCarpeta);
             $numCarpeta=$carpeta->numCarpeta;
 
 
-            //dump($numCarpeta, $idCarpeta, $personales, $direccion, $direccionTrab, $direccionNotif);
+            dump($numCarpeta, $idCarpeta, $personales, $direccion, $direccionTrab, $direccionNotif);
             $escolaridades  = CatEscolaridad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $estados        = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $municipiosVer  = CatMunicipio::select('id', 'nombre')->where('idEstado', 30)->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
