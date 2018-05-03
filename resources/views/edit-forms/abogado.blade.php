@@ -1,4 +1,4 @@
-@extends('template.form')
+@extends('template.form-edit')
 
 @section('title', 'Editar abogado')
 
@@ -63,7 +63,7 @@
 					<div class="tab-pane active container" id="collapsePersonales3">  		
 						@include('fields.personales-abo')	
 						
-						{!! Form::hidden('nombresx', ($personales[0]->nombres)) !!}
+						{!! Form::hidden('nombresx', ($personales->nombres)) !!}
 					</div>
 					<div class="tab-pane container" id="collapseTrab3">  		
 						@include('fields.lugartrabajo')		
