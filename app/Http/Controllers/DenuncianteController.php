@@ -24,7 +24,8 @@ use App\Models\Persona;
 use App\Models\VariablesPersona;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use uipj\rfc\src\RfcBuilder;
+//use uipj\rfc\src\RfcBuilder;
+use RFC\RfcBuilder;
 
 class DenuncianteController extends Controller
 {
