@@ -40,7 +40,7 @@
 						<div class="form-group">
 							{!! Form::label('fecha', 'Fecha', ['class' => 'col-form-label-sm']) !!}
 							<div class="input-group date" id="fechaCit" data-target-input="nearest">
-								{!! Form::text('fecha',$citatorio->fecha, ['readonly','class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaCit', 'data-toggle' => 'datetimepicker', 'required' ]) !!}
+								{!! Form::text('fecha',$citatorio->fecha, ['disabled','class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaCit', 'data-toggle' => 'datetimepicker', 'required' ]) !!}
 								<div class="input-group-append" data-target="#fechaCit" data-toggle="datetimepicker">
 									<div class="input-group-text"><i class="fa fa-calendar"></i></div>
 								</div>
@@ -91,17 +91,15 @@
 
 
 @push('docready-js')
-		$(function () { //Datetimepicker a la zquierda y debajo para vizualizar mejor no se oculte en la nav
-		  $('#horaCit').datetimepicker({
-			  format: 'LT',
-			  defaultDate: moment(),  
-			  widgetPositioning: {
-				  vertical: 'bottom',
-				  horizontal: 'left'
-			  }
-		 });
+	$(function () { //Datetimepicker a la zquierda y debajo para vizualizar mejor no se oculte en la nav
+		$('#horaCit').datetimepicker({
+			format: 'LT',
+			widgetPositioning: {
+				vertical: 'bottom',
+				horizontal: 'left'
+			}
 		});
-	console.log('hola');
+	});
 	localStorage.removeItem("[id=undefined][name=undefined][id=status][name=status]");
 	localStorage.removeItem("[id=undefined][name=undefined][id=fecha][name=fecha]");
 	localStorage.removeItem("[id=undefined][name=undefined][id=motivo][name=motivo]");
