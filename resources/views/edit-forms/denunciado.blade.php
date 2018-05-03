@@ -131,6 +131,18 @@
 				</div>
 			</div>
 			{!! Form::hidden('esEmpresa', ($personales->esEmpresa)) !!}
+			{!! Form::hidden('rfc-edit', ($personales->rfc)) !!}
+			{!! Form::hidden('idExtraDenunciado', ($personales->idDenunciado)) !!}
+			{!! Form::hidden('idPersona', ($personales->idPersona)) !!}
+			{!! Form::hidden('idVariablesPersona', ($personales->idVariablesPersona)) !!}
+			{!! Form::hidden('idDireccion', ($direccion->id)) !!}
+			@if (isset ($personales) )
+				@if ( ($personales->esEmpresa) == 0)	
+			{!! Form::hidden('idDireccionTrab', ($direccionTrab->id)) !!}
+				@endif
+			@endif
+
+			{!! Form::hidden('idNoficiacion', ($direccionNotif->idNotificacion)) !!}
 				<!-- Fin pestañas -->
 			</div>
 		</div>
@@ -185,10 +197,23 @@
 	
 	@if (isset ($personales) )
 	@if ( ($personales->esEmpresa) == 0)	
+	var rfcFisica = $("input[name='rfc-edit']").val();
+	var rfc = rfcFisica.substr (0,10);
+	var homoclave = rfcFisica.substr(-3);
 	$('#nombres').val("{{ $personales->nombres }}");
 	$("#primerAp").val("{{ $personales->primerAp }}");
 	$("#segundoAp").val("{{ $personales->segundoAp }}");
 	$("#sexo").val("{{ $personales->sexo }}");
+	$('#idNacionalidad').val({{$personales->idNacionalidad}}).trigger('change');	
+	$('#idEstadoOrigen').val({{ $personales->idEstado}}).trigger('change');
+	$('#rfc').val(rfc);
+	$('#homo').val(homoclave);
+	$('#curp').val("{{$personales->curp}}");
+	$('#idEtnia').val({{$personales->idEtnia}}).trigger('change');	
+	$('#idLengua').val({{$personales->idLengua}}).trigger('change');
+	$('#idMunicipioOrigen').val({{$personales->idMunicipioOrigen}}).trigger('change');
+	$('#idReligion').val(7).trigger('change');
+	$('#idEscolaridad').val({{$personales->idEscolaridad}}).trigger('change');
 
 	$("#telefono").val("{{ $personales->telefono }}");
 	$("#motivoEstancia").val("{{ $personales->motivoEstancia }}");
@@ -203,42 +228,36 @@
 	$("#residenciaAnterior").val("{{ $personales->residenciaAnterior }}");
 	$("#vestimenta").val("{{ $personales->vestimenta }}");
 	$("#senasPartic").val("{{ $personales->senasPartic }}");
-
 	$("#calle2").val("{{ $direccionTrab->calle }}");	
 	$("#lugarTrabajo").val("{{ $personales->lugarTrabajo }}");
 	$("#numExterno2").val("{{ $direccion->numExterno }}");
 	$("#numInterno2").val("{{ $direccion->numInterno }}");
-
 	$("#calle3").val("{{ $direccionNotif->calle }}");
 	$("#numExterno3").val("{{ $direccionNotif->numExterno }}");
 	$("#numInterno3").val("{{ $direccionNotif->numInterno }}");
 	$("#email").val("{{ $direccionNotif->correo }}");
 	$("#telefonoN").val("{{ $direccionNotif->telefono }}");
-	$("#fax").val("{{ $direccionNotif->fax }}");
-
-	$('#idNacionalidad').val({{$personales->idNacionalidad}}).trigger('change');	
-	$('#idEstado').val({{$personales->idEstadoOrigen}}).trigger('change');	
-	$('#idEtnia').val({{$personales->idEtnia}}).trigger('change');	
-	$('#idLengua').val({{$personales->idLengua}}).trigger('change');
-	$('#idMunicipioOrigen').val({{$personales->idMunicipioOrigen}}).trigger('change');
-	$('#idEstadoCivil').val({{$personales->idEstadoCivil}}).trigger('change');
-	$('#idReligion').val(7).trigger('change');
-	$('#idEscolaridad').val({{$personales->idEscolaridad}}).trigger('change');
+	$("#fax").val("{{ $direccionNotif->fax }}");	
+	$('#idEstadoCivil').val({{$personales->idEstadoCivil}}).trigger('change');	
+	$('#idEstado').val({{$personales->idEstado}}).trigger('change');
 	$('#idMunicipio').val({{$direccion->idMunicipio}}).trigger('change');
 	$('#idLocalidad').val({{$direccion->idLocalidad}}).trigger('change');
 	$('#idColonia').val({{$direccion->idColonia}}).trigger('change');
 	$('#telefonoTrabajo').val({{$personales->telefonoTrabajo}}).trigger('change');
 	$('#codigoPostal').val({{$direccion->codigoPostal}}).trigger('change');
 	$('#periodoIngreso').val("{{$personales->periodoIngreso}}");
-	$('#idOcupacion').val({{$personales->idOcupacion}}).trigger('change');
-
-	
+	$('#idOcupacion').val({{$personales->idOcupacion}}).trigger('change');	
 	$("#narracionUno").prop('disabled', true);
 	@endif	
 	@endif
 	@if (isset ($personales) )
 	@if ( ($personales->esEmpresa) == 1)
+	var rfcMoral = $("input[name='rfc-edit']").val();
+	var rfc = rfcMoral.substr (0,9);
+	var homoclave = rfcMoral.substr(-3);
 	$('#nombres2').val("{{ $personales->nombres }}");
+	$('#rfc2').val(rfc);
+	$('#homo2').val(homoclave);
 	$('#representanteLegal').val("{{ $personales->representanteLegal }}");
 	$("#calle").val("{{ $direccion->calle }}");
 	$("#numExterno").val("{{ $direccion->numExterno }}");
