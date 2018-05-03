@@ -254,7 +254,7 @@ class TestigoController extends Controller
                     ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
                     ->join('cat_municipio', 'cat_municipio.id', '=', 'persona.idMunicipioOrigen')
                     //->join('cat_estado','cat_estado.id','=','cat_municipio.idEstado')
-                    ->select('persona.*', 'persona.id as idPersona', 'variables_persona.id as idVariablesPersona', 'variables_persona.*', 'extra_testigo.idNotificacion as idNotificacion')
+                    ->select('cat_municipio.idEstado as idEstado', 'persona.*', 'persona.id as idPersona', 'variables_persona.id as idVariablesPersona', 'variables_persona.*', 'extra_testigo.idNotificacion as idNotificacion')
                     ->get()->first();
             //dd($personales);
 
