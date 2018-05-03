@@ -1,4 +1,4 @@
-@extends('template.form')
+@extends('template.form-edit')
 
 @section('title', 'Agregar autoridad')
 
@@ -155,4 +155,52 @@
 	$("#calle2").addClass("vacio");
 	$("#antiguedad").addClass("vacio");
 	$("#horarioLaboral").addClass("vacio");
+
+	@isset($personales)
+		$('#nombres').val('{{$personales->nombres}}');
+		$('#primerAp').val('{{$personales->primerAp}}');
+		$('#segundoAp').val('{{$personales->segundoAp}}');
+		$('#fechaNacimiento').val('{{$personales->fechaNacimiento}}');
+		$('#edad').val('{{$personales->edad}}');
+		$('#sexo').val('{{$personales->sexo}}');
+		$('#idNacionalidad').val('{{$personales->idNacionalidad}}');
+		$('#idEstadoOrigen').val('{{$personales->idEstadoOrigen}}');
+		rfc='{{$personales->rfc}}';
+		homo=rfc.substr(10);
+		rfc=rfc.substr(0,10);
+		$('#rfc').val(rfc);
+		$('#homo').val(homo);
+		$('#curp').val('{{$personales->curp}}');
+		$('#idEtnia').val('{{$personales->idEtnia}}');
+		$('#idLengua').val('{{$personales->idLengua}}');
+		$('#idMunicipioOrigen').val('{{$personales->idMunicipioOrigen}}');
+		$('#telefono').val('{{$personales->telefono}}');
+		$('#motivoEstancia').val('{{$personales->motivoEstancia}}');
+		$('#idOcupacion').val('{{$personales->idOcupacion}}');
+		$('#idEstadoCivil').val('{{$personales->idEstadoCivil}}');
+		$('#idReligion').val('{{$personales->idReligion}}');
+		$('#idEscolaridad').val('{{$personales->idEscolaridad}}');
+		$('#numDocIdentificacion').val('{{$personales->numDocIdentificacion}}');
+		docs='CREDENCIAL DE ELECTOR PASAPORTE CARTILLA MILITAR LICENCIA PARA CONDUCIR CREDENCIAL ESCOLAR';
+		doc='{{$personales->docIdentificacion}}';
+		if ( docs.toLowerCase().indexOf(doc.toLowerCase()) != -1 ) {
+			$('#docIdentificacion').val('{{$personales->docIdentificacion}}');
+		} else {
+				$('#docIdentificacion').val('OTRO');
+			$('#otrodocto').show();
+			$('#otroDocumento').val('{{$personales->docIdentificacion}}');
+		}
+	@endisset
+	@isset($direccion)
+{{-- 
+		$('#idEstado').val('{{$direccion->idEstado}}');
+		$('#idEstado').val('{{$direccion->idMunicipio}}');
+		$('#idLocalidad').val('{{$direccion->idLocalidad}}');
+		$('#idColonia').val('{{$direccion->idColonia}}');
+		$('#cp').val('{{$direccion->codigoPostal}}');
+		$('#calle').val('{{$direccion->calle}}');
+		$('#numExterno').val('{{$direccion->numExterno}}');
+		$('#numInterno').val('{{$direccion->numInterno}}'); --}}
+
+	@endisset
 @endpush
