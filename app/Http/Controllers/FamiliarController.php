@@ -54,16 +54,15 @@ class FamiliarController extends Controller
         //dd($request->all());
         $familiar = new Familiar($request->all());
         $familiar->save();
-        $idPersona  = $familiar->idPersona;
-        $varPersona = DB::table('variables_persona')->where('variables_persona.idPersona', '=', $idPersona)->get();
-        $varPer     = $varPersona[0]->id;
 
-        $denunciado = DB::table('extra_denunciado')->where('extra_denunciado.idVariablesPersona', '=', $varPer)->get();
-
+        $denunciado = DB::table('variables_persona')
+            ->join('extra_denunciado', 'extra_denunciado.idVariablesPersona', '=', 'variables_persona.idPersona')
+            ->where('variables_persona.idPersona', '=', $familiar->idPersona)
+            ->get();
+            
         if (!empty($denunciado)) {
             Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'familiar', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un nuevo familiar de denunciado.', 'idFilaAccion' => $familiar->id]);
         } else {
-
             Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'familiar', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un nuevo familiar de denunciante.', 'idFilaAccion' => $familiar->id]);
         }
 
@@ -106,9 +105,33 @@ class FamiliarController extends Controller
 
     }
 
-    public function update(Request $request, Familiar $familiar)
+    public function update(Request $request, $id)
     {
-        //
+        $carpetaNueva = Carpeta::where('id', $request->idCarpeta)->where('idFiscal', Auth::user()->id)->get();
+        $var = Familiar::where('id', $id)->get();
+        if ($carpetaNueva->isEmpty() && $var->isEmpty()){
+            return redirect()->route('home');
+        }
+
+        //dd($request->all());
+        $familiar = Familiar::find($id);
+        $familiar->fill($request->all());
+        $familiar->save();
+
+        $denunciado = DB::table('variables_persona')
+            ->join('extra_denunciado', 'extra_denunciado.idVariablesPersona', '=', 'variables_persona.idPersona')
+            ->where('variables_persona.idPersona', '=', $familiar->idPersona)
+            ->get();
+
+        if (!empty($denunciado)) {
+            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'familiar', 'accion' => 'update', 'descripcion' => 'Se ha actualizado un nuevo familiar de denunciado.', 'idFilaAccion' => $familiar->id]);
+        } else {
+            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'familiar', 'accion' => 'update', 'descripcion' => 'Se ha actualizado un nuevo familiar de denunciante.', 'idFilaAccion' => $familiar->id]);
+        }
+
+        Alert::success('Familiar actualizado con éxito', 'Hecho')->persistent("Aceptar");
+        return redirect()->route('carpeta', $request->idCarpeta);
+
     }
 
 }
