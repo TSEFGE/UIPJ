@@ -167,16 +167,16 @@
 		$('#nombres').val('{{$personales->nombres}}');
 		$('#primerAp').val('{{$personales->primerAp}}');
 		$('#segundoAp').val('{{$personales->segundoAp}}');
-		$('#fechaNacimiento').val('{{$personales->fechaNacimiento}}');
+		$('#fechaNacimiento').val('{{ Carbon\Carbon::parse($personales->fechaNacimiento)->format('d-m-Y') }}');
 		$('#edad').val('{{$personales->edad}}');
 		$('#sexo').val('{{$personales->sexo}}');
 		$('#idNacionalidad').val('{{$personales->idNacionalidad}}');
 		$('#idEstadoOrigen').val('{{$personales->idEstadoOrigen}}');
-		rfc='{{$personales->rfc}}';
-		homo=rfc.substr(10);
-		rfc=rfc.substr(0,10);
+
+		var homoclave = ('{{$personales->rfc}}').substr(10);
+		var rfc =('{{$personales->rfc}}').substr (0,10);
 		$('#rfc').val(rfc);
-		$('#homo').val(homo);
+		$('#homo').val(homoclave);
 		$('#curp').val('{{$personales->curp}}');
 		$('#idEtnia').val('{{$personales->idEtnia}}');
 		$('#idLengua').val('{{$personales->idLengua}}');
