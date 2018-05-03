@@ -166,6 +166,17 @@
 		"showMethod": "fadeIn",
 		"hideMethod": "fadeOut"
 	}
+	$(function(){
+		$('#fechanac').datetimepicker({
+			format: 'DD-MM-YYYY',
+			minDate: moment().subtract(150, 'years').format('YYYY-MM-DD'),
+			maxDate: moment().subtract(16, 'years').format('YYYY-MM-DD'),
+			widgetPositioning: {
+				vertical: 'bottom',
+				horizontal: 'left'
+			}
+		});
+	});
 	
 	$("#narracionUnoM").prop('disabled',true);
 	$("#narracionUno").prop('disabled',true);
@@ -192,16 +203,20 @@
 			console.log(rfcMoral);
 			console.log(rfc);
 			console.log(homoclave);
-		@endif
-	@endif
-	@if (isset ($personales) )
+			@endif
+			@endif
+			@if (isset ($personales) )
+			
 		@if ( ($personales->esEmpresa) == 0)
+		
 			var rfcFisica = $("input[name='rfc-edit']").val();
 			var rfc = rfcFisica.substr (0,10);
 			var homoclave = rfcFisica.substr(-3);
 			$('#nombres').val("{{ $personales->nombres }}");
 			$('#primerAp').val("{{ $personales->primerAp }}");
-			$('#segundoAp').val("{{ $personales->segundoAp }}");
+			$('#segundoAp').val("{{ $personales->segundoAp }}");					
+			$('#fechanac').datetimepicker('format', "DD-MM-YYYY");
+			$('#fechanac').datetimepicker('date', moment("{{ $personales->fechaNacimiento}}").format("DD-MM-YYYY"));
 			$('#sexo').val("{{ $personales->sexo }}").trigger('change');
 			$('#idNacionalidad').val({{ $personales->idNacionalidad }}).trigger('change');
 			$('#idEstadoOrigen').val({{ $personales->idEstado}}).trigger('change');
