@@ -90,14 +90,6 @@
 	<script src="{{ asset('admin/dist/js/adminlte.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('plugins/idle-timer/js/idle-timer.min.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
-	<script type="text/javascript" src="{{ asset('js/url.min.js') }}"></script>
-	<script type="text/javascript">
-	// por si tienes Ultrasurf
-	var urlpath="/"+url('1')+"/"+url('2')+"/"+url('3')+"/";
-	var urlpathRFCurp="/"+url('1')+"/"+url('2')+"/";
-	//var urlpath="/"+url('1')+"/";
-	//var urlpathRFCurp="/";
-	</script>
 
 	@routes
 	@stack('scripts')
