@@ -76,7 +76,7 @@ class DefensaController extends Controller
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
             ->select('variables_persona.id as idVariablesPersona', 'persona.id as idPersona', 'extra_abogado.id as idExtraAbogado', 'persona.nombres as nombres', 'persona.primerAp as primerAp', 'persona.segundoAp as segundoAp')
             ->where('extra_abogado.id', '=', $id)
-            ->get();
+            ->get()->first();
 
         $involucradoDenunciado = DB::table('extra_abogado')
             ->join('extra_denunciado', 'extra_denunciado.idAbogado', '=', 'extra_abogado.id')
@@ -84,7 +84,7 @@ class DefensaController extends Controller
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
             ->select('variables_persona.id as idVariablesPersona', 'persona.id as idPersona', 'extra_denunciado.id as idExtraDenunciado', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
             ->where('extra_abogado.id', '=', $id)
-            ->get();
+            ->get()->first();
 
         $involucradoDenunciante = DB::table('extra_abogado')
             ->join('extra_denunciante', 'extra_denunciante.idAbogado', '=', 'extra_abogado.id')
@@ -92,7 +92,7 @@ class DefensaController extends Controller
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
             ->select('variables_persona.id as idVariablesPersona', 'persona.id as idPersona', 'extra_denunciante.id as idExtraDenunciante', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
             ->where('extra_abogado.id', '=', $id)
-            ->get();
+            ->get()->first();
 
         if ($involucradoDenunciado->isNotEmpty()) {
             $involucrado = $involucradoDenunciado;
