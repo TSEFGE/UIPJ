@@ -260,7 +260,7 @@ class AutoridadController extends Controller
         $religiones     = CatReligion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $autoridades    = CarpetaController::getAutoridades($idCarpeta)->first();
 
-        dump($autoridades, $idCarpeta, $personales, $direccion, $direccionTrab);
+        //dump($autoridades, $idCarpeta, $personales, $direccion, $direccionTrab);
 
         $idCarpeta=$personales->idCarpeta;
 
@@ -307,10 +307,10 @@ class AutoridadController extends Controller
         $persona->idMunicipioOrigen = $request->idMunicipioOrigen;
         $persona->save();
         //Agregar a bitacora
-        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se han registrado Datos Personales de una nueva Autoridad', 'idFilaAccion' => $persona->id]);
+        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'update', 'descripcion' => 'Se ha actualizado Datos Personales de una Autoridad', 'idFilaAccion' => $persona->id]);
 
         if ($request->rfcAux != $request->rfc . $request->homo) {
-            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un RFC diferente al generado por el sistema para una persona física de tipo Autoridad.', 'idFilaAccion' => $persona->id]);
+            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'update', 'descripcion' => 'Se ha registrado un RFC diferente al generado por el sistema para una persona física de tipo Autoridad.', 'idFilaAccion' => $persona->id]);
         }
 
         $idPersona = $persona->id;
@@ -324,7 +324,7 @@ class AutoridadController extends Controller
         $domicilio->numInterno  = $request->numInterno;
         $domicilio->save();
         //Agregar a bitacora
-        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'insert', 'descripcion' => 'Se ha registrado la Direccion de Autoridad', 'idFilaAccion' => $domicilio->id]);
+        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'update', 'descripcion' => 'Se ha actualizado la Direccion de Autoridad', 'idFilaAccion' => $domicilio->id]);
 
         $idD1 = $domicilio->id;
 
@@ -337,7 +337,7 @@ class AutoridadController extends Controller
         $domicilio2->numInterno  = $request->numInterno2;
         $domicilio2->save();
         //Agregar a bitacora
-        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'variables_persona,domicilio', 'accion' => 'insert', 'descripcion' => 'Se han registrado Datos del Trabajo de Autoridad', 'idFilaAccion' => $domicilio2->id]);
+        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'variables_persona,domicilio', 'accion' => 'update', 'descripcion' => 'Se ha actualizado Datos del Trabajo de Autoridad', 'idFilaAccion' => $domicilio2->id]);
 
         $idD2 = $domicilio2->id;
 
@@ -367,10 +367,10 @@ class AutoridadController extends Controller
         $VariablesPersona->representanteLegal   = "NO APLICA";
         $VariablesPersona->save();
         //Agregar a bitacora
-        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'variables_persona', 'accion' => 'insert', 'descripcion' => 'Se han registrado Variables Persona de Autoridad', 'idFilaAccion' => $VariablesPersona->id]);
+        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'variables_persona', 'accion' => 'update', 'descripcion' => 'Se ha actualizado Variables Persona de Autoridad', 'idFilaAccion' => $VariablesPersona->id]);
         $idVariablesPersona = $VariablesPersona->id;
 
-        $ExtraAutoridad                     = ExtraAutoridad::find($request->$idExtraAutoridad);
+        $ExtraAutoridad= ExtraAutoridad::find($request->idExtraAutoridad);
         $ExtraAutoridad->idVariablesPersona = $idVariablesPersona;
         $ExtraAutoridad->antiguedad         = $request->antiguedad;
         $ExtraAutoridad->rango              = $request->rango;
@@ -378,11 +378,11 @@ class AutoridadController extends Controller
 
         $ExtraAutoridad->save();
         //Agregar a bitacora
-        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_autoridad', 'accion' => 'insert', 'descripcion' => 'Se ha registrado Informacion extra de Autoridad', 'idFilaAccion' => $ExtraAutoridad->id]);
+        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_autoridad', 'accion' => 'update', 'descripcion' => 'Se ha actualizado Informacion extra de Autoridad', 'idFilaAccion' => $ExtraAutoridad->id]);
 
         Alert::success('Autoridad actualizada con éxito', 'Hecho')->persistent("Aceptar");
         //return redirect()->route('carpeta', $request->idCarpeta);
-        return redirect()->route('new.autoridad', $request->idCarpeta);
+        return redirect()->route('edit.autoridad', ['idCarpeta'=>$request->idCarpeta, 'id'=>$request->idExtraAutoridad]);
     }
 
     /**
