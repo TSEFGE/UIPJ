@@ -63,7 +63,7 @@
 					<div class="tab-pane active container" id="collapsePersonales3">  		
 						@include('fields.personales-abo')	
 						
-						{!! Form::hidden('nombresx', ($personales->nombres)) !!}
+						
 					</div>
 					<div class="tab-pane container" id="collapseTrab3">  		
 						@include('fields.lugartrabajo')		
@@ -79,6 +79,12 @@
 </div>	
 {!! Form::close() !!}
 @endsection
+
+{!! Form::hidden('rfc-edit', ($personales->rfc)) !!}
+{!! Form::hidden('idExtraAbogado', ($personales->idDenunciante)) !!}
+{!! Form::hidden('idPersona', ($personales->idPersona)) !!}
+{!! Form::hidden('idVariablesPersona', ($personales->idVariablesPersona)) !!}
+{!! Form::hidden('idDireccionTrab', ($direccion->id)) !!}
 
 @push('scripts')
 	<script src="{{ asset('plugins/toastr/js/toastr.min.js')}}" ></script>
@@ -115,8 +121,8 @@
         "hideEasing": "linear",
         "showMethod": "fadeIn",
         "hideMethod": "fadeOut"
-    }
-
+	}
+	
 	$("#nombres").addClass("vacio");
 	$("#primerAp").addClass("vacio");
 	$("#segundoAp").addClass("vacio");
@@ -125,17 +131,45 @@
 	$("#homo").addClass("vacio");
 	$("#curp").addClass("vacio");
 	$("#telefono").addClass("vacio");
-
+	
 	$("#lugarTrabajo").addClass("vacio");
 	$("#telefonoTrabajo").addClass("vacio"); 
-
+	
 	$("#calle2").addClass("vacio");
 	$("#numExterno2").addClass("vacio");
 	$("#numInterno2").addClass("vacio");  	
 	$("#numInterno3").addClass("vacio");
-
 	$("#cedulaProf").addClass("vacio");
 	$("#correo").addClass("vacio");
-
+	var rfcFisica = $("input[name='rfc-edit']").val();
+	var rfc = rfcFisica.substr (0,10);
+	var homoclave = rfcFisica.substr(-3);
+	
+	$('#nombres').val("{{ $personales->nombres }}");	
+	$('#primerAp').val("{{ $personales->primerAp }}");
+	$('#segundoAp').val("{{ $personales->segundoAp }}");
+	$('#sexo').val("{{ $personales->sexo }}").trigger('change');
+	$('#idNacionalidad').val({{ $personales->idNacionalidad }}).trigger('change');
+	$('#idEstadoOrigen').val({{ $personales->idEstado}}).trigger('change');
+	$('#rfc').val(rfc);
+	$('#homo').val(homoclave);
+	$('#curp').val("{{$personales->curp}}");	
+	$('#idMunicipioOrigen').val({{$personales->idMunicipioOrigen}}).trigger('change');	
+	$('#telefono').val("{{$personales->telefono}}");	
+	$('#idEstadoCivil').val({{$personales->idEstadoCivil}}).trigger('change');	
+	$('#lugarTrabajo').val("{{$direccionTrab->lugarTrabajo}}");
+	$('#telefonoTrabajo').val("{{$direccionTrab->telefonoTrabajo}}");
+	$('#idEstado2').val({{$direccionTrab->id}}).trigger('change');
+	$('#idMunicipio2').val({{$direccionTrab->idMunicipio}}).trigger('change');
+	$('#idColonia2').val({{$direccionTrab->idColonia}}).trigger('change');
+	$('#idLocalidad2').val({{$direccionTrab->idLocalidad}}).trigger('change');		
+	$('#calle2').val("{{$direccionTrab->calle}}");	
+	$('#numExterno2').val("{{$direccionTrab->numExterno}}");
+	$('#numInterno2').val("{{$direccionTrab->numInterno}}");
+	$('#tipo').val("{{$info->tipo}}");
+	$('#sector').val("{{$info->sector}}");
+	$('#cedulaProf').val("{{$info->cedulaProf}}");
+	$('#correo').val("{{$info->correo}}");
+	
 	
 @endpush
