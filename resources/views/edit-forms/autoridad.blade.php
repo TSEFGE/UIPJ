@@ -192,15 +192,14 @@
 		}
 	@endisset
 	@isset($direccion)
-{{-- 
+
 		$('#idEstado').val('{{$direccion->idEstado}}');
-		$('#idEstado').val('{{$direccion->idMunicipio}}');
-		$('#idLocalidad').val('{{$direccion->idLocalidad}}');
-		$('#idColonia').val('{{$direccion->idColonia}}');
-		$('#cp').val('{{$direccion->codigoPostal}}');
+		$('#idMunicipio').val('{{$direccion->idMunicipio}}').trigger('change');
+		$('#idLocalidad').val('{{$direccion->idLocalidad}}').trigger('change');
+		$('#idColonia').val('{{$direccion->idColonia}}').trigger('change');
 		$('#calle').val('{{$direccion->calle}}');
 		$('#numExterno').val('{{$direccion->numExterno}}');
-		$('#numInterno').val('{{$direccion->numInterno}}'); --}}
+		$('#numInterno').val('{{$direccion->numInterno}}');
 
 	@endisset
 @endpush

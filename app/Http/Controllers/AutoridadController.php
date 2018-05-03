@@ -235,14 +235,14 @@ class AutoridadController extends Controller
         $direccion=DB::table('domicilio', 'domicilio.id', '=', $personales->idDomicilio)
                     ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
                     ->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
-                    ->select('cat_municipio.idEstado as idEstado', 'domicilio.*', 'domicilio.id as idDomicilio', 'cat_colonia.codigoPostal')
+                    ->select('cat_municipio.idEstado as idEstado', 'domicilio.*', 'domicilio.id as idDomicilio')
                     ->where('domicilio.id', '=', $personales->idDomicilio)
                     ->get()->first();
         $direccionTrab=DB::table('variables_persona', 'variables_persona.idPersona', '=', $personales->idPersona)
                     ->join('domicilio', 'domicilio.id', '=', 'variables_persona.idDomicilioTrabajo')
                     ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
                     ->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
-                    ->select('domicilio.*', 'domicilio.id as idDomicilio', 'cat_colonia.codigoPostal')
+                    ->select('domicilio.*', 'domicilio.id as idDomicilio')
                     ->where('variables_persona.idPersona', '=', $personales->idPersona)
                     ->get()->first();
         dump($personales, $direccion, $direccionTrab);
