@@ -242,7 +242,7 @@ class AutoridadController extends Controller
                     ->join('domicilio', 'domicilio.id', '=', 'variables_persona.idDomicilioTrabajo')
                     ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
                     ->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
-                    ->select('domicilio.*', 'domicilio.id as idDomicilio')
+                    ->select('cat_municipio.idEstado as idEstado', 'domicilio.*', 'domicilio.id as idDomicilio')
                     ->where('variables_persona.idPersona', '=', $personales->idPersona)
                     ->get()->first();
         dump($personales, $direccion, $direccionTrab);

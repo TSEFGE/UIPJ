@@ -202,4 +202,17 @@
 		$('#numInterno').val('{{$direccion->numInterno}}');
 
 	@endisset
+	@isset($direccionTrab)
+		$('#lugarTrabajo').val('{{$personales->lugarTrabajo}}');
+		$('#telefonoTrabajo').val('{{$personales->telefonoTrabajo}}');
+		$('#idEstado2').val('{{$direccionTrab->idEstado}}').trigger('change');
+		$('#idMunicipio2').val('{{$direccionTrab->idMunicipio}}').trigger('change');
+		$('#idLocalidad2').val('{{$direccionTrab->idLocalidad}}').trigger('change');
+		$('#idColonia2').val('{{$direccionTrab->idColonia}}').trigger('change');
+		$('#calle2').val('{{$direccionTrab->calle}}');
+		$('#numExterno2').val('{{$direccionTrab->numExterno}}');
+		$('#numInterno2').val('{{$direccionTrab->numInterno}}');
+
+
+	@endisset
 @endpush
