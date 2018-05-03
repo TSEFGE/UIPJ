@@ -194,16 +194,23 @@
 	$("#fax").val("{{ $direccionNotif->fax }}");	
 
 
-	$('#idEstado').val({{$direccion->id}}).trigger('change');
+	$('#idEstado').val({{$direccion->idEstado}}).trigger('change');
 	$('#idMunicipio').val({{$direccion->idMunicipio}}).trigger('change');
-	$('#idColonia').val({{$direccion->idColonia}}).trigger('change');
 	$('#idLocalidad').val({{$direccion->idLocalidad}}).trigger('change');
+	$('#idColonia').val({{$direccion->idColonia}}).trigger('change');
 	
 
-	$('#idEstado2').val({{$direccionTrab->id}}).trigger('change');
+	$('#idEstado2').val({{$direccionTrab->idEstado}}).trigger('change');
 	$('#idMunicipio2').val({{$direccionTrab->idMunicipio}}).trigger('change');
-	$('#idColonia2').val({{$direccionTrab->idColonia}}).trigger('change');
 	$('#idLocalidad2').val({{$direccionTrab->idLocalidad}}).trigger('change');
+	$('#idColonia2').val({{$direccionTrab->idColonia}}).trigger('change');
+
+	
+	$('#idEstado3').val({{$direccionNotif->idEstado}}).trigger('change');
+	$('#idMunicipio3').val({{$direccionNotif->idMunicipio}}).trigger('change');
+	$('#idLocalidad3').val({{$direccionNotif->idLocalidad}}).trigger('change');
+	$('#idColonia3').val({{$direccionNotif->idColonia}}).trigger('change');
+
 	
 
 
