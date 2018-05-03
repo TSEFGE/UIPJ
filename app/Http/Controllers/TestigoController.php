@@ -254,28 +254,28 @@ class TestigoController extends Controller
                     ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
                     ->join('cat_municipio', 'cat_municipio.id', '=', 'persona.idMunicipioOrigen')
                     //->join('cat_estado','cat_estado.id','=','cat_municipio.idEstado')
-                    ->select('persona.*', 'persona.id as idPersona', 'variables_persona.id as idVariablesPersona', 'variables_persona.*', 'extra_testigo.idNotificacion as idNotificacion')
+                    ->select('cat_municipio.idEstado as idEstado', 'persona.*', 'persona.id as idPersona', 'variables_persona.id as idVariablesPersona', 'variables_persona.*', 'extra_testigo.idNotificacion as idNotificacion')
                     ->get()->first();
             //dd($personales);
 
             $direccion=DB::table('domicilio', 'domicilio.id', '=', $personales->idDomicilio)
                         ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
                         ->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
-                        ->select('domicilio.*', 'domicilio.id as idDomicilio', 'cat_colonia.codigoPostal')
+                        ->select('cat_municipio.idEstado as idEstado', 'domicilio.*', 'domicilio.id as idDomicilio')
                         ->where('domicilio.id', '=', $personales->idDomicilio)
                         ->get()->first();
             $direccionTrab=DB::table('variables_persona', 'variables_persona.idPersona', '=', $personales->idPersona)
                         ->join('domicilio', 'domicilio.id', '=', 'variables_persona.idDomicilioTrabajo')
                         ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
                         ->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
-                        ->select('domicilio.*', 'domicilio.id as idDomicilio', 'cat_colonia.codigoPostal')
+                        ->select('cat_municipio.idEstado as idEstado'.'domicilio.*', 'domicilio.id as idDomicilio')
                         ->where('variables_persona.idPersona', '=', $personales->idPersona)
                         ->get()->first();
             $direccionNotif=DB::table('notificacion', 'notificacion.id', '=', $personales->idNotificacion)
                         ->join('domicilio', 'domicilio.id', '=', 'notificacion.idDomicilio')
                         ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
                         ->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
-                        ->select('domicilio.*', 'domicilio.id as idDomicilio', 'cat_colonia.codigoPostal')
+                        ->select('notificacion.*', 'cat_municipio.idEstado as idEstado', 'domicilio.*', 'domicilio.id as idDomicilio')
                         ->where('notificacion.id', '=', $personales->idNotificacion)
                         ->get()->first();
 
@@ -283,7 +283,7 @@ class TestigoController extends Controller
             $numCarpeta=$carpeta->numCarpeta;
 
 
-            //dump($numCarpeta, $idCarpeta, $personales, $direccion, $direccionTrab, $direccionNotif);
+            dump($numCarpeta, $idCarpeta, $personales, $direccion, $direccionTrab, $direccionNotif);
             $escolaridades  = CatEscolaridad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $estados        = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $municipiosVer  = CatMunicipio::select('id', 'nombre')->where('idEstado', 30)->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
