@@ -17,6 +17,7 @@
         "nainlobato/rfc": "dev-master",
         "nesbot/carbon": "1.25.*",
         "phpoffice/phpword": "^0.14.0",
+        "tightenco/ziggy": "^0.6.6",
         "uipj/rfc": "@dev",
         "uxweb/sweet-alert": "^1.4",
         "yajra/laravel-datatables-oracle": "~8.0"

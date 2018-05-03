@@ -129,7 +129,7 @@ class DelitoController extends Controller
 
         $infoComision = DB::table('domicilio')
             ->join('tipif_delito', 'tipif_delito.idDomicilio', '=', 'domicilio.id')
-            ->select('tipif_delito.idDelito', 'tipif_delito.idAgrupacion1', 'tipif_delito.idAgrupacion2', 'tipif_delito.hora', 'tipif_delito.fecha', 'tipif_delito.conViolencia', 'tipif_delito.idModalidad', 'tipif_delito.formaComision', 'tipif_delito.consumacion')
+            ->select('tipif_delito.id as idTipifDelito', 'tipif_delito.idDomicilio as idDomicilio', 'tipif_delito.idDelito as idDelito', 'tipif_delito.idAgrupacion1 as  idAgrupacion1', 'tipif_delito.idAgrupacion2 as idAgrupacion2', 'tipif_delito.hora as hora', 'tipif_delito.fecha as fecha', 'tipif_delito.conViolencia as conViolencia', 'tipif_delito.idModalidad as idModalidad', 'tipif_delito.formaComision as formaComision', 'tipif_delito.consumacion as consumacion')
             ->where('tipif_delito.idCarpeta', '=', $idCarpeta)
             ->where('tipif_delito.id', '=', $id)
             ->get();
@@ -138,7 +138,7 @@ class DelitoController extends Controller
             ->join('tipif_delito', 'tipif_delito.idDomicilio', '=', 'domicilio.id')
             ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
             ->join('cat_estado', 'cat_estado.id', '=', 'cat_municipio.idEstado')
-            ->select('tipif_delito.idLugar', 'tipif_delito.idZona', 'tipif_delito.entreCalle', 'tipif_delito.yCalle', 'tipif_delito.calleTrasera', 'tipif_delito.puntoReferencia', 'cat_estado.id', 'domicilio.idMunicipio', 'domicilio.idLocalidad', 'domicilio.idColonia', 'domicilio.calle', 'domicilio.numExterno', 'domicilio.numInterno')
+            ->select('domicilio.id as id', 'tipif_delito.idLugar as idLugar', 'tipif_delito.idZona as idZona', 'tipif_delito.entreCalle as entreCalle', 'tipif_delito.yCalle as yCalle', 'tipif_delito.calleTrasera as calleTrasera ', 'tipif_delito.puntoReferencia as puntoReferencia', 'cat_estado.id as idEstado', 'domicilio.idMunicipio as idMunicipio', 'domicilio.idLocalidad as idLocalidad', 'domicilio.idColonia as idColonia', 'domicilio.calle as calle', 'domicilio.numExterno as numExterno', 'domicilio.numInterno as numInterno')
             ->where('tipif_delito.idCarpeta', '=', $idCarpeta)
             ->where('tipif_delito.id', '=', $id)
             ->get();
@@ -162,6 +162,76 @@ class DelitoController extends Controller
     public function update(Request $request, $id)
     {
 
+        $carpetaNueva = Carpeta::where('id', $request->idCarpeta)->where('idFiscal', Auth::user()->id)->get();
+        $var          = TipifDelito::where('id', $id)->get();
+        if ($carpetaNueva->isEmpty() && $var->isEmpty()) {
+            return redirect()->route('home');
+        }
+
+        $domicilio = Domicilio::find($request->idDomicilio);
+        if ($request->filled('idMunicipio')) {
+            $domicilio->idMunicipio = $request->idMunicipio;
+        }
+        if ($request->filled('idLocalidad')) {
+            $domicilio->idLocalidad = $request->idLocalidad;
+        }
+        if ($request->filled('idColonia')) {
+            $domicilio->idColonia = $request->idColonia;
+        }
+        if ($request->filled('calle')) {
+            $domicilio->calle = $request->calle;
+        }
+        if ($request->filled('numExterno')) {
+            $domicilio->numExterno = $request->numExterno;
+        }
+        if ($request->filled('numInterno')) {
+            $domicilio->numInterno = $request->numInterno;
+        }
+        $domicilio->save();
+
+        $idD1 = $domicilio->id;
+
+        $tipifDelito                = new TipifDelito::find($id);
+        $tipifDelito->idCarpeta     = $request->idCarpeta;
+        $tipifDelito->idDelito      = $request->idDelito;
+        $tipifDelito->idAgrupacion1 = $request->idAgrupacion1;
+        $tipifDelito->idAgrupacion2 = $request->idAgrupacion2;
+        if ($request->conViolencia === "1") {
+            $tipifDelito->conViolencia   = 1;
+            $tipifDelito->idArma         = $request->idArma;
+            $tipifDelito->idPosibleCausa = $request->idPosibleCausa;
+        }
+        $tipifDelito->idModalidad   = $request->idModalidad;
+        $tipifDelito->formaComision = $request->formaComision;
+        $tipifDelito->consumacion   = $request->consumacion;
+
+        $fechaAux = $request->fecha;
+        $fechaDel = date("Y-m-d", strtotime($fechaAux));
+
+        $tipifDelito->fecha           = $fechaDel;
+        $tipifDelito->hora            = $request->hora;
+        $tipifDelito->idLugar         = $request->idLugar;
+        $tipifDelito->idZona          = $request->idZona;
+        $tipifDelito->idDomicilio     = $idD1;
+        $tipifDelito->entreCalle      = $request->entreCalle;
+        $tipifDelito->yCalle          = $request->yCalle;
+        $tipifDelito->calleTrasera    = $request->calleTrasera;
+        $tipifDelito->puntoReferencia = $request->puntoReferencia;
+        $tipifDelito->save();
+        //guarda en Bitacora
+        if ($request->conViolencia === "1") {
+            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'tipif_delito', 'accion' => 'update', 'descripcion' => 'Se ha actualizado Información de un Delito con Violencia', 'idFilaAccion' => $tipifDelito->id]);
+            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'update', 'descripcion' => 'Se ha actualizado Información sobre el lugar de un Delito con Violencia', 'idFilaAccion' => $domicilio->id]);
+        } else {
+            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'tipif_delito', 'accion' => 'update', 'descripcion' => 'Se ha actualizado Información de un Delito sin Violencia', 'idFilaAccion' => $tipifDelito->id]);
+            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'update', 'descripcion' => 'Se ha actualizado Información sobre el lugar de un Delito sin Violencia', 'idFilaAccion' => $domicilio->id]);
+        }
+        /*
+        Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
+        //Para mostrar modal
+        //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
+         */
+        Alert::success('Delito actualizado con éxito', 'Hecho')->persistent("Aceptar");
     }
 
 }

@@ -23,6 +23,7 @@ use App\Models\Persona;
 use App\Models\VariablesPersona;
 use Illuminate\Support\Facades\Auth;
 use DB;
+use Illuminate\Http\Request;
 
 class TestigoController extends Controller
 {
@@ -323,6 +324,7 @@ class TestigoController extends Controller
             Alert::error('Ya existe una persona registrada con ese CURP.', 'Error')->persistent("Aceptar");
             return back()->withInput();
         } else {
+            $persona=Persona::find($request->idPersona);
             $persona->nombres         = $request->nombres;
             $persona->primerAp        = $request->primerAp;
             $persona->segundoAp       = $request->segundoAp;
@@ -354,7 +356,7 @@ class TestigoController extends Controller
             Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'update', 'descripcion' => 'Se ha actualizado  persona física de tipo testigo.', 'idFilaAccion' => $persona->id]);
             $idPersona = $persona->id;
 
-            $domicilio = Domicilio::where('id', $request->idDomicilio)->get();
+            $domicilio = Domicilio::find($request->idDomicilio);
             if (!is_null($request->idMunicipio)) {
                 $domicilio->idMunicipio = $request->idMunicipio;
             }
@@ -377,7 +379,7 @@ class TestigoController extends Controller
             Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'update', 'descripcion' => 'Se ha actualizado domicilio para persona física de tipo testigo.', 'idFilaAccion' => $domicilio->id]);
             $idD1 = $domicilio->id;
 
-            $domicilio2 = Domicilio::where('id', $request->idDomicilioTrabajo)->get();
+            $domicilio2 = Domicilio::find($request->idDomicilioTrabajo);
             if (!is_null($request->idMunicipio2)) {
                 $domicilio2->idMunicipio = $request->idMunicipio2;
             }
@@ -400,7 +402,7 @@ class TestigoController extends Controller
             Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'update', 'descripcion' => 'Se ha actualizado domicilio de trabajo para persona física de tipo testigo.', 'idFilaAccion' => $domicilio2->id]);
             $idD2 = $domicilio2->id;
 
-            $domicilio3 =Domicilio::where('id', $request->idDomicilioNotif);
+            $domicilio3 =Domicilio::find($request->idDomicilioNotif);
             if (!is_null($request->idMunicipio3)) {
                 $domicilio3->idMunicipio = $request->idMunicipio3;
             }
@@ -423,7 +425,7 @@ class TestigoController extends Controller
             Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'update', 'descripcion' => 'Se ha actualizado domicilio para notificaciones para persona física.', 'idFilaAccion' => $domicilio3->id]);
             $idD3 = $domicilio3->id;
 
-            $notificacion              = Notificacion::where('id', $request->idNotificacion)->get();
+            $notificacion              = Notificacion::find($request->idNotificacion);
             $notificacion->idDomicilio = $idD3;
             $notificacion->correo      = $request->correo;
             $notificacion->telefono    = $request->telefono;
@@ -432,7 +434,7 @@ class TestigoController extends Controller
             Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'notificacion', 'accion' => 'update', 'descripcion' => 'Se ha actualizado  notificación para persona física de tipo testigo.', 'idFilaAccion' => $notificacion->id]);
             $idNotificacion = $notificacion->id;
 
-            $VariablesPersona            = VariablesPersona::where('id', $request->idNotificacion)->get();
+            $VariablesPersona            = VariablesPersona::find($request->idNotificacion);
             $VariablesPersona->idCarpeta = $request->idCarpeta;
             $VariablesPersona->idPersona = $idPersona;
             $VariablesPersona->edad      = $request->edad;
@@ -473,7 +475,7 @@ class TestigoController extends Controller
             Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'variables_persona', 'accion' => 'update', 'descripcion' => 'Se ha actualizado variables persona de persona física de tipo testigo.', 'idFilaAccion' => $VariablesPersona->id]);
             $idVariablesPersona = $VariablesPersona->id;
 
-            $ExtraTestigo                     = ExtraTestigo::where('id', $request->$idExtraTestigo)->get();
+            $ExtraTestigo                     = ExtraTestigo::find($request->idExtraTestigo);
             if ($request->conoceAlDenunciado === 1) {
                 $ExtraTestigo->conoceAlDenunciado = 1;
             }
@@ -494,7 +496,7 @@ class TestigoController extends Controller
 
             Alert::success('Testigo actualizado con éxito', 'Hecho')->persistent("Aceptar");
             //return redirect()->route('carpeta', $request->idCarpeta);
-            return redirect()->route('new.testigo', $request->idCarpeta);
+            return redirect()->route('edit.testigo', ['idCarpeta'=>$request->idCarpeta,'$idExtraTestigo'=>$request->idExtraTestigo ]);
         }
     }
 }

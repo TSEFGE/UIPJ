@@ -1,7 +1,7 @@
 $("#idAbogado").change(function(event){
 	if(event.target.value!=""){
 		var idCarpeta = $("input[type=hidden][name=idCarpeta]").val();
-		$.get(urlpath+"involucrados/"+idCarpeta+"/"+event.target.value+"", function(response, idCarpeta){
+		$.get(route('get.involucrados', {idCarpeta: idCarpeta, idAbogado: event.target.value}), function(response, idCarpeta){
 			$("#idInvolucrado").empty();
 			$("#idInvolucrado").append("<option value=''>Seleccione un involucrado</option>");
 			for(i=0; i<response.length; i++){

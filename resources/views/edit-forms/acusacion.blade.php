@@ -1,4 +1,4 @@
-@extends('template.form')
+@extends('template.form-edit')
 
 @section('title', 'Editar denuncias registradas')
 
@@ -30,6 +30,7 @@
 				
 					@if(!empty($idCarpeta))
 						{!! Form::hidden('idCarpeta', $idCarpeta) !!}
+						{!! Form::hidden('id', $id) !!}
 					@endif
 					
 					@include('fields.acusacion')
