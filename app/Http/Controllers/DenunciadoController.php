@@ -927,7 +927,7 @@ class DenunciadoController extends Controller
             if ($request->filled('numExterno')) {
                 $domicilio->numExterno = $request->numExterno;
             }
-            if ($request->filled('numInterno') {
+            if ($request->filled('numInterno')) {
                 $domicilio->numInterno = $request->numInterno;
             }
             $domicilio->save();

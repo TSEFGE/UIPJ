@@ -216,7 +216,6 @@ class VehiculoController extends Controller
         Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'vehiculo', 'accion' => 'update', 'descripcion' => 'Se han actualizado datos generales de un Vehículo del delito: ' . $request->idTipifDelito . ' con Placas: ' . $request->placas . ' Del estado: ' . $request->idEstado, 'idFilaAccion' => $vehiculo->id]);
         
         Alert::success('Vehículo registrado con éxito', 'Hecho')->persistent("Aceptar");
-        //return redirect()->route('carpeta', $request->idCarpeta);
         return redirect()->route('carpeta', $request->idCarpeta);
     }
 
