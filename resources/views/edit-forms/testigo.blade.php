@@ -1,4 +1,4 @@
-@extends('template.form')
+@extends('template.form-edit')
 
 @section('title', 'Editar testigo')
 
@@ -84,6 +84,15 @@
 						</div>
 					</div>
 				</div>
+				
+				{{-- {!! Form::hidden('idExtraTestigo', ($personales->idExtraTestigo)) !!} --}}
+				{!! Form::hidden('idPersona', ($personales->idPersona)) !!}
+				{!! Form::hidden('idVariablesPersona', ($personales->idVariablesPersona)) !!}
+				{!! Form::hidden('idDireccion', ($direccion->id)) !!}
+				{!! Form::hidden('rfc-edit', ($personales->rfc)) !!} 
+				{{-- {!! Form::hidden('idDireccionTrab', ($direccionTrab->id)) !!}
+				 --}}
+
 					<!-- Fin pestañas -->
 		</div>
 	</div>
@@ -144,4 +153,66 @@
     $('#datosExtra').show();
     $('#extra-fis').show();
     $('#Victima').show();
+
+
+	var rfcFisica = $("input[name='rfc-edit']").val();
+	var rfc = rfcFisica.substr (0,10);
+	var homoclave = rfcFisica.substr(-3); 
+	$('#nombres').val("{{ $personales->nombres }}");
+	$("#primerAp").val("{{ $personales->primerAp }}");
+	$("#segundoAp").val("{{ $personales->segundoAp }}");
+	$("#sexo").val("{{ $personales->sexo }}");
+	$('#idNacionalidad').val({{$personales->idNacionalidad}}).trigger('change');	
+	$('#idEstadoOrigen').val({{ $personales->idEstado}}).trigger('change');
+	$('#rfc').val(rfc);
+	$('#homo').val(homoclave); 
+	$('#curp').val("{{$personales->curp}}");
+	$('#idEtnia').val({{$personales->idEtnia}}).trigger('change');	
+	$('#idLengua').val({{$personales->idLengua}}).trigger('change');
+	$('#idMunicipioOrigen').val({{$personales->idMunicipioOrigen}}).trigger('change');
+	$("#telefono").val("{{ $personales->telefono }}");
+	$("#motivoEstancia").val("{{ $personales->motivoEstancia }}");
+	$('#idOcupacion').val({{$personales->idOcupacion}}).trigger('change');	
+	$('#idEstadoCivil').val({{$personales->idEstadoCivil}}).trigger('change');
+	$('#idReligion').val(7).trigger('change');
+	$('#idEscolaridad').val({{$personales->idEscolaridad}}).trigger('change');
+	$("#docIdentificacion").val("{{ $personales->docIdentificacion }}");
+	$("#numDocIdentificacion").val("{{ $personales->numDocIdentificacion }}");
+	$("#calle").val("{{ $direccion->calle }}");
+	$("#numExterno").val("{{ $direccion->numExterno }}");
+	$("#numInterno").val("{{ $direccion->numInterno }}");	
+	$("#lugarTrabajo").val("{{ $personales->lugarTrabajo }}");
+	$('#telefonoTrabajo').val({{$personales->telefonoTrabajo}}).trigger('change');
+	$('#calle2').val("{{$direccionTrab->calle}}");	
+	$("#numExterno2").val("{{ $direccion->numExterno }}");
+	$("#numInterno2").val("{{ $direccion->numInterno }}");
+	$("#calle3").val("{{ $direccionNotif->calle }}");
+	$("#numExterno3").val("{{ $direccionNotif->numExterno }}");
+	$("#numInterno3").val("{{ $direccionNotif->numInterno }}"); 
+	$("#email").val("{{ $direccionNotif->correo }}");
+	$("#telefonoN").val("{{ $direccionNotif->telefono }}");
+	$("#fax").val("{{ $direccionNotif->fax }}");	
+
+
+	$('#idEstado').val({{$direccion->idEstado}}).trigger('change');
+	$('#idMunicipio').val({{$direccion->idMunicipio}}).trigger('change');
+	$('#idLocalidad').val({{$direccion->idLocalidad}}).trigger('change');
+	$('#idColonia').val({{$direccion->idColonia}}).trigger('change');
+	
+
+	$('#idEstado2').val({{$direccionTrab->idEstado}}).trigger('change');
+	$('#idMunicipio2').val({{$direccionTrab->idMunicipio}}).trigger('change');
+	$('#idLocalidad2').val({{$direccionTrab->idLocalidad}}).trigger('change');
+	$('#idColonia2').val({{$direccionTrab->idColonia}}).trigger('change');
+
+	
+	$('#idEstado3').val({{$direccionNotif->idEstado}}).trigger('change');
+	$('#idMunicipio3').val({{$direccionNotif->idMunicipio}}).trigger('change');
+	$('#idLocalidad3').val({{$direccionNotif->idLocalidad}}).trigger('change');
+	$('#idColonia3').val({{$direccionNotif->idColonia}}).trigger('change');
+
+	
+
+
+
 @endpush
