@@ -131,9 +131,9 @@
 	{{--<script src="{{ asset('js/persona.js') }}"></script>--}}
 	<script src="{{ asset('js/persona-moral.js') }}"></script>
 	{{--<script src="{{ asset('js/tipo-persona.js') }}"></script>
-	<script src="{{ asset('js/denunciante.js') }}"></script>	
+	<script src="{{ asset('js/denunciante.js') }}"></script>--}}	
 	<script src="{{ asset('js/selects/async.js') }}"></script>
-	{{--<script src="{{ asset('js/selects/origen.js') }}"></script>
+	<script src="{{ asset('js/selects/origen.js') }}"></script>
 	<script src="{{ asset('js/selects/domicilio.js') }}"></script>
 	<script src="{{ asset('js/selects/domicilio-trab.js') }}"></script>
 	<script src="{{ asset('js/selects/domicilio-notif.js') }}"></script>
@@ -219,9 +219,21 @@
 			$('#segundoAp').val("{{ $personales->segundoAp }}");					
 			$('#fechanac').datetimepicker('format', "DD-MM-YYYY");
 			$('#fechanac').datetimepicker('date', moment("{{ $personales->fechaNacimiento}}").format("DD-MM-YYYY"));
+			/*$("#fechanac").on("change.datetimepicker", function(e) {
+				$('#edad').val(moment().diff(e.date, 'years'));
+				});*/
+			/*var anios = "{{ $personales->fechaNacimiento}}";
+			var hoy = moment('years');
+			var abajo = $('#fechanac').datetimepicker('date', moment("{{ $personales->fechaNacimiento}}").format("DD-MM-YYYY"));
+			console.log("abajo",anios);
+			console.log("hoy",hoy);
+			/*$("#edad").onload(function() {
+					var anios = $('#edad').val();
+					$('#fechanac').datetimepicker('date', moment().subtract(anios, 'years').format('YYYY-MM-DD'));
+			});*/
 			$('#sexo').val("{{ $personales->sexo }}").trigger('change');
 			$('#idNacionalidad').val({{ $personales->idNacionalidad }}).trigger('change');
-			$('#idEstadoOrigen').val({{ $personales->idEstado}}).trigger('change');
+			$('#idEstadoOrigen').val({{ $personales->idEstado}}).trigger('change');			
 			$('#rfc').val(rfc);
 			$('#homo').val(homoclave);
 			$('#curp').val("{{$personales->curp}}");
