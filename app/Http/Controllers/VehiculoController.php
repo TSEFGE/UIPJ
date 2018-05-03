@@ -188,7 +188,36 @@ class VehiculoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //dd($request->all());
+        $carpetaNueva = Carpeta::where('id', $request->idCarpeta)->where('idFiscal', Auth::user()->id)->get();
+        $var = Vehiculo::where('id', $id)->get();
+        if ($carpetaNueva->isEmpty() && $var->isEmpty()){
+            return redirect()->route('home');
+        }
+
+        $vehiculo                = Vehiculo::find($id);
+        $vehiculo->idTipifDelito = $request->idTipifDelito;
+        $vehiculo->placas         = $request->placas;
+        $vehiculo->idEstado       = $request->idEstado;
+        $vehiculo->idSubmarca     = $request->idSubmarca;
+        $vehiculo->modelo         = $request->modelo;
+        $vehiculo->nrpv           = $request->nrpv;
+        $vehiculo->idColor        = $request->idColor;
+        $vehiculo->permiso        = $request->permiso;
+        $vehiculo->numSerie       = $request->numSerie;
+        $vehiculo->numMotor       = $request->numMotor;
+        $vehiculo->idTipoVehiculo = $request->idTipoVehiculo;
+        $vehiculo->idTipoUso      = $request->idTipoUso;
+        $vehiculo->senasPartic    = $request->senasPartic;
+        $vehiculo->idProcedencia  = $request->idProcedencia;
+        $vehiculo->idAseguradora  = $request->idAseguradora;
+        $vehiculo->save();
+        //Agregar a Bitacora
+        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'vehiculo', 'accion' => 'update', 'descripcion' => 'Se han actualizado datos generales de un Vehículo del delito: ' . $request->idTipifDelito . ' con Placas: ' . $request->placas . ' Del estado: ' . $request->idEstado, 'idFilaAccion' => $vehiculo->id]);
+        
+        Alert::success('Vehículo registrado con éxito', 'Hecho')->persistent("Aceptar");
+        //return redirect()->route('carpeta', $request->idCarpeta);
+        return redirect()->route('carpeta', $request->idCarpeta);
     }
 
     /**
