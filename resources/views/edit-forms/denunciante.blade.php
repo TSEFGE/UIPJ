@@ -108,7 +108,11 @@
 	{!! Form::hidden('idPersona', ($personales->idPersona)) !!}
 	{!! Form::hidden('idVariablesPersona', ($personales->idVariablesPersona)) !!}
 	{!! Form::hidden('idDireccion', ($direccion->id)) !!}
+	@if (isset ($personales) )
+		@if ( ($personales->esEmpresa) == 0)
 	{!! Form::hidden('idDireccionTrab', ($direccionTrab->id)) !!}
+	@endif
+	@endif
 	{!! Form::hidden('idNoficiacion', ($direccionNotif->idNotificacion)) !!}
 	
 	<!-- Fin pestañas -->
