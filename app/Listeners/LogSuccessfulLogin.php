@@ -5,9 +5,9 @@ namespace App\Listeners;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Auth;
-use App\User;
+use App\Models\Bitacora;
 
-class LogAuthenticated
+class LogSuccessfulLogin
 {
     /**
      * Create the event listener.
@@ -28,9 +28,6 @@ class LogAuthenticated
     public function handle($event)
     {
         $id = Auth::id();
-        $user=User::find($id);
-        session()->getHandler()->destroy($user->tokenSession);
-        $user->tokenSession=session()->getId();
-        $user->save();
+        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'users', 'accion' => 'Login', 'descripcion' => 'Inicio de sesión.', 'idFilaAccion' =>$id]);
     }
 }

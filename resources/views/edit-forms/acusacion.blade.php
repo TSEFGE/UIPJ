@@ -31,6 +31,7 @@
 					@if(!empty($idCarpeta))
 						{!! Form::hidden('idCarpeta', $idCarpeta) !!}
 						{!! Form::hidden('id', $id) !!}
+
 					@endif
 					
 					@include('fields.acusacion')
@@ -42,3 +43,18 @@
 	
 {!! Form::close() !!}
 @endsection
+
+@push('docready-js')
+		
+		$("#idDenunciante").addClass("vacio");
+		$("#idTipifDelito").addClass("vacio");
+		$("#idDenuciado").addClass("vacio");	
+		$('#idDenunciante').val("{{ $denunciante->idExtraDenunciante }}");
+		$('#idTipifDelito').val({{ $delito->idTipifDelito }});
+		$('#idDenunciado').val({{ $denunciado->idExtraDenunciado}});
+
+@endpush
+		
+
+
+

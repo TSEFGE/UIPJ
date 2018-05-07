@@ -129,7 +129,7 @@ class AcusacionController extends Controller
             ->select('extra_denunciante.id as idExtraDenunciante', 'persona.nombres as nombres', 'persona.primerAp as primerAp', 'persona.segundoAp as segundoAp', 'variables_persona.id as idVariablesPersona')
             ->where('variables_persona.idCarpeta', '=', $idCarpeta)
             ->orderBy('persona.nombres', 'ASC')
-            ->get();
+            ->get()->first();
 
         $denunciado = DB::table('extra_denunciado')
             ->join('acusacion', 'acusacion.idDenunciado', '=', 'extra_denunciado.id')
@@ -138,7 +138,7 @@ class AcusacionController extends Controller
             ->select('extra_denunciado.id as idExtraDenunciado', 'persona.nombres as nombres', 'persona.primerAp as primerAp', 'persona.segundoAp as segundoAp', 'variables_persona.id as idVariablesPersona')
             ->where('variables_persona.idCarpeta', '=', $idCarpeta)
             ->orderBy('persona.nombres', 'ASC')
-            ->get();
+            ->get()->first();
 
         $delito = DB::table('tipif_delito')
             ->join('acusacion', 'acusacion.idTipifDelito', '=', 'tipif_delito.id')
@@ -146,7 +146,7 @@ class AcusacionController extends Controller
             ->select('tipif_delito.id as idTipifDelito', 'cat_delito.nombre as nombre')
             ->where('tipif_delito.idCarpeta', '=', $idCarpeta)
             ->orderBy('cat_delito.nombre', 'ASC')
-            ->get();
+            ->get()->first();
 
         return view('edit-forms.acusacion')
             ->with('idCarpeta', $idCarpeta)
@@ -172,6 +172,7 @@ class AcusacionController extends Controller
         $acusacion->idDenunciante = $request->idDenunciante;
         $acusacion->idTipifDelito = $request->idTipifDelito;
         $acusacion->idDenunciado  = $request->idDenunciado;
+        $acusacion->save();
 
         Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'acusacion', 'accion' => 'update', 'descripcion' => 'Se han actualizado  denuncia de la victima ' . $request->idDenunciante . ' por el Delito de ' . $request->idTipifDelito . ' al investigado: ' . $request->idDenunciado, 'idFilaAccion' => $acusacion->id]);
         /*
