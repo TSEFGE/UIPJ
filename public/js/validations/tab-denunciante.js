@@ -3,7 +3,7 @@ $("#btn-submit").prop('disabled',true);
 $('input').addClass('vacio');
 $('input').prop('data-validation-event', 'ready');
 $('select').addClass('vacio');
-
+$('#collapsePersonales1').isValid();
 
  $('#tdenunciante.nav-tabs a').on('shown.bs.tab', function (e) {
      var index = $($(this).attr('href')).index();
