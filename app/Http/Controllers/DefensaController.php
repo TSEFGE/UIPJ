@@ -94,24 +94,24 @@ class DefensaController extends Controller
             ->where('extra_abogado.id', '=', $id)
             ->get()->first();
 
-        $involucradoDenunciadoID = $involucradoDenunciado->idExtraDenunciado);
-    $involucradoDenuncianteID = $involucradoDenunciante->idExtraDenunciante);
+        if (empty($involucradoDenunciante->idExtraDenunciante)) {
+            $involucradoDenuncianteID = null;
+            $idInvolucrado            = $involucradoDenunciado->idExtraDenunciado;
+        } elseif (empty($involucradoDenunciado->idExtraDenunciado)) {
+            $involucradoDenunciadoID = null;
+            $idInvolucrado           = $involucradoDenunciante->idExtraDenunciante;
+        }
 
-if ($involucradoDenunciadoID->isNotEmpty()) {
-    $involucrado = $involucradoDenunciadoID;
-    // dump($involucradoDenunciado);
-} else {
-    $involucrado = $involucradoDenuncianteID;
-}
+        $idAbogado = $abogado->idExtraAbogado;
 
-return view('edit-forms.defensa')
-    ->with('idCarpeta', $idCarpeta)
-    ->with('id', $id)
-    ->with('abogados', $abogados)
-    ->with('abogado', $abogado)
-    ->with('involucrado', $involucrado);
+        return view('edit-forms.defensa')
+            ->with('idCarpeta', $idCarpeta)
+            ->with('id', $id)
+            ->with('abogados', $abogados)
+            ->with('idAbogado', $idAbogado)
+            ->with('idInvolucrado', $idInvolucrado);
 
-}
+    }
 
     public function update(Request $request, $id)
     {
