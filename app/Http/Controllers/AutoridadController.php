@@ -62,6 +62,11 @@ class AutoridadController extends Controller
 
     public function storeAutoridad(StoreAutoridad $request)
     {
+        $persona = Persona::where('curp', $request->curp)->get();
+        if ($persona->isNotEmpty()) {
+            Alert::error('Ya existe una persona registrada con ese CURP.', 'Error')->persistent("Aceptar");
+            return back()->withInput();
+        }
         //dd($request->all());
         $persona                    = new Persona();
         $persona->nombres           = $request->nombres;
@@ -291,6 +296,12 @@ class AutoridadController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $persona = Persona::where('curp', $request->curp)->where('id', '!=', $request->idPersona)->get();
+        if ($persona->isNotEmpty()) {
+            Alert::error('Ya existe una persona registrada con ese CURP.', 'Error')->persistent("Aceptar");
+            return back()->withInput();
+        }
+
         $persona                    = Persona::find($request->idPersona);
         $persona->nombres           = $request->nombres;
         $persona->primerAp          = $request->primerAp;

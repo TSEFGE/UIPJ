@@ -707,7 +707,7 @@ class DenunciadoController extends Controller
         }
         //Persona física
         if ($request->esEmpresa == 0) {
-            $persona = Persona::where('curp', $request->curp)->get();
+            $persona = Persona::where('curp', $request->curp)->where('id', '!=', $request->idPersona)->get();
             if ($persona->isNotEmpty()) {
                 Alert::error('Ya existe una persona registrada con ese CURP.', 'Error')->persistent("Aceptar");
                 return back()->withInput();
