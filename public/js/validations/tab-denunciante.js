@@ -1,6 +1,7 @@
 $("#btn-submit").prop('disabled',true);
 
 $('input').addClass('vacio');
+$('input').prop('data-validation-event', 'ready');
 $('select').addClass('vacio');
 
 
