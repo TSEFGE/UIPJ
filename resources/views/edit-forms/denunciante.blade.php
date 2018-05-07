@@ -142,7 +142,7 @@
 	<script src="{{ asset('js/curp.js') }}"></script>
 	<script src="{{ asset('js/rfcFisico.js') }}"></script>
 	<script src="{{ asset('js/rfcMoral.js') }}"></script>
-	@include('fields.ajaxCurpEdit')
+	<script src="{{ asset('js/ajaxCurpEdit.js') }}"></script>
 
 	@endpush
 	<script>

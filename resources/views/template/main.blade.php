@@ -83,7 +83,7 @@
 	<script src="{{ asset ('plugins/sweetalert/js/sweetalert.min.js')}}"></script>
 	<script src="{{ asset('plugins/cookie/js.cookie.min.js')}}" ></script>
 	<!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+	<script src="{{ asset('plugins/core/js/core.min.js') }}"></script>
 	<!-- REQUIRED SCRIPTS -->
 	<!-- Bootstrap -->
 	<script src="{{ asset('admin/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
