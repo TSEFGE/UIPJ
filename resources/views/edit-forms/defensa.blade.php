@@ -1,4 +1,4 @@
-@extends('template.form')
+@extends('template.form-edit')
 
 @section('title', 'Editar defensa')
 
@@ -43,6 +43,8 @@
     <script src="{{ asset('js/selects/sisy.js') }}"></script>
 @endpush
 @push('docready-js')
+	$("#idAbogado").addClass("vacio");
+	$("#idInvolucrado").addClass("vacio");
 	$('#idAbogado').val({{$idAbogado}}).trigger('change');
 	$('#idInvolucrado').val({{$idInvolucrado}}).trigger('change');
 
