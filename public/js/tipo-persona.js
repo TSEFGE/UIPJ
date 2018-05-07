@@ -93,7 +93,7 @@
 
             //para generar notificaciones 
        //para generar notificaciones 
-            $("#nombres").removeClass("vacio");
+           /* $("#nombres").removeClass("vacio");
             $("#primerAp").removeClass("vacio");
             $("#segundoAp").removeClass("vacio");
             $("#fechaNacimiento").removeClass("vacio");
@@ -117,8 +117,8 @@
             $("#correo").removeClass("vacio");
             $("#telefonoN").removeClass("vacio");     
             $("#fax").removeClass("vacio");
-          //  $("#narracionUno").removeClass("vacio");
-           // $("#narracionUnoM").removeClass("vacio");
+            $("#narracionUno").removeClass("vacio");
+            $("#narracionUnoM").removeClass("vacio");
 
              $("#nombres").removeClass("valid");
             $("#primerAp").removeClass("valid");
@@ -144,10 +144,10 @@
             $("#correo").removeClass("valid");
             $("#telefonoN").removeClass("valid");     
             $("#fax").removeClass("valid");
-              //  $("#narracionUno").removeClass("valid");
-            //$("#narracionUnoM").removeClass("valid");
+            $("#narracionUno").removeClass("valid");
+            $("#narracionUnoM").removeClass("valid");
 
-             $("#nombres").removeClass("error");
+            $("#nombres").removeClass("error");
             $("#primerAp").removeClass("error");
             $("#segundoAp").removeClass("error");
             $("#fechaNacimiento").removeClass("error");
@@ -170,25 +170,29 @@
             $("#numInterno2").removeClass("error");
             $("#correo").removeClass("error");
             $("#telefonoN").removeClass("error");     
-            $("#fax").removeClass("error");
+            $("#fax").removeClass("error");*/
+            $("input ").removeClass('vacio  valid error');
+            $("textarea").removeClass('vacio valid error');
+            $("select").removeClass('vacio ');
             
             //$("#narracionUnoM").removeClass("error");         
-
+            $("#idEstado, #idMunicipio, #idLocalidad, #idColonia, #cp").addClass('vacio');
+            $("#idEstado3, #idMunicipio3, #idLocalidad3, #idColonia3, #cp3").addClass('vacio');
             $("#nombres2").addClass("vacio");
             $("#fechaAltaEmpresa").addClass("vacio");
             $("#rfc2").addClass("vacio");
             $("#homo2").addClass("vacio");
             $("#representanteLegal").addClass("vacio");
-                $("#calle").addClass("vacio");
-                $("#numExterno").addClass("vacio");     
-                $("#numInterno").addClass("vacio"); 
-                $("#calle3").addClass("vacio");
-                $("#numExterno3").addClass("vacio");    
-                $("#numInterno3").addClass("vacio");
-            //    $("#narracionUnoM").addClass("vacio");
-                $("#correo").addClass("vacio");
+            $("#calle").addClass("vacio");
+            $("#numExterno").addClass("vacio");     
+            $("#numInterno").addClass("vacio"); 
+            $("#calle3").addClass("vacio");
+            $("#numExterno3").addClass("vacio");    
+            $("#numInterno3").addClass("vacio");
+            $("#narracionUnoM").addClass("vacio");
+            $("#correo").addClass("vacio");
             $("#telefonoN").addClass("vacio");     
-           $("#fax").addClass("vacio");             
+            $("#fax").addClass("vacio");             
                 
 
  //$("#narracionUno").addClass("vacio"); //para comprobar 
@@ -296,7 +300,7 @@
             $("#narracion").prop('disabled', false);
 
 
-
+            /*
                 //quitar campos de persona moral
                 $("#nombres2").removeClass("vacio");
                 $("#fechaAltaEmpresa").removeClass("vacio");
@@ -372,22 +376,30 @@
                // $("#narracionUno").removeClass("error");
                $("#otroDocumento").removeClass("error");
                
+*/
 
-
+                $("input ").removeClass('vacio  ');
+                $("textarea").removeClass('vacio ');
+                $("select").removeClass('vacio ');
 
                 //Para generar Notificaciones se asigna clase
+                $("select").addClass('vacio');
+                /*$("#idEstado, #idMunicipio, #idLocalidad, #idColonia, #cp").addClass('vacio');
+                $("#idEstado3, #idMunicipio3, #idLocalidad3, #idColonia3, #cp3").addClass('vacio');
+                $("#idEstado2, #idMunicipio2, #idLocalidad2, #idColonia2, #cp2").addClass('vacio');*/
                 $("#nombres").addClass("vacio");
                 $("#primerAp").addClass("vacio");
                 $("#segundoAp").addClass("vacio");
                 $("#fechaNacimiento").addClass("vacio");
+                $("#edad").addClass("vacio");
                 $("#rfc").addClass("vacio");
                 $("#homo").addClass("vacio");
                 $("#curp").addClass("vacio");
                 $("#telefono").addClass("vacio");
                 $("#motivoEstancia").addClass("vacio");               
-                //$("#docIdentificacion").addClass("vacio");     
+                $("#docIdentificacion").addClass("vacio");     
                 $("#numDocIdentificacion").addClass("vacio");
-          //   $("#narracionUno").addClass("vacio");
+                $("#narracionUno").addClass("vacio");
 
                 $("#calle").addClass("vacio");
                 $("#numExterno").addClass("vacio");    

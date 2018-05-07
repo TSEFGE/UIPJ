@@ -237,7 +237,7 @@
 			<div class="col-12">
 		<div class="form-group">
 			{!! Form::label('narracionUnoM', 'Narración', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::textarea('narracionUnoM', null, ['class' => 'form-control form-control-sm','id' => 'narracionUnoM','rows' => '3']) !!}
+			{!! Form::textarea('narracionUnoM', null, ['class' => 'form-control form-control-sm','id' => 'narracionUnoM','rows' => '3', 'data-validation'=>'required' , 'data-validation-event'=>'keyup']) !!}
 		</div>
 	</div>
 		</div>

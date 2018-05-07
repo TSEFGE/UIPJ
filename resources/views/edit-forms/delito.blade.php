@@ -11,6 +11,7 @@
 <input type="hidden" name="idCarpeta" value="{{$idCarpeta}}">
 <input type="hidden" name="idTipifDelito" value="{{$infoComision->idTipifDelito}}">
 <input type="hidden" name="idDomicilio" value="{{$infoComision->idDomicilio}}">
+<input type="hidden" name="horaE" value="{{$infoComision->hora}}">
 <div class="card-header">
 <div class="row">
 		<div class="col">
@@ -99,11 +100,15 @@
 
 
 	@isset($infoComision)
+		var hora= $("input[name='horaE']").val();
+		var horaE= hora.substr(0,5);
 		$('#idDelito').val("{{$infoComision->idDelito}}").trigger('change');
 		$('#idAgrupacion1').val("{{$infoComision->idAgrupacion1}}").trigger('change');
 		$('#idAgrupacion2').val("{{$infoComision->idAgrupacion2}}").trigger('change');
-		$('#fecha').val("{{$infoComision->fecha}}");
-		$('#hora').val("{{$infoComision->hora}}");
+		$('#fecha').datetimepicker('format', "DD-MM-YYYY");
+		$('#fecha').datetimepicker('date', moment("{{ $infoComision->fecha}}").format("DD-MM-YYYY"));
+		//$('#fecha').val("{{$infoComision->fecha}}");		    
+		$('#hora').val(horaE);
 		$('#idTipoArma').val("{{$infoComision->idTipoArma}}").trigger('change');
 		$('#idArma').val("{{$infoComision->idArma}}").trigger('change');
 		$('#idPosibleCausa').val("{{$infoComision->idPosibleCausa}}").trigger('change');

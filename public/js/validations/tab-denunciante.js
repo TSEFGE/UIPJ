@@ -2,9 +2,7 @@ $(document).ready(function () {
     $('form').isValid();
 });
 $("#btn-submit").prop('disabled',true);
-$('input[type=text]').addClass('vacio');
-$('textarea').addClass('vacio');
-$('select').addClass('vacio');
+
 totalesP=0;
  $('#tdenunciante.nav-tabs a').on('shown.bs.tab', function (e) {
      var index = $($(this).attr('href')).index();
@@ -62,7 +60,7 @@ $('#tdenunciante.nav-tabs a').on('hidden.bs.tab', function(event){
                 $("#tab1").show();                             
                 $("#tab1").html(countvacio); 
             } 
-             $('#collapsePersonales1').isValid();
+            
             break;                                
             case 1:
             var countvacio = $('#collapseDir1 .vacio').length; 
