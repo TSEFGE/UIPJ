@@ -1,4 +1,4 @@
-@extends('template.form')
+@extends('template.form-edit')
 
 @section('title', 'Editar delito')
 
@@ -8,7 +8,9 @@
 
 @section('contenido')
 {!! Form::open(['route' => ['update.delito', $idCarpeta, $id], 'method' => 'PUT'])  !!}
-{{ csrf_field() }}
+<input type="hidden" name="idCarpeta" value="{{$idCarpeta}}">
+<input type="hidden" name="idTipifDelito" value="{{$infoComision->idTipifDelito}}">
+<input type="hidden" name="idDomicilio" value="{{$infoComision->idDomicilio}}">
 <div class="card-header">
 <div class="row">
 		<div class="col">
@@ -95,39 +97,40 @@
 
 
 	@isset($infoComision)
-		$('#idDelito').val("{{$infoComision->idTipifDelito}}");
-		$('#idDelito').val("{{$infoComision->idAgrupacion1}}");
-		$('#idDelito').val("{{$infoComision->idAgrupacion2}}");
-		$('#idDelito').val("{{$infoComision->fecha}}");
-		$('#idDelito').val("{{$infoComision->hora}}");
-		$('#idDelito').val("{{$infoComision->idTipifDelito}}");
+		$('#idDelito').val("{{$infoComision->idDelito}}").trigger('change');
+		$('#idAgrupacion1').val("{{$infoComision->idAgrupacion1}}").trigger('change');
+		$('#idAgrupacion2').val("{{$infoComision->idAgrupacion2}}").trigger('change');
+		$('#fecha').val("{{$infoComision->fecha}}");
+		$('#hora').val("{{$infoComision->hora}}");
+		$('#idTipoArma').val("{{$infoComision->idTipoArma}}").trigger('change');
+		$('#idArma').val("{{$infoComision->idArma}}").trigger('change');
+		$('#idPosibleCausa').val("{{$infoComision->idPosibleCausa}}").trigger('change');
 		@if ($infoComision->conViolencia==1)
-			$('#conViolencia1').attr('checked',true);
-			$('#conViolencia2').attr('checked',false);
-		@else
-			$('#conViolencia2').attr('checked',true);
+			$('#conViolencia2').attr('checked',true).trigger('change');
 			$('#conViolencia1').attr('checked',false);
+		@else
+			$('#conViolencia1').attr('checked',true).trigger('change');
+			$('#conViolencia2').attr('checked',false);
 		@endif
+
 		$('#idModalidad').val("{{$infoComision->idModalidad}}");
 		$('#formaComision').val("{{$infoComision->formaComision}}");
 		$('#consumacion').val("{{$infoComision->consumacion}}");
 	@endisset
 	@isset($infoLugarHechos)
-		{{-- $('#entreCalle').val("{{$infoLugarHechos->entreCalle}}");
+		$('#entreCalle').val("{{$infoLugarHechos->entreCalle}}");
 		$('#yCalle').val("{{$infoLugarHechos->yCalle}}");
-		$('#idLugar').val("{{$infoLugarHechos->idLugar}}");
-		$('#calleTrasera').val("{{$infoLugarHechos->calleTrasera}}");
-		$('#idZona').val("{{$infoLugarHechos->idZona}}");
+		$('#idLugar').val("{{$infoLugarHechos->idLugar}}").trigger('change');
+		$('#calleTrasera').val("{{$infoLugarHechos->calleTrasera }}");
+		$('#idZona').val("{{$infoLugarHechos->idZona}}").trigger('change');
 		$('#puntoReferencia').val("{{$infoLugarHechos->puntoReferencia}}");
-		$('#idEstado').val("{{$infoLugarHechos->idEstado}}");
-		$('#idMunicipio').val("{{$infoLugarHechos->idMunicipio}}");
-		$('#idLocalidad').val("{{$infoLugarHechos->idLocalidad}}");
-		$('#idColonia').val("{{$infoLugarHechos->idColonia}}");
+		$('#idEstado').val("{{$infoLugarHechos->idEstado}}").trigger('change');
+		$('#idMunicipio').val("{{$infoLugarHechos->idMunicipio}}").trigger('change');
+		$('#idLocalidad').val("{{$infoLugarHechos->idLocalidad}}").trigger('change');
+		$('#idColonia').val("{{$infoLugarHechos->idColonia}}").trigger('change');
 		$('#calle').val("{{$infoLugarHechos->idColonia}}");
 		$('#numExterno').val("{{$infoLugarHechos->idColonia}}");
-		$('#numInterno').val("{{$infoLugarHechos->idColonia}}"); --}}
-
-
+		$('#numInterno').val("{{$infoLugarHechos->idColonia}}");
 	@endisset
 
 
