@@ -42,7 +42,6 @@
     <![endif]-->
     <script src="{{ asset('js/forms.js') }}"></script>
     <script src="{{ asset('js/pestañas-animadas.js') }}"></script>
-    
 @endpush
 
 
@@ -64,5 +63,4 @@
     $('form').sisyphus({
         excludeFields: $( 'input[name=_token]')
     });
-    
 @endpush

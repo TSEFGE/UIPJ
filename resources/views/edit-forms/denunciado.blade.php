@@ -168,11 +168,11 @@
     <script src="{{ asset('js/selects/domicilio-notif.js') }}"></script>
     <script src="{{ asset('js/selects/domicilio-den-conocido.js') }}"></script>
 	<script src="{{ asset('js/selects/sisy.js') }}"></script>  --}}
+	<script src="{{ asset('js/curp.js') }}"></script>
+	<script src="{{ asset('js/rfcFisico.js') }}"></script>
+	<script src="{{ asset('js/rfcMoral.js') }}"></script>
+	<script src="{{ asset('js/ajaxCurpEdit.js') }}"></script>
 	<script src="{{ asset('js/validations/tab-denunciado.js') }}"></script>
-
-	@include('fields.rfcMoral')
-    @include('fields.rfcFisico')
-	@include('fields.ajaxCurpEdit')
 
 @endpush
 
@@ -280,4 +280,4 @@
 
 @endpush
 
-<script src="{{ asset('js/curp.js') }}"></script>
+

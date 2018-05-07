@@ -218,36 +218,37 @@
         module.exports = generaCurp;
     }
 }(this));
+
 $("#nombres").focusout(function() {
     toastr.clear();
-    obtenerCURP();
-    obtenerRFCFISICA();
+    obtenerCurp();
+    obtenerRfcFisica();
 });
 $("#primerAp").focusout(function() {
     toastr.clear();
-    obtenerCURP();
-    obtenerRFCFISICA();
+    obtenerCurp();
+    obtenerRfcFisica();
 });
 $("#segundoAp").focusout(function() {
     toastr.clear();
-    obtenerCURP();
-    obtenerRFCFISICA();
+    obtenerCurp();
+    obtenerRfcFisica();
 });
 $("#sexo").change(function() {
     toastr.clear();
-    obtenerCURP();
+    obtenerCurp();
 });
 $("#fechaNacimiento").focusout(function() {
     toastr.clear();
-    obtenerCURP();
-    obtenerRFCFISICA();
+    obtenerCurp();
+    obtenerRfcFisica();
 });
 $("#idEstadoOrigen").change(function() {
     toastr.clear();
-    obtenerCURP();
+    obtenerCurp();
 });
 
-function obtenerCURP() {
+function obtenerCurp() {
 	nombre = $("#nombres").val().toUpperCase();
 	apellidoPaterno = $("#primerAp").val().toUpperCase();
 	apellidoMaterno = $("#segundoAp").val().toUpperCase();

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
@@ -9,7 +8,9 @@
 	<link rel="icon" href="{{ asset('img/iconofge.png') }}">
 	<!-- CSRF Token -->
 	<meta name="csrf-token" content="{{ csrf_token() }}">
-	@include('template.notAllowedScript')
+	@routes
+	<script src="{{ asset('js/cookie.min.js')}}" ></script>
+	<script src="{{ asset('js/notAllowed.js') }}"></script>
 	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/bootstrap/css/bootstrap.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/font-awesome/css/font-awesome.css') }}">
 	<!-- Theme style -->
@@ -75,31 +76,32 @@
 
 		<!-- Main Footer -->
 	</div>
-	@routes
+	
 	<script src="{{ asset('plugins/jquery/js/jquery-3.2.1.min.js')}}" ></script>
 	<script src="{{ asset('plugins/bootstrap/js/bootstrap.min.js')}}" ></script>
 	<script src="{{ asset('plugins/popper/js/popper.min.js')}}" ></script>
 	<script src="{{ asset ('plugins/sweetalert/js/sweetalert.min.js')}}"></script>
 	<script src="{{ asset('plugins/cookie/js.cookie.min.js')}}" ></script>
 	<!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+	<script src="{{ asset('plugins/core/js/core.min.js') }}"></script>
 	<!-- REQUIRED SCRIPTS -->
 	<!-- Bootstrap -->
 	<script src="{{ asset('admin/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 	<!-- AdminLTE App -->
 	<script src="{{ asset('admin/dist/js/adminlte.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('plugins/idle-timer/js/idle-timer.min.js') }}"></script>
+	@auth
+		<script src="{{ asset('js/expireSession.js') }}"></script>
+	@endif
 	<script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
 
 	@stack('scripts')
 	<script type="text/javascript">
 		$(document).ready(function() {
 			@stack('docready-js')
-
 		});
 	</script>
-
-	@include('template.scriptExpireSession')
+	
 	@include('sweet::alert')
 	@include('template.partials.footer')
 </body>

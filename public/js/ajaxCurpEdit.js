@@ -1,8 +1,10 @@
-@push('scripts')
-<script type="text/javascript">
-	$("#curp").on("change focusout", function() {
-		var curp=$(this).val();
-		$.get(route('comprobar.curp',curp), function(response, estado){
+$("#curp").on("change focusout", function() {
+	var curp=$(this).val();
+	if(curp != ""){
+		//var id='{{$personales->idPersona}}';
+		var id = $('input[name=idPersona]').val();
+		console.log(id);
+		$.get(route('comprobarEditar.curp',{curp: curp, id: id}), function(response, estado){
 			if(response.res==true){
 				console.log('true')
 				swal({
@@ -16,6 +18,5 @@
 				});
 			}
 		});
-	});
-</script>
-@endpush
+	}
+});

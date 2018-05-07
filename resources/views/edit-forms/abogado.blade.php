@@ -104,11 +104,10 @@
 			<script src="{{ asset('js/selects/domicilio-trab.js') }}"></script>
 			<script src="{{ asset('js/selects/sisy.js') }}"></script>
 			<script src="{{ asset('js/validations/tab-abogado.js') }}"></script>
-			<script src="{{ asset('js/curp.js') }}"></script>
 			<script src="{{ asset('js/edit-forms/abogado-edit.js') }}"></script>
-			@include('fields.ajaxCurpEdit')
-			@include('fields.rfcFisico')
-
+			<script src="{{ asset('js/curp.js') }}"></script>
+			<script src="{{ asset('js/rfcFisico.js') }}"></script>
+			<script src="{{ asset('js/ajaxCurpEdit.js') }}"></script>
 			@endpush
 
 			@push('docready-js')

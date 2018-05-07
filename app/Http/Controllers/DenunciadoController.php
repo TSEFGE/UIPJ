@@ -398,6 +398,7 @@ class DenunciadoController extends Controller
             } elseif ($request->esEmpresa == 1) {
                 $persona            = new Persona();
                 $persona->nombres   = $request->nombres2;
+                $persona->fechaNacimiento = $fechaAltaEmpresa;
                 $persona->rfc       = $request->rfc2 . $request->homo2;
                 $persona->esEmpresa = 1;
                 $persona->save();
@@ -706,7 +707,7 @@ class DenunciadoController extends Controller
         }
         //Persona física
         if ($request->esEmpresa == 0) {
-            $persona = Persona::where('curp', $request->curp)->get();
+            $persona = Persona::where('curp', $request->curp)->where('id', '!=', $request->idPersona)->get();
             if ($persona->isNotEmpty()) {
                 Alert::error('Ya existe una persona registrada con ese CURP.', 'Error')->persistent("Aceptar");
                 return back()->withInput();
@@ -902,6 +903,7 @@ class DenunciadoController extends Controller
         } elseif ($request->esEmpresa == 1) {
             $persona            = Persona::find($request->idPersona);
             $persona->nombres   = $request->nombres2;
+            $persona->fechaNacimiento = $fechaAltaEmpresa;
             $persona->rfc       = $request->rfc2 . $request->homo2;
             $persona->esEmpresa = 1;
             $persona->save();

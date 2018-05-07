@@ -235,5 +235,6 @@ class DelitoController extends Controller
         //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
          */
         Alert::success('Delito actualizado con éxito', 'Hecho')->persistent("Aceptar");
+        return redirect()->route('edit.delito', ['idCarpeta' => $request->idCarpeta, '$id' => $request->id]);
     }
 }

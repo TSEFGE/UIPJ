@@ -6,6 +6,7 @@ use Alert;
 use App\Models\Bitacora;
 use App\Models\Carpeta;
 use App\Models\ExtraDenunciado;
+use App\Models\VariablesPersona;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -115,6 +116,29 @@ class DefensaController extends Controller
 
     public function update(Request $request, $id)
     {
-        //
+        //dd($request->all());
+        $carpetaNueva = Carpeta::where('id', $request->idCarpeta)->where('idFiscal', Auth::user()->id)->get();
+        $var = VariablesPersona::where('id', $request->idInvolucrado)->get();
+        if ($carpetaNueva->isEmpty() && $var->isEmpty()) {
+            return redirect()->route('home');
+        }
+
+        $idAbogado     = $request->idAbogado;
+        //$tipo          = $request->tipo;
+        $idInvolucrado = $request->idInvolucrado;
+        $xd            = DB::table('extra_denunciante')->select('id')->where('idVariablesPersona', $idInvolucrado)->get();
+        if (count($xd) > 0) {
+            DB::table('extra_denunciante')->where('idVariablesPersona', $idInvolucrado)->update(['idAbogado' => $idAbogado]);
+            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_denunciante', 'accion' => 'update', 'descripcion' => 'Se ha reasignado un abogado a un denunciante.', 'idFilaAccion' => $xd[0]->id]);
+        } else {
+            DB::table('extra_denunciado')->where('idVariablesPersona', $idInvolucrado)->update(['idAbogado' => $idAbogado]);
+            $idExtraDenunciado = ExtraDenunciado::where('idVariablesPersona', '=', $idInvolucrado)->first();
+            //dd($idExtraDenunciado);
+            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_denunciado', 'accion' => 'update', 'descripcion' => 'Se ha reasignado un abogado a un denunciado.', 'idFilaAccion' => $idExtraDenunciado->id]);
+        }
+
+        Alert::success('Defensa reasignada con éxito', 'Hecho')->persistent("Aceptar");
+        //return redirect()->route('carpeta', $request->idCarpeta);
+        return redirect()->route('new.defensa', $request->idCarpeta);
     }
 }

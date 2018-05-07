@@ -121,8 +121,8 @@
 	<script src="{{ asset('js/selects/sisy.js') }}"></script>
 	<script src="{{ asset('js/validations/tab-testigo.js') }}"></script>
 	<script src="{{ asset('js/curp.js') }}"></script>
-	@include('fields.rfcFisico')
-	@include('fields.ajaxCurpEdit')
+	<script src="{{ asset('js/rfcFisico.js') }}"></script>
+	<script src="{{ asset('js/ajaxCurpEdit.js') }}"></script>
 
 @endpush
 

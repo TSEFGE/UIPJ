@@ -24,8 +24,6 @@ use App\Models\Persona;
 use App\Models\VariablesPersona;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-//use uipj\rfc\src\RfcBuilder;
-use RFC\RfcBuilder;
 
 class DenuncianteController extends Controller
 {
@@ -596,7 +594,7 @@ class DenuncianteController extends Controller
         }
 
         if ($request->esEmpresa == 0) {
-            $persona = Persona::where('curp', $request->curp)->get();
+            $persona = Persona::where('curp', $request->curp)->where('id', '!=', $request->idPersona)->get();
             if ($persona->isNotEmpty()) {
                 Alert::error('Ya existe una persona registrada con ese CURP.', 'Error')->persistent("Aceptar");
                 return back()->withInput();
@@ -885,32 +883,4 @@ class DenuncianteController extends Controller
         //
     }
 
-    public function rfcMoral(Request $request)
-    {
-        $nombre = $request->nombre;
-        $dia    = $request->dia;
-        $mes    = $request->mes;
-        $ano    = $request->ano;
-
-        $builder = new RfcBuilder();
-
-        $rfc = $builder->legalName($nombre)
-            ->creationDate($dia, $mes, $ano)
-            ->build()
-            ->toString();
-        return ['res' => $rfc];
-    }
-
-    public function rfcFisico(Request $request)
-    {
-        $builder = new RfcBuilder();
-        $rfc     = $builder->name($request->nombre)
-            ->firstLastName($request->apPaterno)
-            ->secondLastName($request->apMaterno)
-            ->birthday($request->dia, $request->mes, $request->año)
-            ->build()
-            ->toString();
-
-        return ['res' => $rfc];
-    }
 }

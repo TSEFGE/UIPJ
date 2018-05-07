@@ -139,9 +139,9 @@
 	<script src="{{ asset('js/selects/sisy.js') }}"></script>
 	<script src="{{ asset('js/validations/tab-denunciante.js') }}"></script>
 	<script src="{{ asset('js/curp.js') }}"></script>
-	@include('fields.rfcMoral');
-    @include('fields.rfcFisico')
-	@include('fields.ajaxCurp')
+	<script src="{{ asset('js/rfcFisico.js') }}"></script>
+	<script src="{{ asset('js/rfcMoral.js') }}"></script>
+	<script src="{{ asset('js/ajaxCurp.js') }}"></script>
 @endpush
 
 @push('docready-js')
@@ -163,26 +163,19 @@
         "hideMethod": "fadeOut"
     }
     
-	
-
 	var victima1 =localStorage.getItem('[id=undefined][name=undefined][id=esVictima1][name=esVictima]');
 	var victima2 =localStorage.getItem('[id=undefined][name=undefined][id=esVictima2][name=esVictima]');
 	if (victima1 == 1){
-			$("#esVictima1").attr('checked', true);
-			
-			
-		} else if (victima2 == 0){
-			$("#esVictima2").attr('checked', true);
-			
-		}	
-		
+		$("#esVictima1").attr('checked', true);
+	} else if (victima2 == 0){
+		$("#esVictima2").attr('checked', true);
+	}	
 
-		$('input[type=radio][name=esVictima]').change(function() {
-				if (this.value == 0) {
-					swal("Atención", "Ha seleccionado registrar un denunciante como ofendido .", "warning")
-				} else if (this.value == 1) {
-					swal("Atención", "Ha seleccionado registrar un denunciante como victima.", "warning")
-				}
-			});
-		
+	$('input[type=radio][name=esVictima]').change(function() {
+		if (this.value == 0) {
+			swal("Atención", "Ha seleccionado registrar un denunciante como ofendido .", "warning")
+		} else if (this.value == 1) {
+			swal("Atención", "Ha seleccionado registrar un denunciante como victima.", "warning")
+		}
+	});	
 @endpush
