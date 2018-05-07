@@ -140,8 +140,8 @@
 	<script src="{{ asset('js/selects/sisy.js') }}"></script>--}}
 	<script src="{{ asset('js/validations/tab-denunciante.js') }}"></script>
 	<script src="{{ asset('js/curp.js') }}"></script>
-	@include('fields.rfcMoral');
-	@include('fields.rfcFisico')
+	<script src="{{ asset('js/rfcFisico.js') }}"></script>
+	<script src="{{ asset('js/rfcMoral.js') }}"></script>
 	@include('fields.ajaxCurpEdit')
 
 	@endpush

@@ -107,8 +107,7 @@
 			<script src="{{ asset('js/curp.js') }}"></script>
 			<script src="{{ asset('js/edit-forms/abogado-edit.js') }}"></script>
 			@include('fields.ajaxCurpEdit')
-			@include('fields.rfcFisico')
-
+			<script src="{{ asset('js/rfcFisico.js') }}"></script>
 			@endpush
 
 			@push('docready-js')
