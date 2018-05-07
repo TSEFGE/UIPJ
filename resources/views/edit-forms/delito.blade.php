@@ -32,7 +32,9 @@
 		<div class="col-12">
 			<div class="row">
 				@if(!empty($idCarpeta))
-					{!! Form::hidden('idCarpeta', $idCarpeta) !!}
+				{!! Form::hidden('idCarpeta', $idCarpeta) !!}
+				{!! Form::hidden('idTipifDelito', ($infoComision->idTipifDelito)) !!}
+				{!! Form::hidden('idDomicilio', ($infoComision->idDomicilio)) !!}s
 				@endif
 			</div>
 
