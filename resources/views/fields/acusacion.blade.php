@@ -26,8 +26,8 @@
 	</div>
 	<div class="col-4">
 		<div class="form-group">
-			{!! Form::label('idDenuciado', 'Investigado', ['class' => 'col-form-label-sm']) !!}
-			<select name="idDenunciado" id="idDenuncidoe" class="form-control form-control-sm" required>
+			{!! Form::label('idDenunciado', 'Investigado', ['class' => 'col-form-label-sm']) !!}
+			<select name="idDenunciado" id="idDenunciado" class="form-control form-control-sm" required>
 				<option value="">Seleccione investigado</option>
 				@foreach($denunciados as $denunciado)
 				<option value="{{ $denunciado->id }}">{{ $denunciado->nombres." ".$denunciado->primerAp." ".$denunciado->segundoAp }}</option>

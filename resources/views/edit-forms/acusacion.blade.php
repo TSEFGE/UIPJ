@@ -49,11 +49,11 @@
 		$("#idDenunciante").addClass("vacio");
 		$("#idTipifDelito").addClass("vacio");
 		$("#idDenuciado").addClass("vacio");	
-		$('#idDenunciante').val("{{ $denunciante->idExtraDenunciante }}").trigger('change');
-		$('#idTipifDelito').val({{ $delito->idTipifDelito }}).trigger('change');
-		$('#idDenuciado').val({{ $denunciado->idExtraDenunciado}}).trigger('change');
+		$('#idDenunciante').val("{{ $denunciante->idExtraDenunciante }}");
+		$('#idTipifDelito').val({{ $delito->idTipifDelito }});
+		$('#idDenunciado').val({{ $denunciado->idExtraDenunciado}});
 
-		@endpush
+@endpush
 		
 
 
