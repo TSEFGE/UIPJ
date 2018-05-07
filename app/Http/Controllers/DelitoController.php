@@ -135,6 +135,8 @@ class DelitoController extends Controller
             ->where('tipif_delito.id', '=', $id)
             ->get()->first();
 
+        //   dump($infoComision);
+
         $infoLugarHechos = DB::table('domicilio')
             ->join('tipif_delito', 'tipif_delito.idDomicilio', '=', 'domicilio.id')
             ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
