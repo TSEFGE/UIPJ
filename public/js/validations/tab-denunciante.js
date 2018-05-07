@@ -2,9 +2,7 @@ $(document).ready(function () {
     $('form').isValid();
 });
 $("#btn-submit").prop('disabled',true);
-$('input[type=text]').addClass('vacio');
-$('textarea').addClass('vacio');
-$('select').addClass('vacio');
+
 totalesP=0;
  $('#tdenunciante.nav-tabs a').on('shown.bs.tab', function (e) {
      var index = $($(this).attr('href')).index();
