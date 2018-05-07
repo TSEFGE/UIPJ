@@ -8,7 +8,7 @@
 @endpush
 
 @section('contenido')
-{!! Form::open(['route' => 'store.denunciante', 'method' => 'POST', 'id'=>'denuncianteF']) !!}
+{!! Form::open(['route' => 'store.denunciante', 'method' => 'POST', 'id'=>'denuncianteF','data-validation-event'=>'load']) !!}
 {{ csrf_field() }}
 <div class="card-header">
 	<div class="row">

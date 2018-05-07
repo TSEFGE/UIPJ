@@ -3,7 +3,8 @@ $(document).ready(function () {
 });
 $("#btn-submit").prop('disabled',true);
 
-totalesP=0;
+$(document).ready(function () {   
+
  $('#tdenunciante.nav-tabs a').on('shown.bs.tab', function (e) {
      var index = $($(this).attr('href')).index();
      switch(index){
@@ -187,5 +188,6 @@ $('#tdenunciante.nav-tabs a').on('hidden.bs.tab', function(event){
     } 
     console.log( "tabs", tabs);
   });
+});
   console.log( "correcto", correcto);
     
