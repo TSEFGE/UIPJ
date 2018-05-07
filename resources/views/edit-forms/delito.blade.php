@@ -107,7 +107,7 @@
 		$('#idAgrupacion2').val("{{$infoComision->idAgrupacion2}}").trigger('change');
 		$('#fecha').datetimepicker('format', "DD-MM-YYYY");
 		$('#fecha').datetimepicker('date', moment("{{ $infoComision->fecha}}").format("DD-MM-YYYY"));
-	//$('#fecha').val("{{$infoComision->fecha}}");		    
+		//$('#fecha').val("{{$infoComision->fecha}}");		    
 		$('#hora').val(horaE);
 		$('#idTipoArma').val("{{$infoComision->idTipoArma}}").trigger('change');
 		$('#idArma').val("{{$infoComision->idArma}}").trigger('change');
