@@ -1,6 +1,27 @@
 $("#btn-submit").prop('disabled',true);
+
+$('input').addClass('vacio');
+$('input').prop('data-validation-event', 'ready');
+$('select').addClass('vacio');
+$('#collapsePersonales1').isValid();
+
  $('#tdenunciante.nav-tabs a').on('shown.bs.tab', function (e) {
-     $('#denuncianteF').isValid();
+     var index = $($(this).attr('href')).index();
+     switch(index){
+         case 0:
+         $('#collapsePersonales1').isValid();        
+         break;
+         case 1:        
+         $('#collapseDir1').isValid();       
+         break;
+         case 2:
+         $('#collapseTrab1').isValid();
+         break;
+         case 3:
+          $('#collapseNotifs1').isValid();
+         break;
+     }
+     
  });
 $('#tdenunciante.nav-tabs a').on('hidden.bs.tab', function(event){
     //event.preventDefault();

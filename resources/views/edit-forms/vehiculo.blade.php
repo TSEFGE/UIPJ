@@ -1,4 +1,4 @@
-@extends('template.form')
+@extends('template.form-edit')
 
 @section('title', 'Editar vehículo')
 
@@ -8,7 +8,8 @@
 
 @section('contenido')
 {!! Form::open(['route' => 'store.vehiculo', 'method' => 'POST'])  !!}
-{{ csrf_field() }}
+<input type="hidden" name="idCarpeta" value="{{$idCarpeta}}">
+<input type="hidden" name="idVehiculo" value="{{$vehiculo->idVehiculo}}">
 <div class="card-header">
 <div class="row">
 		<div class="col">
@@ -16,13 +17,13 @@
 				{{--Aqui van radios, etc --}}
 			</div>
 		</div>
-		<div class="col">	
+		<div class="col">
 			<div class="text-right">
 				@include('forms.buttons')
 			</div>
 		</div>
 	</div>
-</div> 
+</div>
 	@include('forms.errores')
 	<div class=" card-body boxone">
 	<div class="row no-gutters">
@@ -50,4 +51,25 @@
     <script src="{{ asset('js/selects/async.js') }}"></script>
     <script src="{{ asset('js/selects/vehiculo.js') }}"></script>
     <script src="{{ asset('js/selects/sisy.js') }}"></script>
+@endpush
+
+
+@push('docready-js')
+	$('#placas').val('{{$vehiculo->placas}}');
+	$('#idTipifDelito').val(1).trigger('change');
+	$('#idEstado').val('{{$vehiculo->idEstado}}').trigger('change');
+	$('#idMarca').val('{{$vehiculo->idMarca}}').trigger('change');
+	$('#idSubmarca').val('{{$vehiculo->idSubmarca}}').trigger('change');
+	$('#modelo').val('{{$vehiculo->modelo}}');
+	$('#idColor').val('{{$vehiculo->idColor}}').trigger('change');
+	$('#nrpv').val('{{$vehiculo->nrpv}}');
+	$('#numSerie').val('{{$vehiculo->numSerie}}');
+	$('#numMotor').val('{{$vehiculo->numMotor}}');
+	$('#permiso').val('{{$vehiculo->permiso}}');
+	$('#idClaseVehiculo').val('{{$vehiculo->idClaseVehiculo}}').trigger('change');
+	$('#idTipoVehiculo').val('{{$vehiculo->idTipoVehiculo}}').trigger('change');
+	$('#idTipoUso').val('{{$vehiculo->idTipoUso}}').trigger('change');
+	$('#idProcedencia').val('{{$vehiculo->idProcedencia}}').trigger('change');
+	$('#idAseguradora').val('{{$vehiculo->idAseguradora}}').trigger('change');
+	$('#senasPartic').val('{{$vehiculo->senasPartic}}');
 @endpush

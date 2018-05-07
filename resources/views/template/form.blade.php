@@ -58,6 +58,7 @@
     });
 
     $.validate({
+        validateOnEvent: true,
         lang : 'es'
     });
     $('form').sisyphus({

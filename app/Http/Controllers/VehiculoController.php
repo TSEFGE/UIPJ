@@ -43,10 +43,10 @@ class VehiculoController extends Controller
                 ->get();
             $cont = 0;
             foreach ($tipifdelitos as $delito => $nombre) {
-
                 if ($tipifdelitos[$cont]->desagregacion1 == 'SIN AGRUPACION') {
                     $tipifdelitos[$cont]->desagregacion1 = " ";
-                }if ($tipifdelitos[$cont]->desagregacion2 == 'SIN AGRUPACION') {
+                }
+                if ($tipifdelitos[$cont]->desagregacion2 == 'SIN AGRUPACION') {
                     $tipifdelitos[$cont]->desagregacion2 = " ";
                 }
                 $cont = $cont + 1;
@@ -158,6 +158,18 @@ class VehiculoController extends Controller
         }
 
         $numCarpeta   = $carpetaNueva[0]->numCarpeta;
+        // $tipifdelitos = DB::table('tipif_delito')
+       //     ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
+       //     ->select('tipif_delito.id', 'cat_delito.id as idDelito', 'cat_delito.nombre as delito')
+       //     ->where('tipif_delito.idCarpeta', '=', $idCarpeta)->get();
+       //->whereIn('idDelito', [130, 131, 132, 133, 134, 135, 242, 243, 244, 245, 227])
+       $aseguradoras = CatAseguradora::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+       $clasesveh    = CatClaseVehiculo::orderBy('nombre', 'ASC')->pluck('nombre', 'id');        $colores      = CatColor::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $estados      = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluk('nombre', 'id');
+        $marcas       = CatMarca::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $procedencias = CatProcedencia::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $tiposuso     = CatTipoUso::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+
         $tipifdelitos = DB::table('tipif_delito')
             ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
             ->join('cat_agrupacion1', 'cat_agrupacion1.id', '=', 'tipif_delito.idAgrupacion1')
@@ -168,7 +180,6 @@ class VehiculoController extends Controller
             ->get();
         $cont = 0;
         foreach ($tipifdelitos as $delito => $nombre) {
-
             if ($tipifdelitos[$cont]->desagregacion1 == 'SIN AGRUPACION') {
                 $tipifdelitos[$cont]->desagregacion1 = " ";
             }if ($tipifdelitos[$cont]->desagregacion2 == 'SIN AGRUPACION') {
@@ -176,27 +187,21 @@ class VehiculoController extends Controller
             }
             $cont = $cont + 1;
         }
-        $aseguradoras = CatAseguradora::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-        $clasesveh    = CatClaseVehiculo::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-        $colores      = CatColor::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-        $estados      = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-        $marcas       = CatMarca::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-        $procedencias = CatProcedencia::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-        $tiposuso     = CatTipoUso::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
 
         $vehiculo = DB::table('vehiculo')
             ->join('cat_submarca', 'cat_submarca.id', '=', 'vehiculo.idSubmarca')
             ->join('cat_tipo_vehiculo', 'cat_tipo_vehiculo.id', '=', 'vehiculo.idTipoVehiculo')
-            ->select('vehiculo.idTipifDelito', 'vehiculo.placas', 'vehiculo.idEstado', 'vehiculo.idSubmarca', 'vehiculo.modelo', 'vehiculo.nrpv', 'vehiculo.idColor', 'vehiculo.permiso', 'vehiculo.numSerie', 'vehiculo.numMotor', 'vehiculo.idTipoVehiculo', 'vehiculo.idTipoUso', 'vehiculo.senasPartic', 'vehiculo.idProcedencia', 'vehiculo.idAseguradora', 'cat_submarca.idMarca', 'cat_tipo_vehiculo.idClaseVehiculo')
+            ->select('vehiculo.id as idVehiculo', 'vehiculo.idTipifDelito', 'vehiculo.placas', 'vehiculo.idEstado', 'vehiculo.idSubmarca', 'vehiculo.modelo', 'vehiculo.nrpv', 'vehiculo.idColor', 'vehiculo.permiso', 'vehiculo.numSerie', 'vehiculo.numMotor', 'vehiculo.idTipoVehiculo', 'vehiculo.idTipoUso', 'vehiculo.senasPartic', 'vehiculo.idProcedencia', 'vehiculo.idAseguradora', 'cat_submarca.idMarca', 'cat_tipo_vehiculo.idClaseVehiculo')
             ->where('vehiculo.id', '=', $id)
             ->get()->first();
 
+        //dump($vehiculo); 
         return view('edit-forms.vehiculo')->with('idCarpeta', $idCarpeta)
             ->with('numCarpeta', $numCarpeta)
-            ->with('id', $id)
             ->with('vehiculo', $vehiculo)
             ->with('tipifdelitos', $tipifdelitos)
             ->with('aseguradoras', $aseguradoras)
+            ->with('tipifdelitos', $tipifdelitos)
             ->with('clasesveh', $clasesveh)
             ->with('colores', $colores)
             ->with('estados', $estados)
