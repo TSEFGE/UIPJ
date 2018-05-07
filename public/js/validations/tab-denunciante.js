@@ -60,7 +60,7 @@ $('#tdenunciante.nav-tabs a').on('hidden.bs.tab', function(event){
                 $("#tab1").show();                             
                 $("#tab1").html(countvacio); 
             } 
-             $('#collapsePersonales1').isValid();
+            
             break;                                
             case 1:
             var countvacio = $('#collapseDir1 .vacio').length; 
