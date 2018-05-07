@@ -172,6 +172,7 @@ class AcusacionController extends Controller
         $acusacion->idDenunciante = $request->idDenunciante;
         $acusacion->idTipifDelito = $request->idTipifDelito;
         $acusacion->idDenunciado  = $request->idDenunciado;
+        $acusacion->save();
 
         Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'acusacion', 'accion' => 'update', 'descripcion' => 'Se han actualizado  denuncia de la victima ' . $request->idDenunciante . ' por el Delito de ' . $request->idTipifDelito . ' al investigado: ' . $request->idDenunciado, 'idFilaAccion' => $acusacion->id]);
         /*
