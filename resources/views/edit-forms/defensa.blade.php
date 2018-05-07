@@ -1,6 +1,6 @@
 @extends('template.form')
 
-@section('title', 'Agregar defensa')
+@section('title', 'Editar defensa')
 
 @section('contenido')
 {!! Form::open(['route' => ['update.defensa', $idCarpeta, $id], 'method' => 'PUT'])  !!}
@@ -11,6 +11,10 @@
 				<div class="text-left">
 					{{--Aqui van radios, etc --}}
 				</div>
+				{!! Form::hidden('idAbogado', ($idAbogado)) !!} 
+				{!! Form::hidden('idInvolucrado', ($idInvolucrado)) !!} 
+
+
 			</div>
 			
 			<div class="col">	
@@ -37,4 +41,9 @@
 	<script src="{{ asset('js/selects/async.js') }}"></script>
     <script src="{{ asset('js/selects/defensa.js') }}"></script>
     <script src="{{ asset('js/selects/sisy.js') }}"></script>
+@endpush
+@push('docready-js')
+	$('#idAbogado').val({{$idAbogado}}).trigger('change');
+	$('#idInvolucrado').val({{$idInvolucrado}}).trigger('change');
+
 @endpush
