@@ -1,7 +1,8 @@
 <aside class="main-sidebar  elevation-4 barra-izquierda collapsado" id="barra">
 	<!-- Brand Logo -->
 	<a href="{{ url('/home') }}" class="brand-link">
-		<img src="https://rawcdn.githack.com/Romaincks/assets/master/img/only-escudo-ver.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+		{{--<img src="https://rawcdn.githack.com/Romaincks/assets/master/img/only-escudo-ver.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"--}}
+		<img src="{{ asset('img/only-escudo-ver.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
 		style="opacity: .8">
 		<span class="brand-text font-weight-light">FGE | Veracruz</span>
 	</a>

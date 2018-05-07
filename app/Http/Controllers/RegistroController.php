@@ -1073,6 +1073,10 @@ class RegistroController extends Controller
     {
         return Persona::buscarCURP($request->curp);
     }
+    public function buscarCURPEdit(Request $request)
+    {
+        return Persona::buscarCURPEdit($request->curp, $request->id);
+    }
 
     public function contador()
     {
@@ -1080,5 +1084,4 @@ class RegistroController extends Controller
         dd($contador);
         return $contador;
     }
-
 }

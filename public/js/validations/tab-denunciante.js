@@ -1,15 +1,37 @@
+$(document).ready(function () {
+    $('form').isValid();
+});
 $("#btn-submit").prop('disabled',true);
+$('input[type=text]').addClass('vacio');
+$('textarea').addClass('vacio');
+$('select').addClass('vacio');
+totalesP=0;
  $('#tdenunciante.nav-tabs a').on('shown.bs.tab', function (e) {
-     $('#denuncianteF').isValid();
+     var index = $($(this).attr('href')).index();
+     switch(index){
+         case 0:         
+         $('#collapsePersonales1').isValid();            
+         break;
+         case 1:        
+         $('#collapseDir1').isValid();       
+         break;
+         case 2:
+         $('#collapseTrab1').isValid();
+         break;
+         case 3:
+          $('#collapseNotifs1').isValid();
+         break;
+     }
+     
  });
 $('#tdenunciante.nav-tabs a').on('hidden.bs.tab', function(event){
     //event.preventDefault();
-        var index= $($(this).attr('href')).index();       
+        var index= $($(this).attr('href')).index();      
         
         switch(index) {
-            case 0:  
+            case 0:   
             var countvacio = $('#collapsePersonales1 .vacio').length;
-            totales=countvacio ;                                                      
+            totalesP = countvacio;
             var count = $('#collapsePersonales1 .error').length; 
             if (count==0){
                 $("#txtTab1").hide();
@@ -22,7 +44,7 @@ $('#tdenunciante.nav-tabs a').on('hidden.bs.tab', function(event){
             if (correctos==0){
                 $("#t1").hide();
             } 
-            else if( correctos ==totales){
+            else if( correctos ==totalesP){
                 $("#t1").show();
                 $("#t1").html('<i class="fa fa-check" aria-hidden="true"></i>');
                 $("#t1").addClass('correcto');
@@ -34,13 +56,13 @@ $('#tdenunciante.nav-tabs a').on('hidden.bs.tab', function(event){
                 $("#t1").removeClass('correcto');
             }                                 
             countvacio= countvacio-count-correctos;
-            if (countvacio == 0 || countvacio == totales){
+            if (countvacio == 0 || countvacio == totalesP){
                 $("#tab1").hide();
             } else{  
                 $("#tab1").show();                             
                 $("#tab1").html(countvacio); 
             } 
-                                            
+             $('#collapsePersonales1').isValid();
             break;                                
             case 1:
             var countvacio = $('#collapseDir1 .vacio').length; 

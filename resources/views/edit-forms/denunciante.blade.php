@@ -12,7 +12,7 @@
 {{ csrf_field() }}
 <div class="card-header">
 	<div class="row">
-		
+
 		<div class="col">
 			<div class="text-right">
 				@include('forms.buttons')
@@ -25,7 +25,7 @@
 <div class=" card-body boxone">
 	<div class="row no-gutters">
 		<div class="col-12">
-			<div class="row">			 
+			<div class="row">
 		 </div>
 		 <div class="" id="">
 			 <div id="denunciante">
@@ -35,20 +35,20 @@
 					<a class="nav-link tab active pestaña " id="p-personal" data-toggle="tab" href="#collapsePersonales1"><p id="personal" class="pestaña" ><i class="fa fa-user-circle-o" aria-hidden="true"></i></p>
 						<div id="espacio-notif"><span id="tab1" class="xvacio"></span>
 						 <span id="txtTab1" class="xerror"></span>
-						 <span id="t1" class="bien"></span></div>																
+						 <span id="t1" class="bien"></span></div>
 					 </a>
 				 </li>
 				 <li class="nav-item" id="datosDir">
 					<a class="nav-link" data-toggle="tab" id="p-direccion" href="#collapseDir1"><p id="direccion" class="pestaña"><i class="fa fa-address-card" aria-hidden="true"></i></p>
 						<div id="espacio-notif1"><span id="tab2" class="xvacio"></span>
 						 <span id="txtTab2" class="xerror"></span>
-						 <span id="t2" class="bien"></span></div>								
+						 <span id="t2" class="bien"></span></div>
 					 </a>
 				 </li>
 				 @if (isset ($personales) )
 				@if ( ($personales->esEmpresa) == 0)
 				 <li class="nav-item" id="datosTrab">
-					<a class="nav-link" data-toggle="tab"  href="#collapseTrab1"><p id="dtrabajo" class="pestaña"> <i class="fa fa-industry" aria-hidden="true"></i></p>									
+					<a class="nav-link" data-toggle="tab"  href="#collapseTrab1"><p id="dtrabajo" class="pestaña"> <i class="fa fa-industry" aria-hidden="true"></i></p>
 						<div id="espacio-notif2"><span id="tab3" class="xvacio"></span>
 						 <span id="txtTab3" class="xerror"></span>
 						 <span id="t3" class="bien"></span></div>
@@ -77,17 +77,17 @@
 			@endif
 			@if (isset ($personales) )
 				@if ( ($personales->esEmpresa) == 0)
-				@include('edit-fields.personales-fisica')							
+				@include('edit-fields.personales-fisica')
 				@include('fields.extra-denunciante')
 				@endif
 			@endif
-				
-			{{--@include('edit-fields.personales-fisica')							
-				@include('fields.extra-denunciante')--}}	
+
+			{{--@include('edit-fields.personales-fisica')
+				@include('fields.extra-denunciante')--}}
 			</div>
-			
+
 			<div class="tab-pane container" id="collapseDir1">
-				@include('fields.direcciones')				
+				@include('fields.direcciones')
 			</div>
 			@if (isset ($personales) )
 				@if ( ($personales->esEmpresa) == 0)
@@ -114,14 +114,14 @@
 		@endif
 	@endif
 	{!! Form::hidden('idNoficiacion', ($direccionNotif->idNotificacion)) !!}
-	
+
 	<!-- Fin pestañas -->
 </div>
 </div>
 </div>
 {!! Form::close() !!}
 @endsection
-	
+
 
 @push('scripts')
 	<script src="{{ asset('plugins/toastr/js/toastr.min.js')}}" ></script>
@@ -131,7 +131,7 @@
 	{{--<script src="{{ asset('js/persona.js') }}"></script>--}}
 	<script src="{{ asset('js/persona-moral.js') }}"></script>
 	{{--<script src="{{ asset('js/tipo-persona.js') }}"></script>
-	<script src="{{ asset('js/denunciante.js') }}"></script>--}}	
+	<script src="{{ asset('js/denunciante.js') }}"></script>--}}
 	<script src="{{ asset('js/selects/async.js') }}"></script>
 	<script src="{{ asset('js/selects/origen.js') }}"></script>
 	<script src="{{ asset('js/selects/domicilio.js') }}"></script>
@@ -142,11 +142,12 @@
 	<script src="{{ asset('js/curp.js') }}"></script>
 	@include('fields.rfcMoral');
 	@include('fields.rfcFisico')
-	@include('fields.ajaxCurp')
+	@include('fields.ajaxCurpEdit')
+
 	@endpush
 	<script>
-			
-				
+
+
 	</script>
 	@push('docready-js')
 	toastr.options = {
@@ -177,12 +178,12 @@
 			}
 		});
 	});
-	
+
 	$("#narracionUnoM").prop('disabled',true);
 	$("#narracionUnoM").hide();
 	$("#narracionUno").prop('disabled',true);
 	$("#narracionUno").hide();
-	var esEmpresa = $("input[name='esEmpresa']").val();	
+	var esEmpresa = $("input[name='esEmpresa']").val();
 	@if (isset ($personales) )
 		@if ( ($personales->esEmpresa) == 1)
 			var rfcMoral = $("input[name='rfc-edit']").val();
@@ -208,15 +209,15 @@
 			@endif
 			@endif
 			@if (isset ($personales) )
-			
+
 		@if ( ($personales->esEmpresa) == 0)
-		
+
 			var rfcFisica = $("input[name='rfc-edit']").val();
 			var rfc = rfcFisica.substr (0,10);
 			var homoclave = rfcFisica.substr(-3);
 			$('#nombres').val("{{ $personales->nombres }}");
 			$('#primerAp').val("{{ $personales->primerAp }}");
-			$('#segundoAp').val("{{ $personales->segundoAp }}");					
+			$('#segundoAp').val("{{ $personales->segundoAp }}");
 			$('#fechanac').datetimepicker('format', "DD-MM-YYYY");
 			$('#fechanac').datetimepicker('date', moment("{{ $personales->fechaNacimiento}}").format("DD-MM-YYYY"));
 			/*$("#fechanac").on("change.datetimepicker", function(e) {
@@ -233,7 +234,7 @@
 			});*/
 			$('#sexo').val("{{ $personales->sexo }}").trigger('change');
 			$('#idNacionalidad').val({{ $personales->idNacionalidad }}).trigger('change');
-			$('#idEstadoOrigen').val({{ $personales->idEstado}}).trigger('change');			
+			$('#idEstadoOrigen').val({{ $personales->idEstado}}).trigger('change');
 			$('#rfc').val(rfc);
 			$('#homo').val(homoclave);
 			$('#curp').val("{{$personales->curp}}");
@@ -244,8 +245,8 @@
 			$('#idEscolaridad').val({{$personales->idEscolaridad}}).trigger('change');
 			$('#telefono').val("{{$personales->telefono}}");
 			$('#motivoEstancia').val("{{$personales->motivoEstancia}}");
-			$('#idOcupacion').val({{$personales->idOcupacion}}).trigger('change');	
-			$('#idEstadoCivil').val({{$personales->idEstadoCivil}}).trigger('change');	
+			$('#idOcupacion').val({{$personales->idOcupacion}}).trigger('change');
+			$('#idEstadoCivil').val({{$personales->idEstadoCivil}}).trigger('change');
 			$('#docIdentificacion').val("{{$personales->docIdentificacion}}").trigger('change');
 			$('#numDocIdentificacion').val("{{$personales->numDocIdentificacion}}");
 			$('#calle').val("{{$direccion->calle}}");
@@ -267,6 +268,6 @@
 			console.log(homoclave);
 		@endif
 	@endif
-	
-	
+
+
 	@endpush

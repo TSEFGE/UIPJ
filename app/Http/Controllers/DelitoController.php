@@ -128,21 +128,25 @@ class DelitoController extends Controller
 
         $infoComision = DB::table('domicilio')
             ->join('tipif_delito', 'tipif_delito.idDomicilio', '=', 'domicilio.id')
-            ->select('tipif_delito.id as idTipifDelito', 'tipif_delito.idDomicilio as idDomicilio', 'tipif_delito.idDelito as idDelito', 'tipif_delito.idAgrupacion1 as  idAgrupacion1', 'tipif_delito.idAgrupacion2 as idAgrupacion2', 'tipif_delito.hora as hora', 'tipif_delito.fecha as fecha', 'tipif_delito.conViolencia as conViolencia', 'tipif_delito.idModalidad as idModalidad', 'tipif_delito.formaComision as formaComision', 'tipif_delito.consumacion as consumacion')
+            ->join('cat_arma', 'cat_arma.id', '=', 'tipif_delito.idArma')
+        //->join('cat_arma', 'cat_arma.idTipoArma', '=', 'cat_tipo_arma.id')
+            ->select('tipif_delito.id as idTipifDelito', 'tipif_delito.idDomicilio as idDomicilio', 'tipif_delito.idDelito as idDelito', 'tipif_delito.idAgrupacion1 as  idAgrupacion1', 'tipif_delito.idAgrupacion2 as idAgrupacion2', 'tipif_delito.hora as hora', 'tipif_delito.fecha as fecha', 'tipif_delito.conViolencia as conViolencia', 'tipif_delito.idModalidad as idModalidad', 'tipif_delito.formaComision as formaComision', 'tipif_delito.consumacion as consumacion', 'tipif_delito.idArma as idArma', 'tipif_delito.idPosibleCausa as idPosibleCausa', 'cat_arma.idTipoArma as idTipoArma')
             ->where('tipif_delito.idCarpeta', '=', $idCarpeta)
             ->where('tipif_delito.id', '=', $id)
             ->get()->first();
+
+        //   dump($infoComision);
 
         $infoLugarHechos = DB::table('domicilio')
             ->join('tipif_delito', 'tipif_delito.idDomicilio', '=', 'domicilio.id')
             ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
             ->join('cat_estado', 'cat_estado.id', '=', 'cat_municipio.idEstado')
-            ->select('domicilio.id as id', 'tipif_delito.idLugar as idLugar', 'tipif_delito.idZona as idZona', 'tipif_delito.entreCalle as entreCalle', 'tipif_delito.yCalle as yCalle', 'tipif_delito.calleTrasera as calleTrasera ', 'tipif_delito.puntoReferencia as puntoReferencia', 'cat_estado.id as idEstado', 'domicilio.idMunicipio as idMunicipio', 'domicilio.idLocalidad as idLocalidad', 'domicilio.idColonia as idColonia', 'domicilio.calle as calle', 'domicilio.numExterno as numExterno', 'domicilio.numInterno as numInterno')
+            ->select('domicilio.id as id', 'tipif_delito.idLugar as idLugar', 'tipif_delito.idZona as idZona', 'tipif_delito.entreCalle as entreCalle', 'tipif_delito.yCalle as yCalle', 'tipif_delito.calleTrasera as calleTrasera', 'tipif_delito.puntoReferencia as puntoReferencia', 'cat_estado.id as idEstado', 'domicilio.idMunicipio as idMunicipio', 'domicilio.idLocalidad as idLocalidad', 'domicilio.idColonia as idColonia', 'domicilio.calle as calle', 'domicilio.numExterno as numExterno', 'domicilio.numInterno as numInterno')
             ->where('tipif_delito.idCarpeta', '=', $idCarpeta)
             ->where('tipif_delito.id', '=', $id)
             ->get()->first();
 
-        dump($infoComision, $infoLugarHechos);
+        //dump($infoComision, $infoLugarHechos);
 
         return view('edit-forms.delito')
             ->with('idCarpeta', $idCarpeta)
