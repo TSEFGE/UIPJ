@@ -116,7 +116,6 @@ class DelitoController extends Controller
 
     public function edit($idCarpeta, $id)
     {
-
         $delits         = CatDelito::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $posiblescausas = CatPosibleCausa::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $estados        = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
@@ -132,7 +131,7 @@ class DelitoController extends Controller
             ->select('tipif_delito.id as idTipifDelito', 'tipif_delito.idDomicilio as idDomicilio', 'tipif_delito.idDelito as idDelito', 'tipif_delito.idAgrupacion1 as  idAgrupacion1', 'tipif_delito.idAgrupacion2 as idAgrupacion2', 'tipif_delito.hora as hora', 'tipif_delito.fecha as fecha', 'tipif_delito.conViolencia as conViolencia', 'tipif_delito.idModalidad as idModalidad', 'tipif_delito.formaComision as formaComision', 'tipif_delito.consumacion as consumacion')
             ->where('tipif_delito.idCarpeta', '=', $idCarpeta)
             ->where('tipif_delito.id', '=', $id)
-            ->get();
+            ->get()->first();
 
         $infoLugarHechos = DB::table('domicilio')
             ->join('tipif_delito', 'tipif_delito.idDomicilio', '=', 'domicilio.id')
@@ -141,7 +140,9 @@ class DelitoController extends Controller
             ->select('domicilio.id as id', 'tipif_delito.idLugar as idLugar', 'tipif_delito.idZona as idZona', 'tipif_delito.entreCalle as entreCalle', 'tipif_delito.yCalle as yCalle', 'tipif_delito.calleTrasera as calleTrasera ', 'tipif_delito.puntoReferencia as puntoReferencia', 'cat_estado.id as idEstado', 'domicilio.idMunicipio as idMunicipio', 'domicilio.idLocalidad as idLocalidad', 'domicilio.idColonia as idColonia', 'domicilio.calle as calle', 'domicilio.numExterno as numExterno', 'domicilio.numInterno as numInterno')
             ->where('tipif_delito.idCarpeta', '=', $idCarpeta)
             ->where('tipif_delito.id', '=', $id)
-            ->get();
+            ->get()->first();
+
+        dump($infoComision, $infoLugarHechos);
 
         return view('edit-forms.delito')
             ->with('idCarpeta', $idCarpeta)
@@ -157,11 +158,9 @@ class DelitoController extends Controller
             ->with('zonas', $zonas)
             ->with('infoComision', $infoComision)
             ->with('infoLugarHechos', $infoLugarHechos);
-
     }
     public function update(Request $request, $id)
     {
-
         $carpetaNueva = Carpeta::where('id', $request->idCarpeta)->where('idFiscal', Auth::user()->id)->get();
         $var          = TipifDelito::where('id', $id)->get();
         if ($carpetaNueva->isEmpty() && $var->isEmpty()) {
@@ -191,7 +190,7 @@ class DelitoController extends Controller
 
         $idD1 = $domicilio->id;
 
-        $tipifDelito                = new TipifDelito::find($id);
+        $tipifDelito                = TipifDelito::find($id);
         $tipifDelito->idCarpeta     = $request->idCarpeta;
         $tipifDelito->idDelito      = $request->idDelito;
         $tipifDelito->idAgrupacion1 = $request->idAgrupacion1;
@@ -233,5 +232,4 @@ class DelitoController extends Controller
          */
         Alert::success('Delito actualizado con éxito', 'Hecho')->persistent("Aceptar");
     }
-
 }

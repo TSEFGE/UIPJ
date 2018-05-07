@@ -75,7 +75,7 @@
 
 		<!-- Main Footer -->
 	</div>
-
+	@routes
 	<script src="{{ asset('plugins/jquery/js/jquery-3.2.1.min.js')}}" ></script>
 	<script src="{{ asset('plugins/bootstrap/js/bootstrap.min.js')}}" ></script>
 	<script src="{{ asset('plugins/popper/js/popper.min.js')}}" ></script>
@@ -91,7 +91,6 @@
 	<script type="text/javascript" src="{{ asset('plugins/idle-timer/js/idle-timer.min.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
 
-	@routes
 	@stack('scripts')
 	<script type="text/javascript">
 		$(document).ready(function() {
