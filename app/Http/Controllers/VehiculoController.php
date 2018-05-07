@@ -26,12 +26,6 @@ class VehiculoController extends Controller
         if (count($carpetaNueva) > 0) {
             $numCarpeta   = $carpetaNueva[0]->numCarpeta;
             $vehiculos    = CarpetaController::getVehiculos($idCarpeta);
-            $tipifdelitos = DB::table('tipif_delito')
-                ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
-                ->select('tipif_delito.id', 'cat_delito.id as idDelito', 'cat_delito.nombre as delito')
-                ->where('tipif_delito.idCarpeta', '=', $idCarpeta)->get();
-            //->whereIn('idDelito', [130, 131, 132, 133, 134, 135, 242, 243, 244, 245, 227])
-
             $aseguradoras = CatAseguradora::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $clasesveh    = CatClaseVehiculo::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $colores      = CatColor::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
@@ -39,6 +33,24 @@ class VehiculoController extends Controller
             $marcas       = CatMarca::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $procedencias = CatProcedencia::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $tiposuso     = CatTipoUso::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+            $tipifdelitos = DB::table('tipif_delito')
+                ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
+                ->join('cat_agrupacion1', 'cat_agrupacion1.id', '=', 'tipif_delito.idAgrupacion1')
+                ->join('cat_agrupacion2', 'cat_agrupacion2.id', '=', 'tipif_delito.idAgrupacion2')
+                ->select('tipif_delito.id', 'cat_delito.nombre as delito', 'cat_agrupacion1.nombre as desagregacion1', 'cat_agrupacion2.nombre as desagregacion2')
+                ->where('tipif_delito.idCarpeta', '=', $idCarpeta)
+                ->orderBy('cat_delito.nombre', 'ASC')
+                ->get();
+            $cont = 0;
+            foreach ($tipifdelitos as $delito => $nombre) {
+
+                if ($tipifdelitos[$cont]->desagregacion1 == 'SIN AGRUPACION') {
+                    $tipifdelitos[$cont]->desagregacion1 = " ";
+                }if ($tipifdelitos[$cont]->desagregacion2 == 'SIN AGRUPACION') {
+                    $tipifdelitos[$cont]->desagregacion2 = " ";
+                }
+                $cont = $cont + 1;
+            }
             return view('forms.vehiculo')->with('idCarpeta', $idCarpeta)
                 ->with('numCarpeta', $numCarpeta)
                 ->with('vehiculos', $vehiculos)
@@ -140,7 +152,7 @@ class VehiculoController extends Controller
     public function edit($idCarpeta, $id)
     {
         $carpetaNueva = Carpeta::where('id', $idCarpeta)->where('idFiscal', Auth::user()->id)->get();
-        $var = Vehiculo::where('id', $id)->get();
+        $var          = Vehiculo::where('id', $id)->get();
         if ($carpetaNueva->isEmpty() && $var->isEmpty()) {
             return redirect()->route('home');
         }
@@ -190,13 +202,13 @@ class VehiculoController extends Controller
     {
         //dd($request->all());
         $carpetaNueva = Carpeta::where('id', $request->idCarpeta)->where('idFiscal', Auth::user()->id)->get();
-        $var = Vehiculo::where('id', $id)->get();
-        if ($carpetaNueva->isEmpty() && $var->isEmpty()){
+        $var          = Vehiculo::where('id', $id)->get();
+        if ($carpetaNueva->isEmpty() && $var->isEmpty()) {
             return redirect()->route('home');
         }
 
-        $vehiculo                = Vehiculo::find($id);
-        $vehiculo->idTipifDelito = $request->idTipifDelito;
+        $vehiculo                 = Vehiculo::find($id);
+        $vehiculo->idTipifDelito  = $request->idTipifDelito;
         $vehiculo->placas         = $request->placas;
         $vehiculo->idEstado       = $request->idEstado;
         $vehiculo->idSubmarca     = $request->idSubmarca;
@@ -214,7 +226,7 @@ class VehiculoController extends Controller
         $vehiculo->save();
         //Agregar a Bitacora
         Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'vehiculo', 'accion' => 'update', 'descripcion' => 'Se han actualizado datos generales de un Vehículo del delito: ' . $request->idTipifDelito . ' con Placas: ' . $request->placas . ' Del estado: ' . $request->idEstado, 'idFilaAccion' => $vehiculo->id]);
-        
+
         Alert::success('Vehículo registrado con éxito', 'Hecho')->persistent("Aceptar");
         return redirect()->route('carpeta', $request->idCarpeta);
     }

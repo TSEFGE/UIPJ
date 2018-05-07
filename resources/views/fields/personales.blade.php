@@ -4,7 +4,7 @@
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('nombres', 'Nombre', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('nombres', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÑÍÓÚ][\s]*){1,100}$', 'data-validation-error-msg'=>'Nombre debe contener al menos una letra']) !!}
+					{!! Form::text('nombres', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÑÍÓÚ][\s]*){1,100}$', 'data-validation-error-msg'=>'Nombre debe contener al menos una letra', 'data-validation-event'=>'change']) !!}
 				</div>
 			</div>
 			<div class="col-3">
@@ -16,7 +16,7 @@
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('segundoAp', 'Segundo apellido', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('segundoAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido','data-validation'=>'custom' ,'data-validation-regexp'=>'^(([A-ZÁÉÑÍÓÚ][\s]*)?){1,50}$','data-validation-error-msg'=>'Segundo apellido debe contener solo letras']) !!}
+					{!! Form::text('segundoAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido','data-validation'=>'custom' ,'data-validation-regexp'=>'^(([A-ZÁÉÑÍÓÚ][\s]*)?){2,50}$','data-validation-error-msg'=>'Segundo apellido debe contener solo letras']) !!}
 				</div>
 			</div>
 			@isset($puestos)
@@ -35,7 +35,7 @@
 			<div class="col-1">
 				<div class="form-group">
 					{!! Form::label('edad', 'Edad', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::number('edad', null, ['class' => 'form-control form-control-sm edad2', 'placeholder' => 'Ingrese la edad', 'min' => 0, 'max' => 150]) !!}					
+					{!! Form::number('edad', null, ['class' => 'form-control form-control-sm edad2', 'placeholder' => 'Ingrese la edad', 'min' => 0, 'max' => 150, 'data-validation'=>'number','data-validation-allowing' =>'range[0;150]']) !!}					
 					
 				</div>
 			</div>
@@ -55,7 +55,7 @@
 			<div class="col-1">
 				<div class="form-group">
 					{!! Form::label('edad', 'Edad', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::number('edad', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la edad', 'min' => 16, 'max' => 150]) !!}					
+					{!! Form::number('edad', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la edad', 'min' => 16, 'max' => 150 ,'data-validation'=>'number','data-validation-allowing' =>'range[0;150]', 'data-validation-error-msg'=>'Valor de 0 a 150','data-validation-event'=>'change']) !!}					
 				</div>
 			</div>
 			@endisset
@@ -63,20 +63,20 @@
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('sexo', 'Sexo', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('sexo', ['SIN INFORMACION' => 'SIN INFORMACION', 'HOMBRE' => 'HOMBRE', 'MUJER' => 'MUJER'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el sexo']) !!}
+					{!! Form::select('sexo', ['SIN INFORMACION' => 'SIN INFORMACION', 'HOMBRE' => 'HOMBRE', 'MUJER' => 'MUJER'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el sexo','data-validation'=>'required','data-validation-event'=>'change' ]) !!}
 				</div>
 			</div>
 
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('idNacionalidad', 'Nacionalidad', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('idNacionalidad', $nacionalidades, '1', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la nacionalidad']) !!}
+					{!! Form::select('idNacionalidad', $nacionalidades, '1', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la nacionalidad','data-validation'=>'required','data-validation-event'=>'change']) !!}
 				</div>
 			</div>
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('idEstadoOrigen', 'Entidad federativa de origen', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('idEstadoOrigen', $estados, '30', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa']) !!}
+					{!! Form::select('idEstadoOrigen', $estados, '30', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa' ,'data-validation'=>'required','data-validation-event'=>'change']) !!}
 				</div>
 			</div>
 
