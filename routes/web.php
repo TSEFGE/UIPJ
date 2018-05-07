@@ -101,29 +101,6 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('carpeta/{idCarpeta}/denunciado/{idDenunciado}/complemento', 'DenunciadoController@showComplement')->name('complement.denunciado');
 	Route::post('denunciado/storecomplemento', 'DenunciadoController@storeComplement')->name('store.complement2');
 
-	/*---------Rutas para armar rfc-------------*/
-	Route::post('rfc-moral', 'RegistroController@rfcMoral')->name('rfc.moral');
-	Route::post('rfc-fisico', 'RegistroController@rfcFisico')->name('rfc.fisico');
-
-	/*---------Rutas para los selects dinámicos-------------*/
-	Route::get('municipios/{id}', 'RegistroController@getMunicipios')->name('get.municipios');
-	Route::get('localidades/{id}', 'RegistroController@getLocalidades')->name('get.localidades');
-	Route::get('colonias/{cp}', 'RegistroController@getColonias')->name('get.colonias');
-	Route::get('colonias2/{id}', 'RegistroController@getColonias2')->name('get.colonias2');
-	Route::get('codigos/{id}', 'RegistroController@getCodigos')->name('get.codigos');
-	Route::get('codigos2/{id}', 'RegistroController@getCodigos2')->name('get.codigos2');
-	Route::get('submarcas/{id}', 'RegistroController@getSubmarcas')->name('get.submarcas');
-	Route::get('tipoVehiculos/{id}', 'RegistroController@getTipoVehiculos')->name('get.tipovehiculo');
-	Route::get('armas/{id}', 'RegistroController@getArmas')->name('get.armas');
-	/*Route::get('denunciantes/{idCarpeta}', 'RegistroController@getDenunciantes');
-	Route::get('denunciados/{idCarpeta}', 'RegistroController@getDenunciados');*/
-	Route::get('involucrados/{idCarpeta}/{idAbogado}', 'RegistroController@getInvolucrados')->name('get.involucrados');
-  	Route::get('agrupaciones1/{id}','RegistroController@getAgrupaciones1')->name('get.agrupaciones1');
-  	Route::get('agrupaciones2/{id}','RegistroController@getAgrupaciones2')->name('get.agrupaciones2');
-    Route::get('persona/curp/{curp}','RegistroController@buscarCURP')->name('persona.curp');
-	Route::get('persona/curp/{curp}/{id}/edit', 'RegistroController@buscarCURPEdit')->name('comprobarEditar.curp');
-    Route::get('contador','RegistroController@contador');
-
 	/*---------Rutas para generación de documentos-------------*/
 	Route::get('constancia-hechos/{idDenunciante}', [
 		'as'=>'constancia.hechos',
@@ -152,11 +129,6 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('bitacora', 'BitacoraController@index')->name('bitacora');
 	Route::get('api/bitacora', 'BitacoraController@apiBitacora')->name('api.bitacora');
 
-  	/*---------Rutas para NOTALLLOWED ------------*/
-  	Route::get('/notAllowed',function(){
-        return view('forms.notAllowed');
-  	})->name('notAllowed');
-
     /*-------------- RUTA PARA NARRACIONES---------------------*/
     Route::get('narracion/{id}/ver','NarracionController@ver')->name('ver.narracion');
     Route::get('narracion/{idCarpeta}/{idInvolucrado}/{tipoInvolucrado}', 'NarracionController@index')->name('narracion.index');
@@ -168,6 +140,37 @@ Route::middleware(['auth'])->group(function () {
     Route::post('citatorio/create', 'CitatorioController@store')->name('store.citatorio');
     Route::get('citatorio/{id}/edit', 'CitatorioController@edit')->name('edit.citatorio');
     Route::put('citatorio/update/{id}', 'CitatorioController@update')->name('update.citatorio');
+
+    /*---------- Rutas utiliadas desde javascript ----------*/
+	Route::whitelist(function () {
+		/*---------Rutas para armar rfc-------------*/
+		Route::post('rfc-moral', 'RegistroController@rfcMoral')->name('rfc.moral');
+		Route::post('rfc-fisico', 'RegistroController@rfcFisico')->name('rfc.fisico');
+
+		/*---------Rutas para los selects dinámicos-------------*/
+		Route::get('municipios/{id}', 'RegistroController@getMunicipios')->name('get.municipios');
+		Route::get('localidades/{id}', 'RegistroController@getLocalidades')->name('get.localidades');
+		Route::get('colonias/{cp}', 'RegistroController@getColonias')->name('get.colonias');
+		Route::get('colonias2/{id}', 'RegistroController@getColonias2')->name('get.colonias2');
+		Route::get('codigos/{id}', 'RegistroController@getCodigos')->name('get.codigos');
+		Route::get('codigos2/{id}', 'RegistroController@getCodigos2')->name('get.codigos2');
+		Route::get('submarcas/{id}', 'RegistroController@getSubmarcas')->name('get.submarcas');
+		Route::get('tipoVehiculos/{id}', 'RegistroController@getTipoVehiculos')->name('get.tipovehiculo');
+		Route::get('armas/{id}', 'RegistroController@getArmas')->name('get.armas');
+		/*Route::get('denunciantes/{idCarpeta}', 'RegistroController@getDenunciantes');
+		Route::get('denunciados/{idCarpeta}', 'RegistroController@getDenunciados');*/
+		Route::get('involucrados/{idCarpeta}/{idAbogado}', 'RegistroController@getInvolucrados')->name('get.involucrados');
+	  	Route::get('agrupaciones1/{id}','RegistroController@getAgrupaciones1')->name('get.agrupaciones1');
+	  	Route::get('agrupaciones2/{id}','RegistroController@getAgrupaciones2')->name('get.agrupaciones2');
+	    Route::get('persona/curp/{curp}','RegistroController@buscarCURP')->name('persona.curp');
+		Route::get('persona/curp/{curp}/{id}/edit', 'RegistroController@buscarCURPEdit')->name('comprobarEditar.curp');
+
+		/*---------Rutas para NOTALLLOWED ------------*/
+	  	Route::get('/notAllowed',function(){
+	        return view('forms.notAllowed');
+	  	})->name('notAllowed');
+	});
+    Route::get('contador','RegistroController@contador');
 });
 
 
