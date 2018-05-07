@@ -112,8 +112,8 @@
 	<script src="{{ asset('js/curp.js') }}"></script>
 	<script src="{{ asset('js/persona.js') }}"></script>
 	<script src="{{ asset('js/autoridad.js') }}"></script>
-    @include('fields.rfcFisico')
-	@include('fields.ajaxCurp')
+    <script src="{{ asset('js/rfcFisico.js') }}"></script>
+	<script src="{{ asset('js/ajaxCurp.js') }}"></script>
 @endpush
 
 @push('docready-js')

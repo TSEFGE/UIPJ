@@ -114,11 +114,12 @@
     <script src="{{ asset('js/selects/domicilio-trab.js') }}"></script>
 	<script src="{{ asset('js/selects/sisy.js') }}"></script>
 	<script src="{{ asset('js/validations/tab-autoridad.js') }}"></script>
-	<script src="{{ asset('js/curp.js') }}"></script>
 	<script src="{{ asset('js/persona.js') }}"></script>
 	<script src="{{ asset('js/autoridad.js') }}"></script>
-    @include('fields.rfcFisico')
-	@include('fields.ajaxCurp')
+	<script src="{{ asset('js/curp.js') }}"></script>
+	<script src="{{ asset('js/rfcFisico.js') }}"></script>
+	<script src="{{ asset('js/ajaxCurpEdit.js') }}"></script>
+
 @endpush
 
 @push('docready-js')

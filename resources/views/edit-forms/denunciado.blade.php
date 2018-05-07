@@ -14,8 +14,8 @@
 
 <div class="card-header">
 <div class="row">
-	
-			<div class="col">	
+
+			<div class="col">
 				<div class="text-right">
 					@include('forms.buttons')
 				</div>
@@ -30,7 +30,7 @@
 			<div class="row">
 				@if(!empty($idCarpeta))
 				{!! Form::hidden('idCarpeta', $idCarpeta) !!}
-				@endif	
+				@endif
 			</div>
 			<div class="comparecencia">
 				<div id="denunciado">
@@ -57,7 +57,7 @@
 								<span id="error2" class="xerror"></span>
 								<span id="bien2" class="bien"></span></div>
 							</a>
-						</li> 
+						</li>
 							@endif
 						@endif
 						<li class="nav-item" id="datosNotif">
@@ -66,7 +66,7 @@
 									<span id="error3" class="xerror"></span>
 									<span id="bien3" class="bien"></span></div>
 								</a>
-						</li> 
+						</li>
 						@if (isset ($personales) )
 							@if ( ($personales->esEmpresa) == 0)
 						<li class="nav-item"  id="datosExtra">
@@ -75,7 +75,7 @@
 									<span id="error4" class="xerror"></span>
 									<span id="bien4" class="bien"></span></div>
 								</a>
-						</li> 		
+						</li>
 						@endif
 						@endif
 					</ul>
@@ -85,45 +85,45 @@
 			<div id="qrr">
 				<div class="boxtwo">
 					<div class="row">
-					
+
 					</div>
 				</div>
 			</div>
 
-			<div id="cajados" class="boxtwo">	
+			<div id="cajados" class="boxtwo">
 				<div class="tab-content comparecencia" id="ctdenunciado">
-					<div class="tab-pane active container" id="collapsePersonales2">  		
-						
+					<div class="tab-pane active container" id="collapsePersonales2">
+
 					@if (isset ($personales) )
 									@if ( ($personales->esEmpresa) == 1)
 										@include('edit-fields.personales-moral')
-										
+
 									@endif
 								@endif
 								@if (isset ($personales) )
 									@if ( ($personales->esEmpresa) == 0)
-									@include('edit-fields.personales-fisica')					
+									@include('edit-fields.personales-fisica')
 									@endif
 								@endif
 
 					</div>
-					<div class="tab-pane container" id="collapseDir2">  		
-						@include('fields.direcciones')		
+					<div class="tab-pane container" id="collapseDir2">
+						@include('fields.direcciones')
 											</div>
 						@if (isset ($personales) )
 							@if ( ($personales->esEmpresa) == 0)
-											
-					<div class="tab-pane container" id="collapseTrab2">  		
-						@include('fields.lugartrabajo')		
+
+					<div class="tab-pane container" id="collapseTrab2">
+						@include('fields.lugartrabajo')
 					</div>
 					@endif
 			      @endif
-					<div class="tab-pane container" id="collapseNotifs2">  		
-						@include('fields.notificaciones')		
+					<div class="tab-pane container" id="collapseNotifs2">
+						@include('fields.notificaciones')
 					</div>
 					@if (isset ($personales) )
-							@if ( ($personales->esEmpresa) == 0)	
-					<div class="tab-pane container" id="collapseDenun2">  
+							@if ( ($personales->esEmpresa) == 0)
+					<div class="tab-pane container" id="collapseDenun2">
 						@include('fields.extra-denunciado')
 					</div>
 					@endif
@@ -137,7 +137,7 @@
 			{!! Form::hidden('idVariablesPersona', ($personales->idVariablesPersona)) !!}
 			{!! Form::hidden('idDireccion', ($direccion->id)) !!}
 			@if (isset ($personales) )
-				@if ( ($personales->esEmpresa) == 0)	
+				@if ( ($personales->esEmpresa) == 0)
 			{!! Form::hidden('idDireccionTrab', ($direccionTrab->id)) !!}
 				@endif
 			@endif
@@ -168,11 +168,12 @@
     <script src="{{ asset('js/selects/domicilio-notif.js') }}"></script>
     <script src="{{ asset('js/selects/domicilio-den-conocido.js') }}"></script>
 	<script src="{{ asset('js/selects/sisy.js') }}"></script>  --}}
+	<script src="{{ asset('js/curp.js') }}"></script>
+	<script src="{{ asset('js/rfcFisico.js') }}"></script>
+	<script src="{{ asset('js/rfcMoral.js') }}"></script>
+	<script src="{{ asset('js/ajaxCurpEdit.js') }}"></script>
 	<script src="{{ asset('js/validations/tab-denunciado.js') }}"></script>
-	
-	@include('fields.rfcMoral')
-    @include('fields.rfcFisico')
-	@include('fields.ajaxCurp')
+
 @endpush
 
 @push('docready-js')
@@ -193,10 +194,10 @@
         "showMethod": "fadeIn",
         "hideMethod": "fadeOut"
     }
-    
-	
+
+
 	@if (isset ($personales) )
-	@if ( ($personales->esEmpresa) == 0)	
+	@if ( ($personales->esEmpresa) == 0)
 	var rfcFisica = $("input[name='rfc-edit']").val();
 	var rfc = rfcFisica.substr (0,10);
 	var homoclave = rfcFisica.substr(-3);
@@ -204,12 +205,12 @@
 	$("#primerAp").val("{{ $personales->primerAp }}");
 	$("#segundoAp").val("{{ $personales->segundoAp }}");
 	$("#sexo").val("{{ $personales->sexo }}");
-	$('#idNacionalidad').val({{$personales->idNacionalidad}}).trigger('change');	
+	$('#idNacionalidad').val({{$personales->idNacionalidad}}).trigger('change');
 	$('#idEstadoOrigen').val({{ $personales->idEstado}}).trigger('change');
 	$('#rfc').val(rfc);
 	$('#homo').val(homoclave);
 	$('#curp').val("{{$personales->curp}}");
-	$('#idEtnia').val({{$personales->idEtnia}}).trigger('change');	
+	$('#idEtnia').val({{$personales->idEtnia}}).trigger('change');
 	$('#idLengua').val({{$personales->idLengua}}).trigger('change');
 	$('#idMunicipioOrigen').val({{$personales->idMunicipioOrigen}}).trigger('change');
 	$('#idReligion').val(7).trigger('change');
@@ -222,13 +223,13 @@
 	$("#calle").val("{{ $direccion->calle }}");
 	$("#numExterno").val("{{ $direccion->numExterno }}");
 	$("#numInterno").val("{{ $direccion->numInterno }}");
-	$("#alias").val("{{ $personales->alias }}");	
-	$("#personasBajoSuGuarda").val("{{ $personales->personasBajoSuGuarda }}");	
-	$("#ingreso").val("{{ $personales->ingreso }}");	
+	$("#alias").val("{{ $personales->alias }}");
+	$("#personasBajoSuGuarda").val("{{ $personales->personasBajoSuGuarda }}");
+	$("#ingreso").val("{{ $personales->ingreso }}");
 	$("#residenciaAnterior").val("{{ $personales->residenciaAnterior }}");
 	$("#vestimenta").val("{{ $personales->vestimenta }}");
 	$("#senasPartic").val("{{ $personales->senasPartic }}");
-	$("#calle2").val("{{ $direccionTrab->calle }}");	
+	$("#calle2").val("{{ $direccionTrab->calle }}");
 	$("#lugarTrabajo").val("{{ $personales->lugarTrabajo }}");
 	$("#numExterno2").val("{{ $direccion->numExterno }}");
 	$("#numInterno2").val("{{ $direccion->numInterno }}");
@@ -237,8 +238,8 @@
 	$("#numInterno3").val("{{ $direccionNotif->numInterno }}");
 	$("#email").val("{{ $direccionNotif->correo }}");
 	$("#telefonoN").val("{{ $direccionNotif->telefono }}");
-	$("#fax").val("{{ $direccionNotif->fax }}");	
-	$('#idEstadoCivil').val({{$personales->idEstadoCivil}}).trigger('change');	
+	$("#fax").val("{{ $direccionNotif->fax }}");
+	$('#idEstadoCivil').val({{$personales->idEstadoCivil}}).trigger('change');
 	$('#idEstado').val({{$personales->idEstado}}).trigger('change');
 	$('#idMunicipio').val({{$direccion->idMunicipio}}).trigger('change');
 	$('#idLocalidad').val({{$direccion->idLocalidad}}).trigger('change');
@@ -246,9 +247,9 @@
 	$('#telefonoTrabajo').val({{$personales->telefonoTrabajo}}).trigger('change');
 	$('#codigoPostal').val({{$direccion->codigoPostal}}).trigger('change');
 	$('#periodoIngreso').val("{{$personales->periodoIngreso}}");
-	$('#idOcupacion').val({{$personales->idOcupacion}}).trigger('change');	
+	$('#idOcupacion').val({{$personales->idOcupacion}}).trigger('change');
 	$("#narracionUno").prop('disabled', true);
-	@endif	
+	@endif
 	@endif
 	@if (isset ($personales) )
 	@if ( ($personales->esEmpresa) == 1)
@@ -275,8 +276,8 @@
 	@endif
 
 
-	
+
 
 @endpush
 
-<script src="{{ asset('js/curp.js') }}"></script>		
+

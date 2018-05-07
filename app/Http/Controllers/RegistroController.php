@@ -49,6 +49,8 @@ use App\Models\Vehiculo;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+//use uipj\rfc\src\RfcBuilder;
+use RFC\RfcBuilder;
 
 class RegistroController extends Controller
 {
@@ -194,6 +196,35 @@ class RegistroController extends Controller
             }
             return response()->json($involucrados);
         }
+    }
+
+    public function rfcMoral(Request $request)
+    {
+        $nombre = $request->nombre;
+        $dia    = $request->dia;
+        $mes    = $request->mes;
+        $ano    = $request->ano;
+
+        $builder = new RfcBuilder();
+
+        $rfc = $builder->legalName($nombre)
+            ->creationDate($dia, $mes, $ano)
+            ->build()
+            ->toString();
+        return ['res' => $rfc];
+    }
+
+    public function rfcFisico(Request $request)
+    {
+        $builder = new RfcBuilder();
+        $rfc     = $builder->name($request->nombre)
+            ->firstLastName($request->apPaterno)
+            ->secondLastName($request->apMaterno)
+            ->birthday($request->dia, $request->mes, $request->año)
+            ->build()
+            ->toString();
+
+        return ['res' => $rfc];
     }
 
     /*-----Métodos para mostrar ventana de registro-----*/
@@ -1042,6 +1073,10 @@ class RegistroController extends Controller
     {
         return Persona::buscarCURP($request->curp);
     }
+    public function buscarCURPEdit(Request $request)
+    {
+        return Persona::buscarCURPEdit($request->curp, $request->id);
+    }
 
     public function contador()
     {
@@ -1049,5 +1084,4 @@ class RegistroController extends Controller
         dd($contador);
         return $contador;
     }
-
 }

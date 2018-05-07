@@ -1,10 +1,9 @@
-<script>
 $("#nombres2").focusout(function() {
-	obtenerRFC();
+	obtenerRfcMoral();
 });
 
 $("#fechaAltaEmpresa").focusout(function() {
-	obtenerRFC();
+	obtenerRfcMoral();
 });
 
 $.ajaxSetup({
@@ -13,15 +12,13 @@ $.ajaxSetup({
 	}
 });
 
-function obtenerRFC(){
+function obtenerRfcMoral(){
 	toastr.clear();
 
 	console.log('entra ajax');
 
 	nombre = $("#nombres2").val().toUpperCase();
 	fecha = $("#fechaAltaEmpresa").val();
-		
-	
 
 	dia = fecha.substr(0, 2);
 	mes = fecha.substr(3, 2);
@@ -32,7 +29,7 @@ function obtenerRFC(){
 	console.log(mes);
 	console.log(ano);
 
-	ruta="{{route('rfc.denunciante')}}";
+	ruta=route('rfc.moral');
 	$.ajax({
 		type: "POST",
 		url:ruta,
@@ -64,7 +61,7 @@ function obtenerRFC(){
 						$("#homo2").val(homo);
 						$('#rfcAux').val(rfcOriginal);
 				//	toastr.success('Se ha modificado el RFC', '¡Atención!');
-					}
+				}
 			}else{
 				if($("#rfc2").val() != rfc || $("#homo2").val() != homo){
 					toastr.options ={
@@ -77,7 +74,6 @@ function obtenerRFC(){
 					}
 					toastr.info('Se ha detectado un cambio ¿Desea actualizar el RFC?<br /><button type="button" id="btn-ok" class="btn btn-light" onclick="actualizarMoral(rfcOriginal, rfc, homo)">Sí</button>');
 				}
-				
 			}
 
 	 	},error:function(data){
@@ -85,27 +81,27 @@ function obtenerRFC(){
 	 	}
  	});
 }
-    function actualizarMoral(rfcOriginal, rfc, homo){
-    	$("#rfc2").val(rfc);
-    	$("#homo2").val(homo);
-    	$('#rfcAux').val(rfcOriginal);
-    	toastr.options = {
-    		"closeButton": true,
-    		"debug": false,
-    		"newestOnTop": true,
-    		"progressBar": true,
-    		"positionClass": "toast-bottom-right",
-    		"preventDuplicates": true,
-    		"onclick": null,
-    		"showDuration": "300",
-    		"hideDuration": "1000",
-    		"timeOut": "3000",
-    		"extendedTimeOut": "1000",
-    		"showEasing": "swing",
-    		"hideEasing": "linear",
-    		"showMethod": "fadeIn",
-    		"hideMethod": "fadeOut"
-    	}
-    	toastr.success('Se ha modificado el RFC', '¡Atención!');
-    }
-</script>
+
+function actualizarMoral(rfcOriginal, rfc, homo){
+	$("#rfc2").val(rfc);
+	$("#homo2").val(homo);
+	$('#rfcAux').val(rfcOriginal);
+	toastr.options = {
+		"closeButton": true,
+		"debug": false,
+		"newestOnTop": true,
+		"progressBar": true,
+		"positionClass": "toast-bottom-right",
+		"preventDuplicates": true,
+		"onclick": null,
+		"showDuration": "300",
+		"hideDuration": "1000",
+		"timeOut": "3000",
+		"extendedTimeOut": "1000",
+		"showEasing": "swing",
+		"hideEasing": "linear",
+		"showMethod": "fadeIn",
+		"hideMethod": "fadeOut"
+	}
+	toastr.success('Se ha modificado el RFC', '¡Atención!');
+}
