@@ -1,4 +1,7 @@
 $("#btn-submit").prop('disabled',true);
+ $('#tdenunciante.nav-tabs a').on('shown.bs.tab', function (e) {
+     $('#denuncianteF').isValid();
+ });
 $('#tdenunciante.nav-tabs a').on('hidden.bs.tab', function(event){
     //event.preventDefault();
         var index= $($(this).attr('href')).index();       

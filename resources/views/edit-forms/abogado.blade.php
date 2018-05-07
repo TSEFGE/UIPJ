@@ -106,7 +106,7 @@
 			<script src="{{ asset('js/validations/tab-abogado.js') }}"></script>
 			<script src="{{ asset('js/curp.js') }}"></script>
 			<script src="{{ asset('js/edit-forms/abogado-edit.js') }}"></script>
-			@include('fields.ajaxCurp')
+			//@include('fields.ajaxCurp')
 			@include('fields.rfcFisico')
 
 			@endpush
