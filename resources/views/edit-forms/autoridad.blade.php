@@ -118,7 +118,8 @@
 	<script src="{{ asset('js/persona.js') }}"></script>
 	<script src="{{ asset('js/autoridad.js') }}"></script>
     @include('fields.rfcFisico')
-	@include('fields.ajaxCurp')
+	@include('fields.ajaxCurpEdit')
+
 @endpush
 
 @push('docready-js')

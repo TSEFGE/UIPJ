@@ -122,7 +122,8 @@
 	<script src="{{ asset('js/validations/tab-testigo.js') }}"></script>
 	<script src="{{ asset('js/curp.js') }}"></script>
 	@include('fields.rfcFisico')
-	@include('fields.ajaxCurp')
+	@include('fields.ajaxCurpEdit')
+
 @endpush
 
 @push('docready-js')

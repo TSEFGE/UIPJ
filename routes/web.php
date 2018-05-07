@@ -120,7 +120,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('involucrados/{idCarpeta}/{idAbogado}', 'RegistroController@getInvolucrados')->name('get.involucrados');
     Route::get('agrupaciones1/{id}', 'RegistroController@getAgrupaciones1')->name('get.agrupaciones1');
     Route::get('agrupaciones2/{id}', 'RegistroController@getAgrupaciones2')->name('get.agrupaciones2');
-    Route::get('persona/curp/{curp}', 'RegistroController@buscarCURP');
+    Route::get('persona/curp/{curp}', 'RegistroController@buscarCURP')->name('comprobar.curp');
+    Route::get('persona/curp/{curp}/{id}/edit', 'RegistroController@buscarCURPEdit')->name('comprobarEditar.curp');
     Route::get('contador', 'RegistroController@contador');
 
     /*---------Rutas para generación de documentos-------------*/
