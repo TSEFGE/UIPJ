@@ -8,8 +8,7 @@
 @endpush
 
 @section('contenido')
-@include('forms.errores')
-{!! Form::open(['route' => 'store.denunciado', 'method' => 'POST'])  !!}
+{!! Form::open(['route' => 'store.denunciado', 'method' => 'POST','data-validation-event'=>'load'])  !!}
 {{ csrf_field() }}
 
 <div class="card-header">

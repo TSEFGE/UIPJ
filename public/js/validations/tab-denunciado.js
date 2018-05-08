@@ -1,180 +1,213 @@
-$('#tdenunciado.nav-tabs a').on('hidden.bs.tab', function(event){
+$(document).ready(function () {
+    $('form').isValid();
+});
 
+$("#btn-submit").prop('disabled',true);
+totalesP2=0;
+totalesD2=0;
+totalesTrab2=0;
+totalesNotif2=0;
+totalesDenun=0;
+tabs=0;
+correcto=0;
+
+
+ $('#tdenunciado.nav-tabs a').on('shown.bs.tab', function (e) {
+     var index = $($(this).attr('href')).index();
+     switch(index){
+         case 0:         
+         $('#collapsePersonales2').isValid();            
+         break;
+         case 1:        
+         $('#collapseDir2').isValid();       
+         break;
+         case 2:
+         $('#collapseTrab2').isValid();
+         break;
+         case 3:
+          $('#collapseNotifs2').isValid();
+         break;
+         case 4:
+         $('#collapseDenun2').isValid();
+         break;
+     }
+
+      tabs = $("#tdenunciado.visible").length;        
+      console.log("tabs", tabs);
+     
+ });
+
+$('#tdenunciado.nav-tabs a').on('hidden.bs.tab', function(event){
 	var index= $($(this).attr('href')).index();
+
 	switch(index) {
 	 case 0:                               
-	 var countvacio = $('#collapsePersonales2 .vacio').length; 
-	 totales = countvacio                                                             
-	 var count = $('#collapsePersonales2 .error').length; 
-	 if (count==0){
-		$("#error").hide();
-	} 
-	else{  
-		$("#error").show();                             
-		$("#error").html(count); 
-	} 
-	var correctos = $('#collapsePersonales2 .valid').length; 
-	if (correctos==0){
-		$("#bien").hide();
-	} 
-	else if( correctos ==totales){
-		$("#bien").show();
-		$("#bien").html('<i class="fa fa-check" aria-hidden="true"></i>'); 
-		$("#bien").addClass('correcto');                                                               
-	}                                
-	else{  
-		$("#bien").show();                             
-		$("#bien").html(correctos); 
-	}
-	countvacio=countvacio-count-correctos;
-	if (countvacio == 0 || countvacio ==totales){
-		$("#vacio").hide();
-	} else{  
-		$("#vacio").show();                            
-		$("#vacio").html(countvacio); 
-	}          
+	 totalesP2 = $('#collapsePersonales2.vacio').length;
+     $('#collapsePersonales2').isValid();
 	break;                                
 	case 1:
-	var countvacio = $('#collapseDir2 .vacio').length; 
-	totales= countvacio;                                
-	var count = $('#collapseDir2 .error').length;
-	if (count==0){
-		$("#error1").hide();
-	} 
-	else{  
-		$("#error1").show();                             
-		$("#error1").html(count); 
-	} 
-	var correctos = $('#collapseDir2 .valid').length;
-	if (correctos==0){
-		$("#bien1").hide();
-	} 
-	else if( correctos ==totales){
-		$("#bien1").show();
-		$("#bien1").html('<i class="fa fa-check" aria-hidden="true"></i>');
-		$("#bien1").addClass('correcto');                                                                
-	}                                
-	else{  
-		$("#bien1").show();                             
-		$("#bien1").html(correctos); 
-	} 
-	countvacio= countvacio-count-correctos;
-	if (countvacio == 0 || countvacio ==totales){
-		$("#vacio1").hide();
-	} else{  
-		$("#vacio1").show();                            
-		$("#vacio1").html(countvacio); 
-	}
+	totaleD2 = $('#collapseDir2.vacio').length;
+    $('#collapseDir2').isValid();
 	break;
 
 	case 2:
-	var countvacio = $('#collapseTrab2 .vacio').length;
-	totales= countvacio;
-	var count = $('#collapseTrab2 .error').length;                                
-	if (count==0){
-		$("#error2").hide();
-	} 
-	else{  
-		$("#error2").show();                             
-		$("#error2").html(count); 
-	} 
-	var correctos = $('#collapseTrab2 .valid').length;                                
-	if (correctos==0){
-		$("#bien2").hide();
-	} 
-	else if( correctos ==totales){
-		$("#bien2").show();
-		$("#bien2").html('<i class="fa fa-check" aria-hidden="true"></i>'); 
-		$("#bien2").addClass('correcto');                                                               
-	}                                
-	else{  
-		$("#bien2").show();                             
-		$("#bien2").html(correctos); 
-	}                                 
-	countvacio= countvacio-count-correctos;
-	if (countvacio == 0 || countvacio ==totales){
-		$("#vacio2").hide();
-	} else{  
-		$("#vacio2").show();                            
-		$("#vacio2").html(countvacio); 
-	}
+	totalesTrab2 = $('#collapseTrab2.vacio').length;
+    $('#collapseTrab2').isValid();
 	break;
 
 	case 3:
-	var countvacio = $('#collapseNotifs2 .vacio').length;
-	totales= countvacio;
-	var count = $('#collapseNotifs2 .error').length;                                
-	if (count==0){
-		$("#error3").hide();
-	} 
-	else{  
-		$("#error3").show();                             
-		$("#error3").html(count); 
-	} 
-	var correctos = $('#collapseNotifs2 .valid').length;                                
-	if (correctos==0){
-		$("#bien3").hide();
-	} 
-	else if( correctos ==totales){
-		$("#bien3").show();
-		$("#bien3").html('<i class="fa fa-check" aria-hidden="true"></i>');
-		$("#bien3").addClass('correcto');
-	}                                
-	else{  
-		$("#bien3").show();                             
-		$("#bien3").html(correctos); 
-	} 
-	countvacio= countvacio-count-correctos;
-	if (countvacio == 0 || countvacio ==totales){
-		$("#vacio3").hide();
-	} else{  
-		$("#vacio3").show();                            
-		$("#vacio3").html(countvacio); 
-	}  
+	totalesNotif2= $('#collapseNotifs2.vacio').length;
+    $('#collapseNotifs2').isValid();	
 	break;
 
 	case 4:
-	var countvacio = $('#collapseDenun2 .vacio').length;
-	totales= countvacio;
-	var count = $('#collapseDenun2 .error').length;                                
-	if (count==0){
-		$("#error4").hide();
-	} 
-	else{  
-		$("#error4").show();                             
-		$("#error4").html(count); 
-	} 
-	var correctos = $('#collapseDenun2 .valid').length;                                
-	if (correctos==0){
-		$("#bien4").hide();
-	} 
-	else if( correctos ==totales){
-		$("#bien4").show();
-		$("#bien4").html('<i class="fa fa-check" aria-hidden="true"></i>');
-		$("#bien4").addClass('correcto');                                                                
-	}                                
-	else{  
-		$("#bien4").show();                             
-		$("#bien4").html(correctos); 
-	}  
-	countvacio= countvacio-count-correctos;
-	if (countvacio == 0 || countvacio ==totales){
-		$("#vacio4").hide();
-	} else{  
-		$("#vacio4").show();                            
-		$("#vacio4").html(countvacio); 
-	} 
+	totalesDenun= $('#collapseDenun2.vacio').length;
+    $('#collapseDenun2').isValid();
 	break;
 
 	default:
 	break;
 }
-	var tabs= $("#tdenunciado .visible").length;
-	var correcto = $('#tdenunciado .correcto').length;
-	if (correcto == tabs){
-		$("#btn-submit").prop('disabled',false);
-	}else{
-		$("#btn-submit").prop('disabled',true);
-	}
-	console.log( "tabs", tabs);
+	
+});
+
+
+$("#ctdenunciado").hover(function () { 
+    correcto = $('#tdenunciado.correcto').length;
+    if (correcto == tabs) {
+        $("#btn-submit").prop('disabled', false);
+    } else {
+        $("#btn-submit").prop('disabled', true);
+    }
+    console.log(correcto);
+});
+
+$("#collapsePersonales2").hover(function () {
+    $(this).isValid();
+    var count = $('#collapsePersonales2.error').length;
+    var correctos = $('#collapsePersonales2.valid').length;
+    countvacio= totalesP2;
+     if (count == 0) {
+         $("#error").hide();
+     } else {
+         $("#error").show();
+         $("#error").html(count);
+         
+     }
+     if (correctos == 0) {
+         $("#bien").hide();
+     } else if (correctos == totalesP2) {
+         $("#bien").show();
+         $("#bien").html('<i class="fa fa-check" aria-hidden="true"></i>');
+         $("#bien").addClass('correcto');
+         pass0 = 1;
+     } else {
+         $("#bien").show();
+         $("#bien").html(correctos);
+         $("#bien").removeClass('correcto');
+     }
+   
+});
+
+$("#collapseDir2").hover(function () {
+     $(this).isValid();
+    var count = $('#collapseDir2.error').length;
+    var correctos = $('#collapseDir2.valid').length;
+    countvacio= totalesD2;
+     if (count == 0) {
+         $("#error1").hide();
+     } else {
+         $("#error1").show();
+         $("#error1").html(count);
+     }    
+     if (correctos == 0) {
+         $("#bien1").hide();
+     } else if (correctos == totalesD2) {
+         $("#bien1").show();
+         $("#bien1").html('<i class="fa fa-check" aria-hidden="true"></i>');
+         $("#bien1").addClass('correcto');
+         pass1 = 1;
+     } else {
+         $("#bien1").show();
+         $("#bien1").html(correctos);
+     }
+     console.log("totalesD2", totalesD2);
+    
+});
+$("#collapseTrab2").hover(function () {
+     $(this).isValid();
+    var count = $('#collapseTrab2.error').length;
+    var correctos = $('#collapseTrab2.valid').length;
+    countvacio = totalesTrab2;
+    if (count == 0) {
+        $("#error2").hide();
+    } else {
+        $("#error2").show();
+        $("#error2").html(count);
+    }
+    
+    if (correctos == 0) {
+        $("#bien2").hide();
+    } else if (correctos == totalesTrab2) {
+        $("#bien2").show();
+        $("#bien2").html('<i class="fa fa-check" aria-hidden="true"></i>');
+        $("#bien2").addClass('correcto');
+        pass2 = 1;
+    } else {
+        $("#bien2").show();
+        $("#bien2").html(correctos);
+    }
+
+});
+ 
+$("#collapseNotifs2").hover(function () {
+     $(this).isValid();
+    var count = $('#collapseNotifs2.error').length;
+    var correctos = $('#collapseNotifs2.valid').length;
+    countvacio= totalesNotif2;
+    if (count == 0) {
+        $("#error3").hide();
+    } else {
+        $("#error3").show();
+        $("#error3").html(count);
+    }
+   
+    if (correctos == 0) {
+        $("#bien3").hide();
+    } else if (correctos == totalesNotif2) {
+        $("#bien3").show();
+        $("#bien3").html('<i class="fa fa-check" aria-hidden="true"></i>');
+        $("#bien3").addClass('correcto');
+        pass3 = 1;
+    } else {
+        $("#bien3").show();
+        $("#bien3").html(correctos);
+    }
+   });
+
+
+    $("#collapseDenun2").hover(function () {
+     $(this).isValid();
+    var count = $('#collapseDenun2.error').length;
+    var correctos = $('#collapseDenun2.valid').length;
+    countvacio= totalesDenun;
+    if (count == 0) {
+        $("#error4").hide();
+    } else {
+        $("#error4").show();
+        $("#error4").html(count);
+    }
+   
+    if (correctos == 0) {
+        $("#bien4").hide();
+    } else if (correctos == totalesDenun) {
+        $("#bien4").show();
+        $("#bien4").html('<i class="fa fa-check" aria-hidden="true"></i>');
+        $("#bien4").addClass('correcto');
+        pass3 = 1;
+    } else {
+        $("#bien4").show();
+        $("#bien4").html(correctos);
+    }
+
 });
