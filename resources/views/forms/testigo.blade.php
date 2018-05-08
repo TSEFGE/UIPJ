@@ -9,7 +9,6 @@
 
 @section('contenido')
 {!! Form::open(['route' => 'store.testigo', 'method' => 'POST']) !!}
-{{ csrf_field() }}
 
 <div class="card-header">
 	<div class="row">
@@ -37,7 +36,8 @@
 						<ul id="tabstestigo" class="nav nav-tabs">
 							<li class="nav-item" id="datosPer">
 								<a class="nav-link active pestaña" data-toggle="tab" href="#collapsePersonalesTestigo"><p id="personal" class="pestaña" ><i class="fa fa-user-circle-o" aria-hidden="true"></i></p>
-								<div id="espacio-notif"><span id="vacio" class="xvacio"></span>
+								<div id="espacio-notif">
+								<span id="vacio" class="xvacio"></span>
 								<span id="error" class="xerror"></span>
 								<span id="bien" class="bien"></span></div>
 								</a>
@@ -71,6 +71,7 @@
 						<div class="tab-pane active container" id="collapsePersonalesTestigo">
 							@include('fields.personales')
 						</div>
+
 						<div class="tab-pane container" id="collapseDirTestigo">
 							@include('fields.direcciones')
 						</div>
@@ -131,7 +132,7 @@
         "showMethod": "fadeIn",
         "hideMethod": "fadeOut"
     }
-    
+
 	$('#esEmpresa2').trigger('click');
 	$('#datosPer').show();
     $('#personaFisica').show();

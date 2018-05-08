@@ -10,7 +10,6 @@
 @section('contenido')
 @include('forms.errores')
 {!! Form::open(['route' => ['update.denunciado', $personales->idDenunciado], 'method' => 'PUT']) !!}
-{{ csrf_field() }}
 
 <div class="card-header">
 <div class="row">
@@ -279,5 +278,3 @@
 
 
 @endpush
-
-

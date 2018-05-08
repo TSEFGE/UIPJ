@@ -9,7 +9,6 @@
 
 @section('contenido')
 {!! Form::open(['route' => ['update.abogado', $idCarpeta, $id], 'method' => 'PUT'])  !!}
-{{ csrf_field() }}
 <div class="card-header">
 	<div class="row">
 		<div class="col">

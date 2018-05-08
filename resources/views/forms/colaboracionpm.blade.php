@@ -4,7 +4,6 @@
 
 @section('contenido')
 {!! Form::open(['route' => 'colaboracion.pm', 'method' => 'POST'])  !!}
-{{ csrf_field() }}
 <div class="card-header">
 <div class="row">
 	<div class="col">

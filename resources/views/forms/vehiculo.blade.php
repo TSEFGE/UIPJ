@@ -16,13 +16,13 @@
 				{{--Aqui van radios, etc --}}
 			</div>
 		</div>
-		<div class="col">	
+		<div class="col">
 			<div class="text-right">
 				@include('forms.buttons')
 			</div>
 		</div>
 	</div>
-</div> 
+</div>
 	@include('forms.errores')
 	<div class=" card-body boxone">
 	<div class="row no-gutters">
@@ -58,11 +58,11 @@
 	<script src="{{ asset('js/selects/sisy.js') }}"></script>
 	 <script src="{{ asset('js/vehiculos.js') }}"></script>
 @endpush
-@push('docready-js')     
+@push('docready-js')
 
     $.validate({
         validateOnEvent: true,
 		lang : 'es'
     });
-    
+
 @endpush
