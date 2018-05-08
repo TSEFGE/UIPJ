@@ -92,11 +92,13 @@ class TestigoController extends Controller
                     $interprete               = new Interprete();
                     $interprete->nombre       = $request->nombreInterprete;
                     $interprete->organizacion = $request->lugarTrabInterprete;
+                    $interprete->idLengua     = $request->idLengua;
                     $interprete->save();
                     $idInterprete = $interprete->id;
                 } else {
                     $idInterprete = null;
                 }
+
             }
             if (!is_null($request->idMunicipioOrigen)) {
                 $persona->idMunicipioOrigen = $request->idMunicipioOrigen;

@@ -95,6 +95,7 @@ class DenuncianteController extends Controller
                         $interprete               = new Interprete();
                         $interprete->nombre       = $request->nombreInterprete;
                         $interprete->organizacion = $request->lugarTrabInterprete;
+                        $interprete->idLengua     = $request->idLengua;
                         $interprete->save();
                         $idInterprete = $interprete->id;
                     } else {

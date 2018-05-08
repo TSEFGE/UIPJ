@@ -15,10 +15,13 @@ class CreateInterpreteTable extends Migration
     {
         Schema::create('interprete', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('idLengua')->unsigned();
             $table->string('nombre', 200);
             $table->string('organizacion', 100)->nullable();
-            $table->string('lengua', 50);
+
             $table->timestamps();
+
+            $table->foreign('idLengua')->references('id')->on('cat_lengua')->onDelete('cascade');
         });
     }
 
