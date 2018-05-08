@@ -4,25 +4,24 @@
 
 @section('contenido')
 {!! Form::open(['route' => ['update.defensa', $idCarpeta, $id], 'method' => 'PUT'])  !!}
-	{{ csrf_field() }}
 	<div class="card-header">
 		<div class="row">
 			<div class="col">
 				<div class="text-left">
 					{{--Aqui van radios, etc --}}
 				</div>
-				{!! Form::hidden('idAbogado', ($idAbogado)) !!} 
-				{!! Form::hidden('idInvolucrado', ($idInvolucrado)) !!} 
+				{!! Form::hidden('idAbogado', ($idAbogado)) !!}
+				{!! Form::hidden('idInvolucrado', ($idInvolucrado)) !!}
 
 
 			</div>
-			
-			<div class="col">	
+
+			<div class="col">
 				<div class="text-right">
 					@include('forms.buttons')
 				</div>
 			</div>
-		</div> 
+		</div>
 	</div>
 	@include('forms.errores')
 	<div class="row no-gutters">

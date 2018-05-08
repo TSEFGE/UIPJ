@@ -8,8 +8,7 @@
 @endpush
 
 @section('contenido')
-{!! Form::open(['route' => 'store.testigo', 'method' => 'POST','data-validation-event'=>'load']) !!}
-{{ csrf_field() }}
+{!! Form::open(['route' => 'store.testigo', 'method' => 'POST']) !!}
 
 <div class="card-header">
 	<div class="row">
@@ -72,7 +71,7 @@
 						<div class="tab-pane active container" id="collapsePersonalesTestigo">
 							@include('fields.personales')
 						</div>
-						
+
 						<div class="tab-pane container" id="collapseDirTestigo">
 							@include('fields.direcciones')
 						</div>
@@ -133,7 +132,7 @@
         "showMethod": "fadeIn",
         "hideMethod": "fadeOut"
     }
-    
+
 	$('#esEmpresa2').trigger('click');
 	$('#datosPer').show();
     $('#personaFisica').show();

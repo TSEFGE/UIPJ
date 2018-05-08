@@ -4,7 +4,6 @@
 
 @section('contenido')
 {!! Form::open(['route' => ['update.familiar', $idCarpeta, $familiar], 'method' => 'PUT'])  !!}
-{{ csrf_field() }}
 	<div class="card-header">
 		<div class="row">
 			<div class="col">
@@ -12,7 +11,7 @@
 					{{--Aqui van radios, etc --}}
 				</div>
 			</div>
-			<div class="col">	
+			<div class="col">
 				<div class="text-right">
 						@include('forms.buttons')
 				</div>
