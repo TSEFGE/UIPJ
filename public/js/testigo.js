@@ -17,26 +17,16 @@
      var anios = $('#edad').val();
      $('#fechanac').datetimepicker('date', moment().subtract(anios, 'years').format('YYYY-MM-DD'));
  });
-
  $(document).ready(function() {
-     
      $("#datosDir").addClass('visible');
-
-
-   
-    $('#idOcupacion').change(function(event) {
-                var ocupacion = $('#idOcupacion').val();
-                if (ocupacion == 2947) {          
-           $("#datosTrab").removeClass('visible');  
-            }
-            else
-            {
-            $("#datosTrab").addClass('visible');  
-            }
-
-            });
-
-
+     $('#idOcupacion').change(function(event) {
+         var ocupacion = $('#idOcupacion').val();
+         if (ocupacion == 2947) {
+             $("#datosTrab").removeClass('visible');
+         } else {
+             $("#datosTrab").addClass('visible');
+         }
+     });
      $("#datosNotif").addClass('visible');
      $("#datosPer").addClass('visible');
      //Para generar Notificaciones se asigna clase
@@ -48,11 +38,10 @@
      $("#homo").addClass("vacio");
      $("#curp").addClass("vacio");
      $("#telefono").addClass("vacio");
-     $("#motivoEstancia").addClass("vacio");     
+     $("#motivoEstancia").addClass("vacio");
      // $("#docIdentificacion").addClass("vacio");     
      $("#numDocIdentificacion").addClass("vacio");
      //  $("#narracionUno").addClass("vacio");
-
      $("#calle").addClass("vacio");
      $("#numExterno").addClass("vacio");
      $("#numInterno").addClass("vacio");
@@ -118,6 +107,15 @@
              $("#calle2").prop('disabled', false);
              $("#numExterno2").prop('disabled', false);
              $("#numInterno2").prop('disabled', false);
+         }
+     });
+     $("#idLengua").change(function(event) {
+         console.log("entra");
+         var lengua = $("#idLengua").val();
+         if (lengua != 70) {
+             $("#datosInterprete").show();
+         } else {
+             $("#datosInterprete").hide();
          }
      });
  });

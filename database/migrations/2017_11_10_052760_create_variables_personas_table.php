@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateVariablesPersonasTable extends Migration
 {
@@ -18,19 +18,20 @@ class CreateVariablesPersonasTable extends Migration
             $table->integer('idCarpeta')->unsigned();
             $table->integer('idPersona')->unsigned();
             $table->integer('edad')->nullable();
-            $table->string('telefono',15)->default("SIN INFORMACION");
-            $table->string('motivoEstancia',200)->default("SIN INFORMACION");
+            $table->string('telefono', 15)->default("SIN INFORMACION");
+            $table->string('motivoEstancia', 200)->default("SIN INFORMACION");
             $table->integer('idOcupacion')->unsigned()->default(2941);
             $table->integer('idEstadoCivil')->unsigned()->default(7);
             $table->integer('idEscolaridad')->unsigned()->default(14);
             $table->integer('idReligion')->unsigned()->default(29);
             $table->integer('idDomicilio')->unsigned()->default(1);
-            $table->string('docIdentificacion',50)->default("SIN INFORMACION");
-            $table->string('numDocIdentificacion',50)->default("SIN INFORMACION");
-            $table->string('lugarTrabajo',50)->default("SIN INFORMACION");
+            $table->integer('idInterprete')->unsigned()->nullable();
+            $table->string('docIdentificacion', 50)->default("SIN INFORMACION");
+            $table->string('numDocIdentificacion', 50)->default("SIN INFORMACION");
+            $table->string('lugarTrabajo', 50)->default("SIN INFORMACION");
             $table->integer('idDomicilioTrabajo')->unsigned()->default(1);
-            $table->string('telefonoTrabajo',15)->default("SIN INFORMACION");
-            $table->string('representanteLegal',300)->default("SIN INFORMACION");
+            $table->string('telefonoTrabajo', 15)->default("SIN INFORMACION");
+            $table->string('representanteLegal', 300)->default("SIN INFORMACION");
             $table->timestamps();
             $table->softDeletes();
 
@@ -42,6 +43,7 @@ class CreateVariablesPersonasTable extends Migration
             $table->foreign('idReligion')->references('id')->on('cat_religion')->onDelete('cascade');
             $table->foreign('idDomicilio')->references('id')->on('domicilio')->onDelete('cascade');
             $table->foreign('idDomicilioTrabajo')->references('id')->on('domicilio')->onDelete('cascade');
+            $table->foreign('idInterprete')->references('id')->on('interprete')->onDelete('cascade');
         });
     }
 

@@ -24,12 +24,12 @@
 				<div class="form-group">
 					{!! Form::label('fechaNacimiento', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
 					<div class="input-group date" id="fechanac2" data-target-input="nearest">
-		                {!! Form::text('fechaNacimiento', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac2', 'data-toggle' => 'datetimepicker', 'required', 'placeholder' => 'DD-MM-AAAA','data-validation'=>'date', 'data-validation-format'=>'dd-mm-yyyy','data-validation-error-msg'=>'Ingrese fecha en el formato correcto DD-MM-AAAA']) !!}
-		                <div class="input-group-append" data-target="#fechanac2" data-toggle="datetimepicker">
-		                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-		                </div>
-		            </div>
-		            
+						{!! Form::text('fechaNacimiento', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac2', 'data-toggle' => 'datetimepicker', 'required', 'placeholder' => 'DD-MM-AAAA','data-validation'=>'date', 'data-validation-format'=>'dd-mm-yyyy','data-validation-error-msg'=>'Ingrese fecha en el formato correcto DD-MM-AAAA']) !!}
+						<div class="input-group-append" data-target="#fechanac2" data-toggle="datetimepicker">
+							<div class="input-group-text"><i class="fa fa-calendar"></i></div>
+						</div>
+					</div>
+
 				</div>
 			</div>
 			<div class="col-1">
@@ -40,16 +40,16 @@
 				</div>
 			</div>
 			@else
-				    <div class="col-2">
+			<div class="col-2">
 				<div class="form-group">
 					{!! Form::label('fechaNacimiento', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
 					<div class="input-group date" id="fechanac" data-target-input="nearest">
-		                {!! Form::text('fechaNacimiento', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac', 'data-toggle' => 'datetimepicker', 'placeholder' => 'DD-MM-AAAA','data-validation'=>'date', 'data-validation-format'=>'dd-mm-yyyy','data-validation-error-msg'=>'Ingrese fecha en el formato correcto DD-MM-AAAA']) !!}
-		                <div class="input-group-append" data-target="#fechanac" data-toggle="datetimepicker">
-		                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-		                </div>
-		            </div>
-		            
+						{!! Form::text('fechaNacimiento', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac', 'data-toggle' => 'datetimepicker', 'placeholder' => 'DD-MM-AAAA','data-validation'=>'date', 'data-validation-format'=>'dd-mm-yyyy','data-validation-error-msg'=>'Ingrese fecha en el formato correcto DD-MM-AAAA']) !!}
+						<div class="input-group-append" data-target="#fechanac" data-toggle="datetimepicker">
+							<div class="input-group-text"><i class="fa fa-calendar"></i></div>
+						</div>
+					</div>
+
 				</div>
 			</div>
 			<div class="col-1">
@@ -80,7 +80,7 @@
 				</div>
 			</div>
 
-		<div class="col-3">
+			<div class="col-3">
 				<div class="row no-gutters">
 					<div class="col-7">
 						{!! Form::label('rfc', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
@@ -103,6 +103,13 @@
 
 				</div>
 			</div>
+			
+			<div class="col-3">
+				<div class="form-group">
+					{!! Form::label('idMunicipioOrigen', 'Municipio de origen', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('idMunicipioOrigen',$municipiosVer,null, [ 'placeholder' => 'Seleccione un municipio','class' => 'form-control form-control-sm', 'data-validation'=>'required' ,'data-validation-event'=>'change']) !!}
+				</div>
+			</div>
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('idEtnia', 'Etnia', ['class' => 'col-form-label-sm']) !!}
@@ -116,12 +123,24 @@
 				</div>
 			</div>
 
-			<div class="col-3">
-				<div class="form-group">
-					{!! Form::label('idMunicipioOrigen', 'Municipio de origen', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('idMunicipioOrigen',$municipiosVer,null, [ 'placeholder' => 'Seleccione un municipio','class' => 'form-control form-control-sm', 'data-validation'=>'required' ,'data-validation-event'=>'change']) !!}
+			<div class="col-12"  id="datosInterprete" style="display:none;">
+				
+				<div class="row">
+					<div class="col-6">
+						<div class="form-group"> 
+							{!! Form::label('nombreInterprete', 'Nombre del intérprete', ['class' => 'col-form-label-sm']) !!}
+							{!! Form::text('nombreInterprete',null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese nombre','data-validation'=>'length', 'data-validation-length'=>'2-200','data-validation-error-msg'=>'El nombre debe contener al menos 2 letras', 'data-validation-event'=>'keyup']) !!}
+						</div>
+					</div>
+					<div class="col-6">
+						<div class="form-group"> 
+							{!! Form::label('lugarTrabInterprete', 'Lugar de trabajo del intérprete', ['class' => 'col-form-label-sm']) !!}
+							{!! Form::text('lugarTrabInterprete',null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese nombre de la organización','data-validation'=>'length', 'data-validation-length'=>'2-200','data-validation-error-msg'=>'El nombre debe contener al menos 2 letras', 'data-validation-event'=>'keyup']) !!}
+						</div>
+					</div>
 				</div>
 			</div>
+
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('telefono', 'Teléfono', ['class' => 'col-form-label-sm']) !!}
@@ -164,35 +183,37 @@
 					{!! Form::label('docIdentificacion', 'Documento de identificación', ['class' => 'col-form-label-sm']) !!}					
 
 					{!! Form::select('docIdentificacion', ['CREDENCIAL DE ELECTOR' => 'CREDENCIAL DE ELECTOR', 'PASAPORTE' => 'PASAPORTE','	
-						CARTILLA MILITAR' => 'CARTILLA MILITAR','LICENCIA PARA CONDUCIR' => 'LICENCIA PARA CONDUCIR','CREDENCIAL ESCOLAR' => 'CREDENCIAL ESCOLAR','VISA' => 'VISA','OTRO' => 'OTRO'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione uno', 'required','data-validation'=>'required' ,'data-validation-event'=>'change']) !!}
+					CARTILLA MILITAR' => 'CARTILLA MILITAR','LICENCIA PARA CONDUCIR' => 'LICENCIA PARA CONDUCIR','CREDENCIAL ESCOLAR' => 'CREDENCIAL ESCOLAR','VISA' => 'VISA','OTRO' => 'OTRO'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione uno', 'required','data-validation'=>'required' ,'data-validation-event'=>'change']) !!}
+				</div>
+			</div>
 
-
-					<div id="otrodocto" style="display:none;">
+			<div class="col-3" id="otrodocto" style="display:none;">
+				<div class="form-group"> 
 					{!! Form::label('otroDocumento', 'Otro documento identificación', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::text('otroDocumento',null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese documento','data-validation'=>'length', 'data-validation-length'=>'5-200','data-validation-error-msg'=>'El nombre de documento debe contener al menos 5 caracteres', 'data-validation-event'=>'keyup']) !!}
-					</div>
-
 				</div>
-				
-			</div>
-		<div class="col-3">
+			</div>				
+
+			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('numDocIdentificacion', 'Núm. de documento de identificación', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::text('numDocIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el núm. del docto. de identificación','data-validation'=>'custom', 'data-validation-regexp'=>'^[0-9]{1,50}$','data-validation-error-msg'=>'Ingrese al menos un número', 'data-validation-event'=>'keyup']) !!}
 				</div>
-				
+
 
 			</div>
+
+
 			<div class="col-12">
-		<div class="form-group">
-			{!! Form::label('narracionUno', 'Narración', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::textarea('narracionUno', null, ['class' => 'form-control form-control-sm','id' => 'narracionUno','rows' => '3', 'data-validation'=>'required' , 'data-validation-event'=>'keyup']) !!}
-		</div>
-	</div>
+				<div class="form-group">
+					{!! Form::label('narracionUno', 'Narración', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::textarea('narracionUno', null, ['class' => 'form-control form-control-sm','id' => 'narracionUno','rows' => '3', 'data-validation'=>'required' , 'data-validation-event'=>'keyup']) !!}
+				</div>
+			</div>
 
 		</div>
 	</div>
-                              <!--      DATOS DE PERSONA MORAL       -->
+	<!--      DATOS DE PERSONA MORAL       -->
 	<div class="col-12" id="personaMoral">
 		<div class="row">
 			<div class="col-6">
@@ -204,11 +225,11 @@
 			<div class="col-6">
 				<div class="form-group">
 					{!! Form::label('fechaAltaEmpresa', 'Fecha de alta de persona moral', ['class' => 'col-form-label-sm']) !!}<div class="input-group date" id="fechaAlta" data-target-input="nearest">
-		                {!! Form::text('fechaAltaEmpresa', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaAlta', 'data-toggle' => 'datetimepicker', 'placeholder' => 'AAAA-MM-DD','data-validation'=>'date', 'data-validation-format'=>'dd-mm-yyyy','data-validation-error-msg'=>'Ingrese fecha en el formato correcto AAAA-MM-DD']) !!}
-		                <div class="input-group-append" data-target="#fechaAlta" data-toggle="datetimepicker">
-		                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-		                </div>
-		            </div>
+						{!! Form::text('fechaAltaEmpresa', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaAlta', 'data-toggle' => 'datetimepicker', 'placeholder' => 'AAAA-MM-DD','data-validation'=>'date', 'data-validation-format'=>'dd-mm-yyyy','data-validation-error-msg'=>'Ingrese fecha en el formato correcto AAAA-MM-DD']) !!}
+						<div class="input-group-append" data-target="#fechaAlta" data-toggle="datetimepicker">
+							<div class="input-group-text"><i class="fa fa-calendar"></i></div>
+						</div>
+					</div>
 				</div>
 			</div>
 
@@ -235,11 +256,11 @@
 				</div>
 			</div>
 			<div class="col-12">
-		<div class="form-group">
-			{!! Form::label('narracionUnoM', 'Narración', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::textarea('narracionUnoM', null, ['class' => 'form-control form-control-sm','id' => 'narracionUnoM','rows' => '3', 'data-validation'=>'required' , 'data-validation-event'=>'keyup']) !!}
-		</div>
-	</div>
+				<div class="form-group">
+					{!! Form::label('narracionUnoM', 'Narración', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::textarea('narracionUnoM', null, ['class' => 'form-control form-control-sm','id' => 'narracionUnoM','rows' => '3', 'data-validation'=>'required' , 'data-validation-event'=>'keyup']) !!}
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
