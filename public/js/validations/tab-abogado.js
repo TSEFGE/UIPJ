@@ -44,7 +44,7 @@ $('#tabsabogado.nav-tabs a').on('hidden.bs.tab', function(event){
 		default:
 		break;
 		}
-		
+	tabs = $("#tabsabogado .visible").length;
 });
 $("#tabogado").hover(function(){
 	totalesP = $('#collapsePersonales3 .vacio').length;	

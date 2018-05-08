@@ -48,8 +48,9 @@ $('#tabsautoridad.nav-tabs a').on('hidden.bs.tab', function(event){
 		default:
 		break;
 	}
+	tabs = $("#tabsautoridad .visible").length;
 });
-$("#tabsautordiad").hover(function(){
+$("#ctautoridad").hover(function(){
 	totalesP = $('#collapsePersonales3 .vacio').length;
 	correcto = $('#tabsautoridad .correcto').length;
 	if (correcto == tabs) {
@@ -143,7 +144,7 @@ $('#collapseTrab3 ').hover(function(){
 	if (correctos == 0) {
 		$("#biena2").hide();
 	}
-	else if (correctos == totales) {
+	else if (correctos == totalesTrab) {
 		$("#biena2").show();
 		$("#biena2").html('<i class="fa fa-check" aria-hidden="true"></i>');
 		$("#biena2").addClass('correcto');
@@ -178,7 +179,7 @@ $("#collapseAutoridad").hover(function(){
 	if (correctos == 0) {
 		$("#biena3").hide();
 	}
-	else if (correctos == totales) {
+	else if (correctos == totalesAut) {
 		$("#biena3").show();
 		$("#biena3").html('<i class="fa fa-check" aria-hidden="true"></i>');
 		$("#biena3").addClass('correcto');
