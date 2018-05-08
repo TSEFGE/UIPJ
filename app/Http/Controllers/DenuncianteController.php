@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Alert;
-use DB;
 use App\Http\Requests\StoreDenunciante;
 use App\Models\Bitacora;
 use App\Models\Carpeta;
@@ -18,10 +17,12 @@ use App\Models\CatOcupacion;
 use App\Models\CatReligion;
 use App\Models\Domicilio;
 use App\Models\ExtraDenunciante;
+use App\Models\Interprete;
 use App\Models\Narracion;
 use App\Models\Notificacion;
 use App\Models\Persona;
 use App\Models\VariablesPersona;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -89,11 +90,23 @@ class DenuncianteController extends Controller
                 }
                 if (!is_null($request->idLengua)) {
                     $persona->idLengua = $request->idLengua;
+
+                    if ($request->idLengua != 70) {
+                        $interprete         = new Interprete();
+                        $interprete->nombre = $request->nombreInterprete;
+                        $interprete->nombre = $request->lugarTrabInterprete;
+                        $interprete->save();
+                        $idInterprete = $interprete->id;
+                    } else {
+                        $idInterprete = null;
+                    }
+
                 }
                 if (!is_null($request->idMunicipioOrigen)) {
                     $persona->idMunicipioOrigen = $request->idMunicipioOrigen;
                 }
                 $persona->save();
+
                 if ($request->rfcAux != $request->rfc . $request->homo) {
                     Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un RFC diferente al generado por el sistema para una persona física de tipo victima u ofendido.', 'idFilaAccion' => $persona->id]);
                 }
@@ -200,7 +213,8 @@ class DenuncianteController extends Controller
                 if (!is_null($request->idReligion)) {
                     $VariablesPersona->idReligion = $request->idReligion;
                 }
-                $VariablesPersona->idDomicilio = $idD1;
+                $VariablesPersona->idDomicilio  = $idD1;
+                $VariablesPersona->idInterprete = $idInterprete;
                 if (!is_null($request->docIdentificacion)) {
                     if ($request->docIdentificacion == 'OTRO') {
                         $VariablesPersona->docIdentificacion = $request->otroDocumento;
@@ -258,11 +272,11 @@ class DenuncianteController extends Controller
 
             }
         } elseif ($request->esEmpresa == 1) {
-            $persona            = new Persona();
-            $persona->nombres   = $request->nombres2;
+            $persona                  = new Persona();
+            $persona->nombres         = $request->nombres2;
             $persona->fechaNacimiento = $fechaAltaEmpresa;
-            $persona->rfc       = $request->rfc2 . $request->homo2;
-            $persona->esEmpresa = 1;
+            $persona->rfc             = $request->rfc2 . $request->homo2;
+            $persona->esEmpresa       = 1;
             $persona->save();
             $idPersona = $persona->id;
             if ($request->rfcAux != $request->rfc2 . $request->homo2) {
@@ -437,46 +451,46 @@ class DenuncianteController extends Controller
     public function edit($idCarpeta, $id)
     {
         $carpetaNueva = Carpeta::where('id', $idCarpeta)->where('idFiscal', Auth::user()->id)->get();
-        $var = ExtraDenunciante::where('id', $id)->get();
+        $var          = ExtraDenunciante::where('id', $id)->get();
         if ($carpetaNueva->isEmpty() && $var->isEmpty()) {
             return redirect()->route('home');
         }
 
         $esMoral = DB::table('extra_denunciante')
-        ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
-        ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-        ->select('persona.esEmpresa')
-        ->where('extra_denunciante.id', '=', $id)
-        ->get()->first();
-
-        $estados        = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-        $municipiosVer  = CatMunicipio::select('id', 'nombre')->where('idEstado', 30)->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-        //dd($esMoral->esEmpresa);
-        if($esMoral->esEmpresa == 1){
-            //consultas para empresa
-            $numCarpeta     = $carpetaNueva[0]->numCarpeta;
-
-            $personales = DB::table('extra_denunciante')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->select('extra_denunciante.id as idDenunciante', 'extra_denunciante.idNotificacion', 'extra_denunciante.esVictima', 'variables_persona.id as idVariablesPersona', 'variables_persona.idDomicilio', 'variables_persona.representanteLegal', 'persona.id as idPersona', 'persona.nombres', 'persona.fechaNacimiento', 'persona.rfc', 'persona.esEmpresa')
+            ->select('persona.esEmpresa')
             ->where('extra_denunciante.id', '=', $id)
             ->get()->first();
 
+        $estados       = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $municipiosVer = CatMunicipio::select('id', 'nombre')->where('idEstado', 30)->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        //dd($esMoral->esEmpresa);
+        if ($esMoral->esEmpresa == 1) {
+            //consultas para empresa
+            $numCarpeta = $carpetaNueva[0]->numCarpeta;
+
+            $personales = DB::table('extra_denunciante')
+                ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+                ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+                ->select('extra_denunciante.id as idDenunciante', 'extra_denunciante.idNotificacion', 'extra_denunciante.esVictima', 'variables_persona.id as idVariablesPersona', 'variables_persona.idDomicilio', 'variables_persona.representanteLegal', 'persona.id as idPersona', 'persona.nombres', 'persona.fechaNacimiento', 'persona.rfc', 'persona.esEmpresa')
+                ->where('extra_denunciante.id', '=', $id)
+                ->get()->first();
+
             $direccion = DB::table('domicilio')
-            ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
-            ->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
-            ->select('domicilio.id', 'domicilio.idMunicipio', 'domicilio.idLocalidad', 'domicilio.idColonia', 'domicilio.calle', 'domicilio.numExterno', 'domicilio.numInterno', 'cat_municipio.idEstado', 'cat_colonia.codigoPostal')
-            ->where('domicilio.id', '=', $personales->idDomicilio)
-            ->get()->first();
+                ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
+                ->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
+                ->select('domicilio.id', 'domicilio.idMunicipio', 'domicilio.idLocalidad', 'domicilio.idColonia', 'domicilio.calle', 'domicilio.numExterno', 'domicilio.numInterno', 'cat_municipio.idEstado', 'cat_colonia.codigoPostal')
+                ->where('domicilio.id', '=', $personales->idDomicilio)
+                ->get()->first();
 
             $direccionNotif = DB::table('notificacion')
-            ->join('domicilio', 'domicilio.id', '=', 'notificacion.idDomicilio')
-            ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
-            ->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
-            ->select('notificacion.id as idNotificacion', 'notificacion.correo', 'notificacion.telefono', 'notificacion.fax', 'domicilio.id as idDomicilio', 'domicilio.idMunicipio', 'domicilio.idLocalidad', 'domicilio.idColonia', 'domicilio.calle', 'domicilio.numExterno', 'domicilio.numInterno', 'cat_municipio.idEstado', 'cat_colonia.codigoPostal')
-            ->where('notificacion.id', '=', $personales->idNotificacion)
-            ->get()->first();
+                ->join('domicilio', 'domicilio.id', '=', 'notificacion.idDomicilio')
+                ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
+                ->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
+                ->select('notificacion.id as idNotificacion', 'notificacion.correo', 'notificacion.telefono', 'notificacion.fax', 'domicilio.id as idDomicilio', 'domicilio.idMunicipio', 'domicilio.idLocalidad', 'domicilio.idColonia', 'domicilio.calle', 'domicilio.numExterno', 'domicilio.numInterno', 'cat_municipio.idEstado', 'cat_colonia.codigoPostal')
+                ->where('notificacion.id', '=', $personales->idNotificacion)
+                ->get()->first();
             //dump($personales);
             //dump($idCarpeta, $estados, $municipiosVer, $personales, $direccion, $direccionNotif);
             return view('edit-forms.denunciante')->with('idCarpeta', $idCarpeta)
@@ -486,7 +500,7 @@ class DenuncianteController extends Controller
                 ->with('direccion', $direccion)
                 ->with('direccionNotif', $direccionNotif);
 
-        }else{
+        } else {
             $numCarpeta     = $carpetaNueva[0]->numCarpeta;
             $escolaridades  = CatEscolaridad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $estadoscivil   = CatEstadoCivil::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
@@ -497,34 +511,34 @@ class DenuncianteController extends Controller
             $religiones     = CatReligion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
 
             $personales = DB::table('extra_denunciante')
-            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
-            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->join('cat_municipio', 'cat_municipio.id', '=', 'persona.idMunicipioOrigen')
-            ->select('extra_denunciante.id as idDenunciante', 'extra_denunciante.conoceAlDenunciado', 'extra_denunciante.idNotificacion', 'extra_denunciante.esVictima', 'variables_persona.id as idVariablesPersona', 'variables_persona.edad', 'variables_persona.telefono', 'variables_persona.motivoEstancia', 'variables_persona.docIdentificacion', 'variables_persona.numDocIdentificacion', 'variables_persona.lugarTrabajo', 'variables_persona.telefonoTrabajo', 'variables_persona.idDomicilio', 'variables_persona.idDomicilioTrabajo', 'variables_persona.idOcupacion', 'variables_persona.idEstadoCivil', 'variables_persona.idEscolaridad', 'variables_persona.idReligion', 'persona.id as idPersona', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.fechaNacimiento', 'persona.rfc', 'persona.curp', 'persona.sexo', 'persona.idMunicipioOrigen', 'cat_municipio.idEstado', 'persona.esEmpresa', 'persona.idNacionalidad', 'persona.idEtnia', 'persona.idLengua')
-            ->where('extra_denunciante.id', '=', $id)
-            ->get()->first();
+                ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+                ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+                ->join('cat_municipio', 'cat_municipio.id', '=', 'persona.idMunicipioOrigen')
+                ->select('extra_denunciante.id as idDenunciante', 'extra_denunciante.conoceAlDenunciado', 'extra_denunciante.idNotificacion', 'extra_denunciante.esVictima', 'variables_persona.id as idVariablesPersona', 'variables_persona.edad', 'variables_persona.telefono', 'variables_persona.motivoEstancia', 'variables_persona.docIdentificacion', 'variables_persona.numDocIdentificacion', 'variables_persona.lugarTrabajo', 'variables_persona.telefonoTrabajo', 'variables_persona.idDomicilio', 'variables_persona.idDomicilioTrabajo', 'variables_persona.idOcupacion', 'variables_persona.idEstadoCivil', 'variables_persona.idEscolaridad', 'variables_persona.idReligion', 'persona.id as idPersona', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.fechaNacimiento', 'persona.rfc', 'persona.curp', 'persona.sexo', 'persona.idMunicipioOrigen', 'cat_municipio.idEstado', 'persona.esEmpresa', 'persona.idNacionalidad', 'persona.idEtnia', 'persona.idLengua')
+                ->where('extra_denunciante.id', '=', $id)
+                ->get()->first();
 
             $direccion = DB::table('domicilio')
-            ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
-            ->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
-            ->select('domicilio.id', 'domicilio.idMunicipio', 'domicilio.idLocalidad', 'domicilio.idColonia', 'domicilio.calle', 'domicilio.numExterno', 'domicilio.numInterno', 'cat_municipio.idEstado', 'cat_colonia.codigoPostal')
-            ->where('domicilio.id', '=', $personales->idDomicilio)
-            ->get()->first();
+                ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
+                ->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
+                ->select('domicilio.id', 'domicilio.idMunicipio', 'domicilio.idLocalidad', 'domicilio.idColonia', 'domicilio.calle', 'domicilio.numExterno', 'domicilio.numInterno', 'cat_municipio.idEstado', 'cat_colonia.codigoPostal')
+                ->where('domicilio.id', '=', $personales->idDomicilio)
+                ->get()->first();
 
             $direccionTrab = DB::table('domicilio')
-            ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
-            ->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
-            ->select('domicilio.id', 'domicilio.idMunicipio', 'domicilio.idLocalidad', 'domicilio.idColonia', 'domicilio.calle', 'domicilio.numExterno', 'domicilio.numInterno', 'cat_municipio.idEstado', 'cat_colonia.codigoPostal')
-            ->where('domicilio.id', '=', $personales->idDomicilioTrabajo)
-            ->get()->first();
+                ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
+                ->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
+                ->select('domicilio.id', 'domicilio.idMunicipio', 'domicilio.idLocalidad', 'domicilio.idColonia', 'domicilio.calle', 'domicilio.numExterno', 'domicilio.numInterno', 'cat_municipio.idEstado', 'cat_colonia.codigoPostal')
+                ->where('domicilio.id', '=', $personales->idDomicilioTrabajo)
+                ->get()->first();
 
             $direccionNotif = DB::table('notificacion')
-            ->join('domicilio', 'domicilio.id', '=', 'notificacion.idDomicilio')
-            ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
-            ->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
-            ->select('notificacion.id as idNotificacion', 'notificacion.correo', 'notificacion.telefono', 'notificacion.fax', 'domicilio.id as idDomicilio', 'domicilio.idMunicipio', 'domicilio.idLocalidad', 'domicilio.idColonia', 'domicilio.calle', 'domicilio.numExterno', 'domicilio.numInterno', 'cat_municipio.idEstado', 'cat_colonia.codigoPostal')
-            ->where('notificacion.id', '=', $personales->idNotificacion)
-            ->get()->first();
+                ->join('domicilio', 'domicilio.id', '=', 'notificacion.idDomicilio')
+                ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
+                ->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
+                ->select('notificacion.id as idNotificacion', 'notificacion.correo', 'notificacion.telefono', 'notificacion.fax', 'domicilio.id as idDomicilio', 'domicilio.idMunicipio', 'domicilio.idLocalidad', 'domicilio.idColonia', 'domicilio.calle', 'domicilio.numExterno', 'domicilio.numInterno', 'cat_municipio.idEstado', 'cat_colonia.codigoPostal')
+                ->where('notificacion.id', '=', $personales->idNotificacion)
+                ->get()->first();
 
             /*$denunciante = DB::table('extra_denunciante')
             ->join('notificacion', 'notificacion.id', '=', 'extra_denunciante.idNotificacion')
@@ -588,8 +602,8 @@ class DenuncianteController extends Controller
     {
         //dd($request->all());
         $carpetaNueva = Carpeta::where('id', $request->idCarpeta)->where('idFiscal', Auth::user()->id)->get();
-        $var = ExtraDenunciante::where('id', $id)->get();
-        if ($carpetaNueva->isEmpty() && $var->isEmpty()){
+        $var          = ExtraDenunciante::where('id', $id)->get();
+        if ($carpetaNueva->isEmpty() && $var->isEmpty()) {
             return redirect()->route('home');
         }
 
@@ -600,10 +614,10 @@ class DenuncianteController extends Controller
                 return back()->withInput();
             }
 
-            $persona                  = Persona::find($request->idPersona);
-            $persona->nombres         = $request->nombres;
-            $persona->primerAp        = $request->primerAp;
-            $persona->segundoAp       = $request->segundoAp;
+            $persona            = Persona::find($request->idPersona);
+            $persona->nombres   = $request->nombres;
+            $persona->primerAp  = $request->primerAp;
+            $persona->segundoAp = $request->segundoAp;
             //$fechaAux                 = $request->fechaNacimiento;
             //$fechaNacimiento          = date("Y-m-d", strtotime($fechaAux));
             $persona->fechaNacimiento = date("Y-m-d", strtotime($request->fechaNacimiento));
@@ -628,7 +642,7 @@ class DenuncianteController extends Controller
             Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'update', 'descripcion' => 'Se ha actualizado una persona física de tipo victima u ofendido.', 'idFilaAccion' => $persona->id]);
             $idPersona = $persona->id;
 
-            if ($request->rfcAux != $request->rfc.$request->homo) {
+            if ($request->rfcAux != $request->rfc . $request->homo) {
                 Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un RFC diferente al generado por el sistema para una persona física de tipo victima u ofendido.', 'idFilaAccion' => $persona->id]);
             }
 
@@ -773,15 +787,15 @@ class DenuncianteController extends Controller
             }
             Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_denunciante', 'accion' => 'update', 'descripcion' => 'Se ha actualizado un extra ofendido de persona física.', 'idFilaAccion' => $ExtraDenunciante->id]);
 
-        }elseif ($request->esEmpresa == 1) {
-            $persona            = Persona::find($request->idPersona);
-            $persona->nombres   = $request->nombres2;
+        } elseif ($request->esEmpresa == 1) {
+            $persona                  = Persona::find($request->idPersona);
+            $persona->nombres         = $request->nombres2;
             $persona->fechaNacimiento = $fechaAltaEmpresa;
-            $persona->rfc       = $request->rfc2 . $request->homo2;
-            $persona->esEmpresa = 1;
+            $persona->rfc             = $request->rfc2 . $request->homo2;
+            $persona->esEmpresa       = 1;
             $persona->save();
             $idPersona = $persona->id;
-            if ($request->rfcAux != $request->rfc2.$request->homo2) {
+            if ($request->rfcAux != $request->rfc2 . $request->homo2) {
                 Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'update', 'descripcion' => 'Se ha registrado un RFC diferente al generado por el sistema para una persona moral de tipo victima u ofendido.', 'idFilaAccion' => $persona->id]);
             }
             Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'update', 'descripcion' => 'Se ha actualizado una persona moral de tipo victima u ofendido.', 'idFilaAccion' => $persona->id]);

@@ -1,6 +1,3 @@
-$(document).ready(function () {
-    $('form').isValid();
-});
 $("#btn-submit").prop('disabled',true);
 totalesP=0;
 totalesD=0;
@@ -61,6 +58,7 @@ $('#tdenunciante.nav-tabs a').on('hidden.bs.tab', function(event){
    
   });
 $("#ctdenunciante").hover(function () { 
+    totalesP = $('#collapsePersonales1 .vacio').length;
     correcto = $('#tdenunciante .correcto').length;
     if (correcto == tabs) {
         $("#btn-submit").prop('disabled', false);
@@ -98,6 +96,7 @@ $("#collapsePersonales1").hover(function () {
     /*console.log("totalesP", totalesP);
     console.log("error", count);
     console.log("correctos", correctos);*/
+    correcto = $('#tdenunciante .correcto').length;
 });
 $("#collapseDir1").hover(function () {
      $(this).isValid();
@@ -120,6 +119,7 @@ $("#collapseDir1").hover(function () {
      } else {
          $("#t2").show();
          $("#t2").html(correctos);
+         $("#t2").removeClass('correcto');
      }
      console.log("totalesD", totalesD);
      /*
@@ -130,6 +130,7 @@ $("#collapseDir1").hover(function () {
          $("#tab2").show();
          $("#tab2").html(countvacio);
      }*/
+    correcto = $('#tdenunciante .correcto').length;
 
 });
 $("#collapseTrab1").hover(function () {
@@ -154,6 +155,7 @@ $("#collapseTrab1").hover(function () {
     } else {
         $("#t3").show();
         $("#t3").html(correctos);
+        $("#t3").removeClass('correcto');
     }
 /*
     countvacio = countvacio - count - correctos;
@@ -164,6 +166,7 @@ $("#collapseTrab1").hover(function () {
         $("#tab3").html(countvacio);
     }
         */
+    correcto = $('#tdenunciante .correcto').length;
 
 });
  
@@ -198,6 +201,7 @@ $("#collapseNotifs1").hover(function () {
         $("#tab4").show();
         $("#tab4").html(countvacio);
     }*/
+    correcto = $('#tdenunciante .correcto').length;
 });
 
   

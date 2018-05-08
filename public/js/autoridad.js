@@ -1,7 +1,6 @@
-$("#personal").addClass('visible');
 
-
-    $('#idOcupacion').change(function(event) {
+$("#dtrabajo").addClass('visible');     
+   $('#idOcupacion').change(function(event) {
                 var ocupacion = $('#idOcupacion').val();
                 if (ocupacion == 2947) {          
            $("#dtrabajo").removeClass('visible');  
@@ -13,9 +12,14 @@ $("#personal").addClass('visible');
 
             });
 
-
+$("#autoridad").addClass('visible');
 $("#direccion").addClass('visible');
 $("#dnotificaciones").addClass('visible');
+$("#personal").addClass('visible');
+$("input [type= text]").addClass('vacio');
+$("select").addClass('vacio');
+$("select").attr('data-validation','required');
+$("select").attr('data-validation-event', 'change');
 
 $(document).ready(function() {
     $("#numInterno").val("S/N");
