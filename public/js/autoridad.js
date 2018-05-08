@@ -1,5 +1,3 @@
-$("#personal").addClass('visible');
-
 
     $('#idOcupacion').change(function(event) {
                 var ocupacion = $('#idOcupacion').val();
@@ -16,6 +14,10 @@ $("#personal").addClass('visible');
 
 $("#direccion").addClass('visible');
 $("#dnotificaciones").addClass('visible');
+$("#personal").addClass('visible');
+$("input [type= text]").addClass('vacio');
+$("select").addClass('vacio');
+$("select").attr('data-validation','required');
 
 $(document).ready(function() {
     $("#numInterno").val("S/N");
