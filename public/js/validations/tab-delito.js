@@ -1,73 +1,121 @@
-$('#tabsdelito.nav-tabs a').on('hidden.bs.tab', function(event){
+$("#btn-submit").prop('disabled', true);
+$('#tabInfodelito').addClass('visible');
+$('#tabLugardelito').addClass('visible');
+totalesD=0;
+totalesH=0;
+tabs=0;
+correcto=0;
+$('#tabsdelito.nav-tabs a').on('shown.bs.tab', function (event) {
+	var index = $($(this).attr('href')).index();
+	switch (index) {
+		case 0:
+			totalesD = $('#infodelito .vacio').length;
+			$('#infodelito').isValid();
+			break;
+		case 1:
+			
+			totalesH = $('#lugardelito .vacio').length;
+			$('#lugardelito ').isValid();
+			break;
+		default:
+			break;
+	}
+	tabs = $("#tabsdelito .visible").length;
+});
 
+$('#tabsdelito.nav-tabs a').on('hidden.bs.tab', function(event){
 	var index= $($(this).attr('href')).index();
 	switch(index) {
-	 case 0:
-	 var countvacio = $('#infodelito .vacio').length; 
-	 totales=countvacio;
-	 var count = $('#infodelito .error').length;
-	 if (count==0){
-		$("#errorad").hide();
-	} 
-	else{  
-		$("#errorad").show();                             
-		$("#errorad").html(count); 
-	} 
-	var correctos = $('#infodelito .valid').length; 
-	if (correctos==0){
-		$("#bienad").hide();
-	} 
-	else if( correctos ==totales){
-		$("#bienad").show();
-		$("#bienad").html('<i class="fa fa-check" aria-hidden="true"></i>');                                                                
-	}                                
-	else{  
-		$("#bienad").show();                             
-		$("#bienad").html(correctos); 
-	} 
-	countvacio= countvacio-count-correctos;
-	if (countvacio == 0 || countvacio ==totales){
-		$("#vacioad").hide();
-	} else{  
-		$("#vacioad").show();                            
-		$("#vacioad").html(countvacio); 
-	}                               
-	break;
-	
-	case 1:
-	var countvacio = $('#lugardelito .vacio').length; 
-	totales=countvacio;
-	var count = $('#lugardelito .error').length;
-	if (count==0){
-		$("#errorad2").hide();
-	} 
-	else{  
-		$("#errorad2").show();                             
-		$("#errorad2").html(count); 
-	}  
-	var correctos = $('#lugardelito .valid').length; 
-	if (correctos==0){
-		$("#bienad2").hide();
-	} 
-	else if( correctos ==totales){
-		$("#bienad2").show();
-		$("#bienad2").html('<i class="fa fa-check" aria-hidden="true"></i>');                                                                
-	}                                
-	else{  
-		$("#bienad2").show();                             
-		$("#bienad2").html(correctos); 
-	}  
-	countvacio= countvacio-count-correctos;
-	if (countvacio == 0 || countvacio ==totales){
-		$("#vacioad2").hide();
-	} else{  
-		$("#vacioad2").show();                            
-		$("#vacioad2").html(countvacio); 
-	} 
-	break;
+		case 0:
+			totalesD = $('#infodelito .vacio').length; 
+			$('#infodelito').isValid();	                            
+			break;	
+		case 1:
+			totalesH = $('#lugardelito .vacio').length; 
+			$('#lugardelito ').isValid();			
+			break;
 	default:
 	break;
-
-
 }
+	tabs = $("#tabsdelito .visible").length;
+	console.log("tabs",tabs);  
+});
+$("#cajados").hover(function(){
+	totalesD = $('#infodelito .vacio').length;
+	correcto = $('#tabsdelito .correcto').length;
+	if (correcto == tabs) {
+		$("#btn-submit").prop('disabled', false);
+	} else {
+		$("#btn-submit").prop('disabled', true);
+	}
+	console.log("totalesD", totalesD); 
+	console.log("totalesH", totalesH); 
+});
+$("#infodelito").hover(function(){
+	$(this).isValid();
+	var count = $('#infodelito .error').length;
+	var correctos = $('#infodelito .valid').length;
+	if (count == 0) {
+		$("#errorad").hide();
+	}
+	else {
+		$("#errorad").show();
+		$("#errorad").html(count);
+	}
+	
+	if (correctos == 0) {
+		$("#bienad").hide();
+	}
+	else if (correctos == totalesD) {
+		$("#bienad").show();
+		$("#bienad").html('<i class="fa fa-check" aria-hidden="true"></i>');
+		$("#bienad").addClass('correcto');
+	}
+	else {
+		$("#bienad").show();
+		$("#bienad").html(correctos);
+		$("#bienad").removeClass('correcto');
+	}/*
+	countvacio = countvacio - count - correctos;
+	if (countvacio == 0 || countvacio == totales) {
+		$("#vacioad").hide();
+	} else {
+		$("#vacioad").show();
+		$("#vacioad").html(countvacio);
+	}  */  
+});
+$('#lugardelito').hover(function(){
+	$(this).isValid();
+	var count = $('#lugardelito .error').length;
+	var correctos = $('#lugardelito .valid').length;
+	if (count == 0) {
+		$("#errorad2").hide();
+	}
+	else {
+		$("#errorad2").show();
+		$("#errorad2").html(count);
+	}
+	
+	if (correctos == 0) {
+		$("#bienad2").hide();
+	}
+	else if (correctos == totalesH) {
+		$("#bienad2").show();
+		$("#bienad2").html('<i class="fa fa-check" aria-hidden="true"></i>');
+		$("#bienad2").addClass('correcto');
+	}
+	else {
+		$("#bienad2").show();
+		$("#bienad2").html(correctos);
+		$("#bienad2").removeClass('correcto');
+	}
+	/*
+	countvacio = countvacio - count - correctos;
+	if (countvacio == 0 || countvacio == totales) {
+		$("#vacioad2").hide();
+	} else {
+		$("#vacioad2").show();
+		$("#vacioad2").html(countvacio);
+	} */
+
 });

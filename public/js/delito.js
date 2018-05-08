@@ -1,4 +1,6 @@
-
+$('input [type=text]').addClass('vacio');
+$("#idDelito , #idAgrupacion1, #idAgrupacion2 , #idModalidad , #formaComision , #consumacion ").addClass('vacio');
+$('#lugardelito select ').addClass('vacio');
 
     //Para delito, con o sin violencia
     $('#violencia').hide();
@@ -7,7 +9,9 @@
         if ($('#conViolencia1').is(':checked') ) {
             $('#violencia').hide();
             $(".cv").prop('disabled', true);
-            //$("#idTipoArma").prop('disabled', true);
+            $("#idTipoArma , #idArma, #idPosibleCausa ").removeClass('vacio');
+            correcto=0;
+            $('span').removeClass('correcto')
             //$("#idArma").prop('disabled', true);
         }
     });
@@ -15,6 +19,8 @@
         if ($('#conViolencia2').is(':checked') ) {
             $('#violencia').show();
             $(".cv").prop('disabled', false);
+            $("#idTipoArma , #idArma, #idPosibleCausa ").addClass('vacio');
+            $('span').removeClass('correcto')
             //$("#idTipoArma").prop('disabled', false);
             //$("#idArma").prop('disabled', false);
         }

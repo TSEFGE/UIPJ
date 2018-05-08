@@ -36,14 +36,14 @@
 
 			<div id="delitotabs">
 				<ul id="tabsdelito" class="nav nav-tabs">
-					<li class="nav-item">
+					<li class="nav-item" id="tabInfodelito">
 						<a class="nav-link active" data-toggle="tab" href="#infodelito">Información sobre la comisión del delito</a>
 						<span id="vacioad" class="xvacio"></span>
 						<span id="errorad" class="xerror"></span>
 						<span id="bienad" class="bien"></span>	
 
 					</li>
-					<li class="nav-item">
+					<li class="nav-item" id="tabLugardelito">
 						<a class="nav-link" data-toggle="tab" href="#lugardelito">Información sobre el lugar de los hechos</a>
 						<span id="vacioad2" class="xvacio"></span>
 						<span id="errorad2" class="xerror"></span>
