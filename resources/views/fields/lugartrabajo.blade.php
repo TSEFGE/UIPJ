@@ -9,7 +9,7 @@
 		<div class="form-group">
 			{!! Form::label('telefonoTrabajo', 'Teléfono del trabajo', ['class' => 'col-form-label-sm']) !!}
 			
-					{!! Form::text('telefonoTrabajo', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono', 'data-validation'=>'custom', 'data-validation-regexp'=>'^([0-9]{10,15}|(SIN NUMERO))$','data-validation-error-msg'=>'En caso de no existir teléfono ingresar SIN INFORMACION', 'data-validation-event'=>'keyup']) !!}
+					{!! Form::text('telefonoTrabajo', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono', 'data-validation'=>'custom', 'data-validation-regexp'=>'^([0-9]{10,15}|(SIN NUMERO))$','data-validation-error-msg'=>'En caso de no existir teléfono ingresar SIN NUMERO', 'data-validation-event'=>'keyup']) !!}
 			
 		</div>
 	</div>

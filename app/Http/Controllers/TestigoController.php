@@ -21,9 +21,9 @@ use App\Models\Narracion;
 use App\Models\Notificacion;
 use App\Models\Persona;
 use App\Models\VariablesPersona;
-use Illuminate\Support\Facades\Auth;
 use DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TestigoController extends Controller
 {
@@ -88,6 +88,15 @@ class TestigoController extends Controller
             }
             if (!is_null($request->idLengua)) {
                 $persona->idLengua = $request->idLengua;
+                if ($request->idLengua != 70) {
+                    $interprete               = new Interprete();
+                    $interprete->nombre       = $request->nombreInterprete;
+                    $interprete->organizacion = $request->lugarTrabInterprete;
+                    $interprete->save();
+                    $idInterprete = $interprete->id;
+                } else {
+                    $idInterprete = null;
+                }
             }
             if (!is_null($request->idMunicipioOrigen)) {
                 $persona->idMunicipioOrigen = $request->idMunicipioOrigen;
@@ -199,7 +208,9 @@ class TestigoController extends Controller
             if (!is_null($request->idReligion)) {
                 $VariablesPersona->idReligion = $request->idReligion;
             }
-            $VariablesPersona->idDomicilio = $idD1;
+            $VariablesPersona->idDomicilio  = $idD1;
+            $VariablesPersona->idInterprete = $idInterprete;
+
             if (!is_null($request->docIdentificacion)) {
                 $VariablesPersona->docIdentificacion = $request->docIdentificacion;
             }
@@ -247,42 +258,41 @@ class TestigoController extends Controller
 
     public function edit($idCarpeta, $idExtraTestigo)
     {
-        $testigo=ExtraTestigo::where('id', $idExtraTestigo)->get();
+        $testigo = ExtraTestigo::where('id', $idExtraTestigo)->get();
         //dump($testigo->isNotEmpty());
         if ($testigo->isNotEmpty()) {
-            $personales=DB::table('extra_testigo', 'extra_testigo.id', '=', $idExtraTestigo)
-                    ->join('variables_persona', 'variables_persona.id', '=', 'extra_testigo.idVariablesPersona')
-                    ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-                    ->join('cat_municipio', 'cat_municipio.id', '=', 'persona.idMunicipioOrigen')
-                    //->join('cat_estado','cat_estado.id','=','cat_municipio.idEstado')
-                    ->select('extra_testigo.id as $idExtraTestigo', 'cat_municipio.idEstado as idEstado', 'persona.*', 'persona.id as idPersona', 'variables_persona.id as idVariablesPersona', 'variables_persona.*', 'extra_testigo.idNotificacion as idNotificacion')
-                    ->get()->first();
+            $personales = DB::table('extra_testigo', 'extra_testigo.id', '=', $idExtraTestigo)
+                ->join('variables_persona', 'variables_persona.id', '=', 'extra_testigo.idVariablesPersona')
+                ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+                ->join('cat_municipio', 'cat_municipio.id', '=', 'persona.idMunicipioOrigen')
+            //->join('cat_estado','cat_estado.id','=','cat_municipio.idEstado')
+                ->select('extra_testigo.id as $idExtraTestigo', 'cat_municipio.idEstado as idEstado', 'persona.*', 'persona.id as idPersona', 'variables_persona.id as idVariablesPersona', 'variables_persona.*', 'extra_testigo.idNotificacion as idNotificacion')
+                ->get()->first();
             //dd($personales);
 
-            $direccion=DB::table('domicilio', 'domicilio.id', '=', $personales->idDomicilio)
-                        ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
-                        ->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
-                        ->select('cat_municipio.idEstado as idEstado', 'domicilio.*', 'domicilio.id as idDomicilio')
-                        ->where('domicilio.id', '=', $personales->idDomicilio)
-                        ->get()->first();
-            $direccionTrab=DB::table('variables_persona', 'variables_persona.idPersona', '=', $personales->idPersona)
-                        ->join('domicilio', 'domicilio.id', '=', 'variables_persona.idDomicilioTrabajo')
-                        ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
-                        ->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
-                        ->select('cat_municipio.idEstado as idEstado', 'domicilio.*', 'domicilio.id as idDomicilio')
-                        ->where('variables_persona.idPersona', '=', $personales->idPersona)
-                        ->get()->first();
-            $direccionNotif=DB::table('notificacion', 'notificacion.id', '=', $personales->idNotificacion)
-                        ->join('domicilio', 'domicilio.id', '=', 'notificacion.idDomicilio')
-                        ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
-                        ->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
-                        ->select('notificacion.*', 'cat_municipio.idEstado as idEstado', 'domicilio.*', 'domicilio.id as idDomicilio')
-                        ->where('notificacion.id', '=', $personales->idNotificacion)
-                        ->get()->first();
+            $direccion = DB::table('domicilio', 'domicilio.id', '=', $personales->idDomicilio)
+                ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
+                ->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
+                ->select('cat_municipio.idEstado as idEstado', 'domicilio.*', 'domicilio.id as idDomicilio')
+                ->where('domicilio.id', '=', $personales->idDomicilio)
+                ->get()->first();
+            $direccionTrab = DB::table('variables_persona', 'variables_persona.idPersona', '=', $personales->idPersona)
+                ->join('domicilio', 'domicilio.id', '=', 'variables_persona.idDomicilioTrabajo')
+                ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
+                ->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
+                ->select('cat_municipio.idEstado as idEstado', 'domicilio.*', 'domicilio.id as idDomicilio')
+                ->where('variables_persona.idPersona', '=', $personales->idPersona)
+                ->get()->first();
+            $direccionNotif = DB::table('notificacion', 'notificacion.id', '=', $personales->idNotificacion)
+                ->join('domicilio', 'domicilio.id', '=', 'notificacion.idDomicilio')
+                ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
+                ->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
+                ->select('notificacion.*', 'cat_municipio.idEstado as idEstado', 'domicilio.*', 'domicilio.id as idDomicilio')
+                ->where('notificacion.id', '=', $personales->idNotificacion)
+                ->get()->first();
 
-            $carpeta=Carpeta::find($idCarpeta);
-            $numCarpeta=$carpeta->numCarpeta;
-
+            $carpeta    = Carpeta::find($idCarpeta);
+            $numCarpeta = $carpeta->numCarpeta;
 
             //dump($numCarpeta, $idCarpeta, $personales, $direccion, $direccionTrab, $direccionNotif);
             $escolaridades  = CatEscolaridad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
@@ -294,24 +304,24 @@ class TestigoController extends Controller
             $nacionalidades = CatNacionalidad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $ocupaciones    = CatOcupacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $religiones     = CatReligion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-            $idCarpeta=$personales->idCarpeta;
+            $idCarpeta      = $personales->idCarpeta;
 
             return view('edit-forms.testigo')
-            ->with('personales', $personales)
-            ->with('direccion', $direccion)
-            ->with('direccionTrab', $direccionTrab)
-            ->with('direccionNotif', $direccionNotif)
-            ->with('idCarpeta', $idCarpeta)
-            ->with('numCarpeta', $numCarpeta)
-            ->with('escolaridades', $escolaridades)
-            ->with('estados', $estados)
-            ->with('municipiosVer', $municipiosVer)
-            ->with('estadoscivil', $estadoscivil)
-            ->with('etnias', $etnias)
-            ->with('lenguas', $lenguas)
-            ->with('nacionalidades', $nacionalidades)
-            ->with('ocupaciones', $ocupaciones)
-            ->with('religiones', $religiones);
+                ->with('personales', $personales)
+                ->with('direccion', $direccion)
+                ->with('direccionTrab', $direccionTrab)
+                ->with('direccionNotif', $direccionNotif)
+                ->with('idCarpeta', $idCarpeta)
+                ->with('numCarpeta', $numCarpeta)
+                ->with('escolaridades', $escolaridades)
+                ->with('estados', $estados)
+                ->with('municipiosVer', $municipiosVer)
+                ->with('estadoscivil', $estadoscivil)
+                ->with('etnias', $etnias)
+                ->with('lenguas', $lenguas)
+                ->with('nacionalidades', $nacionalidades)
+                ->with('ocupaciones', $ocupaciones)
+                ->with('religiones', $religiones);
         } else {
             return redirect()->route('home');
         }
@@ -324,7 +334,7 @@ class TestigoController extends Controller
             Alert::error('Ya existe una persona registrada con ese CURP.', 'Error')->persistent("Aceptar");
             return back()->withInput();
         } else {
-            $persona=Persona::find($request->idPersona);
+            $persona                  = Persona::find($request->idPersona);
             $persona->nombres         = $request->nombres;
             $persona->primerAp        = $request->primerAp;
             $persona->segundoAp       = $request->segundoAp;
@@ -402,7 +412,7 @@ class TestigoController extends Controller
             Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'update', 'descripcion' => 'Se ha actualizado domicilio de trabajo para persona física de tipo testigo.', 'idFilaAccion' => $domicilio2->id]);
             $idD2 = $domicilio2->id;
 
-            $domicilio3 =Domicilio::find($request->idDomicilioNotif);
+            $domicilio3 = Domicilio::find($request->idDomicilioNotif);
             if (!is_null($request->idMunicipio3)) {
                 $domicilio3->idMunicipio = $request->idMunicipio3;
             }
@@ -475,7 +485,7 @@ class TestigoController extends Controller
             Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'variables_persona', 'accion' => 'update', 'descripcion' => 'Se ha actualizado variables persona de persona física de tipo testigo.', 'idFilaAccion' => $VariablesPersona->id]);
             $idVariablesPersona = $VariablesPersona->id;
 
-            $ExtraTestigo                     = ExtraTestigo::find($request->idExtraTestigo);
+            $ExtraTestigo = ExtraTestigo::find($request->idExtraTestigo);
             if ($request->conoceAlDenunciado === 1) {
                 $ExtraTestigo->conoceAlDenunciado = 1;
             }
@@ -496,7 +506,7 @@ class TestigoController extends Controller
 
             Alert::success('Testigo actualizado con éxito', 'Hecho')->persistent("Aceptar");
             //return redirect()->route('carpeta', $request->idCarpeta);
-            return redirect()->route('edit.testigo', ['idCarpeta'=>$request->idCarpeta,'$idExtraTestigo'=>$request->idExtraTestigo ]);
+            return redirect()->route('edit.testigo', ['idCarpeta' => $request->idCarpeta, '$idExtraTestigo' => $request->idExtraTestigo]);
         }
     }
 }

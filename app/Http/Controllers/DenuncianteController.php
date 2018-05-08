@@ -92,9 +92,9 @@ class DenuncianteController extends Controller
                     $persona->idLengua = $request->idLengua;
 
                     if ($request->idLengua != 70) {
-                        $interprete         = new Interprete();
-                        $interprete->nombre = $request->nombreInterprete;
-                        $interprete->nombre = $request->lugarTrabInterprete;
+                        $interprete               = new Interprete();
+                        $interprete->nombre       = $request->nombreInterprete;
+                        $interprete->organizacion = $request->lugarTrabInterprete;
                         $interprete->save();
                         $idInterprete = $interprete->id;
                     } else {
