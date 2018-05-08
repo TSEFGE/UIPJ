@@ -108,6 +108,6 @@
 	<div class="col-12">
 		<div class="form-group">
 			{!! Form::label('senasPartic', 'Señas particulares', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::textarea('senasPartic', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese las señas particulares','rows' => '3', 'required','data-validation'=>'custom' ,'data-validation-regexp'=>'^(([A-Z]|[\d]|[,|.])){1,500}$','data-validation-error-msg'=>'Señas particulares debe tener una longitud no debe estar vacio']) !!}	
+			{!! Form::textarea('senasPartic', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese las señas particulares','rows' => '3', 'data-validation'=>'custom', 'data-validation-regexp'=>'^([A-ZÁÉÑÍÓÚ]|[\s]){1,500}$','data-validation-error-msg'=>'Este campo no debe estar vacio']) !!}
 		</div>
 	</div>
