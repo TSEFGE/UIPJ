@@ -65,7 +65,7 @@ $("#ctdenunciante").hover(function () {
     } else {
         $("#btn-submit").prop('disabled', true);
     }
-    console.log(correcto);
+    console.log("correcto",correcto);
 });
 $("#collapsePersonales1").hover(function () {
     $(this).isValid();

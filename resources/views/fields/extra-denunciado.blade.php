@@ -8,7 +8,7 @@
 					@endif
 					<div class="form-group">
 						{!! Form::label('idPuesto', 'Puesto', ['class' => 'col-form-label-sm']) !!}
-						{!! Form::select('idPuesto', $puestos, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un puesto', 'required','data-validation-event'=>'change']) !!}
+						{!! Form::select('idPuesto', $puestos, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un puesto', 'data-validation'=>'required','data-validation-event'=>'change']) !!}
 					</div>
 				</div>
 				<div class="col-3">
@@ -32,7 +32,7 @@
 				<div class="col-3">
 					<div class="form-group">
 						{!! Form::label('periodoIngreso', 'Periodo de ingreso', ['class' => 'col-form-label-sm']) !!}
-						{!! Form::select('periodoIngreso', ['DIARIO' => 'DIARIO', 'SEMANAL' => 'SEMANAL', 'QUINCENAL' => 'QUINCENAL', 'MENSUAL' => 'MENSUAL', 'SIN INFORMACION' => 'SIN INFORMACION'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un periodo', 'required','data-validation-event'=>'change']) !!}
+						{!! Form::select('periodoIngreso', ['DIARIO' => 'DIARIO', 'SEMANAL' => 'SEMANAL', 'QUINCENAL' => 'QUINCENAL', 'MENSUAL' => 'MENSUAL', 'SIN INFORMACION' => 'SIN INFORMACION'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un periodo', 'data-validation'=>'required','data-validation-event'=>'change']) !!}
 					</div>
 				</div>
 				<div class="col-3">
