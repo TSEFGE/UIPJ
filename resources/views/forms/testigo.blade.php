@@ -9,7 +9,6 @@
 
 @section('contenido')
 {!! Form::open(['route' => 'store.testigo', 'method' => 'POST']) !!}
-{{ csrf_field() }}
 
 <div class="card-header">
 	<div class="row">
@@ -131,7 +130,7 @@
         "showMethod": "fadeIn",
         "hideMethod": "fadeOut"
     }
-    
+
 	$('#esEmpresa2').trigger('click');
 	$('#datosPer').show();
     $('#personaFisica').show();
