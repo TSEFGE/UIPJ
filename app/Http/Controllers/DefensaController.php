@@ -72,38 +72,27 @@ class DefensaController extends Controller
             ->orderBy('persona.nombres', 'ASC')
             ->get();
 
-        $abogado = DB::table('extra_abogado')
-            ->join('variables_persona', 'variables_persona.id', '=', 'extra_abogado.idVariablesPersona')
-            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->select('variables_persona.id as idVariablesPersona', 'persona.id as idPersona', 'extra_abogado.id as idExtraAbogado', 'persona.nombres as nombres', 'persona.primerAp as primerAp', 'persona.segundoAp as segundoAp')
-            ->where('extra_abogado.id', '=', $id)
-            ->get()->first();
-
         $involucradoDenunciado = DB::table('extra_abogado')
             ->join('extra_denunciado', 'extra_denunciado.idAbogado', '=', 'extra_abogado.id')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
-            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->select('extra_denunciado.id as idExtraDenunciado', 'variables_persona.id as idVariablesPersona', 'persona.id as idPersona', 'extra_denunciado.id as idExtraDenunciado', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+            ->select('extra_denunciado.id as idExtra', 'variables_persona.id as idVariablesPersona')
             ->where('extra_abogado.id', '=', $id)
             ->get()->first();
 
         $involucradoDenunciante = DB::table('extra_abogado')
             ->join('extra_denunciante', 'extra_denunciante.idAbogado', '=', 'extra_abogado.id')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
-            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->select('extra_denunciante.id as idExtraDenunciante', 'variables_persona.id as idVariablesPersona', 'persona.id as idPersona', 'extra_denunciante.id as idExtraDenunciante', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+            ->select('extra_denunciante.id as idExtra', 'variables_persona.id as idVariablesPersona')
             ->where('extra_abogado.id', '=', $id)
             ->get()->first();
 
-        if (empty($involucradoDenunciante->idExtraDenunciante)) {
-            $involucradoDenuncianteID = null;
-            $idInvolucrado            = $involucradoDenunciado->idExtraDenunciado;
-        } elseif (empty($involucradoDenunciado->idExtraDenunciado)) {
-            $involucradoDenunciadoID = null;
-            $idInvolucrado           = $involucradoDenunciante->idExtraDenunciante;
+        if (empty($involucradoDenunciante->idExtra)) {
+            $idInvolucrado = $involucradoDenunciado->idVariablesPersona;
+        } elseif (empty($involucradoDenunciado->idExtra)) {
+            $idInvolucrado = $involucradoDenunciante->idVariablesPersona;
         }
 
-        $idAbogado = $abogado->idExtraAbogado;
+        $idAbogado = $id;
 
         return view('edit-forms.defensa')
             ->with('idCarpeta', $idCarpeta)
@@ -118,12 +107,12 @@ class DefensaController extends Controller
     {
         //dd($request->all());
         $carpetaNueva = Carpeta::where('id', $request->idCarpeta)->where('idFiscal', Auth::user()->id)->get();
-        $var = VariablesPersona::where('id', $request->idInvolucrado)->get();
+        $var          = VariablesPersona::where('id', $request->idInvolucrado)->get();
         if ($carpetaNueva->isEmpty() && $var->isEmpty()) {
             return redirect()->route('home');
         }
 
-        $idAbogado     = $request->idAbogado;
+        $idAbogado = $request->idAbogado;
         //$tipo          = $request->tipo;
         $idInvolucrado = $request->idInvolucrado;
         $xd            = DB::table('extra_denunciante')->select('id')->where('idVariablesPersona', $idInvolucrado)->get();
