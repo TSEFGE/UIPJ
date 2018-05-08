@@ -35,7 +35,6 @@ $(document).ready(function() {
     $('#idOcupacion').change(function(event) {
         var ocupacion = $('#idOcupacion').val();
         if (ocupacion == 2947) {
-           
             $("#idEstado2").val(33).prop('disabled', true);
             $('#idEstado2').select2('destroy');
             $("#idMunicipio2").val(2496).prop('disabled', true);
@@ -51,9 +50,8 @@ $(document).ready(function() {
             $("#calle2").val("SIN INFORMACION").prop('disabled', true);
             $("#numExterno2").val("S/N").prop('disabled', true);
             $("#numInterno2").val("S/N").prop('disabled', true);
-             $('#datosTrab').removeClass('visible');
+            $('#datosTrab').removeClass('visible');
         } else {
-         
             $("#idEstado2").prop('disabled', false);
             $('#idEstado2').select2();
             $("#lugarTrabajo").prop('disabled', false);
@@ -72,8 +70,6 @@ $(document).ready(function() {
             $('#datosTrab').addClass('visible');
         }
     });
-
-
     $("#docIdentificacion").change(function(event) {
         var otro = $("#docIdentificacion").val();
         if (otro == "OTRO") {
@@ -88,5 +84,13 @@ $(document).ready(function() {
             $("#otroDocumento").removeClass("valid");
         }
     });
-
+    $("#idLengua").change(function(event) {
+        console.log("entra");
+        var lengua = $("#idLengua").val();
+        if (lengua != 70) {
+            $("#datosInterprete").show();
+        } else {
+            $("#datosInterprete").hide();
+        }
+    });
 });

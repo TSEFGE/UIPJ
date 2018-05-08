@@ -13,7 +13,7 @@ class VariablesPersona extends Model
      *
      * @var array
      */
-    
+
     public $fillable = [
         'id',
         'idCarpeta',
@@ -26,6 +26,7 @@ class VariablesPersona extends Model
         'idEscolaridad',
         'idReligion',
         'idDomicilio',
+        'idInterprete',
         'docIdentificacion',
         'numDocIdentificacion',
         'lugarTrabajo',
@@ -89,5 +90,9 @@ class VariablesPersona extends Model
         return $this->belongsTo('app/Models/Domicilio');
     }
 
-    
+    public function interprete()
+    {
+        return $this->belongsTo('app/Models/Interprete');
+    }
+
 }
