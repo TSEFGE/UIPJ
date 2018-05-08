@@ -9,7 +9,7 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 Auth::routes();
 
@@ -19,7 +19,6 @@ Route::get('/', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
 //Protección de rutas
 Route::middleware(['auth'])->group(function () {
     /*---------Rutas para carpeta-------------*/
@@ -28,7 +27,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/carpeta-inicial/{id}', 'CarpetaController@index')->name('carpeta');
     Route::get('carpeta/{id}', [
         'uses' => 'CarpetaController@verDetalle',
-        'as' => 'view.carpeta'
+        'as'   => 'view.carpeta',
     ]);
 
     /*---------Rutas para denunciante-------------*/
@@ -103,20 +102,20 @@ Route::middleware(['auth'])->group(function () {
 
     /*---------Rutas para generación de documentos-------------*/
     Route::get('constancia-hechos/{idDenunciante}', [
-        'as'=>'constancia.hechos',
-        'uses'=>'DocxMakerController@getConstanciaHechos'
+        'as'   => 'constancia.hechos',
+        'uses' => 'DocxMakerController@getConstanciaHechos',
     ]);
     Route::get('formato-denuncia/{idAcusacion}', [
-        'as'=>'formato.denuncia',
-        'uses'=>'DocxMakerController@getFormatoDenuncia'
+        'as'   => 'formato.denuncia',
+        'uses' => 'DocxMakerController@getFormatoDenuncia',
     ]);
     Route::post('colaboracion-pm', [
-        'as'=>'colaboracion.pm',
-        'uses'=>'DocxMakerController@getFormatoColaboracionPm'
+        'as'   => 'colaboracion.pm',
+        'uses' => 'DocxMakerController@getFormatoColaboracionPm',
     ]);
     Route::post('colaboracion-sp', [
-        'as'=>'colaboracion.sp',
-        'uses'=>'DocxMakerController@getFormatoColaboracionSp'
+        'as'   => 'colaboracion.sp',
+        'uses' => 'DocxMakerController@getFormatoColaboracionSp',
     ]);
     Route::post('diligencia-sp', 'DiligenciaSPController@enviarSolicitud')->name('diligencia.sp');
 
@@ -160,6 +159,7 @@ Route::middleware(['auth'])->group(function () {
         /*Route::get('denunciantes/{idCarpeta}', 'RegistroController@getDenunciantes');
         Route::get('denunciados/{idCarpeta}', 'RegistroController@getDenunciados');*/
         Route::get('involucrados/{idCarpeta}/{idAbogado}', 'RegistroController@getInvolucrados')->name('get.involucrados');
+        Route::get('involucrados/{idCarpeta}/{idAbogado}', 'RegistroController@getInvolucrados2')->name('get.involucrados2');
         Route::get('agrupaciones1/{id}', 'RegistroController@getAgrupaciones1')->name('get.agrupaciones1');
         Route::get('agrupaciones2/{id}', 'RegistroController@getAgrupaciones2')->name('get.agrupaciones2');
         Route::get('persona/curp/{curp}', 'RegistroController@buscarCURP')->name('persona.curp');
@@ -173,27 +173,23 @@ Route::middleware(['auth'])->group(function () {
     Route::get('contador', 'RegistroController@contador');
 });
 
-
-
-
-
 /*
 Route::get('/registrar-carpeta', function () {
-    return view('registro');
+return view('registro');
 })->middleware('auth');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/', function () {
-        return view('auth.login');
-    });
-
-    Route::get('articles/{id}/destroy',[
-        'uses' => 'ArticlesController@destroy',
-        'as' => 'articles.destroy'
-    ]);
-    Route::get('/', 'RegistroController@index')->name('registro');
+Route::get('/', function () {
+return view('auth.login');
 });
-*/
+
+Route::get('articles/{id}/destroy',[
+'uses' => 'ArticlesController@destroy',
+'as' => 'articles.destroy'
+]);
+Route::get('/', 'RegistroController@index')->name('registro');
+});
+ */
 
 /*
 Route::get('/registrar-carpeta', 'RegistroController@showRegisterForm')->name('registro')->middleware('auth');
@@ -206,4 +202,4 @@ Route::post('storefamiliar', 'RegistroController@storeFamiliar')->name('store.fa
 Route::post('storedelito', 'RegistroController@storeDelito')->name('store.delito');
 Route::post('storevehiculo', 'RegistroController@storeVehiculo')->name('store.vehiculo');
 Route::post('storeacusacion', 'RegistroController@storeAcusacion')->name('store.acusacion');
-*/
+ */
