@@ -8,13 +8,12 @@
 
 @section('contenido')
 	{!! Form::open(['route' => 'store.carpeta', 'method' => 'POST'])  !!}
-	{{ csrf_field() }}
 	<div class="card-header">
 	<div class="row">
 			<div class="col">
 				<div class="text-right">
 					{!! Form::submit('Iniciar', ['class' => 'btn btn-primary', 'id' => 'btn-submit']) !!}
-					
+
 
 				</div>
 			</div>
@@ -34,11 +33,11 @@
 	<script src="{{ asset('plugins/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
 	<script src="{{ asset('js/carpeta.js') }}"></script>
 	<script src="{{ asset('js/inicio-carpeta.js') }}"></script>
-	
+
 @endpush
 
 @push('docready-js')
 	$("#btn-submit").on("click", function(){
-		localStorage.clear();		
+		localStorage.clear();
 	});
 @endpush

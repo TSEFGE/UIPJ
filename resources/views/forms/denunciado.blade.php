@@ -9,12 +9,11 @@
 
 @section('contenido')
 {!! Form::open(['route' => 'store.denunciado', 'method' => 'POST','data-validation-event'=>'load'])  !!}
-{{ csrf_field() }}
 
 <div class="card-header">
 <div class="row">
 	<div class="col">
-		<div class=""> 
+		<div class="">
 		<div class="row">
 			<div class="col-9 text-left">
 				<div class="form-group">
@@ -37,13 +36,13 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-3 comparecencia text-right">				
+			<div class="col-3 comparecencia text-right">
 					@include('fields.tipo-persona')
 				</div>
 			</div>
 		</div>
 	</div>
-			<div class="col-4">	
+			<div class="col-4">
 				<div class="text-right">
 					@include('forms.buttons')
 				</div>
@@ -58,7 +57,7 @@
 			<div class="row">
 				@if(!empty($idCarpeta))
 				{!! Form::hidden('idCarpeta', $idCarpeta) !!}
-				@endif	
+				@endif
 			</div>
 			<div class="comparecencia">
 				<div id="denunciado">
@@ -83,21 +82,21 @@
 								<span id="error2" class="xerror"></span>
 								<span id="bien2" class="bien"></span></div>
 							</a>
-						</li> 
+						</li>
 						<li class="nav-item" id="datosNotif">
 							<a class="nav-link" data-toggle="tab"  href="#collapseNotifs2"><p id="dnotificaciones" class="pestaña"><i class="fa fa-bell" aria-hidden="true"></i></p>
 									<div id="espacio-notif3"><span id="vacio3" class="xvacio"></span>
 									<span id="error3" class="xerror"></span>
 									<span id="bien3" class="bien"></span></div>
 								</a>
-						</li> 
+						</li>
 						<li class="nav-item"  id="datosExtra">
 							<a class="nav-link" data-toggle="tab"   href="#collapseDenun2"><p id="dextra" class="pestaña"><i class="fa fa-asterisk" aria-hidden="true"></i></p>
 									<div id="espacio-notif4"><span id="vacio4" class="xvacio"></span>
 									<span id="error4" class="xerror"></span>
 									<span id="bien4" class="bien"></span></div>
 								</a>
-						</li> 		
+						</li>
 
 					</ul>
 				</div>
@@ -120,24 +119,24 @@
 				<div class="boxtwo">
 					@include('fields.det-conocido')
 				</div>
-			</div>	
+			</div>
 
-			<div id="cajados" class="boxtwo">	
+			<div id="cajados" class="boxtwo">
 				<div class="tab-content comparecencia" id="ctdenunciado">
-					<div class="tab-pane active container" id="collapsePersonales2">  		
+					<div class="tab-pane active container" id="collapsePersonales2">
 						@include('fields.personales')
 
 					</div>
-					<div class="tab-pane container" id="collapseDir2">  		
-						@include('fields.direcciones')		
+					<div class="tab-pane container" id="collapseDir2">
+						@include('fields.direcciones')
 					</div>
-					<div class="tab-pane container" id="collapseTrab2">  		
-						@include('fields.lugartrabajo')		
+					<div class="tab-pane container" id="collapseTrab2">
+						@include('fields.lugartrabajo')
 					</div>
-					<div class="tab-pane container" id="collapseNotifs2">  		
-						@include('fields.notificaciones')		
+					<div class="tab-pane container" id="collapseNotifs2">
+						@include('fields.notificaciones')
 					</div>
-					<div class="tab-pane container" id="collapseDenun2">  		
+					<div class="tab-pane container" id="collapseDenun2">
 						@include('fields.extra-denunciado')
 
 					</div>
@@ -175,7 +174,7 @@
     <script src="{{ asset('js/selects/domicilio-den-conocido.js') }}"></script>
 	<script src="{{ asset('js/selects/sisy.js') }}"></script>
 	<script src="{{ asset('js/validations/tab-denunciado.js') }}"></script>
-	<script src="{{ asset('js/curp.js') }}"></script>	>	
+	<script src="{{ asset('js/curp.js') }}"></script>	>
 	<script src="{{ asset('js/rfcFisico.js') }}"></script>
 	<script src="{{ asset('js/rfcMoral.js') }}"></script>
 	<script src="{{ asset('js/ajaxCurp.js') }}"></script>
@@ -199,7 +198,7 @@
         "showMethod": "fadeIn",
         "hideMethod": "fadeOut"
     }
-    
+
 	//extradenunciado
 	$("#alias").addClass("vacio");
 	$("#ingreso").addClass("vacio");
@@ -209,6 +208,6 @@
 	$("#curp").addClass("vacio");
 	$("#telefono").addClass("vacio");
 	$("#motivoEstancia").addClass("vacio");
-	
+
 	$("#numDocIdentificacion").addClass("vacio");
 @endpush

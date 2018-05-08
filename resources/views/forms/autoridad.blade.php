@@ -9,7 +9,6 @@
 
 @section('contenido')
 {!! Form::open(['route' => 'store.autoridad', 'method' => 'POST'])  !!}
-{{ csrf_field() }}
 <div class="card-header">
 	<div class="row">
 		<div class="col">
@@ -17,7 +16,7 @@
 				{{--Aqui van radios, etc --}}
 			</div>
 		</div>
-		<div class="col">	
+		<div class="col">
 			<div class="text-right">
 				@include('forms.buttons')
 			</div>
@@ -32,7 +31,7 @@
 			<div class="row">
 				@if(!empty($idCarpeta))
 					{!! Form::hidden('idCarpeta', $idCarpeta) !!}
-				@endif	
+				@endif
 			</div>
 <!-- Pestañas -->
 		<div id="tautoridad">
@@ -57,7 +56,7 @@
 								<span id="errora2" class="xerror"></span>
 								<span id="biena2" class="bien"></span></div>
 						</a>
-  					</li>  		
+  					</li>
 			   		<li class="nav-item">
 			    		<a class="nav-link" data-toggle="tab"  href="#collapseAutoridad"><p id="autoridad" class="pestaña"><i class="fa fa-shield" aria-hidden="true"></i></p>
 							 <div id="espacio-notif5"><span id="vacioa3" class="xvacio"></span>
@@ -69,22 +68,22 @@
 		</div>
 		<div id="cajados" class="boxtwo">
 		<div class="tab-content" id="ctautoridad">
-			<div class="tab-pane active container" id="collapsePersonales3">  		
-				@include('fields.personales-aut')		
+			<div class="tab-pane active container" id="collapsePersonales3">
+				@include('fields.personales-aut')
 			</div>
-			<div class="tab-pane container" id="collapseDir3">  		
-				@include('fields.direcciones')		
+			<div class="tab-pane container" id="collapseDir3">
+				@include('fields.direcciones')
 			</div>
-			<div class="tab-pane container" id="collapseTrab3">  		
-				@include('fields.lugartrabajo')		
+			<div class="tab-pane container" id="collapseTrab3">
+				@include('fields.lugartrabajo')
 			</div>
-			<div class="tab-pane container" id="collapseAutoridad">  		
-				@include('fields.extra-aut')		
+			<div class="tab-pane container" id="collapseAutoridad">
+				@include('fields.extra-aut')
 			</div>
 		</div>
 		</div>
 <!-- Fin pestañas -->
-			
+
 		</div>
 	</div>
 </div>
@@ -134,7 +133,7 @@
         "showMethod": "fadeIn",
         "hideMethod": "fadeOut"
     }
-    
+
 	$("#nombres").addClass("vacio");
 	$("#primerAp").addClass("vacio");
 	$("#segundoAp").addClass("vacio");
@@ -145,23 +144,16 @@
 	$("#curp").addClass("vacio");
 	$("#telefono").addClass("vacio");
 	$("#motivoEstancia").addClass("vacio");
-		
+
 	$("#numDocIdentificacion").addClass("vacio");
 	$("#calle").addClass("vacio");
-	$("#numExterno").addClass("vacio");  	
+	$("#numExterno").addClass("vacio");
 	$("#numInterno").addClass("vacio");
-	$("#numExterno2").addClass("vacio");  	
+	$("#numExterno2").addClass("vacio");
 	$("#numInterno2").addClass("vacio");
 	$("#lugarTrabajo").addClass("vacio");
-	$("#telefonoTrabajo").addClass("vacio");  	
+	$("#telefonoTrabajo").addClass("vacio");
 	$("#calle2").addClass("vacio");
 	$("#antiguedad").addClass("vacio");
 	$("#horarioLaboral").addClass("vacio");
 @endpush
-
-
-
-
-
-
-	
