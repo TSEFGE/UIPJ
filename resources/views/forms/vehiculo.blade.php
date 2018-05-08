@@ -27,7 +27,7 @@
 	<div class=" card-body boxone">
 	<div class="row no-gutters">
 		<div class="col-12">
-			<div class="boxtwo">
+			<div class="boxtwo" id="vehiculos">
 				<h6>Datos generales de la unidad</h6>
 				<div class="row">
 					@if(!empty($idCarpeta))
@@ -55,5 +55,14 @@
     <script src="{{ asset('plugins/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
     <script src="{{ asset('js/selects/async.js') }}"></script>
     <script src="{{ asset('js/selects/vehiculo.js') }}"></script>
-    <script src="{{ asset('js/selects/sisy.js') }}"></script>
+	<script src="{{ asset('js/selects/sisy.js') }}"></script>
+	 <script src="{{ asset('js/vehiculos.js') }}"></script>
+@endpush
+@push('docready-js')     
+
+    $.validate({
+        validateOnEvent: true,
+		lang : 'es'
+    });
+    
 @endpush

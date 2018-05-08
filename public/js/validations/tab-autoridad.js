@@ -49,6 +49,7 @@ $('#tabsautoridad.nav-tabs a').on('hidden.bs.tab', function(event){
 		break;
 	}
 	tabs = $("#tabsautoridad .visible").length;
+	console.log("tabs", tabs);
 });
 $("#ctautoridad").hover(function(){
 	totalesP = $('#collapsePersonales3 .vacio').length;
