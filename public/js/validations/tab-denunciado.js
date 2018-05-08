@@ -132,7 +132,8 @@ $("#collapseDir2").hover(function () {
          pass1 = 1;
      } else {
          $("#bien1").show();
-         $("#bien1").html(correctos);
+		 $("#bien1").html(correctos);
+		 $("#bien1").removeClass('correcto');
      }
      console.log("totalesD2", totalesD2);
     
@@ -157,7 +158,8 @@ $("#collapseTrab2").hover(function () {
         pass2 = 1;
     } else {
         $("#bien2").show();
-        $("#bien2").html(correctos);
+		$("#bien2").html(correctos);
+		$("#bien2").removeClass('correcto');
     }
 
 });
@@ -182,7 +184,8 @@ $("#collapseNotifs2").hover(function () {
         pass3 = 1;
     } else {
         $("#bien3").show();
-        $("#bien3").html(correctos);
+		$("#bien3").html(correctos);
+		$("#bien3").removeClass('correcto');
     }
    });
 
@@ -207,7 +210,8 @@ $("#collapseNotifs2").hover(function () {
         pass3 = 1;
     } else {
         $("#bien4").show();
-        $("#bien4").html(correctos);
+		$("#bien4").html(correctos);
+		$("#bien4").removeClass('correcto');
     }
 	console.log("denun",totalesDenun);
 	console.log("correcto denun",correctos);
