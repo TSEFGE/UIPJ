@@ -1,3 +1,10 @@
+$("#collapsePersonalesTestigo select").addClass('vacio');
+$("#narracionUno").addClass('vacio');
+$("#edad").addClass('vacio');
+$("#collapseDirTestigo select").addClass('vacio');
+$("#collapseTrabTestigo select").addClass('vacio');
+$("#collapseNotifsTestigo select").addClass('vacio');
+ 
  $('#fechanac').datetimepicker({
      format: 'DD-MM-YYYY',
      minDate: moment().subtract(150, 'years').format('YYYY-MM-DD'),

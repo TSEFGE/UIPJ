@@ -6,7 +6,6 @@ totalesNotif2=0;
 tabs=0;
 correcto=0;
 
-
 $('#tabstestigo.nav-tabs a').on('shown.bs.tab', function (e) {
      var index = $($(this).attr('href')).index();
      switch(index){
@@ -35,7 +34,6 @@ $('#tabstestigo.nav-tabs a').on('shown.bs.tab', function (e) {
  });
 
 $('#tabstestigo.nav-tabs a').on('hidden.bs.tab', function(event){
-
 	var index= $($(this).attr('href')).index();
 	switch(index) {
 	 case 0:
