@@ -18,7 +18,8 @@
             $('#collapsePersonales1').isValid();                   
             $("#datosPer").addClass('visible');
             $("#datosDir").addClass('visible');
-           // $("#datosTrab").addClass('visible');           
+           // $("#datosTrab").addClass('visible'); 
+            $('span').removeClass('correcto');
             $("#datosNotif").addClass('visible');            
             $("#btn-submit").prop('disabled',true);
             $('.xvacio').hide();
@@ -29,9 +30,10 @@
             $('#personaMoral').show();
             $('#datosDir').show();
             $('#datosTrab').hide();
-            //$('#datosTrab').removeClass('visible');
+            $('#datosTrab').removeClass('visible');
             $('#datosNotif').show();
-            $('#datosExtra').hide();            
+            $('#datosExtra').hide(); 
+            $('#datosExtra').removeClass('visible');            
             $('#extra-fis').hide();
             $('#Victima').hide();
 
@@ -131,10 +133,11 @@
     $("#esEmpresa2").change(function(event){
         if ($('#esEmpresa2').is(':checked') ) {
             correcto = 0;   
-            $('#collapsePersonales1').isValid();                 
+            $('#collapsePersonales1').isValid();
+            $('span').removeClass('correcto');                 
             $("#datosPer").addClass('visible');
             $("#datosDir").addClass('visible');
-
+            $("#datosTrab").addClass('visible'); 
              $('#idOcupacion').change(function(event) {
                 var ocupacion = $('#idOcupacion').val();
                 if (ocupacion == 2947) {          
