@@ -159,14 +159,14 @@
 	{{-- <script src="{{ asset('js/persona.js') }}"></script>--}}
 	<script src="{{ asset('js/persona-moral.js') }}"></script>
 	{{-- <script src="{{ asset('js/tipo-persona.js') }}"></script>
-	<script src="{{ asset('js/denunciado.js') }}"></script>
+	<script src="{{ asset('js/denunciado.js') }}"></script>--}}
     <script src="{{ asset('js/selects/async.js') }}"></script>
     <script src="{{ asset('js/selects/origen.js') }}"></script>
     <script src="{{ asset('js/selects/domicilio.js') }}"></script>
     <script src="{{ asset('js/selects/domicilio-trab.js') }}"></script>
     <script src="{{ asset('js/selects/domicilio-notif.js') }}"></script>
     <script src="{{ asset('js/selects/domicilio-den-conocido.js') }}"></script>
-	<script src="{{ asset('js/selects/sisy.js') }}"></script>  --}}
+	<script src="{{ asset('js/selects/sisy.js') }}"></script>  
 	<script src="{{ asset('js/curp.js') }}"></script>
 	<script src="{{ asset('js/rfcFisico.js') }}"></script>
 	<script src="{{ asset('js/rfcMoral.js') }}"></script>
@@ -193,6 +193,17 @@
         "showMethod": "fadeIn",
         "hideMethod": "fadeOut"
     }
+$(function(){
+		$('#fechanac2').datetimepicker({
+			format: 'DD-MM-YYYY',
+			minDate: moment().subtract(150, 'years').format('YYYY-MM-DD'),
+			maxDate: moment().subtract(16, 'years').format('YYYY-MM-DD'),
+			widgetPositioning: {
+				vertical: 'bottom',
+				horizontal: 'left'
+			}
+		});
+	});
 
 
 	@if (isset ($personales) )
@@ -203,6 +214,8 @@
 	$('#nombres').val("{{ $personales->nombres }}");
 	$("#primerAp").val("{{ $personales->primerAp }}");
 	$("#segundoAp").val("{{ $personales->segundoAp }}");
+	$('#fechanac2').datetimepicker('format', "DD-MM-YYYY");
+	$('#fechanac2').datetimepicker('date', moment("{{ $personales->fechaNacimiento}}").format("DD-MM-YYYY"));
 	$("#sexo").val("{{ $personales->sexo }}");
 	$('#idNacionalidad').val({{$personales->idNacionalidad}}).trigger('change');
 	$('#idEstadoOrigen').val({{ $personales->idEstado}}).trigger('change');
@@ -217,8 +230,8 @@
 
 	$("#telefono").val("{{ $personales->telefono }}");
 	$("#motivoEstancia").val("{{ $personales->motivoEstancia }}");
-	$("#numDocIdentificacion").val("{{ $personales->numDocIdentificacion }}");
 	$("#docIdentificacion").val("{{ $personales->docIdentificacion }}");
+	$("#numDocIdentificacion").val("{{ $personales->numDocIdentificacion }}");
 	$("#calle").val("{{ $direccion->calle }}");
 	$("#numExterno").val("{{ $direccion->numExterno }}");
 	$("#numInterno").val("{{ $direccion->numInterno }}");
@@ -258,6 +271,8 @@
 	$('#nombres2').val("{{ $personales->nombres }}");
 	$('#rfc2').val(rfc);
 	$('#homo2').val(homoclave);
+	$('#fechaAltaEmpresa').datetimepicker('format', "DD-MM-YYYY");
+	$('#fechaAltaEmpresa').datetimepicker('date', moment("{{ $personales->fechaNacimiento}}").format("DD-MM-YYYY"));
 	$('#representanteLegal').val("{{ $personales->representanteLegal }}");
 	$("#calle").val("{{ $direccion->calle }}");
 	$("#numExterno").val("{{ $direccion->numExterno }}");
