@@ -540,7 +540,7 @@ class DenuncianteController extends Controller
                 ->join('domicilio', 'domicilio.id', '=', 'notificacion.idDomicilio')
                 ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
                 ->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
-                ->select('notificacion.id as idNotificacion', 'notificacion.correo', 'notificacion.telefono', 'notificacion.fax', 'domicilio.id as idDireccionNotificacion', 'domicilio.idMunicipio', 'domicilio.idLocalidad', 'domicilio.idColonia', 'domicilio.calle', 'domicilio.numExterno', 'domicilio.numInterno', 'cat_municipio.idEstado', 'cat_colonia.codigoPostal')
+                ->select('notificacion.id as idNotificacion', 'notificacion.correo', 'notificacion.telefono', 'notificacion.fax', 'domicilio.idDomicilio', 'domicilio.idMunicipio', 'domicilio.idLocalidad', 'domicilio.idColonia', 'domicilio.calle', 'domicilio.numExterno', 'domicilio.numInterno', 'cat_municipio.idEstado', 'cat_colonia.codigoPostal')
                 ->where('notificacion.id', '=', $personales->idNotificacion)
                 ->get()->first();
 
@@ -606,7 +606,6 @@ class DenuncianteController extends Controller
     {
         //dd($request);
 
-        dd($request->all());
         $carpetaNueva = Carpeta::where('id', $request->idCarpeta)->where('idFiscal', Auth::user()->id)->get();
         $var          = ExtraDenunciante::where('id', $id)->get();
         if ($carpetaNueva->isEmpty() && $var->isEmpty()) {
@@ -711,7 +710,7 @@ class DenuncianteController extends Controller
             Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'update', 'descripcion' => 'Se ha actualizado un domicilio de trabajo para persona física de tipo victima u ofendido.', 'idFilaAccion' => $domicilio2->id]);
             $idD2 = $domicilio2->id;
 
-            $domicilio3 = Domicilio::find($request->idDireccionNotificacion);
+            $domicilio3 = Domicilio::find($request->idDireccionNotif);
             if ($request->filled('idMunicipio3')) {
                 $domicilio3->idMunicipio = $request->idMunicipio3;
             }
