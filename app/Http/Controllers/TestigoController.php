@@ -510,11 +510,11 @@ class TestigoController extends Controller
             Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'variables_persona', 'accion' => 'update', 'descripcion' => 'Se ha actualizado variables persona de persona física de tipo testigo.', 'idFilaAccion' => $VariablesPersona->id]);
             $idVariablesPersona = $VariablesPersona->id;
 
-            $ExtraTestigo = ExtraTestigo::find($request->idExtraTestigo);
+            $ExtraTestigo = ExtraTestigo::where('idVariablesPersona', '=', $request->idExtraTestigo)->get()->first();
             if ($request->conoceAlDenunciado === 1) {
                 $ExtraTestigo->conoceAlDenunciado = 1;
             }
-
+            //    dump($ExtraTestigo);
             $ExtraTestigo->save();
             Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_testigo', 'accion' => 'update', 'descripcion' => 'Se ha actualizado extra testigo de persona física.', 'idFilaAccion' => $ExtraTestigo->id]);
 
