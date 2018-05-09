@@ -177,11 +177,10 @@
 			}
 		});
 	});
-
-	$("#narracionUnoM").prop('disabled',true);
-	$("#narracionUnoM").hide();
+	$("#espacioNarracion").hide();
+	$("#narracionUnoM").prop('disabled',true);	
 	$("#narracionUno").prop('disabled',true);
-	$("#narracionUno").hide();
+	
 	var esEmpresa = $("input[name='esEmpresa']").val();
 	@if (isset ($personales) )
 		@if ( ($personales->esEmpresa) == 1)
@@ -194,6 +193,10 @@
 			$('#fechaAltaEmpresa').datetimepicker('format', "DD-MM-YYYY");
 			$('#fechaAltaEmpresa').datetimepicker('date', moment("{{ $personales->fechaNacimiento}}").format("DD-MM-YYYY"));
 			$("#representanteLegal").val("{{ $personales->nombres }}");
+			$('#idEstado').val({{$direccion->idEstado}}).trigger('change');
+			$('#idMunicipio').val({{$direccion->idMunicipio}}).trigger('change');
+			$('#idLocalidad').val({{$direccion->idLocalidad}}).trigger('change');
+			$('#idColonia').val({{$direccion->idColonia}}).trigger('change');
 			$('#calle').val("{{$direccion->calle}}");
 			$('#numExterno').val("{{$direccion->numExterno}}");
 			$('#numInterno').val("{{$direccion->numInterno}}");
@@ -262,8 +265,7 @@
 			$('#idEstado').val({{$direccion->idEstado}}).trigger('change');
 			$('#idMunicipio').val({{$direccion->idMunicipio}}).trigger('change');
 			$('#idLocalidad').val({{$direccion->idLocalidad}}).trigger('change');
-			$('#idColonia').val({{$direccion->idColonia}}).trigger('change');
-			$('#cp').val({{$direccion->codigoPostal}}).trigger('change');
+			$('#idColonia').val({{$direccion->idColonia}}).trigger('change');			
 			$('#calle').val("{{$direccion->calle}}");
 			$('#numExterno').val("{{$direccion->numExterno}}");
 			$('#numInterno').val("{{$direccion->numInterno}}");
