@@ -137,7 +137,7 @@
 	<script src="{{ asset('js/selects/domicilio-trab.js') }}"></script>
 	<script src="{{ asset('js/selects/domicilio-notif.js') }}"></script>
 	<script src="{{ asset('js/selects/sisy.js') }}"></script>--}}
-	<script src="{{ asset('js/validations/tab-denunciante.js') }}"></script>
+	{{--<script src="{{ asset('js/validations/tab-denunciante.js') }}"></script>--}}
 	<script src="{{ asset('js/curp.js') }}"></script>
 	<script src="{{ asset('js/rfcFisico.js') }}"></script>
 	<script src="{{ asset('js/rfcMoral.js') }}"></script>
@@ -248,14 +248,29 @@
 			$('#idEstadoCivil').val({{$personales->idEstadoCivil}}).trigger('change');
 			$('#docIdentificacion').val("{{$personales->docIdentificacion}}").trigger('change');
 			$('#numDocIdentificacion').val("{{$personales->numDocIdentificacion}}");
+			$('#idEstado').val({{$direccion->idEstado}}).trigger('change');
+			$('#idMunicipio').val({{$direccion->idMunicipio}}).trigger('change');
+			$('#idLocalidad').val({{$direccion->idLocalidad}}).trigger('change');
+			$('#idColonia').val({{$direccion->idColonia}}).trigger('change');
+			$('#cp').val({{$direccion->codigoPostal}}).trigger('change');
 			$('#calle').val("{{$direccion->calle}}");
 			$('#numExterno').val("{{$direccion->numExterno}}");
 			$('#numInterno').val("{{$direccion->numInterno}}");
+			$('#idEstado2').val({{$direccionTrab->idEstado}}).trigger('change');
+			$('#idMunicipio2').val({{$direccionTrab->idMunicipio}}).trigger('change');
+			$('#idLocalidad2').val({{$direccionTrab->idLocalidad}}).trigger('change');
+			$('#idColonia2').val({{$direccionTrab->idColonia}}).trigger('change');
+			$('#cp2').val({{$direccionTrab->codigoPostal}}).trigger('change');
 			$('#lugarTrabajo').val("{{$personales->lugarTrabajo}}");
 			$('#telefonoTrabajo').val("{{$personales->telefonoTrabajo}}");
 			$('#calle2').val("{{$direccionTrab->calle}}");
 			$('#numExterno2').val("{{$direccionTrab->numExterno}}");
 			$('#numInterno2').val("{{$direccionTrab->numInterno}}");
+			$('#idEstado3').val({{$direccionNotif->idEstado}}).trigger('change');
+			$('#idMunicipio3').val({{$direccionNotif->idMunicipio}}).trigger('change');
+			$('#idLocalidad3').val({{$direccionNotif->idLocalidad}}).trigger('change');
+			$('#idColonia3').val({{$direccionNotif->idColonia}}).trigger('change');
+			$('#cp3').val({{$direccionNotif->codigoPostal}}).trigger('change');
 			$('#calle3').val("{{$direccionNotif->calle}}");
 			$('#numExterno3').val("{{$direccionNotif->numExterno}}");
 			$('#numInterno3').val("{{$direccionNotif->numInterno}}");
