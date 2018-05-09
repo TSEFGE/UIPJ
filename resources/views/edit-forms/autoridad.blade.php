@@ -113,7 +113,7 @@
     <script src="{{ asset('js/selects/domicilio.js') }}"></script>
     <script src="{{ asset('js/selects/domicilio-trab.js') }}"></script>
 	<script src="{{ asset('js/selects/sisy.js') }}"></script>
-	<script src="{{ asset('js/validations/tab-autoridad.js') }}"></script>
+	{{--<script src="{{ asset('js/validations/tab-autoridad.js') }}"></script>--}}
 	<script src="{{ asset('js/persona.js') }}"></script>
 	<script src="{{ asset('js/autoridad.js') }}"></script>
 	<script src="{{ asset('js/curp.js') }}"></script>
