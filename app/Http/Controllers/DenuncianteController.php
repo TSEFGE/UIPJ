@@ -694,7 +694,6 @@ class DenuncianteController extends Controller
 
             $domicilio2 = Domicilio::find($request->idDireccionTrab);
             if ($request->filled('idMunicipio2')) {
-
                 $domicilio2->idMunicipio = $request->idMunicipio2;
             }
             if ($request->filled('idLocalidad2')) {

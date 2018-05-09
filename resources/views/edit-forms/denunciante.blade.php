@@ -114,7 +114,7 @@
 	
 		@endif
 	@endif
-	{!! Form::hidden('idNoficiacion', ($direccionNotif->idNotificacion)) !!}
+	{!! Form::hidden('idNotificacion', ($direccionNotif->idNotificacion)) !!}
 	{!! Form::hidden('idDomicilioNotif', ($direccionNotif->idDomicilioNotif)) !!}
 
 	<!-- Fin pestañas -->
@@ -195,7 +195,7 @@
 			$('#homo2').val(homoclave);
 			$('#fechaAltaEmpresa').datetimepicker('format', "DD-MM-YYYY");
 			$('#fechaAltaEmpresa').datetimepicker('date', moment("{{ $personales->fechaNacimiento}}").format("DD-MM-YYYY"));
-			$("#representanteLegal").val("{{ $personales->nombres }}");
+			$("#representanteLegal").val("{{ $personales->representanteLegal }}");
 			$('#idEstado').val({{$direccion->idEstado}}).trigger('change');
 			$('#idMunicipio').val({{$direccion->idMunicipio}}).trigger('change');
 			$('#idLocalidad').val({{$direccion->idLocalidad}}).trigger('change');
@@ -244,8 +244,7 @@
 			$('#homo').val(homoclave);
 			$('#curp').val("{{$personales->curp}}");
 			$('#idEtnia').val({{$personales->idEtnia}}).trigger('change');
-			$('#idLengua').val({{$personales->idLengua}}).trigger('change');
-			
+			$('#idLengua').val({{$personales->idLengua}}).trigger('change');			
 			$('#nombreInterprete').val("{{ $personales->nombreInterprete }}");
 			$('#lugarTrabInterprete').val("{{ $personales->trabajoInterprete }}");
 			$('#idMunicipioOrigen').val({{$personales->idMunicipioOrigen}}).trigger('change');
