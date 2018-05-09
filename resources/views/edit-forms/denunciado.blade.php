@@ -138,11 +138,11 @@
 			@if (isset ($personales) )
 				@if ( ($personales->esEmpresa) == 0)
 			{!! Form::hidden('idDireccionTrab', ($direccionTrab->id)) !!}
-			{!! Form::hidden('idDireccionNotif', ($direccionNotif->idDomicilio)) !!}
 			{!! Form::hidden('idInterprete', ($personales->idInterprete)) !!}
 				@endif
 			@endif
 			{!! Form::hidden('idNotificacion', ($direccionNotif->idNotificacion)) !!}
+			{!! Form::hidden('idDireccionNotif', ($direccionNotif->idDomicilioNotif)) !!}
 				<!-- Fin pestañas -->
 			</div>
 		</div>
@@ -194,7 +194,11 @@
         "showMethod": "fadeIn",
         "hideMethod": "fadeOut"
     }
-$(function(){
+
+$("#espacioNarracion").hide();
+
+
+	$(function(){
 		$('#fechanac2').datetimepicker({
 			format: 'DD-MM-YYYY',
 			minDate: moment().subtract(150, 'years').format('YYYY-MM-DD'),
