@@ -95,12 +95,12 @@
 
 
             //para generar notificaciones       
-            $("select").removeClass('vacio ');
-            $("select").removeClass('valid');
-            $("select").removeClass('error');
-            $("textarea").removeClass('vacio');
-            $("textarea").removeClass('error');
-            $("textarea").removeClass('valid');
+            $('select').removeClass('vacio ');
+            $('select').removeClass('valid');
+            $('select').removeClass('error');
+            $('textarea').removeClass('vacio');
+            $('textarea').removeClass('error');
+            $('textarea').removeClass('valid');
             $('input').removeClass('vacio');
             $('input').removeClass('error');
             $('input').removeClass('valid');
@@ -235,9 +235,9 @@
                 $('select').removeClass('vacio ');
                 $('select').removeClass('valid');
                 $('select').removeClass('error');
-                $("textarea").removeClass('vacio');
-                $("textarea").removeClass('error');
-                $("textarea").removeClass('valid');
+                $('textarea').removeClass('vacio');
+                $('textarea').removeClass('error');
+                $('textarea').removeClass('valid');
                 $('input').removeClass('vacio ');
                 $('input').removeClass('error ');
                 $('input').removeClass('valid ');
@@ -278,13 +278,13 @@
                 $("#correo").addClass("vacio");
                 $("#telefonoN").addClass("vacio");     
                 $("#fax").addClass("vacio");
-
+/*
                 $("#alias").addClass("vacio");
                 $("#personasBajoSuGuarda").addClass("vacio");     
                 $("#ingreso").addClass("vacio");
                 $("#residenciaAnterior").addClass("vacio");
                 $("#vestimenta").addClass("vacio");
-                $("#senasPartic").addClass("vacio");   
+                $("#senasPartic").addClass("vacio");*/
               //  $("#narracionUno").addClass("vacio"); //para comprobar en autoridad
 
                 $("#docIdentificacion").change(function(event){
