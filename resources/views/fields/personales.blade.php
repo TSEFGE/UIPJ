@@ -219,7 +219,7 @@
 			<div class="col-6">
 				<div class="form-group">
 					{!! Form::label('nombres2', 'Nombre', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('nombres2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre', 'required','data-validation'=>'custom' ,'data-validation-regexp'=>'^(([A-ZÁÉÑÍÓÚ]|[0-9])(-|,|.|\s)*){1,100}$', 'data-validation-error-msg'=>'Nombre debe contener al menos una letra']) !!}
+					{!! Form::text('nombres2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'custom' ,'data-validation-regexp'=>'^(([A-ZÁÉÑÍÓÚ]|[0-9])(-|,|.|\s)*){1,100}$', 'data-validation-error-msg'=>'Nombre debe contener al menos una letra']) !!}
 				</div>
 			</div>
 			<div class="col-6">
@@ -237,12 +237,12 @@
 				<div class="row no-gutters">
 					<div class="col-7">
 						{!! Form::label('rfc2', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
-						{!! Form::text('rfc2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.', 'required','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-Z,Ñ,&]{3}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))$','data-validation-error-msg'=>'RFC inválido']) !!}
+						{!! Form::text('rfc2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-Z,Ñ,&]{3}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))$','data-validation-error-msg'=>'RFC inválido']) !!}
 					</div>
 
 					<div class="col-5">
 						{!! Form::label('homo2', 'Homoclave', ['class' => 'col-form-label-sm']) !!}
-						{!! Form::text('homo2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Homoclave', 'required','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-Z\d]{2}([A\d]))$','data-validation-error-msg'=>'Homoclave inválida']) !!}
+						{!! Form::text('homo2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Homoclave','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-Z\d]{2}([A\d]))$','data-validation-error-msg'=>'Homoclave inválida']) !!}
 
 					</div>
 				</div>
