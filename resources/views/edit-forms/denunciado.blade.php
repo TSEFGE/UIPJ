@@ -195,6 +195,9 @@
         "hideMethod": "fadeOut"
     }
 
+$("#espacioNarracion").hide();
+
+
 	$(function(){
 		$('#fechanac2').datetimepicker({
 			format: 'DD-MM-YYYY',
