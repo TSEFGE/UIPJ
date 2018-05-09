@@ -13,7 +13,7 @@ class StoreTestigo extends FormRequest
      */
     public function authorize()
     {
-      return true;
+        return true;
     }
 
     /**
@@ -23,7 +23,7 @@ class StoreTestigo extends FormRequest
      */
     public function rules()
     {
-      return [
+        return [
 
         /*'nombres2' => array('regex:/^(([A-ZÁÉÑÍÓÚ][.]*[,]*[\s]*){1,100})/u'),
         'rfc2' => 'min:9|max:12',
@@ -45,12 +45,12 @@ class StoreTestigo extends FormRequest
         'telefonoTrabajo'  => array('regex:/^([0-9]{10,15}|(SIN NUMERO))/u'),
         'calle2' => 'string|min:3|max:100',
          ];
-       }
+    }
 
-       public function messages()
-       {
+    public function messages()
+    {
         return [
           'nombresQ.boolean' => 'A title is required',
         ];
-      }
     }
+}
