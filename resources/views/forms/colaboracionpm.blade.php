@@ -52,8 +52,8 @@
 			</div>
 			<div class="row col-md-12">
 				<div class="form-group col-md-12">
-						{!! Form::label('servicios', 'Servicio:', ['class' => 'col-form-label-sm']) !!}
-						{!! Form::select('servicios', $servicios->pluck('nombre','id')->all(), null, ['name'=>'servicio','class' => 'form-control select', 'required']) !!}
+						{!! Form::label('servicio', 'Servicio:', ['class' => 'col-form-label-sm']) !!}
+						{!! Form::select('servicio', $servicios->pluck('nombre','nombre')->all(), null, ['name'=>'servicio','class' => 'form-control select', 'required']) !!}
 				</div>
 			</div>
 
