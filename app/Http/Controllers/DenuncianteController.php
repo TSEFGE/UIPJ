@@ -604,7 +604,6 @@ class DenuncianteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request->all());
 
         $carpetaNueva = Carpeta::where('id', $request->idCarpeta)->where('idFiscal', Auth::user()->id)->get();
         $var          = ExtraDenunciante::where('id', $id)->get();
@@ -695,7 +694,7 @@ class DenuncianteController extends Controller
 
             $domicilio2 = Domicilio::find($request->idDireccionTrab);
             if ($request->filled('idMunicipio2')) {
-                dump($request->idMunicipio2);
+
                 $domicilio2->idMunicipio = $request->idMunicipio2;
             }
             if ($request->filled('idLocalidad2')) {
