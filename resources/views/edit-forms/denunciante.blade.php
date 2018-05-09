@@ -115,7 +115,8 @@
 	
 		@endif
 	@endif
-	{!! Form::hidden('idNotificacion', ($direccionNotif->idNotificacion)) !!}
+	{!! Form::hidden('idNoficiacion', ($direccionNotif->idNotificacion)) !!}
+	{!! Form::hidden('idDomicilioNotif', ($direccionNotif->idDomicilioNotif)) !!}
 
 	<!-- Fin pestañas -->
 </div>

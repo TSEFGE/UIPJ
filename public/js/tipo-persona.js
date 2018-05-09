@@ -101,9 +101,9 @@
             $("textarea").removeClass('vacio');
             $("textarea").removeClass('error');
             $("textarea").removeClass('valid');
-            $("input").removeClass('vacio');
-            $("input").removeClass('error');
-            $("input").removeClass('valid');
+            $('input:text').removeClass('vacio');
+            $('input:text').removeClass('error');
+            $('input:text').removeClass('valid');
             
             //$("#narracionUnoM").removeClass("error");         
             $("#idEstado, #idMunicipio, #idLocalidad, #idColonia, #cp").addClass('vacio');
@@ -238,9 +238,9 @@
                 $("textarea").removeClass('vacio');
                 $("textarea").removeClass('error');
                 $("textarea").removeClass('valid');
-                $("input ").removeClass('vacio '); 
-                $("input ").removeClass('error ');
-                $("input ").removeClass('valid ');                 
+                $('input:text').removeClass('vacio ');
+                $('input:text').removeClass('error ');
+                $('input:text').removeClass('valid ');
 
                 //Para generar Notificaciones se asigna clase
                 $("select").addClass('vacio');
