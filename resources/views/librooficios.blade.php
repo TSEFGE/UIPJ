@@ -80,7 +80,11 @@
 				},
 				//{data: 'oficio', name: 'oficio'},
 				{data: null, "orderable": false,  render: function ( data, type, row ) {
-					return "<center><a href='\storage/diligencias-sp\\"+ data.oficio +"' class='btn btn-primary'><i class='fa fa-reorder' aria-hidden='true'></i> Ver</a></center>"
+					if(data.extra == "PERICIALES"){
+						return "<center><a href='\storage/diligencias-sp\\"+ data.oficio +"' class='btn btn-primary'><i class='fa fa-reorder' aria-hidden='true'></i> Ver</a></center>"
+					}else{
+						return "<center><a href='\storage/diligencias-pm\\"+ data.oficio +"' class='btn btn-primary'><i class='fa fa-reorder' aria-hidden='true'></i> Ver</a></center>"
+					}
 				} 
 				},  
 			]

@@ -3,6 +3,7 @@
 /public/storage/adjuntoNarracion
 /public/storage/citatorios
 /public/storage/diligencias-sp
+/public/storage/diligencias-pm
 /storage/*.key
 /vendor
 /.idea

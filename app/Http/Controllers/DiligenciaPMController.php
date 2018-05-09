@@ -51,7 +51,7 @@ class DiligenciaPMController extends Controller
             ->join('persona as per', 'per.id', '=', 'var.idPersona')
             ->join('tipif_delito', 'tipif_delito.id', '=', 'acusacion.idTipifDelito')
             ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
-            ->select('acusacion.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'variables_persona.telefono', 'var.telefono as telefonoDenunciado', 'domicilio.calle', 'domicilio.numExterno', 'cat_estado.nombre as estado', 'cat_municipio.nombre as municipio', 'cat_colonia.nombre as colonia', 'cat_delito.nombre as delito', 'per.nombres as nombres2', 'per.primerAp as primerAp2', 'per.segundoAp as segundoAp2')
+            ->select('acusacion.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'variables_persona.telefono', 'domicilio.calle', 'domicilio.numExterno', 'cat_estado.nombre as estado', 'cat_municipio.nombre as municipio', 'cat_colonia.nombre as colonia', 'cat_delito.nombre as delito', 'per.nombres as nombres2', 'per.primerAp as primerAp2', 'per.segundoAp as segundoAp2')
             ->where('acusacion.id', '=', $request->radioAcusacion)
             ->get();
         /*$servicios = DB::table('cat_spericiales')
@@ -138,7 +138,7 @@ class DiligenciaPMController extends Controller
             $templateProcessor->setValue('nombreDenunciado', $acusacion->nombres2." ".$acusacion->primerAp2." ".$acusacion->segundoAp2);
             $templateProcessor->setValue('delito', $acusacion->delito);
             $templateProcessor->setValue('dirDenunciante', $dirDenunciante);
-            $templateProcessor->setValue('telefono', $acusacion->telefonoDenunciado);
+            $templateProcessor->setValue('telefono', $acusacion->telefono);
             //Servicios
             $templateProcessor->cloneRow('rowService', count($servicios));
             $cont = 1;
