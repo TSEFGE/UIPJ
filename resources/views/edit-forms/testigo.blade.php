@@ -119,7 +119,7 @@
     <script src="{{ asset('js/selects/domicilio-trab.js') }}"></script>
     <script src="{{ asset('js/selects/domicilio-notif.js') }}"></script>
 	<script src="{{ asset('js/selects/sisy.js') }}"></script>
-	<script src="{{ asset('js/validations/tab-testigo.js') }}"></script>
+	{{--<script src="{{ asset('js/validations/tab-testigo.js') }}"></script>--}}
 	<script src="{{ asset('js/curp.js') }}"></script>
 	<script src="{{ asset('js/rfcFisico.js') }}"></script>
 	<script src="{{ asset('js/ajaxCurpEdit.js') }}"></script>
@@ -154,7 +154,9 @@
     $('#datosNotif').show();
     $('#datosExtra').show();
     $('#extra-fis').show();
-    $('#Victima').show();
+	$('#Victima').show();
+	$("#espacioNarracion").hide();	
+	$("#narracionUno").prop('disabled',true);
 
 
 	var rfcFisica = $("input[name='rfc-edit']").val();
@@ -178,7 +180,15 @@
 	$('#idEstadoCivil').val({{$personales->idEstadoCivil}}).trigger('change');
 	$('#idReligion').val(7).trigger('change');
 	$('#idEscolaridad').val({{$personales->idEscolaridad}}).trigger('change');
-	$("#docIdentificacion").val("{{ $personales->docIdentificacion }}");
+	docs='CREDENCIAL DE ELECTOR PASAPORTE CARTILLA MILITAR LICENCIA PARA CONDUCIR CREDENCIAL ESCOLAR';
+		doc='{{$personales->docIdentificacion}}';
+		if ( docs.toLowerCase().indexOf(doc.toLowerCase()) != -1 ) {
+			$('#docIdentificacion').val('{{$personales->docIdentificacion}}');
+		} else {
+				$('#docIdentificacion').val('OTRO');
+			$('#otrodocto').show();
+			$('#otroDocumento').val('{{$personales->docIdentificacion}}');
+		}	
 	$("#numDocIdentificacion").val("{{ $personales->numDocIdentificacion }}");
 	$("#calle").val("{{ $direccion->calle }}");
 	$("#numExterno").val("{{ $direccion->numExterno }}");
