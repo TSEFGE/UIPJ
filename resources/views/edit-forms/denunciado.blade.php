@@ -293,6 +293,11 @@ $("#espacioNarracion").hide();
 			$("#email").val("{{ $direccionNotif->correo }}");
 			$("#telefonoN").val("{{ $direccionNotif->telefono }}");
 			$("#fax").val("{{ $direccionNotif->fax }}");
+			@if(($personales->perseguidoPenalmente)==1)
+			$('#perseguidoPenalmente1').val("{{$personales->perseguidoPenalmente }}").trigger('click');
+			@else
+			$('#perseguidoPenalmente2').val("{{$personales->perseguidoPenalmente}}").trigger('click');
+			@endif
 		@endif
 	@endif
 	@if (isset ($personales) )
