@@ -191,6 +191,8 @@
 			$('#nombres2').val("{{ $personales->nombres }}");
 			$('#rfc2').val(rfc);
 			$('#homo2').val(homoclave);
+			$('#fechaAltaEmpresa').datetimepicker('format', "DD-MM-YYYY");
+			$('#fechaAltaEmpresa').datetimepicker('date', moment("{{ $personales->fechaNacimiento}}").format("DD-MM-YYYY"));
 			$("#representanteLegal").val("{{ $personales->nombres }}");
 			$('#calle').val("{{$direccion->calle}}");
 			$('#numExterno').val("{{$direccion->numExterno}}");
@@ -247,6 +249,15 @@
 			$('#idOcupacion').val({{$personales->idOcupacion}}).trigger('change');
 			$('#idEstadoCivil').val({{$personales->idEstadoCivil}}).trigger('change');
 			$('#docIdentificacion').val("{{$personales->docIdentificacion}}").trigger('change');
+			docs='CREDENCIAL DE ELECTOR PASAPORTE CARTILLA MILITAR LICENCIA PARA CONDUCIR CREDENCIAL ESCOLAR';
+			doc='{{$personales->docIdentificacion}}';
+				if ( docs.toLowerCase().indexOf(doc.toLowerCase()) != -1 ) {
+					$('#docIdentificacion').val('{{$personales->docIdentificacion}}');
+				} else {
+						$('#docIdentificacion').val('OTRO');
+					$('#otrodocto').show();
+					$('#otroDocumento').val('{{$personales->docIdentificacion}}');
+				}	
 			$('#numDocIdentificacion').val("{{$personales->numDocIdentificacion}}");
 			$('#idEstado').val({{$direccion->idEstado}}).trigger('change');
 			$('#idMunicipio').val({{$direccion->idMunicipio}}).trigger('change');
