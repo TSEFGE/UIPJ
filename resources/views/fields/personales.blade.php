@@ -81,7 +81,7 @@
 		<div class="col-3">
 			<div class="form-group">
 				{!! Form::label('sexo', 'Sexo', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::select('sexo', ['SIN INFORMACION' => 'SIN INFORMACION', 'HOMBRE' => 'HOMBRE', 'MUJER' => 'MUJER'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el sexo']) !!}
+				{!! Form::select('sexo', ['SIN INFORMACION' => 'SIN INFORMACION', 'HOMBRE' => 'HOMBRE', 'MUJER' => 'MUJER'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el sexo', 'data-validation'=>'required','data-validation-event'=>'change']) !!}
 			</div>
 		</div>
 
