@@ -8,7 +8,6 @@ totalesDenun=0;
 tabs=0;
 correcto=0;
 
-
  $('#tdenunciado.nav-tabs a').on('shown.bs.tab', function (e) {
      var index = $($(this).attr('href')).index();
      switch(index){
@@ -75,7 +74,8 @@ $('#tdenunciado.nav-tabs a').on('hidden.bs.tab', function(event){
 
 
 $("#ctdenunciado").hover(function () { 
-	totalesP2 = $('#collapsePersonales2 .vacio').length;
+    totalesP2 = $('#collapsePersonales2 .vacio').length;
+    totalesDenun = $('#collapseDenun2 .vacio').length;
 	//totalesD2 = $("#collapseDir2 .vacio").length;
     correcto = $('#tdenunciado .correcto').length;
     if (correcto == tabs) {
@@ -84,6 +84,7 @@ $("#ctdenunciado").hover(function () {
         $("#btn-submit").prop('disabled', true);
     }
     console.log("correcto",correcto);
+    console.log("totalesP2", totalesP2);
 });
 
 $("#collapsePersonales2").hover(function () {
