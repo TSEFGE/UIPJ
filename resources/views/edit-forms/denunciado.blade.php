@@ -277,7 +277,7 @@ $("#espacioNarracion").hide();
 			$('#idLocalidad2').val({{$direccionTrab->idLocalidad}}).trigger('change');
 			$('#idColonia2').val({{$direccionTrab->idColonia}}).trigger('change');
 
-			$('#telefonoTrabajo').val({{$personales->telefonoTrabajo}}).trigger('change');
+			$('#telefonoTrabajo').val("{{$personales->telefonoTrabajo}}").trigger('change');
 			$('#codigoPostal').val({{$direccionTrab->codigoPostal}}).trigger('change');
 			$('#periodoIngreso').val("{{$personales->periodoIngreso}}");
 			$('#idOcupacion').val({{$personales->idOcupacion}}).trigger('change');
