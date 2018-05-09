@@ -29,11 +29,12 @@
 						with font-awesome or any other icon font library -->
 						<li class="nav-item" ><a data-toggle="tooltip" title="Inicio"  id="home" href="{{ url('/home') }}" class=" {{ Request::is( 'home') ? 'active' : '' }} nav-link" ><i class=" nav-icon fa fa-home"></i> <p> Inicio</p> <span></span></a></li>
 						<li class="nav-item"><a href="{{ route('libro.gobierno') }}" class=" {{ Request::is( 'libro-gobierno') ? 'active' : '' }} nav-link"><i class=" nav-icon fa fa-book"></i> <p> Libro de gobierno</p><span></span></a></li>
+						<li class="nav-item"><a href="{{ route('libro.oficios') }}" class=" {{ Request::is( 'libro-oficios') ? 'active' : '' }} nav-link"><i class=" nav-icon fa fa-file-text"></i> <p> Libro de oficios</p><span></span></a></li>
 						@if(isset($idCarpeta))
 						<li class="nav-item" ><a href="{{ route('view.carpeta', $idCarpeta) }}" class="active nav-link"><i class="nav-icon fa fa-folder-open"></i><p>Carpeta Abierta</p> <span></span></a></li>
 						@endif
 						<li class="nav-item"><a href="{{ url('/iniciar-carpeta') }}" class="{{ Request::is( 'iniciar-carpeta') ? 'active' : '' }} nav-link"><i class="nav-icon fa fa-folder"></i><p>Nueva carpeta</p> <span></span></a></li>
-						<li class="nav-item"><a href="{{ url('/bitacora') }}" class="{{ Request::is( 'bitacora') ? 'active' : '' }} nav-link"><i class="nav-icon fa fa-database"></i><p>Bitácora</p> <span></span></a></li>
+						<li class="nav-item"><a href="{{ url('/bitacora') }}" class="{{ Request::is( 'bitacora') ? 'active' : '' }} nav-link"><i class="nav-icon fa fa-pencil-square-o"></i><p>Bitácora</p> <span></span></a></li>
 						<li class="nav-item"><a href="{{ route('agenda') }}" class="{{ Request::is( 'agenda') ? 'active' : '' }} nav-link"><i class="nav-icon fa fa-calendar"></i><p>Agenda</p> <span></span></a></li>
 						{{--<li class="nav-item">
 							<a href="pages/widgets.html" class="nav-link">
