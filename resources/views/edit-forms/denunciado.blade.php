@@ -232,7 +232,7 @@ $("#espacioNarracion").hide();
 			$('#nombreInterprete').val("{{ $personales->nombreInterprete }}");
 			$('#lugarTrabInterprete').val("{{ $personales->trabajoInterprete }}");
 			$('#idMunicipioOrigen').val({{$personales->idMunicipioOrigen}}).trigger('change');
-			$('#idReligion').val(7).trigger('change');
+        	$('#idReligion').val({{$personales->idReligion}}).trigger('change');
 			$('#idEscolaridad').val({{$personales->idEscolaridad}}).trigger('change');
 			$("#telefono").val("{{ $personales->telefono }}");
 			$("#motivoEstancia").val("{{ $personales->motivoEstancia }}");	
@@ -277,7 +277,7 @@ $("#espacioNarracion").hide();
 			$('#idLocalidad2').val({{$direccionTrab->idLocalidad}}).trigger('change');
 			$('#idColonia2').val({{$direccionTrab->idColonia}}).trigger('change');
 
-			$('#telefonoTrabajo').val("{{$personales->telefonoTrabajo}}").trigger('change');
+			$('#telefonoTrabajo').val({{$personales->telefonoTrabajo}}).trigger('change');
 			$('#codigoPostal').val({{$direccionTrab->codigoPostal}}).trigger('change');
 			$('#periodoIngreso').val("{{$personales->periodoIngreso}}");
 			$('#idOcupacion').val({{$personales->idOcupacion}}).trigger('change');
