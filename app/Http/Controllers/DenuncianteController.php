@@ -715,7 +715,7 @@ class DenuncianteController extends Controller
             Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'update', 'descripcion' => 'Se ha actualizado un domicilio de trabajo para persona física de tipo victima u ofendido.', 'idFilaAccion' => $domicilio2->id]);
             $idD2 = $domicilio2->id;
 
-            $domicilio3 = Domicilio::find($request->idDireccionNotif);
+            $domicilio3 = Domicilio::find($request->idDomicilioNotif);
             if ($request->filled('idMunicipio3')) {
                 $domicilio3->idMunicipio = $request->idMunicipio3;
             }
