@@ -1,0 +1,25 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
+use DB;
+use Illuminate\Support\Facades\Auth;
+
+class LibroOficiosController extends Controller
+{
+    public function index(){
+    	return view('librooficios');
+    }
+
+    public function apiLibro(){
+      $oficios = DB::table('diligencias_sp')
+      		->join('acusacion','acusacion.id','=','diligencias_sp.idAcusacion')
+      		->join('carpeta','carpeta.id','=','acusacion.idCarpeta')
+            ->join('users','users.id','=','carpeta.idFiscal')
+            ->select('diligencias_sp.numOficio', 'carpeta.numCarpeta', 'diligencias_sp.created_at', 'diligencias_sp.status', 'diligencias_sp.oficio', 'diligencias_sp.created_at')
+            ->where('users.id','=', Auth::user()->id);
+      return Datatables::of($oficios)->make(true);
+    }
+}

@@ -38,12 +38,13 @@
 
 @push('scripts')
 	<script src="{{ asset('js/selects/async.js') }}"></script>
-    <script src="{{ asset('js/selects/defensa.js') }}"></script>
+    <script src="{{ asset('js/selects/defensa-edit.js') }}"></script>
     <script src="{{ asset('js/selects/sisy.js') }}"></script>
 @endpush
 @push('docready-js')
 	$("#idAbogado").addClass("vacio");
 	$("#idInvolucrado").addClass("vacio");
+
 	$('#idAbogado').val({{$idAbogado}}).trigger('change');
 	$('#idInvolucrado').val({{$idInvolucrado}}).trigger('change');
 

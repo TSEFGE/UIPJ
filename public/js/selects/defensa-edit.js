@@ -1,7 +1,7 @@
 $("#idAbogado").change(function(event) {
     if (event.target.value != "") {
         var idCarpeta = $("input[type=hidden][name=idCarpeta]").val();
-        $.get(route('get.involucrados', {
+        $.get(route('get.involucrados2', {
             idCarpeta: idCarpeta,
             idAbogado: event.target.value
         }), function(response, idCarpeta) {

@@ -198,6 +198,37 @@ class RegistroController extends Controller
         }
     }
 
+    public function getInvolucrados2(Request $request, $idCarpeta, $idAbogado)
+    {
+        if ($request->ajax()) {
+            $tipoAbog = DB::table('extra_abogado')
+                ->select('tipo')
+                ->where('id', '=', $idAbogado)
+                ->get();
+            $tipo = $tipoAbog[0]->tipo;
+            if ($tipo == "ASESOR JURIDICO") {
+                $involucrados = DB::table('extra_denunciante')
+                    ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+                    ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+                    ->select('variables_persona.id', DB::raw('CONCAT(persona.nombres, " ", ifnull(persona.primerAp,"")," ", ifnull(persona.segundoAp,"")) AS nombre'))
+                    ->where('variables_persona.idCarpeta', '=', $idCarpeta)
+                //->whereNull('extra_denunciante.idAbogado')
+                    ->orderBy('persona.nombres', 'ASC')
+                    ->get();
+            } elseif ($tipo == "ABOGADO DEFENSOR") {
+                $involucrados = DB::table('extra_denunciado')
+                    ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
+                    ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+                    ->select('variables_persona.id', DB::raw('CONCAT(persona.nombres, " ", ifnull(persona.primerAp,"")," ", ifnull(persona.segundoAp,"")) AS nombre'))
+                    ->where('variables_persona.idCarpeta', '=', $idCarpeta)
+                //->whereNull('extra_denunciado.idAbogado')
+                    ->orderBy('persona.nombres', 'ASC')
+                    ->get();
+            }
+            return response()->json($involucrados);
+        }
+    }
+
     public function rfcMoral(Request $request)
     {
         $nombre = $request->nombre;
