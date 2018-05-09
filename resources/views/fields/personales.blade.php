@@ -61,85 +61,86 @@
 			@endisset
 
 			<div class="col-3">
-				<div class="form-group">
-					{!! Form::label('sexo', 'Sexo', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('sexo', ['SIN INFORMACION' => 'SIN INFORMACION', 'HOMBRE' => 'HOMBRE', 'MUJER' => 'MUJER'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el sexo','data-validation'=>'required' ,'data-validation-event'=>'change' ]) !!}
-				</div>
+			<div class="form-group">
+				{!! Form::label('idNacionalidad', 'Nacionalidad', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::select('idNacionalidad', $nacionalidades, '1', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la nacionalidad']) !!}
 			</div>
+		</div>
+		<div class="col-3">
+			<div class="form-group">
+				{!! Form::label('idEstadoOrigen', 'Entidad federativa de origen', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::select('idEstadoOrigen', $estados, '30', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa']) !!}
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="form-group">
+				{!! Form::label('idMunicipioOrigen', 'Municipio de origen', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::select('idMunicipioOrigen',$municipiosVer,null, [ 'placeholder' => 'Seleccione un municipio','class' => 'form-control form-control-sm']) !!}
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="form-group">
+				{!! Form::label('sexo', 'Sexo', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::select('sexo', ['SIN INFORMACION' => 'SIN INFORMACION', 'HOMBRE' => 'HOMBRE', 'MUJER' => 'MUJER'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el sexo']) !!}
+			</div>
+		</div>
 
-			<div class="col-3">
-				<div class="form-group">
-					{!! Form::label('idNacionalidad', 'Nacionalidad', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('idNacionalidad', $nacionalidades, '1', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la nacionalidad','data-validation'=>'required','data-validation-event'=>'change']) !!}
-				</div>
+
+		<div class="col-3">
+			<div class="form-group">
+				{!! Form::label('curp', 'C.U.R.P.', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::text('curp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el C.U.R.P.','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$','data-validation-error-msg'=>'CURP inválido']) !!}
+
 			</div>
-			<div class="col-3">
-				<div class="form-group">
-					{!! Form::label('idEstadoOrigen', 'Entidad federativa de origen', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('idEstadoOrigen', $estados, '30', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa' ,'data-validation'=>'required','data-validation-event'=>'change']) !!}
+		</div>	
+
+		<div class="col-3">
+			<div class="row no-gutters">
+				<div class="col-7">
+					{!! Form::label('rfc', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::text('rfc', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.', 'required','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-Z,Ñ,&]{4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))$','data-validation-error-msg'=>'RFC inválido']) !!}
+					<input type="hidden" name="rfcAux" id="rfcAux">
 				</div>
-			</div>
 
-			<div class="col-3">
-				<div class="row no-gutters">
-					<div class="col-7">
-						{!! Form::label('rfc', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
-						{!! Form::text('rfc', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.', 'required','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-Z,Ñ,&]{4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))$','data-validation-error-msg'=>'RFC inválido']) !!}
-						<input type="hidden" name="rfcAux" id="rfcAux">
-					</div>
-
-					<div class="col-5">
-						{!! Form::label('homo', 'Homoclave', ['class' => 'col-form-label-sm']) !!}
-						{!! Form::text('homo', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Homoclave', 'required','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-Z\d]{2}([A\d]))$','data-validation-error-msg'=>'Homoclave inválida']) !!}
-
-					</div>
-				</div>
-			</div>
-
-			<div class="col-3">
-				<div class="form-group">
-					{!! Form::label('curp', 'C.U.R.P.', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('curp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el C.U.R.P.','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$','data-validation-error-msg'=>'CURP inválido', 'data-validation-event'=>'keyup']) !!}
+				<div class="col-5">
+					{!! Form::label('homo', 'Homoclave', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::text('homo', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Homoclave', 'required','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-Z\d]{2}([A\d]))$','data-validation-error-msg'=>'Homoclave inválida']) !!}
 
 				</div>
 			</div>
-			
-			<div class="col-3">
-				<div class="form-group">
-					{!! Form::label('idMunicipioOrigen', 'Municipio de origen', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('idMunicipioOrigen',$municipiosVer,null, [ 'placeholder' => 'Seleccione un municipio','class' => 'form-control form-control-sm', 'data-validation'=>'required' ,'data-validation-event'=>'change']) !!}
-				</div>
-			</div>
-			<div class="col-3">
-				<div class="form-group">
-					{!! Form::label('idEtnia', 'Etnia', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('idEtnia', $etnias, '1', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la etnia' ,'data-validation'=>'required' ,'data-validation-event'=>'change']) !!}
-				</div>
-			</div>
-			<div class="col-3">
-				<div class="form-group">
-					{!! Form::label('idLengua', 'Lengua', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('idLengua', $lenguas, '70', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la lengua', 'data-validation'=>'required' ,'data-validation-event'=>'change']) !!}
-				</div>
-			</div>
+		</div>
 
-			<div class="col-12"  id="datosInterprete" style="display:none;">
-				
-				<div class="row">
-					<div class="col-6">
-						<div class="form-group"> 
-							{!! Form::label('nombreInterprete', 'Nombre del intérprete', ['class' => 'col-form-label-sm']) !!}
-							{!! Form::text('nombreInterprete',null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese nombre','data-validation'=>'length', 'data-validation-length'=>'2-200','data-validation-error-msg'=>'El nombre debe contener al menos 2 letras', 'data-validation-event'=>'keyup']) !!}
-						</div>
-					</div>
-					<div class="col-6">
-						<div class="form-group"> 
-							{!! Form::label('lugarTrabInterprete', 'Lugar de trabajo del intérprete', ['class' => 'col-form-label-sm']) !!}
-							{!! Form::text('lugarTrabInterprete',null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese nombre de la organización','data-validation'=>'length', 'data-validation-length'=>'2-200','data-validation-error-msg'=>'El nombre debe contener al menos 2 letras', 'data-validation-event'=>'keyup']) !!}
-						</div>
+		<div class="col-3">
+			<div class="form-group">
+				{!! Form::label('idEtnia', 'Etnia', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::select('idEtnia', $etnias, '1', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la etnia']) !!}
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="form-group">
+				{!! Form::label('idLengua', 'Lengua', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::select('idLengua', $lenguas, '70', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la lengua']) !!}
+			</div>
+		</div>
+
+		<div class="col-12"  id="datosInterprete" style="display:none;">
+
+			<div class="row">
+				<div class="col-6">
+					<div class="form-group"> 
+						{!! Form::label('nombreInterprete', 'Nombre del intérprete', ['class' => 'col-form-label-sm']) !!}
+						{!! Form::text('nombreInterprete',null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese nombre','data-validation'=>'length', 'data-validation-length'=>'2-200','data-validation-error-msg'=>'El nombre debe contener al menos 2 letras', 'data-validation-event'=>'keyup']) !!}
 					</div>
 				</div>
+				<div class="col-6">
+					<div class="form-group"> 
+						{!! Form::label('lugarTrabInterprete', 'Lugar de trabajo del intérprete', ['class' => 'col-form-label-sm']) !!}
+						{!! Form::text('lugarTrabInterprete',null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese nombre de la organización','data-validation'=>'length', 'data-validation-length'=>'2-200','data-validation-error-msg'=>'El nombre debe contener al menos 2 letras', 'data-validation-event'=>'keyup']) !!}
+					</div>
+				</div>
 			</div>
+		</div>
+
 
 			<div class="col-3">
 				<div class="form-group">
