@@ -93,6 +93,7 @@
 				{!! Form::hidden('idDomicilioTrabajo', ($direccionTrab->id)) !!}
 				{!! Form::hidden('idDomicilioNotif', ($direccionTrab->id)) !!}
 				{!! Form::hidden('idNotificacion', ($personales->idNotificacion)) !!}
+				{!! Form::hidden('idInterprete', ($personales->idInterprete)) !!}
 
 					<!-- Fin pestañas -->
 		</div>
@@ -173,6 +174,8 @@
 	$('#curp').val("{{$personales->curp}}");
 	$('#idEtnia').val({{$personales->idEtnia}}).trigger('change');
 	$('#idLengua').val({{$personales->idLengua}}).trigger('change');
+	$('#nombreInterprete').val("{{ $personales->nombreInterprete }}");
+	$('#lugarTrabInterprete').val("{{ $personales->trabajoInterprete }}");
 	$('#idMunicipioOrigen').val({{$personales->idMunicipioOrigen}}).trigger('change');
 	$("#telefono").val("{{ $personales->telefono }}");
 	$("#motivoEstancia").val("{{ $personales->motivoEstancia }}");

@@ -95,15 +95,15 @@
 
 
             //para generar notificaciones       
-            $("select").removeClass('vacio ');
-            $("select").removeClass('valid');
-            $("select").removeClass('error');
-            $("textarea").removeClass('vacio');
-            $("textarea").removeClass('error');
-            $("textarea").removeClass('valid');
-            $("input").removeClass('vacio');
-            $("input").removeClass('error');
-            $("input").removeClass('valid');
+            $('select').removeClass('vacio ');
+            $('select').removeClass('valid');
+            $('select').removeClass('error');
+            $('textarea').removeClass('vacio');
+            $('textarea').removeClass('error');
+            $('textarea').removeClass('valid');
+            $('input').removeClass('vacio');
+            $('input').removeClass('error');
+            $('input').removeClass('valid');
             
             //$("#narracionUnoM").removeClass("error");         
             $("#idEstado, #idMunicipio, #idLocalidad, #idColonia, #cp").addClass('vacio');
@@ -232,15 +232,15 @@
             $("#narracion").prop('disabled', false);
 
 
-                $("select").removeClass('vacio ');
-                $("select").removeClass('valid');
-                $("select").removeClass('error');
-                $("textarea").removeClass('vacio');
-                $("textarea").removeClass('error');
-                $("textarea").removeClass('valid');
-                $("input ").removeClass('vacio '); 
-                $("input ").removeClass('error ');
-                $("input ").removeClass('valid ');                 
+                $('select').removeClass('vacio ');
+                $('select').removeClass('valid');
+                $('select').removeClass('error');
+                $('textarea').removeClass('vacio');
+                $('textarea').removeClass('error');
+                $('textarea').removeClass('valid');
+                $('input').removeClass('vacio ');
+                $('input').removeClass('error ');
+                $('input').removeClass('valid ');
 
                 //Para generar Notificaciones se asigna clase
                 $("select").addClass('vacio');
@@ -278,13 +278,13 @@
                 $("#correo").addClass("vacio");
                 $("#telefonoN").addClass("vacio");     
                 $("#fax").addClass("vacio");
-
+/*
                 $("#alias").addClass("vacio");
                 $("#personasBajoSuGuarda").addClass("vacio");     
                 $("#ingreso").addClass("vacio");
                 $("#residenciaAnterior").addClass("vacio");
                 $("#vestimenta").addClass("vacio");
-                $("#senasPartic").addClass("vacio");   
+                $("#senasPartic").addClass("vacio");*/
               //  $("#narracionUno").addClass("vacio"); //para comprobar en autoridad
 
                 $("#docIdentificacion").change(function(event){

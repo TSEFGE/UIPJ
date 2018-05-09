@@ -592,6 +592,7 @@ class DenunciadoController extends Controller
      */
     public function edit($idCarpeta, $id)
     {
+
         $carpetaNueva = Carpeta::where('id', $idCarpeta)->where('idFiscal', Auth::user()->id)->get();
         $var          = ExtraDenunciado::where('id', $id)->get();
         if ($carpetaNueva->isEmpty() && $var->isEmpty()) {
@@ -630,7 +631,7 @@ class DenunciadoController extends Controller
                 ->join('domicilio', 'domicilio.id', '=', 'notificacion.idDomicilio')
                 ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
                 ->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
-                ->select('notificacion.id as idNotificacion', 'notificacion.correo', 'notificacion.telefono', 'notificacion.fax', 'domicilio.id as idDomicilio', 'domicilio.idMunicipio', 'domicilio.idLocalidad', 'domicilio.idColonia', 'domicilio.calle', 'domicilio.numExterno', 'domicilio.numInterno', 'cat_municipio.idEstado', 'cat_colonia.codigoPostal')
+                ->select('notificacion.id as idNotificacion', 'notificacion.correo', 'notificacion.telefono', 'notificacion.fax', 'domicilio.id', 'domicilio.idMunicipio', 'domicilio.idLocalidad', 'domicilio.idColonia', 'domicilio.calle', 'domicilio.numExterno', 'domicilio.numInterno', 'cat_municipio.idEstado', 'cat_colonia.codigoPostal')
                 ->where('notificacion.id', '=', $personales->idNotificacion)
                 ->get()->first();
 
@@ -657,8 +658,9 @@ class DenunciadoController extends Controller
             $personales = DB::table('extra_denunciado')
                 ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
                 ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+                ->leftjoin('interprete', 'interprete.id', '=', 'variables_persona.idInterprete')
                 ->join('cat_municipio', 'cat_municipio.id', '=', 'persona.idMunicipioOrigen')
-                ->select('extra_denunciado.id as idDenunciado', 'extra_denunciado.idPuesto', 'extra_denunciado.alias', 'extra_denunciado.senasPartic', 'extra_denunciado.ingreso', 'extra_denunciado.periodoIngreso', 'extra_denunciado.residenciaAnterior', 'extra_denunciado.personasBajoSuGuarda', 'extra_denunciado.perseguidoPenalmente', 'extra_denunciado.vestimenta', 'extra_denunciado.idNotificacion', 'variables_persona.id as idVariablesPersona', 'variables_persona.edad', 'variables_persona.telefono', 'variables_persona.motivoEstancia', 'variables_persona.docIdentificacion', 'variables_persona.numDocIdentificacion', 'variables_persona.lugarTrabajo', 'variables_persona.telefonoTrabajo', 'variables_persona.idDomicilio', 'variables_persona.idDomicilioTrabajo', 'variables_persona.idOcupacion', 'variables_persona.idEstadoCivil', 'variables_persona.idEscolaridad', 'variables_persona.idReligion', 'persona.id as idPersona', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.fechaNacimiento', 'persona.rfc', 'persona.curp', 'persona.sexo', 'persona.idMunicipioOrigen', 'cat_municipio.idEstado', 'persona.esEmpresa', 'persona.idNacionalidad', 'persona.idEtnia', 'persona.idLengua')
+                ->select('extra_denunciado.id as idDenunciado', 'extra_denunciado.idPuesto', 'extra_denunciado.alias', 'extra_denunciado.senasPartic', 'extra_denunciado.ingreso', 'extra_denunciado.periodoIngreso', 'extra_denunciado.residenciaAnterior', 'extra_denunciado.personasBajoSuGuarda', 'extra_denunciado.perseguidoPenalmente', 'extra_denunciado.vestimenta', 'extra_denunciado.idNotificacion', 'variables_persona.id as idVariablesPersona', 'variables_persona.edad', 'variables_persona.telefono', 'variables_persona.motivoEstancia', 'variables_persona.docIdentificacion', 'variables_persona.numDocIdentificacion', 'variables_persona.lugarTrabajo', 'variables_persona.telefonoTrabajo', 'variables_persona.idDomicilio', 'variables_persona.idDomicilioTrabajo', 'variables_persona.idOcupacion', 'variables_persona.idEstadoCivil', 'variables_persona.idEscolaridad', 'variables_persona.idReligion', 'persona.id as idPersona', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.fechaNacimiento', 'persona.rfc', 'persona.curp', 'persona.sexo', 'persona.idMunicipioOrigen', 'cat_municipio.idEstado', 'persona.esEmpresa', 'persona.idNacionalidad', 'persona.idEtnia', 'persona.idLengua', 'interprete.id as idInterprete', 'interprete.nombre as nombreInterprete', 'interprete.organizacion as trabajoInterprete')
                 ->where('extra_denunciado.id', '=', $id)
                 ->get()->first();
 
@@ -747,6 +749,25 @@ class DenunciadoController extends Controller
             }
             if ($request->filled('idLengua')) {
                 $persona->idLengua = $request->idLengua;
+                if ($request->idLengua != 70) {
+                    if (is_null($request->idInterprete)) {
+                        $interprete               = new Interprete();
+                        $interprete->nombre       = $request->nombreInterprete;
+                        $interprete->organizacion = $request->lugarTrabInterprete;
+                        $interprete->idLengua     = $request->idLengua;
+                        $interprete->save();
+                        $idInterprete = $interprete->id;
+                    } else {
+                        $interprete               = Interprete::find($request->idInterprete);
+                        $interprete->nombre       = $request->nombreInterprete;
+                        $interprete->organizacion = $request->lugarTrabInterprete;
+                        $interprete->idLengua     = $request->idLengua;
+                        $interprete->save();
+                        $idInterprete = $interprete->id;
+                    }
+                } else {
+                    $idInterprete = null;
+                }
             }
             if ($request->filled('idMunicipioOrigen')) {
                 $persona->idMunicipioOrigen = $request->idMunicipioOrigen;
@@ -859,7 +880,9 @@ class DenunciadoController extends Controller
             if ($request->filled('idReligion')) {
                 $VariablesPersona->idReligion = $request->idReligion;
             }
-            $VariablesPersona->idDomicilio = $idD1;
+            $VariablesPersona->idDomicilio  = $idD1;
+            $VariablesPersona->idInterprete = $idInterprete;
+
             if ($request->filled('docIdentificacion')) {
                 $VariablesPersona->docIdentificacion = $request->docIdentificacion;
             }

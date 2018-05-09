@@ -138,9 +138,10 @@
 			@if (isset ($personales) )
 				@if ( ($personales->esEmpresa) == 0)
 			{!! Form::hidden('idDireccionTrab', ($direccionTrab->id)) !!}
+			{!! Form::hidden('idDireccionNotif', ($direccionNotif->idDomicilio)) !!}
+			{!! Form::hidden('idInterprete', ($personales->idInterprete)) !!}
 				@endif
 			@endif
-
 			{!! Form::hidden('idNotificacion', ($direccionNotif->idNotificacion)) !!}
 				<!-- Fin pestañas -->
 			</div>
@@ -156,7 +157,7 @@
 	<script src="{{ asset('plugins/moment/js/moment.min.js') }}"></script>
     <script src="{{ asset('plugins/moment/locales/es.js') }}"></script>
 	<script src="{{ asset('plugins/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-	{{-- <script src="{{ asset('js/persona.js') }}"></script>--}}
+	 <script src="{{ asset('js/persona.js') }}"></script>
 	<script src="{{ asset('js/persona-moral.js') }}"></script>
 	{{-- <script src="{{ asset('js/tipo-persona.js') }}"></script>
 	<script src="{{ asset('js/denunciado.js') }}"></script>--}}
@@ -224,10 +225,11 @@ $(function(){
 	$('#curp').val("{{$personales->curp}}");
 	$('#idEtnia').val({{$personales->idEtnia}}).trigger('change');
 	$('#idLengua').val({{$personales->idLengua}}).trigger('change');
+	$('#nombreInterprete').val("{{ $personales->nombreInterprete }}");
+	$('#lugarTrabInterprete').val("{{ $personales->trabajoInterprete }}");
 	$('#idMunicipioOrigen').val({{$personales->idMunicipioOrigen}}).trigger('change');
 	$('#idReligion').val(7).trigger('change');
 	$('#idEscolaridad').val({{$personales->idEscolaridad}}).trigger('change');
-
 	$("#telefono").val("{{ $personales->telefono }}");
 	$("#motivoEstancia").val("{{ $personales->motivoEstancia }}");	
 	$("#calle").val("{{ $direccion->calle }}");

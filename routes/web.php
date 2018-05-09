@@ -117,7 +117,10 @@ Route::middleware(['auth'])->group(function () {
         'as'   => 'colaboracion.sp',
         'uses' => 'DocxMakerController@getFormatoColaboracionSp',
     ]);
+
+    /*--------- Rutas para generar diligencias -------------*/
     Route::post('diligencia-sp', 'DiligenciaSPController@enviarSolicitud')->name('diligencia.sp');
+    Route::post('diligencia-pm', 'DiligenciaPMController@enviarSolicitud')->name('diligencia.pm');
 
     /*---------Rutas para el libro de gobierno-------------*/
     Route::get('libro-gobierno', 'LibroGobiernoController@index')->name('libro.gobierno');
@@ -163,7 +166,7 @@ Route::middleware(['auth'])->group(function () {
         /*Route::get('denunciantes/{idCarpeta}', 'RegistroController@getDenunciantes');
         Route::get('denunciados/{idCarpeta}', 'RegistroController@getDenunciados');*/
         Route::get('involucrados/{idCarpeta}/{idAbogado}', 'RegistroController@getInvolucrados')->name('get.involucrados');
-        Route::get('involucrados/{idCarpeta}/{idAbogado}', 'RegistroController@getInvolucrados2')->name('get.involucrados2');
+        Route::get('involucrados2/{idCarpeta}/{idAbogado}', 'RegistroController@getInvolucrados2')->name('get.involucrados2');
         Route::get('agrupaciones1/{id}', 'RegistroController@getAgrupaciones1')->name('get.agrupaciones1');
         Route::get('agrupaciones2/{id}', 'RegistroController@getAgrupaciones2')->name('get.agrupaciones2');
         Route::get('persona/curp/{curp}', 'RegistroController@buscarCURP')->name('persona.curp');
