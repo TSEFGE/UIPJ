@@ -90,18 +90,16 @@ class DenuncianteController extends Controller
                 }
                 if (!is_null($request->idLengua)) {
                     $persona->idLengua = $request->idLengua;
-
-                    if ($request->idLengua != 70) {
+                    if (($request->idLengua == 70) | ($request->idLengua == 69)) {
+                        $idInterprete = null;
+                    } else {
                         $interprete               = new Interprete();
                         $interprete->nombre       = $request->nombreInterprete;
                         $interprete->organizacion = $request->lugarTrabInterprete;
                         $interprete->idLengua     = $request->idLengua;
                         $interprete->save();
                         $idInterprete = $interprete->id;
-                    } else {
-                        $idInterprete = null;
                     }
-
                 }
                 if (!is_null($request->idMunicipioOrigen)) {
                     $persona->idMunicipioOrigen = $request->idMunicipioOrigen;
