@@ -109,8 +109,7 @@
 	{!! Form::hidden('idDireccion', ($direccion->id)) !!}
 	@if (isset ($personales) )
 		@if ( ($personales->esEmpresa) == 0)
-	{!! Form::hidden('idDireccionTrab', ($direccionTrab->id)) !!}
-	{!! Form::hidden('idDireccionNotif', ($direccionNotif->id)) !!}
+	{!! Form::hidden('idDireccionTrab', ($direccionTrab->id)) !!}	
 	{!! Form::hidden('idInterprete', ($personales->idInterprete)) !!}
 	
 		@endif
