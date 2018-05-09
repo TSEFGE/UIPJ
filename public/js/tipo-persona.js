@@ -247,6 +247,8 @@
                 /*$("#idEstado, #idMunicipio, #idLocalidad, #idColonia, #cp").addClass('vacio');
                 $("#idEstado3, #idMunicipio3, #idLocalidad3, #idColonia3, #cp3").addClass('vacio');
                 $("#idEstado2, #idMunicipio2, #idLocalidad2, #idColonia2, #cp2").addClass('vacio');*/
+                /*$("#idNacionalidad , #idEstadoOrigen , #idMunicpioOrigen, #sexo , #idEtnia,#idLengua , #idOcupacion , #idEstadoCivil").addClass('vacio');
+                $("#idEscolaridad,#idReligion,#docIdentificacion").addClass('vacio');*/
                 $("#nombres").addClass("vacio");
                 $("#primerAp").addClass("vacio");
                 $("#segundoAp").addClass("vacio");
