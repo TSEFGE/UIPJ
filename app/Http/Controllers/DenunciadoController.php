@@ -1009,6 +1009,7 @@ class DenunciadoController extends Controller
             $VariablesPersona->idCarpeta          = $request->idCarpeta;
             $VariablesPersona->idPersona          = $idPersona;
             $VariablesPersona->idDomicilio        = $idD1;
+            $VariablesPersona->idInterprete       = null;
             $VariablesPersona->idDomicilioTrabajo = $idD1;
             $VariablesPersona->representanteLegal = $request->representanteLegal;
             $VariablesPersona->save();
