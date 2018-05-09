@@ -17,6 +17,7 @@ use App\Models\CatOcupacion;
 use App\Models\CatReligion;
 use App\Models\Domicilio;
 use App\Models\ExtraTestigo;
+use App\Models\Interprete;
 use App\Models\Narracion;
 use App\Models\Notificacion;
 use App\Models\Persona;
@@ -266,9 +267,10 @@ class TestigoController extends Controller
             $personales = DB::table('extra_testigo', 'extra_testigo.id', '=', $idExtraTestigo)
                 ->join('variables_persona', 'variables_persona.id', '=', 'extra_testigo.idVariablesPersona')
                 ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+                ->leftjoin('interprete', 'interprete.id', '=', 'variables_persona.idInterprete')
                 ->join('cat_municipio', 'cat_municipio.id', '=', 'persona.idMunicipioOrigen')
             //->join('cat_estado','cat_estado.id','=','cat_municipio.idEstado')
-                ->select('extra_testigo.id as $idExtraTestigo', 'cat_municipio.idEstado as idEstado', 'persona.*', 'persona.id as idPersona', 'variables_persona.id as idVariablesPersona', 'variables_persona.*', 'extra_testigo.idNotificacion as idNotificacion')
+                ->select('extra_testigo.id as $idExtraTestigo', 'cat_municipio.idEstado as idEstado', 'persona.*', 'persona.id as idPersona', 'variables_persona.id as idVariablesPersona', 'variables_persona.*', 'extra_testigo.idNotificacion as idNotificacion', 'interprete.id as idInterprete', 'interprete.nombre as nombreInterprete', 'interprete.organizacion as trabajoInterprete')
                 ->get()->first();
             //dd($personales);
 
@@ -357,7 +359,27 @@ class TestigoController extends Controller
             }
             if (!is_null($request->idLengua)) {
                 $persona->idLengua = $request->idLengua;
+                if ($request->idLengua != 70) {
+                    if (is_null($request->idInterprete)) {
+                        $interprete               = new Interprete();
+                        $interprete->nombre       = $request->nombreInterprete;
+                        $interprete->organizacion = $request->lugarTrabInterprete;
+                        $interprete->idLengua     = $request->idLengua;
+                        $interprete->save();
+                        $idInterprete = $interprete->id;
+                    } else {
+                        $interprete               = Interprete::find($request->idInterprete);
+                        $interprete->nombre       = $request->nombreInterprete;
+                        $interprete->organizacion = $request->lugarTrabInterprete;
+                        $interprete->idLengua     = $request->idLengua;
+                        $interprete->save();
+                        $idInterprete = $interprete->id;
+                    }
+                } else {
+                    $idInterprete = null;
+                }
             }
+
             if (!is_null($request->idMunicipioOrigen)) {
                 $persona->idMunicipioOrigen = $request->idMunicipioOrigen;
             }
@@ -468,7 +490,8 @@ class TestigoController extends Controller
             if (!is_null($request->idReligion)) {
                 $VariablesPersona->idReligion = $request->idReligion;
             }
-            $VariablesPersona->idDomicilio = $idD1;
+            $VariablesPersona->idDomicilio  = $idD1;
+            $VariablesPersona->idInterprete = $idInterprete;
             if (!is_null($request->docIdentificacion)) {
                 $VariablesPersona->docIdentificacion = $request->docIdentificacion;
             }

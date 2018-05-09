@@ -17,6 +17,24 @@ $("#edad").change(function() {
     var anios = $('#edad').val();
     $('#fechanac').datetimepicker('date', moment().subtract(anios, 'years').format('YYYY-MM-DD'));
 });
+$("#idLengua").change(function (event) {
+    console.log("entra");
+    var lengua = $("#idLengua").val();
+
+    if (lengua == 69 || lengua == 70) {
+        $("#datosInterprete").hide();
+        $("#nombreInterprete").removeClass('vacio');
+        $("#nombreInterprete").removeClass('valid');
+        $("#nombreInterprete").removeClass('error');
+        $("#lugarTrabInterprete").removeClass('vacio');
+        $("#lugarTrabInterprete").removeClass('valid');
+        $("#lugarTrabInterprete").removeClass('error');
+    } else {
+        $("#datosInterprete").show();
+        $("#nombreInterprete").addClass('vacio');
+        $("#lugarTrabInterprete").addClass('vacio');
+    }
+});
 $(document).ready(function() {
     $("#motivoEstancia").val("SIN INFORMACION");
     $("#numInterno").val("S/N");
@@ -83,26 +101,5 @@ $(document).ready(function() {
             $("#otroDocumento").removeClass("error");
             $("#otroDocumento").removeClass("valid");
         }
-    });
-$("#idLengua").change(function(event) {
-        console.log("entra");
-        var lengua = $("#idLengua").val();
-        
- if (lengua == 69 || lengua == 70)
-    {
-    $("#datosInterprete").hide();
-    $("#nombreInterprete").removeClass('vacio');
-    $("#nombreInterprete").removeClass('valid');
-    $("#nombreInterprete").removeClass('error');
-    $("#lugarTrabInterprete").removeClass('vacio');
-    $("#lugarTrabInterprete").removeClass('valid');
-    $("#lugarTrabInterprete").removeClass('error');
-    }
-  else 
-    {
-    $("#datosInterprete").show();
-    $("#nombreInterprete").addClass('vacio');
-    $("#lugarTrabInterprete").addClass('vacio');
-    }
     });
 });

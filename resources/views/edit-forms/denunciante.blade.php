@@ -109,13 +109,13 @@
 	{!! Form::hidden('idDireccion', ($direccion->id)) !!}
 	@if (isset ($personales) )
 		@if ( ($personales->esEmpresa) == 0)
-	{!! Form::hidden('idDireccionTrab', ($direccionTrab->id)) !!}
-	{!! Form::hidden('idDireccionNotif', ($direccionNotif->id)) !!}
+	{!! Form::hidden('idDireccionTrab', ($direccionTrab->id)) !!}	
 	{!! Form::hidden('idInterprete', ($personales->idInterprete)) !!}
 	
 		@endif
 	@endif
-	{!! Form::hidden('idNotificacion', ($direccionNotif->idNotificacion)) !!}
+	{!! Form::hidden('idNoficiacion', ($direccionNotif->idNotificacion)) !!}
+	{!! Form::hidden('idDomicilioNotif', ($direccionNotif->idDomicilioNotif)) !!}
 
 	<!-- Fin pestañas -->
 </div>
