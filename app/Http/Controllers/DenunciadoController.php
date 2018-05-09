@@ -803,7 +803,7 @@ class DenunciadoController extends Controller
             $idD1 = $domicilio->id;
             Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'update', 'descripcion' => 'Se ha actualizado un domicilio de persona física de tipo denunciado.', 'idFilaAccion' => $idD1]);
 
-            $domicilio2 = Domicilio::find($request->idDireccionTrabajo);
+            $domicilio2 = Domicilio::find($request->idDireccionTrab);
             if ($request->filled('idMunicipio2')) {
                 $domicilio2->idMunicipio = $request->idMunicipio2;
             }
@@ -826,7 +826,7 @@ class DenunciadoController extends Controller
             $idD2 = $domicilio2->id;
             Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'update', 'descripcion' => 'Se ha actualizado un domicilio de persona física de tipo denunciado.', 'idFilaAccion' => $idD2]);
 
-            $domicilio3 = Domicilio::find($request->idDireccionNotificacion);
+            $domicilio3 = Domicilio::find($request->idDireccionNotif);
             if ($request->filled('idMunicipio3')) {
                 $domicilio3->idMunicipio = $request->idMunicipio3;
             }
@@ -973,7 +973,7 @@ class DenunciadoController extends Controller
             $idD1 = $domicilio->id;
             Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'update', 'descripcion' => 'Se ha actualizado un domicilio de persona física de tipo denunciado.', 'idFilaAccion' => $idD1]);
 
-            $domicilio3 = Domicilio::find($request->idDireccionNotificacion);
+            $domicilio3 = Domicilio::find($request->idDireccionNotif);
             if ($request->filled('idMunicipio3')) {
                 $domicilio3->idMunicipio = $request->idMunicipio3;
             }

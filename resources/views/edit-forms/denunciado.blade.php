@@ -212,122 +212,119 @@ $("#espacioNarracion").hide();
 
 
 	@if (isset ($personales) )
-	@if ( ($personales->esEmpresa) == 0)
-	var rfcFisica = $("input[name='rfc-edit']").val();
-	var rfc = rfcFisica.substr (0,10);
-	var homoclave = rfcFisica.substr(-3);
-	$('#nombres').val("{{ $personales->nombres }}");
-	$("#primerAp").val("{{ $personales->primerAp }}");
-	$("#segundoAp").val("{{ $personales->segundoAp }}");
-	$('#fechanac2').datetimepicker('format', "DD-MM-YYYY");
-	$('#fechanac2').datetimepicker('date', moment("{{ $personales->fechaNacimiento}}").format("DD-MM-YYYY"));
-	$("#sexo").val("{{ $personales->sexo }}");
-	$('#idNacionalidad').val({{$personales->idNacionalidad}}).trigger('change');
-	$('#idEstadoOrigen').val({{ $personales->idEstado}}).trigger('change');
-	$('#rfc').val(rfc);
-	$('#homo').val(homoclave);
-	$('#curp').val("{{$personales->curp}}");
-	$('#idEtnia').val({{$personales->idEtnia}}).trigger('change');
-	$('#idLengua').val({{$personales->idLengua}}).trigger('change');
-	$('#nombreInterprete').val("{{ $personales->nombreInterprete }}");
-	$('#lugarTrabInterprete').val("{{ $personales->trabajoInterprete }}");
-	$('#idMunicipioOrigen').val({{$personales->idMunicipioOrigen}}).trigger('change');
-	$('#idReligion').val(7).trigger('change');
-	$('#idEscolaridad').val({{$personales->idEscolaridad}}).trigger('change');
-	$("#telefono").val("{{ $personales->telefono }}");
-	$("#motivoEstancia").val("{{ $personales->motivoEstancia }}");	
-	$("#calle").val("{{ $direccion->calle }}");
-	$("#numExterno").val("{{ $direccion->numExterno }}");
-	$("#numInterno").val("{{ $direccion->numInterno }}");
-	$("#idPuesto").val("{{ $personales->idPuesto }}");
-	$("#alias").val("{{ $personales->alias }}");
-	$("#personasBajoSuGuarda").val("{{ $personales->personasBajoSuGuarda }}");
-	$("#ingreso").val("{{ $personales->ingreso }}");
-	$("#residenciaAnterior").val("{{ $personales->residenciaAnterior }}");
-	$("#vestimenta").val("{{ $personales->vestimenta }}");
-	$("#senasPartic").val("{{ $personales->senasPartic }}");
-	$("#calle2").val("{{ $direccionTrab->calle }}");
-	$("#lugarTrabajo").val("{{ $personales->lugarTrabajo }}");
-	$("#numExterno2").val("{{ $direccion->numExterno }}");
-	$("#numInterno2").val("{{ $direccion->numInterno }}");
-	$("#numExterno3").val("{{ $direccionNotif->numExterno }}");
-	$("#numInterno3").val("{{ $direccionNotif->numInterno }}");
-	$("#email").val("{{ $direccionNotif->correo }}");
-	$("#telefonoN").val("{{ $direccionNotif->telefono }}");
-	$("#fax").val("{{ $direccionNotif->fax }}");
-	$('#idEstadoCivil').val({{$personales->idEstadoCivil}}).trigger('change');
-	$('#docIdentificacion').val("{{$personales->docIdentificacion}}").trigger('change');
-	docs='CREDENCIAL DE ELECTOR PASAPORTE CARTILLA MILITAR LICENCIA PARA CONDUCIR CREDENCIAL ESCOLAR';
-	doc='{{$personales->docIdentificacion}}';
-	if ( docs.toLowerCase().indexOf(doc.toLowerCase()) != -1 ) {
-	$('#docIdentificacion').val('{{$personales->docIdentificacion}}');
-	} else {
-	$('#docIdentificacion').val('OTRO');
-	$('#otrodocto').show();
-	$('#otroDocumento').val('{{$personales->docIdentificacion}}');
-	}	
-	$("#numDocIdentificacion").val("{{ $personales->numDocIdentificacion }}");
-	$('#idEstado').val({{$direccion->idEstado}}).trigger('change');
-	$('#idMunicipio').val({{$direccion->idMunicipio}}).trigger('change');
-	$('#idLocalidad').val({{$direccion->idLocalidad}}).trigger('change');
-	$('#idColonia').val({{$direccion->idColonia}}).trigger('change');
+		@if ( ($personales->esEmpresa) == 0)
+			var rfcFisica = $("input[name='rfc-edit']").val();
+			var rfc = rfcFisica.substr (0,10);
+			var homoclave = rfcFisica.substr(-3);
+			$('#nombres').val("{{ $personales->nombres }}");
+			$("#primerAp").val("{{ $personales->primerAp }}");
+			$("#segundoAp").val("{{ $personales->segundoAp }}");
+			$('#fechanac2').datetimepicker('format', "DD-MM-YYYY");
+			$('#fechanac2').datetimepicker('date', moment("{{ $personales->fechaNacimiento}}").format("DD-MM-YYYY"));
+			$("#sexo").val("{{ $personales->sexo }}");
+			$('#idNacionalidad').val({{$personales->idNacionalidad}}).trigger('change');
+			$('#idEstadoOrigen').val({{ $personales->idEstado}}).trigger('change');
+			$('#rfc').val(rfc);
+			$('#homo').val(homoclave);
+			$('#curp').val("{{$personales->curp}}");
+			$('#idEtnia').val({{$personales->idEtnia}}).trigger('change');
+			$('#idLengua').val({{$personales->idLengua}}).trigger('change');
+			$('#nombreInterprete').val("{{ $personales->nombreInterprete }}");
+			$('#lugarTrabInterprete').val("{{ $personales->trabajoInterprete }}");
+			$('#idMunicipioOrigen').val({{$personales->idMunicipioOrigen}}).trigger('change');
+			$('#idReligion').val(7).trigger('change');
+			$('#idEscolaridad').val({{$personales->idEscolaridad}}).trigger('change');
+			$("#telefono").val("{{ $personales->telefono }}");
+			$("#motivoEstancia").val("{{ $personales->motivoEstancia }}");	
+			$("#calle").val("{{ $direccion->calle }}");
+			$("#numExterno").val("{{ $direccion->numExterno }}");
+			$("#numInterno").val("{{ $direccion->numInterno }}");
+			$("#idPuesto").val("{{ $personales->idPuesto }}");
+			$("#alias").val("{{ $personales->alias }}");
+			$("#personasBajoSuGuarda").val("{{ $personales->personasBajoSuGuarda }}");
+			$("#ingreso").val("{{ $personales->ingreso }}");
+			$("#residenciaAnterior").val("{{ $personales->residenciaAnterior }}");
+			$("#vestimenta").val("{{ $personales->vestimenta }}");
+			$("#senasPartic").val("{{ $personales->senasPartic }}");
+			$("#calle2").val("{{ $direccionTrab->calle }}");
+			$("#lugarTrabajo").val("{{ $personales->lugarTrabajo }}");
+			$("#numExterno2").val("{{ $direccion->numExterno }}");
+			$("#numInterno2").val("{{ $direccion->numInterno }}");
+			$("#numExterno3").val("{{ $direccionNotif->numExterno }}");
+			$("#numInterno3").val("{{ $direccionNotif->numInterno }}");
+			$("#email").val("{{ $direccionNotif->correo }}");
+			$("#telefonoN").val("{{ $direccionNotif->telefono }}");
+			$("#fax").val("{{ $direccionNotif->fax }}");
+			$('#idEstadoCivil').val({{$personales->idEstadoCivil}}).trigger('change');
+			$('#docIdentificacion').val("{{$personales->docIdentificacion}}").trigger('change');
+			docs='CREDENCIAL DE ELECTOR PASAPORTE CARTILLA MILITAR LICENCIA PARA CONDUCIR CREDENCIAL ESCOLAR';
+			doc='{{$personales->docIdentificacion}}';
+			if ( docs.toLowerCase().indexOf(doc.toLowerCase()) != -1 ) {
+			$('#docIdentificacion').val('{{$personales->docIdentificacion}}');
+			} else {
+			$('#docIdentificacion').val('OTRO');
+			$('#otrodocto').show();
+			$('#otroDocumento').val('{{$personales->docIdentificacion}}');
+			}	
+			$("#numDocIdentificacion").val("{{ $personales->numDocIdentificacion }}");
+			$('#idEstado').val({{$direccion->idEstado}}).trigger('change');
+			$('#idMunicipio').val({{$direccion->idMunicipio}}).trigger('change');
+			$('#idLocalidad').val({{$direccion->idLocalidad}}).trigger('change');
+			$('#idColonia').val({{$direccion->idColonia}}).trigger('change');
 
-	$('#idEstado2').val({{$direccionTrab->idEstado}}).trigger('change');
-	$('#idMunicipio2').val({{$direccionTrab->idMunicipio}}).trigger('change');
-	$('#idLocalidad2').val({{$direccionTrab->idLocalidad}}).trigger('change');
-	$('#idColonia2').val({{$direccionTrab->idColonia}}).trigger('change');
+			$('#idEstado2').val({{$direccionTrab->idEstado}}).trigger('change');
+			$('#idMunicipio2').val({{$direccionTrab->idMunicipio}}).trigger('change');
+			$('#idLocalidad2').val({{$direccionTrab->idLocalidad}}).trigger('change');
+			$('#idColonia2').val({{$direccionTrab->idColonia}}).trigger('change');
 
-	$('#telefonoTrabajo').val({{$personales->telefonoTrabajo}}).trigger('change');
-	$('#codigoPostal').val({{$direccionTrab->codigoPostal}}).trigger('change');
-	$('#periodoIngreso').val("{{$personales->periodoIngreso}}");
-	$('#idOcupacion').val({{$personales->idOcupacion}}).trigger('change');
-	$("#narracionUno").prop('disabled', true);
+			$('#telefonoTrabajo').val({{$personales->telefonoTrabajo}}).trigger('change');
+			$('#codigoPostal').val({{$direccionTrab->codigoPostal}}).trigger('change');
+			$('#periodoIngreso').val("{{$personales->periodoIngreso}}");
+			$('#idOcupacion').val({{$personales->idOcupacion}}).trigger('change');
+			$("#narracionUno").prop('disabled', true);
 
-	$('#idEstado3').val({{$direccionNotif->idEstado}}).trigger('change');
-	$('#idMunicipio3').val({{$direccionNotif->idMunicipio}}).trigger('change');
-	$('#idLocalidad3').val({{$direccionNotif->idLocalidad}}).trigger('change');
-	$('#idColonia3').val({{$direccionNotif->idColonia}}).trigger('change');
-	$("#calle3").val("{{ $direccionNotif->calle }}");
-	$("#numExterno3").val("{{ $direccionNotif->numExterno }}");
-	$("#numInterno3").val("{{ $direccionNotif->numInterno }}");
-	$("#email").val("{{ $direccionNotif->correo }}");
-	$("#telefonoN").val("{{ $direccionNotif->telefono }}");
-	$("#fax").val("{{ $direccionNotif->fax }}");
-
-	
-	@endif
+			$('#idEstado3').val({{$direccionNotif->idEstado}}).trigger('change');
+			$('#idMunicipio3').val({{$direccionNotif->idMunicipio}}).trigger('change');
+			$('#idLocalidad3').val({{$direccionNotif->idLocalidad}}).trigger('change');
+			$('#idColonia3').val({{$direccionNotif->idColonia}}).trigger('change');
+			$("#calle3").val("{{ $direccionNotif->calle }}");
+			$("#numExterno3").val("{{ $direccionNotif->numExterno }}");
+			$("#numInterno3").val("{{ $direccionNotif->numInterno }}");
+			$("#email").val("{{ $direccionNotif->correo }}");
+			$("#telefonoN").val("{{ $direccionNotif->telefono }}");
+			$("#fax").val("{{ $direccionNotif->fax }}");
+		@endif
 	@endif
 	@if (isset ($personales) )
-	@if ( ($personales->esEmpresa) == 1)
-	var rfcMoral = $("input[name='rfc-edit']").val();
-	var rfc = rfcMoral.substr (0,9);
-	var homoclave = rfcMoral.substr(-3);
-	$('#nombres2').val("{{ $personales->nombres }}");
-	$('#rfc2').val(rfc);
-	$('#homo2').val(homoclave);
-	$('#fechaAltaEmpresa').datetimepicker('format', "DD-MM-YYYY");
-	$('#fechaAltaEmpresa').datetimepicker('date', moment("{{ $personales->fechaNacimiento}}").format("DD-MM-YYYY"));
-	$('#representanteLegal').val("{{ $personales->representanteLegal }}");
-	$('#idMunicipio').val({{$direccion->idMunicipio}}).trigger('change');
-	$('#idLocalidad').val({{$direccion->idLocalidad}}).trigger('change');
-	$('#idColonia').val({{$direccion->idColonia}}).trigger('change');
-	$("#calle").val("{{ $direccion->calle }}");
-	$("#numExterno").val("{{ $direccion->numExterno }}");
-	$("#numInterno").val("{{ $direccion->numInterno }}");
-	$('#idEstado3').val({{$direccionNotif->idEstado}}).trigger('change');
-	$('#idMunicipio3').val({{$direccionNotif->idMunicipio}}).trigger('change');
-	$('#idLocalidad3').val({{$direccionNotif->idLocalidad}}).trigger('change');
-	$('#idColonia3').val({{$direccionNotif->idColonia}}).trigger('change');
-	$("#calle3").val("{{ $direccionNotif->calle }}");
-	$("#numExterno3").val("{{ $direccionNotif->numExterno }}");
-	$("#numInterno3").val("{{ $direccionNotif->numInterno }}");
-	$("#email").val("{{ $direccionNotif->correo }}");
-	$("#telefonoN").val("{{ $direccionNotif->telefono }}");
-	$("#fax").val("{{ $direccionNotif->fax }}");
+		@if ( ($personales->esEmpresa) == 1)
+			var rfcMoral = $("input[name='rfc-edit']").val();
+			var rfc = rfcMoral.substr (0,9);
+			var homoclave = rfcMoral.substr(-3);
+			$('#nombres2').val("{{ $personales->nombres }}");
+			$('#rfc2').val(rfc);
+			$('#homo2').val(homoclave);
+			$('#fechaAltaEmpresa').datetimepicker('format', "DD-MM-YYYY");
+			$('#fechaAltaEmpresa').datetimepicker('date', moment("{{ $personales->fechaNacimiento}}").format("DD-MM-YYYY"));
+			$('#representanteLegal').val("{{ $personales->representanteLegal }}");
+			$('#idMunicipio').val({{$direccion->idMunicipio}}).trigger('change');
+			$('#idLocalidad').val({{$direccion->idLocalidad}}).trigger('change');
+			$('#idColonia').val({{$direccion->idColonia}}).trigger('change');
+			$("#calle").val("{{ $direccion->calle }}");
+			$("#numExterno").val("{{ $direccion->numExterno }}");
+			$("#numInterno").val("{{ $direccion->numInterno }}");
+			$('#idEstado3').val({{$direccionNotif->idEstado}}).trigger('change');
+			$('#idMunicipio3').val({{$direccionNotif->idMunicipio}}).trigger('change');
+			$('#idLocalidad3').val({{$direccionNotif->idLocalidad}}).trigger('change');
+			$('#idColonia3').val({{$direccionNotif->idColonia}}).trigger('change');
+			$("#calle3").val("{{ $direccionNotif->calle }}");
+			$("#numExterno3").val("{{ $direccionNotif->numExterno }}");
+			$("#numInterno3").val("{{ $direccionNotif->numInterno }}");
+			$("#email").val("{{ $direccionNotif->correo }}");
+			$("#telefonoN").val("{{ $direccionNotif->telefono }}");
+			$("#fax").val("{{ $direccionNotif->fax }}");
 
-	$("#narracionUnoM").prop('disabled', true);
-
-	@endif
+			$("#narracionUnoM").prop('disabled', true);
+		@endif
 	@endif
 
 
