@@ -138,11 +138,11 @@
 			@if (isset ($personales) )
 				@if ( ($personales->esEmpresa) == 0)
 			{!! Form::hidden('idDireccionTrab', ($direccionTrab->id)) !!}
-			{!! Form::hidden('idDireccionNotif', ($direccionNotif->idDomicilio)) !!}
 			{!! Form::hidden('idInterprete', ($personales->idInterprete)) !!}
 				@endif
 			@endif
 			{!! Form::hidden('idNotificacion', ($direccionNotif->idNotificacion)) !!}
+			{!! Form::hidden('idDireccionNotif', ($direccionNotif->idDomicilioNotif)) !!}
 				<!-- Fin pestañas -->
 			</div>
 		</div>
@@ -194,7 +194,8 @@
         "showMethod": "fadeIn",
         "hideMethod": "fadeOut"
     }
-$(function(){
+
+	$(function(){
 		$('#fechanac2').datetimepicker({
 			format: 'DD-MM-YYYY',
 			minDate: moment().subtract(150, 'years').format('YYYY-MM-DD'),
@@ -208,87 +209,92 @@ $(function(){
 
 
 	@if (isset ($personales) )
-	@if ( ($personales->esEmpresa) == 0)
-	var rfcFisica = $("input[name='rfc-edit']").val();
-	var rfc = rfcFisica.substr (0,10);
-	var homoclave = rfcFisica.substr(-3);
-	$('#nombres').val("{{ $personales->nombres }}");
-	$("#primerAp").val("{{ $personales->primerAp }}");
-	$("#segundoAp").val("{{ $personales->segundoAp }}");
-	$('#fechanac2').datetimepicker('format', "DD-MM-YYYY");
-	$('#fechanac2').datetimepicker('date', moment("{{ $personales->fechaNacimiento}}").format("DD-MM-YYYY"));
-	$("#sexo").val("{{ $personales->sexo }}");
-	$('#idNacionalidad').val({{$personales->idNacionalidad}}).trigger('change');
-	$('#idEstadoOrigen').val({{ $personales->idEstado}}).trigger('change');
-	$('#rfc').val(rfc);
-	$('#homo').val(homoclave);
-	$('#curp').val("{{$personales->curp}}");
-	$('#idEtnia').val({{$personales->idEtnia}}).trigger('change');
-	$('#idLengua').val({{$personales->idLengua}}).trigger('change');
-	$('#nombreInterprete').val("{{ $personales->nombreInterprete }}");
-	$('#lugarTrabInterprete').val("{{ $personales->trabajoInterprete }}");
-	$('#idMunicipioOrigen').val({{$personales->idMunicipioOrigen}}).trigger('change');
-	$('#idReligion').val(7).trigger('change');
-	$('#idEscolaridad').val({{$personales->idEscolaridad}}).trigger('change');
-	$("#telefono").val("{{ $personales->telefono }}");
-	$("#motivoEstancia").val("{{ $personales->motivoEstancia }}");
-	$("#docIdentificacion").val("{{ $personales->docIdentificacion }}");
-	$("#numDocIdentificacion").val("{{ $personales->numDocIdentificacion }}");
-	$("#calle").val("{{ $direccion->calle }}");
-	$("#numExterno").val("{{ $direccion->numExterno }}");
-	$("#numInterno").val("{{ $direccion->numInterno }}");
-	$("#alias").val("{{ $personales->alias }}");
-	$("#personasBajoSuGuarda").val("{{ $personales->personasBajoSuGuarda }}");
-	$("#ingreso").val("{{ $personales->ingreso }}");
-	$("#residenciaAnterior").val("{{ $personales->residenciaAnterior }}");
-	$("#vestimenta").val("{{ $personales->vestimenta }}");
-	$("#senasPartic").val("{{ $personales->senasPartic }}");
-	$("#calle2").val("{{ $direccionTrab->calle }}");
-	$("#lugarTrabajo").val("{{ $personales->lugarTrabajo }}");
-	$("#numExterno2").val("{{ $direccion->numExterno }}");
-	$("#numInterno2").val("{{ $direccion->numInterno }}");
-	$("#calle3").val("{{ $direccionNotif->calle }}");
-	$("#numExterno3").val("{{ $direccionNotif->numExterno }}");
-	$("#numInterno3").val("{{ $direccionNotif->numInterno }}");
-	$("#email").val("{{ $direccionNotif->correo }}");
-	$("#telefonoN").val("{{ $direccionNotif->telefono }}");
-	$("#fax").val("{{ $direccionNotif->fax }}");
-	$('#idEstadoCivil').val({{$personales->idEstadoCivil}}).trigger('change');
-	$('#idEstado').val({{$personales->idEstado}}).trigger('change');
-	$('#idMunicipio').val({{$direccion->idMunicipio}}).trigger('change');
-	$('#idLocalidad').val({{$direccion->idLocalidad}}).trigger('change');
-	$('#idColonia').val({{$direccion->idColonia}}).trigger('change');
-	$('#telefonoTrabajo').val({{$personales->telefonoTrabajo}}).trigger('change');
-	$('#codigoPostal').val({{$direccion->codigoPostal}}).trigger('change');
-	$('#periodoIngreso').val("{{$personales->periodoIngreso}}");
-	$('#idOcupacion').val({{$personales->idOcupacion}}).trigger('change');
-	$("#narracionUno").prop('disabled', true);
+		@if ( ($personales->esEmpresa) == 0)
+			var rfcFisica = $("input[name='rfc-edit']").val();
+			var rfc = rfcFisica.substr (0,10);
+			var homoclave = rfcFisica.substr(-3);
+			$('#nombres').val("{{ $personales->nombres }}");
+			$("#primerAp").val("{{ $personales->primerAp }}");
+			$("#segundoAp").val("{{ $personales->segundoAp }}");
+			$('#fechanac2').datetimepicker('format', "DD-MM-YYYY");
+			$('#fechanac2').datetimepicker('date', moment("{{ $personales->fechaNacimiento}}").format("DD-MM-YYYY"));
+			$("#sexo").val("{{ $personales->sexo }}");
+			$('#idNacionalidad').val({{$personales->idNacionalidad}}).trigger('change');
+			$('#idEstadoOrigen').val({{ $personales->idEstado}}).trigger('change');
+			$('#rfc').val(rfc);
+			$('#homo').val(homoclave);
+			$('#curp').val("{{$personales->curp}}");
+			$('#idEtnia').val({{$personales->idEtnia}}).trigger('change');
+			$('#idLengua').val({{$personales->idLengua}}).trigger('change');
+			$('#nombreInterprete').val("{{ $personales->nombreInterprete }}");
+			$('#lugarTrabInterprete').val("{{ $personales->trabajoInterprete }}");
+			$('#idMunicipioOrigen').val({{$personales->idMunicipioOrigen}}).trigger('change');
+			$('#idReligion').val(7).trigger('change');
+			$('#idEscolaridad').val({{$personales->idEscolaridad}}).trigger('change');
+			$("#telefono").val("{{ $personales->telefono }}");
+			$("#motivoEstancia").val("{{ $personales->motivoEstancia }}");
+			$("#docIdentificacion").val("{{ $personales->docIdentificacion }}");
+			$("#numDocIdentificacion").val("{{ $personales->numDocIdentificacion }}");
+			$("#calle").val("{{ $direccion->calle }}");
+			$("#numExterno").val("{{ $direccion->numExterno }}");
+			$("#numInterno").val("{{ $direccion->numInterno }}");
+			$("#alias").val("{{ $personales->alias }}");
+			$("#personasBajoSuGuarda").val("{{ $personales->personasBajoSuGuarda }}");
+			$("#ingreso").val("{{ $personales->ingreso }}");
+			$("#residenciaAnterior").val("{{ $personales->residenciaAnterior }}");
+			$("#vestimenta").val("{{ $personales->vestimenta }}");
+			$("#senasPartic").val("{{ $personales->senasPartic }}");
+			$("#calle2").val("{{ $direccionTrab->calle }}");
+			$("#lugarTrabajo").val("{{ $personales->lugarTrabajo }}");
+			$("#numExterno2").val("{{ $direccion->numExterno }}");
+			$("#numInterno2").val("{{ $direccion->numInterno }}");
+			$("#calle3").val("{{ $direccionNotif->calle }}");
+			$("#numExterno3").val("{{ $direccionNotif->numExterno }}");
+			$("#numInterno3").val("{{ $direccionNotif->numInterno }}");
+			$("#email").val("{{ $direccionNotif->correo }}");
+			$("#telefonoN").val("{{ $direccionNotif->telefono }}");
+			$("#fax").val("{{ $direccionNotif->fax }}");
+			$('#idEstadoCivil').val({{$personales->idEstadoCivil}}).trigger('change');
+			$('#idEstado').val({{$personales->idEstado}}).trigger('change');
+			$('#idMunicipio').val({{$direccion->idMunicipio}}).trigger('change');
+			$('#idLocalidad').val({{$direccion->idLocalidad}}).trigger('change');
+			$('#idColonia').val({{$direccion->idColonia}}).trigger('change');
+			$('#telefonoTrabajo').val({{$personales->telefonoTrabajo}}).trigger('change');
+			$('#codigoPostal').val({{$direccion->codigoPostal}}).trigger('change');
+			$('#periodoIngreso').val("{{$personales->periodoIngreso}}");
+			$('#idOcupacion').val({{$personales->idOcupacion}}).trigger('change');
+			$("#narracionUno").prop('disabled', true);
+		@endif
 	@endif
-	@endif
+
 	@if (isset ($personales) )
-	@if ( ($personales->esEmpresa) == 1)
-	var rfcMoral = $("input[name='rfc-edit']").val();
-	var rfc = rfcMoral.substr (0,9);
-	var homoclave = rfcMoral.substr(-3);
-	$('#nombres2').val("{{ $personales->nombres }}");
-	$('#rfc2').val(rfc);
-	$('#homo2').val(homoclave);
-	$('#fechaAltaEmpresa').datetimepicker('format', "DD-MM-YYYY");
-	$('#fechaAltaEmpresa').datetimepicker('date', moment("{{ $personales->fechaNacimiento}}").format("DD-MM-YYYY"));
-	$('#representanteLegal').val("{{ $personales->representanteLegal }}");
-	$("#calle").val("{{ $direccion->calle }}");
-	$("#numExterno").val("{{ $direccion->numExterno }}");
-	$("#numInterno").val("{{ $direccion->numInterno }}");
-	$("#calle3").val("{{ $direccion->calle }}");
-	$("#numExterno3").val("{{ $direccion->numExterno }}");
-	$("#numInterno3").val("{{ $direccion->numInterno }}");
-	$("#email").val("{{ $direccionNotif->correo }}");
-	$("#telefonoN").val("{{ $direccionNotif->telefono }}");
-	$("#fax").val("{{ $direccionNotif->fax }}");
+		@if ( ($personales->esEmpresa) == 1)
+			var rfcMoral = $("input[name='rfc-edit']").val();
+			var rfc = rfcMoral.substr (0,9);
+			var homoclave = rfcMoral.substr(-3);
+			$('#nombres2').val("{{ $personales->nombres }}");
+			$('#rfc2').val(rfc);
+			$('#homo2').val(homoclave);
+			$('#fechaAltaEmpresa').datetimepicker('format', "DD-MM-YYYY");
+			$('#fechaAltaEmpresa').datetimepicker('date', moment("{{ $personales->fechaNacimiento}}").format("DD-MM-YYYY"));
+			$('#representanteLegal').val("{{ $personales->representanteLegal }}");
+			console.log("{{ $direccion->idEstado }}");
+			$('#idEstado').val({{$direccion->idEstado}}).trigger('change');
+			$('#idMunicipio').val({{$direccion->idMunicipio}}).trigger('change');
+			$('#idLocalidad').val({{$direccion->idLocalidad}}).trigger('change');
+			$('#idColonia').val({{$direccion->idColonia}}).trigger('change');
+			$("#calle").val("{{ $direccion->calle }}");
+			$("#numExterno").val("{{ $direccion->numExterno }}");
+			$("#numInterno").val("{{ $direccion->numInterno }}");
+			$("#calle3").val("{{ $direccion->calle }}");
+			$("#numExterno3").val("{{ $direccion->numExterno }}");
+			$("#numInterno3").val("{{ $direccion->numInterno }}");
+			$("#email").val("{{ $direccionNotif->correo }}");
+			$("#telefonoN").val("{{ $direccionNotif->telefono }}");
+			$("#fax").val("{{ $direccionNotif->fax }}");
 
-	$("#narracionUnoM").prop('disabled', true);
-
-	@endif
+			$("#narracionUnoM").prop('disabled', true);
+		@endif
 	@endif
 
 
