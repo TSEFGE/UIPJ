@@ -206,7 +206,6 @@
 			$('#correo').val("{{$direccionNotif->correo}}");
 			$('#telefonoN').val("{{$direccionNotif->telefono}}");
 			$('#fax').val("{{$direccionNotif->fax}}");
-
 			console.log(rfcMoral);
 			console.log(rfc);
 			console.log(homoclave);
@@ -215,7 +214,6 @@
 			@if (isset ($personales) )
 
 		@if ( ($personales->esEmpresa) == 0)
-
 			var rfcFisica = $("input[name='rfc-edit']").val();
 			var rfc = rfcFisica.substr (0,10);
 			var homoclave = rfcFisica.substr(-3);
