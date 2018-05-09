@@ -37,7 +37,6 @@ $("#idLengua").change(function (event) {
 });
 $(document).ready(function() {
      var lengua = $("#idLengua").val();
-
      if (lengua == 69 || lengua == 70) {
          $("#datosInterprete").hide();
          $("#nombreInterprete").removeClass('vacio');
@@ -51,6 +50,15 @@ $(document).ready(function() {
          $("#nombreInterprete").addClass('vacio');
          $("#lugarTrabInterprete").addClass('vacio');
      }
+     $('select').removeClass('vacio ');
+     $('select').removeClass('valid');
+     $('select').removeClass('error');
+     $('textarea').removeClass('vacio');
+     $('textarea').removeClass('error');
+     $('textarea').removeClass('valid');
+     $('input').removeClass('vacio ');
+     $('input').removeClass('error ');
+     $('input').removeClass('valid ');
     $("#motivoEstancia").val("SIN INFORMACION");
     $("#numInterno").val("S/N");
     $("#numInterno2").val("S/N");
