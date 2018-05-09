@@ -55,7 +55,7 @@
     <script src="{{ asset('plugins/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
     <script src="{{ asset('js/selects/async.js') }}"></script>
     <script src="{{ asset('js/selects/vehiculo.js') }}"></script>
-	<script src="{{ asset('js/selects/sisy.js') }}"></script>
+	{{--<script src="{{ asset('js/selects/sisy.js') }}"></script>--}}
 	 <script src="{{ asset('js/vehiculos.js') }}"></script>
 @endpush
 @push('docready-js')
