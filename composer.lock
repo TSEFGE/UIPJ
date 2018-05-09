@@ -1320,7 +1320,7 @@
                 "rfc",
                 "rfc mexico"
             ],
-            "time": "2018-04-26 17:20:54"
+            "time": "2018-04-26T17:20:54+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -2976,16 +2976,19 @@
         },
         {
             "name": "uipj/rfc",
-            "version": "dev-develop",
+            "version": "9999999-dev",
             "dist": {
                 "type": "path",
                 "url": "paquetes/uipj/rfc",
-                "reference": "4bf0d8e6cc9f576f81d9ee3e0048fc54ce70fda8",
+                "reference": "97957c6c3cbbee716cada760ba2e8b09a331bc76",
                 "shasum": null
             },
             "require": {
                 "php": ">=7.0.0",
                 "uipj/rfc": "@dev"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~5.0"
             },
             "type": "library",
             "autoload": {
@@ -3662,7 +3665,7 @@
             ],
             "authors": [
                 {
-                    "name": "Padraic Brady",
+                    "name": "Pádraic Brady",
                     "email": "padraic.brady@gmail.com",
                     "homepage": "http://blog.astrumfutura.com"
                 },

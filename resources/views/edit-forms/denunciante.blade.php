@@ -107,9 +107,14 @@
 	{!! Form::hidden('idPersona', ($personales->idPersona)) !!}
 	{!! Form::hidden('idVariablesPersona', ($personales->idVariablesPersona)) !!}
 	{!! Form::hidden('idDireccion', ($direccion->id)) !!}
+	{!! Form::hidden('idDireccionNotificacion', ($direccionNotif->idDireccionNotificacion)) !!}
+	{!! Form::hidden('idInterprete', ($personales->idInterprete)) !!}
+
 	@if (isset ($personales) )
 		@if ( ($personales->esEmpresa) == 0)
 	{!! Form::hidden('idDireccionTrab', ($direccionTrab->id)) !!}
+	
+
 		@endif
 	@endif
 	{!! Form::hidden('idNoficiacion', ($direccionNotif->idNotificacion)) !!}
@@ -127,17 +132,16 @@
 	<script src="{{ asset('plugins/moment/js/moment.min.js') }}"></script>
 	<script src="{{ asset('plugins/moment/locales/es.js') }}"></script>
 	<script src="{{ asset('plugins/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-	{{--<script src="{{ asset('js/persona.js') }}"></script>--}}
+	<script src="{{ asset('js/persona.js') }}"></script>
 	<script src="{{ asset('js/persona-moral.js') }}"></script>
 	{{--<script src="{{ asset('js/tipo-persona.js') }}"></script>
-	<script src="{{ asset('js/denunciante.js') }}"></script>--}}
+	
+   <script src="{{ asset('js/denunciante.js') }}"></script>--}}
 	<script src="{{ asset('js/selects/async.js') }}"></script>
 	<script src="{{ asset('js/selects/origen.js') }}"></script>
 	<script src="{{ asset('js/selects/domicilio.js') }}"></script>
 	<script src="{{ asset('js/selects/domicilio-trab.js') }}"></script>
 	<script src="{{ asset('js/selects/domicilio-notif.js') }}"></script>
-	<script src="{{ asset('js/selects/sisy.js') }}"></script>--}}
-	<script src="{{ asset('js/validations/tab-denunciante.js') }}"></script>
 	<script src="{{ asset('js/curp.js') }}"></script>
 	<script src="{{ asset('js/rfcFisico.js') }}"></script>
 	<script src="{{ asset('js/rfcMoral.js') }}"></script>
@@ -239,6 +243,8 @@
 			$('#curp').val("{{$personales->curp}}");
 			$('#idEtnia').val({{$personales->idEtnia}}).trigger('change');
 			$('#idLengua').val({{$personales->idLengua}}).trigger('change');
+			$('#nombreInterprete').val("{{ $personales->nombreInterprete }}");
+			$('#lugarTrabInterprete').val("{{ $personales->trabajoInterprete }}");
 			$('#idMunicipioOrigen').val({{$personales->idMunicipioOrigen}}).trigger('change');
 			$('#idReligion').val({{$personales->idReligion}}).trigger('change');
 			$('#idEscolaridad').val({{$personales->idEscolaridad}}).trigger('change');
