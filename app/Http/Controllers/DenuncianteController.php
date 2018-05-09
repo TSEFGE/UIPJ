@@ -604,7 +604,7 @@ class DenuncianteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request->all());
+        //dd($request->all());
 
         $carpetaNueva = Carpeta::where('id', $request->idCarpeta)->where('idFiscal', Auth::user()->id)->get();
         $var          = ExtraDenunciante::where('id', $id)->get();
