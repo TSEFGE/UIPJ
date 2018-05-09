@@ -84,13 +84,25 @@ $(document).ready(function() {
             $("#otroDocumento").removeClass("valid");
         }
     });
-    $("#idLengua").change(function(event) {
+$("#idLengua").change(function(event) {
         console.log("entra");
         var lengua = $("#idLengua").val();
-        if (lengua != 70) {
-            $("#datosInterprete").show();
-        } else {
-            $("#datosInterprete").hide();
-        }
+        
+ if (lengua == 69 || lengua == 70)
+    {
+    $("#datosInterprete").hide();
+    $("#nombreInterprete").removeClass('vacio');
+    $("#nombreInterprete").removeClass('valid');
+    $("#nombreInterprete").removeClass('error');
+    $("#lugarTrabInterprete").removeClass('vacio');
+    $("#lugarTrabInterprete").removeClass('valid');
+    $("#lugarTrabInterprete").removeClass('error');
+    }
+  else 
+    {
+    $("#datosInterprete").show();
+    $("#nombreInterprete").addClass('vacio');
+    $("#lugarTrabInterprete").addClass('vacio');
+    }
     });
 });

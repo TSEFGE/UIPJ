@@ -171,7 +171,7 @@
 	<script src="{{ asset('js/rfcFisico.js') }}"></script>
 	<script src="{{ asset('js/rfcMoral.js') }}"></script>
 	<script src="{{ asset('js/ajaxCurpEdit.js') }}"></script>
-	<script src="{{ asset('js/validations/tab-denunciado.js') }}"></script>
+	{{--<script src="{{ asset('js/validations/tab-denunciado.js') }}"></script>--}}
 
 @endpush
 

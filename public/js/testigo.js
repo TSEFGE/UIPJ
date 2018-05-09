@@ -70,17 +70,27 @@ $("#collapseNotifsTestigo select").addClass('vacio');
      $("#vestimenta").addClass("vacio");
      $("#senasPartic").addClass("vacio");
      //  $("#narracionUno").addClass("vacio"); //para comprobar en autoridad
-     $("#docIdentificacion").change(function(event) {
-         var otro = $("#docIdentificacion").val();
-         if (otro == "OTRO") {
-             $("#otrodocto").show();
-             $("#otroDocumento").addClass("vacio");
-         } else {
-             $("#otrodocto").hide();
-             $("#otroDocumento").removeClass("vacio");
-         }
-     });
-     $('#idOcupacion').change(function(event) {
+  
+ $("#docIdentificacion").change(function(event){
+                var otro= $("#docIdentificacion").val();    
+                if(otro=="OTRO"){   
+
+                  $("#otrodocto").show();
+                  $("#otroDocumento").removeClass("valid");
+                  $("#otroDocumento").removeClass("error");
+                  $("#otroDocumento").addClass("vacio");  
+               
+                }
+                else
+                {
+                  $("#otrodocto").hide(); 
+                  $("#otroDocumento").removeClass("vacio");
+                  $("#otroDocumento").removeClass("valid");
+                  $("#otroDocumento").removeClass("error");
+                }
+            });
+
+  $('#idOcupacion').change(function(event) {
          var ocupacion = $('#idOcupacion').val();
          if (ocupacion == 2947) {
              $("#idEstado2").val(33).prop('disabled', true);
@@ -116,13 +126,27 @@ $("#collapseNotifsTestigo select").addClass('vacio');
              $("#numInterno2").prop('disabled', false);
          }
      });
-     $("#idLengua").change(function(event) {
-         console.log("entra");
-         var lengua = $("#idLengua").val();
-         if (lengua != 70) {
-             $("#datosInterprete").show();
-         } else {
-             $("#datosInterprete").hide();
-         }
-     });
+     
+$("#idLengua").change(function(event) {
+        console.log("entra");
+        var lengua = $("#idLengua").val();
+        
+ if (lengua == 69 || lengua == 70)
+    {
+    $("#datosInterprete").hide();
+    $("#nombreInterprete").removeClass('vacio');
+    $("#nombreInterprete").removeClass('valid');
+    $("#nombreInterprete").removeClass('error');
+    $("#lugarTrabInterprete").removeClass('vacio');
+    $("#lugarTrabInterprete").removeClass('valid');
+    $("#lugarTrabInterprete").removeClass('error');
+    }
+  else 
+    {
+    $("#datosInterprete").show();
+    $("#nombreInterprete").addClass('vacio');
+    $("#lugarTrabInterprete").addClass('vacio');
+    }
+    });
+     
  });

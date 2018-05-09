@@ -19,7 +19,7 @@ class CreateDiligenciasSpTable extends Migration
             $table->integer('numOficio');
             $table->string('termino', 50);
             $table->string('dictamen', 100);
-            $table->integer('status');//1=pendiente, 2=aplicada
+            $table->integer('status');//1=pendiente, 2=aplicada, 3=rechazada
             $table->string('oficio', 100);
             $table->timestamps();
 
