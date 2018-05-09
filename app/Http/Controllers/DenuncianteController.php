@@ -514,7 +514,7 @@ class DenuncianteController extends Controller
             $personales = DB::table('extra_denunciante')
                 ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
                 ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-                ->join('interprete', 'interprete.id', '=', 'variables_persona.idInterprete')
+                ->leftjoin('interprete', 'interprete.id', '=', 'variables_persona.idInterprete')
                 ->join('cat_municipio', 'cat_municipio.id', '=', 'persona.idMunicipioOrigen')
                 ->select('extra_denunciante.id as idDenunciante', 'extra_denunciante.conoceAlDenunciado', 'extra_denunciante.idNotificacion', 'extra_denunciante.esVictima', 'variables_persona.id as idVariablesPersona', 'variables_persona.edad', 'variables_persona.telefono', 'variables_persona.motivoEstancia', 'variables_persona.docIdentificacion', 'variables_persona.numDocIdentificacion', 'variables_persona.lugarTrabajo', 'variables_persona.telefonoTrabajo', 'variables_persona.idDomicilio', 'variables_persona.idDomicilioTrabajo', 'variables_persona.idOcupacion', 'variables_persona.idEstadoCivil', 'variables_persona.idEscolaridad', 'variables_persona.idReligion', 'persona.id as idPersona', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.fechaNacimiento', 'persona.rfc', 'persona.curp', 'persona.sexo', 'persona.idMunicipioOrigen', 'cat_municipio.idEstado', 'persona.esEmpresa', 'persona.idNacionalidad', 'persona.idEtnia', 'persona.idLengua', 'interprete.id as idInterprete', 'interprete.nombre as nombreInterprete', 'interprete.organizacion as trabajoInterprete')
                 ->where('extra_denunciante.id', '=', $id)
