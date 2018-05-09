@@ -40,7 +40,7 @@
                                           </div>
                                       </div>
                                       <div class="col-12">
-                                  <div class="form-group">
+                                  <div class="form-group" id="espacioNarracion">
                                       {!! Form::label('narracionUnoM', 'Narración', ['class' => 'col-form-label-sm']) !!}
                                       {!! Form::textarea('narracionUnoM', null, ['class' => 'form-control form-control-sm','id' => 'narracionUnoM','rows' => '3']) !!}
                                   </div>
