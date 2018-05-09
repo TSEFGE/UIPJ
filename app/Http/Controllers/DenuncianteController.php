@@ -489,7 +489,7 @@ class DenuncianteController extends Controller
                 ->join('domicilio', 'domicilio.id', '=', 'notificacion.idDomicilio')
                 ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
                 ->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
-                ->select('notificacion.id as idNotificacion', 'notificacion.correo', 'notificacion.telefono', 'notificacion.fax', 'domicilio.id as idDomicilio', 'domicilio.idMunicipio', 'domicilio.idLocalidad', 'domicilio.idColonia', 'domicilio.calle', 'domicilio.numExterno', 'domicilio.numInterno', 'cat_municipio.idEstado', 'cat_colonia.codigoPostal')
+                ->select('notificacion.id as idNotificacion', 'notificacion.correo', 'notificacion.telefono', 'notificacion.fax', 'domicilio.id as idDomicilioNotif', 'domicilio.idMunicipio', 'domicilio.idLocalidad', 'domicilio.idColonia', 'domicilio.calle', 'domicilio.numExterno', 'domicilio.numInterno', 'cat_municipio.idEstado', 'cat_colonia.codigoPostal')
                 ->where('notificacion.id', '=', $personales->idNotificacion)
                 ->get()->first();
             //dump($personales);
@@ -540,7 +540,7 @@ class DenuncianteController extends Controller
                 ->join('domicilio', 'domicilio.id', '=', 'notificacion.idDomicilio')
                 ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
                 ->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
-                ->select('notificacion.id as idNotificacion', 'notificacion.correo', 'notificacion.telefono', 'notificacion.fax', 'domicilio.idDomicilio', 'domicilio.idMunicipio', 'domicilio.idLocalidad', 'domicilio.idColonia', 'domicilio.calle', 'domicilio.numExterno', 'domicilio.numInterno', 'cat_municipio.idEstado', 'cat_colonia.codigoPostal')
+                ->select('notificacion.id as idNotificacion', 'notificacion.correo', 'notificacion.telefono', 'notificacion.fax', 'domicilio.id as idDomicilioNotif', 'domicilio.idMunicipio', 'domicilio.idLocalidad', 'domicilio.idColonia', 'domicilio.calle', 'domicilio.numExterno', 'domicilio.numInterno', 'cat_municipio.idEstado', 'cat_colonia.codigoPostal')
                 ->where('notificacion.id', '=', $personales->idNotificacion)
                 ->get()->first();
 
