@@ -5,6 +5,8 @@ totalesAut=0;
 tabs=0;
 correcto=0;
 $("#btn-submit").prop('disabled', true);
+$('select').prop('data-validation','required');
+$('select').prop('data-validation-event', 'change');
 $('#tabsautoridad.nav-tabs a').on('shown.bs.tab', function (e) {
 	var index = $($(this).attr('href')).index();
 	switch (index) {
@@ -59,6 +61,7 @@ $("#ctautoridad").hover(function(){
 	} else {
 		$("#btn-submit").prop('disabled', true);
 	}
+	console.log("totalesP", totalesP);
 });
 
 $('#collapsePersonales3').hover(function(){
