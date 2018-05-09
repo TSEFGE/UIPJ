@@ -117,7 +117,10 @@ Route::middleware(['auth'])->group(function () {
         'as'   => 'colaboracion.sp',
         'uses' => 'DocxMakerController@getFormatoColaboracionSp',
     ]);
+
+    /*--------- Rutas para generar diligencias -------------*/
     Route::post('diligencia-sp', 'DiligenciaSPController@enviarSolicitud')->name('diligencia.sp');
+    Route::post('diligencia-pm', 'DiligenciaPMController@enviarSolicitud')->name('diligencia.pm');
 
     /*---------Rutas para el libro de gobierno-------------*/
     Route::get('libro-gobierno', 'LibroGobiernoController@index')->name('libro.gobierno');

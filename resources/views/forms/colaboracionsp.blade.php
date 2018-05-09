@@ -33,7 +33,7 @@
 				            @else
 				                @foreach($acusaciones as $acusacion)
 				                    <tr>
-				                    	<td><input style="width:20px;height:20px" type="radio" value="{{ $acusacion->id }}" name="radioAcusacion"></td>
+				                    	<td><input required style="width:20px;height:20px" type="radio" value="{{ $acusacion->id }}" name="radioAcusacion"></td>
 				                        <td>{{ $acusacion->nombres." ".$acusacion->primerAp." ".$acusacion->segundoAp }}</td>
 				                        <td>{{ $acusacion->delito }}</td>
 				                        <td>{{ $acusacion->nombres2." ".$acusacion->primerAp2." ".$acusacion->segundoAp2 }}</td>
