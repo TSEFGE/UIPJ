@@ -1,6 +1,6 @@
 @extends('template.form-edit')
 
-@section('title', 'Agregar autoridad')
+@section('title', 'Editar autoridad')
 
 @push('css')
 	<link rel="stylesheet" href="{{ asset('plugins/toastr/css/toastr.min.css') }}">
@@ -163,7 +163,8 @@
 	$("#calle2").addClass("vacio");
 	$("#antiguedad").addClass("vacio");
 	$("#horarioLaboral").addClass("vacio");
-
+	$("#espacioNarracion").hide()
+	$("#narracionUno").prop('disabled',true);
 	@isset($personales)
 		$('#nombres').val('{{$personales->nombres}}');
 		$('#primerAp').val('{{$personales->primerAp}}');
@@ -172,7 +173,8 @@
 		$('#edad').val('{{$personales->edad}}');
 		$('#sexo').val('{{$personales->sexo}}');
 		$('#idNacionalidad').val('{{$personales->idNacionalidad}}');
-		$('#idEstadoOrigen').val('{{$personales->idEstadoOrigen}}');
+		$('#idEstadoOrigen').val('{{$personales->idEstadoOrigen}}').trigger('change');
+		$('#idMunicipioOrigen').val('{{$personales->idMunicipioOrigen}}').trigger('change');
 
 		var homoclave = ('{{$personales->rfc}}').substr(10);
 		var rfc =('{{$personales->rfc}}').substr (0,10);
