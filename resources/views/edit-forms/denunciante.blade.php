@@ -180,11 +180,10 @@
 			}
 		});
 	});
-
-	$("#narracionUnoM").prop('disabled',true);
-	$("#narracionUnoM").hide();
+	$("#espacioNarracion").hide();
+	$("#narracionUnoM").prop('disabled',true);	
 	$("#narracionUno").prop('disabled',true);
-	$("#narracionUno").hide();
+	
 	var esEmpresa = $("input[name='esEmpresa']").val();
 	@if (isset ($personales) )
 		@if ( ($personales->esEmpresa) == 1)
@@ -194,7 +193,13 @@
 			$('#nombres2').val("{{ $personales->nombres }}");
 			$('#rfc2').val(rfc);
 			$('#homo2').val(homoclave);
+			$('#fechaAltaEmpresa').datetimepicker('format', "DD-MM-YYYY");
+			$('#fechaAltaEmpresa').datetimepicker('date', moment("{{ $personales->fechaNacimiento}}").format("DD-MM-YYYY"));
 			$("#representanteLegal").val("{{ $personales->nombres }}");
+			$('#idEstado').val({{$direccion->idEstado}}).trigger('change');
+			$('#idMunicipio').val({{$direccion->idMunicipio}}).trigger('change');
+			$('#idLocalidad').val({{$direccion->idLocalidad}}).trigger('change');
+			$('#idColonia').val({{$direccion->idColonia}}).trigger('change');
 			$('#calle').val("{{$direccion->calle}}");
 			$('#numExterno').val("{{$direccion->numExterno}}");
 			$('#numInterno').val("{{$direccion->numInterno}}");
@@ -204,7 +209,6 @@
 			$('#correo').val("{{$direccionNotif->correo}}");
 			$('#telefonoN').val("{{$direccionNotif->telefono}}");
 			$('#fax').val("{{$direccionNotif->fax}}");
-
 			console.log(rfcMoral);
 			console.log(rfc);
 			console.log(homoclave);
@@ -213,7 +217,6 @@
 			@if (isset ($personales) )
 
 		@if ( ($personales->esEmpresa) == 0)
-
 			var rfcFisica = $("input[name='rfc-edit']").val();
 			var rfc = rfcFisica.substr (0,10);
 			var homoclave = rfcFisica.substr(-3);
@@ -253,12 +256,20 @@
 			$('#idOcupacion').val({{$personales->idOcupacion}}).trigger('change');
 			$('#idEstadoCivil').val({{$personales->idEstadoCivil}}).trigger('change');
 			$('#docIdentificacion').val("{{$personales->docIdentificacion}}").trigger('change');
+			docs='CREDENCIAL DE ELECTOR PASAPORTE CARTILLA MILITAR LICENCIA PARA CONDUCIR CREDENCIAL ESCOLAR';
+			doc='{{$personales->docIdentificacion}}';
+				if ( docs.toLowerCase().indexOf(doc.toLowerCase()) != -1 ) {
+					$('#docIdentificacion').val('{{$personales->docIdentificacion}}');
+				} else {
+						$('#docIdentificacion').val('OTRO');
+					$('#otrodocto').show();
+					$('#otroDocumento').val('{{$personales->docIdentificacion}}');
+				}	
 			$('#numDocIdentificacion').val("{{$personales->numDocIdentificacion}}");
 			$('#idEstado').val({{$direccion->idEstado}}).trigger('change');
 			$('#idMunicipio').val({{$direccion->idMunicipio}}).trigger('change');
 			$('#idLocalidad').val({{$direccion->idLocalidad}}).trigger('change');
-			$('#idColonia').val({{$direccion->idColonia}}).trigger('change');
-			$('#cp').val({{$direccion->codigoPostal}}).trigger('change');
+			$('#idColonia').val({{$direccion->idColonia}}).trigger('change');			
 			$('#calle').val("{{$direccion->calle}}");
 			$('#numExterno').val("{{$direccion->numExterno}}");
 			$('#numInterno').val("{{$direccion->numInterno}}");
