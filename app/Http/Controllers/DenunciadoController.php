@@ -658,7 +658,7 @@ class DenunciadoController extends Controller
             $personales = DB::table('extra_denunciado')
                 ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
                 ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-                ->join('interprete', 'interprete.id', '=', 'variables_persona.idInterprete')
+                ->leftjoin('interprete', 'interprete.id', '=', 'variables_persona.idInterprete')
                 ->join('cat_municipio', 'cat_municipio.id', '=', 'persona.idMunicipioOrigen')
                 ->select('extra_denunciado.id as idDenunciado', 'extra_denunciado.idPuesto', 'extra_denunciado.alias', 'extra_denunciado.senasPartic', 'extra_denunciado.ingreso', 'extra_denunciado.periodoIngreso', 'extra_denunciado.residenciaAnterior', 'extra_denunciado.personasBajoSuGuarda', 'extra_denunciado.perseguidoPenalmente', 'extra_denunciado.vestimenta', 'extra_denunciado.idNotificacion', 'variables_persona.id as idVariablesPersona', 'variables_persona.edad', 'variables_persona.telefono', 'variables_persona.motivoEstancia', 'variables_persona.docIdentificacion', 'variables_persona.numDocIdentificacion', 'variables_persona.lugarTrabajo', 'variables_persona.telefonoTrabajo', 'variables_persona.idDomicilio', 'variables_persona.idDomicilioTrabajo', 'variables_persona.idOcupacion', 'variables_persona.idEstadoCivil', 'variables_persona.idEscolaridad', 'variables_persona.idReligion', 'persona.id as idPersona', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.fechaNacimiento', 'persona.rfc', 'persona.curp', 'persona.sexo', 'persona.idMunicipioOrigen', 'cat_municipio.idEstado', 'persona.esEmpresa', 'persona.idNacionalidad', 'persona.idEtnia', 'persona.idLengua', 'interprete.id as idInterprete', 'interprete.nombre as nombreInterprete', 'interprete.organizacion as trabajoInterprete')
                 ->where('extra_denunciado.id', '=', $id)
@@ -750,13 +750,21 @@ class DenunciadoController extends Controller
             if ($request->filled('idLengua')) {
                 $persona->idLengua = $request->idLengua;
                 if ($request->idLengua != 70) {
-                    // dump($request->idInterprete);
-                    $interprete               = Interprete::find($request->idInterprete);
-                    $interprete->nombre       = $request->nombreInterprete;
-                    $interprete->organizacion = $request->lugarTrabInterprete;
-                    $interprete->idLengua     = $request->idLengua;
-                    $interprete->save();
-                    $idInterprete = $interprete->id;
+                    if (is_null($request->idInterprete)) {
+                        $interprete               = new Interprete();
+                        $interprete->nombre       = $request->nombreInterprete;
+                        $interprete->organizacion = $request->lugarTrabInterprete;
+                        $interprete->idLengua     = $request->idLengua;
+                        $interprete->save();
+                        $idInterprete = $interprete->id;
+                    } else {
+                        $interprete               = Interprete::find($request->idInterprete);
+                        $interprete->nombre       = $request->nombreInterprete;
+                        $interprete->organizacion = $request->lugarTrabInterprete;
+                        $interprete->idLengua     = $request->idLengua;
+                        $interprete->save();
+                        $idInterprete = $interprete->id;
+                    }
                 } else {
                     $idInterprete = null;
                 }

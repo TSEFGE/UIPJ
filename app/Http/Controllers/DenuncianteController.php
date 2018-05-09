@@ -640,17 +640,24 @@ class DenuncianteController extends Controller
             if ($request->filled('idLengua')) {
                 $persona->idLengua = $request->idLengua;
                 if ($request->idLengua != 70) {
-                    // dump($request->idInterprete);
-                    $interprete               = Interprete::find($request->idInterprete);
-                    $interprete->nombre       = $request->nombreInterprete;
-                    $interprete->organizacion = $request->lugarTrabInterprete;
-                    $interprete->idLengua     = $request->idLengua;
-                    $interprete->save();
-                    $idInterprete = $interprete->id;
+                    if (is_null($request->idInterprete)) {
+                        $interprete               = new Interprete();
+                        $interprete->nombre       = $request->nombreInterprete;
+                        $interprete->organizacion = $request->lugarTrabInterprete;
+                        $interprete->idLengua     = $request->idLengua;
+                        $interprete->save();
+                        $idInterprete = $interprete->id;
+                    } else {
+                        $interprete               = Interprete::find($request->idInterprete);
+                        $interprete->nombre       = $request->nombreInterprete;
+                        $interprete->organizacion = $request->lugarTrabInterprete;
+                        $interprete->idLengua     = $request->idLengua;
+                        $interprete->save();
+                        $idInterprete = $interprete->id;
+                    }
                 } else {
                     $idInterprete = null;
                 }
-
             }
             if ($request->filled('idMunicipioOrigen')) {
                 $persona->idMunicipioOrigen = $request->idMunicipioOrigen;
