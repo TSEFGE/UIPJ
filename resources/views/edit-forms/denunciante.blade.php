@@ -224,19 +224,7 @@
 			$('#primerAp').val("{{ $personales->primerAp }}");
 			$('#segundoAp').val("{{ $personales->segundoAp }}");
 			$('#fechanac').datetimepicker('format', "DD-MM-YYYY");
-			$('#fechanac').datetimepicker('date', moment("{{ $personales->fechaNacimiento}}").format("DD-MM-YYYY"));
-			/*$("#fechanac").on("change.datetimepicker", function(e) {
-				$('#edad').val(moment().diff(e.date, 'years'));
-				});*/
-			/*var anios = "{{ $personales->fechaNacimiento}}";
-			var hoy = moment('years');
-			var abajo = $('#fechanac').datetimepicker('date', moment("{{ $personales->fechaNacimiento}}").format("DD-MM-YYYY"));
-			console.log("abajo",anios);
-			console.log("hoy",hoy);
-			/*$("#edad").onload(function() {
-					var anios = $('#edad').val();
-					$('#fechanac').datetimepicker('date', moment().subtract(anios, 'years').format('YYYY-MM-DD'));
-			});*/
+			$('#fechanac').datetimepicker('date', moment("{{ $personales->fechaNacimiento}}").format("DD-MM-YYYY"));			
 			$('#sexo').val("{{ $personales->sexo }}").trigger('change');
 			$('#idNacionalidad').val({{ $personales->idNacionalidad }}).trigger('change');
 			$('#idEstadoOrigen').val({{ $personales->idEstado}}).trigger('change');
@@ -265,6 +253,11 @@
 					$('#otroDocumento').val('{{$personales->docIdentificacion}}');
 				}	
 			$('#numDocIdentificacion').val("{{$personales->numDocIdentificacion}}");
+			@if(($personales->conoceAlDenunciado)==1)
+			$('#conoceAlDenunciado1').val("{{$personales->conoceAlDenunciado}}").trigger('click');
+			@else
+			$('#conoceAlDenunciado2').val("{{$personales->conoceAlDenunciado}}").trigger('click');
+			@endif
 			$('#idEstado').val({{$direccion->idEstado}}).trigger('change');
 			$('#idMunicipio').val({{$direccion->idMunicipio}}).trigger('change');
 			$('#idLocalidad').val({{$direccion->idLocalidad}}).trigger('change');
