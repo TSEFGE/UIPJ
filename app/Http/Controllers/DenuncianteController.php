@@ -604,7 +604,7 @@ class DenuncianteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //dd($request);
+        //dd($request->all());
 
         $carpetaNueva = Carpeta::where('id', $request->idCarpeta)->where('idFiscal', Auth::user()->id)->get();
         $var          = ExtraDenunciante::where('id', $id)->get();
@@ -640,17 +640,24 @@ class DenuncianteController extends Controller
             if ($request->filled('idLengua')) {
                 $persona->idLengua = $request->idLengua;
                 if ($request->idLengua != 70) {
-                    // dump($request->idInterprete);
-                    $interprete               = Interprete::find($request->idInterprete);
-                    $interprete->nombre       = $request->nombreInterprete;
-                    $interprete->organizacion = $request->lugarTrabInterprete;
-                    $interprete->idLengua     = $request->idLengua;
-                    $interprete->save();
-                    $idInterprete = $interprete->id;
+                    if (is_null($request->idInterprete)) {
+                        $interprete               = new Interprete();
+                        $interprete->nombre       = $request->nombreInterprete;
+                        $interprete->organizacion = $request->lugarTrabInterprete;
+                        $interprete->idLengua     = $request->idLengua;
+                        $interprete->save();
+                        $idInterprete = $interprete->id;
+                    } else {
+                        $interprete               = Interprete::find($request->idInterprete);
+                        $interprete->nombre       = $request->nombreInterprete;
+                        $interprete->organizacion = $request->lugarTrabInterprete;
+                        $interprete->idLengua     = $request->idLengua;
+                        $interprete->save();
+                        $idInterprete = $interprete->id;
+                    }
                 } else {
                     $idInterprete = null;
                 }
-
             }
             if ($request->filled('idMunicipioOrigen')) {
                 $persona->idMunicipioOrigen = $request->idMunicipioOrigen;
@@ -842,7 +849,7 @@ class DenuncianteController extends Controller
             Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'update', 'descripcion' => 'Se ha actualizado un domicilio de persona moral de tipo victima u ofendido.', 'idFilaAccion' => $domicilio->id]);
             $idD1 = $domicilio->id;
 
-            $domicilio3 = Domicilio::find($request->idDomicilio);
+            $domicilio3 = Domicilio::find($request->idDomicilioNotif);
             if ($request->filled('idMunicipio3')) {
                 $domicilio3->idMunicipio = $request->idMunicipio3;
             }
