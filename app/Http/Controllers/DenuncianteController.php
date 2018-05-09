@@ -275,7 +275,7 @@ class DenuncianteController extends Controller
         } elseif ($request->esEmpresa == 1) {
             $persona                  = new Persona();
             $persona->nombres         = $request->nombres2;
-            $persona->fechaNacimiento = $fechaAltaEmpresa;
+            $persona->fechaNacimiento = $request->fechaAltaEmpresa;
             $persona->rfc             = $request->rfc2 . $request->homo2;
             $persona->esEmpresa       = 1;
             $persona->save();
@@ -791,7 +791,7 @@ class DenuncianteController extends Controller
         } elseif ($request->esEmpresa == 1) {
             $persona                  = Persona::find($request->idPersona);
             $persona->nombres         = $request->nombres2;
-            $persona->fechaNacimiento = $fechaAltaEmpresa;
+            $persona->fechaNacimiento = $request->fechaAltaEmpresa;
             $persona->rfc             = $request->rfc2 . $request->homo2;
             $persona->esEmpresa       = 1;
             $persona->save();
