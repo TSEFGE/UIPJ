@@ -26,4 +26,7 @@ class ConnectionUATController extends Controller
     public function carpetasUatDataTable()
     {
     }
+    public function asiignarCarpeta($idCarpeta, $idFiscal)
+    {
+    }
 }
