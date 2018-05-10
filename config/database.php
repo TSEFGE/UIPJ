@@ -56,7 +56,7 @@ return [
 
         'uatuipj' => [
             'driver' => 'mysql',
-            'host' => env('UATUIPJ_HOST', '198.108.24.155'),
+            'host' => env('UATUIPJ_HOST', '192.108.24.155'),
             'port' => env('UATUIPJ_PORT', '3306'),
             'database' => env('UATUIPJ_DATABASE', 'forge'),
             'username' => env('UATUIPJ_USERNAME', 'forge'),
