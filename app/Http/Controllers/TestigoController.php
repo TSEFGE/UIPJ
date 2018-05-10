@@ -133,29 +133,6 @@ class TestigoController extends Controller
             Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un nuevo domicilio para persona física de tipo testigo.', 'idFilaAccion' => $domicilio->id]);
             $idD1 = $domicilio->id;
 
-            $domicilio2 = new Domicilio();
-            if (!is_null($request->idMunicipio2)) {
-                $domicilio2->idMunicipio = $request->idMunicipio2;
-            }
-            if (!is_null($request->idLocalidad2)) {
-                $domicilio2->idLocalidad = $request->idLocalidad2;
-            }
-            if (!is_null($request->idColonia2)) {
-                $domicilio2->idColonia = $request->idColonia2;
-            }
-            if (!is_null($request->calle2)) {
-                $domicilio2->calle = $request->calle2;
-            }
-            if (!is_null($request->numExterno2)) {
-                $domicilio2->numExterno = $request->numExterno2;
-            }
-            if (!is_null($request->numInterno2)) {
-                $domicilio2->numInterno = $request->numInterno2;
-            }
-            $domicilio2->save();
-            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un nuevo domicilio de trabajo para persona física de tipo testigo.', 'idFilaAccion' => $domicilio2->id]);
-            $idD2 = $domicilio2->id;
-
             $domicilio3 = new Domicilio();
             if (!is_null($request->idMunicipio3)) {
                 $domicilio3->idMunicipio = $request->idMunicipio3;
@@ -203,66 +180,40 @@ class TestigoController extends Controller
 
                 if ($request->idOcupacion == 2947) {
 
-                    $domicilio2 = Domicilio::find($request->idDireccionTrab);
-                    if ($request->filled('idMunicipio2')) {
-                        $domicilio2->idMunicipio = 2496;
-                    }
-                    if ($request->filled('idLocalidad2')) {
-                        $domicilio2->idLocalidad = 27153;
-                    }
-                    if ($request->filled('idColonia2')) {
-                        $domicilio2->idColonia = 49172;
-                    }
-                    if ($request->filled('calle2')) {
-                        $domicilio2->calle = "SIN INFORMACION";
-                    }
-                    if ($request->filled('numExterno2')) {
-                        $domicilio2->numExterno = "S/N";
-                    }
-                    if ($request->filled('numInterno2')) {
-                        $domicilio2->numInterno = "S/N";
-                    }
+                    $domicilio2              = new Domicilio();
+                    $domicilio2->idMunicipio = 2496;
+                    $domicilio2->idLocalidad = 27153;
+                    $domicilio2->idColonia   = 49172;
+                    $domicilio2->calle       = "SIN INFORMACION";
+                    $domicilio2->numExterno  = "S/N";
+                    $domicilio2->numInterno  = "S/N";
                     $domicilio2->save();
+                    //Agregar a bitacora
+                    Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'variables_persona,domicilio', 'accion' => 'insert', 'descripcion' => 'Se han registrado Datos del Trabajo de Testigo', 'idFilaAccion' => $domicilio2->id]);
+
                     $idD2 = $domicilio2->id;
 
-                    if ($request->filled('lugarTrabajo')) {
-                        $VariablesPersona->lugarTrabajo = "SIN INFORMACION";
-                    }
-                    if ($request->filled('telefonoTrabajo')) {
-                        $VariablesPersona->telefonoTrabajo = "SIN INFORMACION";
-                    }
+                    $VariablesPersona->lugarTrabajo       = "SIN INFORMACION";
                     $VariablesPersona->idDomicilioTrabajo = $idD2;
+                    $VariablesPersona->telefonoTrabajo    = "SIN INFORMACION";
                 } else {
 
-                    $domicilio2 = Domicilio::find($request->idDireccionTrab);
-                    if ($request->filled('idMunicipio2')) {
-                        $domicilio2->idMunicipio = $request->idMunicipio2;
-                    }
-                    if ($request->filled('idLocalidad2')) {
-                        $domicilio2->idLocalidad = $request->idLocalidad2;
-                    }
-                    if ($request->filled('idColonia2')) {
-                        $domicilio2->idColonia = $request->idColonia2;
-                    }
-                    if ($request->filled('calle2')) {
-                        $domicilio2->calle = $request->calle2;
-                    }
-                    if ($request->filled('numExterno2')) {
-                        $domicilio2->numExterno = $request->numExterno2;
-                    }
-                    if ($request->filled('numInterno2')) {
-                        $domicilio2->numInterno = $request->numInterno2;
-                    }
+                    $domicilio2              = new Domicilio();
+                    $domicilio2->idMunicipio = $request->idMunicipio2;
+                    $domicilio2->idLocalidad = $request->idLocalidad2;
+                    $domicilio2->idColonia   = $request->idColonia2;
+                    $domicilio2->calle       = $request->calle2;
+                    $domicilio2->numExterno  = $request->numExterno2;
+                    $domicilio2->numInterno  = $request->numInterno2;
                     $domicilio2->save();
+                    //Agregar a bitacora
+                    Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'variables_persona,domicilio', 'accion' => 'insert', 'descripcion' => 'Se han registrado Datos del Trabajo de Autoridad', 'idFilaAccion' => $domicilio2->id]);
+
                     $idD2 = $domicilio2->id;
-                    Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'update', 'descripcion' => 'Se ha actualizado un domicilio de persona física de tipo denunciante.', 'idFilaAccion' => $idD2]);
-                    if ($request->filled('lugarTrabajo')) {
-                        $VariablesPersona->lugarTrabajo = $request->lugarTrabajo;
-                    }
+
+                    $VariablesPersona->lugarTrabajo       = $request->lugarTrabajo;
                     $VariablesPersona->idDomicilioTrabajo = $idD2;
-                    if ($request->filled('telefonoTrabajo')) {
-                        $VariablesPersona->telefonoTrabajo = $request->telefonoTrabajo;
-                    }
+                    $VariablesPersona->telefonoTrabajo    = $request->telefonoTrabajo;
                 }
             }
             if (!is_null($request->idEstadoCivil)) {

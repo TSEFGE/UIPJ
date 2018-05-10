@@ -176,7 +176,7 @@ Route::middleware(['auth'])->group(function () {
         /*---------Rutas para las carpetas de UAT -------------*/
         Route::get('carpetas-uat', 'Connections\ConnectionUATController@index')->name('carpetas.uat');
         Route::get('carpetasUatDataTable', 'Connections\ConnectionUATController@carpetasUatDataTable')->name('carpetas-uat.DataTable');
-        Route::post('asignar-carpeta/{idCarpeta}/{idFiscal}', 'Connections\ConnectionUATController@asignarCarpeta')->name('asignar.carpeta');
+        Route::get('asignar-carpeta/{idCarpeta}/{idFiscal}', 'Connections\ConnectionUATController@asignarCarpeta')->name('asignar.carpeta');
 
         /*---------Rutas para NOTALLLOWED ------------*/
         Route::get('/notAllowed', function () {

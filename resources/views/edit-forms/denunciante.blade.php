@@ -131,9 +131,10 @@
 	<script src="{{ asset('plugins/moment/locales/es.js') }}"></script>
 	<script src="{{ asset('plugins/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
 	<script src="{{ asset('js/persona.js') }}"></script>
+	<script src="{{ asset('js/lengua.js') }}"></script>
 	<script src="{{ asset('js/persona-moral.js') }}"></script>
-	{{--<script src="{{ asset('js/tipo-persona.js') }}"></script>
-	<script src="{{ asset('js/denunciante.js') }}"></script>--}}
+	{{--<script src="{{ asset('js/tipo-persona.js') }}"></script>--}}
+	<script src="{{ asset('js/denunciante.js') }}"></script>
 	<script src="{{ asset('js/selects/async.js') }}"></script>
 	<script src="{{ asset('js/selects/origen.js') }}"></script>
 	<script src="{{ asset('js/selects/domicilio.js') }}"></script>

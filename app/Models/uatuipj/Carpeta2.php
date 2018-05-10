@@ -41,16 +41,16 @@ class Carpeta2 extends Model
 
     public function acusaciones()
     {
-        return $this->hasMany('App\Models\uatuipj\Acusacion');
+        return $this->hasMany('App\Models\uatuipj\Acusacion2');
     }
 
     public function variablesPersona()
     {
-        return $this->hasMany('App\Models\uatuipj\VariablesPersona');
+        return $this->hasMany('App\Models\uatuipj\VariablesPersona2');
     }
 
     public function tipifDelitos()
     {
-        return $this->hasMany('App\Models\uatuipj\TipifDelito');
+        return $this->hasMany('App\Models\uatuipj\TipifDelito2');
     }
 }

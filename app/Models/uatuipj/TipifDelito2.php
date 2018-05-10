@@ -43,11 +43,11 @@ class TipifDelito2 extends Model
 
     public function carpeta()
     {
-        return $this->belongsTo('App\Models\uatuipj\Carpeta');
+        return $this->belongsTo('App\Models\uatuipj\Carpeta2');
     }
     
     public function acusacion()
     {
-       return $this->belongsTo('App\Models\uatuipj\Acusacion');
+       return $this->belongsTo('App\Models\uatuipj\Acusacion2');
     }
 }
