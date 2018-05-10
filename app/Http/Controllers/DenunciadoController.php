@@ -888,74 +888,68 @@ class DenunciadoController extends Controller
             if ($request->filled('idOcupacion')) {
                 $VariablesPersona->idOcupacion = $request->idOcupacion;
 
-                if (!is_null($request->idOcupacion)) {
-                    $VariablesPersona->idOcupacion = $request->idOcupacion;
+                if ($request->idOcupacion == 2947) {
 
-                    if ($request->idOcupacion == 2947) {
-
-                        $domicilio2 = Domicilio::find($request->idDireccionTrab);
-                        if ($request->filled('idMunicipio2')) {
-                            $domicilio2->idMunicipio = 2496;
-                        }
-                        if ($request->filled('idLocalidad2')) {
-                            $domicilio2->idLocalidad = 27153;
-                        }
-                        if ($request->filled('idColonia2')) {
-                            $domicilio2->idColonia = 49172;
-                        }
-                        if ($request->filled('calle2')) {
-                            $domicilio2->calle = "SIN INFORMACION";
-                        }
-                        if ($request->filled('numExterno2')) {
-                            $domicilio2->numExterno = "S/N";
-                        }
-                        if ($request->filled('numInterno2')) {
-                            $domicilio2->numInterno = "S/N";
-                        }
-                        $domicilio2->save();
-                        $idD2 = $domicilio2->id;
-
-                        if ($request->filled('lugarTrabajo')) {
-                            $VariablesPersona->lugarTrabajo = "SIN INFORMACION";
-                        }
-                        if ($request->filled('telefonoTrabajo')) {
-                            $VariablesPersona->telefonoTrabajo = "SIN INFORMACION";
-                        }
-                        $VariablesPersona->idDomicilioTrabajo = $idD2;
-                    } else {
-
-                        $domicilio2 = Domicilio::find($request->idDireccionTrab);
-                        if ($request->filled('idMunicipio2')) {
-                            $domicilio2->idMunicipio = $request->idMunicipio2;
-                        }
-                        if ($request->filled('idLocalidad2')) {
-                            $domicilio2->idLocalidad = $request->idLocalidad2;
-                        }
-                        if ($request->filled('idColonia2')) {
-                            $domicilio2->idColonia = $request->idColonia2;
-                        }
-                        if ($request->filled('calle2')) {
-                            $domicilio2->calle = $request->calle2;
-                        }
-                        if ($request->filled('numExterno2')) {
-                            $domicilio2->numExterno = $request->numExterno2;
-                        }
-                        if ($request->filled('numInterno2')) {
-                            $domicilio2->numInterno = $request->numInterno2;
-                        }
-                        $domicilio2->save();
-                        $idD2 = $domicilio2->id;
-                        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'update', 'descripcion' => 'Se ha actualizado un domicilio de persona física de tipo denunciado.', 'idFilaAccion' => $idD2]);
-                        if ($request->filled('lugarTrabajo')) {
-                            $VariablesPersona->lugarTrabajo = $request->lugarTrabajo;
-                        }
-                        $VariablesPersona->idDomicilioTrabajo = $idD2;
-                        if ($request->filled('telefonoTrabajo')) {
-                            $VariablesPersona->telefonoTrabajo = $request->telefonoTrabajo;
-                        }
-
+                    $domicilio2 = Domicilio::find($request->idDireccionTrab);
+                    if ($request->filled('idMunicipio2')) {
+                        $domicilio2->idMunicipio = 2496;
                     }
+                    if ($request->filled('idLocalidad2')) {
+                        $domicilio2->idLocalidad = 27153;
+                    }
+                    if ($request->filled('idColonia2')) {
+                        $domicilio2->idColonia = 49172;
+                    }
+                    if ($request->filled('calle2')) {
+                        $domicilio2->calle = "SIN INFORMACION";
+                    }
+                    if ($request->filled('numExterno2')) {
+                        $domicilio2->numExterno = "S/N";
+                    }
+                    if ($request->filled('numInterno2')) {
+                        $domicilio2->numInterno = "S/N";
+                    }
+                    $domicilio2->save();
+                    $idD2 = $domicilio2->id;
 
+                    if ($request->filled('lugarTrabajo')) {
+                        $VariablesPersona->lugarTrabajo = "SIN INFORMACION";
+                    }
+                    if ($request->filled('telefonoTrabajo')) {
+                        $VariablesPersona->telefonoTrabajo = "SIN INFORMACION";
+                    }
+                    $VariablesPersona->idDomicilioTrabajo = $idD2;
+                } else {
+
+                    $domicilio2 = Domicilio::find($request->idDireccionTrab);
+                    if ($request->filled('idMunicipio2')) {
+                        $domicilio2->idMunicipio = $request->idMunicipio2;
+                    }
+                    if ($request->filled('idLocalidad2')) {
+                        $domicilio2->idLocalidad = $request->idLocalidad2;
+                    }
+                    if ($request->filled('idColonia2')) {
+                        $domicilio2->idColonia = $request->idColonia2;
+                    }
+                    if ($request->filled('calle2')) {
+                        $domicilio2->calle = $request->calle2;
+                    }
+                    if ($request->filled('numExterno2')) {
+                        $domicilio2->numExterno = $request->numExterno2;
+                    }
+                    if ($request->filled('numInterno2')) {
+                        $domicilio2->numInterno = $request->numInterno2;
+                    }
+                    $domicilio2->save();
+                    $idD2 = $domicilio2->id;
+                    Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'update', 'descripcion' => 'Se ha actualizado un domicilio de persona física de tipo denunciante.', 'idFilaAccion' => $idD2]);
+                    if ($request->filled('lugarTrabajo')) {
+                        $VariablesPersona->lugarTrabajo = $request->lugarTrabajo;
+                    }
+                    $VariablesPersona->idDomicilioTrabajo = $idD2;
+                    if ($request->filled('telefonoTrabajo')) {
+                        $VariablesPersona->telefonoTrabajo = $request->telefonoTrabajo;
+                    }
                 }
                 if ($request->filled('idEstadoCivil')) {
                     $VariablesPersona->idEstadoCivil = $request->idEstadoCivil;

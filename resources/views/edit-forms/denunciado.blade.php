@@ -239,6 +239,11 @@ $("#espacioNarracion").hide();
 			$("#calle").val("{{ $direccion->calle }}");
 			$("#numExterno").val("{{ $direccion->numExterno }}");
 			$("#numInterno").val("{{ $direccion->numInterno }}");
+			@if(($personales->perseguidoPenalmente)==1)
+			$('#perseguidoPenalmente1').val("{{$personales->perseguidoPenalmente}}").trigger('click');
+			@else
+			$('#perseguidoPenalmente2').val("{{$personales->perseguidoPenalmente}}").trigger('click');
+			@endif
 			$("#idPuesto").val("{{ $personales->idPuesto }}");
 			$("#alias").val("{{ $personales->alias }}");
 			$("#personasBajoSuGuarda").val("{{ $personales->personasBajoSuGuarda }}");
