@@ -33,6 +33,7 @@ class ConnectionUATController extends Controller
         $denunciantes=ExtraDenunciante2::join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
                         ->join('componentes.personas', 'componentes.personas.id', '=', 'variables_persona.idPersona')
                         ->select(DB::raw('CONCAT(componentes.personas.nombres, " ", componentes.personas.primerAp," ",componentes.personas.segundoAp) AS nombre'));
+
         dump($denunciantes->get());
         //--------------
         $users=User::all()->pluck('nombres', 'id');
