@@ -84,6 +84,13 @@
 			{!! Form::select('idEtnia', $etnias, '1', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la etnia', 'required']) !!}
 		</div>
 	</div>
+	
+	<div class="col-3">
+		<div class="form-group">
+			{!! Form::label('idMunicipioOrigen', 'Municipio de origen', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::select('idMunicipioOrigen',$municipiosVer,null, ['placeholder' => 'Seleccione un municipio', 'class' => 'form-control form-control-sm', 'required']) !!}
+		</div>
+	</div>
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('idLengua', 'Lengua', ['class' => 'col-form-label-sm']) !!}
@@ -91,12 +98,6 @@
 		</div>
 	</div>
 
-	<div class="col-3">
-		<div class="form-group">
-			{!! Form::label('idMunicipioOrigen', 'Municipio de origen', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idMunicipioOrigen',$municipiosVer,null, ['placeholder' => 'Seleccione un municipio', 'class' => 'form-control form-control-sm', 'required']) !!}
-		</div>
-	</div>
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('telefono', 'Teléfono', ['class' => 'col-form-label-sm']) !!}
