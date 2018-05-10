@@ -280,6 +280,11 @@
                 $("#correo").addClass("vacio");
                 $("#telefonoN").addClass("vacio");     
                 $("#fax").addClass("vacio");
+                
+                //$("#collapseDenun2 select").addClass('vacio');
+                $("#collapseDenun2 textarea").addClass('vacio');
+                $("#collapseDenun2 input:text").addClass('vacio');
+                /*
 /*
                 $("#alias").addClass("vacio");
                 $("#personasBajoSuGuarda").addClass("vacio");     

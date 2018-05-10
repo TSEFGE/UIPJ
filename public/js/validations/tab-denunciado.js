@@ -74,8 +74,8 @@ $('#tdenunciado.nav-tabs a').on('hidden.bs.tab', function(event){
 
 
 $("#ctdenunciado").hover(function () { 
-    totalesP2 = $('#collapsePersonales2 .vacio').length;
-    totalesDenun = $('#collapseDenun2 .vacio').length;
+    //totalesP2 = $('#collapsePersonales2 .vacio').length;
+    totalesDenun = $('#lol .vacio').length;
 	//totalesD2 = $("#collapseDir2 .vacio").length;
     correcto = $('#tdenunciado .correcto').length;
     if (correcto == tabs) {
@@ -83,14 +83,12 @@ $("#ctdenunciado").hover(function () {
     } else {
         $("#btn-submit").prop('disabled', true);
     }
-    console.log("correcto",correcto);
-    console.log("totalesP2", totalesP2);
+    /*console.log("correcto",correcto);
+    console.log("totalesP2", totalesP2);*/
 });
 
 $("#collapsePersonales2").hover(function () {
-    $(this).isValid({
-        scrollToTopOnError: false,
-    });
+    $(this).isValid();
     var count = $('#collapsePersonales2 .error').length;
     var correctos = $('#collapsePersonales2 .valid').length;
     countvacio= totalesP2;
@@ -117,9 +115,7 @@ $("#collapsePersonales2").hover(function () {
 });
 
 $("#collapseDir2").hover(function () {
-     $(this).isValid({
-         scrollToTopOnError: false
-     });
+     $(this).isValid();
     var count = $('#collapseDir2 .error').length;
     var correctos = $('#collapseDir2 .valid').length;    
      if (count == 0) {
@@ -144,9 +140,7 @@ $("#collapseDir2").hover(function () {
     
 });
 $("#collapseTrab2").hover(function () {
-     $(this).isValid({
-         scrollToTopOnError: false
-     });
+     $(this).isValid();
     var count = $('#collapseTrab2 .error').length;
     var correctos = $('#collapseTrab2 .valid').length;    
     if (count == 0) {
@@ -172,9 +166,7 @@ $("#collapseTrab2").hover(function () {
 });
  
 $("#collapseNotifs2").hover(function () {
-     $(this).isValid({
-         scrollToTopOnError: false
-     });
+     $(this).isValid();
     var count = $('#collapseNotifs2 .error').length;
     var correctos = $('#collapseNotifs2 .valid').length;    
     if (count == 0) {
@@ -200,9 +192,7 @@ $("#collapseNotifs2").hover(function () {
 
 
     $("#collapseDenun2").hover(function () {
-     $(this).isValid({
-         scrollToTopOnError: false
-     });
+     $(this).isValid();
     var count = $('#collapseDenun2 .error').length;
     var correctos = $('#collapseDenun2 .valid').length;    
     if (count == 0) {
