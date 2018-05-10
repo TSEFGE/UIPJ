@@ -173,7 +173,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('persona/curp/{curp}/{id}/edit', 'RegistroController@buscarCURPEdit')->name('comprobarEditar.curp');
 
         /*---------Rutas para las carpetas de UAT -------------*/
-        Route::get('carpetas-uat', 'ConnectionUATController@index')->name('carpetas.uat');
+        Route::get('carpetas-uat', 'Connections\ConnectionUATController@index')->name('carpetas.uat');
+        Route::get('carpetasUatDataTable', 'Connections\ConnectionUATController@carpetasUatDataTable')->name('carpetas-uat.DataTable');
 
 
 

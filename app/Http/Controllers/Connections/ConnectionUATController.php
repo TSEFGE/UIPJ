@@ -22,4 +22,8 @@ class ConnectionUATController extends Controller
     {
         return view('carpetas-uat');
     }
+
+    public function carpetasUatDataTable()
+    {
+    }
 }
