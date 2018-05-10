@@ -1,4 +1,4 @@
-$("#btn-submit").prop('disabled', true);
+//$("#btn-submit").prop('disabled', true);
 $('#tabInfodelito').addClass('visible');
 $('#tabLugardelito').addClass('visible');
 totalesD=0;
@@ -21,6 +21,7 @@ $('#tabsdelito.nav-tabs a').on('shown.bs.tab', function (event) {
 			break;
 	}
 	tabs = $("#tabsdelito .visible").length;
+	console.log(tabs);
 });
 
 $('#tabsdelito.nav-tabs a').on('hidden.bs.tab', function(event){
@@ -37,10 +38,9 @@ $('#tabsdelito.nav-tabs a').on('hidden.bs.tab', function(event){
 	default:
 	break;
 }
-	tabs = $("#tabsdelito .visible").length;
-	console.log("tabs",tabs);  
+	
 });
-$("#cajados").hover(function(){
+/*$("#cajados").hover(function(){
 	totalesD = $('#infodelito .vacio').length;
 	correcto = $('#tabsdelito .correcto').length;
 	if (correcto == tabs) {
@@ -50,7 +50,7 @@ $("#cajados").hover(function(){
 	}
 	console.log("totalesD", totalesD); 
 	console.log("totalesH", totalesH); 
-});
+});*/
 $("#infodelito").hover(function(){
 	$(this).isValid();
 	var count = $('#infodelito .error').length;

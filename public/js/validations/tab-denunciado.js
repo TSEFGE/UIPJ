@@ -74,8 +74,8 @@ $('#tdenunciado.nav-tabs a').on('hidden.bs.tab', function(event){
 
 
 $("#ctdenunciado").hover(function () { 
-    totalesP2 = $('#collapsePersonales2 .vacio').length;
-    totalesDenun = $('#collapseDenun2 .vacio').length;
+    //totalesP2 = $('#collapsePersonales2 .vacio').length;
+    totalesDenun = $('#lol .vacio').length;
 	//totalesD2 = $("#collapseDir2 .vacio").length;
     correcto = $('#tdenunciado .correcto').length;
     if (correcto == tabs) {
@@ -83,8 +83,8 @@ $("#ctdenunciado").hover(function () {
     } else {
         $("#btn-submit").prop('disabled', true);
     }
-    console.log("correcto",correcto);
-    console.log("totalesP2", totalesP2);
+    /*console.log("correcto",correcto);
+    console.log("totalesP2", totalesP2);*/
 });
 
 $("#collapsePersonales2").hover(function () {

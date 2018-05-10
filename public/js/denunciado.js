@@ -5,7 +5,7 @@
     $("#tipoDenunciado3").prop("checked", false);
     $('#qrr').hide();
     $('#conocido').hide();
-    $('.comparecencia').hide();
+    $('.comparecencia').hide();    
     //Si es QRR
     $("#tipoDenunciado1").change(function(event){
         if ($('#tipoDenunciado1').is(':checked') ) {
