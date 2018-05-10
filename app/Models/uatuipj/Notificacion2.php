@@ -16,11 +16,11 @@ class Notificacion2 extends Model
 
     public function extraDenunciante()
     {
-        return $this->belongsTo('App\Models\uatuipj\ExtraDenunciante');
+        return $this->belongsTo('App\Models\uatuipj\ExtraDenunciante2');
     }
 
     public function extraDenunciado()
     {
-        return $this->belongsTo('App\Models\uatuipj\ExtraDenunciado');
+        return $this->belongsTo('App\Models\uatuipj\ExtraDenunciado2');
     }
 }

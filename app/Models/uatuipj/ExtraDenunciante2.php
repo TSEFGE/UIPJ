@@ -29,16 +29,16 @@ class ExtraDenunciante2 extends Model
     
     public function variablesPersona()
     {
-       return $this->belongsTo('App\Models\uatuipj\VariablesPersona');
+       return $this->belongsTo('App\Models\uatuipj\VariablesPersona2');
     }
 
     public function extraAbogado()
     {
-       return $this->belongsTo('App\Models\uatuipj\ExtraAbogado');
+       return $this->belongsTo('App\Models\uatuipj\ExtraAbogado2');
     }
 
     public function acusacion()
     {
-       return $this->belongsTo('App\Models\uatuipj\Acusacion');
+       return $this->belongsTo('App\Models\uatuipj\Acusacion2');
     }
 }
