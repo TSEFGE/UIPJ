@@ -84,19 +84,38 @@
 			{!! Form::select('idEtnia', $etnias, '1', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la etnia', 'required']) !!}
 		</div>
 	</div>
-	<div class="col-3">
-		<div class="form-group">
-			{!! Form::label('idLengua', 'Lengua', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idLengua', $lenguas, '70', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la lengua', 'required']) !!}
-		</div>
-	</div>
-
+	
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('idMunicipioOrigen', 'Municipio de origen', ['class' => 'col-form-label-sm']) !!}
 			{!! Form::select('idMunicipioOrigen',$municipiosVer,null, ['placeholder' => 'Seleccione un municipio', 'class' => 'form-control form-control-sm', 'required']) !!}
 		</div>
 	</div>
+	<div class="col-3">
+		<div class="form-group">
+			{!! Form::label('idLengua', 'Lengua', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::select('idLengua', $lenguas, '70', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la lengua', 'required']) !!}
+		</div>
+	</div>
+		<div class="col-12"  id="datosInterprete" style="display:none;">
+
+			<div class="row">
+				<div class="col-6">
+					<div class="form-group"> 
+						{!! Form::label('nombreInterprete', 'Nombre del intérprete', ['class' => 'col-form-label-sm']) !!}
+						{!! Form::text('nombreInterprete',null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese nombre','data-validation'=>'length', 'data-validation-length'=>'2-200','data-validation-error-msg'=>'El nombre debe contener al menos 2 letras', 'data-validation-event'=>'keyup']) !!}
+					</div>
+				</div>
+				<div class="col-6">
+					<div class="form-group"> 
+						{!! Form::label('lugarTrabInterprete', 'Lugar de trabajo del intérprete', ['class' => 'col-form-label-sm']) !!}
+						{!! Form::text('lugarTrabInterprete',null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese nombre de la organización','data-validation'=>'length', 'data-validation-length'=>'2-200','data-validation-error-msg'=>'El nombre debe contener al menos 2 letras', 'data-validation-event'=>'keyup']) !!}
+					</div>
+				</div>
+			</div>
+		</div>
+
+
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('telefono', 'Teléfono', ['class' => 'col-form-label-sm']) !!}
