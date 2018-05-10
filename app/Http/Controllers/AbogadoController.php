@@ -226,7 +226,7 @@ class AbogadoController extends Controller
             return redirect()->route('home');
         }
 
-        $persona = Persona::where('curp', $request->curp)->where('id', '!=', $request->idPersona)->get();
+        $persona = Persona::where('curp', $request->curp)->where('curp', '!=', NULL)->where('id', '!=', $request->idPersona)->get();
         if ($persona->isNotEmpty()) {
             Alert::error('Ya existe una persona registrada con ese CURP.', 'Error')->persistent("Aceptar");
             return back()->withInput();
