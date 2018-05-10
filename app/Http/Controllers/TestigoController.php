@@ -89,17 +89,16 @@ class TestigoController extends Controller
             }
             if (!is_null($request->idLengua)) {
                 $persona->idLengua = $request->idLengua;
-                if ($request->idLengua != 70) {
+                if (($request->idLengua == 70) | ($request->idLengua == 69)) {
+                    $idInterprete = null;
+                } else {
                     $interprete               = new Interprete();
                     $interprete->nombre       = $request->nombreInterprete;
                     $interprete->organizacion = $request->lugarTrabInterprete;
                     $interprete->idLengua     = $request->idLengua;
                     $interprete->save();
                     $idInterprete = $interprete->id;
-                } else {
-                    $idInterprete = null;
                 }
-
             }
             if (!is_null($request->idMunicipioOrigen)) {
                 $persona->idMunicipioOrigen = $request->idMunicipioOrigen;
@@ -357,27 +356,28 @@ class TestigoController extends Controller
             if (!is_null($request->idEtnia)) {
                 $persona->idEtnia = $request->idEtnia;
             }
-            if (!is_null($request->idLengua)) {
+            if ($request->filled('idLengua')) {
                 $persona->idLengua = $request->idLengua;
-                if ($request->idLengua != 70) {
-                    if (is_null($request->idInterprete)) {
-                        $interprete               = new Interprete();
-                        $interprete->nombre       = $request->nombreInterprete;
-                        $interprete->organizacion = $request->lugarTrabInterprete;
-                        $interprete->idLengua     = $request->idLengua;
-                        $interprete->save();
-                        $idInterprete = $interprete->id;
-                    } else {
-                        $interprete               = Interprete::find($request->idInterprete);
-                        $interprete->nombre       = $request->nombreInterprete;
-                        $interprete->organizacion = $request->lugarTrabInterprete;
-                        $interprete->idLengua     = $request->idLengua;
-                        $interprete->save();
-                        $idInterprete = $interprete->id;
-                    }
-                } else {
+
+                if (($request->idLengua == 70) | ($request->idLengua == 69)) {
                     $idInterprete = null;
+
+                } elseif (is_null($request->idInterprete)) {
+                    $interprete               = new Interprete();
+                    $interprete->nombre       = $request->nombreInterprete;
+                    $interprete->organizacion = $request->lugarTrabInterprete;
+                    $interprete->idLengua     = $request->idLengua;
+                    $interprete->save();
+                    $idInterprete = $interprete->id;
+                } else {
+                    $interprete               = Interprete::find($request->idInterprete);
+                    $interprete->nombre       = $request->nombreInterprete;
+                    $interprete->organizacion = $request->lugarTrabInterprete;
+                    $interprete->idLengua     = $request->idLengua;
+                    $interprete->save();
+                    $idInterprete = $interprete->id;
                 }
+
             }
 
             if (!is_null($request->idMunicipioOrigen)) {

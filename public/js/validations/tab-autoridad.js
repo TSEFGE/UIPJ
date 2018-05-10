@@ -4,6 +4,7 @@ totalesTrab=0;
 totalesAut=0;
 tabs=0;
 correcto=0;
+
 $("#btn-submit").prop('disabled', true);
 $('select').prop('data-validation','required');
 $('select').prop('data-validation-event', 'change');

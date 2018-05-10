@@ -133,7 +133,7 @@
         "showMethod": "fadeIn",
         "hideMethod": "fadeOut"
     }
-
+	$('select').addClass('vacio');
 	$("#nombres").addClass("vacio");
 	$("#primerAp").addClass("vacio");
 	$("#segundoAp").addClass("vacio");
