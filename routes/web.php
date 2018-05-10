@@ -155,6 +155,7 @@ Route::middleware(['auth'])->group(function () {
 
         /*---------Rutas para los selects dinámicos-------------*/
         Route::get('municipios/{id}', 'RegistroController@getMunicipios')->name('get.municipios');
+        Route::get('carpetaUAT/{id}', 'Connections\ConnectionUATController@carpetauat')->name('datos.CarpetaUAT');
         Route::get('localidades/{id}', 'RegistroController@getLocalidades')->name('get.localidades');
         Route::get('colonias/{cp}', 'RegistroController@getColonias')->name('get.colonias');
         Route::get('colonias2/{id}', 'RegistroController@getColonias2')->name('get.colonias2');
