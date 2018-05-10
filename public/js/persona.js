@@ -17,48 +17,16 @@ $("#edad").change(function() {
     var anios = $('#edad').val();
     $('#fechanac').datetimepicker('date', moment().subtract(anios, 'years').format('YYYY-MM-DD'));
 });
-$("#idLengua").change(function (event) {
-    console.log("entra");
-    var lengua = $("#idLengua").val();
-
-    if (lengua == 69 || lengua == 70) {
-        $("#datosInterprete").hide();
-        $("#nombreInterprete").removeClass('vacio');
-        $("#nombreInterprete").removeClass('valid');
-        $("#nombreInterprete").removeClass('error');
-        $("#lugarTrabInterprete").removeClass('vacio');
-        $("#lugarTrabInterprete").removeClass('valid');
-        $("#lugarTrabInterprete").removeClass('error');
-    } else {
-        $("#datosInterprete").show();
-        $("#nombreInterprete").addClass('vacio');
-        $("#lugarTrabInterprete").addClass('vacio');
-    }
-});
 $(document).ready(function() {
-     var lengua = $("#idLengua").val();
-     if (lengua == 69 || lengua == 70) {
-         $("#datosInterprete").hide();
-         $("#nombreInterprete").removeClass('vacio');
-         $("#nombreInterprete").removeClass('valid');
-         $("#nombreInterprete").removeClass('error');
-         $("#lugarTrabInterprete").removeClass('vacio');
-         $("#lugarTrabInterprete").removeClass('valid');
-         $("#lugarTrabInterprete").removeClass('error');
-     } else {
-         $("#datosInterprete").show();
-         $("#nombreInterprete").addClass('vacio');
-         $("#lugarTrabInterprete").addClass('vacio');
-     }
-     $('select').removeClass('vacio ');
-     $('select').removeClass('valid');
-     $('select').removeClass('error');
-     $('textarea').removeClass('vacio');
-     $('textarea').removeClass('error');
-     $('textarea').removeClass('valid');
-     $('input').removeClass('vacio ');
-     $('input').removeClass('error ');
-     $('input').removeClass('valid ');
+    $('select').removeClass('vacio ');
+    $('select').removeClass('valid');
+    $('select').removeClass('error');
+    $('textarea').removeClass('vacio');
+    $('textarea').removeClass('error');
+    $('textarea').removeClass('valid');
+    $('input').removeClass('vacio ');
+    $('input').removeClass('error ');
+    $('input').removeClass('valid ');
     $("#motivoEstancia").val("SIN INFORMACION");
     $("#numInterno").val("S/N");
     $("#numInterno2").val("S/N");
@@ -124,5 +92,5 @@ $(document).ready(function() {
             $("#otroDocumento").removeClass("error");
             $("#otroDocumento").removeClass("valid");
         }
-    });    
+    });
 });
