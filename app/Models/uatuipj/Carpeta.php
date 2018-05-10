@@ -34,7 +34,8 @@ class Carpeta2 extends Model
         'idTipoDeterminacion',
         'fechaDeterminacion',
         'observacionesEstatus',
-        'asignada'
+        'asignada',
+        'nombreFiscalUat'
     ];
 
     public function acusaciones()
