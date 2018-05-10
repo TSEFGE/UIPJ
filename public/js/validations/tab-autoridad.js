@@ -30,7 +30,7 @@ $('#tabsautoridad.nav-tabs a').on('shown.bs.tab', function (e) {
 	}
 	tabs = $("#tabsautoridad .visible").length;
 
-	console.log("tabs", tabs);
+	//console.log("tabs", tabs);
 });
 $('#tabsautoridad.nav-tabs a').on('hidden.bs.tab', function(event){
 
@@ -52,7 +52,7 @@ $('#tabsautoridad.nav-tabs a').on('hidden.bs.tab', function(event){
 		break;
 	}
 	tabs = $("#tabsautoridad .visible").length;
-	console.log("tabs", tabs);
+	//console.log("tabs", tabs);
 });
 $("#ctautoridad").hover(function(){
 	totalesP = $('#collapsePersonales3 .vacio').length;
@@ -62,7 +62,7 @@ $("#ctautoridad").hover(function(){
 	} else {
 		$("#btn-submit").prop('disabled', true);
 	}
-	console.log("totalesP", totalesP);
+	//console.log("totalesP", totalesP);
 });
 
 $('#collapsePersonales3').hover(function(){

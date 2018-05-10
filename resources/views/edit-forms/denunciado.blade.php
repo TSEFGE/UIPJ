@@ -232,13 +232,18 @@ $("#espacioNarracion").hide();
 			$('#nombreInterprete').val("{{ $personales->nombreInterprete }}");
 			$('#lugarTrabInterprete').val("{{ $personales->trabajoInterprete }}");
 			$('#idMunicipioOrigen').val({{$personales->idMunicipioOrigen}}).trigger('change');
-			$('#idReligion').val(7).trigger('change');
+			$('#idReligion').val({{$personales->idReligion}}).trigger('change');
 			$('#idEscolaridad').val({{$personales->idEscolaridad}}).trigger('change');
 			$("#telefono").val("{{ $personales->telefono }}");
 			$("#motivoEstancia").val("{{ $personales->motivoEstancia }}");	
 			$("#calle").val("{{ $direccion->calle }}");
 			$("#numExterno").val("{{ $direccion->numExterno }}");
 			$("#numInterno").val("{{ $direccion->numInterno }}");
+			@if(($personales->perseguidoPenalmente)==1)
+			$('#perseguidoPenalmente1').val("{{$personales->perseguidoPenalmente}}").trigger('click');
+			@else
+			$('#perseguidoPenalmente2').val("{{$personales->perseguidoPenalmente}}").trigger('click');
+			@endif
 			$("#idPuesto").val("{{ $personales->idPuesto }}");
 			$("#alias").val("{{ $personales->alias }}");
 			$("#personasBajoSuGuarda").val("{{ $personales->personasBajoSuGuarda }}");
