@@ -32,8 +32,7 @@ correcto=0;
  });
 $('#tdenunciante.nav-tabs a').on('hidden.bs.tab', function(event){
     //event.preventDefault();
-        var index= $($(this).attr('href')).index();      
-        
+        var index= $($(this).attr('href')).index();  
         switch(index) {
             case 0:  
             totalesP = $('#collapsePersonales1 .vacio').length;
