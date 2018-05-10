@@ -259,30 +259,6 @@ class DenunciadoController extends Controller
 
                     Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un nuevo domicilio de persona física de tipo denunciado por comparecencia.', 'idFilaAccion' => $idD1]);
 
-                    $domicilio2 = new Domicilio();
-                    if (!is_null($request->idMunicipio2)) {
-                        $domicilio2->idMunicipio = $request->idMunicipio2;
-                    }
-                    if (!is_null($request->idLocalidad2)) {
-                        $domicilio2->idLocalidad = $request->idLocalidad2;
-                    }
-                    if (!is_null($request->idColonia2)) {
-                        $domicilio2->idColonia = $request->idColonia2;
-                    }
-                    if (!is_null($request->calle2)) {
-                        $domicilio2->calle = $request->calle2;
-                    }
-                    if (!is_null($request->numExterno2)) {
-                        $domicilio2->numExterno = $request->numExterno2;
-                    }
-                    if (!is_null($request->numInterno2)) {
-                        $domicilio2->numInterno = $request->numInterno2;
-                    }
-                    $domicilio2->save();
-                    $idD2 = $domicilio2->id;
-
-                    Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un nuevo domicilio de persona física de tipo denunciado por comparecencia.', 'idFilaAccion' => $idD2]);
-
                     $domicilio3 = new Domicilio();
                     if (!is_null($request->idMunicipio3)) {
                         $domicilio3->idMunicipio = $request->idMunicipio3;
@@ -329,6 +305,74 @@ class DenunciadoController extends Controller
                     }
                     if (!is_null($request->idOcupacion)) {
                         $VariablesPersona->idOcupacion = $request->idOcupacion;
+
+                        if ($request->idOcupacion == 2947) {
+
+                            $domicilio2 = new Domicilio();
+                            if (!is_null($request->idMunicipio2)) {
+                                $domicilio2->idMunicipio = 2496;
+                            }
+                            if (!is_null($request->idLocalidad2)) {
+                                $domicilio2->idLocalidad = 27153;
+                            }
+                            if (!is_null($request->idColonia2)) {
+                                $domicilio2->idColonia = 49172;
+                            }
+                            if (!is_null($request->calle2)) {
+                                $domicilio2->calle = "SIN INFORMACION";
+                            }
+                            if (!is_null($request->numExterno2)) {
+                                $domicilio2->numExterno = "S/N";
+                            }
+                            if (!is_null($request->numInterno2)) {
+                                $domicilio2->numInterno = "S/N";
+                            }
+                            $domicilio2->save();
+                            $idD2 = $domicilio2->id;
+
+                            if (!is_null($request->lugarTrabajo)) {
+                                $VariablesPersona->lugarTrabajo = "SIN INFORMACION";
+                            }
+                            if (!is_null($request->telefonoTrabajo)) {
+                                $VariablesPersona->telefonoTrabajo = "SIN INFORMACION";
+                            }
+                            $VariablesPersona->idDomicilioTrabajo = $idD2;
+                        } else {
+
+                            $domicilio2 = new Domicilio();
+                            if (!is_null($request->idMunicipio2)) {
+                                $domicilio2->idMunicipio = $request->idMunicipio2;
+                            }
+                            if (!is_null($request->idLocalidad2)) {
+                                $domicilio2->idLocalidad = $request->idLocalidad2;
+                            }
+                            if (!is_null($request->idColonia2)) {
+                                $domicilio2->idColonia = $request->idColonia2;
+                            }
+                            if (!is_null($request->calle2)) {
+                                $domicilio2->calle = $request->calle2;
+                            }
+                            if (!is_null($request->numExterno2)) {
+                                $domicilio2->numExterno = $request->numExterno2;
+                            }
+                            if (!is_null($request->numInterno2)) {
+                                $domicilio2->numInterno = $request->numInterno2;
+                            }
+                            $domicilio2->save();
+                            $idD2 = $domicilio2->id;
+
+                            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un nuevo domicilio de trabajo de persona física de tipo denunciado por comparecencia.', 'idFilaAccion' => $idD2]);
+                            if (!is_null($request->lugarTrabajo)) {
+                                $VariablesPersona->lugarTrabajo = $request->lugarTrabajo;
+                            }
+                            if (!is_null($request->telefonoTrabajo)) {
+                                $VariablesPersona->telefonoTrabajo = $request->telefonoTrabajo;
+                            }
+
+                            $VariablesPersona->idDomicilioTrabajo = $idD2;
+
+                        }
+
                     }
                     if (!is_null($request->idEstadoCivil)) {
                         $VariablesPersona->idEstadoCivil = $request->idEstadoCivil;
@@ -347,13 +391,7 @@ class DenunciadoController extends Controller
                     if (!is_null($request->numDocIdentificacion)) {
                         $VariablesPersona->numDocIdentificacion = $request->numDocIdentificacion;
                     }
-                    if (!is_null($request->lugarTrabajo)) {
-                        $VariablesPersona->lugarTrabajo = $request->lugarTrabajo;
-                    }
-                    $VariablesPersona->idDomicilioTrabajo = $idD2;
-                    if (!is_null($request->telefonoTrabajo)) {
-                        $VariablesPersona->telefonoTrabajo = $request->telefonoTrabajo;
-                    }
+
                     $VariablesPersona->representanteLegal = "NO APLICA";
                     $VariablesPersona->save();
                     $idVariablesPersona = $VariablesPersona->id;
@@ -724,7 +762,7 @@ class DenunciadoController extends Controller
         }
         //Persona física
         if ($request->esEmpresa == 0) {
-            $persona = Persona::where('curp', $request->curp)->where('curp', '!=', NULL)->where('id', '!=', $request->idPersona)->get();
+            $persona = Persona::where('curp', $request->curp)->where('curp', '!=', null)->where('id', '!=', $request->idPersona)->get();
             if ($persona->isNotEmpty()) {
                 Alert::error('Ya existe una persona registrada con ese CURP.', 'Error')->persistent("Aceptar");
                 return back()->withInput();
@@ -805,29 +843,6 @@ class DenunciadoController extends Controller
             $idD1 = $domicilio->id;
             Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'update', 'descripcion' => 'Se ha actualizado un domicilio de persona física de tipo denunciado.', 'idFilaAccion' => $idD1]);
 
-            $domicilio2 = Domicilio::find($request->idDireccionTrab);
-            if ($request->filled('idMunicipio2')) {
-                $domicilio2->idMunicipio = $request->idMunicipio2;
-            }
-            if ($request->filled('idLocalidad2')) {
-                $domicilio2->idLocalidad = $request->idLocalidad2;
-            }
-            if ($request->filled('idColonia2')) {
-                $domicilio2->idColonia = $request->idColonia2;
-            }
-            if ($request->filled('calle2')) {
-                $domicilio2->calle = $request->calle2;
-            }
-            if ($request->filled('numExterno2')) {
-                $domicilio2->numExterno = $request->numExterno2;
-            }
-            if ($request->filled('numInterno2')) {
-                $domicilio2->numInterno = $request->numInterno2;
-            }
-            $domicilio2->save();
-            $idD2 = $domicilio2->id;
-            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'update', 'descripcion' => 'Se ha actualizado un domicilio de persona física de tipo denunciado.', 'idFilaAccion' => $idD2]);
-
             $domicilio3 = Domicilio::find($request->idDireccionNotif);
             if ($request->filled('idMunicipio3')) {
                 $domicilio3->idMunicipio = $request->idMunicipio3;
@@ -872,173 +887,236 @@ class DenunciadoController extends Controller
             }
             if ($request->filled('idOcupacion')) {
                 $VariablesPersona->idOcupacion = $request->idOcupacion;
-            }
-            if ($request->filled('idEstadoCivil')) {
-                $VariablesPersona->idEstadoCivil = $request->idEstadoCivil;
-            }
-            if ($request->filled('idEscolaridad')) {
-                $VariablesPersona->idEscolaridad = $request->idEscolaridad;
-            }
-            if ($request->filled('idReligion')) {
-                $VariablesPersona->idReligion = $request->idReligion;
-            }
-            $VariablesPersona->idDomicilio  = $idD1;
-            $VariablesPersona->idInterprete = $idInterprete;
 
-            if ($request->filled('docIdentificacion')) {
-                $VariablesPersona->docIdentificacion = $request->docIdentificacion;
-            }
-            if ($request->filled('numDocIdentificacion')) {
-                $VariablesPersona->numDocIdentificacion = $request->numDocIdentificacion;
-            }
-            if ($request->filled('lugarTrabajo')) {
-                $VariablesPersona->lugarTrabajo = $request->lugarTrabajo;
-            }
-            $VariablesPersona->idDomicilioTrabajo = $idD2;
-            if ($request->filled('telefonoTrabajo')) {
-                $VariablesPersona->telefonoTrabajo = $request->telefonoTrabajo;
-            }
-            $VariablesPersona->representanteLegal = "NO APLICA";
-            $VariablesPersona->save();
-            $idVariablesPersona = $VariablesPersona->id;
-            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'variables_persona', 'accion' => 'update', 'descripcion' => 'Se ha actualizado un variables de persona física de tipo denunciado.', 'idFilaAccion' => $idVariablesPersona]);
+                if (!is_null($request->idOcupacion)) {
+                    $VariablesPersona->idOcupacion = $request->idOcupacion;
 
-            $ExtraDenunciado                     = ExtraDenunciado::find($request->idExtraDenunciado);
-            $ExtraDenunciado->idVariablesPersona = $idVariablesPersona;
-            $ExtraDenunciado->idNotificacion     = $idNotificacion;
-            if ($request->filled('idPuesto')) {
-                $ExtraDenunciado->idPuesto = $request->idPuesto;
-            }
-            if ($request->filled('alias')) {
-                $ExtraDenunciado->alias = $request->alias;
-            }
-            if ($request->filled('senasPartic')) {
-                $ExtraDenunciado->senasPartic = $request->senasPartic;
-            }
-            if ($request->filled('ingreso')) {
-                $ExtraDenunciado->ingreso = $request->ingreso;
-            }
-            if ($request->filled('periodoIngreso')) {
-                $ExtraDenunciado->periodoIngreso = $request->periodoIngreso;
-            }
-            if ($request->filled('residenciaAnterior')) {
-                $ExtraDenunciado->residenciaAnterior = $request->residenciaAnterior;
-            }
-            $ExtraDenunciado->idAbogado = null;
-            if ($request->filled('personasBajoSuGuarda')) {
-                $ExtraDenunciado->personasBajoSuGuarda = $request->personasBajoSuGuarda;
-            }
-            if ($request->esperseguidoPenalmente == 1) {
-                $ExtraDenunciado->perseguidoPenalmente = 1;
-            }
-            if ($request->filled('vestimenta')) {
-                $ExtraDenunciado->vestimenta = $request->vestimenta;
-            }
-            $ExtraDenunciado->save();
-            $idExtraDenunciado = $ExtraDenunciado->id;
-            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_denunciado', 'accion' => 'update', 'descripcion' => 'Se ha actualizado un extra denunciado de persona física de tipo denunciado.', 'idFilaAccion' => $idExtraDenunciado]);
+                    if ($request->idOcupacion == 2947) {
 
-            //Persona moral
-        } elseif ($request->esEmpresa == 1) {
-            $persona                  = Persona::find($request->idPersona);
-            $persona->nombres         = $request->nombres2;
-            $persona->fechaNacimiento = $request->fechaAltaEmpresa;
-            $persona->rfc             = $request->rfc2 . $request->homo2;
-            $persona->esEmpresa       = 1;
-            $persona->save();
-            $idPersona = $persona->id;
-            if ($request->rfcAux != $request->rfc2 . $request->homo2) {
-                Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'update', 'descripcion' => 'Se ha registrado un RFC diferente al generado por el sistema para una persona moral de tipo denunciado.', 'idFilaAccion' => $persona->id]);
-            }
-            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'update', 'descripcion' => 'Se ha actualizado una persona moral de tipo denunciado.', 'idFilaAccion' => $idPersona]);
+                        $domicilio2 = Domicilio::find($request->idDireccionTrab);
+                        if ($request->filled('idMunicipio2')) {
+                            $domicilio2->idMunicipio = 2496;
+                        }
+                        if ($request->filled('idLocalidad2')) {
+                            $domicilio2->idLocalidad = 27153;
+                        }
+                        if ($request->filled('idColonia2')) {
+                            $domicilio2->idColonia = 49172;
+                        }
+                        if ($request->filled('calle2')) {
+                            $domicilio2->calle = "SIN INFORMACION";
+                        }
+                        if ($request->filled('numExterno2')) {
+                            $domicilio2->numExterno = "S/N";
+                        }
+                        if ($request->filled('numInterno2')) {
+                            $domicilio2->numInterno = "S/N";
+                        }
+                        $domicilio2->save();
+                        $idD2 = $domicilio2->id;
 
-            $domicilio = Domicilio::find($request->idDireccion);
-            if ($request->filled('idMunicipio')) {
-                $domicilio->idMunicipio = $request->idMunicipio;
-            }
-            if ($request->filled('idLocalidad')) {
-                $domicilio->idLocalidad = $request->idLocalidad;
-            }
-            if ($request->filled('idColonia')) {
-                $domicilio->idColonia = $request->idColonia;
-            }
-            if ($request->filled('calle')) {
-                $domicilio->calle = $request->calle;
-            }
-            if ($request->filled('numExterno')) {
-                $domicilio->numExterno = $request->numExterno;
-            }
-            if ($request->filled('numInterno')) {
-                $domicilio->numInterno = $request->numInterno;
-            }
-            $domicilio->save();
-            $idD1 = $domicilio->id;
-            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'update', 'descripcion' => 'Se ha actualizado un domicilio de persona física de tipo denunciado.', 'idFilaAccion' => $idD1]);
+                        if ($request->filled('lugarTrabajo')) {
+                            $VariablesPersona->lugarTrabajo = "SIN INFORMACION";
+                        }
+                        if ($request->filled('telefonoTrabajo')) {
+                            $VariablesPersona->telefonoTrabajo = "SIN INFORMACION";
+                        }
+                        $VariablesPersona->idDomicilioTrabajo = $idD2;
+                    } else {
 
-            $domicilio3 = Domicilio::find($request->idDireccionNotif);
-            if ($request->filled('idMunicipio3')) {
-                $domicilio3->idMunicipio = $request->idMunicipio3;
-            }
-            if ($request->filled('idLocalidad3')) {
-                $domicilio3->idLocalidad = $request->idLocalidad3;
-            }
-            if ($request->filled('idColonia3')) {
-                $domicilio3->idColonia = $request->idColonia3;
-            }
-            if ($request->filled('calle3')) {
-                $domicilio3->calle = $request->calle3;
-            }
-            if ($request->filled('numExterno3')) {
-                $domicilio3->numExterno = $request->numExterno3;
-            }
-            if ($request->filled('numInterno3')) {
-                $domicilio3->numInterno = $request->numInterno3;
-            }
-            $domicilio3->save();
-            $idD3 = $domicilio3->id;
-            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'update', 'descripcion' => 'Se ha actualizado un domicilio de persona moral de tipo denunciado.', 'idFilaAccion' => $idD3]);
+                        $domicilio2 = Domicilio::find($request->idDireccionTrab);
+                        if ($request->filled('idMunicipio2')) {
+                            $domicilio2->idMunicipio = $request->idMunicipio2;
+                        }
+                        if ($request->filled('idLocalidad2')) {
+                            $domicilio2->idLocalidad = $request->idLocalidad2;
+                        }
+                        if ($request->filled('idColonia2')) {
+                            $domicilio2->idColonia = $request->idColonia2;
+                        }
+                        if ($request->filled('calle2')) {
+                            $domicilio2->calle = $request->calle2;
+                        }
+                        if ($request->filled('numExterno2')) {
+                            $domicilio2->numExterno = $request->numExterno2;
+                        }
+                        if ($request->filled('numInterno2')) {
+                            $domicilio2->numInterno = $request->numInterno2;
+                        }
+                        $domicilio2->save();
+                        $idD2 = $domicilio2->id;
+                        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'update', 'descripcion' => 'Se ha actualizado un domicilio de persona física de tipo denunciado.', 'idFilaAccion' => $idD2]);
+                        if ($request->filled('lugarTrabajo')) {
+                            $VariablesPersona->lugarTrabajo = $request->lugarTrabajo;
+                        }
+                        $VariablesPersona->idDomicilioTrabajo = $idD2;
+                        if ($request->filled('telefonoTrabajo')) {
+                            $VariablesPersona->telefonoTrabajo = $request->telefonoTrabajo;
+                        }
 
-            $notificacion              = Notificacion::find($request->idNotificacion);
-            $notificacion->idDomicilio = $idD3;
-            $notificacion->correo      = $request->correo;
-            $notificacion->telefono    = $request->telefonoN;
-            $notificacion->fax         = $request->fax;
-            $notificacion->save();
-            $idNotificacion = $notificacion->id;
-            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'notificacion', 'accion' => 'update', 'descripcion' => 'Se ha actualizado una notificación de persona moral de tipo denunciado.', 'idFilaAccion' => $idNotificacion]);
+                    }
 
-            $VariablesPersona                     = VariablesPersona::find($request->idVariablesPersona);
-            $VariablesPersona->idCarpeta          = $request->idCarpeta;
-            $VariablesPersona->idPersona          = $idPersona;
-            $VariablesPersona->idDomicilio        = $idD1;
-            $VariablesPersona->idInterprete       = null;
-            $VariablesPersona->idDomicilioTrabajo = $idD1;
-            $VariablesPersona->representanteLegal = $request->representanteLegal;
-            $VariablesPersona->save();
-            $idVariablesPersona = $VariablesPersona->id;
-            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'variables_persona', 'accion' => 'update', 'descripcion' => 'Se han actualizado un variables de persona moral de tipo denunciado.', 'idFilaAccion' => $idVariablesPersona]);
+                }
+                if ($request->filled('idEstadoCivil')) {
+                    $VariablesPersona->idEstadoCivil = $request->idEstadoCivil;
+                }
+                if ($request->filled('idEscolaridad')) {
+                    $VariablesPersona->idEscolaridad = $request->idEscolaridad;
+                }
+                if ($request->filled('idReligion')) {
+                    $VariablesPersona->idReligion = $request->idReligion;
+                }
+                $VariablesPersona->idDomicilio  = $idD1;
+                $VariablesPersona->idInterprete = $idInterprete;
 
-            $ExtraDenunciado                     = ExtraDenunciado::find($request->idExtraDenunciado);
-            $ExtraDenunciado->idVariablesPersona = $idVariablesPersona;
-            $ExtraDenunciado->idNotificacion     = $idNotificacion;
-            $ExtraDenunciado->senasPartic        = $request->senasPartic;
-            $ExtraDenunciado->save();
-            $idExtraDenunciado = $ExtraDenunciado->id;
-            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_denunciado', 'accion' => 'update', 'descripcion' => 'Se ha actualizado un extra denunciado de persona moral de tipo denunciado.', 'idFilaAccion' => $idExtraDenunciado]);
+                if ($request->filled('docIdentificacion')) {
+                    $VariablesPersona->docIdentificacion = $request->docIdentificacion;
+                }
+                if ($request->filled('numDocIdentificacion')) {
+                    $VariablesPersona->numDocIdentificacion = $request->numDocIdentificacion;
+                }
+
+                $VariablesPersona->representanteLegal = "NO APLICA";
+                $VariablesPersona->save();
+                $idVariablesPersona = $VariablesPersona->id;
+                Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'variables_persona', 'accion' => 'update', 'descripcion' => 'Se ha actualizado un variables de persona física de tipo denunciado.', 'idFilaAccion' => $idVariablesPersona]);
+
+                $ExtraDenunciado                     = ExtraDenunciado::find($request->idExtraDenunciado);
+                $ExtraDenunciado->idVariablesPersona = $idVariablesPersona;
+                $ExtraDenunciado->idNotificacion     = $idNotificacion;
+                if ($request->filled('idPuesto')) {
+                    $ExtraDenunciado->idPuesto = $request->idPuesto;
+                }
+                if ($request->filled('alias')) {
+                    $ExtraDenunciado->alias = $request->alias;
+                }
+                if ($request->filled('senasPartic')) {
+                    $ExtraDenunciado->senasPartic = $request->senasPartic;
+                }
+                if ($request->filled('ingreso')) {
+                    $ExtraDenunciado->ingreso = $request->ingreso;
+                }
+                if ($request->filled('periodoIngreso')) {
+                    $ExtraDenunciado->periodoIngreso = $request->periodoIngreso;
+                }
+                if ($request->filled('residenciaAnterior')) {
+                    $ExtraDenunciado->residenciaAnterior = $request->residenciaAnterior;
+                }
+                $ExtraDenunciado->idAbogado = null;
+                if ($request->filled('personasBajoSuGuarda')) {
+                    $ExtraDenunciado->personasBajoSuGuarda = $request->personasBajoSuGuarda;
+                }
+                if ($request->esperseguidoPenalmente == 1) {
+                    $ExtraDenunciado->perseguidoPenalmente = 1;
+                }
+                if ($request->filled('vestimenta')) {
+                    $ExtraDenunciado->vestimenta = $request->vestimenta;
+                }
+                $ExtraDenunciado->save();
+                $idExtraDenunciado = $ExtraDenunciado->id;
+                Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_denunciado', 'accion' => 'update', 'descripcion' => 'Se ha actualizado un extra denunciado de persona física de tipo denunciado.', 'idFilaAccion' => $idExtraDenunciado]);
+
+                //Persona moral
+            } elseif ($request->esEmpresa == 1) {
+                $persona                  = Persona::find($request->idPersona);
+                $persona->nombres         = $request->nombres2;
+                $persona->fechaNacimiento = $request->fechaAltaEmpresa;
+                $persona->rfc             = $request->rfc2 . $request->homo2;
+                $persona->esEmpresa       = 1;
+                $persona->save();
+                $idPersona = $persona->id;
+                if ($request->rfcAux != $request->rfc2 . $request->homo2) {
+                    Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'update', 'descripcion' => 'Se ha registrado un RFC diferente al generado por el sistema para una persona moral de tipo denunciado.', 'idFilaAccion' => $persona->id]);
+                }
+                Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'persona', 'accion' => 'update', 'descripcion' => 'Se ha actualizado una persona moral de tipo denunciado.', 'idFilaAccion' => $idPersona]);
+
+                $domicilio = Domicilio::find($request->idDireccion);
+                if ($request->filled('idMunicipio')) {
+                    $domicilio->idMunicipio = $request->idMunicipio;
+                }
+                if ($request->filled('idLocalidad')) {
+                    $domicilio->idLocalidad = $request->idLocalidad;
+                }
+                if ($request->filled('idColonia')) {
+                    $domicilio->idColonia = $request->idColonia;
+                }
+                if ($request->filled('calle')) {
+                    $domicilio->calle = $request->calle;
+                }
+                if ($request->filled('numExterno')) {
+                    $domicilio->numExterno = $request->numExterno;
+                }
+                if ($request->filled('numInterno')) {
+                    $domicilio->numInterno = $request->numInterno;
+                }
+                $domicilio->save();
+                $idD1 = $domicilio->id;
+                Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'update', 'descripcion' => 'Se ha actualizado un domicilio de persona física de tipo denunciado.', 'idFilaAccion' => $idD1]);
+
+                $domicilio3 = Domicilio::find($request->idDireccionNotif);
+                if ($request->filled('idMunicipio3')) {
+                    $domicilio3->idMunicipio = $request->idMunicipio3;
+                }
+                if ($request->filled('idLocalidad3')) {
+                    $domicilio3->idLocalidad = $request->idLocalidad3;
+                }
+                if ($request->filled('idColonia3')) {
+                    $domicilio3->idColonia = $request->idColonia3;
+                }
+                if ($request->filled('calle3')) {
+                    $domicilio3->calle = $request->calle3;
+                }
+                if ($request->filled('numExterno3')) {
+                    $domicilio3->numExterno = $request->numExterno3;
+                }
+                if ($request->filled('numInterno3')) {
+                    $domicilio3->numInterno = $request->numInterno3;
+                }
+                $domicilio3->save();
+                $idD3 = $domicilio3->id;
+                Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'update', 'descripcion' => 'Se ha actualizado un domicilio de persona moral de tipo denunciado.', 'idFilaAccion' => $idD3]);
+
+                $notificacion              = Notificacion::find($request->idNotificacion);
+                $notificacion->idDomicilio = $idD3;
+                $notificacion->correo      = $request->correo;
+                $notificacion->telefono    = $request->telefonoN;
+                $notificacion->fax         = $request->fax;
+                $notificacion->save();
+                $idNotificacion = $notificacion->id;
+                Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'notificacion', 'accion' => 'update', 'descripcion' => 'Se ha actualizado una notificación de persona moral de tipo denunciado.', 'idFilaAccion' => $idNotificacion]);
+
+                $VariablesPersona                     = VariablesPersona::find($request->idVariablesPersona);
+                $VariablesPersona->idCarpeta          = $request->idCarpeta;
+                $VariablesPersona->idPersona          = $idPersona;
+                $VariablesPersona->idDomicilio        = $idD1;
+                $VariablesPersona->idInterprete       = null;
+                $VariablesPersona->idDomicilioTrabajo = $idD1;
+                $VariablesPersona->representanteLegal = $request->representanteLegal;
+                $VariablesPersona->save();
+                $idVariablesPersona = $VariablesPersona->id;
+                Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'variables_persona', 'accion' => 'update', 'descripcion' => 'Se han actualizado un variables de persona moral de tipo denunciado.', 'idFilaAccion' => $idVariablesPersona]);
+
+                $ExtraDenunciado                     = ExtraDenunciado::find($request->idExtraDenunciado);
+                $ExtraDenunciado->idVariablesPersona = $idVariablesPersona;
+                $ExtraDenunciado->idNotificacion     = $idNotificacion;
+                $ExtraDenunciado->senasPartic        = $request->senasPartic;
+                $ExtraDenunciado->save();
+                $idExtraDenunciado = $ExtraDenunciado->id;
+                Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'extra_denunciado', 'accion' => 'update', 'descripcion' => 'Se ha actualizado un extra denunciado de persona moral de tipo denunciado.', 'idFilaAccion' => $idExtraDenunciado]);
+            }
+            Alert::success('Investigado o imputado actualizado con éxito', 'Hecho')->persistent("Aceptar");
+            //return redirect()->route('carpeta', $request->idCarpeta);
+            return redirect()->route('carpeta', $request->idCarpeta);
         }
-        Alert::success('Investigado o imputado actualizado con éxito', 'Hecho')->persistent("Aceptar");
-        //return redirect()->route('carpeta', $request->idCarpeta);
-        return redirect()->route('carpeta', $request->idCarpeta);
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        /**
+         * Remove the specified resource from storage.
+         *
+         * @param  int  $id
+         * @return \Illuminate\Http\Response
+         */
+        public function destroy($id)
+        {
+            //
+        }
     }
-}
