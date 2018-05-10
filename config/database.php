@@ -54,6 +54,21 @@ return [
             'engine' => null,
         ],
 
+        'uatuipj' => [
+            'driver' => 'mysql',
+            'host' => env('UATUIPJ_HOST', '198.108.24.155'),
+            'port' => env('UATUIPJ_PORT', '3306'),
+            'database' => env('UATUIPJ_DATABASE', 'forge'),
+            'username' => env('UATUIPJ_USERNAME', 'forge'),
+            'password' => env('UATUIPJ_PASSWORD', ''),
+            'unix_socket' => env('UATUIPJ_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => false,
+            'engine' => null,
+        ],
+
         'pgsql' => [
             'driver' => 'pgsql',
             'host' => env('DB_HOST', '127.0.0.1'),
