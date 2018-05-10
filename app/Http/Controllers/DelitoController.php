@@ -169,6 +169,7 @@ class DelitoController extends Controller
         $var          = TipifDelito::where('id', $id)->get();
         if ($carpetaNueva->isEmpty() && $var->isEmpty()) {
             return redirect()->route('home');
+
         }
 
         $domicilio = Domicilio::find($request->idDomicilio);
@@ -194,7 +195,7 @@ class DelitoController extends Controller
 
         $idD1 = $domicilio->id;
 
-        $tipifDelito                = TipifDelito::find($id);
+        $tipifDelito                = TipifDelito::find($request->idTipifDelito);
         $tipifDelito->idCarpeta     = $request->idCarpeta;
         $tipifDelito->idDelito      = $request->idDelito;
         $tipifDelito->idAgrupacion1 = $request->idAgrupacion1;
