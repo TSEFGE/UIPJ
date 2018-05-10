@@ -1,6 +1,6 @@
 @extends('template.main')
 
-@section('title', 'Libro de oficios')
+@section('title', 'CARPETAS FROM UAT')
 
 @push('css')
 	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/datatables/css/datatables.min.css') }}">
@@ -34,11 +34,12 @@
 						<thead>
 							<tr>
 								{{-- <th>No.</th> --}}
-								<th>NO. UAT</th>
+                                <th>NO. UAT</th>
+								<th>UNIDAD</th>
 								{{--<th>Tipo</th>--}}
 								<th>CREADA POR</th>
 								<th>FECHA</th>
-					            <th>Estado</th>
+					            <th>ESTADO</th>
 					            <th>ASIGNAR</th>
 							</tr>
 						</thead>
