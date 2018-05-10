@@ -36,6 +36,11 @@ class ConnectionUATController extends Controller
     }
     public function asiignarCarpeta($idCarpeta, $idFiscal)
     {
-    	//$carpeta = DB::table
+    	//Carpeta
+    	$carpeta = Carpeta2::where('id', $idCarpeta)->get();
+    	//
+    	$carpeta = DB::connection('uatuipj')->table('carpeta')->where('id', $idCarpeta)->get();
+
+    	dd($carpeta);
     }
 }
