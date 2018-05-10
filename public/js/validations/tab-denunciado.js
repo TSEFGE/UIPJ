@@ -88,7 +88,9 @@ $("#ctdenunciado").hover(function () {
 });
 
 $("#collapsePersonales2").hover(function () {
-    $(this).isValid();
+    $(this).isValid({
+        scrollToTopOnError: false,
+    });
     var count = $('#collapsePersonales2 .error').length;
     var correctos = $('#collapsePersonales2 .valid').length;
     countvacio= totalesP2;
@@ -115,7 +117,9 @@ $("#collapsePersonales2").hover(function () {
 });
 
 $("#collapseDir2").hover(function () {
-     $(this).isValid();
+     $(this).isValid({
+         scrollToTopOnError: false
+     });
     var count = $('#collapseDir2 .error').length;
     var correctos = $('#collapseDir2 .valid').length;    
      if (count == 0) {
@@ -140,7 +144,9 @@ $("#collapseDir2").hover(function () {
     
 });
 $("#collapseTrab2").hover(function () {
-     $(this).isValid();
+     $(this).isValid({
+         scrollToTopOnError: false
+     });
     var count = $('#collapseTrab2 .error').length;
     var correctos = $('#collapseTrab2 .valid').length;    
     if (count == 0) {
@@ -166,7 +172,9 @@ $("#collapseTrab2").hover(function () {
 });
  
 $("#collapseNotifs2").hover(function () {
-     $(this).isValid();
+     $(this).isValid({
+         scrollToTopOnError: false
+     });
     var count = $('#collapseNotifs2 .error').length;
     var correctos = $('#collapseNotifs2 .valid').length;    
     if (count == 0) {
@@ -192,7 +200,9 @@ $("#collapseNotifs2").hover(function () {
 
 
     $("#collapseDenun2").hover(function () {
-     $(this).isValid();
+     $(this).isValid({
+         scrollToTopOnError: false
+     });
     var count = $('#collapseDenun2 .error').length;
     var correctos = $('#collapseDenun2 .valid').length;    
     if (count == 0) {
