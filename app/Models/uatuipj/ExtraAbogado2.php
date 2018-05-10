@@ -27,16 +27,16 @@ class ExtraAbogado2 extends Model
 
     public function variablesPersona()
     {
-       return $this->belongsTo('App\Models\uatuipj\VariablesPersona');
+       return $this->belongsTo('App\Models\uatuipj\VariablesPersona2');
     }
 
     public function extraDenunciante()
     {
-       return $this->hasMany('App\Models\uatuipj\ExtraDenunciante');
+       return $this->hasMany('App\Models\uatuipj\ExtraDenunciante2');
     }
 
     public function extraDenunciado()
     {
-       return $this->hasMany('App\Models\uatuipj\ExtraDenunciado');
+       return $this->hasMany('App\Models\uatuipj\ExtraDenunciado2');
     }
 }
