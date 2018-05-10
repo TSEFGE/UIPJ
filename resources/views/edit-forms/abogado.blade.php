@@ -102,7 +102,6 @@
 			<script src="{{ asset('js/selects/origen.js') }}"></script>
 			<script src="{{ asset('js/selects/domicilio-trab.js') }}"></script>
 			<script src="{{ asset('js/selects/sisy.js') }}"></script>
-			<script src="{{ asset('js/validations/tab-abogado.js') }}"></script>
 			<script src="{{ asset('js/edit-forms/abogado-edit.js') }}"></script>
 			<script src="{{ asset('js/curp.js') }}"></script>
 			<script src="{{ asset('js/rfcFisico.js') }}"></script>
