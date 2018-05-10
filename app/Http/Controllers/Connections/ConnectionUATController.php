@@ -153,7 +153,6 @@ class ConnectionUATController extends Controller
 	        $tipifDelito->yCalle          = $delito->yCalle;
 	        $tipifDelito->calleTrasera    = $delito->calleTrasera;
 	        $tipifDelito->puntoReferencia = $delito->puntoReferencia;
-        	//dump($del);
 	        //$tipifDelito->save();
         	array_push($arrayDelitos, array('idViejo'=>$delito->id,'idNuevo'=>$tipifDelito->id));
         }
@@ -161,7 +160,7 @@ class ConnectionUATController extends Controller
         $arrayVariables = array();
         foreach($variablesPersona as $varPersona){
         	$VariablesPersonaNew            = new VariablesPersona();
-        	$VariablesPersonaNew->idCarpeta = $newCarpeta->id;
+        	$VariablesPersonaNew->idCarpeta = $carpetaNew->id;
         	$VariablesPersonaNew->idPersona = $varPersona->idPersona;
         	$VariablesPersonaNew->edad      = $varPersona->edad;
         	$VariablesPersonaNew->telefono = $varPersona->telefono;
@@ -198,7 +197,13 @@ class ConnectionUATController extends Controller
         $arrayAbogados = array();
         foreach($abogados as $abogado){
         	$ExtraAbogadoNew                     = new ExtraAbogado();
-            //$ExtraAbogadoNew->idVariablesPersona = $idVariablesPersona;//Aquí va el for
+        	//$ExtraAbogadoNew->idVariablesPersona = $idVariablesPersona;//FOR
+            for($cont=0; $cont<count($arrayVariables); $cont++){
+	        	if($arrayVariables[$cont]['idViejo'] == $abogado->idVariablesPersona){
+            		$ExtraAbogadoNew->idVariablesPersona = $arrayVariables[$cont]['idNuevo'];
+            		break;
+	        	}
+	        }
             $ExtraAbogadoNew->cedulaProf         = $abogado->cedulaProf;
             $ExtraAbogadoNew->sector             = $abogado->sector;
             $ExtraAbogadoNew->correo             = $abogado->correo;
@@ -209,7 +214,13 @@ class ConnectionUATController extends Controller
 
         foreach($autoridades as $autoridad){
         	$ExtraAutoridadNew                     = new ExtraAutoridad();
-	        //$ExtraAutoridadNew->idVariablesPersona = $idVariablesPersona;//for
+        	//$ExtraAutoridadNew->idVariablesPersona = $idVariablesPersona;//FOR
+	        for($cont=0; $cont<count($arrayVariables); $cont++){
+	        	if($arrayVariables[$cont]['idViejo'] == $autoridad->idVariablesPersona){
+            		$ExtraAutoridadNew->idVariablesPersona = $arrayVariables[$cont]['idNuevo'];
+            		break;
+	        	}
+	        }
 	        $ExtraAutoridadNew->antiguedad         = $autoridad->antiguedad;
 	        $ExtraAutoridadNew->rango              = $autoridad->rango;
 	        $ExtraAutoridadNew->horarioLaboral     = $autoridad->horarioLaboral;
@@ -220,20 +231,56 @@ class ConnectionUATController extends Controller
         foreach($denunciantes as $denunciante){
         	$ExtraDenuncianteNew                     = new ExtraDenunciante();
             //$ExtraDenuncianteNew->idVariablesPersona = $idVariablesPersona;//FOR
+            for($cont=0; $cont<count($arrayVariables); $cont++){
+	        	if($arrayVariables[$cont]['idViejo'] == $denunciante->idVariablesPersona){
+            		$ExtraDenuncianteNew->idVariablesPersona = $arrayVariables[$cont]['idNuevo'];
+            		break;
+	        	}
+	        }
             //$ExtraDenuncianteNew->idNotificacion     = $idNotificacion;//FOR
-            //$ExtraDenuncianteNew->idAbogado          = null;//FOR
+            for($cont=0; $cont<count($arrayNotifs); $cont++){
+	        	if($arrayNotifs[$cont]['idViejo'] == $denunciante->idNotificacion){
+            		$ExtraDenuncianteNew->idNotificacion = $arrayNotifs[$cont]['idNuevo'];
+            		break;
+	        	}
+	        }
+            //$ExtraDenuncianteNew->idAbogado          = null;//
+            for($cont=0; $cont<count($arrayAbogados); $cont++){
+	        	if($arrayAbogados[$cont]['idViejo'] == $denunciante->idAbogado){
+            		$ExtraDenuncianteNew->idAbogado = $arrayAbogados[$cont]['idNuevo'];
+            		break;
+	        	}
+	        }
             $ExtraDenuncianteNew->conoceAlDenunciado = $denunciante->conoceAlDenunciado;
             $ExtraDenuncianteNew->esVictima = $denunciante->esVictima;
             //$ExtraDenuncianteNew->save();
-        	array_push($arrayDenunciantes, array('idViejo'=>$denunciante->id,'idNuevo'=>$denuncianteNew->id));
+        	array_push($arrayDenunciantes, array('idViejo'=>$denunciante->id,'idNuevo'=>$ExtraDenuncianteNew->id));
         }
 
         $arrayDenunciados = array();
         foreach($denunciados as $denunciado){
         	$ExtraDenunciadoNew                     = new ExtraDenunciado();
             //$ExtraDenunciadoNew->idVariablesPersona = $idVariablesPersona;
+            for($cont=0; $cont<count($arrayVariables); $cont++){
+	        	if($arrayVariables[$cont]['idViejo'] == $denunciado->idVariablesPersona){
+            		$ExtraDenunciadoNew->idVariablesPersona = $arrayVariables[$cont]['idNuevo'];
+            		break;
+	        	}
+	        }
             //$ExtraDenunciadoNew->idNotificacion     = $idNotificacion;
+            for($cont=0; $cont<count($arrayNotifs); $cont++){
+	        	if($arrayNotifs[$cont]['idViejo'] == $denunciado->idNotificacion){
+            		$ExtraDenunciadoNew->idNotificacion = $arrayNotifs[$cont]['idNuevo'];
+            		break;
+	        	}
+	        }
             //$ExtraDenunciadoNew->idAbogado = $denunciado->idAbogado;//FOR
+            for($cont=0; $cont<count($arrayAbogados); $cont++){
+	        	if($arrayAbogados[$cont]['idViejo'] == $denunciado->idAbogado){
+            		$ExtraDenunciadoNew->idAbogado = $arrayAbogados[$cont]['idNuevo'];
+            		break;
+	        	}
+	        }
             $ExtraDenunciadoNew->idPuesto = $denunciado->idPuesto;
             $ExtraDenunciadoNew->alias = $denunciado->alias;
             $ExtraDenunciadoNew->senasPartic = $denunciado->senasPartic;
@@ -244,17 +291,41 @@ class ConnectionUATController extends Controller
             $ExtraDenunciadoNew->perseguidoPenalmente = $denunciado->perseguidoPenalmente;
             $ExtraDenunciadoNew->vestimenta = $denunciado->vestimenta;
             //$ExtraDenunciadoNew->save();
-        	array_push($arrayDenunciados, array('idViejo'=>$denunciado->id,'idNuevo'=>$denunciadoNew->id));
+        	array_push($arrayDenunciados, array('idViejo'=>$denunciado->id,'idNuevo'=>$ExtraDenunciadoNew->id));
         }
 
         foreach($acusaciones as $acusacion){
         	$acusacionNew                = new Acusacion();
-	        $acusacionNew->idCarpeta     = $newCarpeta->id;
+	        $acusacionNew->idCarpeta     = $carpetaNew->id;
 	        //$acusacionNew->idDenunciante = $acusacion->idDenunciante;//FOR
+	        for($cont=0; $cont<count($arrayDenunciantes); $cont++){
+	        	if($arrayDenunciantes[$cont]['idViejo'] == $acusacion->idDenunciante){
+            		$acusacionNew->idDenunciante = $arrayDenunciantes[$cont]['idNuevo'];
+            		break;
+	        	}
+	        }
 	        //$acusacionNew->idTipifDelito = $acusacion->idTipifDelito;//FOR
+	        for($cont=0; $cont<count($arrayDelitos); $cont++){
+	        	if($arrayDelitos[$cont]['idViejo'] == $acusacion->idTipifDelito){
+            		$acusacionNew->idTipifDelito = $arrayDelitos[$cont]['idNuevo'];
+            		break;
+	        	}
+	        }
 	        //$acusacionNew->idDenunciado  = $acusacion->idDenunciado;//FOR
+	        for($cont=0; $cont<count($arrayDenunciados); $cont++){
+	        	if($arrayDenunciados[$cont]['idViejo'] == $acusacion->idDenunciado){
+            		$acusacionNew->idDenunciado = $arrayDenunciados[$cont]['idNuevo'];
+            		break;
+	        	}
+	        }
 	        //$acusacionNew->save();
         }
-        //dump($carpeta, $delitos, $acusaciones, $variablesPersona, $notificaciones, $abogados, $autoridades, $denunciantes, $denunciados);
+        //dump($carpeta, $delitos, $variablesPersona, $notificaciones, $abogados, $autoridades, $denunciantes, $denunciados, $acusaciones);
+
+        /*
+        Si todo sale bien
+        Alert::success('Carpeta asignada con éxito', 'Hecho')->persistent("Aceptar");
+        return redirect()->route('carpetas.uat');
+        */
     }
 }
