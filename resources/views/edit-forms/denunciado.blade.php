@@ -232,7 +232,7 @@ $("#espacioNarracion").hide();
 			$('#nombreInterprete').val("{{ $personales->nombreInterprete }}");
 			$('#lugarTrabInterprete').val("{{ $personales->trabajoInterprete }}");
 			$('#idMunicipioOrigen').val({{$personales->idMunicipioOrigen}}).trigger('change');
-			$('#idReligion').val(7).trigger('change');
+			$('#idReligion').val({{$personales->idReligion}}).trigger('change');
 			$('#idEscolaridad').val({{$personales->idEscolaridad}}).trigger('change');
 			$("#telefono").val("{{ $personales->telefono }}");
 			$("#motivoEstancia").val("{{ $personales->motivoEstancia }}");	

@@ -172,6 +172,11 @@ Route::middleware(['auth'])->group(function () {
         Route::get('persona/curp/{curp}', 'RegistroController@buscarCURP')->name('persona.curp');
         Route::get('persona/curp/{curp}/{id}/edit', 'RegistroController@buscarCURPEdit')->name('comprobarEditar.curp');
 
+        /*---------Rutas para las carpetas de UAT -------------*/
+        Route::get('carpetas-uat', 'Connections\ConnectionUATController@index')->name('carpetas.uat');
+        Route::get('carpetasUatDataTable', 'Connections\ConnectionUATController@carpetasUatDataTable')->name('carpetas-uat.DataTable');
+        Route::post('asignar-carpeta/{idCarpeta}/{idFiscal}', 'Connections\ConnectionUATController@asignarCarpeta')->name('asignar.carpeta');
+
         /*---------Rutas para NOTALLLOWED ------------*/
         Route::get('/notAllowed', function () {
             return view('forms.notAllowed');
