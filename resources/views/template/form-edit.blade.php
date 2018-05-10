@@ -31,7 +31,7 @@
 
 @push('scripts')
     <script src="{{ asset('plugins/select2/js/select2.min.js')}}" ></script>
-    <script src="{{ asset('plugins/jquery-validator/js/jquery.form-validator.min.js')}}" ></script>
+    <script src="{{ asset('plugins/jquery-validator/js/jquery.form-validator.js')}}" ></script>
     <script src="{{ asset('plugins/jquery-ui/js/jquery-ui.js')}}" ></script>    
     <script src="{{ asset('js/selects/sisy.js') }}"></script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
