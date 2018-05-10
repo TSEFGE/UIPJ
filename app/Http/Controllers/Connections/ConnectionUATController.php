@@ -36,5 +36,6 @@ class ConnectionUATController extends Controller
     }
     public function asiignarCarpeta($idCarpeta, $idFiscal)
     {
+    	//$carpeta = DB::table
     }
 }
