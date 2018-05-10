@@ -280,13 +280,15 @@
                 $("#correo").addClass("vacio");
                 $("#telefonoN").addClass("vacio");     
                 $("#fax").addClass("vacio");
-/*
-                $("#alias").addClass("vacio");
-                $("#personasBajoSuGuarda").addClass("vacio");     
+                
+               
+                $("#collapseDenun2 textarea").addClass('vacio');                
+                $("#alias").addClass('vacio');
+                $("#personasBajoSuGuarda").addClass('vacio');
                 $("#ingreso").addClass("vacio");
                 $("#residenciaAnterior").addClass("vacio");
                 $("#vestimenta").addClass("vacio");
-                $("#senasPartic").addClass("vacio");*/
+                
               //  $("#narracionUno").addClass("vacio"); //para comprobar en autoridad
 
                 $("#docIdentificacion").change(function(event){
