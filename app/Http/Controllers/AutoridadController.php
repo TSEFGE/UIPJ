@@ -319,7 +319,7 @@ class AutoridadController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $persona = Persona::where('curp', $request->curp)->where('curp', '!=', NULL)->where('id', '!=', $request->idPersona)->get();
+        $persona = Persona::where('curp', $request->curp)->where('curp', '!=', null)->where('id', '!=', $request->idPersona)->get();
         if ($persona->isNotEmpty()) {
             Alert::error('Ya existe una persona registrada con ese CURP.', 'Error')->persistent("Aceptar");
             return back()->withInput();
@@ -362,19 +362,6 @@ class AutoridadController extends Controller
 
         $idD1 = $domicilio->id;
 
-        $domicilio2              = Domicilio::find($request->idDomicilioTrabajo);
-        $domicilio2->idMunicipio = $request->idMunicipio2;
-        $domicilio2->idLocalidad = $request->idLocalidad2;
-        $domicilio2->idColonia   = $request->idColonia2;
-        $domicilio2->calle       = $request->calle2;
-        $domicilio2->numExterno  = $request->numExterno2;
-        $domicilio2->numInterno  = $request->numInterno2;
-        $domicilio2->save();
-        //Agregar a bitacora
-        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'variables_persona,domicilio', 'accion' => 'update', 'descripcion' => 'Se ha actualizado Datos del Trabajo de Autoridad', 'idFilaAccion' => $domicilio2->id]);
-
-        $idD2 = $domicilio2->id;
-
         $VariablesPersona                 = VariablesPersona::find($request->idVariablesPersona);
         $VariablesPersona->idCarpeta      = $request->idCarpeta;
         $VariablesPersona->idPersona      = $idPersona;
@@ -382,10 +369,48 @@ class AutoridadController extends Controller
         $VariablesPersona->telefono       = $request->telefono;
         $VariablesPersona->motivoEstancia = $request->motivoEstancia;
         $VariablesPersona->idOcupacion    = $request->idOcupacion;
-        $VariablesPersona->idEstadoCivil  = $request->idEstadoCivil;
-        $VariablesPersona->idEscolaridad  = $request->idEscolaridad;
-        $VariablesPersona->idReligion     = $request->idReligion;
-        $VariablesPersona->idDomicilio    = $idD1;
+        if ($request->idOcupacion == 2947) {
+
+            $domicilio2              = Domicilio::find($request->idDomicilioTrabajo);
+            $domicilio2->idMunicipio = 2496;
+            $domicilio2->idLocalidad = 27153;
+            $domicilio2->idColonia   = 49172;
+            $domicilio2->calle       = "SIN INFORMACION";
+            $domicilio2->numExterno  = "S/N";
+            $domicilio2->numInterno  = "S/N";
+            $domicilio2->save();
+            //Agregar a bitacora
+            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'variables_persona,domicilio', 'accion' => 'insert', 'descripcion' => 'Se han registrado Datos del Trabajo de Autoridad', 'idFilaAccion' => $domicilio2->id]);
+
+            $idD2 = $domicilio2->id;
+
+            $VariablesPersona->lugarTrabajo       = "SIN INFORMACION";
+            $VariablesPersona->idDomicilioTrabajo = $idD2;
+            $VariablesPersona->telefonoTrabajo    = "SIN INFORMACION";
+        } else {
+
+            $domicilio2              = Domicilio::find($request->idDomicilioTrabajo);
+            $domicilio2->idMunicipio = $request->idMunicipio2;
+            $domicilio2->idLocalidad = $request->idLocalidad2;
+            $domicilio2->idColonia   = $request->idColonia2;
+            $domicilio2->calle       = $request->calle2;
+            $domicilio2->numExterno  = $request->numExterno2;
+            $domicilio2->numInterno  = $request->numInterno2;
+            $domicilio2->save();
+            //Agregar a bitacora
+            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'variables_persona,domicilio', 'accion' => 'insert', 'descripcion' => 'Se han registrado Datos del Trabajo de Autoridad', 'idFilaAccion' => $domicilio2->id]);
+
+            $idD2 = $domicilio2->id;
+
+            $VariablesPersona->lugarTrabajo       = $request->lugarTrabajo;
+            $VariablesPersona->idDomicilioTrabajo = $idD2;
+            $VariablesPersona->telefonoTrabajo    = $request->telefonoTrabajo;
+
+        }
+        $VariablesPersona->idEstadoCivil = $request->idEstadoCivil;
+        $VariablesPersona->idEscolaridad = $request->idEscolaridad;
+        $VariablesPersona->idReligion    = $request->idReligion;
+        $VariablesPersona->idDomicilio   = $idD1;
         // $VariablesPersona->docIdentificacion = $request->docIdentificacion;
         if (!is_null($request->docIdentificacion)) {
             if ($request->docIdentificacion == 'OTRO') {
@@ -395,9 +420,6 @@ class AutoridadController extends Controller
             }
         }
         $VariablesPersona->numDocIdentificacion = $request->numDocIdentificacion;
-        $VariablesPersona->lugarTrabajo         = $request->lugarTrabajo;
-        $VariablesPersona->idDomicilioTrabajo   = $idD2;
-        $VariablesPersona->telefonoTrabajo      = $request->telefonoTrabajo;
         $VariablesPersona->representanteLegal   = "NO APLICA";
         $VariablesPersona->save();
         //Agregar a bitacora
