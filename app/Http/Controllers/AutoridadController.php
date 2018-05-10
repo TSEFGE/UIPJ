@@ -13,14 +13,13 @@ use App\Models\CatEtnia;
 use App\Models\CatLengua;
 use App\Models\CatMunicipio;
 use App\Models\CatNacionalidad;
+use App\Models\CatOcupacion;
 use App\Models\CatReligion;
 use App\Models\Domicilio;
 use App\Models\ExtraAutoridad;
-use App\Models\CatOcupacion;
 use App\Models\Narracion;
 use App\Models\Persona;
 use App\Models\VariablesPersona;
-
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -105,19 +104,6 @@ class AutoridadController extends Controller
 
         $idD1 = $domicilio->id;
 
-        $domicilio2              = new Domicilio();
-        $domicilio2->idMunicipio = $request->idMunicipio2;
-        $domicilio2->idLocalidad = $request->idLocalidad2;
-        $domicilio2->idColonia   = $request->idColonia2;
-        $domicilio2->calle       = $request->calle2;
-        $domicilio2->numExterno  = $request->numExterno2;
-        $domicilio2->numInterno  = $request->numInterno2;
-        $domicilio2->save();
-        //Agregar a bitacora
-        Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'variables_persona,domicilio', 'accion' => 'insert', 'descripcion' => 'Se han registrado Datos del Trabajo de Autoridad', 'idFilaAccion' => $domicilio2->id]);
-
-        $idD2 = $domicilio2->id;
-
         $VariablesPersona                 = new VariablesPersona();
         $VariablesPersona->idCarpeta      = $request->idCarpeta;
         $VariablesPersona->idPersona      = $idPersona;
@@ -125,10 +111,50 @@ class AutoridadController extends Controller
         $VariablesPersona->telefono       = $request->telefono;
         $VariablesPersona->motivoEstancia = $request->motivoEstancia;
         $VariablesPersona->idOcupacion    = $request->idOcupacion;
-        $VariablesPersona->idEstadoCivil  = $request->idEstadoCivil;
-        $VariablesPersona->idEscolaridad  = $request->idEscolaridad;
-        $VariablesPersona->idReligion     = $request->idReligion;
-        $VariablesPersona->idDomicilio    = $idD1;
+
+        if ($request->idOcupacion == 2947) {
+
+            $domicilio2              = new Domicilio();
+            $domicilio2->idMunicipio = 2496;
+            $domicilio2->idLocalidad = 27153;
+            $domicilio2->idColonia   = 49172;
+            $domicilio2->calle       = "SIN INFORMACION";
+            $domicilio2->numExterno  = "S/N";
+            $domicilio2->numInterno  = "S/N";
+            $domicilio2->save();
+            //Agregar a bitacora
+            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'variables_persona,domicilio', 'accion' => 'insert', 'descripcion' => 'Se han registrado Datos del Trabajo de Autoridad', 'idFilaAccion' => $domicilio2->id]);
+
+            $idD2 = $domicilio2->id;
+
+            $VariablesPersona->lugarTrabajo       = "SIN INFORMACION";
+            $VariablesPersona->idDomicilioTrabajo = $idD2;
+            $VariablesPersona->telefonoTrabajo    = "SIN INFORMACION";
+        } else {
+
+            $domicilio2              = new Domicilio();
+            $domicilio2->idMunicipio = $request->idMunicipio2;
+            $domicilio2->idLocalidad = $request->idLocalidad2;
+            $domicilio2->idColonia   = $request->idColonia2;
+            $domicilio2->calle       = $request->calle2;
+            $domicilio2->numExterno  = $request->numExterno2;
+            $domicilio2->numInterno  = $request->numInterno2;
+            $domicilio2->save();
+            //Agregar a bitacora
+            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'variables_persona,domicilio', 'accion' => 'insert', 'descripcion' => 'Se han registrado Datos del Trabajo de Autoridad', 'idFilaAccion' => $domicilio2->id]);
+
+            $idD2 = $domicilio2->id;
+
+            $VariablesPersona->lugarTrabajo       = $request->lugarTrabajo;
+            $VariablesPersona->idDomicilioTrabajo = $idD2;
+            $VariablesPersona->telefonoTrabajo    = $request->telefonoTrabajo;
+
+        }
+
+        $VariablesPersona->idEstadoCivil = $request->idEstadoCivil;
+        $VariablesPersona->idEscolaridad = $request->idEscolaridad;
+        $VariablesPersona->idReligion    = $request->idReligion;
+        $VariablesPersona->idDomicilio   = $idD1;
         // $VariablesPersona->docIdentificacion = $request->docIdentificacion;
         if (!is_null($request->docIdentificacion)) {
             if ($request->docIdentificacion == 'OTRO') {
@@ -138,9 +164,6 @@ class AutoridadController extends Controller
             }
         }
         $VariablesPersona->numDocIdentificacion = $request->numDocIdentificacion;
-        $VariablesPersona->lugarTrabajo         = $request->lugarTrabajo;
-        $VariablesPersona->idDomicilioTrabajo   = $idD2;
-        $VariablesPersona->telefonoTrabajo      = $request->telefonoTrabajo;
         $VariablesPersona->representanteLegal   = "NO APLICA";
         $VariablesPersona->save();
         //Agregar a bitacora
@@ -227,32 +250,32 @@ class AutoridadController extends Controller
      */
     public function edit($idCarpeta, $idExtraAutoridad)
     {
-        $personales=DB::table('extra_autoridad', 'extra_autoridad.id', '=', $idExtraAutoridad)
-                ->join('variables_persona', 'variables_persona.id', '=', 'extra_autoridad.idVariablesPersona')
-                ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-                ->join('cat_municipio', 'cat_municipio.id', '=', 'persona.idMunicipioOrigen')
-                ->join('cat_estado', 'cat_estado.id', '=', 'cat_municipio.idEstado')
-                //->select('persona.*', 'persona.id as idPersona', 'variables_persona.*', 'variables_persona.id as idVariablesPersona', 'extra_autoridad.*', 'extra_autoridad.id $idExtraAutoridad')
-                ->select('cat_estado.id as idEstadoOrigen', 'persona.*', 'persona.id as idPersona', 'variables_persona.id as idVariablesPersona', 'variables_persona.*', 'extra_autoridad.*', 'extra_autoridad.id as idExtraAutoridad')
-                ->where('extra_autoridad.id', '=', $idExtraAutoridad)
+        $personales = DB::table('extra_autoridad', 'extra_autoridad.id', '=', $idExtraAutoridad)
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_autoridad.idVariablesPersona')
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+            ->join('cat_municipio', 'cat_municipio.id', '=', 'persona.idMunicipioOrigen')
+            ->join('cat_estado', 'cat_estado.id', '=', 'cat_municipio.idEstado')
+        //->select('persona.*', 'persona.id as idPersona', 'variables_persona.*', 'variables_persona.id as idVariablesPersona', 'extra_autoridad.*', 'extra_autoridad.id $idExtraAutoridad')
+            ->select('cat_estado.id as idEstadoOrigen', 'persona.*', 'persona.id as idPersona', 'variables_persona.id as idVariablesPersona', 'variables_persona.*', 'extra_autoridad.*', 'extra_autoridad.id as idExtraAutoridad')
+            ->where('extra_autoridad.id', '=', $idExtraAutoridad)
 
-                ->get()->first();
-        $direccion=DB::table('domicilio', 'domicilio.id', '=', $personales->idDomicilio)
-                    ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
-                    ->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
-                    ->select('cat_municipio.idEstado as idEstado', 'domicilio.*', 'domicilio.id as idDomicilio')
-                    ->where('domicilio.id', '=', $personales->idDomicilio)
-                    ->get()->first();
-        $direccionTrab=DB::table('variables_persona', 'variables_persona.idPersona', '=', $personales->idPersona)
-                    ->join('domicilio', 'domicilio.id', '=', 'variables_persona.idDomicilioTrabajo')
-                    ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
-                    ->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
-                    ->select('cat_municipio.idEstado as idEstado', 'domicilio.*', 'domicilio.id as idDomicilio')
-                    ->where('variables_persona.idPersona', '=', $personales->idPersona)
-                    ->get()->first();
+            ->get()->first();
+        $direccion = DB::table('domicilio', 'domicilio.id', '=', $personales->idDomicilio)
+            ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
+            ->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
+            ->select('cat_municipio.idEstado as idEstado', 'domicilio.*', 'domicilio.id as idDomicilio')
+            ->where('domicilio.id', '=', $personales->idDomicilio)
+            ->get()->first();
+        $direccionTrab = DB::table('variables_persona', 'variables_persona.idPersona', '=', $personales->idPersona)
+            ->join('domicilio', 'domicilio.id', '=', 'variables_persona.idDomicilioTrabajo')
+            ->join('cat_municipio', 'cat_municipio.id', '=', 'domicilio.idMunicipio')
+            ->join('cat_colonia', 'cat_colonia.id', '=', 'domicilio.idColonia')
+            ->select('cat_municipio.idEstado as idEstado', 'domicilio.*', 'domicilio.id as idDomicilio')
+            ->where('variables_persona.idPersona', '=', $personales->idPersona)
+            ->get()->first();
         //dump($personales, $direccion, $direccionTrab);
-        $carpeta=Carpeta::find($idCarpeta);
-        $numCarpeta=$carpeta->numCarpeta;
+        $carpeta    = Carpeta::find($idCarpeta);
+        $numCarpeta = $carpeta->numCarpeta;
 
         $escolaridades  = CatEscolaridad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $estados        = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
@@ -267,24 +290,24 @@ class AutoridadController extends Controller
 
         //dump($autoridades, $idCarpeta, $personales, $direccion, $direccionTrab);
 
-        $idCarpeta=$personales->idCarpeta;
+        $idCarpeta = $personales->idCarpeta;
 
         return view('edit-forms.autoridad')
-        ->with('personales', $personales)
-        ->with('direccion', $direccion)
-        ->with('direccionTrab', $direccionTrab)
-        ->with('idCarpeta', $idCarpeta)
-        ->with('numCarpeta', $numCarpeta)
-        ->with('escolaridades', $escolaridades)
-        ->with('estados', $estados)
-        ->with('municipiosVer', $municipiosVer)
-        ->with('estadoscivil', $estadoscivil)
-        ->with('etnias', $etnias)
-        ->with('lenguas', $lenguas)
-        ->with('nacionalidades', $nacionalidades)
-        ->with('ocupaciones', $ocupaciones)
-        ->with('religiones', $religiones)
-        ->with('autoridades', $autoridades);
+            ->with('personales', $personales)
+            ->with('direccion', $direccion)
+            ->with('direccionTrab', $direccionTrab)
+            ->with('idCarpeta', $idCarpeta)
+            ->with('numCarpeta', $numCarpeta)
+            ->with('escolaridades', $escolaridades)
+            ->with('estados', $estados)
+            ->with('municipiosVer', $municipiosVer)
+            ->with('estadoscivil', $estadoscivil)
+            ->with('etnias', $etnias)
+            ->with('lenguas', $lenguas)
+            ->with('nacionalidades', $nacionalidades)
+            ->with('ocupaciones', $ocupaciones)
+            ->with('religiones', $religiones)
+            ->with('autoridades', $autoridades);
     }
 
     /**
@@ -381,7 +404,7 @@ class AutoridadController extends Controller
         Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'variables_persona', 'accion' => 'update', 'descripcion' => 'Se ha actualizado Variables Persona de Autoridad', 'idFilaAccion' => $VariablesPersona->id]);
         $idVariablesPersona = $VariablesPersona->id;
 
-        $ExtraAutoridad= ExtraAutoridad::find($request->idExtraAutoridad);
+        $ExtraAutoridad                     = ExtraAutoridad::find($request->idExtraAutoridad);
         $ExtraAutoridad->idVariablesPersona = $idVariablesPersona;
         $ExtraAutoridad->antiguedad         = $request->antiguedad;
         $ExtraAutoridad->rango              = $request->rango;
@@ -393,7 +416,7 @@ class AutoridadController extends Controller
 
         Alert::success('Autoridad actualizada con éxito', 'Hecho')->persistent("Aceptar");
         //return redirect()->route('carpeta', $request->idCarpeta);
-        return redirect()->route('edit.autoridad', ['idCarpeta'=>$request->idCarpeta, 'id'=>$request->idExtraAutoridad]);
+        return redirect()->route('edit.autoridad', ['idCarpeta' => $request->idCarpeta, 'id' => $request->idExtraAutoridad]);
     }
 
     /**
