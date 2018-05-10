@@ -23,7 +23,10 @@ class ConnectionUATController extends Controller
         return view('carpetas-uat');
     }
 
-    public function asiignarCarpeta($idCarpeta, $idFiscal){
-    	
+    public function carpetasUatDataTable()
+    {
+    }
+    public function asiignarCarpeta($idCarpeta, $idFiscal)
+    {
     }
 }

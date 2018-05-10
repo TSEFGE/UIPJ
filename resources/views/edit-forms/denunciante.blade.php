@@ -269,7 +269,7 @@
 			$('#idMunicipio2').val({{$direccionTrab->idMunicipio}}).trigger('change');
 			$('#idLocalidad2').val({{$direccionTrab->idLocalidad}}).trigger('change');
 			$('#idColonia2').val({{$direccionTrab->idColonia}}).trigger('change');
-			$('#cp2').val({{$direccionTrab->codigoPostal}}).trigger('change');
+			//$('#cp2').val({{$direccionTrab->codigoPostal}}).trigger('change');
 			$('#lugarTrabajo').val("{{$personales->lugarTrabajo}}");
 			$('#telefonoTrabajo').val("{{$personales->telefonoTrabajo}}");
 			$('#calle2').val("{{$direccionTrab->calle}}");
@@ -279,7 +279,7 @@
 			$('#idMunicipio3').val({{$direccionNotif->idMunicipio}}).trigger('change');
 			$('#idLocalidad3').val({{$direccionNotif->idLocalidad}}).trigger('change');
 			$('#idColonia3').val({{$direccionNotif->idColonia}}).trigger('change');
-			$('#cp3').val({{$direccionNotif->codigoPostal}}).trigger('change');
+			//$('#cp3').val({{$direccionNotif->codigoPostal}}).trigger('change');
 			$('#calle3').val("{{$direccionNotif->calle}}");
 			$('#numExterno3').val("{{$direccionNotif->numExterno}}");
 			$('#numInterno3').val("{{$direccionNotif->numInterno}}");
