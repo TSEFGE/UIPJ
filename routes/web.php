@@ -174,7 +174,7 @@ Route::middleware(['auth'])->group(function () {
 
         /*---------Rutas para las carpetas de UAT -------------*/
         Route::get('carpetas-uat', 'ConnectionUATController@index')->name('carpetas.uat');
-
+        Route::post('asignar-carpeta/{idCarpeta}/{idFiscal}', 'ConnectionUATController@asignarCarpeta')->name('asignar.carpeta');
 
 
         /*---------Rutas para NOTALLLOWED ------------*/
