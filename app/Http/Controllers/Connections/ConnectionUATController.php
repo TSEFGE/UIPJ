@@ -44,9 +44,6 @@ class ConnectionUATController extends Controller
     	//tipif_delito
     	$delitos = DB::connection('uatuipj')->table('tipif_delito')
     		->where('idCarpeta', $idCarpeta)->get();
-    	//Acusacion
-    	$acusaciones = DB::connection('uatuipj')->table('acusacion')
-    		->where('idCarpeta', $idCarpeta)->get();
     	//Variables_persona
     	$variablesPersona = DB::connection('uatuipj')->table('variables_persona')
     		->where('idCarpeta', $idCarpeta)->get();
@@ -83,6 +80,9 @@ class ConnectionUATController extends Controller
     		->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
     		->select('extra_denunciado.id', 'extra_denunciado.idVariablesPersona', 'extra_denunciado.idNotificacion', 'extra_denunciado.idPuesto', 'extra_denunciado.alias', 'extra_denunciado.senasPartic', 'extra_denunciado.ingreso', 'extra_denunciado.periodoIngreso', 'extra_denunciado.residenciaAnterior', 'extra_denunciado.idAbogado', 'extra_denunciado.personasBajoSuGuarda', 'extra_denunciado.perseguidoPenalmente', 'extra_denunciado.vestimenta')
     		->where('variables_persona.idCarpeta', $idCarpeta)->get();
+    	//Acusacion
+    	$acusaciones = DB::connection('uatuipj')->table('acusacion')
+    		->where('idCarpeta', $idCarpeta)->get();
     	//dump($carpeta, $delitos, $acusaciones, $variablesPersona, $notificaciones, $abogados, $autoridades, $denunciantes, $denunciados);
 
     	$carpetaNew = New Carpeta();
@@ -113,9 +113,148 @@ class ConnectionUATController extends Controller
         $fechaDeterminacion          = date("Y-m-d", strtotime($fechaDeterminacionAux));
         $carpetaNew->fechaDeterminacion = $fechaDeterminacion;
         $carpetaNew->idTipoDeterminacion = $carpeta->idTipoDeterminacion;
-
+    	//dump($carpetaNew);
         //$carpeta->save();
 
-    	dump($carpetaNew);
+        //Para guardar
+        $del = array();
+        for($cont=1; $cont<=10; $cont++){
+        	array_push($del, array('idViejo'=>$cont,'idNuevo'=>$cont));
+        }
+        //Para consultar
+        for($cont=0; $cont<count($del); $cont++){
+        	if($del[$cont]['idViejo'] == 5){
+        		dump("hola".$cont);
+        	}
+        }
+        dump($del);
+
+        $arrayDelitos = array();
+        foreach($delitos as $delito){
+        	$tipifDelito                = new TipifDelito();
+	        $tipifDelito->idCarpeta     = $carpetaNew->id;
+	        $tipifDelito->idDelito      = $delito->idDelito;
+	        $tipifDelito->idAgrupacion1 = $delito->idAgrupacion1;
+	        $tipifDelito->idAgrupacion2 = $delito->idAgrupacion2;
+	        if ($delito->conViolencia === "1") {
+	            $tipifDelito->conViolencia   = 1;
+	            $tipifDelito->idArma         = $delito->idArma;
+	            $tipifDelito->idPosibleCausa = $delito->idPosibleCausa;
+	        }
+	        $tipifDelito->idModalidad   = $delito->idModalidad;
+	        $tipifDelito->formaComision = $delito->formaComision;
+	        $tipifDelito->consumacion   = $delito->consumacion;
+	        $tipifDelito->fecha           = $delito->fecha;
+	        $tipifDelito->hora            = $delito->hora;
+	        $tipifDelito->idLugar         = $delito->idLugar;
+	        $tipifDelito->idZona          = $delito->idZona;
+	        $tipifDelito->idDomicilio     = $delito->idDomicilio;
+	        $tipifDelito->entreCalle      = $delito->entreCalle;
+	        $tipifDelito->yCalle          = $delito->yCalle;
+	        $tipifDelito->calleTrasera    = $delito->calleTrasera;
+	        $tipifDelito->puntoReferencia = $delito->puntoReferencia;
+        	//dump($del);
+	        //$tipifDelito->save();
+        	array_push($arrayDelitos, array('idViejo'=>$delito->id,'idNuevo'=>$tipifDelito->id));
+        }
+
+        $arrayVariables = array();
+        foreach($variablesPersona as $varPersona){
+        	$VariablesPersonaNew            = new VariablesPersona();
+        	$VariablesPersonaNew->idCarpeta = $newCarpeta->id;
+        	$VariablesPersonaNew->idPersona = $varPersona->idPersona;
+        	$VariablesPersonaNew->edad      = $varPersona->edad;
+        	$VariablesPersonaNew->telefono = $varPersona->telefono;
+        	$VariablesPersonaNew->motivoEstancia = $varPersona->motivoEstancia;
+        	$VariablesPersonaNew->idOcupacion = $varPersona->idOcupacion;
+        	$VariablesPersonaNew->lugarTrabajo = $varPersona->lugarTrabajo;
+        	$VariablesPersonaNew->telefonoTrabajo = $varPersona->telefonoTrabajo;
+        	$VariablesPersonaNew->idDomicilioTrabajo = $varPersona->idDomicilioTrabajo;
+        	$VariablesPersonaNew->lugarTrabajo = $varPersona->lugarTrabajo;
+        	$VariablesPersonaNew->telefonoTrabajo = $varPersona->telefonoTrabajo;
+        	$VariablesPersonaNew->idEstadoCivil = $varPersona->idEstadoCivil;
+        	$VariablesPersonaNew->idEscolaridad = $varPersona->idEscolaridad;
+        	$VariablesPersonaNew->idReligion = $varPersona->idReligion;
+        	$VariablesPersonaNew->idDomicilio  = $varPersona->idDomicilio;
+        	$VariablesPersonaNew->idInterprete = 1;
+        	$VariablesPersonaNew->docIdentificacion = $varPersona->docIdentificacion;
+        	$VariablesPersonaNew->numDocIdentificacion = $varPersona->numDocIdentificacion;
+        	$VariablesPersonaNew->representanteLegal = $varPersona->representanteLegal;
+        	//$VariablesPersona->save();
+        	array_push($arrayVariables, array('idViejo'=>$varPersona->id,'idNuevo'=>$VariablesPersonaNew->id));
+        }
+
+        $arrayNotifs = array();
+        foreach($notificaciones as $notificacion){
+        	$notificacionNew              = new Notificacion();
+            $notificacionNew->idDomicilio = $notificacion->idDomicilio;
+            $notificacionNew->correo      = $notificacion->correo;
+            $notificacionNew->telefono    = $notificacion->telefono;
+            $notificacionNew->fax         = $notificacion->fax;
+            //$notificacionNew->save();
+        	array_push($arrayNotifs, array('idViejo'=>$notificacion->id,'idNuevo'=>$notificacionNew->id));
+        }
+
+        $arrayAbogados = array();
+        foreach($abogados as $abogado){
+        	$ExtraAbogadoNew                     = new ExtraAbogado();
+            //$ExtraAbogadoNew->idVariablesPersona = $idVariablesPersona;//Aquí va el for
+            $ExtraAbogadoNew->cedulaProf         = $abogado->cedulaProf;
+            $ExtraAbogadoNew->sector             = $abogado->sector;
+            $ExtraAbogadoNew->correo             = $abogado->correo;
+            $ExtraAbogadoNew->tipo               = $abogado->tipo;
+            //$ExtraAbogadoNew->save();
+        	array_push($arrayAbogados, array('idViejo'=>$abogado->id,'idNuevo'=>$abogadoNew->id));
+        }
+
+        foreach($autoridades as $autoridad){
+        	$ExtraAutoridadNew                     = new ExtraAutoridad();
+	        //$ExtraAutoridadNew->idVariablesPersona = $idVariablesPersona;//for
+	        $ExtraAutoridadNew->antiguedad         = $autoridad->antiguedad;
+	        $ExtraAutoridadNew->rango              = $autoridad->rango;
+	        $ExtraAutoridadNew->horarioLaboral     = $autoridad->horarioLaboral;
+	        //$ExtraAutoridadNew->save();
+        }
+
+        $arrayDenunciantes = array();
+        foreach($denunciantes as $denunciante){
+        	$ExtraDenuncianteNew                     = new ExtraDenunciante();
+            //$ExtraDenuncianteNew->idVariablesPersona = $idVariablesPersona;//FOR
+            //$ExtraDenuncianteNew->idNotificacion     = $idNotificacion;//FOR
+            //$ExtraDenuncianteNew->idAbogado          = null;//FOR
+            $ExtraDenuncianteNew->conoceAlDenunciado = $denunciante->conoceAlDenunciado;
+            $ExtraDenuncianteNew->esVictima = $denunciante->esVictima;
+            //$ExtraDenuncianteNew->save();
+        	array_push($arrayDenunciantes, array('idViejo'=>$denunciante->id,'idNuevo'=>$denuncianteNew->id));
+        }
+
+        $arrayDenunciados = array();
+        foreach($denunciados as $denunciado){
+        	$ExtraDenunciadoNew                     = new ExtraDenunciado();
+            //$ExtraDenunciadoNew->idVariablesPersona = $idVariablesPersona;
+            //$ExtraDenunciadoNew->idNotificacion     = $idNotificacion;
+            //$ExtraDenunciadoNew->idAbogado = $denunciado->idAbogado;//FOR
+            $ExtraDenunciadoNew->idPuesto = $denunciado->idPuesto;
+            $ExtraDenunciadoNew->alias = $denunciado->alias;
+            $ExtraDenunciadoNew->senasPartic = $denunciado->senasPartic;
+            $ExtraDenunciadoNew->ingreso = $denunciado->ingreso;
+            $ExtraDenunciadoNew->periodoIngreso = $denunciado->periodoIngreso;
+            $ExtraDenunciadoNew->residenciaAnterior = $denunciado->residenciaAnterior;
+            $ExtraDenunciadoNew->personasBajoSuGuarda = $denunciado->personasBajoSuGuarda;
+            $ExtraDenunciadoNew->perseguidoPenalmente = $denunciado->perseguidoPenalmente;
+            $ExtraDenunciadoNew->vestimenta = $denunciado->vestimenta;
+            //$ExtraDenunciadoNew->save();
+        	array_push($arrayDenunciados, array('idViejo'=>$denunciado->id,'idNuevo'=>$denunciadoNew->id));
+        }
+
+        foreach($acusaciones as $acusacion){
+        	$acusacionNew                = new Acusacion();
+	        $acusacionNew->idCarpeta     = $newCarpeta->id;
+	        //$acusacionNew->idDenunciante = $acusacion->idDenunciante;//FOR
+	        //$acusacionNew->idTipifDelito = $acusacion->idTipifDelito;//FOR
+	        //$acusacionNew->idDenunciado  = $acusacion->idDenunciado;//FOR
+	        //$acusacionNew->save();
+        }
+        //dump($carpeta, $delitos, $acusaciones, $variablesPersona, $notificaciones, $abogados, $autoridades, $denunciantes, $denunciados);
     }
 }
