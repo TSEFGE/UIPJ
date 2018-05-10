@@ -124,5 +124,5 @@ $(document).ready(function() {
             $("#otroDocumento").removeClass("error");
             $("#otroDocumento").removeClass("valid");
         }
-    });
+    });    
 });
