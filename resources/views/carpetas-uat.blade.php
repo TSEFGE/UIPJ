@@ -66,6 +66,7 @@
 
             <!-- Modal body -->
             <div class="modal-body">
+				{!! Form::open(['route' => 'asignar.carpeta', 'method' => 'POST'])  !!}
 				<div class="form-group col" id="denunciantes">
 
 				</div>
@@ -76,8 +77,8 @@
 
 				</div>
                 <div class="form-group col">
-                    {!! Form::label('user', 'ASIGNAR A:') !!}
-                    {!! Form::select('user', $users,null, ['id'=>'user','class' => 'form-control', 'required','placeholder'=>'Seleccione un fiscal']) !!}
+                    {!! Form::label('idFiscal', 'ASIGNAR A:') !!}
+                    {!! Form::select('idFiscal', $users,null, ['id'=>'user','class' => 'form-control', 'required','placeholder'=>'Seleccione un fiscal']) !!}
                 </div>
 
             </div>
@@ -85,7 +86,10 @@
             <!-- Modal footer -->
             <div class="modal-footer">
 				<button type="button" class="btn" data-dismiss="modal">CANCELAR</button>
-                <button type="button" id="asignarAUIPJ" name="" val="" class="btn" data-dismiss="modal">ASIGNAR</button>
+				{!! Form::hidden('idCarpeta', null) !!}
+
+				{!! Form::submit('Guardar', ['class' => 'btn btn-primary', 'id' => 'btn-submit']) !!}
+				{!! Form::close() !!}
             </div>
         </div>
 
@@ -131,7 +135,10 @@
 			   nombre=this.name;
 			   numero=this.value;
 			   console.log(numero);
+			   var idCarpeta="";
 				$.get(route('datos.CarpetaUAT', numero), function(response, estado){
+				idCarpeta=response['idCarpeta'];
+				console.log('idCarpeta: '+idCarpeta);
 				console.log(response['denunciantes'].length);
 				numTe=response['denunciantes'].length;
 				numDo=response['denunciados'].length;
@@ -153,25 +160,8 @@
 				}
 				$( "#acusaciones" ).append(acusaciones);
 
-
-
+				$( "input[name*='idCarpeta']" ).val(idCarpeta);
 				});
 			   $("#carpeta h3").text(nombre);
-			   $('#asignarAUIPJ').click( function() {
-				   console.log('enviado');
-				  $('<form action='+route('asignar.carpeta',{idCarpeta:45,idFiscal:1})+'method="POST" style="display: none;">').appendTo('body').submit();
-				});
-			   // swal({
-			   //         title: "¿Seguro que desea eliminar la sucursal "+nombre+"?",
-			   //         text: "No podrá deshacer este paso.",
-			   //         type: "warning",
-			   //         showCancelButton: true,
-			   //         cancelButtonText: "Cancelar",
-			   //         confirmButtonColor: "#DD6B55",
-			   //         confirmButtonText: "Confirmar",
-			   //         closeOnConfirm: false
-			   // }, function(isConfirm){
-			   //
-			   // });
 			});
 @endpush

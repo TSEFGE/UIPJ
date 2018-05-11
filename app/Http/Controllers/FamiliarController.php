@@ -59,7 +59,7 @@ class FamiliarController extends Controller
             ->join('extra_denunciado', 'extra_denunciado.idVariablesPersona', '=', 'variables_persona.idPersona')
             ->where('variables_persona.idPersona', '=', $familiar->idPersona)
             ->get();
-            
+
         if (!empty($denunciado)) {
             Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'familiar', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un nuevo familiar de denunciado.', 'idFilaAccion' => $familiar->id]);
         } else {
@@ -71,47 +71,50 @@ class FamiliarController extends Controller
         return redirect()->route('new.familiar', $request->idCarpeta);
     }
 
-    public function edit($idCarpeta, $familiar)
+    public function edit($idCarpeta, $id)
     {
         $ocupaciones   = CatOcupacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $involucrados1 = DB::table('extra_denunciado')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->select('persona.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+            ->select('persona.id as idPersona', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
             ->where('variables_persona.idCarpeta', '=', $idCarpeta)
             ->where('persona.esEmpresa', '=', 0)
             ->orderBy('persona.nombres', 'ASC');
         $involucrados = DB::table('extra_denunciante')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->select('persona.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+            ->select('persona.id as idPersona', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
             ->where('variables_persona.idCarpeta', '=', $idCarpeta)
             ->where('persona.esEmpresa', '=', 0)
             ->orderBy('persona.nombres', 'ASC')
             ->union($involucrados1)
             ->get()->first();
-            
+
+        $idInvolucrado = $involucrados->idPersona;
+
         dump($involucrados);
         $datosfamiliar = DB::table('familiar')
             ->join('persona', 'persona.id', '=', 'familiar.idPersona')
-            ->select('persona.id', 'familiar.parentesco', 'familiar.idOcupacion', 'familiar.nombres', 'familiar.primerAp', 'familiar.segundoAp')
-            ->where('familiar.id', '=', $familiar)
+            ->select('persona.id as idFamiliar', 'familiar.parentesco', 'familiar.idOcupacion', 'familiar.nombres', 'familiar.primerAp', 'familiar.segundoAp')
+            ->where('familiar.id', '=', $id)
             ->get()->first();
-             dump($datosfamiliar);
+        dump($datosfamiliar);
         return view('edit-forms.familiar')
             ->with('idCarpeta', $idCarpeta)
-            ->with('familiar', $familiar)
+            ->with('id', $id)
             ->with('involucrados', $involucrados)
             ->with('ocupaciones', $ocupaciones)
+            ->with('idInvolucrado', $idInvolucrado)
             ->with('datosfamiliar', $datosfamiliar);
-       
+
     }
 
     public function update(Request $request, $id)
     {
         $carpetaNueva = Carpeta::where('id', $request->idCarpeta)->where('idFiscal', Auth::user()->id)->get();
-        $var = Familiar::where('id', $id)->get();
-        if ($carpetaNueva->isEmpty() && $var->isEmpty()){
+        $var          = Familiar::where('id', $id)->get();
+        if ($carpetaNueva->isEmpty() && $var->isEmpty()) {
             return redirect()->route('home');
         }
 
