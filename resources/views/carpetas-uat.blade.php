@@ -76,6 +76,9 @@
 				<div class="form-group col" id="acusaciones">
 
 				</div>
+				<div class="form-group col" id="motivo">
+
+				</div>
                 <div class="form-group col">
                     {!! Form::label('idFiscal', 'ASIGNAR A:') !!}
                     {!! Form::select('idFiscal', $users,null, ['id'=>'user','class' => 'form-control', 'required','placeholder'=>'Seleccione un fiscal']) !!}
@@ -138,6 +141,8 @@
 			   var idCarpeta="";
 				$.get(route('datos.CarpetaUAT', numero), function(response, estado){
 				idCarpeta=response['idCarpeta'];
+				motivo=response['observacionesEstatus']['observacionesEstatus'];
+				//motivo=response['motivo'][0]['observacionesEstatus'];
 				console.log('idCarpeta: '+idCarpeta);
 				console.log(response['denunciantes'].length);
 				numTe=response['denunciantes'].length;
@@ -159,6 +164,7 @@
 					// $( "#acusaciones" ).append("Entre calle: "+response['acusaciones'][i]['entreCalle']);
 				}
 				$( "#acusaciones" ).append(acusaciones);
+				$( "#motivo").html('OBSERVACIONES:'+motivo+'</br>');
 
 				$( "input[name*='idCarpeta']" ).val(idCarpeta);
 				});

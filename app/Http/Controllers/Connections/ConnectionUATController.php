@@ -69,12 +69,13 @@ class ConnectionUATController extends Controller
                         ->select('tipif_delito.conViolencia', 'tipif_delito.consumacion', 'tipif_delito.fecha', 'tipif_delito.hora', 'tipif_delito.entreCalle', 'tipif_delito.yCalle', 'tipif_delito.puntoReferencia', 'uipj.cat_delito.nombre as delito')
                         ->whereIN('acusacion.id', Acusacion2::where('idCarpeta', $id)->select('id')->get())
                         ->get();
-        return ['respone'=>true,'idCarpeta'=>$id,'denunciantes'=>$denunciantes,'denunciados'=>$denunciados,'acusaciones'=>$acusaciones];
+        $observacionesEstatus=Carpeta2::select('observacionesEstatus')->where('id', $id)->get()->first();
+        return ['respone'=>true,'observacionesEstatus'=>$observacionesEstatus,'idCarpeta'=>$id,'denunciantes'=>$denunciantes,'denunciados'=>$denunciados,'acusaciones'=>$acusaciones];
     }
     public function asignarCarpeta(Request $request)
     {
-    	$idCarpeta = $request->idCarpeta;
-    	$idFiscal = $request->idFiscal;
+        $idCarpeta = $request->idCarpeta;
+        $idFiscal = $request->idFiscal;
         //Carpeta
         $carpeta = Carpeta2::where('id', '=', $idCarpeta)->first();
         //$carpeta = DB::connection('uatuipj')->table('carpeta')->where('id', $idCarpeta)->get();
@@ -370,7 +371,7 @@ class ConnectionUATController extends Controller
             //$narracionNew->idInvolucrado = $ExtraDenunciante->id;//FOR
             if ($narracion->tipoInvolucrado == 1) {
                 for ($cont=0; $cont<count($arrayDenunciantes); $cont++) {
-                    if ($arrayDenunnciantes[$cont]['idViejo'] == $narracion->idInvolucrado) {
+                    if ($arrayDenunciantes[$cont]['idViejo'] == $narracion->idInvolucrado) {
                         $narracionNew->idInvolucrado = $arrayDenunciantes[$cont]['idNuevo'];
                         break;
                     }
