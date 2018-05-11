@@ -93,4 +93,46 @@ $(document).ready(function() {
             $("#otroDocumento").removeClass("valid");
         }
     });
+    $("#otroDocumento").keyup(function() {
+        var nombreOtro = $("#otroDocumento").val();
+        console.log(nombreOtro);
+        if (nombreOtro == "CREDENCIAL DE ELECTOR" || nombreOtro == "INE" || nombreOtro == "IFE") {
+            console.log("entra a otro doc");
+            $("#otrodocto").hide();
+            $("#otroDocumento").removeClass("vacio");
+            $("#otroDocumento").removeClass("error");
+            $("#otroDocumento").removeClass("valid");
+            $("#docIdentificacion").val("CREDENCIAL DE ELECTOR").trigger('change');
+        } else if (nombreOtro == "PASAPORTE") {
+            $("#otrodocto").hide();
+            $("#otroDocumento").removeClass("vacio");
+            $("#otroDocumento").removeClass("error");
+            $("#otroDocumento").removeClass("valid");
+            $("#docIdentificacion").val("PASAPORTE").trigger('change');
+        } else if (nombreOtro == "CARTILLA MILITAR") {
+            $("#otrodocto").hide();
+            $("#otroDocumento").removeClass("vacio");
+            $("#otroDocumento").removeClass("error");
+            $("#otroDocumento").removeClass("valid");
+            $("#docIdentificacion").val("CARTILLA MILITAR").trigger('change');
+        } else if (nombreOtro == "LICENCIA PARA CONDUCIR" || nombreOtro == "LICENCIA DE MANEJAR" || nombreOtro == "LICENCIA DE MANEJO") {
+            $("#otrodocto").hide();
+            $("#otroDocumento").removeClass("vacio");
+            $("#otroDocumento").removeClass("error");
+            $("#otroDocumento").removeClass("valid");
+            $("#docIdentificacion").val("LICENCIA PARA CONDUCIR").trigger('change');
+        } else if (nombreOtro == "CREDENCIAL ESCOLAR" || nombreOtro == "CREDENCIAL DE LA ESCUELA") {
+            $("#otrodocto").hide();
+            $("#otroDocumento").removeClass("vacio");
+            $("#otroDocumento").removeClass("error");
+            $("#otroDocumento").removeClass("valid");
+            $("#docIdentificacion").val("CREDENCIAL ESCOLAR").trigger('change');
+        } else if (nombreOtro == "VISA") {
+            $("#otrodocto").hide();
+            $("#otroDocumento").removeClass("vacio");
+            $("#otroDocumento").removeClass("error");
+            $("#otroDocumento").removeClass("valid");
+            $("#docIdentificacion").val("VISA").trigger('change');
+        }
+    });
 });
