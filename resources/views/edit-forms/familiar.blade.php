@@ -39,4 +39,8 @@
 @push('docready-js')
 $('#idPersona').val({{$involucrados->idPersona}}).trigger('change');
 $('#nombres').val("{{$datosfamiliar->nombres}}");
+$('#primerAp').val("{{$datosfamiliar->primerAp}}");
+$('#segundoAp').val("{{$datosfamiliar->segundoAp}}");
+$('#parentesco').val("{{$datosfamiliar->parentesco}}").trigger('change');
+$('#idOcupacion').val({{$datosfamiliar->idOcupacion}}).trigger('change');
 @endpush
