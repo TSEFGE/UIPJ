@@ -75,7 +75,7 @@ $('#tdenunciado.nav-tabs a').on('hidden.bs.tab', function(event){
 
 $("#ctdenunciado").hover(function () { 
     //totalesP2 = $('#collapsePersonales2 .vacio').length;
-    totalesDenun = $('#lol .vacio').length;
+   
 	//totalesD2 = $("#collapseDir2 .vacio").length;
     correcto = $('#tdenunciado .correcto').length;
     if (correcto == tabs) {
@@ -89,6 +89,7 @@ $("#ctdenunciado").hover(function () {
 
 $("#collapsePersonales2").hover(function () {
     $(this).isValid();
+    totalesDenun = $('#lol .vacio').length;
     var count = $('#collapsePersonales2 .error').length;
     var correctos = $('#collapsePersonales2 .valid').length;
     countvacio= totalesP2;
