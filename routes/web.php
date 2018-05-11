@@ -24,11 +24,11 @@ Route::middleware(['auth'])->group(function () {
     /*---------Rutas para carpeta-------------*/
     Route::get('/iniciar-carpeta', 'CarpetaController@showForm')->name('inicio');
     Route::post('store-carpeta', 'CarpetaController@storeCarpeta')->name('store.carpeta');
-    Route::get('/carpeta-inicial/{id}', 'CarpetaController@index')->name('carpeta');
-    Route::get('carpeta/{id}', [
+    Route::get('/carpeta/{id}', 'CarpetaController@index')->name('carpeta');
+    /*Route::get('carpeta/{id}', [
         'uses' => 'CarpetaController@verDetalle',
         'as'   => 'view.carpeta',
-    ]);
+    ]);*/
 
     /*---------Rutas para denunciante-------------*/
     Route::get('carpeta/{idCarpeta}/agregar-denunciante', 'DenuncianteController@showForm')->name('new.denunciante');
