@@ -5,7 +5,12 @@
 		@endif
 		<div class="form-group">
 			{!! Form::label('idPersona', 'Familiar de', ['class' => 'col-form-label-sm']) !!}
-			
+			<select name="idPersona" id="idPersona" class="form-control form-control-sm" required>
+				<option value="">Seleccione un involucrado</option>
+				@foreach($involucs as $involuc)
+				<option value="{{ $involuc->id }}">{{ $involuc->nombres." ".$involuc->primerAp." ".$involuc->segundoAp }}</option>
+				@endforeach
+			</select>
 		</div>
 	</div>
 	<div class="col-4">

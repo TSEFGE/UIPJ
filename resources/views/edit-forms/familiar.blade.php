@@ -3,8 +3,8 @@
 @section('title', 'Editar Familiar')
 
 @section('contenido')
-{!! Form::open(['route' => ['update.familiar', $idCarpeta, $id], 'method' => 'PUT'])  !!}
-	<input type="hidden" name="idInvolucrado" value="{{$involucrados->idPersona}}">
+{!! Form::open(['route' => ['update.familiar', $id], 'method' => 'PUT'])  !!}
+	<input type="hidden" name="idInvolucrado" value="{{$id}}">
 	<input type="hidden" name="idFamiliar" value="{{$datosfamiliar->idFamiliar}}">
 	<div class="card-header">
 		<div class="row">
@@ -37,7 +37,7 @@
 	{!! Form::close() !!}
 @endsection
 @push('docready-js')
-$('#idPersona').val({{$involucrados->idPersona}}).trigger('change');
+
 $('#nombres').val("{{$datosfamiliar->nombres}}");
 $('#primerAp').val("{{$datosfamiliar->primerAp}}");
 $('#segundoAp').val("{{$datosfamiliar->segundoAp}}");

@@ -77,21 +77,21 @@ class FamiliarController extends Controller
         $involucrados1 = DB::table('extra_denunciado')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->select('persona.id as idPersona', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+            ->select('persona.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
             ->where('variables_persona.idCarpeta', '=', $idCarpeta)
             ->where('persona.esEmpresa', '=', 0)
             ->orderBy('persona.nombres', 'ASC');
-        $involucrados = DB::table('extra_denunciante')
+        $involucs = DB::table('extra_denunciante')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->select('persona.id as idPersona', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+            ->select('persona.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
             ->where('variables_persona.idCarpeta', '=', $idCarpeta)
             ->where('persona.esEmpresa', '=', 0)
             ->orderBy('persona.nombres', 'ASC')
             ->union($involucrados1)
-            ->get()->first();
+            ->get();
 
-        $idInvolucrado = $involucrados->idPersona;
+        //$idInvolucrado = $involucs->idPersona;
 
         //dump($involucrados);
         $datosfamiliar = DB::table('familiar')
@@ -103,9 +103,9 @@ class FamiliarController extends Controller
         return view('edit-forms.familiar')
             ->with('idCarpeta', $idCarpeta)
             ->with('id', $id)
-            ->with('involucrados', $involucrados)
+            ->with('involucs', $involucs)
             ->with('ocupaciones', $ocupaciones)
-            ->with('idInvolucrado', $idInvolucrado)
+            //->with('idInvolucrado', $idInvolucrado)
             ->with('datosfamiliar', $datosfamiliar);
 
     }
