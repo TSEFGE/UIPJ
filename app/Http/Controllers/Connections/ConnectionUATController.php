@@ -69,8 +69,8 @@ class ConnectionUATController extends Controller
                         ->select('tipif_delito.conViolencia', 'tipif_delito.consumacion', 'tipif_delito.fecha', 'tipif_delito.hora', 'tipif_delito.entreCalle', 'tipif_delito.yCalle', 'tipif_delito.puntoReferencia', 'uipj.cat_delito.nombre as delito')
                         ->whereIN('acusacion.id', Acusacion2::where('idCarpeta', $id)->select('id')->get())
                         ->get();
-        $motivo=Carpeta2::select('observacionesEstatus')->where('id', $id)->get();
-        return ['respone'=>true,'motivo'=>$motivo,'idCarpeta'=>$id,'denunciantes'=>$denunciantes,'denunciados'=>$denunciados,'acusaciones'=>$acusaciones];
+        $observacionesEstatus=Carpeta2::select('observacionesEstatus')->where('id', $id)->get()->first();
+        return ['respone'=>true,'observacionesEstatus'=>$observacionesEstatus,'idCarpeta'=>$id,'denunciantes'=>$denunciantes,'denunciados'=>$denunciados,'acusaciones'=>$acusaciones];
     }
     public function asignarCarpeta(Request $request)
     {

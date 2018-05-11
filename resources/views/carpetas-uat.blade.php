@@ -141,7 +141,8 @@
 			   var idCarpeta="";
 				$.get(route('datos.CarpetaUAT', numero), function(response, estado){
 				idCarpeta=response['idCarpeta'];
-				motivo=response['motivo'][0]['observacionesEstatus'];
+				motivo=response['observacionesEstatus']['observacionesEstatus'];
+				//motivo=response['motivo'][0]['observacionesEstatus'];
 				console.log('idCarpeta: '+idCarpeta);
 				console.log(response['denunciantes'].length);
 				numTe=response['denunciantes'].length;
@@ -163,7 +164,7 @@
 					// $( "#acusaciones" ).append("Entre calle: "+response['acusaciones'][i]['entreCalle']);
 				}
 				$( "#acusaciones" ).append(acusaciones);
-				$( "#motivo").html(motivo+'</br>');
+				$( "#motivo").html('OBSERVACIONES:'+motivo+'</br>');
 
 				$( "input[name*='idCarpeta']" ).val(idCarpeta);
 				});
