@@ -29,5 +29,9 @@
 			</div>
 		</div>
 	</div>
+	{!! Form::hidden('idInvolucrado', ($involucrados->id)) !!}
 	{!! Form::close() !!}
 @endsection
+@push('docready-js')
+//$('#idPersona').val({{$involucrados->id}}).trigger('change');
+@endpush

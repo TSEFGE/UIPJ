@@ -89,20 +89,22 @@ class FamiliarController extends Controller
             ->where('persona.esEmpresa', '=', 0)
             ->orderBy('persona.nombres', 'ASC')
             ->union($involucrados1)
-            ->get();
-
+            ->get()->first();
+            
+        dump($involucrados);
         $datosfamiliar = DB::table('familiar')
             ->join('persona', 'persona.id', '=', 'familiar.idPersona')
             ->select('persona.id', 'familiar.parentesco', 'familiar.idOcupacion', 'familiar.nombres', 'familiar.primerAp', 'familiar.segundoAp')
             ->where('familiar.id', '=', $familiar)
-            ->get();
+            ->get()->first();
+             dump($datosfamiliar);
         return view('edit-forms.familiar')
             ->with('idCarpeta', $idCarpeta)
             ->with('familiar', $familiar)
             ->with('involucrados', $involucrados)
             ->with('ocupaciones', $ocupaciones)
             ->with('datosfamiliar', $datosfamiliar);
-
+       
     }
 
     public function update(Request $request, $id)
