@@ -15,7 +15,7 @@ class Carpeta2 extends Model
      *
      * @var array
      */
-    
+
     public $fillable = [
         'id',
         'idUnidad',
@@ -35,21 +35,22 @@ class Carpeta2 extends Model
         'fechaDeterminacion',
         'observacionesEstatus',
         'asignada',
-        'nombreFiscalUat'
+        'nombreFiscalUat',
+        'numCarpetaUat'
     ];
 
     public function acusaciones()
     {
-       return $this->hasMany('App\Models\uatuipj\Acusacion2');
+        return $this->hasMany('App\Models\uatuipj\Acusacion2');
     }
 
     public function variablesPersona()
     {
-       return $this->hasMany('App\Models\uatuipj\VariablesPersona2');
+        return $this->hasMany('App\Models\uatuipj\VariablesPersona2');
     }
 
     public function tipifDelitos()
     {
-       return $this->hasMany('App\Models\uatuipj\TipifDelito2');
+        return $this->hasMany('App\Models\uatuipj\TipifDelito2');
     }
 }

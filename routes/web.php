@@ -24,11 +24,11 @@ Route::middleware(['auth'])->group(function () {
     /*---------Rutas para carpeta-------------*/
     Route::get('/iniciar-carpeta', 'CarpetaController@showForm')->name('inicio');
     Route::post('store-carpeta', 'CarpetaController@storeCarpeta')->name('store.carpeta');
-    Route::get('/carpeta-inicial/{id}', 'CarpetaController@index')->name('carpeta');
-    Route::get('carpeta/{id}', [
+    Route::get('/carpeta/{id}', 'CarpetaController@index')->name('carpeta');
+    /*Route::get('carpeta/{id}', [
         'uses' => 'CarpetaController@verDetalle',
         'as'   => 'view.carpeta',
-    ]);
+    ]);*/
 
     /*---------Rutas para denunciante-------------*/
     Route::get('carpeta/{idCarpeta}/agregar-denunciante', 'DenuncianteController@showForm')->name('new.denunciante');
@@ -155,6 +155,7 @@ Route::middleware(['auth'])->group(function () {
 
         /*---------Rutas para los selects dinámicos-------------*/
         Route::get('municipios/{id}', 'RegistroController@getMunicipios')->name('get.municipios');
+        Route::get('carpetaUAT/{id}', 'Connections\ConnectionUATController@carpetauat')->name('datos.CarpetaUAT');
         Route::get('localidades/{id}', 'RegistroController@getLocalidades')->name('get.localidades');
         Route::get('colonias/{cp}', 'RegistroController@getColonias')->name('get.colonias');
         Route::get('colonias2/{id}', 'RegistroController@getColonias2')->name('get.colonias2');
