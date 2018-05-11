@@ -943,16 +943,16 @@
         },
         {
             "name": "laravelcollective/html",
-            "version": "v5.6.7",
+            "version": "v5.6.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/LaravelCollective/html.git",
-                "reference": "38f2c6ff0d3dfc497175a5cff5e24b3937f6e2c9"
+                "reference": "42c0854e00d6bb3346883d122b444fbf15a13ecb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/38f2c6ff0d3dfc497175a5cff5e24b3937f6e2c9",
-                "reference": "38f2c6ff0d3dfc497175a5cff5e24b3937f6e2c9",
+                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/42c0854e00d6bb3346883d122b444fbf15a13ecb",
+                "reference": "42c0854e00d6bb3346883d122b444fbf15a13ecb",
                 "shasum": ""
             },
             "require": {
@@ -1007,7 +1007,7 @@
             ],
             "description": "HTML and Form Builders for the Laravel Framework",
             "homepage": "https://laravelcollective.com",
-            "time": "2018-04-26T16:09:18+00:00"
+            "time": "2018-05-10T17:15:15+00:00"
         },
         {
             "name": "laraveles/spanish",
@@ -1320,7 +1320,7 @@
                 "rfc",
                 "rfc mexico"
             ],
-            "time": "2018-04-26 17:20:54"
+            "time": "2018-04-26T17:20:54+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -2980,7 +2980,7 @@
             "dist": {
                 "type": "path",
                 "url": "paquetes/uipj/rfc",
-                "reference": "4bf0d8e6cc9f576f81d9ee3e0048fc54ce70fda8",
+                "reference": "ec57b1d8a0ad50e551a1edd7c99fd3105cede0ae",
                 "shasum": null
             },
             "require": {

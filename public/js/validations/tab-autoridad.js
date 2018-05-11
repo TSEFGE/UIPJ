@@ -54,8 +54,7 @@ $('#tabsautoridad.nav-tabs a').on('hidden.bs.tab', function(event){
 	tabs = $("#tabsautoridad .visible").length;
 	//console.log("tabs", tabs);
 });
-$("#ctautoridad").hover(function(){
-	totalesP = $('#collapsePersonales3 .vacio').length;
+$("#ctautoridad").hover(function(){	
 	correcto = $('#tabsautoridad .correcto').length;
 	if (correcto == tabs) {
 		$("#btn-submit").prop('disabled', false);
@@ -67,6 +66,7 @@ $("#ctautoridad").hover(function(){
 
 $('#collapsePersonales3').hover(function(){
 	$(this).isValid();
+	totalesP = $('#collapsePersonales3 .vacio').length;
 	var count = $('#collapsePersonales3 .error').length;
 	var correctos = $('#collapsePersonales3 .valid').length;
 	if (count == 0) {

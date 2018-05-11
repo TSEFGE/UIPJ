@@ -9,7 +9,7 @@
         </thead>
         <tbody>
             @if(count($familiares)==0)
-                <tr><td colspan="4" class="text-center">Sin registros</td></tr>
+                <tr><td colspan="5" class="text-center">Sin registros</td></tr>
             @else
                 @foreach($familiares as $familiar)
                     <tr>

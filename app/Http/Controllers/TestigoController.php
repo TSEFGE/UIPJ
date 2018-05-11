@@ -285,6 +285,7 @@ class TestigoController extends Controller
                 ->join('cat_municipio', 'cat_municipio.id', '=', 'persona.idMunicipioOrigen')
             //->join('cat_estado','cat_estado.id','=','cat_municipio.idEstado')
                 ->select('extra_testigo.id as $idExtraTestigo', 'cat_municipio.idEstado as idEstado', 'persona.*', 'persona.id as idPersona', 'variables_persona.id as idVariablesPersona', 'variables_persona.*', 'extra_testigo.idNotificacion as idNotificacion', 'interprete.id as idInterprete', 'interprete.nombre as nombreInterprete', 'interprete.organizacion as trabajoInterprete')
+                ->where('extra_testigo.id', '=', $idExtraTestigo)
                 ->get()->first();
             //dd($personales);
 
@@ -347,7 +348,7 @@ class TestigoController extends Controller
 
     public function update(Request $request, $id)
     {
-        $persona = Persona::where('curp', $request->curp)->where('curp', '!=', null)->where('id', '!=', $request->idPersona)->get();
+        $persona = Persona::where('curp', $request->curp)->where('curp', '!=', null)->where('id', '!=', $request->idPersona)->get();        
         if ($persona->isNotEmpty()) {
             Alert::error('Ya existe una persona registrada con ese CURP.', 'Error')->persistent("Aceptar");
             return back()->withInput();
@@ -544,9 +545,9 @@ class TestigoController extends Controller
 
             //Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'narracion', 'accion' => 'update', 'descripcion' => 'Se ha actualizado  narracion de persona física de tipo testigo.', 'idFilaAccion' => $narracion->id]);
 
-            Alert::success('Testigo actualizado con éxito', 'Hecho')->persistent("Aceptar");
-            //return redirect()->route('carpeta', $request->idCarpeta);
-            return redirect()->route('edit.testigo', ['idCarpeta' => $request->idCarpeta, '$idExtraTestigo' => $request->idExtraTestigo]);
+            Alert::success('Testigo actualizado con éxito', 'Hecho')->persistent("Aceptar");            
+            return redirect()->route('carpeta', $request->idCarpeta);
+            //return redirect()->route('edit.testigo', ['idCarpeta' => $request->idCarpeta, '$idExtraTestigo' => $request->idExtraTestigo]);
         }
     }
 }
