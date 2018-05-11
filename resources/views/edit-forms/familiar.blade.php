@@ -1,15 +1,19 @@
-@extends('template.form')
+@extends('template.form-edit')
 
 @section('title', 'Editar Familiar')
 
 @section('contenido')
-{!! Form::open(['route' => ['update.familiar', $idCarpeta, $familiar], 'method' => 'PUT'])  !!}
+{!! Form::open(['route' => ['update.familiar', $idCarpeta, $id], 'method' => 'PUT'])  !!}
+	<input type="hidden" name="idInvolucrado" value="{{$involucrados->idPersona}}">
+	<input type="hidden" name="idFamiliar" value="{{$datosfamiliar->idFamiliar}}">
 	<div class="card-header">
 		<div class="row">
 			<div class="col">
 				<div class="text-left">
 					{{--Aqui van radios, etc --}}
 				</div>
+			
+
 			</div>
 			<div class="col">
 				<div class="text-right">
@@ -24,14 +28,15 @@
 			<div class="col-12">
 				<div class="boxtwo">
 					<h6>Datos del familiar</h6>
-					@include('fields.familiar')
+					@include('edit-fields.familiar')
 				</div>
 			</div>
 		</div>
 	</div>
-	{!! Form::hidden('idInvolucrado', ($involucrados->id)) !!}
+	
 	{!! Form::close() !!}
 @endsection
 @push('docready-js')
-//$('#idPersona').val({{$involucrados->id}}).trigger('change');
+$('#idPersona').val({{$involucrados->idPersona}}).trigger('change');
+$('#nombres').val("{{$datosfamiliar->nombres}}");
 @endpush
