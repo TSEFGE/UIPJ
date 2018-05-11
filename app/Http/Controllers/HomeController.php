@@ -30,9 +30,18 @@ class HomeController extends Controller
             ->join('unidad', 'unidad.id', '=', 'carpeta.idUnidad')
             ->select('carpeta.id','unidad.nombre', 'users.nombres', 'users.apellidos', 'carpeta.numCarpeta', 'carpeta.fechaInicio', 'carpeta.estadoCarpeta')
             ->where('carpeta.idFiscal', '=', Auth::user()->id)
+            ->where('asignadaUat', '=', 0)
+            ->orderBy('id','DESC')
+            ->paginate(10);
+        $carpetasUat = DB::table('carpeta')
+            ->join('users', 'users.id', '=', 'carpeta.idFiscal')
+            ->join('unidad', 'unidad.id', '=', 'carpeta.idUnidad')
+            ->select('carpeta.id','unidad.nombre', 'users.nombres', 'users.apellidos', 'carpeta.numCarpeta', 'carpeta.fechaInicio', 'carpeta.estadoCarpeta')
+            ->where('carpeta.idFiscal', '=', Auth::user()->id)
+            ->where('asignadaUat', '=', 1)
             ->orderBy('id','DESC')
             ->paginate(10);
         //dd($carpetas);
-        return view('home')->with('carpetas', $carpetas);
+        return view('home')->with('carpetas', $carpetas)->with('carpetasUat', $carpetasUat);
     }
 }
