@@ -54,8 +54,7 @@ $('#tdenunciante.nav-tabs a').on('hidden.bs.tab', function(event){
             break;
     }   
   });
-$("#ctdenunciante").hover(function () { 
-    totalesP = $('#collapsePersonales1 .vacio').length;
+$("#ctdenunciante").hover(function () {     
     correcto = $('#tdenunciante .correcto').length;
     if (correcto == tabs) {
         $("#btn-submit").prop('disabled', false);
@@ -67,6 +66,7 @@ $("#ctdenunciante").hover(function () {
 });
 $("#collapsePersonales1").hover(function () {
     $(this).isValid();
+    totalesP = $('#collapsePersonales1 .vacio').length;
     var count = $('#collapsePersonales1 .error').length;
     var correctos = $('#collapsePersonales1 .valid').length;
     countvacio= totalesP;

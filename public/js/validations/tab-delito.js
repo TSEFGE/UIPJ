@@ -40,8 +40,7 @@ $('#tabsdelito.nav-tabs a').on('hidden.bs.tab', function(event){
 }
 	
 });
-$("#cajados").hover(function(){
-	totalesD = $('#infodelito .vacio').length;
+$("#cajados").hover(function(){	
 	correcto = $('#tabsdelito .correcto').length;
 	if (correcto == tabs) {
 		$("#btn-submit").prop('disabled', false);
@@ -86,6 +85,7 @@ $("#infodelito").hover(function(){
 });
 $('#lugardelito').hover(function(){
 	$(this).isValid();
+	totalesD = $('#infodelito .vacio').length;
 	var count = $('#lugardelito .error').length;
 	var correctos = $('#lugardelito .valid').length;
 	if (count == 0) {
