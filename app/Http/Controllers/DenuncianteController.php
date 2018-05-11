@@ -181,69 +181,36 @@ class DenuncianteController extends Controller
                     $VariablesPersona->idOcupacion = $request->idOcupacion;
 
                     if ($request->idOcupacion == 2947) {
-
                         $domicilio2 = new Domicilio();
-                        if (!is_null($request->idMunicipio2)) {
-                            $domicilio2->idMunicipio = 2496;
-                        }
-                        if (!is_null($request->idLocalidad2)) {
-                            $domicilio2->idLocalidad = 27153;
-                        }
-                        if (!is_null($request->idColonia2)) {
-                            $domicilio2->idColonia = 49172;
-                        }
-                        if (!is_null($request->calle2)) {
-                            $domicilio2->calle = "SIN INFORMACION";
-                        }
-                        if (!is_null($request->numExterno2)) {
-                            $domicilio2->numExterno = "S/N";
-                        }
-                        if (!is_null($request->numInterno2)) {
-                            $domicilio2->numInterno = "S/N";
-                        }
-                        $domicilio2->save();
-                        $idD2 = $domicilio2->id;
 
-                        if (!is_null($request->lugarTrabajo)) {
-                            $VariablesPersona->lugarTrabajo = "SIN INFORMACION";
-                        }
-                        if (!is_null($request->telefonoTrabajo)) {
-                            $VariablesPersona->telefonoTrabajo = "SIN INFORMACION";
-                        }
+                        $domicilio2->idMunicipio = 2496;
+                        $domicilio2->idLocalidad = 27153;
+                        $domicilio2->idColonia   = 49172;
+                        $domicilio2->calle       = "SIN INFORMACION";
+                        $domicilio2->numExterno  = "S/N";
+                        $domicilio2->numInterno  = "S/N";
+                        $domicilio2->save();
+                        $idD2                                 = $domicilio2->id;
+                        $VariablesPersona->lugarTrabajo       = "SIN INFORMACION";
+                        $VariablesPersona->telefonoTrabajo    = "SIN INFORMACION";
                         $VariablesPersona->idDomicilioTrabajo = $idD2;
                     } else {
 
-                        $domicilio2 = new Domicilio();
-                        if (!is_null($request->idMunicipio2)) {
-                            $domicilio2->idMunicipio = $request->idMunicipio2;
-                        }
-                        if (!is_null($request->idLocalidad2)) {
-                            $domicilio2->idLocalidad = $request->idLocalidad2;
-                        }
-                        if (!is_null($request->idColonia2)) {
-                            $domicilio2->idColonia = $request->idColonia2;
-                        }
-                        if (!is_null($request->calle2)) {
-                            $domicilio2->calle = $request->calle2;
-                        }
-                        if (!is_null($request->numExterno2)) {
-                            $domicilio2->numExterno = $request->numExterno2;
-                        }
-                        if (!is_null($request->numInterno2)) {
-                            $domicilio2->numInterno = $request->numInterno2;
-                        }
+                        $domicilio2              = new Domicilio();
+                        $domicilio2->idMunicipio = $request->idMunicipio2;
+                        $domicilio2->idLocalidad = $request->idLocalidad2;
+                        $domicilio2->idColonia   = $request->idColonia2;
+                        $domicilio2->calle       = $request->calle2;
+                        $domicilio2->numExterno  = $request->numExterno2;
+                        $domicilio2->numInterno  = $request->numInterno2;
+
                         $domicilio2->save();
-                        $idD2 = $domicilio2->id;
+                        $idD2                                 = $domicilio2->id;
+                        $VariablesPersona->lugarTrabajo       = $request->lugarTrabajo;
+                        $VariablesPersona->telefonoTrabajo    = $request->telefonoTrabajo;
+                        $VariablesPersona->idDomicilioTrabajo = $idD2;
 
                         Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un nuevo domicilio de trabajo de persona física de tipo denunciante.', 'idFilaAccion' => $idD2]);
-                        if (!is_null($request->lugarTrabajo)) {
-                            $VariablesPersona->lugarTrabajo = $request->lugarTrabajo;
-                        }
-                        if (!is_null($request->telefonoTrabajo)) {
-                            $VariablesPersona->telefonoTrabajo = $request->telefonoTrabajo;
-                        }
-
-                        $VariablesPersona->idDomicilioTrabajo = $idD2;
 
                     }
 
@@ -438,54 +405,54 @@ class DenuncianteController extends Controller
         return redirect()->route('carpeta', $request->idCarpeta);
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+/**
+ * Display a listing of the resource.
+ *
+ * @return \Illuminate\Http\Response
+ */
     public function index()
     {
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+/**
+ * Show the form for creating a new resource.
+ *
+ * @return \Illuminate\Http\Response
+ */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+/**
+ * Store a newly created resource in storage.
+ *
+ * @param  \Illuminate\Http\Request  $request
+ * @return \Illuminate\Http\Response
+ */
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+/**
+ * Display the specified resource.
+ *
+ * @param  int  $id
+ * @return \Illuminate\Http\Response
+ */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+/**
+ * Show the form for editing the specified resource.
+ *
+ * @param  int  $id
+ * @return \Illuminate\Http\Response
+ */
     public function edit($idCarpeta, $id)
     {
         $carpetaNueva = Carpeta::where('id', $idCarpeta)->where('idFiscal', Auth::user()->id)->get();
@@ -632,13 +599,13 @@ class DenuncianteController extends Controller
         }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+/**
+ * Update the specified resource in storage.
+ *
+ * @param  \Illuminate\Http\Request  $request
+ * @param  int  $id
+ * @return \Illuminate\Http\Response
+ */
     public function update(Request $request, $id)
     {
 
@@ -1012,12 +979,12 @@ class DenuncianteController extends Controller
         //return redirect()->route('new.denunciante', $request->idCarpeta);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+/**
+ * Remove the specified resource from storage.
+ *
+ * @param  int  $id
+ * @return \Illuminate\Http\Response
+ */
     public function destroy($id)
     {
         //
