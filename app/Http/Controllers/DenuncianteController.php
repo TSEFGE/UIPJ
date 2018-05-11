@@ -609,7 +609,7 @@ class DenuncianteController extends Controller
     public function update(Request $request, $id)
     {
 
-        $carpetaNueva = Carpeta::where('id', $request->idCarpeta)->where('curp', '!=', null)->where('idFiscal', Auth::user()->id)->get();
+        $carpetaNueva = Carpeta::where('id', $request->idCarpeta)->where('idFiscal', Auth::user()->id)->get();
         $var          = ExtraDenunciante::where('id', $id)->get();
         if ($carpetaNueva->isEmpty() && $var->isEmpty()) {
             return redirect()->route('home');
