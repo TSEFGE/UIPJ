@@ -32,11 +32,8 @@ class ConnectionUATController extends Controller
 {
     public function index()
     {
-        $denunciantes=ExtraDenunciante2::join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
-                        ->join('componentes.personas', 'componentes.personas.id', '=', 'variables_persona.idPersona')
-                        ->select(DB::raw('CONCAT(componentes.personas.nombres, " ", componentes.personas.primerAp," ",componentes.personas.segundoAp) AS nombre'));
 
-        dump($denunciantes->get());
+        //dump($denunciantes, $denunciados, $delito);
         //--------------
         $users=User::all()->pluck('nombres', 'id');
         return view('carpetas-uat')->with('users', $users);
@@ -45,18 +42,31 @@ class ConnectionUATController extends Controller
     public function carpetasUatDataTable()
     {
         $data=Carpeta2::join('cat_estado_carpeta', 'cat_estado_carpeta.id', '=', 'carpeta.idEstadoCarpeta')
+                        ->join('uipj.unidad', 'uipj.unidad.id', '=', 'carpeta.idUnidad')
                         ->where('carpeta.asignada', '=', 0)
+                        ->select('carpeta.id', 'carpeta.numCarpetaUat', 'uipj.unidad.nombre as unidad', 'carpeta.nombreFiscalUat', 'carpeta.fechaInicio', 'cat_estado_carpeta.nombre')
                         ->get();
 
         return Datatables::of($data)->make(true);
     }
     public function carpetauat($id)
     {
-        $denunciantes=ExtraDenunciante2::join('variables_persona', 'variables_persona.id', '=', 'ExtraDenunciante2.idVariablesPersona')
-                        ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-                        ->select(DB::raw('CONCAT(persona.nombres, " ", persona.primerAp," ",persona.segundoAp) AS nombre'));
-        dump($denunciantes);
-        return ['respone'=>true,$denunciantes,$denunciandos,$delitos];
+        $denunciantes=ExtraDenunciante2::join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+                        ->join('componentes.personas', 'componentes.personas.id', '=', 'variables_persona.idPersona')
+                        ->select(DB::raw('CONCAT(componentes.personas.nombres, " ", componentes.personas.primerAp," ",componentes.personas.segundoAp) AS nombre'))
+                        ->where('variables_persona.idCarpeta', '=', $id)->get();
+
+        $denunciados=ExtraDenunciado2::join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
+                        ->join('componentes.personas', 'componentes.personas.id', '=', 'variables_persona.idPersona')
+                        ->select(DB::raw('CONCAT(componentes.personas.nombres, " ", componentes.personas.primerAp," ",componentes.personas.segundoAp) AS nombre'))
+                        ->where('variables_persona.idCarpeta', '=', $id)->get();
+
+        $acusaciones = Acusacion2::join('tipif_delito', 'tipif_delito.id', '=', 'acusacion.idTipifDelito')
+                        ->join('uipj.cat_delito', 'uipj.cat_delito.id', '=', 'tipif_delito.idDelito')
+                        ->select('tipif_delito.conViolencia', 'tipif_delito.consumacion', 'tipif_delito.fecha', 'tipif_delito.hora', 'tipif_delito.entreCalle', 'tipif_delito.yCalle', 'tipif_delito.puntoReferencia', 'uipj.cat_delito.nombre as delito')
+                        ->whereIN('acusacion.id', Acusacion2::where('idCarpeta', $id)->select('id')->get())
+                        ->get();
+        return ['respone'=>true,'denunciantes'=>$denunciantes,'denunciados'=>$denunciados,'acusaciones'=>$acusaciones];
     }
     public function asignarCarpeta($idCarpeta, $idFiscal)
     {
