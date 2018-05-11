@@ -30,7 +30,8 @@ class Carpeta extends Model
         'fechaIph',
         'narracionIph',
         'idTipoDeterminacion',
-        'fechaDeterminacion'        
+        'fechaDeterminacion',
+        'asignadaUat'        
     ];
 
     public function acusaciones()
