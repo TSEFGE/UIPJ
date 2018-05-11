@@ -135,9 +135,9 @@
 		$('#idMunicipio').val("{{$infoLugarHechos->idMunicipio}}").trigger('change');
 		$('#idLocalidad').val("{{$infoLugarHechos->idLocalidad}}").trigger('change');
 		$('#idColonia').val("{{$infoLugarHechos->idColonia}}").trigger('change');
-		$('#calle').val("{{$infoLugarHechos->idColonia}}");
-		$('#numExterno').val("{{$infoLugarHechos->idColonia}}");
-		$('#numInterno').val("{{$infoLugarHechos->idColonia}}");
+		$('#calle').val("{{$infoLugarHechos->calle}}");
+		$('#numExterno').val("{{$infoLugarHechos->numExterno}}");
+		$('#numInterno').val("{{$infoLugarHechos->numInterno}}");
 	@endisset
 
 
