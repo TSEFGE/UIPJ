@@ -16,6 +16,6 @@ class ExtraAutoridad2 extends Model
 
     public function variablesPersona()
     {
-        return $this->belongsTo('App\Models\uatuipj\VariablesPersona');
+        return $this->belongsTo('App\Models\uatuipj\VariablesPersona2');
     }
 }

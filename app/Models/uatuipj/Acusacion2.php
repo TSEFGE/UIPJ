@@ -25,18 +25,18 @@ class Acusacion2 extends Model
     ];
 
     public function extraDenunciante(){
-        return $this->belongsTo('App\Models\uatuipj\ExtraDenunciante');
+        return $this->belongsTo('App\Models\uatuipj\ExtraDenunciante2');
     }
 
     public function extraDenunciado(){
-        return $this->belongsTo('App\Models\uatuipj\ExtraDenunciado');
+        return $this->belongsTo('App\Models\uatuipj\ExtraDenunciado2');
     }
 
     public function carpeta(){
-        return $this->belongsTo('App\Models\uatuipj\Carpeta');
+        return $this->belongsTo('App\Models\uatuipj\Carpeta2');
     }
 
     public function tipifDelito(){
-        return $this->hasOne('App\Models\uatuipj\TipifDelito');
+        return $this->hasOne('App\Models\uatuipj\TipifDelito2');
     }
 }

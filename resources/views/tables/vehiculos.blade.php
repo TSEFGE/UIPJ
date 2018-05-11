@@ -11,7 +11,7 @@
         </thead>
         <tbody>
             @if(count($vehiculos)==0)
-                <tr><td colspan="6" class="text-center">Sin registros</td></tr>
+                <tr><td colspan="7" class="text-center">Sin registros</td></tr>
             @else
                 @foreach($vehiculos as $vehiculo)
                     <tr>

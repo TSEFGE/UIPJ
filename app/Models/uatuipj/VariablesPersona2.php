@@ -39,26 +39,26 @@ class VariablesPersona2 extends Model
 
     public function carpeta()
     {
-        return $this->belongsTo('App\Models\uatuipj\Carpeta');
+        return $this->belongsTo('App\Models\uatuipj\Carpeta2');
     }
 
     public function extraDenunciado()
     {
-        return $this->hasOne('App\Models\uatuipj\ExtraDenunciado');
+        return $this->hasOne('App\Models\uatuipj\ExtraDenunciado2');
     }
 
     public function extraDenuncianate()
     {
-        return $this->hasOne('App\Models\uatuipj\ExtraDenunciante');
+        return $this->hasOne('App\Models\uatuipj\ExtraDenunciante2');
     }
 
     public function extraAutoridad()
     {
-        return $this->hasOne('App\Models\uatuipj\ExtraAutoridad');
+        return $this->hasOne('App\Models\uatuipj\ExtraAutoridad2');
     }
 
     public function extraAbogado()
     {
-        return $this->hasOne('App\Models\uatuipj\ExtraAbogado');
+        return $this->hasOne('App\Models\uatuipj\ExtraAbogado2');
     }
 }
