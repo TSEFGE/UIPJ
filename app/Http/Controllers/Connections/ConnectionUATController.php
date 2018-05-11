@@ -10,6 +10,8 @@ use App\Models\ExtraAbogado;
 use App\Models\ExtraAutoridad;
 use App\Models\ExtraDenunciado;
 use App\Models\ExtraDenunciante;
+use App\Models\Narracion;
+use App\Models\Notificacion;
 use App\Models\TipifDelito;
 use App\Models\VariablesPersona;
 use App\Models\uatuipj\Acusacion2;
@@ -18,6 +20,8 @@ use App\Models\uatuipj\ExtraAbogado2;
 use App\Models\uatuipj\ExtraAutoridad2;
 use App\Models\uatuipj\ExtraDenunciado2;
 use App\Models\uatuipj\ExtraDenunciante2;
+use App\Models\Narracion2;
+use App\Models\Notificacion2;
 use App\Models\uatuipj\TipifDelito2;
 use App\Models\uatuipj\VariablesPersona2;
 use DB;
@@ -25,18 +29,13 @@ use Alert;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
-use App\Models\Unidad;
-use App\User;
 
 class ConnectionUATController extends Controller
 {
     public function index()
     {
-        $denunciantes=ExtraDenunciante2::join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
-                        ->join('componentes.personas', 'componentes.personas.id', '=', 'variables_persona.idPersona')
-                        ->select(DB::raw('CONCAT(componentes.personas.nombres, " ", componentes.personas.primerAp," ",componentes.personas.segundoAp) AS nombre'));
 
-        dump($denunciantes->get());
+        //dump($denunciantes, $denunciados, $delito);
         //--------------
         $users=User::all()->pluck('nombres', 'id');
         return view('carpetas-uat')->with('users', $users);
@@ -45,18 +44,31 @@ class ConnectionUATController extends Controller
     public function carpetasUatDataTable()
     {
         $data=Carpeta2::join('cat_estado_carpeta', 'cat_estado_carpeta.id', '=', 'carpeta.idEstadoCarpeta')
+                        ->join('uipj.unidad', 'uipj.unidad.id', '=', 'carpeta.idUnidad')
                         ->where('carpeta.asignada', '=', 0)
+                        ->select('carpeta.id', 'carpeta.numCarpetaUat', 'uipj.unidad.nombre as unidad', 'carpeta.nombreFiscalUat', 'carpeta.fechaInicio', 'cat_estado_carpeta.nombre')
                         ->get();
 
         return Datatables::of($data)->make(true);
     }
     public function carpetauat($id)
     {
-        $denunciantes=ExtraDenunciante2::join('variables_persona', 'variables_persona.id', '=', 'ExtraDenunciante2.idVariablesPersona')
-                        ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-                        ->select(DB::raw('CONCAT(persona.nombres, " ", persona.primerAp," ",persona.segundoAp) AS nombre'));
-        dump($denunciantes);
-        return ['respone'=>true,$denunciantes,$denunciandos,$delitos];
+        $denunciantes=ExtraDenunciante2::join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+                        ->join('componentes.personas', 'componentes.personas.id', '=', 'variables_persona.idPersona')
+                        ->select(DB::raw('CONCAT(componentes.personas.nombres, " ", componentes.personas.primerAp," ",componentes.personas.segundoAp) AS nombre'))
+                        ->where('variables_persona.idCarpeta', '=', $id)->get();
+
+        $denunciados=ExtraDenunciado2::join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
+                        ->join('componentes.personas', 'componentes.personas.id', '=', 'variables_persona.idPersona')
+                        ->select(DB::raw('CONCAT(componentes.personas.nombres, " ", componentes.personas.primerAp," ",componentes.personas.segundoAp) AS nombre'))
+                        ->where('variables_persona.idCarpeta', '=', $id)->get();
+
+        $acusaciones = Acusacion2::join('tipif_delito', 'tipif_delito.id', '=', 'acusacion.idTipifDelito')
+                        ->join('uipj.cat_delito', 'uipj.cat_delito.id', '=', 'tipif_delito.idDelito')
+                        ->select('tipif_delito.conViolencia', 'tipif_delito.consumacion', 'tipif_delito.fecha', 'tipif_delito.hora', 'tipif_delito.entreCalle', 'tipif_delito.yCalle', 'tipif_delito.puntoReferencia', 'uipj.cat_delito.nombre as delito')
+                        ->whereIN('acusacion.id', Acusacion2::where('idCarpeta', $id)->select('id')->get())
+                        ->get();
+        return ['respone'=>true,'denunciantes'=>$denunciantes,'denunciados'=>$denunciados,'acusaciones'=>$acusaciones];
     }
     public function asignarCarpeta($idCarpeta, $idFiscal)
     {
@@ -105,7 +117,10 @@ class ConnectionUATController extends Controller
         //Acusacion
         $acusaciones = DB::connection('uatuipj')->table('acusacion')
             ->where('idCarpeta', $idCarpeta)->get();
-        //dump($carpeta, $delitos, $acusaciones, $variablesPersona, $notificaciones, $abogados, $autoridades, $denunciantes, $denunciados);
+        //Narraciones
+        $narraciones = DB::connection('uatuipj')->table('narracion')
+            ->where('idCarpeta', $idCarpeta)->get();
+        //dump($carpeta, $delitos, $variablesPersona, $notificaciones, $abogados, $autoridades, $denunciantes, $denunciados, $acusaciones, $narraciones);
 
         $carpetaNew = new Carpeta();
         $datos = DB::table('users')
@@ -135,21 +150,23 @@ class ConnectionUATController extends Controller
         $fechaDeterminacion          = date("Y-m-d", strtotime($fechaDeterminacionAux));
         $carpetaNew->fechaDeterminacion = $fechaDeterminacion;
         $carpetaNew->idTipoDeterminacion = $carpeta->idTipoDeterminacion;
+        $carpetaNew->asignadaUat = 1;
         //dump($carpetaNew);
-        //$carpeta->save();
+        $carpetaNew->save();
+        DB::table('unidad')->where('id', $idFiscal)->update(['consecutivo' => $num]);
 
         //Para guardar
-        $del = array();
-        for ($cont=1; $cont<=10; $cont++) {
-            array_push($del, array('idViejo'=>$cont,'idNuevo'=>$cont));
+        /*$del = array();
+        for($cont=1; $cont<=10; $cont++){
+        	array_push($del, array('idViejo'=>$cont,'idNuevo'=>$cont));
         }
         //Para consultar
-        for ($cont=0; $cont<count($del); $cont++) {
-            if ($del[$cont]['idViejo'] == 5) {
-                dump("hola".$cont);
-            }
+        for($cont=0; $cont<count($del); $cont++){
+        	if($del[$cont]['idViejo'] == 5){
+        		dump("hola".$cont);
+        	}
         }
-        dump($del);
+        dump($del);*/
 
         $arrayDelitos = array();
         foreach ($delitos as $delito) {
@@ -175,7 +192,7 @@ class ConnectionUATController extends Controller
             $tipifDelito->yCalle          = $delito->yCalle;
             $tipifDelito->calleTrasera    = $delito->calleTrasera;
             $tipifDelito->puntoReferencia = $delito->puntoReferencia;
-            //$tipifDelito->save();
+            $tipifDelito->save();
             array_push($arrayDelitos, array('idViejo'=>$delito->id,'idNuevo'=>$tipifDelito->id));
         }
 
@@ -197,11 +214,11 @@ class ConnectionUATController extends Controller
             $VariablesPersonaNew->idEscolaridad = $varPersona->idEscolaridad;
             $VariablesPersonaNew->idReligion = $varPersona->idReligion;
             $VariablesPersonaNew->idDomicilio  = $varPersona->idDomicilio;
-            $VariablesPersonaNew->idInterprete = 1;
+            $VariablesPersonaNew->idInterprete = null;
             $VariablesPersonaNew->docIdentificacion = $varPersona->docIdentificacion;
             $VariablesPersonaNew->numDocIdentificacion = $varPersona->numDocIdentificacion;
             $VariablesPersonaNew->representanteLegal = $varPersona->representanteLegal;
-            //$VariablesPersona->save();
+            $VariablesPersonaNew->save();
             array_push($arrayVariables, array('idViejo'=>$varPersona->id,'idNuevo'=>$VariablesPersonaNew->id));
         }
 
@@ -212,7 +229,7 @@ class ConnectionUATController extends Controller
             $notificacionNew->correo      = $notificacion->correo;
             $notificacionNew->telefono    = $notificacion->telefono;
             $notificacionNew->fax         = $notificacion->fax;
-            //$notificacionNew->save();
+            $notificacionNew->save();
             array_push($arrayNotifs, array('idViejo'=>$notificacion->id,'idNuevo'=>$notificacionNew->id));
         }
 
@@ -230,10 +247,11 @@ class ConnectionUATController extends Controller
             $ExtraAbogadoNew->sector             = $abogado->sector;
             $ExtraAbogadoNew->correo             = $abogado->correo;
             $ExtraAbogadoNew->tipo               = $abogado->tipo;
-            //$ExtraAbogadoNew->save();
+            $ExtraAbogadoNew->save();
             array_push($arrayAbogados, array('idViejo'=>$abogado->id,'idNuevo'=>$abogadoNew->id));
         }
 
+        $arrayAutoridades = array();
         foreach ($autoridades as $autoridad) {
             $ExtraAutoridadNew                     = new ExtraAutoridad();
             //$ExtraAutoridadNew->idVariablesPersona = $idVariablesPersona;//FOR
@@ -246,7 +264,8 @@ class ConnectionUATController extends Controller
             $ExtraAutoridadNew->antiguedad         = $autoridad->antiguedad;
             $ExtraAutoridadNew->rango              = $autoridad->rango;
             $ExtraAutoridadNew->horarioLaboral     = $autoridad->horarioLaboral;
-            //$ExtraAutoridadNew->save();
+            $ExtraAutoridadNew->save();
+            array_push($arrayAutoridades, array('idViejo'=>$autoridad->id,'idNuevo'=>$ExtraAutoridadNew->id));
         }
 
         $arrayDenunciantes = array();
@@ -275,7 +294,7 @@ class ConnectionUATController extends Controller
             }
             $ExtraDenuncianteNew->conoceAlDenunciado = $denunciante->conoceAlDenunciado;
             $ExtraDenuncianteNew->esVictima = $denunciante->esVictima;
-            //$ExtraDenuncianteNew->save();
+            $ExtraDenuncianteNew->save();
             array_push($arrayDenunciantes, array('idViejo'=>$denunciante->id,'idNuevo'=>$ExtraDenuncianteNew->id));
         }
 
@@ -312,7 +331,7 @@ class ConnectionUATController extends Controller
             $ExtraDenunciadoNew->personasBajoSuGuarda = $denunciado->personasBajoSuGuarda;
             $ExtraDenunciadoNew->perseguidoPenalmente = $denunciado->perseguidoPenalmente;
             $ExtraDenunciadoNew->vestimenta = $denunciado->vestimenta;
-            //$ExtraDenunciadoNew->save();
+            $ExtraDenunciadoNew->save();
             array_push($arrayDenunciados, array('idViejo'=>$denunciado->id,'idNuevo'=>$ExtraDenunciadoNew->id));
         }
 
@@ -340,14 +359,47 @@ class ConnectionUATController extends Controller
                     break;
                 }
             }
-            //$acusacionNew->save();
+            $acusacionNew->save();
         }
-        //dump($carpeta, $delitos, $variablesPersona, $notificaciones, $abogados, $autoridades, $denunciantes, $denunciados, $acusaciones);
+
+        foreach ($narraciones as $narracion) {
+            $narracionNew                = new Narracion();
+            //$narracionNew->idInvolucrado = $ExtraDenunciante->id;//FOR
+            if ($narracion->tipoInvolucrado == 1) {
+                for ($cont=0; $cont<count($arrayDenunciantes); $cont++) {
+                    if ($arrayDenunnciantes[$cont]['idViejo'] == $narracion->idInvolucrado) {
+                        $narracionNew->idInvolucrado = $arrayDenunciantes[$cont]['idNuevo'];
+                        break;
+                    }
+                }
+            } elseif ($narracion->tipoInvolucrado == 2) {
+                for ($cont=0; $cont<count($arrayDenunciados); $cont++) {
+                    if ($arrayDenunciados[$cont]['idViejo'] == $narracion->idInvolucrado) {
+                        $narracionNew->idInvolucrado = $arrayDenunciados[$cont]['idNuevo'];
+                        break;
+                    }
+                }
+            } elseif ($narracion->tipoInvolucrado == 3) {
+                for ($cont=0; $cont<count($arrayAutoridades); $cont++) {
+                    if ($arrayAutoridades[$cont]['idViejo'] == $narracion->idInvolucrado) {
+                        $narracionNew->idInvolucrado = $arrayAutoridades[$cont]['idNuevo'];
+                        break;
+                    }
+                }
+            }
+            $narracionNew->idCarpeta       = $carpetaNew->id;
+            $narracionNew->narracion       = $narracion->narracion;
+            $narracionNew->tipoInvolucrado = $narracion->tipoInvolucrado;
+            $narracionNew->archivo         = $narracion->archivo;
+            $narracionNew->save();
+        }
+        //dump($carpeta, $delitos, $variablesPersona, $notificaciones, $abogados, $autoridades, $denunciantes, $denunciados, $acusaciones, $narraciones);
 
         /*
         Si todo sale bien
+        */
+        DB::connection('uatuipj')->table('carpeta')->where('id', $carpeta->id)->update(['asignada' => 1]);
         Alert::success('Carpeta asignada con éxito', 'Hecho')->persistent("Aceptar");
         return redirect()->route('carpetas.uat');
-        */
     }
 }

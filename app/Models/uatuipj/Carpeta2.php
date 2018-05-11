@@ -36,7 +36,8 @@ class Carpeta2 extends Model
         'observacionesEstatus',
         'asignada',
         'nombreFiscalUat',
-        'numCarpetaUat'
+        'numCarpetaUat',
+        'asignadaUat'
     ];
 
     public function acusaciones()

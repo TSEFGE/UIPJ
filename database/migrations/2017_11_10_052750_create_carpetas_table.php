@@ -30,6 +30,7 @@ class CreateCarpetasTable extends Migration
             $table->string('narracionIph',2000)->default("SIN INFORMACION");
             $table->integer('idTipoDeterminacion')->unsigned()->default(5);
             $table->date('fechaDeterminacion')->nullable();
+            $table->boolean('asignadaUat');
             $table->timestamps();
             $table->softDeletes();
             

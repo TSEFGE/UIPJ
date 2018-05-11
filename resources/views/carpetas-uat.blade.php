@@ -66,6 +66,15 @@
 
             <!-- Modal body -->
             <div class="modal-body">
+				<div class="form-group col" id="denunciantes">
+
+				</div>
+				<div class="form-group col" id="denunciados">
+
+				</div>
+				<div class="form-group col" id="acusaciones">
+
+				</div>
                 <div class="form-group col">
                     {!! Form::label('user', 'ASIGNAR A:') !!}
                     {!! Form::select('user', $users,null, ['id'=>'user','class' => 'form-control', 'required','placeholder'=>'Seleccione un fiscal']) !!}
@@ -98,7 +107,7 @@
 		ajax: "{{ route('carpetas-uat.DataTable') }}",
 		columns: [
 			{data: 'numCarpetaUat', name: 'numCarpetaUat'},
-			{data: 'idUnidad', name: 'idUnidad'},
+			{data: 'unidad', name: 'unidad'},
 			{data: 'nombreFiscalUat', name: 'nombreFiscalUat'},
 			{data: 'fechaInicio', name: 'fechaInicio'},
 			{data: 'nombre', name: 'nombre'},
@@ -110,24 +119,32 @@
 		]
 	});
 	$('#carpetasUAT').on('click', '#modalBoton', function(){
-
                this.preventDefault;
                nombre=this.name;
                numero=this.value;
                console.log(numero);
 			   	$.get(route('datos.CarpetaUAT', numero), function(response, estado){
-			   		if(response.res==true){
-			   			console.log('true')
-			   			swal({
-			   				title: "Alerta",
-			   				text: "Ya existe una persona registrada con ese CURP.",
-			   				type: "warning",
-			   				showCancelButton: false,
-			   				confirmButtonClass: "btn-danger",
-			   				confirmButtonText: "Aceptar",
-			   				closeOnConfirm: false
-			   			});
-			   		}
+			   	console.log(response['denunciantes'].length);
+				numTe=response['denunciantes'].length;
+				numDo=response['denunciados'].length;
+				numAcu=response['acusaciones'].length;
+				$( "#denunciantes" ).html('DENUNCIANTES: \n');
+				for (var i = 0; i < numTe ; i++) {
+					$( "#denunciantes" ).append("<p>"+response['denunciantes'][i]['nombre']+"</p>");
+				}
+				$( "#denunciados" ).html('DENUNCIADOS: \n');
+				for (var i = 0; i < numDo ; i++) {
+					$( "#denunciados" ).append("<p>"+response['denunciados'][i]['nombre']+"</p>");
+				}
+				$( "#acusaciones" ).html('ACUSACIONES: \n');
+				var acusaciones="";
+				for (var i = 0; i < numAcu ; i++) {
+					acusaciones=acusaciones+' Delito: '+response['acusaciones'][i]['delito']+"</br>"+" Entre calle: "+response['acusaciones'][i]['entreCalle']+"</br>";
+					// $( "#acusaciones" ).append("Delito: "+response['acusaciones'][i]['delito']);
+					// $( "#acusaciones" ).append("Entre calle: "+response['acusaciones'][i]['entreCalle']);
+				}
+				$( "#acusaciones" ).append(acusaciones);
+
 			   	});
 
 
