@@ -370,7 +370,7 @@ class ConnectionUATController extends Controller
             //$narracionNew->idInvolucrado = $ExtraDenunciante->id;//FOR
             if ($narracion->tipoInvolucrado == 1) {
                 for ($cont=0; $cont<count($arrayDenunciantes); $cont++) {
-                    if ($arrayDenunnciantes[$cont]['idViejo'] == $narracion->idInvolucrado) {
+                    if ($arrayDenunciantes[$cont]['idViejo'] == $narracion->idInvolucrado) {
                         $narracionNew->idInvolucrado = $arrayDenunciantes[$cont]['idNuevo'];
                         break;
                     }
