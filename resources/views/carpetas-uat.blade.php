@@ -131,7 +131,10 @@
 			   nombre=this.name;
 			   numero=this.value;
 			   console.log(numero);
+			   var idCarpeta="";
 				$.get(route('datos.CarpetaUAT', numero), function(response, estado){
+				idCarpeta=response['idCarpeta'];
+				console.log('idCarpeta: '+idCarpeta);
 				console.log(response['denunciantes'].length);
 				numTe=response['denunciantes'].length;
 				numDo=response['denunciados'].length;
@@ -157,9 +160,10 @@
 
 				});
 			   $("#carpeta h3").text(nombre);
+			   var user=$('#user').val();
 			   $('#asignarAUIPJ').click( function() {
 				   console.log('enviado');
-				  $('<form action='+route('asignar.carpeta',{idCarpeta:45,idFiscal:1})+'method="POST" style="display: none;">').appendTo('body').submit();
+				  $('<form action='+route('asignar.carpeta',{idCarpeta:idCarpeta,idFiscal:user})+'method="POST" style="display: none;">').appendTo('body').submit();
 				});
 			   // swal({
 			   //         title: "¿Seguro que desea eliminar la sucursal "+nombre+"?",
