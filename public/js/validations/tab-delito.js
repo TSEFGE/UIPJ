@@ -1,4 +1,4 @@
-//$("#btn-submit").prop('disabled', true);
+$("#btn-submit").prop('disabled', true);
 $('#tabInfodelito').addClass('visible');
 $('#tabLugardelito').addClass('visible');
 totalesD=0;
@@ -40,7 +40,7 @@ $('#tabsdelito.nav-tabs a').on('hidden.bs.tab', function(event){
 }
 	
 });
-/*$("#cajados").hover(function(){
+$("#cajados").hover(function(){
 	totalesD = $('#infodelito .vacio').length;
 	correcto = $('#tabsdelito .correcto').length;
 	if (correcto == tabs) {
@@ -50,45 +50,45 @@ $('#tabsdelito.nav-tabs a').on('hidden.bs.tab', function(event){
 	}
 	console.log("totalesD", totalesD); 
 	console.log("totalesH", totalesH); 
-});*/
+});
 $("#infodelito").hover(function(){
 	$(this).isValid();
 	var count = $('#infodelito .error').length;
 	var correctos = $('#infodelito .valid').length;
 	if (count == 0) {
-		//$("#errorad").hide();
+		$("#errorad").hide();
 	}
 	else {
-		//$("#errorad").show();
-		///$("#errorad").html(count);
+		$("#errorad").show();
+		$("#errorad").html(count);
 	}
 	
 	if (correctos == 0) {
-		//$("#bienad").hide();
+		$("#bienad").hide();
 	}
 	else if (correctos == totalesD) {
-		/*$("#bienad").show();
+		$("#bienad").show();
 		$("#bienad").html('<i class="fa fa-check" aria-hidden="true"></i>');
-		$("#bienad").addClass('correcto');*/
+		$("#bienad").addClass('correcto');
 	}
 	else {
-		/*$("#bienad").show();
+		$("#bienad").show();
 		$("#bienad").html(correctos);
-		$("#bienad").removeClass('correcto');*/
-	}/*
+		$("#bienad").removeClass('correcto');
+	}
 	countvacio = countvacio - count - correctos;
 	if (countvacio == 0 || countvacio == totales) {
 		$("#vacioad").hide();
 	} else {
 		$("#vacioad").show();
 		$("#vacioad").html(countvacio);
-	}  */  
+	}   
 });
 $('#lugardelito').hover(function(){
 	$(this).isValid();
 	var count = $('#lugardelito .error').length;
 	var correctos = $('#lugardelito .valid').length;
-	/*if (count == 0) {
+	if (count == 0) {
 		$("#errorad2").hide();
 	}
 	else {
@@ -108,7 +108,8 @@ $('#lugardelito').hover(function(){
 		$("#bienad2").show();
 		$("#bienad2").html(correctos);
 		$("#bienad2").removeClass('correcto');
-	}*/
+	}
+
 	/*
 	countvacio = countvacio - count - correctos;
 	if (countvacio == 0 || countvacio == totales) {
