@@ -71,8 +71,10 @@ class ConnectionUATController extends Controller
                         ->get();
         return ['respone'=>true,'denunciantes'=>$denunciantes,'denunciados'=>$denunciados,'acusaciones'=>$acusaciones];
     }
-    public function asignarCarpeta($idCarpeta, $idFiscal)
+    public function asignarCarpeta(Request $request)
     {
+    	$idCarpeta = $request->idCarpeta;
+    	$idFiscal = $request->idFiscal;
         //Carpeta
         $carpeta = Carpeta2::where('id', '=', $idCarpeta)->first();
         //$carpeta = DB::connection('uatuipj')->table('carpeta')->where('id', $idCarpeta)->get();
