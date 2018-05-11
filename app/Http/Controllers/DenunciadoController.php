@@ -307,69 +307,36 @@ class DenunciadoController extends Controller
                         $VariablesPersona->idOcupacion = $request->idOcupacion;
 
                         if ($request->idOcupacion == 2947) {
-
-                            $domicilio2 = new Domicilio();
-                            if (!is_null($request->idMunicipio2)) {
-                                $domicilio2->idMunicipio = 2496;
-                            }
-                            if (!is_null($request->idLocalidad2)) {
-                                $domicilio2->idLocalidad = 27153;
-                            }
-                            if (!is_null($request->idColonia2)) {
-                                $domicilio2->idColonia = 49172;
-                            }
-                            if (!is_null($request->calle2)) {
-                                $domicilio2->calle = "SIN INFORMACION";
-                            }
-                            if (!is_null($request->numExterno2)) {
-                                $domicilio2->numExterno = "S/N";
-                            }
-                            if (!is_null($request->numInterno2)) {
-                                $domicilio2->numInterno = "S/N";
-                            }
+                            $domicilio2              = new Domicilio();
+                            $domicilio2->idMunicipio = 2496;
+                            $domicilio2->idLocalidad = 27153;
+                            $domicilio2->idColonia   = 49172;
+                            $domicilio2->calle       = "SIN INFORMACION";
+                            $domicilio2->numExterno  = "S/N";
+                            $domicilio2->numInterno  = "S/N";
                             $domicilio2->save();
                             $idD2 = $domicilio2->id;
 
-                            if (!is_null($request->lugarTrabajo)) {
-                                $VariablesPersona->lugarTrabajo = "SIN INFORMACION";
-                            }
-                            if (!is_null($request->telefonoTrabajo)) {
-                                $VariablesPersona->telefonoTrabajo = "SIN INFORMACION";
-                            }
+                            $VariablesPersona->lugarTrabajo       = "SIN INFORMACION";
+                            $VariablesPersona->telefonoTrabajo    = "SIN INFORMACION";
                             $VariablesPersona->idDomicilioTrabajo = $idD2;
                         } else {
 
-                            $domicilio2 = new Domicilio();
-                            if (!is_null($request->idMunicipio2)) {
-                                $domicilio2->idMunicipio = $request->idMunicipio2;
-                            }
-                            if (!is_null($request->idLocalidad2)) {
-                                $domicilio2->idLocalidad = $request->idLocalidad2;
-                            }
-                            if (!is_null($request->idColonia2)) {
-                                $domicilio2->idColonia = $request->idColonia2;
-                            }
-                            if (!is_null($request->calle2)) {
-                                $domicilio2->calle = $request->calle2;
-                            }
-                            if (!is_null($request->numExterno2)) {
-                                $domicilio2->numExterno = $request->numExterno2;
-                            }
-                            if (!is_null($request->numInterno2)) {
-                                $domicilio2->numInterno = $request->numInterno2;
-                            }
+                            $domicilio2              = new Domicilio();
+                            $domicilio2->idMunicipio = $request->idMunicipio2;
+                            $domicilio2->idLocalidad = $request->idLocalidad2;
+                            $domicilio2->idColonia   = $request->idColonia2;
+                            $domicilio2->calle       = $request->calle2;
+                            $domicilio2->numExterno  = $request->numExterno2;
+                            $domicilio2->numInterno  = $request->numInterno2;
                             $domicilio2->save();
                             $idD2 = $domicilio2->id;
 
-                            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un nuevo domicilio de trabajo de persona física de tipo denunciado por comparecencia.', 'idFilaAccion' => $idD2]);
-                            if (!is_null($request->lugarTrabajo)) {
-                                $VariablesPersona->lugarTrabajo = $request->lugarTrabajo;
-                            }
-                            if (!is_null($request->telefonoTrabajo)) {
-                                $VariablesPersona->telefonoTrabajo = $request->telefonoTrabajo;
-                            }
-
+                            $VariablesPersona->lugarTrabajo       = $request->lugarTrabajo;
+                            $VariablesPersona->telefonoTrabajo    = $request->telefonoTrabajo;
                             $VariablesPersona->idDomicilioTrabajo = $idD2;
+
+                            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'domicilio', 'accion' => 'insert', 'descripcion' => 'Se ha registrado un nuevo domicilio de trabajo de persona física de tipo denunciado por comparecencia.', 'idFilaAccion' => $idD2]);
 
                         }
 
@@ -889,7 +856,6 @@ class DenunciadoController extends Controller
                 $VariablesPersona->idOcupacion = $request->idOcupacion;
 
                 if ($request->idOcupacion == 2947) {
-
                     $domicilio2 = Domicilio::find($request->idDireccionTrab);
                     if ($request->filled('idMunicipio2')) {
                         $domicilio2->idMunicipio = 2496;
