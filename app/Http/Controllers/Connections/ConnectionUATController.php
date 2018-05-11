@@ -251,7 +251,7 @@ class ConnectionUATController extends Controller
             $ExtraAbogadoNew->correo             = $abogado->correo;
             $ExtraAbogadoNew->tipo               = $abogado->tipo;
             $ExtraAbogadoNew->save();
-            array_push($arrayAbogados, array('idViejo'=>$abogado->id,'idNuevo'=>$abogadoNew->id));
+            array_push($arrayAbogados, array('idViejo'=>$abogado->id,'idNuevo'=>$ExtraAbogadoNew->id));
         }
 
         $arrayAutoridades = array();
