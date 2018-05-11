@@ -29,6 +29,7 @@ use Alert;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use App\User;
 
 class ConnectionUATController extends Controller
 {
@@ -68,10 +69,12 @@ class ConnectionUATController extends Controller
                         ->select('tipif_delito.conViolencia', 'tipif_delito.consumacion', 'tipif_delito.fecha', 'tipif_delito.hora', 'tipif_delito.entreCalle', 'tipif_delito.yCalle', 'tipif_delito.puntoReferencia', 'uipj.cat_delito.nombre as delito')
                         ->whereIN('acusacion.id', Acusacion2::where('idCarpeta', $id)->select('id')->get())
                         ->get();
-        return ['respone'=>true,'denunciantes'=>$denunciantes,'denunciados'=>$denunciados,'acusaciones'=>$acusaciones];
+        return ['respone'=>true,'idCarpeta'=>$id,'denunciantes'=>$denunciantes,'denunciados'=>$denunciados,'acusaciones'=>$acusaciones];
     }
-    public function asignarCarpeta($idCarpeta, $idFiscal)
+    public function asignarCarpeta(Request $request)
     {
+    	$idCarpeta = $request->idCarpeta;
+    	$idFiscal = $request->idFiscal;
         //Carpeta
         $carpeta = Carpeta2::where('id', '=', $idCarpeta)->first();
         //$carpeta = DB::connection('uatuipj')->table('carpeta')->where('id', $idCarpeta)->get();

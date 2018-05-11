@@ -84,8 +84,8 @@
 
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">CANCELAR</button>
-                {!! Form::submit('ASIGNAR', ['class' => 'btn btn-success']) !!}
+				<button type="button" class="btn" data-dismiss="modal">CANCELAR</button>
+                <button type="button" id="asignarAUIPJ" name="" val="" class="btn" data-dismiss="modal">ASIGNAR</button>
             </div>
         </div>
 
@@ -100,6 +100,14 @@
 
 	<script type="text/javascript">
 
+
+		// setInterval( function () {
+		// 	table.ajax.reload( null, false );
+		// }, 20000 );
+	</script>
+@endpush
+@push('docready-js')
+	$('#user').select2();
 	var table = $('#carpetasUAT').DataTable({
 		language: {
 			"url": "{{ asset('plugins/datatables/json/Spanish.json') }}"
@@ -119,12 +127,15 @@
 		]
 	});
 	$('#carpetasUAT').on('click', '#modalBoton', function(){
-               this.preventDefault;
-               nombre=this.name;
-               numero=this.value;
-               console.log(numero);
-			   	$.get(route('datos.CarpetaUAT', numero), function(response, estado){
-			   	console.log(response['denunciantes'].length);
+			   this.preventDefault;
+			   nombre=this.name;
+			   numero=this.value;
+			   console.log(numero);
+			   var idCarpeta="";
+				$.get(route('datos.CarpetaUAT', numero), function(response, estado){
+				idCarpeta=response['idCarpeta'];
+				console.log('idCarpeta: '+idCarpeta);
+				console.log(response['denunciantes'].length);
 				numTe=response['denunciantes'].length;
 				numDo=response['denunciados'].length;
 				numAcu=response['acusaciones'].length;
@@ -136,38 +147,35 @@
 				for (var i = 0; i < numDo ; i++) {
 					$( "#denunciados" ).append("<p>"+response['denunciados'][i]['nombre']+"</p>");
 				}
-				$( "#acusaciones" ).html('ACUSACIONES: \n');
+				$( "#acusaciones" ).html('ACUSACIONES: </br>');
 				var acusaciones="";
 				for (var i = 0; i < numAcu ; i++) {
-					acusaciones=acusaciones+' Delito: '+response['acusaciones'][i]['delito']+"</br>"+" Entre calle: "+response['acusaciones'][i]['entreCalle']+"</br>";
+					acusaciones=acusaciones+' Delito: '+response['acusaciones'][i]['delito']+"</br>"+" Entre calle: "+response['acusaciones'][i]['entreCalle']+"</br> y calle: "+response['acusaciones'][i]['yCalle']+"</br> Punto de referencia: "+response['acusaciones'][i]['puntoReferencia']+"</br>";
 					// $( "#acusaciones" ).append("Delito: "+response['acusaciones'][i]['delito']);
 					// $( "#acusaciones" ).append("Entre calle: "+response['acusaciones'][i]['entreCalle']);
 				}
 				$( "#acusaciones" ).append(acusaciones);
 
-			   	});
 
 
-
+				});
 			   $("#carpeta h3").text(nombre);
-               // swal({
-               //         title: "¿Seguro que desea eliminar la sucursal "+nombre+"?",
-               //         text: "No podrá deshacer este paso.",
-               //         type: "warning",
-               //         showCancelButton: true,
-               //         cancelButtonText: "Cancelar",
-               //         confirmButtonColor: "#DD6B55",
-               //         confirmButtonText: "Confirmar",
-               //         closeOnConfirm: false
-               // }, function(isConfirm){
+			   var user=$('#user').val();
+			   $('#asignarAUIPJ').click( function() {
+				   console.log('enviado');
+				  $('<form action='+route('asignar.carpeta',{idCarpeta:idCarpeta,idFiscal:user})+'method="POST" style="display: none;">').appendTo('body').submit();
+				});
+			   // swal({
+			   //         title: "¿Seguro que desea eliminar la sucursal "+nombre+"?",
+			   //         text: "No podrá deshacer este paso.",
+			   //         type: "warning",
+			   //         showCancelButton: true,
+			   //         cancelButtonText: "Cancelar",
+			   //         confirmButtonColor: "#DD6B55",
+			   //         confirmButtonText: "Confirmar",
+			   //         closeOnConfirm: false
+			   // }, function(isConfirm){
 			   //
 			   // });
-            });
-		// setInterval( function () {
-		// 	table.ajax.reload( null, false );
-		// }, 20000 );
-	</script>
-@endpush
-@push('docready-js')
-	$('#user').select2();
+			});
 @endpush
