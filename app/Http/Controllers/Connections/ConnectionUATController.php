@@ -29,6 +29,7 @@ use Alert;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use App\User;
 
 class ConnectionUATController extends Controller
 {
