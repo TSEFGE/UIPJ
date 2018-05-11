@@ -153,6 +153,8 @@
 		$('#primerAp').val("{{ $personales->primerAp }}");
 		$('#segundoAp').val("{{ $personales->segundoAp }}");
 		$('#sexo').val("{{ $personales->sexo }}").trigger('change');
+		$('#fechanac').datetimepicker('format', "DD-MM-YYYY");
+		$('#fechanac').datetimepicker('date', moment("{{ $personales->fechaNacimiento}}").format("DD-MM-YYYY"));
 		$('#idNacionalidad').val({{ $personales->idNacionalidad }}).trigger('change');
 		$('#idEstadoOrigen').val({{ $personales->idEstado}}).trigger('change');
 		$('#rfc').val(rfc);
