@@ -90,7 +90,7 @@ class ConnectionUATController extends Controller
     	//Narraciones
     	$narraciones = DB::connection('uatuipj')->table('narracion')
     		->where('idCarpeta', $idCarpeta)->get();
-    	dump($carpeta, $delitos, $variablesPersona, $notificaciones, $abogados, $autoridades, $denunciantes, $denunciados, $acusaciones, $narraciones);
+    	//dump($carpeta, $delitos, $variablesPersona, $notificaciones, $abogados, $autoridades, $denunciantes, $denunciados, $acusaciones, $narraciones);
 
     	$carpetaNew = New Carpeta();
     	$datos = DB::table('users')
@@ -122,10 +122,11 @@ class ConnectionUATController extends Controller
         $carpetaNew->idTipoDeterminacion = $carpeta->idTipoDeterminacion;
         $carpetaNew->asignadaUat = 1;
     	//dump($carpetaNew);
-        //$carpeta->save();
+        $carpetaNew->save();
+        DB::table('unidad')->where('id', $idFiscal)->update(['consecutivo' => $num]);
 
         //Para guardar
-        $del = array();
+        /*$del = array();
         for($cont=1; $cont<=10; $cont++){
         	array_push($del, array('idViejo'=>$cont,'idNuevo'=>$cont));
         }
@@ -135,7 +136,7 @@ class ConnectionUATController extends Controller
         		dump("hola".$cont);
         	}
         }
-        dump($del);
+        dump($del);*/
 
         $arrayDelitos = array();
         foreach($delitos as $delito){
@@ -161,7 +162,7 @@ class ConnectionUATController extends Controller
 	        $tipifDelito->yCalle          = $delito->yCalle;
 	        $tipifDelito->calleTrasera    = $delito->calleTrasera;
 	        $tipifDelito->puntoReferencia = $delito->puntoReferencia;
-	        //$tipifDelito->save();
+	        $tipifDelito->save();
         	array_push($arrayDelitos, array('idViejo'=>$delito->id,'idNuevo'=>$tipifDelito->id));
         }
 
@@ -183,11 +184,11 @@ class ConnectionUATController extends Controller
         	$VariablesPersonaNew->idEscolaridad = $varPersona->idEscolaridad;
         	$VariablesPersonaNew->idReligion = $varPersona->idReligion;
         	$VariablesPersonaNew->idDomicilio  = $varPersona->idDomicilio;
-        	$VariablesPersonaNew->idInterprete = 1;
+        	$VariablesPersonaNew->idInterprete = NULL;
         	$VariablesPersonaNew->docIdentificacion = $varPersona->docIdentificacion;
         	$VariablesPersonaNew->numDocIdentificacion = $varPersona->numDocIdentificacion;
         	$VariablesPersonaNew->representanteLegal = $varPersona->representanteLegal;
-        	//$VariablesPersona->save();
+        	$VariablesPersonaNew->save();
         	array_push($arrayVariables, array('idViejo'=>$varPersona->id,'idNuevo'=>$VariablesPersonaNew->id));
         }
 
@@ -198,7 +199,7 @@ class ConnectionUATController extends Controller
             $notificacionNew->correo      = $notificacion->correo;
             $notificacionNew->telefono    = $notificacion->telefono;
             $notificacionNew->fax         = $notificacion->fax;
-            //$notificacionNew->save();
+            $notificacionNew->save();
         	array_push($arrayNotifs, array('idViejo'=>$notificacion->id,'idNuevo'=>$notificacionNew->id));
         }
 
@@ -216,7 +217,7 @@ class ConnectionUATController extends Controller
             $ExtraAbogadoNew->sector             = $abogado->sector;
             $ExtraAbogadoNew->correo             = $abogado->correo;
             $ExtraAbogadoNew->tipo               = $abogado->tipo;
-            //$ExtraAbogadoNew->save();
+            $ExtraAbogadoNew->save();
         	array_push($arrayAbogados, array('idViejo'=>$abogado->id,'idNuevo'=>$abogadoNew->id));
         }
 
@@ -233,7 +234,7 @@ class ConnectionUATController extends Controller
 	        $ExtraAutoridadNew->antiguedad         = $autoridad->antiguedad;
 	        $ExtraAutoridadNew->rango              = $autoridad->rango;
 	        $ExtraAutoridadNew->horarioLaboral     = $autoridad->horarioLaboral;
-	        //$ExtraAutoridadNew->save();
+	        $ExtraAutoridadNew->save();
 	        array_push($arrayAutoridades, array('idViejo'=>$autoridad->id,'idNuevo'=>$ExtraAutoridadNew->id));
         }
 
@@ -263,7 +264,7 @@ class ConnectionUATController extends Controller
 	        }
             $ExtraDenuncianteNew->conoceAlDenunciado = $denunciante->conoceAlDenunciado;
             $ExtraDenuncianteNew->esVictima = $denunciante->esVictima;
-            //$ExtraDenuncianteNew->save();
+            $ExtraDenuncianteNew->save();
         	array_push($arrayDenunciantes, array('idViejo'=>$denunciante->id,'idNuevo'=>$ExtraDenuncianteNew->id));
         }
 
@@ -300,7 +301,7 @@ class ConnectionUATController extends Controller
             $ExtraDenunciadoNew->personasBajoSuGuarda = $denunciado->personasBajoSuGuarda;
             $ExtraDenunciadoNew->perseguidoPenalmente = $denunciado->perseguidoPenalmente;
             $ExtraDenunciadoNew->vestimenta = $denunciado->vestimenta;
-            //$ExtraDenunciadoNew->save();
+            $ExtraDenunciadoNew->save();
         	array_push($arrayDenunciados, array('idViejo'=>$denunciado->id,'idNuevo'=>$ExtraDenunciadoNew->id));
         }
 
@@ -328,7 +329,7 @@ class ConnectionUATController extends Controller
             		break;
 	        	}
 	        }
-	        //$acusacionNew->save();
+	        $acusacionNew->save();
         }
 
         foreach($narraciones as $narracion){
@@ -360,14 +361,15 @@ class ConnectionUATController extends Controller
             $narracionNew->narracion       = $narracion->narracion;
             $narracionNew->tipoInvolucrado = $narracion->tipoInvolucrado;
             $narracionNew->archivo         = $narracion->archivo;
-            //$narracionNew->save();
+            $narracionNew->save();
         }
         //dump($carpeta, $delitos, $variablesPersona, $notificaciones, $abogados, $autoridades, $denunciantes, $denunciados, $acusaciones, $narraciones);
 
         /*
         Si todo sale bien
+        */
+        DB::connection('uatuipj')->table('carpeta')->where('id', $carpeta->id)->update(['asignada' => 1]);
         Alert::success('Carpeta asignada con éxito', 'Hecho')->persistent("Aceptar");
         return redirect()->route('carpetas.uat');
-        */
     }
 }
