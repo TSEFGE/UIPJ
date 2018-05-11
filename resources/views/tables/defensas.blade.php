@@ -7,7 +7,7 @@
         </thead>
         <tbody>
             @if(count($defensas)==0)
-                <tr><td colspan="2" class="text-center">Sin registros</td></tr>
+                <tr><td colspan="3" class="text-center">Sin registros</td></tr>
             @else
                 @foreach($defensas as $defensa)
                     <tr>

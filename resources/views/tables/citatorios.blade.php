@@ -12,7 +12,7 @@
         <tbody>
             @if(count($citatorios)==0)
             <tr>
-                <td colspan="7" class="text-center">SIN RESGISTROS</td>
+                <td colspan="8" class="text-center">SIN RESGISTROS</td>
             </tr>
             @else
                 @foreach($citatorios as $citatorio)

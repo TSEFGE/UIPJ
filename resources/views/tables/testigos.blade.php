@@ -16,7 +16,7 @@
         </thead>
         <tbody>
             @if(count($testigos)==0)
-                <tr><td colspan="8" class="text-center">Sin registros</td></tr>
+                <tr><td colspan="9" class="text-center">Sin registros</td></tr>
             @else
                 @foreach($testigos as $testigo)
                     <tr>
