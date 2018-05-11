@@ -11,6 +11,7 @@ use App\Models\ExtraAutoridad;
 use App\Models\ExtraDenunciado;
 use App\Models\ExtraDenunciante;
 use App\Models\Narracion;
+use App\Models\Notificacion;
 use App\Models\TipifDelito;
 use App\Models\VariablesPersona;
 use App\Models\uatuipj\Acusacion2;
@@ -20,6 +21,7 @@ use App\Models\uatuipj\ExtraAutoridad2;
 use App\Models\uatuipj\ExtraDenunciado2;
 use App\Models\uatuipj\ExtraDenunciante2;
 use App\Models\Narracion2;
+use App\Models\Notificacion2;
 use App\Models\uatuipj\TipifDelito2;
 use App\Models\uatuipj\VariablesPersona2;
 use DB;
@@ -89,7 +91,7 @@ class ConnectionUATController extends Controller
     	$narraciones = DB::connection('uatuipj')->table('narracion')
     		->where('idCarpeta', $idCarpeta)->get();
     	dump($carpeta, $delitos, $variablesPersona, $notificaciones, $abogados, $autoridades, $denunciantes, $denunciados, $acusaciones, $narraciones);
-/*
+
     	$carpetaNew = New Carpeta();
     	$datos = DB::table('users')
             ->join('unidad', 'unidad.id', '=', 'users.idUnidad')
@@ -218,6 +220,7 @@ class ConnectionUATController extends Controller
         	array_push($arrayAbogados, array('idViejo'=>$abogado->id,'idNuevo'=>$abogadoNew->id));
         }
 
+		$arrayAutoridades = array();
         foreach($autoridades as $autoridad){
         	$ExtraAutoridadNew                     = new ExtraAutoridad();
         	//$ExtraAutoridadNew->idVariablesPersona = $idVariablesPersona;//FOR
@@ -231,6 +234,7 @@ class ConnectionUATController extends Controller
 	        $ExtraAutoridadNew->rango              = $autoridad->rango;
 	        $ExtraAutoridadNew->horarioLaboral     = $autoridad->horarioLaboral;
 	        //$ExtraAutoridadNew->save();
+	        array_push($arrayAutoridades, array('idViejo'=>$autoridad->id,'idNuevo'=>$ExtraAutoridadNew->id));
         }
 
         $arrayDenunciantes = array();
@@ -339,14 +343,14 @@ class ConnectionUATController extends Controller
 		        }
             }elseif($narracion->tipoInvolucrado == 2){
 		        for($cont=0; $cont<count($arrayDenunciados); $cont++){
-		        	if($arrayDenunnciados[$cont]['idViejo'] == $narracion->idInvolucrado){
+		        	if($arrayDenunciados[$cont]['idViejo'] == $narracion->idInvolucrado){
 	            		$narracionNew->idInvolucrado = $arrayDenunciados[$cont]['idNuevo'];
 	            		break;
 		        	}
 		        }
             }elseif($narracion->tipoInvolucrado == 3){
 		        for($cont=0; $cont<count($arrayAutoridades); $cont++){
-		        	if($arrayDAutoridades[$cont]['idViejo'] == $narracion->idInvolucrado){
+		        	if($arrayAutoridades[$cont]['idViejo'] == $narracion->idInvolucrado){
 	            		$narracionNew->idInvolucrado = $arrayAutoridades[$cont]['idNuevo'];
 	            		break;
 		        	}
