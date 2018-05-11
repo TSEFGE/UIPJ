@@ -93,13 +93,13 @@ class FamiliarController extends Controller
 
         $idInvolucrado = $involucrados->idPersona;
 
-        dump($involucrados);
+        //dump($involucrados);
         $datosfamiliar = DB::table('familiar')
             ->join('persona', 'persona.id', '=', 'familiar.idPersona')
             ->select('persona.id as idFamiliar', 'familiar.parentesco', 'familiar.idOcupacion', 'familiar.nombres', 'familiar.primerAp', 'familiar.segundoAp')
             ->where('familiar.id', '=', $id)
             ->get()->first();
-        dump($datosfamiliar);
+       // dump($datosfamiliar);
         return view('edit-forms.familiar')
             ->with('idCarpeta', $idCarpeta)
             ->with('id', $id)
