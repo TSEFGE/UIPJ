@@ -129,16 +129,14 @@ class ConnectionUATController extends Controller
         $carpetaNew = new Carpeta();
         $datos = DB::table('users')
             ->join('unidad', 'unidad.id', '=', 'users.idUnidad')
-            ->select('unidad.idDistrito', 'users.numFiscal', 'unidad.consecutivo', 'unidad.abrevMun')
-            ->where('users.id', '=', Auth::user()->id)
+            ->select('unidad.id', 'unidad.idDistrito', 'users.numFiscal', 'unidad.consecutivo', 'unidad.abrevMun')
+            ->where('users.id', '=', $idFiscal)
             ->get();
         $num                 = $datos[0]->consecutivo + 1;
-        $carpetaNew->idUnidad   = Auth::user()->idUnidad;
+        $carpetaNew->idUnidad   = $datos[0]->id;
         $carpetaNew->idFiscal   = $idFiscal;
         $carpetaNew->numCarpeta = "UIPJ/D" . $datos[0]->idDistrito . "/" . $datos[0]->abrevMun . "/" . $datos[0]->numFiscal . "/" . $num . "/" . Carbon::now()->year;
-        $fechaInicioAux = $carpeta->fechaInicio;
-        $fechaInicio    = date("Y-m-d", strtotime($fechaInicioAux));
-        $carpetaNew->fechaInicio = $fechaInicio;
+        $carpetaNew->fechaInicio = $carpeta->fechaInicio;
         $carpetaNew->conDetenido = $carpeta->conDetenido;
         $carpetaNew->esRelevante = $carpeta->esRelevante;
         $carpetaNew->estadoCarpeta     = "ASIGNADA";
@@ -146,18 +144,14 @@ class ConnectionUATController extends Controller
         $carpetaNew->descripcionHechos = $carpeta->descripcionHechos;
         $carpetaNew->npd = $carpeta->npd;
         $carpetaNew->numIph = $carpeta->numIph;
-        $fechaIphAux       = $carpeta->fechaIph;
-        $fechaIph          = date("Y-m-d", strtotime($fechaIphAux));
-        $carpetaNew->fechaIph = $fechaIph;
+        $carpetaNew->fechaIph = $carpeta->fechaIph;
         $carpetaNew->narracionIph = $carpeta->narracionIph;
-        $fechaDeterminacionAux       = $carpeta->fechaDeterminacion;
-        $fechaDeterminacion          = date("Y-m-d", strtotime($fechaDeterminacionAux));
-        $carpetaNew->fechaDeterminacion = $fechaDeterminacion;
+        $carpetaNew->fechaDeterminacion = $carpeta->fechaDeterminacion;
         $carpetaNew->idTipoDeterminacion = $carpeta->idTipoDeterminacion;
         $carpetaNew->asignadaUat = 1;
         //dump($carpetaNew);
         $carpetaNew->save();
-        DB::table('unidad')->where('id', $idFiscal)->update(['consecutivo' => $num]);
+        DB::table('unidad')->where('id', $datos[0]->id)->update(['consecutivo' => $num]);
 
         //Para guardar
         /*$del = array();
