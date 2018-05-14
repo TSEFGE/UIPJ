@@ -17,36 +17,35 @@ class FamiliarController extends Controller
     public function showForm($idCarpeta)
     {
         $carpetaNueva = Carpeta::where('id', $idCarpeta)->where('idFiscal', Auth::user()->id)->get();
-        if (count($carpetaNueva) > 0) {
-            $numCarpeta    = $carpetaNueva[0]->numCarpeta;
-            $familiares    = CarpetaController::getFamiliares($idCarpeta);
-            $ocupaciones   = CatOcupacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-            $involucrados1 = DB::table('extra_denunciado')
-                ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
-                ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-                ->select('persona.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
-                ->where('variables_persona.idCarpeta', '=', $idCarpeta)
-                ->where('persona.esEmpresa', '=', 0)
-                ->orderBy('persona.nombres', 'ASC');
-            $involucrados = DB::table('extra_denunciante')
-                ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
-                ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-                ->select('persona.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
-                ->where('variables_persona.idCarpeta', '=', $idCarpeta)
-                ->where('persona.esEmpresa', '=', 0)
-                ->orderBy('persona.nombres', 'ASC')
-                ->union($involucrados1)
-                ->get();
-
-            return view('forms.familiar')->with('idCarpeta', $idCarpeta)
-                ->with('numCarpeta', $numCarpeta)
-                ->with('familiares', $familiares)
-                ->with('involucrados', $involucrados)
-                ->with('ocupaciones', $ocupaciones);
-
-        } else {
+        if ($carpetaNueva->isEmpty()) {
             return redirect()->route('home');
         }
+        $numCarpeta    = $carpetaNueva[0]->numCarpeta;
+        $familiares    = CarpetaController::getFamiliares($idCarpeta);
+        $ocupaciones   = CatOcupacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $involucrados1 = DB::table('extra_denunciado')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+            ->select('persona.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+            ->where('variables_persona.idCarpeta', '=', $idCarpeta)
+            ->where('persona.esEmpresa', '=', 0)
+            ->orderBy('persona.nombres', 'ASC');
+        $involucrados = DB::table('extra_denunciante')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+            ->select('persona.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+            ->where('variables_persona.idCarpeta', '=', $idCarpeta)
+            ->where('persona.esEmpresa', '=', 0)
+            ->orderBy('persona.nombres', 'ASC')
+            ->union($involucrados1)
+            ->get();
+
+        return view('forms.familiar')->with('idCarpeta', $idCarpeta)
+            ->with('numCarpeta', $numCarpeta)
+            ->with('familiares', $familiares)
+            ->with('involucrados', $involucrados)
+            ->with('ocupaciones', $ocupaciones);
+
     }
 
     public function storeFamiliar(StoreFamiliar $request)
@@ -73,6 +72,11 @@ class FamiliarController extends Controller
 
     public function edit($idCarpeta, $id)
     {
+        $carpetaNueva = Carpeta::where('id', $idCarpeta)->where('idFiscal', Auth::user()->id)->get();
+        if ($carpetaNueva->isEmpty()) {
+            return redirect()->route('home');
+        }
+        $numCarpeta    = $carpetaNueva[0]->numCarpeta;
         $ocupaciones   = CatOcupacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $involucrados1 = DB::table('extra_denunciado')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
@@ -81,7 +85,7 @@ class FamiliarController extends Controller
             ->where('variables_persona.idCarpeta', '=', $idCarpeta)
             ->where('persona.esEmpresa', '=', 0)
             ->orderBy('persona.nombres', 'ASC');
-        $involucs = DB::table('extra_denunciante')
+        $involucrados = DB::table('extra_denunciante')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
             ->select('persona.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
@@ -91,23 +95,17 @@ class FamiliarController extends Controller
             ->union($involucrados1)
             ->get();
 
-        //$idInvolucrado = $involucs->idPersona;
-
-        //dump($involucrados);
-        $datosfamiliar = DB::table('familiar')
+        $familiar = DB::table('familiar')
             ->join('persona', 'persona.id', '=', 'familiar.idPersona')
-            ->select('persona.id as idFamiliar', 'familiar.parentesco', 'familiar.idOcupacion', 'familiar.nombres', 'familiar.primerAp', 'familiar.segundoAp')
+            ->select('familiar.id', 'familiar.idPersona', 'familiar.parentesco', 'familiar.nombres', 'familiar.primerAp', 'familiar.segundoAp', 'familiar.idOcupacion')
             ->where('familiar.id', '=', $id)
             ->get()->first();
-       // dump($datosfamiliar);
-        return view('edit-forms.familiar')
-            ->with('idCarpeta', $idCarpeta)
-            ->with('id', $id)
-            ->with('involucs', $involucs)
-            ->with('ocupaciones', $ocupaciones)
-            //->with('idInvolucrado', $idInvolucrado)
-            ->with('datosfamiliar', $datosfamiliar);
 
+        return view('edit-forms.familiar')->with('idCarpeta', $idCarpeta)
+            ->with('numCarpeta', $numCarpeta)
+            ->with('familiar', $familiar)
+            ->with('involucrados', $involucrados)
+            ->with('ocupaciones', $ocupaciones);
     }
 
     public function update(Request $request, $id)
