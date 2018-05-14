@@ -64,7 +64,9 @@ class DefensaController extends Controller
 
     public function edit($idCarpeta, $id)
     {
-        $abogados = DB::table('extra_abogado')
+        $carpetaNueva = Carpeta::where('id', $idCarpeta)->where('idFiscal', Auth::user()->id)->get();
+        $numCarpeta   = $carpetaNueva[0]->numCarpeta;
+        $abogados     = DB::table('extra_abogado')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_abogado.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
             ->select('extra_abogado.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
@@ -96,7 +98,7 @@ class DefensaController extends Controller
 
         return view('edit-forms.defensa')
             ->with('idCarpeta', $idCarpeta)
-            ->with('id', $id)
+            ->with('numCarpeta', $numCarpeta)
             ->with('abogados', $abogados)
             ->with('idAbogado', $idAbogado)
             ->with('idInvolucrado', $idInvolucrado);

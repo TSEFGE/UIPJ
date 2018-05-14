@@ -3,7 +3,7 @@
 @section('title', 'Editar defensa')
 
 @section('contenido')
-{!! Form::open(['route' => ['update.defensa', $idCarpeta, $id], 'method' => 'PUT'])  !!}
+{!! Form::open(['route' => ['update.defensa', $idCarpeta, $idAbogado], 'method' => 'PUT'])  !!}
 	<div class="card-header">
 		<div class="row">
 			<div class="col">
