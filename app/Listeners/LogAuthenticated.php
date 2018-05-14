@@ -29,7 +29,7 @@ class LogAuthenticated
     {
         $id = Auth::id();
         $user=User::find($id);
-        session()->getHandler()->destroy($user->tokenSession);
+        //session()->getHandler()->destroy($user->tokenSession);
         $user->tokenSession=session()->getId();
         $user->save();
     }

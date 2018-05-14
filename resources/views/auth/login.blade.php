@@ -37,7 +37,7 @@ sessionStorage.removeItem('isLive');
 				<form method="POST" action="{{ route('login') }}" id="login-form">
 					{{ csrf_field() }}
 					<input type="hidden" id="email" name="email" value="">
-					<input type="hidden" id="vpassword" name="password" value="">
+					{{-- <input type="hidden" id="vpassword" name="password" value=""> --}}
 
 					<div id="usuario" class="form-row align-items-center">
 						<div class="col form-group has-feedback row{{ $errors->has('password') ? ' has-error' : '' }} inputrow">
@@ -59,7 +59,7 @@ sessionStorage.removeItem('isLive');
 						@endif
 					</div>
 					<div class="form-group has-feedback row{{ $errors->has('password') ? ' has-error' : '' }} inputrow">
-						<input id="txtPassword" type="text" class="form-control password"   placeholder="Contraseña" >
+						<input id="password" name="password" type="password" class="form-control password"   placeholder="Contraseña" >
 						<label class="fa fa-lock fa-lg" for="password" ></label>
 						@if ($errors->has('password'))
 							<span class="help-block">
@@ -118,23 +118,23 @@ sessionStorage.removeItem('isLive');
 		$("#name").focusout(function() {
 			$("#email").val($(this).val()+"@fiscaliaveracruz.gob.mx".toLowerCase());
 		});
-		$('#login-form').disableAutoFill({
-			passwordFiled: '.password'
-		});
-		$('#login-form').submit(function(e) {
-			$("#vpassword").val($("#txtPassword").val());
-			$("#txtPassword").val("");
-			$("#txtPassword").attr("type", "text");
-			$("#txtPassword").remove();
-			$('#formulario').hide();
-			$('#cargando').show();
-			//e.preventDefault();
-		});
-		$('input').keypress(function (e) {
-		  if (e.which == 13){
-		   $('#iniciar').trigger('click');
-		  }
-		});
+		// $('#login-form').disableAutoFill({
+		// 	passwordFiled: '.password'
+		// });
+		// $('#login-form').submit(function(e) {
+		// 	$("#vpassword").val($("#txtPassword").val());
+		// 	$("#txtPassword").val("");
+		// 	$("#txtPassword").attr("type", "text");
+		// 	$("#txtPassword").remove();
+		// 	$('#formulario').hide();
+		// 	$('#cargando').show();
+		// 	//e.preventDefault();
+		// });
+		// $('input').keypress(function (e) {
+		//   if (e.which == 13){
+		//    $('#iniciar').trigger('click');
+		//   }
+		// });
 
 	});
 
