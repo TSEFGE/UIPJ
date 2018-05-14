@@ -64,7 +64,7 @@
             </div>
         </div>
 
-        <div class="tab-pane container" id="asignadas">
+        <div class="tab-pane " id="asignadas">
             <div class="table">
                 <table class="table table-striped">
                     <thead>

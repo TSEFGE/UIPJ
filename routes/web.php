@@ -102,7 +102,7 @@ Route::middleware(['auth'])->group(function () {
 
     /*---------Rutas para Auxiliar de Fiscal-------------*/
    // Route::get('/carpeta/{idCarpeta}', 'AuxiliarController@index')->name('index');
-    Route::get('/auxiliar', 'AuxiliarController@admin')->name('admin');
+    Route::get('/administrador-de-auxiliar', 'AuxiliarController@admin')->name('admin.auxiliar');
 
     /*---------Rutas para generación de documentos-------------*/
     Route::get('constancia-hechos/{idDenunciante}', [

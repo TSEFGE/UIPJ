@@ -1,6 +1,6 @@
 @extends('template.form')
 
-@section('title', 'Agregar auxiliar')
+@section('title', 'Administrar auxiliar')
 
 @push('css')
 	<link rel="stylesheet" href="{{ asset('plugins/toastr/css/toastr.min.css') }}">
@@ -9,7 +9,7 @@
 
 @section('contenido')
 <div class="tarjeta">
-{!! Form::open(['route' => 'store.abogado', 'method' => 'POST'])  !!}
+{!! Form::open(['' => '', 'method' => 'POST'])  !!}
 <div class="card-header">
 	<div class="row">
 		<div class="col">
