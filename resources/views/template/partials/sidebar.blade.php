@@ -37,6 +37,7 @@
 						<li class="nav-item"><a href="{{ url('/bitacora') }}" class="{{ Request::is( 'bitacora') ? 'active' : '' }} nav-link"><i class="nav-icon fa fa-pencil-square-o"></i><p>Bitácora</p> <span></span></a></li>
 						<li class="nav-item"><a href="{{ route('agenda') }}" class="{{ Request::is( 'agenda') ? 'active' : '' }} nav-link"><i class="nav-icon fa fa-calendar"></i><p>Agenda</p> <span></span></a></li>
 						<li class="nav-item"><a href="{{ route('carpetas.uat') }}" class="{{ Request::is( 'carpetas-uat') ? 'active' : '' }} nav-link"><i class="nav-icon fa fa-exchange"></i><p>Asignar</p> <span></span></a></li>
+						<li class="nav-item"><a href="{{ route('admin.auxiliar') }}" class="{{ Request::is( 'administrador-de-auxiliar') ? 'active' : '' }} nav-link"><i class="nav-icon fa fa-user-plus"></i><p>Auxiliares</p> <span></span></a></li>
 						{{--<li class="nav-item">
 							<a href="pages/widgets.html" class="nav-link">
 								<i class="nav-icon fa fa-th"></i>
