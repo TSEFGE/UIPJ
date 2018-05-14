@@ -82,7 +82,7 @@
                             <td>{{ $carpetaUat->nombres." ".$carpeta->apellidos }}</td>
                             <td>{{ $carpetaUat->fechaInicio }}</td>
                             <td>{{ $carpetaUat->estadoCarpeta }}</td>
-                            <td><a href="{{ route('carpeta', $carpeta->id) }}" class="btn btn-secondary"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Ver</a></td>
+                            <td><a href="{{ route('carpeta', $carpetaUat->id) }}" class="btn btn-secondary"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Ver</a></td>
                         </tr>
                         @endforeach
                         @endif
