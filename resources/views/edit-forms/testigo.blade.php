@@ -197,7 +197,7 @@
 	$("#numExterno").val("{{ $direccion->numExterno }}");
 	$("#numInterno").val("{{ $direccion->numInterno }}");
 	$("#lugarTrabajo").val("{{ $personales->lugarTrabajo }}");
-	$('#telefonoTrabajo').val({{$personales->telefonoTrabajo}}).trigger('change');
+	$('#telefonoTrabajo').val("{{$personales->telefonoTrabajo}}");
 	$('#calle2').val("{{$direccionTrab->calle}}");
 	$("#numExterno2").val("{{ $direccion->numExterno }}");
 	$("#numInterno2").val("{{ $direccion->numInterno }}");
