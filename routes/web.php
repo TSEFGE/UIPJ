@@ -101,7 +101,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('denunciado/storecomplemento', 'DenunciadoController@storeComplement')->name('store.complement2');
 
     /*---------Rutas para Auxiliar de Fiscal-------------*/
-    Route::get('/carpeta/{idCarpeta}', 'AuxiliarController@index')->name('index');
+   // Route::get('/carpeta/{idCarpeta}', 'AuxiliarController@index')->name('index');
+    Route::get('/auxiliar', 'AuxiliarController@admin')->name('admin');
 
     /*---------Rutas para generación de documentos-------------*/
     Route::get('constancia-hechos/{idDenunciante}', [

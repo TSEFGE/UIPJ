@@ -27,6 +27,16 @@
         </div>
     </div>
 @endif
+<div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title text-center">@yield('titulo-tabla')</h5>
+                </div>
+                @yield('tabla')
+            </div>
+        </div>
+    </div>
 @endsection
 
 @push('scripts')
