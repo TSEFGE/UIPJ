@@ -139,7 +139,7 @@ $(document).ready(function() {
     $("#otroDocumento").keyup(function() {
         var nombreOtro = $("#otroDocumento").val();
         console.log(nombreOtro);
-        if (nombreOtro == "CREDENCIAL DE ELECTOR" || nombreOtro == "INE" || nombreOtro == "IFE") {
+        if (nombreOtro == "CREDENCIAL DE ELECTOR" || nombreOtro == "INE" || nombreOtro == "IFE" || nombreOtro == "CREDENCIAL") {
             console.log("entra a otro doc");
             $("#otrodocto").hide();
             $("#otroDocumento").removeClass("vacio");
@@ -158,7 +158,7 @@ $(document).ready(function() {
             $("#otroDocumento").removeClass("error");
             $("#otroDocumento").removeClass("valid");
             $("#docIdentificacion").val("CARTILLA MILITAR").trigger('change');
-        } else if (nombreOtro == "LICENCIA PARA CONDUCIR" || nombreOtro == "LICENCIA DE MANEJAR" || nombreOtro == "LICENCIA DE MANEJO") {
+        } else if (nombreOtro == "LICENCIA PARA CONDUCIR" || nombreOtro == "LICENCIA DE CONDUCIR" || nombreOtro == "LICENCIA" || nombreOtro == "LICENCIA DE MANEJAR" || nombreOtro == "LICENCIA DE MANEJO") {
             $("#otrodocto").hide();
             $("#otroDocumento").removeClass("vacio");
             $("#otroDocumento").removeClass("error");
