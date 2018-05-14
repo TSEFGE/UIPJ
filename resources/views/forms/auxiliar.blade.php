@@ -1,6 +1,6 @@
 @extends('template.form')
 
-@section('title', 'Agregar auxiliar')
+@section('title', 'Administrar auxiliar')
 
 @push('css')
 	<link rel="stylesheet" href="{{ asset('plugins/toastr/css/toastr.min.css') }}">
