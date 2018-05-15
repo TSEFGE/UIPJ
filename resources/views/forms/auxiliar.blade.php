@@ -58,13 +58,18 @@
                     {!! Form::label('telefonoAux', 'Numero de teléfono', ['class' => 'col-form-label-sm']) !!}
 			        {!! Form::text('telefonoAux', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese numero']) !!}                    
 				</div>
-				<div class="col-3">
-                    {!! Form::label('contraseña', 'Ingresa una contraseña', ['class' => 'col-form-label-sm']) !!}
-			        {!! Form::password('contraseña', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese numero']) !!}                    
-				</div>
-				<div class="col-3">
-                    {!! Form::label('contraseña2', 'Repite tu contraseña', ['class' => 'col-form-label-sm']) !!}
-			        {!! Form::password('contraseña2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese numero']) !!}                    
+				<div class="col-6">
+					<div class="row">
+						<div class="col">
+							{!! Form::label('contraseña', 'Ingresa una contraseña', ['class' => 'col-form-label-sm']) !!}
+							{!! Form::text('contraseña', null, ['class' => 'form-control form-control-sm pw', 'placeholder' => 'Contraseña','data-validation'=>'length','name'=>'pass','data-validation-length'=>'min8']) !!}                    
+						</div>
+						<div class="col">
+							{!! Form::label('contraseña2', 'Repite tu contraseña', ['class' => 'col-form-label-sm']) !!}
+							{!! Form::text('contraseña2', null, ['class' => 'form-control form-control-sm pw', 'placeholder' => '********','name'=>'repeat','data-validation'=>'confirmation','data-validation-confirm'=>'pass']) !!}                    
+						</div>
+					</div>
+					<div id="nocoinciden"></div>
 				</div>
 				<div class="col-12 text-right bottom" >					
 				{!! Form::button('<i class="fa fa-minus" aria-hidden="true"></i>', array ('class' => 'btn btn-secondary ','data-toggle'=>'tooltip','title'=>'Ocultar formulario','id' => 'btn-ocultar')) !!}
@@ -112,5 +117,6 @@
         "hideEasing": "linear",
         "showMethod": "fadeIn",
         "hideMethod": "fadeOut"
-    }
-@endpush
+	}
+	
+	@endpush
