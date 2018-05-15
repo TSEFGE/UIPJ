@@ -14,7 +14,7 @@
                 @foreach($auxiliares as $auxiliar)
                     <tr >
                         <td>{{$auxiliar->nombre}}</td>
-                        <td>{{$auxiliar->correo}}</td>                        
+                        <td>{{$auxiliar->email}}</td>                        
                         <td>{{$auxiliar->telefono}}</td>                       
                         <td ><a href=""> <i class="fa fa-pencil-square-o" style="font-size:24px;color:grey"></i></a></td>
                        

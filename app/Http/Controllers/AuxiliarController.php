@@ -17,6 +17,7 @@ class AuxiliarController extends Controller
             ->select('auxiliares.id', 'auxiliares.email', 'auxiliares.telefono', DB::raw('CONCAT(auxiliares.nombres, " ", ifnull(auxiliares.primerAp,"")," ", ifnull(auxiliares.segundoAp,"")) AS nombre'), DB::raw('CONCAT("AUXILIAR") AS tipo'))
             ->where('auxiliares.idFiscal', Auth::user()->id)
             ->get();
+        //   dd($auxiliares);
         return view('forms.auxiliar')->with('auxiliares', $auxiliares);
     }
 
