@@ -101,8 +101,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('denunciado/storecomplemento', 'DenunciadoController@storeComplement')->name('store.complement2');
 
     /*---------Rutas para Auxiliar de Fiscal-------------*/
-   // Route::get('/carpeta/{idCarpeta}', 'AuxiliarController@index')->name('index');
-    Route::get('/administrador-de-auxiliar', 'AuxiliarController@admin')->name('admin.auxiliar');
+    Route::get('/administrador-de-auxiliar', 'AuxiliarController@showForm')->name('show.auxiliar');
+    Route::post('store-Auxiliar', 'AuxiliarController@storeAuxiliar')->name('store.auxiliar');
 
     /*---------Rutas para generación de documentos-------------*/
     Route::get('constancia-hechos/{idDenunciante}', [
@@ -158,6 +158,8 @@ Route::middleware(['auth'])->group(function () {
         Route::post('rfc-fisico', 'RegistroController@rfcFisico')->name('rfc.fisico');
 
         /*---------Rutas para los selects dinámicos-------------*/
+        Route::get('fiscales/{id}', 'CarpetaController@getFiscales')->name('get.fiscales');
+        Route::get('auxiliares/{id}', 'CarpetaController@getAuxiliares')->name('get.auxiliares');
         Route::get('carpetaUAT/{id}', 'Connections\ConnectionUATController@carpetauat')->name('datos.CarpetaUAT');
         Route::get('municipios/{id}', 'RegistroController@getMunicipios')->name('get.municipios');
         Route::get('localidades/{id}', 'RegistroController@getLocalidades')->name('get.localidades');

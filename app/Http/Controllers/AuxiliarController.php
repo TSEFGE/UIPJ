@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 class AuxiliarController extends Controller
 {
-    public function admin()
+    public function showForm()
     {
         return view('forms.auxiliar');
     }
-    
-    public function index($idCarpeta)
+
+    public function storeAuxiliar(StoreAuxiliar $request)
     {
-        return view('forms.auxiliar')->with('idCarpeta', $idCarpeta);
+
     }
 }
