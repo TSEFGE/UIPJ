@@ -8,6 +8,7 @@ class AuxiliarController extends Controller
 {
     public function showForm()
     {
+
         return view('forms.auxiliar');
     }
 
