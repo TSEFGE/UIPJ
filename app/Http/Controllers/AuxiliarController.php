@@ -7,6 +7,7 @@ use App\Models\Auxiliar;
 use App\Models\Bitacora;
 use DB;
 use Illuminate\Http\Request;
+use App\Models\Auxiliar;
 use Illuminate\Support\Facades\Auth;
 
 class AuxiliarController extends Controller
@@ -41,6 +42,11 @@ class AuxiliarController extends Controller
 
         Alert::success('Auxiliar registrado con éxito', 'Hecho')->persistent("Aceptar");
         return redirect()->route('show.auxiliar', $request->idCarpeta);
+    }
 
+    public function edit($id)
+    {
+        $auxiliar=Auxiliar::find($id);
+        return view('forms.auxiliar')->with('auxiliar', $auxiliar);
     }
 }
