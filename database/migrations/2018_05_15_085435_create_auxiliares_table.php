@@ -21,6 +21,8 @@ class CreateAuxiliaresTable extends Migration
             $table->string('segundoAp', 50)->nullable();
             $table->string('email', 100)->nullable();
             $table->string('telefono', 20)->nullable();
+            $table->string('password', 100);
+            $table->string('tokenSession')->nullable();
             $table->timestamps();
             
             $table->foreign('idFiscal')->references('id')->on('users')->onDelete('cascade');
