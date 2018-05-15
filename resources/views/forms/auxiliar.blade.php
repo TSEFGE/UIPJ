@@ -10,7 +10,6 @@
 @section('contenido')
 <div class="tarjeta">
 {!! Form::open(['route' => 'store.auxiliar', 'method' => 'POST'])  !!}
-
 <div class="card-header">
 	<div class="row">
 		<div class="col">
@@ -59,7 +58,15 @@
                     {!! Form::label('telefonoAux', 'Numero de teléfono', ['class' => 'col-form-label-sm']) !!}
 			        {!! Form::text('telefonoAux', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese numero']) !!}                    
 				</div>
-				<div class="col-6 text-right bottom" >					
+				<div class="col-3">
+                    {!! Form::label('contraseña', 'Ingresa una contraseña', ['class' => 'col-form-label-sm']) !!}
+			        {!! Form::password('contraseña', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese numero']) !!}                    
+				</div>
+				<div class="col-3">
+                    {!! Form::label('contraseña2', 'Repite tu contraseña', ['class' => 'col-form-label-sm']) !!}
+			        {!! Form::password('contraseña2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese numero']) !!}                    
+				</div>
+				<div class="col-12 text-right bottom" >					
 				{!! Form::button('<i class="fa fa-minus" aria-hidden="true"></i>', array ('class' => 'btn btn-secondary ','data-toggle'=>'tooltip','title'=>'Ocultar formulario','id' => 'btn-ocultar')) !!}
 				</div>
                 </div>
