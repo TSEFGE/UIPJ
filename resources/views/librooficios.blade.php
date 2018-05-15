@@ -16,7 +16,7 @@
 		</div>
 		<div class="col">	
 			<div class="text-right">
-				<a href="{{ route('home') }}" class="btn btn-dark text-center">Regresar</a>
+				<a href="{{ route('home') }}" class="btn btn-primary " data-toggle="tooltip" title="Inicio"><i class="fa fa-home" aria-hidden="true"></i></a>
 			</div>
 		</div>
 	</div>
