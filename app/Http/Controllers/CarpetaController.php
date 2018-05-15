@@ -389,14 +389,15 @@ class CarpetaController extends Controller
         //
     }
 
-    public function asignacionCarpeta(Request $request){
-        if($request->tipo==1){
+    public function asignacionCarpeta(Request $request)
+    {
+        if ($request->tipo == 1) {
             DB::table('permisos_fiscales')->insert(['idFiscal' => $request->idUsuario, 'idCarpeta' => $request->idCarpeta]);
-            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'permisos_fiscales', 'accion' => 'create', 'descripcion' => 'Se ha asigando la carpeta con id: '.$request->idCarpeta.' al fiscal '.$request->idUsuario'.', 'idFilaAccion' => $auxiliar->id]);
+            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'permisos_fiscales', 'accion' => 'create', 'descripcion' => 'Se ha asigando la carpeta con id: ' . $request->idCarpeta . ' al fiscal ' . $request->idUsuario . '.', 'idFilaAccion' => $auxiliar->id]);
 
-        }else if($request->tipo==0){
-                DB::table('permisos_auxiliares')->insert(['idAuxiliar' =>$request->idUsuario, 'idCarpeta' => $request->idCarpeta]]);
-                Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'permisos_auxiliares', 'accion' => 'create', 'descripcion' => 'Se ha asigando la carpeta con id: '.$request->idCarpeta.' al auxiliar '.$request->idUsuario'.', 'idFilaAccion' => $auxiliar->id]);
+        } else if ($request->tipo == 0) {
+            DB::table('permisos_auxiliares')->insert(['idAuxiliar' => $request->idUsuario, 'idCarpeta' => $request->idCarpeta]);
+            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'permisos_auxiliares', 'accion' => 'create', 'descripcion' => 'Se ha asigando la carpeta con id: ' . $request->idCarpeta . ' al auxiliar ' . $request->idUsuario . '.', 'idFilaAccion' => $auxiliar->id]);
         }
 
         Alert::success('Se ha asignado la carpeta con éxito', 'Hecho')->persistent("Aceptar");
