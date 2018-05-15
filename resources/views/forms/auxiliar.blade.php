@@ -57,7 +57,10 @@
                 <div class="col-6">
                     {!! Form::label('telefonoAux', 'Numero de teléfono', ['class' => 'col-form-label-sm']) !!}
 			        {!! Form::text('telefonoAux', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese numero']) !!}                    
-                </div>
+				</div>
+				<div class="col-6 text-right bottom" >					
+				{!! Form::button('<i class="fa fa-minus" aria-hidden="true"></i>', array ('class' => 'btn btn-secondary ','data-toggle'=>'tooltip','title'=>'Ocultar formulario','id' => 'btn-ocultar')) !!}
+				</div>
                 </div>
 			</div>{{--}}
 		</div>
@@ -77,7 +80,8 @@
 @push('scripts')
 	<script src="{{ asset('plugins/toastr/js/toastr.min.js')}}" ></script>
 	<script src="{{ asset('plugins/moment/js/moment.min.js') }}"></script>
-    <script src="{{ asset('plugins/moment/locales/es.js') }}"></script>	
+	<script src="{{ asset('plugins/moment/locales/es.js') }}"></script>	
+	<script src="{{ asset('js/auxiliar.js') }}"></script>
 	<script src="{{ asset('js/curp.js') }}"></script>
 	<script src="{{ asset('js/rfcFisico.js') }}"></script>
 	<script src="{{ asset('js/ajaxCurp.js') }}"></script>

@@ -4,8 +4,8 @@
             <th >Nombre</th>
             <th>Correo</th>
             <th>Teléfono</th>           
-            <th>Editar auxiliar</th>
-            <th>Eliminar auxiliar</th>                              
+            <th>Acciones</th>
+                                         
         </thead>
         <tbody>
                <tr><td colspan="5" class="text-center">Sin registros</td></tr>

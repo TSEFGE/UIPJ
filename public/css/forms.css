@@ -112,3 +112,8 @@ form .form-control:focus {
 .vacio{
 	border-color: yellow;
 }
+#btn-ocultar{
+	position:absolute;
+	bottom:5px;
+	right:10px;
+}
