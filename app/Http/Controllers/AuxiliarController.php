@@ -23,6 +23,7 @@ class AuxiliarController extends Controller
 
     public function storeAuxiliar(Request $request)
     {
+
         //dd($request);
 
         $auxiliar               = new Auxiliar();
@@ -31,8 +32,8 @@ class AuxiliarController extends Controller
         $auxiliar->primerAp     = $request->primerApAux;
         $auxiliar->segundoAp    = $request->segundoApAux;
         $auxiliar->email        = $request->email;
-        $auxiliar->telefono     = $request->telefono;
-        $auxiliar->password     = $request->password;
+        $auxiliar->telefonoAux  = $request->telefono;
+        $auxiliar->password     = $request->contraseña;
         $auxiliar->tokenSession = null;
         $auxiliar->save();
         //  dd($auxiliar);
