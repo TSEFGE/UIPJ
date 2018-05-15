@@ -229,6 +229,17 @@ class RegistroController extends Controller
         }
     }
 
+    public static function getAuxiliares()
+    {
+        $auxiliares = DB::table('permisos_auxiliares')
+            ->join('auxiliar', 'auxiliar.id', '=', 'permisos.idAuxiliar')
+    }
+
+    public static function getFiscales()
+    {
+
+    }
+
     public function rfcMoral(Request $request)
     {
         $nombre = $request->nombre;

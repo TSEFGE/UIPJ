@@ -313,16 +313,6 @@ class CarpetaController extends Controller
         return $vehiculos;
     }
 
-    public static function getAuxiliares($id)
-    {
-
-    }
-
-    public static function getFiscales($id)
-    {
-
-    }
-
     /**
      * Show the form for creating a new resource.
      *
