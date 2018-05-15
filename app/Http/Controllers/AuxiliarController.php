@@ -5,12 +5,17 @@ namespace App\Http\Controllers;
 use Alert;
 use App\Models\Bitacora;
 use Illuminate\Support\Facades\Auth;
+use DB;
 
 class AuxiliarController extends Controller
 {
     public function showForm()
     {
-
+        $auxiliares = DB::table('auxiliares')
+            ->join('permisos_auxiliares', 'permisos_auxiliares.idAuxiliar', '=', 'auxiliares.id')
+            ->select('auxiliares.id', 'auxiliares.email', 'auxiliares.telefono',  DB::raw('CONCAT(auxiliares.nombres, " ", ifnull(auxiliares.primerAp,"")," ", ifnull(auxiliares.segundoAp,"")) AS nombre'), DB::raw('CONCAT("AUXILIAR") AS tipo'))
+            ->where('auxiliares.idFiscal', Auth::user()->id)
+            ->get();
         return view('forms.auxiliar');
     }
 
