@@ -8,9 +8,14 @@ class AuxiliarController extends Controller
     {
         return view('forms.auxiliar');
     }
-    
+
     public function index($idCarpeta)
     {
         return view('forms.auxiliar')->with('idCarpeta', $idCarpeta);
+    }
+
+    public function storeAuxiliar(StoreAuxiliar $request)
+    {
+
     }
 }
