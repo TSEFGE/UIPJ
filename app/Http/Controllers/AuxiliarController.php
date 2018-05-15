@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use Alert;
 use App\Models\Auxiliar;
 use App\Models\Bitacora;
+use DB;
 use Illuminate\Http\Request;
 use App\Models\Auxiliar;
 use Illuminate\Support\Facades\Auth;
-use DB;
 
 class AuxiliarController extends Controller
 {
@@ -24,17 +24,20 @@ class AuxiliarController extends Controller
 
     public function storeAuxiliar(Request $request)
     {
+
+        //dd($request);
+
         $auxiliar               = new Auxiliar();
         $auxiliar->idFiscal     = Auth::user()->id;
-        $auxiliar->nombres      = $request->nombres;
-        $auxiliar->primerAp     = $request->primerAp;
-        $auxiliar->segundoAp    = $request->segundoAp;
+        $auxiliar->nombres      = $request->nombreAux;
+        $auxiliar->primerAp     = $request->primerApAux;
+        $auxiliar->segundoAp    = $request->segundoApAux;
         $auxiliar->email        = $request->email;
-        $auxiliar->telefono     = $request->telefono;
-        $auxiliar->password     = $request->password;
+        $auxiliar->telefono     = $request->telefonoAux;
+        $auxiliar->password     = $request->contraseña;
         $auxiliar->tokenSession = null;
         $auxiliar->save();
-
+        //  dd($auxiliar);
         Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'auxiliar', 'accion' => 'create', 'descripcion' => 'Se ha dado de alta el auxiliar' . $auxiliar->nombres . ' ' . $auxiliar->primerAp . ' ' . $auxiliar->segundoAp . '.', 'idFilaAccion' => $auxiliar->id]);
 
         Alert::success('Auxiliar registrado con éxito', 'Hecho')->persistent("Aceptar");
