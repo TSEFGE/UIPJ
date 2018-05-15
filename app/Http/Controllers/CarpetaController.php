@@ -12,7 +12,6 @@ use Carbon\Carbon;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Auxiliar;
 
 class CarpetaController extends Controller
 {
@@ -95,44 +94,33 @@ class CarpetaController extends Controller
     public function index($id)
     {
         $carpetaNueva = Carpeta::where('id', $id)->where('idFiscal', Auth::user()->id)->get();
-        if ($carpetaNueva->isEmpty()) {
+        if (count($carpetaNueva) > 0) {
+            $denunciantes = CarpetaController::getDenunciantes($id);
+            $denunciados  = CarpetaController::getDenunciados($id);
+            $testigos     = CarpetaController::getTestigos($id);
+            $autoridades  = CarpetaController::getAutoridades($id);
+            $abogados     = CarpetaController::getAbogados($id);
+            $defensas     = CarpetaController::getDefensas($id);
+            $familiares   = CarpetaController::getFamiliares($id);
+            $delitos      = CarpetaController::getDelitos($id);
+            $acusaciones  = CarpetaController::getAcusaciones($id);
+            $vehiculos    = CarpetaController::getVehiculos($id);
+            //$delits = CarpetaController::hayDelitosVeh($id);
+            //dd($vehiculos);
+            return view('carpeta')->with('carpetaNueva', $carpetaNueva)
+                ->with('denunciantes', $denunciantes)
+                ->with('denunciados', $denunciados)
+                ->with('testigos', $testigos)
+                ->with('autoridades', $autoridades)
+                ->with('abogados', $abogados)
+                ->with('defensas', $defensas)
+                ->with('familiares', $familiares)
+                ->with('delitos', $delitos)
+                ->with('acusaciones', $acusaciones)
+                ->with('vehiculos', $vehiculos);
+        } else {
             return redirect()->route('home');
         }
-        $denunciantes = CarpetaController::getDenunciantes($id);
-        $denunciados  = CarpetaController::getDenunciados($id);
-        $testigos     = CarpetaController::getTestigos($id);
-        $autoridades  = CarpetaController::getAutoridades($id);
-        $abogados     = CarpetaController::getAbogados($id);
-        $defensas     = CarpetaController::getDefensas($id);
-        $familiares   = CarpetaController::getFamiliares($id);
-        $delitos      = CarpetaController::getDelitos($id);
-        $acusaciones  = CarpetaController::getAcusaciones($id);
-        $vehiculos    = CarpetaController::getVehiculos($id);
-        //$delits = CarpetaController::hayDelitosVeh($id);
-        $auxiliares1 = DB::table('auxiliares')
-            ->join('permisos_auxiliares', 'permisos_auxiliares.idAuxiliar', '=', 'auxiliares.id')
-            ->select('auxiliares.id', 'auxiliares.email',  DB::raw('CONCAT(auxiliares.nombres, " ", ifnull(auxiliares.primerAp,"")," ", ifnull(auxiliares.segundoAp,"")) AS nombre'), DB::raw('CONCAT("AUXILIAR") AS tipo'))
-            ->where('permisos_auxiliares.idCarpeta', $id)
-            ->where('auxiliares.idFiscal', Auth::user()->id);
-        $auxiliares = DB::table('users')
-            ->join('permisos_fiscales', 'permisos_fiscales.idFiscal', '=', 'users.id')
-            ->select('users.id', 'users.email',  DB::raw('CONCAT(users.nombres, " ", ifnull(users.apellidos,"")) AS nombre'), DB::raw('CONCAT("FISCAL") AS tipo'))
-            ->where('permisos_fiscales.idCarpeta', $id)
-            ->where('users.id', Auth::user()->id)
-            ->union($auxiliares1)->get();
-        //dd($auxiliares);
-        return view('carpeta')->with('carpetaNueva', $carpetaNueva)
-            ->with('denunciantes', $denunciantes)
-            ->with('denunciados', $denunciados)
-            ->with('testigos', $testigos)
-            ->with('autoridades', $autoridades)
-            ->with('abogados', $abogados)
-            ->with('defensas', $defensas)
-            ->with('familiares', $familiares)
-            ->with('delitos', $delitos)
-            ->with('acusaciones', $acusaciones)
-            ->with('vehiculos', $vehiculos)
-            ->with('auxiliares', $auxiliares);
     }
 
     public function verDetalle($id)
@@ -325,6 +313,16 @@ class CarpetaController extends Controller
         return $vehiculos;
     }
 
+    public static function getAuxiliares($id)
+    {
+
+    }
+
+    public static function getFiscales($id)
+    {
+
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -390,4 +388,19 @@ class CarpetaController extends Controller
     {
         //
     }
+
+    public function asignacionCarpeta(Request $request){
+        if($request->tipo==1){
+            DB::table('permisos_fiscales')->insert(['idFiscal' => $request->idUsuario, 'idCarpeta' => $request->idCarpeta]);
+            Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'permisos_fiscales', 'accion' => 'create', 'descripcion' => 'Se ha asigando la carpeta con id: '.$request->idCarpeta.' al fiscal '.$request->idUsuario'.', 'idFilaAccion' => $auxiliar->id]);
+
+        }else if($request->tipo==0){
+                DB::table('permisos_auxiliares')->insert(['idAuxiliar' =>$request->idUsuario, 'idCarpeta' => $request->idCarpeta]]);
+                Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'permisos_auxiliares', 'accion' => 'create', 'descripcion' => 'Se ha asigando la carpeta con id: '.$request->idCarpeta.' al auxiliar '.$request->idUsuario'.', 'idFilaAccion' => $auxiliar->id]);
+        }
+
+        Alert::success('Se ha asignado la carpeta con éxito', 'Hecho')->persistent("Aceptar");
+        return redirect()->route('home');
+    }
+
 }

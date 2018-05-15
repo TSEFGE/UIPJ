@@ -4,19 +4,18 @@ namespace App\Http\Controllers;
 
 use Alert;
 use App\Models\Bitacora;
+use App\Models\Auxiliar;
 use Illuminate\Support\Facades\Auth;
 
 class AuxiliarController extends Controller
 {
     public function showForm()
     {
-
         return view('forms.auxiliar');
     }
 
     public function storeAuxiliar(StoreAuxiliar $request)
     {
-
         $auxiliar               = new Auxiliar();
         $auxiliar->idFiscal     = Auth::user()->id;
         $auxiliar->nombres      = $request->nombres;
@@ -32,6 +31,11 @@ class AuxiliarController extends Controller
 
         Alert::success('Auxiliar registrado con éxito', 'Hecho')->persistent("Aceptar");
         return redirect()->route('show.auxiliar', $request->idCarpeta);
+    }
 
+    public function edit($id)
+    {
+        $auxiliar=Auxiliar::find($id);
+        return view('forms.auxiliar')->with('auxiliar', $auxiliar);
     }
 }
