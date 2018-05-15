@@ -8,6 +8,7 @@
 @endpush
 
 @section('contenido')
+<div class="tarjeta">
 {!! Form::open(['route' => 'store.abogado', 'method' => 'POST'])  !!}
 <div class="card-header">
 	<div class="row">
@@ -75,6 +76,7 @@
 	</div>
 </div>
 {!! Form::close() !!}
+</div>
 @endsection
 
 @section('tabla')

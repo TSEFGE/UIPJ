@@ -26,8 +26,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('store-carpeta', 'CarpetaController@storeCarpeta')->name('store.carpeta');
     Route::get('/carpeta/{id}', 'CarpetaController@index')->name('carpeta');
     /*Route::get('carpeta/{id}', [
-        'uses' => 'CarpetaController@verDetalle',
-        'as'   => 'view.carpeta',
+    'uses' => 'CarpetaController@verDetalle',
+    'as'   => 'view.carpeta',
     ]);*/
 
     /*---------Rutas para denunciante-------------*/
@@ -99,6 +99,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('denunciante/storecomplemento', 'DenuncianteController@storeComplement')->name('store.complement1');
     Route::get('carpeta/{idCarpeta}/denunciado/{idDenunciado}/complemento', 'DenunciadoController@showComplement')->name('complement.denunciado');
     Route::post('denunciado/storecomplemento', 'DenunciadoController@storeComplement')->name('store.complement2');
+
+    /*---------Rutas para Auxiliar de Fiscal-------------*/
+   // Route::get('/carpeta/{idCarpeta}', 'AuxiliarController@index')->name('index');
+    Route::get('/administrador-de-auxiliar', 'AuxiliarController@admin')->name('admin.auxiliar');
 
     /*---------Rutas para generación de documentos-------------*/
     Route::get('constancia-hechos/{idDenunciante}', [

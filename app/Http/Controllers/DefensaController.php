@@ -130,6 +130,6 @@ class DefensaController extends Controller
 
         Alert::success('Defensa reasignada con éxito', 'Hecho')->persistent("Aceptar");
         //return redirect()->route('carpeta', $request->idCarpeta);
-        return redirect()->route('new.defensa', $request->idCarpeta);
+        return redirect()->route('carpeta', $request->idCarpeta);
     }
 }

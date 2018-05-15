@@ -44,7 +44,6 @@
 @push('docready-js')
 	$("#idAbogado").addClass("vacio");
 	$("#idInvolucrado").addClass("vacio");
-
 	$('#idAbogado').val({{$idAbogado}}).trigger('change');
 	$('#idInvolucrado').val({{$idInvolucrado}}).trigger('change');
 

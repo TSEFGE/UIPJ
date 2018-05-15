@@ -48,7 +48,11 @@
                             <td>{{ $carpeta->nombres." ".$carpeta->apellidos }}</td>
                             <td>{{ $carpeta->fechaInicio }}</td>
                             <td>{{ $carpeta->estadoCarpeta }}</td>
-                            <td><a href="{{ route('carpeta', $carpeta->id) }}" class="btn btn-secondary"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Ver</a></td>
+                            <td>
+                            <div class="row"><div class="col-6"><a href="{{ route('carpeta', $carpeta->id) }}" class="btn btn-secondary"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Ver</a></div>
+                            <div class="col-6">                                                   
+                            <a id="modal1" data-toggle="tooltip" title="Asignar a Auxiliar" class="btn btn-secondary"><i class="fa fa-user-plus" style="font-size:24px;color:white"></i></a> </div></div>
+                            </td>
                         </tr>
                         @endforeach
                         @endif
@@ -60,7 +64,7 @@
             </div>
         </div>
 
-        <div class="tab-pane container" id="asignadas">
+        <div class="tab-pane " id="asignadas">
             <div class="table">
                 <table class="table table-striped">
                     <thead>
@@ -92,6 +96,11 @@
             <div class="text-center">
                 {{ $carpetasUat->links() }}
             </div>
+
+  
+
+
+
         </div>
      </div> 
 
@@ -99,5 +108,37 @@
 
 </div>
 
+ <div class="modal fade" id="asignar">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Asignar Carpeta</h4>
+          <button type="button" class="close" data-dismiss="modal"></button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          ..
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
 
 @endsection
+@push('docready-js')
+
+
+    $("#modal1").click(function(){
+        $("#asignar").modal();
+    });
+
+
+@endpush

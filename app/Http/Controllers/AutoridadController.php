@@ -438,7 +438,7 @@ class AutoridadController extends Controller
 
         Alert::success('Autoridad actualizada con éxito', 'Hecho')->persistent("Aceptar");
         //return redirect()->route('carpeta', $request->idCarpeta);
-        return redirect()->route('edit.autoridad', ['idCarpeta' => $request->idCarpeta, 'id' => $request->idExtraAutoridad]);
+        return redirect()->route('carpeta', ['idCarpeta' => $request->idCarpeta, 'id' => $request->idExtraAutoridad]);
     }
 
     /**
