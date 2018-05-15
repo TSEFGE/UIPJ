@@ -7,12 +7,11 @@
             <th>Acciones</th>
                                          
         </thead>
-        <tbody>
-               <tr><td colspan="5" class="text-center">Sin registros</td></tr>
+        <tbody>               
            @if(count($auxiliares)==0)
                 <tr><td colspan="5" class="text-center">Sin registros</td></tr>
             @else
-                @foreach($auciliares as $auxiliar)
+                @foreach($auxiliares as $auxiliar)
                     <tr >
                         <td></td>
                         <td></td>                        
