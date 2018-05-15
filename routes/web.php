@@ -158,8 +158,8 @@ Route::middleware(['auth'])->group(function () {
         Route::post('rfc-fisico', 'RegistroController@rfcFisico')->name('rfc.fisico');
 
         /*---------Rutas para los selects dinámicos-------------*/
-        Route::get('fiscales', 'CarpetaController@getfiscales')->name('get.fiscales');
-        Route::get('auxiliares', 'CarpetaController@getauxiliares')->name('get.auxiliares');
+        Route::get('fiscales', 'RegistroController@getfiscales')->name('get.fiscales');
+        Route::get('auxiliares', 'RegistroController@getauxiliares')->name('get.auxiliares');
         Route::get('carpetaUAT/{id}', 'Connections\ConnectionUATController@carpetauat')->name('datos.CarpetaUAT');
         Route::get('municipios/{id}', 'RegistroController@getMunicipios')->name('get.municipios');
         Route::get('localidades/{id}', 'RegistroController@getLocalidades')->name('get.localidades');
