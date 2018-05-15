@@ -9,7 +9,8 @@
 
 @section('contenido')
 <div class="tarjeta">
-{!! Form::open(['' => '', 'method' => 'POST'])  !!}
+{!! Form::open(['route' => 'store.auxiliar', 'method' => 'POST'])  !!}
+
 <div class="card-header">
 	<div class="row">
 		<div class="col">

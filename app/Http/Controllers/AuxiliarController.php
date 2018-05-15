@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Alert;
+use App\Models\Auxiliar;
 use App\Models\Bitacora;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AuxiliarController extends Controller
@@ -14,7 +16,7 @@ class AuxiliarController extends Controller
         return view('forms.auxiliar');
     }
 
-    public function storeAuxiliar(StoreAuxiliar $request)
+    public function storeAuxiliar(Request $request)
     {
 
         $auxiliar               = new Auxiliar();
