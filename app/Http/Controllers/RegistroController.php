@@ -229,7 +229,7 @@ class RegistroController extends Controller
         }
     }
 
-    public static function getAuxiliares()
+    public function getAuxiliares()
     {
         $auxiliares = DB::table('auxiliar')
             ->join('users', 'users.id', '=', 'auxiliar.idFiscal')
@@ -239,7 +239,7 @@ class RegistroController extends Controller
         return response()->json($auxiliares);
     }
 
-    public static function getFiscales()
+    public function getFiscales()
     {
         $fiscales = DB::table('users')
             ->join('unidad', 'unidad.id', '=', 'users.idUnidad')
