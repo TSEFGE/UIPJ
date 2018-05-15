@@ -68,7 +68,8 @@
 
     $.validate({
         validateOnEvent: true,
-        lang : 'es'
+        lang : 'es',
+        modules : 'security'
        
     });
     

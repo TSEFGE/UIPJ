@@ -13,9 +13,9 @@
             @else
                 @foreach($auxiliares as $auxiliar)
                     <tr >
-                        <td></td>
-                        <td></td>                        
-                        <td></td>                       
+                        <td>{{$auxiliar->nombre}}</td>
+                        <td>{{$auxiliar->correo}}</td>                        
+                        <td>{{$auxiliar->telefono}}</td>                       
                         <td ><a href=""> <i class="fa fa-pencil-square-o" style="font-size:24px;color:grey"></i></a></td>
                        
                     </tr>
