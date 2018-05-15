@@ -231,13 +231,22 @@ class RegistroController extends Controller
 
     public static function getAuxiliares()
     {
-        $auxiliares = DB::table('permisos_auxiliares')
-            ->join('auxiliar', 'auxiliar.id', '=', 'permisos.idAuxiliar')
+        $auxiliares = DB::table('auxiliar')
+            ->join('users', 'users.id', '=', 'auxiliar.idFiscal')
+            ->select('auxiliar.id as idAuxiliar', 'auxiliar.nombres', 'auxiliar.primerAp', 'auxiliar.segundoAp')
+            ->where('users.id', '=', Auth::user()->id)
+            ->get();
+        return response()->json($auxiliares);
     }
 
     public static function getFiscales()
     {
-
+        $fiscales = DB::table('users')
+            ->join('unidad', 'unidad.id', '=', 'users.idUnidad')
+            ->select('unidad.idDistrito as idDistrito', 'users.numFiscal as numFiscal', 'users. as nombres', 'users.apellidos as apellidos')
+            ->where('unidad.id', '=', Auth::user()->idUnidad)
+            ->get();
+        return response()->json($fiscales);
     }
 
     public function rfcMoral(Request $request)
