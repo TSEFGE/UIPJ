@@ -233,7 +233,7 @@ class RegistroController extends Controller
     {
         $auxiliares = DB::table('auxiliar')
             ->join('users', 'users.id', '=', 'auxiliar.idFiscal')
-            ->select('auxiliar.id as idAuxiliar', 'auxiliar.nombres', 'auxiliar.primerAp', 'auxiliar.segundoAp')
+            ->select('auxiliar.id as idAuxiliar', DB::raw('CONCAT(auxiliar.nombres, " ", ifnull(auxiliar.primerAp,"")," ", ifnull(auxiliar.segundoAp,"")) AS nombre'))
             ->where('users.id', '=', Auth::user()->id)
             ->get();
         return response()->json($auxiliares);
@@ -243,7 +243,7 @@ class RegistroController extends Controller
     {
         $fiscales = DB::table('users')
             ->join('unidad', 'unidad.id', '=', 'users.idUnidad')
-            ->select('unidad.idDistrito as idDistrito', 'users.numFiscal as numFiscal', 'users. as nombres', 'users.apellidos as apellidos')
+            ->select('unidad.idDistrito as idDistrito', 'users.numFiscal as numFiscal', DB::raw('CONCAT(users.nombres, " ", ifnull(auxiliar.apellidos,"")) AS nombre'))
             ->where('unidad.id', '=', Auth::user()->idUnidad)
             ->get();
         return response()->json($fiscales);
