@@ -32,7 +32,7 @@ class AuxiliarController extends Controller
         $auxiliar->primerAp     = $request->primerApAux;
         $auxiliar->segundoAp    = $request->segundoApAux;
         $auxiliar->email        = $request->email;
-        $auxiliar->telefonoAux  = $request->telefono;
+        $auxiliar->telefono     = $request->telefonoAux;
         $auxiliar->password     = $request->contraseña;
         $auxiliar->tokenSession = null;
         $auxiliar->save();
