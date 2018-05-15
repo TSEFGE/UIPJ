@@ -113,7 +113,7 @@ form .form-control:focus {
 	border-color: yellow;
 }
 #btn-ocultar{
-	position:absolute;
-	bottom:5px;
+	position:relative;
+	
 	right:10px;
 }
