@@ -31,7 +31,7 @@ class AuxiliarController extends Controller
         Bitacora::create(['idUsuario' => Auth::user()->id, 'tabla' => 'auxiliar', 'accion' => 'create', 'descripcion' => 'Se ha dado de alta el auxiliar' . $auxiliar->nombres . ' ' . $auxiliar->primerAp . ' ' . $auxiliar->segundoAp . '.', 'idFilaAccion' => $auxiliar->id]);
 
         Alert::success('Auxiliar registrado con éxito', 'Hecho')->persistent("Aceptar");
-        return redirect()->route('show.axiliar', $request->idCarpeta);
+        return redirect()->route('show.auxiliar', $request->idCarpeta);
 
     }
 }
