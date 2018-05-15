@@ -16,7 +16,8 @@
 				<img src="{{ asset('admin/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
 			</div>
 			<div class="info">
-				<a href="#" class="d-block">{{ Auth::user()->nombres." ". Auth::user()->apellidos }}</a>
+				<a href="#" class="d-block" id="">{{ Auth::user()->nombres}}</a>
+				<a href="#" class="d-block" id="">{{ Auth::user()->apellidos }}</a>
 				<a href="#" class="d-block"> <small>Numero de fiscal </small><b> {{ Auth::user()->numFiscal}}</b></a>
 			</div>
 		</div>

@@ -8478,7 +8478,7 @@ body,
 .brand-image {
   float: left;
   line-height: .8;
-  max-height: 34px;
+  max-height: 45px;
   width: auto;
   margin-left: .8rem;
   margin-right: .5rem;
@@ -8523,6 +8523,7 @@ body,
 }
 
 .user-panel .image {
+  padding-top: 1.4rem;
   padding-left: 0.8rem;
   display: inline-block;
 }
