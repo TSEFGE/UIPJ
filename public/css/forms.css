@@ -114,6 +114,6 @@ form .form-control:focus {
 }
 #btn-ocultar{
 	position:relative;
-	
+	top: 5px;
 	right:10px;
 }

@@ -230,4 +230,10 @@ body::-webkit-scrollbar-thumb {
 .modal-header {
 	background-color: rgba(0, 0, 0, 0.03);
 }
+input.pw {
+	-webkit-text-security: disc;
+	-moz-text-security: disc;
+	-o-text-security: disc;
+	-ms-text-security: disc;
+}
 /* --------------------------- FIN BARRAS ----------------------*/
